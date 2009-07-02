@@ -48,6 +48,9 @@ def displayAboutBox(widget, data = None):
         about.set_program_name("Caffeine")
         about.set_version(VERSION_STRING)
         about.set_copyright("Copyright © 2009 Brad Smith")
+        about.set_icon(gtk.gdk.pixbuf_new_from_file("Full_Cup.svg"))
+
+        about.set_logo(gtk.gdk.pixbuf_new_from_file_at_size("Full_Cup.svg", 48, 48))
         about.set_comments("""An application to temporarily prevent the activation of both the screen saver and the "sleep" powersaving mode.
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
