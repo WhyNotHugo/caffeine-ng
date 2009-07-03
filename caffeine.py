@@ -27,6 +27,9 @@ VERSION_STRING = "0.1"
 EMPTY_ICON_PATH = os.path.abspath(os.path.join(os.path.split(__file__)[0], "Empty_Cup.svg"))
 FULL_ICON_PATH = os.path.abspath(os.path.join(os.path.split(__file__)[0], "Full_Cup.svg"))
 
+TIMER_OPTIONS_LIST = [("5 minutes", 300.0), ("10 minutes", 600.0), ("15 minutes", 900.0), ("30 minutes", 1800.0),
+                      ("1 hour", 3600.0), ("2 hours", 7200.0), ("3 hours", 10800.0), ("4 hours", 14400.0)]
+
 sleepPrevented = False
 screenSaverCookie = None
 timer = None
@@ -151,27 +154,10 @@ def main():
 
     # Creating submenu
     submenu = gtk.Menu()
-    menuItem = gtk.MenuItem(label="5 minutes")
-    menuItem.connect('activate', timedActivation, 300.0)
-    submenu.append(menuItem)
-    menuItem = gtk.MenuItem(label="10 minutes")
-    menuItem.connect('activate', timedActivation, 600.0)
-    submenu.append(menuItem)
-    menuItem = gtk.MenuItem(label="15 minutes")
-    menuItem.connect('activate', timedActivation, 900.0)
-    submenu.append(menuItem)
-    menuItem = gtk.MenuItem(label="30 minutes")
-    menuItem.connect('activate', timedActivation, 1800.0)
-    submenu.append(menuItem)
-    menuItem = gtk.MenuItem(label="1 hour")
-    menuItem.connect('activate', timedActivation, 3600.0)
-    submenu.append(menuItem)
-    menuItem = gtk.MenuItem(label="2 hours")
-    menuItem.connect('activate', timedActivation, 7200.0)
-    submenu.append(menuItem)
-    menuItem = gtk.MenuItem(label="3 hours")
-    menuItem.connect('activate', timedActivation, 9800.0)
-    submenu.append(menuItem)
+    for (l, t) in TIMER_OPTIONS_LIST:
+        menuItem = gtk.MenuItem(label=l)
+        menuItem.connect('activate', timedActivation, t)
+        submenu.append(menuItem)
 
     menu = gtk.Menu()
     menuItem = gtk.MenuItem(label="Activate for")
