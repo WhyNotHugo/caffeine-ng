@@ -21,6 +21,7 @@ import os, sys
 import gtk
 import pygtk
 import dbus
+import threading
 
 VERSION_STRING = "0.1"
 EMPTY_ICON_PATH = os.path.abspath(os.path.join(os.path.split(__file__)[0], "Empty_Cup.svg"))
@@ -116,25 +117,69 @@ def toggleSleepPrevention():
 		sleepPrevented = True
 		print "Caffiene is now preventing powersaving modes and screensaver activation"
 
+#Simulates a click to activate caffeine, then runs activation()
+#after enough time has passed. Runs in another thread, so the script
+#can continue anyway.
+def timedActivation(self, seconds):
+    global sleepPrevented, statusIcon
+    if sleepPrevented == False:
+        sleepPreventionPressed(statusIcon)
+    timer = threading.Timer(seconds, activation)
+    timer.start()
+    
+def activation():
+    global sleepPrevented, statusIcon
+    if sleepPrevented == True:
+        sleepPreventionPressed(statusIcon)
+
 def main():
-	statusIcon = gtk.StatusIcon()
+    global statusIcon
+    statusIcon = gtk.StatusIcon()
+    
+    #Creating submenu
+    submenu = gtk.Menu()
+    menuItem = gtk.MenuItem(label="5 minutes")
+    menuItem.connect('activate', timedActivation, 300.0)
+    submenu.append(menuItem)
+    menuItem = gtk.MenuItem(label="10 minutes")
+    menuItem.connect('activate', timedActivation, 600.0)
+    submenu.append(menuItem)
+    menuItem = gtk.MenuItem(label="15 minutes")
+    menuItem.connect('activate', timedActivation, 900.0)
+    submenu.append(menuItem)
+    menuItem = gtk.MenuItem(label="30 minutes")
+    menuItem.connect('activate', timedActivation, 1800.0)
+    submenu.append(menuItem)
+    menuItem = gtk.MenuItem(label="1 hour")
+    menuItem.connect('activate', timedActivation, 3600.0)
+    submenu.append(menuItem)
+    menuItem = gtk.MenuItem(label="2 hours")
+    menuItem.connect('activate', timedActivation, 7200.0)
+    submenu.append(menuItem)
+    menuItem = gtk.MenuItem(label="3 hours")
+    menuItem.connect('activate', timedActivation, 9800.0)
+    submenu.append(menuItem)
+    
+    menu = gtk.Menu()
+    menuItem = gtk.MenuItem(label="Activate for")
+    menuItem.set_submenu(submenu)
+    menu.append(menuItem)
+    menuItem = gtk.ImageMenuItem(gtk.STOCK_ABOUT)
+    menuItem.connect('activate', displayAboutBox)
+    menu.append(menuItem)
+    menuItem = gtk.ImageMenuItem(gtk.STOCK_QUIT)
+    menuItem.connect('activate', quitButtonPressed)
+    menu.append(menuItem)
 
-	menu = gtk.Menu()
-	menuItem = gtk.ImageMenuItem(gtk.STOCK_ABOUT)
-	menuItem.connect('activate', displayAboutBox)
-	menu.append(menuItem)
-	menuItem = gtk.ImageMenuItem(gtk.STOCK_QUIT)
-	menuItem.connect('activate', quitButtonPressed)
-	menu.append(menuItem)
-
-	statusIcon.set_from_file(EMPTY_ICON_PATH)
-	statusIcon.set_tooltip("Click the coffee cup to disable the screen saver and prevent your computer from entering sleep mode")
-	statusIcon.connect('activate', sleepPreventionPressed)
-	statusIcon.connect('popup-menu', showMenu, menu)
-	try:
-		gtk.main()
-	except KeyboardInterrupt:
-		quitCaffeine()
+    statusIcon.set_from_file(EMPTY_ICON_PATH)
+    statusIcon.set_tooltip("Click the coffee cup to disable the screen saver and prevent your computer from entering sleep mode")
+    statusIcon.connect('activate', sleepPreventionPressed)
+    statusIcon.connect('popup-menu', showMenu, menu)
+    gtk.gdk.threads_init()
+    try:
+        gtk.main()
+    except KeyboardInterrupt:
+        quitCaffeine()
 
 if __name__ == "__main__":
 	main()
