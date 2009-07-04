@@ -32,6 +32,7 @@ TIMER_OPTIONS_LIST = [("5 minutes", 300.0), ("10 minutes", 600.0), ("15 minutes"
 
 sleepPrevented = False
 screenSaverCookie = None
+powerManagementCookie = None
 timer = None
 busFailures = 0
 
@@ -112,19 +113,24 @@ def toggleSleepPrevention():
 def attemptToToggleSleepPrevention():
     """This function may fail to peform the toggling, if it cannot find the required bus. In this case, it
     will return False."""
-    global sleepPrevented, screenSaverCookie, timer
+    global sleepPrevented, screenSaverCookie, powerManagementCookie, timer
     bus = dbus.SessionBus()
     if sleepPrevented:
         ssProxy = None
         if 'org.gnome.ScreenSaver' in bus.list_names(): # For Gnome
             ssProxy = bus.get_object('org.gnome.ScreenSaver', '/org/gnome/ScreenSaver')
-        elif 'org.freedesktop.ScreenSaver' in bus.list_names(): # For KDE and others
+        elif 'org.freedesktop.ScreenSaver' in bus.list_names() and \
+             'org.freedesktop.PowerManagement.Inhibit' in bus.list_names(): # For KDE
             ssProxy = bus.get_object('org.freedesktop.ScreenSaver', '/ScreenSaver')
+            pmProxy = bus.get_object('org.freedesktop.PowerManagement.Inhibit', '/org/freedesktop/PowerManagement/Inhibit')
+            if powerManagementCookie != None:
+                pmProxy.UnInhibit(powerManagementCookie)
         else:
             return False
 
         if screenSaverCookie != None:
             ssProxy.UnInhibit(screenSaverCookie)
+
         sleepPrevented = False
         print "Caffiene is now dormant; powersaving is re-enabled"
 
@@ -135,17 +141,24 @@ def attemptToToggleSleepPrevention():
             timer.cancel()
             timer = None
     else:
+        probableWindowManager = ""
         ssProxy = None
         if 'org.gnome.ScreenSaver' in bus.list_names(): # For Gnome
+            probableWindowManager = "Gnome"
             ssProxy = bus.get_object('org.gnome.ScreenSaver', '/org/gnome/ScreenSaver')
-        elif 'org.freedesktop.ScreenSaver' in bus.list_names(): # For KDE and others
+        elif 'org.freedesktop.ScreenSaver' in bus.list_names() and \
+             'org.freedesktop.PowerManagement.Inhibit' in bus.list_names(): # For KDE
+            probableWindowManager = "KDE"
             ssProxy = bus.get_object('org.freedesktop.ScreenSaver', '/ScreenSaver')
+            pmProxy = bus.get_object('org.freedesktop.PowerManagement.Inhibit', '/org/freedesktop/PowerManagement/Inhibit')
+            powerManagementCookie = pmProxy.Inhibit("Caffeine", "User has requested that Caffeine disable the powersaving modes")
         else:
             return False
 
         screenSaverCookie = ssProxy.Inhibit("Caffeine", "User has requested that Caffeine disable the screen saver")
+
         sleepPrevented = True
-        print "Caffiene is now preventing powersaving modes and screensaver activation"
+        print "Caffiene is now preventing powersaving modes and screensaver activation (" + probableWindowManager + ")"
         return True
 
 # Simulates a click to activate caffeine, then runs activation()
