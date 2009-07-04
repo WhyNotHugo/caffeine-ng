@@ -33,6 +33,7 @@ TIMER_OPTIONS_LIST = [("5 minutes", 300.0), ("10 minutes", 600.0), ("15 minutes"
 sleepPrevented = False
 screenSaverCookie = None
 timer = None
+busFailures = 0
 
 # GUI callbacks
 def sleepPreventionPressed(widget, data = None):
@@ -81,6 +82,36 @@ def quitCaffeine():
     print "Caffeine exiting"
 
 def toggleSleepPrevention():
+    """This function will call 'attemptToToggleSleepPrevention', repeatedly if necessary. If it doesn't
+    succeed in toggling the sleep prevention after a minute or so, it will display an error dialog box
+    and kill the program. This is needed because it is possible for the user to click the Caffeine icon
+    as soon as they log in, which may be before the required busses/daemons have started up."""
+    global busFailures
+    attemptResult = attemptToToggleSleepPrevention()
+    if attemptResult == False:
+        busFailures += 1
+        if busFailures <= 9:
+            print "Failed to establish a connection with a required bus (" + str(busFailures) + " failures so far)"
+            print "This may be due to the required subsystem not having completed its initialization. Will try again in 10 seconds."
+            failTimer = threading.Timer(10, toggleSleepPrevention)
+            failTimer.start()
+        else:
+            print "Could not connect to the bus, even after repeated attempts. This program will now terminate."
+            errMsg = "Error: couldn't find bus to allow inhibiting of the screen saver.\n\n" \
+                "Please visit the web-site listed in the 'About' dialog of this application " \
+                "and check for a newer version of the software."
+            errDlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK, message_format=errMsg)
+            errDlg.run()
+            errDlg.destroy()
+            sys.exit(2)
+    else:
+        if busFailures != 0:
+            print "Connection to the bus succeeded; resuming normal operation"
+        busFailures = 0
+
+def attemptToToggleSleepPrevention():
+    """This function may fail to peform the toggling, if it cannot find the required bus. In this case, it
+    will return False."""
     global sleepPrevented, screenSaverCookie, timer
     bus = dbus.SessionBus()
     if sleepPrevented:
@@ -90,13 +121,7 @@ def toggleSleepPrevention():
         elif 'org.freedesktop.ScreenSaver' in bus.list_names(): # For KDE and others
             ssProxy = bus.get_object('org.freedesktop.ScreenSaver', '/ScreenSaver')
         else:
-            errMsg = "Error: couldn't find bus to allow re-enabling of the screen saver.\n\n" \
-                "Please visit the web-site listed in the 'About' dialog of this application " \
-                "and check for a newer version of the software."
-            errDlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK, message_format=errMsg)
-            errDlg.run()
-            errDlg.destroy()
-            sys.exit(1)
+            return False
 
         if screenSaverCookie != None:
             ssProxy.UnInhibit(screenSaverCookie)
@@ -106,8 +131,9 @@ def toggleSleepPrevention():
         # If the user clicks on the full coffee-cup to disable sleep prevention, it should also
         # cancel the timer for timed activation.
         if timer != None:
-        	print "Cancelling the 'timed activation' timer (was set for " + str(timer.interval) + " seconds)"
-        	timer.cancel()
+            print "Cancelling the 'timed activation' timer (was set for " + str(timer.interval) + " seconds)"
+            timer.cancel()
+            timer = None
     else:
         ssProxy = None
         if 'org.gnome.ScreenSaver' in bus.list_names(): # For Gnome
@@ -115,17 +141,12 @@ def toggleSleepPrevention():
         elif 'org.freedesktop.ScreenSaver' in bus.list_names(): # For KDE and others
             ssProxy = bus.get_object('org.freedesktop.ScreenSaver', '/ScreenSaver')
         else:
-            errMsg = "Error: couldn't find bus to allow inhibiting of the screen saver.\n\n" \
-                "Please visit the web-site listed in the 'About' dialog of this application " \
-                "and check for a newer version of the software."
-            errDlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK, message_format=errMsg)
-            errDlg.run()
-            errDlg.destroy()
-            sys.exit(2)
+            return False
 
         screenSaverCookie = ssProxy.Inhibit("Caffeine", "User has requested that Caffeine disable the screen saver")
         sleepPrevented = True
         print "Caffiene is now preventing powersaving modes and screensaver activation"
+        return True
 
 # Simulates a click to activate caffeine, then runs activation()
 # after enough time has passed. Runs in another thread, so the script
@@ -136,8 +157,8 @@ def timedActivation(self, seconds):
     if sleepPrevented == False:
         sleepPreventionPressed(statusIcon)
     if timer != None:
-    	print "Cancelling the previous 'timed activation' timer (was set for " + str(timer.interval) + " seconds)"
-    	timer.cancel()
+        print "Cancelling the previous 'timed activation' timer (was set for " + str(timer.interval) + " seconds)"
+        timer.cancel()
     timer = threading.Timer(seconds, activation)
     timer.start()
 
