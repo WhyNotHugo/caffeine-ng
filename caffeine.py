@@ -69,6 +69,82 @@ You should have received a copy of the GNU General Public License along with thi
     about.set_website("http://pragmattica.wordpress.com")
     about.run()
     about.destroy()
+    
+def displayDurationSettings(widget, data = None):
+    window = gtk.Window(gtk.WINDOW_TOPLEVEL)
+    window.connect("destroy", lambda w: gtk.main_quit())
+    window.set_title("Caffeine")
+
+    main_vbox = gtk.VBox(False, 5)
+    main_vbox.set_border_width(10)
+    window.add(main_vbox)
+
+    frame = gtk.Frame("Duration")
+    main_vbox.pack_start(frame, True, True, 0)
+
+    vbox = gtk.VBox(False, 0)
+    vbox.set_border_width(5)
+    frame.add(vbox)
+    hbox = gtk.HBox(False, 0)
+    vbox.pack_start(hbox, True, True, 5)
+
+    vbox2 = gtk.VBox(False, 0)
+    hbox.pack_start(vbox2, True, True, 5)
+
+    label = gtk.Label("Hours:")
+    label.set_alignment(0, 0.5)
+    vbox2.pack_start(label, False, True, 0)
+
+    adj = gtk.Adjustment(0.0, 0.0, 99.0, 1.0, 5.0, 0.0)
+    spinner = gtk.SpinButton(adj, 0, 0)
+    spinner.set_wrap(True)
+    vbox2.pack_start(spinner, False, True, 0)
+
+    vbox2 = gtk.VBox(False, 0)
+    hbox.pack_start(vbox2, True, True, 5)
+
+    label = gtk.Label("Minutes:")
+    label.set_alignment(0, 0.5)
+    vbox2.pack_start(label, False, True, 0)
+
+    adj = gtk.Adjustment(0.0, 0.0, 60.0, 1.0, 5.0, 0.0)
+    spinner = gtk.SpinButton(adj, 0, 0)
+    spinner.set_wrap(True)
+    vbox2.pack_start(spinner, False, True, 0)
+
+    vbox2 = gtk.VBox(False, 0)
+    hbox.pack_start(vbox2, True, True, 5)
+
+    label = gtk.Label("Seconds:")
+    label.set_alignment(0, 0.5)
+    vbox2.pack_start(label, False, True, 0)
+
+    adj = gtk.Adjustment(0.0, 0.0, 60.0, 1.0, 100.0, 0.0)
+    spinner = gtk.SpinButton(adj, 0, 0)
+    spinner.set_wrap(True)
+    spinner.set_size_request(55, -1)
+    vbox2.pack_start(spinner, False, True, 0)
+
+    hbox = gtk.HBox(False, 0)
+    main_vbox.pack_start(hbox, False, True, 0)
+
+    button = gtk.Button(stock="OK")
+    button.connect("clicked", lambda w: gtk.main_quit())
+    hbox.pack_start(button, True, True, 5)
+    button = gtk.Button(stock="Cancel")
+    button.connect("clicked", lambda w: gtk.main_quit())
+    hbox.pack_start(button, True, True, 5)
+    window.show_all()
+   
+def setOtherDuration(widget):
+    print "How many hours?"
+    hours = input()
+    print "How many minutes?"
+    minutes = input()
+    print "And how many seconds?"
+    seconds = input()
+    time = hours*60*60 + minutes*60 + seconds
+    timedActivation(widget, time)
 
 def quitButtonPressed(widget, data = None):
     gtk.main_quit()
@@ -192,6 +268,9 @@ def main():
         menuItem = gtk.MenuItem(label=l)
         menuItem.connect('activate', timedActivation, t)
         submenu.append(menuItem)
+    menuItem = gtk.MenuItem(label="Other")
+    menuItem.connect('activate', displayDurationSettings)
+    submenu.append(menuItem)
 
     menu = gtk.Menu()
     menuItem = gtk.MenuItem(label="Activate for")
