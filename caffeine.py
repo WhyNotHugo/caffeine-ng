@@ -132,7 +132,7 @@ def attemptToToggleSleepPrevention():
             ssProxy.UnInhibit(screenSaverCookie)
 
         sleepPrevented = False
-        print "Caffiene is now dormant; powersaving is re-enabled"
+        print "Caffeine is now dormant; powersaving is re-enabled"
 
         # If the user clicks on the full coffee-cup to disable sleep prevention, it should also
         # cancel the timer for timed activation.
@@ -158,7 +158,7 @@ def attemptToToggleSleepPrevention():
         screenSaverCookie = ssProxy.Inhibit("Caffeine", "User has requested that Caffeine disable the screen saver")
 
         sleepPrevented = True
-        print "Caffiene is now preventing powersaving modes and screensaver activation (" + probableWindowManager + ")"
+        print "Caffeine is now preventing powersaving modes and screensaver activation (" + probableWindowManager + ")"
         return True
 
 # Simulates a click to activate caffeine, then runs activation()
