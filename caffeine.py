@@ -181,7 +181,7 @@ def quitButtonPressed(widget, data = None):
 # Other procedures
 def quitCaffeine():
     """Perform final operations before program termination."""
-    global sleepPrevented
+    global sleepPrevented, appInstance
     if sleepPrevented:
         toggleSleepPrevention()
     appInstance.exitApplication()
@@ -288,7 +288,7 @@ def activation():
         sleepPreventionPressed(statusIcon)
 
 def main():
-    global statusIcon, durationSettings
+    global statusIcon, durationSettings, appInstance
     appInstance = ApplicationInstance( '/tmp/caffeine.pid' )
     statusIcon = gtk.StatusIcon()
     durationSettings = DurationSettings()
