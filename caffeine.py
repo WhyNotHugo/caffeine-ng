@@ -22,6 +22,7 @@ import gtk
 import pygtk
 import dbus
 import threading
+from applicationinstance import *
 
 VERSION_STRING = "0.1"
 EMPTY_ICON_PATH = os.path.abspath(os.path.join(os.path.split(__file__)[0], "Empty_Cup.svg"))
@@ -183,6 +184,7 @@ def quitCaffeine():
     global sleepPrevented
     if sleepPrevented:
         toggleSleepPrevention()
+    appInstance.exitApplication()
     print "Caffeine exiting"
 
 def toggleSleepPrevention():
@@ -287,6 +289,7 @@ def activation():
 
 def main():
     global statusIcon, durationSettings
+    appInstance = ApplicationInstance( '/tmp/caffeine.pid' )
     statusIcon = gtk.StatusIcon()
     durationSettings = DurationSettings()
     # Creating submenu
