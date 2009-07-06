@@ -70,79 +70,106 @@ You should have received a copy of the GNU General Public License along with thi
     about.run()
     about.destroy()
     
-def displayDurationSettings(widget, data = None):
-    window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-    window.connect("destroy", lambda w: gtk.main_quit())
-    window.set_title("Caffeine")
+class DurationSettings:
+    def ok_cb(self,widget,data=None):
+        self.hour=int(self.spinner_hour.get_value())
+        self.minute=int(self.spinner_minute.get_value())
+        self.second=int(self.spinner_second.get_value())
+        self.window.hide()
+        self.report_cb(self)
+        
+    def report_cb(self,widget,data=None):
+        self.time = self.hour*60*60 + self.minute*60 + self.second
+        timedActivation(widget, self.time)
 
-    main_vbox = gtk.VBox(False, 5)
-    main_vbox.set_border_width(10)
-    window.add(main_vbox)
+    def initialize(self):
+        self.hour=0
+        self.minute=0
+        self.second=0
 
-    frame = gtk.Frame("Duration")
-    main_vbox.pack_start(frame, True, True, 0)
+    def cancel_cb(self,widget,data=None):
+        self.initialize()
+        self.window.hide()
 
-    vbox = gtk.VBox(False, 0)
-    vbox.set_border_width(5)
-    frame.add(vbox)
-    hbox = gtk.HBox(False, 0)
-    vbox.pack_start(hbox, True, True, 5)
+    def show(self):
+        self.window.show_all()
+        
+    def on_delete_event(self, widget, data = None):
+        self.cancel_cb(self)
+        return True
 
-    vbox2 = gtk.VBox(False, 0)
-    hbox.pack_start(vbox2, True, True, 5)
+    def __init__(self, data = None):
+        self.initialize()
+        self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
+        self.window.connect("delete_event", self.on_delete_event)
+        self.window.set_title("Caffeine")
+        self.window.set_icon_from_file(FULL_ICON_PATH)
 
-    label = gtk.Label("Hours:")
-    label.set_alignment(0, 0.5)
-    vbox2.pack_start(label, False, True, 0)
+        main_vbox = gtk.VBox(False, 5)
+        main_vbox.set_border_width(10)
+        self.window.add(main_vbox)
 
-    adj = gtk.Adjustment(0.0, 0.0, 99.0, 1.0, 5.0, 0.0)
-    spinner = gtk.SpinButton(adj, 0, 0)
-    spinner.set_wrap(True)
-    vbox2.pack_start(spinner, False, True, 0)
+        frame = gtk.Frame("Duration")
+        main_vbox.pack_start(frame, True, True, 0)
+  
+        vbox = gtk.VBox(False, 0)
+        vbox.set_border_width(5)
+        frame.add(vbox)
+        hbox = gtk.HBox(False, 0)
+        vbox.pack_start(hbox, True, True, 5)
+  
+        vbox2 = gtk.VBox(False, 0)
+        hbox.pack_start(vbox2, True, True, 5)
 
-    vbox2 = gtk.VBox(False, 0)
-    hbox.pack_start(vbox2, True, True, 5)
+        label = gtk.Label("Hours:")
+        label.set_alignment(0, 0.5)
+        vbox2.pack_start(label, False, True, 0)
+  
+        adj = gtk.Adjustment(0.0, 0.0, 99.0, 1.0, 5.0, 0.0)
+        self.spinner_hour = gtk.SpinButton(adj, 0, 0)
+        self.spinner_hour.set_wrap(True)
+        vbox2.pack_start(self.spinner_hour, False, True, 0)
+  
+        vbox2 = gtk.VBox(False, 0)
+        hbox.pack_start(vbox2, True, True, 5)
+  
+        label = gtk.Label("Minutes:")
+        label.set_alignment(0, 0.5)
+        vbox2.pack_start(label, False, True, 0)
 
-    label = gtk.Label("Minutes:")
-    label.set_alignment(0, 0.5)
-    vbox2.pack_start(label, False, True, 0)
+        adj = gtk.Adjustment(0.0, 0.0, 59.0, 1.0, 5.0, 0.0)
+        self.spinner_minute = gtk.SpinButton(adj, 0, 0)
+        self.spinner_minute.set_wrap(True)
+        vbox2.pack_start(self.spinner_minute, False, True, 0)
+  
+        vbox2 = gtk.VBox(False, 0)
+        hbox.pack_start(vbox2, True, True, 5)
+  
+        label = gtk.Label("Seconds:")
+        label.set_alignment(0, 0.5)
+        vbox2.pack_start(label, False, True, 0)
+  
+        adj = gtk.Adjustment(0.0, 0.0, 59.0, 1.0, 100.0, 0.0)
+        self.spinner_second = gtk.SpinButton(adj, 0, 0)
+        self.spinner_second.set_wrap(True)
+        self.spinner_second.set_size_request(55, -1)
+        vbox2.pack_start(self.spinner_second, False, True, 0)
+  
+        hbox = gtk.HBox(False, 0)
+        main_vbox.pack_start(hbox, False, True, 0)
 
-    adj = gtk.Adjustment(0.0, 0.0, 60.0, 1.0, 5.0, 0.0)
-    spinner = gtk.SpinButton(adj, 0, 0)
-    spinner.set_wrap(True)
-    vbox2.pack_start(spinner, False, True, 0)
-
-    vbox2 = gtk.VBox(False, 0)
-    hbox.pack_start(vbox2, True, True, 5)
-
-    label = gtk.Label("Seconds:")
-    label.set_alignment(0, 0.5)
-    vbox2.pack_start(label, False, True, 0)
-
-    adj = gtk.Adjustment(0.0, 0.0, 60.0, 1.0, 100.0, 0.0)
-    spinner = gtk.SpinButton(adj, 0, 0)
-    spinner.set_wrap(True)
-    spinner.set_size_request(55, -1)
-    vbox2.pack_start(spinner, False, True, 0)
-
-    hbox = gtk.HBox(False, 0)
-    main_vbox.pack_start(hbox, False, True, 0)
-
-    button = gtk.Button(stock="OK")
-    button.connect("clicked", lambda w: gtk.main_quit())
-    hbox.pack_start(button, True, True, 5)
-    button = gtk.Button(stock="Cancel")
-    button.connect("clicked", lambda w: gtk.main_quit())
-    hbox.pack_start(button, True, True, 5)
-    window.show_all()
+        button = gtk.Button(stock="OK")
+        button.connect("clicked", self.ok_cb)
+        hbox.pack_start(button, True, True, 5)
+        button = gtk.Button(stock="Cancel")
+        button.connect("clicked", self.cancel_cb)
+        hbox.pack_start(button, True, True, 5)
+    
+def setDuration(widget):
+    global durationSettings
+    durationSettings.show()
    
 def setOtherDuration(widget):
-    print "How many hours?"
-    hours = input()
-    print "How many minutes?"
-    minutes = input()
-    print "And how many seconds?"
-    seconds = input()
     time = hours*60*60 + minutes*60 + seconds
     timedActivation(widget, time)
 
@@ -259,9 +286,9 @@ def activation():
         sleepPreventionPressed(statusIcon)
 
 def main():
-    global statusIcon
+    global statusIcon, durationSettings
     statusIcon = gtk.StatusIcon()
-
+    durationSettings = DurationSettings()
     # Creating submenu
     submenu = gtk.Menu()
     for (l, t) in TIMER_OPTIONS_LIST:
@@ -269,7 +296,7 @@ def main():
         menuItem.connect('activate', timedActivation, t)
         submenu.append(menuItem)
     menuItem = gtk.MenuItem(label="Other")
-    menuItem.connect('activate', displayDurationSettings)
+    menuItem.connect('activate', setDuration)
     submenu.append(menuItem)
 
     menu = gtk.Menu()
