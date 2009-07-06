@@ -180,11 +180,45 @@ def setOtherDuration(widget):
     
 def notify(message, icon, title="Caffeine"):
     """Easy way to use pynotify"""
-    if pynotify.init("Caffeine"):
+    try:
+        pynotify.init("Caffeine")
         n = pynotify.Notification(title, message, icon)
         n.show()
-    else:
+    except:
         print message
+
+def timeDisplay(seconds):
+    """Function to easily switch time format depending on duration"""
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+    secondUnit = " second"
+    minuteUnit = " minute"
+    hourUnit = " hour"
+    if s > 1:
+        secondUnit += "s"
+    if m > 1:
+        minuteUnit += "s"
+    if h > 1:
+        hourUnit += "s"
+    if seconds < 60:
+        return str(s) + secondUnit
+    elif seconds > 59 and seconds < 3600:
+        returnstring = str(m) + minuteUnit
+        if s != 0:
+            returnstring += " and " + str(s) + secondUnit
+        return returnstring
+    else:
+        returnstring = str(h) + hourUnit
+        if m != 0 and s != 0:
+            returnstring += ", " + str(m) + minuteUnit + " and " + str(s) + secondUnit
+        elif m != 0 or s != 0:
+            returnstring += " and "
+            if m != 0 and s == 0:
+                returnstring += str(m) + minuteUnit
+            else:
+                returnstring += str(s) + secondUnit
+        return returnstring
+        
 
 def quitButtonPressed(widget, data = None):
     gtk.main_quit()
@@ -254,7 +288,7 @@ def attemptToToggleSleepPrevention():
         # If the user clicks on the full coffee-cup to disable sleep prevention, it should also
         # cancel the timer for timed activation.
         if timer != None:
-            message = "Cancelling timer (was set for " + str(timer.interval/60) + " minutes)"
+            message = "Cancelling timer (was set for " + str(timeDisplay(timer.interval)) + ")"
             notify(message, EMPTY_ICON_PATH)
             timer.cancel()
             timer = None
@@ -284,19 +318,19 @@ def attemptToToggleSleepPrevention():
 # can continue anyway.
 def timedActivation(self, seconds):
     global sleepPrevented, statusIcon, timer
-    message = "Timed activation set; powersaving will revert to normal after " + str(seconds/60) + " minutes"
+    message = "Timed activation set; powersaving will revert to normal after " + timeDisplay(seconds)
     notify(message, FULL_ICON_PATH)
     if sleepPrevented == False:
         sleepPreventionPressed(statusIcon)
     if timer != None:
-        print "Cancelling the previous 'timed activation' timer (was set for " + str(timer.interval) + " seconds)"
+        print "Cancelling the previous 'timed activation' timer (was set for " + timeDisplay(timer.interval) + ")"
         timer.cancel()
     timer = threading.Timer(seconds, activation)
     timer.start()
 
 def activation():
     global sleepPrevented, statusIcon, timer
-    message = "Timed activation period has expired (" + str(timer.interval/60) + " minutes)"
+    message = "Timed activation period has expired (" + timeDisplay(timer.interval) + ")"
     notify(message, EMPTY_ICON_PATH)
     timer = None
     if sleepPrevented == True:
