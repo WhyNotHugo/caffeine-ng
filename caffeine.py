@@ -23,6 +23,10 @@ import pygtk
 import dbus
 import threading
 from applicationinstance import *
+try:
+    import pynotify
+except:
+    print "Please install pynotify"
 
 VERSION_STRING = "0.2"
 EMPTY_ICON_PATH = os.path.abspath(os.path.join(os.path.split(__file__)[0], "Empty_Cup.svg"))
@@ -173,6 +177,14 @@ def setDuration(widget):
 def setOtherDuration(widget):
     time = hours*60*60 + minutes*60 + seconds
     timedActivation(widget, time)
+    
+def notify(message, icon, title="Caffeine"):
+    """Easy way to use pynotify"""
+    if pynotify.init("Caffeine"):
+        n = pynotify.Notification(title, message, icon)
+        n.show()
+    else:
+        print message
 
 def quitButtonPressed(widget, data = None):
     gtk.main_quit()
@@ -242,7 +254,8 @@ def attemptToToggleSleepPrevention():
         # If the user clicks on the full coffee-cup to disable sleep prevention, it should also
         # cancel the timer for timed activation.
         if timer != None:
-            print "Cancelling the 'timed activation' timer (was set for " + str(timer.interval) + " seconds)"
+            message = "Cancelling timer (was set for " + str(timer.interval/60) + " minutes)"
+            notify(message, EMPTY_ICON_PATH)
             timer.cancel()
             timer = None
     else:
@@ -271,7 +284,8 @@ def attemptToToggleSleepPrevention():
 # can continue anyway.
 def timedActivation(self, seconds):
     global sleepPrevented, statusIcon, timer
-    print "User has requested timed activation; powersaving will revert to normal after " + str(seconds) + " seconds"
+    message = "Timed activation set; powersaving will revert to normal after " + str(seconds/60) + " minutes"
+    notify(message, FULL_ICON_PATH)
     if sleepPrevented == False:
         sleepPreventionPressed(statusIcon)
     if timer != None:
@@ -282,7 +296,8 @@ def timedActivation(self, seconds):
 
 def activation():
     global sleepPrevented, statusIcon, timer
-    print "Timed activation period has expired (" + str(timer.interval) + " seconds); Caffeine will now deactivate"
+    message = "Timed activation period has expired (" + str(timer.interval/60) + " minutes)"
+    notify(message, EMPTY_ICON_PATH)
     timer = None
     if sleepPrevented == True:
         sleepPreventionPressed(statusIcon)
