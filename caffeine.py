@@ -22,6 +22,7 @@ import gtk
 import pygtk
 import dbus
 import threading
+from applicationinstance import *
 
 VERSION_STRING = "0.1"
 EMPTY_ICON_PATH = os.path.abspath(os.path.join(os.path.split(__file__)[0], "Empty_Cup.svg"))
@@ -69,6 +70,109 @@ You should have received a copy of the GNU General Public License along with thi
     about.set_website("http://pragmattica.wordpress.com")
     about.run()
     about.destroy()
+    
+class DurationSettings:
+    def ok_cb(self,widget,data=None):
+        self.hour=int(self.spinner_hour.get_value())
+        self.minute=int(self.spinner_minute.get_value())
+        self.second=int(self.spinner_second.get_value())
+        self.window.hide()
+        self.report_cb(self)
+        
+    def report_cb(self,widget,data=None):
+        self.time = self.hour*60*60 + self.minute*60 + self.second
+        timedActivation(widget, self.time)
+
+    def initialize(self):
+        self.hour=0
+        self.minute=0
+        self.second=0
+
+    def cancel_cb(self,widget,data=None):
+        self.initialize()
+        self.window.hide()
+
+    def show(self):
+        self.window.show_all()
+        
+    def on_delete_event(self, widget, data = None):
+        self.cancel_cb(self)
+        return True
+
+    def __init__(self, data = None):
+        self.initialize()
+        self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
+        self.window.connect("delete_event", self.on_delete_event)
+        self.window.set_title("Caffeine")
+        self.window.set_icon_from_file(FULL_ICON_PATH)
+
+        main_vbox = gtk.VBox(False, 5)
+        main_vbox.set_border_width(10)
+        self.window.add(main_vbox)
+
+        frame = gtk.Frame("Duration")
+        main_vbox.pack_start(frame, True, True, 0)
+  
+        vbox = gtk.VBox(False, 0)
+        vbox.set_border_width(5)
+        frame.add(vbox)
+        hbox = gtk.HBox(False, 0)
+        vbox.pack_start(hbox, True, True, 5)
+  
+        vbox2 = gtk.VBox(False, 0)
+        hbox.pack_start(vbox2, True, True, 5)
+
+        label = gtk.Label("Hours:")
+        label.set_alignment(0, 0.5)
+        vbox2.pack_start(label, False, True, 0)
+  
+        adj = gtk.Adjustment(0.0, 0.0, 99.0, 1.0, 5.0, 0.0)
+        self.spinner_hour = gtk.SpinButton(adj, 0, 0)
+        self.spinner_hour.set_wrap(True)
+        vbox2.pack_start(self.spinner_hour, False, True, 0)
+  
+        vbox2 = gtk.VBox(False, 0)
+        hbox.pack_start(vbox2, True, True, 5)
+  
+        label = gtk.Label("Minutes:")
+        label.set_alignment(0, 0.5)
+        vbox2.pack_start(label, False, True, 0)
+
+        adj = gtk.Adjustment(0.0, 0.0, 59.0, 1.0, 5.0, 0.0)
+        self.spinner_minute = gtk.SpinButton(adj, 0, 0)
+        self.spinner_minute.set_wrap(True)
+        vbox2.pack_start(self.spinner_minute, False, True, 0)
+  
+        vbox2 = gtk.VBox(False, 0)
+        hbox.pack_start(vbox2, True, True, 5)
+  
+        label = gtk.Label("Seconds:")
+        label.set_alignment(0, 0.5)
+        vbox2.pack_start(label, False, True, 0)
+  
+        adj = gtk.Adjustment(0.0, 0.0, 59.0, 1.0, 100.0, 0.0)
+        self.spinner_second = gtk.SpinButton(adj, 0, 0)
+        self.spinner_second.set_wrap(True)
+        self.spinner_second.set_size_request(55, -1)
+        vbox2.pack_start(self.spinner_second, False, True, 0)
+  
+        hbox = gtk.HBox(False, 0)
+        main_vbox.pack_start(hbox, False, True, 0)
+
+        button = gtk.Button(stock="OK")
+        button.connect("clicked", self.ok_cb)
+        hbox.pack_start(button, True, True, 5)
+        button = gtk.Button(stock="Cancel")
+        button.connect("clicked", self.cancel_cb)
+        hbox.pack_start(button, True, True, 5)
+    
+def setDuration(widget):
+    global durationSettings
+    durationSettings.show()
+   
+def setOtherDuration(widget):
+    time = hours*60*60 + minutes*60 + seconds
+    timedActivation(widget, time)
 
 def quitButtonPressed(widget, data = None):
     gtk.main_quit()
@@ -77,9 +181,10 @@ def quitButtonPressed(widget, data = None):
 # Other procedures
 def quitCaffeine():
     """Perform final operations before program termination."""
-    global sleepPrevented
+    global sleepPrevented, appInstance
     if sleepPrevented:
         toggleSleepPrevention()
+    appInstance.exitApplication()
     print "Caffeine exiting"
 
 def toggleSleepPrevention():
@@ -183,15 +288,19 @@ def activation():
         sleepPreventionPressed(statusIcon)
 
 def main():
-    global statusIcon
+    global statusIcon, durationSettings, appInstance
+    appInstance = ApplicationInstance( '/tmp/caffeine.pid' )
     statusIcon = gtk.StatusIcon()
-
+    durationSettings = DurationSettings()
     # Creating submenu
     submenu = gtk.Menu()
     for (l, t) in TIMER_OPTIONS_LIST:
         menuItem = gtk.MenuItem(label=l)
         menuItem.connect('activate', timedActivation, t)
         submenu.append(menuItem)
+    menuItem = gtk.MenuItem(label="Other")
+    menuItem.connect('activate', setDuration)
+    submenu.append(menuItem)
 
     menu = gtk.Menu()
     menuItem = gtk.MenuItem(label="Activate for")
