@@ -23,6 +23,10 @@ import pygtk
 import dbus
 import threading
 from applicationinstance import *
+try:
+    import pynotify
+except:
+    print "Please install pynotify"
 
 VERSION_STRING = "0.2"
 EMPTY_ICON_PATH = os.path.abspath(os.path.join(os.path.split(__file__)[0], "Empty_Cup.svg"))
@@ -173,6 +177,53 @@ def setDuration(widget):
 def setOtherDuration(widget):
     time = hours*60*60 + minutes*60 + seconds
     timedActivation(widget, time)
+    
+def notify(message, icon, title="Caffeine"):
+    """Easy way to use pynotify"""
+    try:
+        pynotify.init("Caffeine")
+        n = pynotify.Notification(title, message, icon)
+        n.show()
+    except:
+        print message
+
+def mconcat(base, sep, app):
+    return (base + sep + app if base else app) if app else base
+        
+def spokenConcat(ls):
+    txt, n = '', len(ls)
+    for w in ls[0:n-1]:
+        txt = mconcat(txt, ', ', w)
+    return mconcat(txt, ' and ', ls[n-1])
+
+def decline(name, nb):
+    plural = ('s' if nb > 1 and nb != 0 else '')
+    return ('%d %s%s' % (nb, name, plural) if nb >= 1 else '')
+
+def timeDisplay(sec):
+    names = ['hour', 'minute', 'second']
+    tvalues = sec/3600, sec/60 % 60, sec % 60
+    ls = list(decline(name, n) for name, n in zip(names, tvalues))
+    return spokenConcat(ls)
+    
+def getProcessName(pid):
+    """Gets process name from process id"""
+    processName = file("/proc/%s/status" % pid).readline()[6:-1]
+    return processName
+    
+def processList():
+    processDict = {}
+    for pid in os.listdir("/proc/"):
+        try:
+            pid = int(pid)
+        except:
+            continue
+        try:
+            processName = getProcessName(pid)
+        except:
+            continue
+        processDict[processName] = pid
+    return processDict
 
 def quitButtonPressed(widget, data = None):
     gtk.main_quit()
@@ -242,7 +293,8 @@ def attemptToToggleSleepPrevention():
         # If the user clicks on the full coffee-cup to disable sleep prevention, it should also
         # cancel the timer for timed activation.
         if timer != None:
-            print "Cancelling the 'timed activation' timer (was set for " + str(timer.interval) + " seconds)"
+            message = "Cancelling timer (was set for " + timeDisplay(timer.interval) + ")"
+            notify(message, EMPTY_ICON_PATH)
             timer.cancel()
             timer = None
     else:
@@ -271,19 +323,21 @@ def attemptToToggleSleepPrevention():
 # can continue anyway.
 def timedActivation(self, seconds):
     global sleepPrevented, statusIcon, timer
-    print "User has requested timed activation; powersaving will revert to normal after " + str(seconds) + " seconds"
+    message = "Timed activation set; powersaving will revert to normal after " + timeDisplay(seconds)
+    notify(message, FULL_ICON_PATH)
     if sleepPrevented == False:
         sleepPreventionPressed(statusIcon)
     if timer != None:
-        print "Cancelling the previous 'timed activation' timer (was set for " + str(timer.interval) + " seconds)"
+        print "Cancelling the previous 'timed activation' timer (was set for " + timeDisplay(timer.interval) + ")"
         timer.cancel()
     timer = threading.Timer(seconds, activation)
     timer.start()
 
 def activation():
     global sleepPrevented, statusIcon, timer
-    print "Timed activation period has expired (" + str(timer.interval) + " seconds); Caffeine will now deactivate"
-    timer = None
+    message = "Timed activation period has expired (" + timeDisplay(timer.interval) + ")"
+    notify(message, EMPTY_ICON_PATH)
+    timer.cancel()
     if sleepPrevented == True:
         sleepPreventionPressed(statusIcon)
 
