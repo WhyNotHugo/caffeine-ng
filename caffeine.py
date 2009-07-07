@@ -59,7 +59,7 @@ def displayAboutBox(widget, data = None):
     about = gtk.AboutDialog()
     about.set_program_name("Caffeine")
     about.set_version(VERSION_STRING)
-    about.set_copyright("Copyright © 2009 Brad Smith")
+    about.set_copyright("Copyright © 2009 Brad Smith, Tommy Brunn")
     about.set_icon(gtk.gdk.pixbuf_new_from_file(FULL_ICON_PATH))
 
     about.set_logo(gtk.gdk.pixbuf_new_from_file_at_size(FULL_ICON_PATH, 48, 48))
@@ -177,7 +177,7 @@ def setDuration(widget):
 def setOtherDuration(widget):
     time = hours*60*60 + minutes*60 + seconds
     timedActivation(widget, time)
-    
+
 def notify(message, icon, title="Caffeine"):
     """Easy way to use pynotify"""
     try:
@@ -189,7 +189,7 @@ def notify(message, icon, title="Caffeine"):
 
 def mconcat(base, sep, app):
     return (base + sep + app if base else app) if app else base
-        
+
 def spokenConcat(ls):
     txt, n = '', len(ls)
     for w in ls[0:n-1]:
@@ -205,12 +205,12 @@ def timeDisplay(sec):
     tvalues = sec/3600, sec/60 % 60, sec % 60
     ls = list(decline(name, n) for name, n in zip(names, tvalues))
     return spokenConcat(ls)
-    
+
 def getProcessName(pid):
     """Gets process name from process id"""
     processName = file("/proc/%s/status" % pid).readline()[6:-1]
     return processName
-    
+
 def processList():
     processDict = {}
     for pid in os.listdir("/proc/"):
