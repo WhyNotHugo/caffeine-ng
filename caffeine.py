@@ -197,8 +197,8 @@ def spokenConcat(ls):
     return mconcat(txt, ' and ', ls[n-1])
 
 def decline(name, nb):
-    plural = ('s' if nb > 1 else '')
-    return ('%d %s%s' % (nb, name, plural) if nb > 0 else '')
+    plural = ('s' if nb > 1 and nb != 0 else '')
+    return ('%d %s%s' % (nb, name, plural) if nb >= 1 else '')
 
 def timeDisplay(sec):
     names = ['hour', 'minute', 'second']
@@ -223,7 +223,7 @@ def processList():
         except:
             continue
         processDict[processName] = pid
-    print processDict
+    return processDict
 
 def quitButtonPressed(widget, data = None):
     gtk.main_quit()
