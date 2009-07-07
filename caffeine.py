@@ -187,38 +187,24 @@ def notify(message, icon, title="Caffeine"):
     except:
         print message
 
-def timeDisplay(seconds):
-    """Function to easily switch time format depending on duration"""
-    m, s = divmod(seconds, 60)
-    h, m = divmod(m, 60)
-    secondUnit = " second"
-    minuteUnit = " minute"
-    hourUnit = " hour"
-    if s > 1:
-        secondUnit += "s"
-    if m > 1:
-        minuteUnit += "s"
-    if h > 1:
-        hourUnit += "s"
-    if seconds < 60:
-        return str(s) + secondUnit
-    elif seconds > 59 and seconds < 3600:
-        returnstring = str(m) + minuteUnit
-        if s != 0:
-            returnstring += " and " + str(s) + secondUnit
-        return returnstring
-    else:
-        returnstring = str(h) + hourUnit
-        if m != 0 and s != 0:
-            returnstring += ", " + str(m) + minuteUnit + " and " + str(s) + secondUnit
-        elif m != 0 or s != 0:
-            returnstring += " and "
-            if m != 0 and s == 0:
-                returnstring += str(m) + minuteUnit
-            else:
-                returnstring += str(s) + secondUnit
-        return returnstring
+def mconcat(base, sep, app):
+    return (base + sep + app if base else app) if app else base
         
+def spokenConcat(ls):
+    txt, n = '', len(ls)
+    for w in ls[0:n-1]:
+        txt = mconcat(txt, ', ', w)
+    return mconcat(txt, ' and ', ls[n-1])
+
+def decline(name, nb):
+    plural = ('s' if nb > 1 else '')
+    return ('%d %s%s' % (nb, name, plural) if nb > 0 else '')
+
+def timeDisplay(sec):
+    names = ['hour', 'minute', 'second']
+    tvalues = sec/3600, sec/60 % 60, sec % 60
+    ls = list(decline(name, n) for name, n in zip(names, tvalues))
+    return spokenConcat(ls)
 
 def quitButtonPressed(widget, data = None):
     gtk.main_quit()
@@ -288,7 +274,7 @@ def attemptToToggleSleepPrevention():
         # If the user clicks on the full coffee-cup to disable sleep prevention, it should also
         # cancel the timer for timed activation.
         if timer != None:
-            message = "Cancelling timer (was set for " + str(timeDisplay(timer.interval)) + ")"
+            message = "Cancelling timer (was set for " + timeDisplay(timer.interval) + ")"
             notify(message, EMPTY_ICON_PATH)
             timer.cancel()
             timer = None
