@@ -205,6 +205,25 @@ def timeDisplay(sec):
     tvalues = sec/3600, sec/60 % 60, sec % 60
     ls = list(decline(name, n) for name, n in zip(names, tvalues))
     return spokenConcat(ls)
+    
+def getProcessName(pid):
+    """Gets process name from process id"""
+    processName = file("/proc/%s/status" % pid).readline()[6:-1]
+    return processName
+    
+def processList():
+    processDict = {}
+    for pid in os.listdir("/proc/"):
+        try:
+            pid = int(pid)
+        except:
+            continue
+        try:
+            processName = getProcessName(pid)
+        except:
+            continue
+        processDict[processName] = pid
+    print processDict
 
 def quitButtonPressed(widget, data = None):
     gtk.main_quit()
@@ -318,7 +337,7 @@ def activation():
     global sleepPrevented, statusIcon, timer
     message = "Timed activation period has expired (" + timeDisplay(timer.interval) + ")"
     notify(message, EMPTY_ICON_PATH)
-    timer = None
+    timer.cancel()
     if sleepPrevented == True:
         sleepPreventionPressed(statusIcon)
 
