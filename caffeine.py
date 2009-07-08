@@ -29,8 +29,12 @@ except:
     print "Please install pynotify"
 
 VERSION_STRING = "0.2"
-EMPTY_ICON_PATH = os.path.abspath(os.path.join(os.path.split(__file__)[0], "Empty_Cup.svg"))
-FULL_ICON_PATH = os.path.abspath(os.path.join(os.path.split(__file__)[0], "Full_Cup.svg"))
+EMPTY_ICON_PATH = "/usr/share/icons/Empty_Cup.svg"
+if not os.path.isfile(EMPTY_ICON_PATH):
+    EMPTY_ICON_PATH = os.path.abspath(os.path.join(os.path.split(__file__)[0], "Empty_Cup.svg"))
+FULL_ICON_PATH = "/usr/share/icons/Full_Cup.svg"
+if not os.path.isfile(FULL_ICON_PATH):
+    FULL_ICON_PATH = os.path.abspath(os.path.join(os.path.split(__file__)[0], "Full_Cup.svg"))
 
 TIMER_OPTIONS_LIST = [("5 minutes", 300.0), ("10 minutes", 600.0), ("15 minutes", 900.0), ("30 minutes", 1800.0),
                       ("1 hour", 3600.0), ("2 hours", 7200.0), ("3 hours", 10800.0), ("4 hours", 14400.0)]
