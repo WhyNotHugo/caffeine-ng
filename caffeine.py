@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Copyright © 2009 Brad Smith, Tommy Brunn
+# Copyright © 2009 Brad Smith, Tommy Brunn, Nathan McCrina
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -59,7 +59,7 @@ def displayAboutBox(widget, data = None):
     about = gtk.AboutDialog()
     about.set_program_name("Caffeine")
     about.set_version(VERSION_STRING)
-    about.set_copyright("Copyright © 2009 Brad Smith, Tommy Brunn")
+    about.set_copyright("Copyright © 2009 Brad Smith, Tommy Brunn, Nathan McCrina")
     about.set_icon(gtk.gdk.pixbuf_new_from_file(FULL_ICON_PATH))
 
     about.set_logo(gtk.gdk.pixbuf_new_from_file_at_size(FULL_ICON_PATH, 48, 48))
@@ -71,7 +71,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """)
-    about.set_website("http://pragmattica.wordpress.com")
+    about.set_website("http://launchpad.net/caffeine")
     about.run()
     about.destroy()
 
