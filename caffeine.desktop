@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Icon=/usr/share/icons/Full_Cup.svg
+Name=Caffeine
+Comment=Temporarily deactivate the screensaver and sleep mode
+Exec=/usr/bin/caffeine
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=false
