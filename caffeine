@@ -1,2 +1,8 @@
-#!/bin/sh
-/usr/bin/python /usr/lib/caffeine/caffeine.py
+#!/usr/bin/env bash
+if [ -e /usr/lib/caffeine/caffeine.py ]; then
+    /usr/bin/env python /usr/lib/caffeine/caffeine.py
+elif [ -e caffeine.py ]; then
+    /usr/bin/env python caffeine.py
+else
+    print "Cannot find Caffeine.py"
+fi
