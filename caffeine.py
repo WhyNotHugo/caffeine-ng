@@ -339,8 +339,6 @@ def timedActivation(self, seconds):
 
 def activation():
     global sleepPrevented, statusIcon, timer
-    message = "Timed activation period has expired (" + timeDisplay(timer.interval) + ")"
-    notify(message, EMPTY_ICON_PATH)
     timer.cancel()
     if sleepPrevented == True:
         sleepPreventionPressed(statusIcon)
