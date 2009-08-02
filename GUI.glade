@@ -22,7 +22,7 @@
       </row>
     </data>
   </object>
-  <object class="GtkWindow" id="window1">
+  <object class="GtkWindow" id="window">
     <property name="icon">Full_Cup.svg</property>
     <child>
       <object class="GtkVBox" id="vbox1">
@@ -103,13 +103,8 @@
                 <property name="spacing">12</property>
                 <property name="layout_style">end</property>
                 <child>
-                  <object class="GtkButton" id="button1">
-                    <property name="label" translatable="yes">gtk-ok</property>
+                  <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="use_stock">True</property>
-                    <signal name="clicked" handler="ok_clicked"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -118,13 +113,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="button2">
-                    <property name="label" translatable="yes">gtk-cancel</property>
+                  <object class="GtkButton" id="close_button">
+                    <property name="label" translatable="yes">gtk-close</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_stock">True</property>
-                    <signal name="clicked" handler="cancel_clicked"/>
+                    <signal name="clicked" handler="on_close_button_clicked"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -144,7 +139,7 @@
       </object>
     </child>
   </object>
-  <object class="GtkAboutDialog" id="aboutdialog1">
+  <object class="GtkAboutDialog" id="aboutdialog">
     <property name="border_width">5</property>
     <property name="destroy_with_parent">True</property>
     <property name="icon">Full_Cup.svg</property>
@@ -187,9 +182,9 @@ Tommy Brunn</property>
     </child>
   </object>
   <object class="GtkStatusIcon" id="statusicon">
-    <property name="file">Full_Cup.svg</property>
+    <property name="file">Empty_Cup.svg</property>
   </object>
-  <object class="GtkMenu" id="menu1">
+  <object class="GtkMenu" id="popup_menu">
     <property name="visible">True</property>
     <child>
       <object class="GtkMenuItem" id="menuitem1">
