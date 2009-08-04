@@ -37,6 +37,9 @@ class GUI(object):
     def __init__(self):
         
         self.caffeine = core.Caffeine()
+
+        self.caffeine.connect("activation-toggled",
+                self.on_activation_toggled)
         
         ## set the icons for the window border.
         gtk.window_set_default_icon_list(caffeine.get_icon_pixbuf(16),
@@ -64,7 +67,7 @@ class GUI(object):
         self.menu = get("popup_menu")
             
         ## Build the timer submenu
-        TIMER_OPTIONS_LIST = [("3 seconds (for testing)", 3.0),
+        TIMER_OPTIONS_LIST = [("10 seconds (for testing)", 10.0),
                 ("5 minutes", 300.0),
                 ("10 minutes", 600.0),
                 ("15 minutes", 900.0),
@@ -117,11 +120,14 @@ class GUI(object):
         """
         self.caffeine.toggleActivated()
         
+    def on_activation_toggled(self, source, active):
+
         ## toggle the icon, indexing with a bool.
         icon_file = [caffeine.EMPTY_ICON_PATH, caffeine.FULL_ICON_PATH][
-                self.caffeine.getActivated()]
+                active]
 
         self.status_icon.set_from_file(icon_file)
+
 
 
 
@@ -151,13 +157,6 @@ class GUI(object):
 
         self.caffeine.timedActivation(time)
 
-        ## toggle the icon, indexing with a bool.
-        icon_file = [caffeine.EMPTY_ICON_PATH, caffeine.FULL_ICON_PATH][
-                self.caffeine.getActivated()]
-
-        self.status_icon.set_from_file(icon_file)
-
-
     def on_prefs_menuitem_activate(self, menuitem, data=None):
         self.window.show_all()
 
@@ -173,12 +172,16 @@ class GUI(object):
     
     def quit(self):
         ### Do anything that needs to be done before quitting.
-
+    
+        if self.caffeine.timer:
+            self.caffeine.timer.cancel()
+        
         gtk.main_quit()
 
 
 def main():
 
+    gtk.gdk.threads_init()
     main = GUI()
 
     gtk.main()

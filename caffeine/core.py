@@ -1,3 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# Copyright © 2009 The Caffeine Developers
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
 
 import gtk
 import gobject
@@ -9,9 +28,6 @@ import threading
 
 import caffeine
 
-## TODO: These variables should be defined in on place for the 
-## whole program.
-
 class Caffeine(gobject.GObject):
 
     def __init__(self):
@@ -22,6 +38,8 @@ class Caffeine(gobject.GObject):
         self.screenSaverCookie = None
         self.powerManagementCookie = None
         self.timer = None
+
+        self.note = None
     
     ### This stuff is hard to follow, it needs some comments - Isaiah H.
     def mconcat(self, base, sep, app):
@@ -47,12 +65,28 @@ class Caffeine(gobject.GObject):
     def notify(self, message, icon, title="Caffeine"):
         """Easy way to use pynotify"""
         try:
+
             pynotify.init("Caffeine")
-            n = pynotify.Notification(title, message, icon)
-            n.show()
+            print "\nnotify\n"
+            if self.note:
+                self.note.update(title, message, icon)
+            else:
+                self.note = pynotify.Notification(title, message, icon)
+            
+            if self.screenSaverCookie != None and self.sleepPrevented:
+                self.ssProxy.UnInhibit(self.screenSaverCookie)
+
+            self.note.show()
+
+            if self.screenSaverCookie != None and self.sleepPrevented:
+                self.screenSaverCookie = self.ssProxy.Inhibit("Caffeine",
+               "User has requested that Caffeine disable the screen saver")
+
         except:
             print "Exception occurred"
             print message
+        finally:
+            return False
 
 
     def getActivated(self):
@@ -66,16 +100,27 @@ class Caffeine(gobject.GObject):
             "Caffeine will prevent powersaving for the next " +
             self.timeDisplay(time))
 
-        self.notify(message, caffeine.FULL_ICON_PATH)
-        
-        ## activate
+
+
         if not self.getActivated():
             self.toggleActivated()
         
+
+        self.notify(message, caffeine.FULL_ICON_PATH)
+
         ## and deactivate after time has passed.
-        self.timer = threading.Timer(time, self.toggleActivated)
+        ## Stop already running timer
+        if self.timer:
+            self.timer.cancel()
+
+        self.timer = threading.Timer(time, self._deactivate)
+        self.timer.name = "Active"
         self.timer.start()
 
+    
+    def _deactivate(self):
+        self.timer.name = "Expired"
+        self.toggleActivated()
 
     def toggleActivated(self, busFailures=0):
         print "toggleActivated"
@@ -98,6 +143,7 @@ class Caffeine(gobject.GObject):
                 errDlg.destroy()
                 sys.exit(2)
         else:
+            self.emit("activation-toggled", self.getActivated())
             if busFailures != 0:
                 print "Connection to the bus succeeded; resuming normal operation"
 
@@ -119,6 +165,7 @@ class Caffeine(gobject.GObject):
             ssProxy = bus.get_object('org.gnome.ScreenSaver',
                     '/org/gnome/ScreenSaver')
 
+            self.ssProxy = ssProxy
             probableWindowManager = "Gnome"
 
         # For KDE
@@ -135,9 +182,8 @@ class Caffeine(gobject.GObject):
 
             probableWindowManager = "KDE"
         else:
-            print 111
             return False
-
+        
         if self.sleepPrevented:
             
             if self.screenSaverCookie != None:
@@ -155,28 +201,33 @@ class Caffeine(gobject.GObject):
                 message = ("Timed activation cancelled (was set for " +
                         self.timeDisplay(self.timer.interval) + ")")
 
+                #gobject.idle_add(self.notify, message, caffeine.EMPTY_ICON_PATH)
                 self.notify(message, caffeine.EMPTY_ICON_PATH)
+
                 self.timer.cancel()
                 self.timer = None
+                
 
             elif self.timer != None and self.timer.name == "Expired":
 
                 message = (self.timeDisplay(self.timer.interval) + 
                     " have elapsed; powersaving is re-enabled")
 
-                self.notify(message, caffeine.EMPTY_ICON_PATH)
+    
+                gobject.idle_add(self.notify, message, caffeine.EMPTY_ICON_PATH)
                 self.timer = None
         else:
 
             if pmProxy:
-                powerManagementCookie = pmProxy.Inhibit("Caffeine",
+                self.powerManagementCookie = pmProxy.Inhibit("Caffeine",
                     "User has requested that Caffeine disable"+
                     " the powersaving modes")
 
             self.screenSaverCookie = ssProxy.Inhibit("Caffeine",
-                "User has requested that Caffeine disable the screen saver")
+               "User has requested that Caffeine disable the screen saver")
 
             self.sleepPrevented = True
+
             print ("Caffeine is now preventing powersaving modes"+
                 " and screensaver activation (" +
                 probableWindowManager + ")")
