@@ -1,19 +1,48 @@
 
 import gtk
+import gobject
+import os
 import pynotify
 
 import dbus
 import threading
 
-class Caffeine(object):
+import caffeine
+
+## TODO: These variables should be defined in on place for the 
+## whole program.
+
+class Caffeine(gobject.GObject):
 
     def __init__(self):
         
+        gobject.GObject.__init__(self)
+
         self.sleepPrevented = False
         self.screenSaverCookie = None
         self.powerManagementCookie = None
         self.timer = None
     
+    ### This stuff is hard to follow, it needs some comments - Isaiah H.
+    def mconcat(self, base, sep, app):
+        return (base + sep + app if base else app) if app else base
+
+    def spokenConcat(self, ls):
+        txt, n = '', len(ls)
+        for w in ls[0:n-1]:
+            txt = self.mconcat(txt, ', ', w)
+        return self.mconcat(txt, ' and ', ls[n-1])
+
+    def decline(self, name, nb):
+        plural = ('s' if nb > 1 and nb != 0 else '')
+        return ('%d %s%s' % (nb, name, plural) if nb >= 1 else '')
+
+    def timeDisplay(self, sec):
+        names = ['hour', 'minute', 'second']
+        tvalues = sec/3600, sec/60 % 60, sec % 60
+        ls = list(self.decline(name, n) for name, n in zip(names, tvalues))
+        return self.spokenConcat(ls)
+
 
     def notify(self, message, icon, title="Caffeine"):
         """Easy way to use pynotify"""
@@ -29,7 +58,27 @@ class Caffeine(object):
     def getActivated(self):
         return self.sleepPrevented
 
+    def timedActivation(self, time):
+        """Calls toggleActivated after the number of seconds
+        specified by time has passed.
+        """
+        message = ("Timed activation set; "+
+            "Caffeine will prevent powersaving for the next " +
+            self.timeDisplay(time))
+
+        self.notify(message, caffeine.FULL_ICON_PATH)
+        
+        ## activate
+        if not self.getActivated():
+            self.toggleActivated()
+        
+        ## and deactivate after time has passed.
+        self.timer = threading.Timer(time, self.toggleActivated)
+        self.timer.start()
+
+
     def toggleActivated(self, busFailures=0):
+        print "toggleActivated"
         attemptResult = self._toggleActivated()
         if attemptResult == False:
             busFailures += 1
@@ -103,13 +152,19 @@ class Caffeine(object):
 
             if self.timer != None and self.timer.name != "Expired":
 
-                self.notify(message, EMPTY_ICON_PATH)
+                message = ("Timed activation cancelled (was set for " +
+                        self.timeDisplay(self.timer.interval) + ")")
+
+                self.notify(message, caffeine.EMPTY_ICON_PATH)
                 self.timer.cancel()
                 self.timer = None
 
             elif self.timer != None and self.timer.name == "Expired":
 
-                self.notify(message, EMPTY_ICON_PATH)
+                message = (self.timeDisplay(self.timer.interval) + 
+                    " have elapsed; powersaving is re-enabled")
+
+                self.notify(message, caffeine.EMPTY_ICON_PATH)
                 self.timer = None
         else:
 
@@ -127,5 +182,10 @@ class Caffeine(object):
                 probableWindowManager + ")")
 
         return True
+
+
+## register a signal
+gobject.signal_new("activation-toggled", Caffeine,
+        gobject.SIGNAL_RUN_FIRST, None, [bool])
 
 

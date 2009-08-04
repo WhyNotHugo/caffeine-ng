@@ -29,6 +29,7 @@ except:
     print "Please install pynotify"
 
 ## local modules
+import caffeine
 import core
 
 class GUI(object):
@@ -36,9 +37,17 @@ class GUI(object):
     def __init__(self):
         
         self.caffeine = core.Caffeine()
+        
+        ## set the icons for the window border.
+        gtk.window_set_default_icon_list(caffeine.get_icon_pixbuf(16),
+            caffeine.get_icon_pixbuf(24), caffeine.get_icon_pixbuf(32),
+            caffeine.get_icon_pixbuf(48))
 
+
+        
         builder = gtk.Builder()
-        builder.add_from_file("GUI.glade")
+        builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
+            "GUI.glade"))
         
         # It can be tiresome to have to type builder.get_object
         # again and again
@@ -49,9 +58,37 @@ class GUI(object):
         ## gets thrown out with the garbage, and won't be seen.
         self.status_icon = get("statusicon")
 
+        self.status_icon.set_from_file(caffeine.EMPTY_ICON_PATH)
+
         ## popup menu
         self.menu = get("popup_menu")
+            
+        ## Build the timer submenu
+        TIMER_OPTIONS_LIST = [("3 seconds (for testing)", 3.0),
+                ("5 minutes", 300.0),
+                ("10 minutes", 600.0),
+                ("15 minutes", 900.0),
+                ("30 minutes", 1800.0),
+                ("1 hour", 3600.0),
+                ("2 hours", 7200.0),
+                ("3 hours", 10800.0),
+                ("4 hours", 14400.0)]
+
+
+        time_menuitem = get("time_menuitem")
+        submenu = gtk.Menu()
+
+        for label, t in TIMER_OPTIONS_LIST:
+            menuItem = gtk.MenuItem(label=label)
+            menuItem.connect('activate', self.on_time_submenuitem_activate,
+                    t)
+
+            submenu.append(menuItem)
+
+        time_menuitem.set_submenu(submenu)
+        submenu.show_all()
         
+
         ## Preferences editor.
         self.window = get("window")
 
@@ -73,20 +110,25 @@ class GUI(object):
         builder.connect_signals(self)
 
 
-    def toggle_activated(self):
-        pass
 
-    ### Callbacks
-    def on_L_click(self, status_icon, data=None):
-        ## toggle whether caffeine is activated
-        print self.caffeine._toggleActivated()
+    def toggle_activated(self):
+        """Toggles whether screen saver prevention
+        is active.
+        """
+        self.caffeine.toggleActivated()
         
         ## toggle the icon, indexing with a bool.
-        icon_file = ["Empty_Cup.svg", "Full_Cup.svg"][
+        icon_file = [caffeine.EMPTY_ICON_PATH, caffeine.FULL_ICON_PATH][
                 self.caffeine.getActivated()]
 
         self.status_icon.set_from_file(icon_file)
 
+
+
+    ### Callbacks
+    def on_L_click(self, status_icon, data=None):
+        self.toggle_activated()
+    
     def on_R_click(self, status_icon, mbutton, time, data=None):
         ## popdown menu
         self.menu.popup(None, None,
@@ -105,6 +147,17 @@ class GUI(object):
         self.window.hide_all()
 
     #### Menu callbacks
+    def on_time_submenuitem_activate(self, menuitem, time):
+
+        self.caffeine.timedActivation(time)
+
+        ## toggle the icon, indexing with a bool.
+        icon_file = [caffeine.EMPTY_ICON_PATH, caffeine.FULL_ICON_PATH][
+                self.caffeine.getActivated()]
+
+        self.status_icon.set_from_file(icon_file)
+
+
     def on_prefs_menuitem_activate(self, menuitem, data=None):
         self.window.show_all()
 
@@ -124,7 +177,8 @@ class GUI(object):
         gtk.main_quit()
 
 
-if __name__ == "__main__":
+def main():
 
     main = GUI()
+
     gtk.main()
