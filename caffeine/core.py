@@ -38,7 +38,7 @@ class Caffeine(gobject.GObject):
         
         ## Makes sure that only one instance of Caffeine is run for
         ## each user on the system.
-        self.pid_name = '/tmp/caffeine' + str(os.getuid) + '.pid'
+        self.pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
         self.appInstance = applicationinstance.ApplicationInstance( self.pid_name )
 
         self.sleepPrevented = False
