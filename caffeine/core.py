@@ -41,7 +41,10 @@ class Caffeine(gobject.GObject):
 
         self.note = None
     
-    ### This stuff is hard to follow, it needs some comments - Isaiah H.
+    ## The following four methods deal with adding the corrext syntax 
+    ## for plural forms of time units. For example, 1 minute and 2 
+    ## minutes. Will be obsolete once the application is 
+    ## internationalized, as not all languages use "s" for plural form. 
     def mconcat(self, base, sep, app):
         return (base + sep + app if base else app) if app else base
 
@@ -67,7 +70,6 @@ class Caffeine(gobject.GObject):
         try:
 
             pynotify.init("Caffeine")
-            print "\nnotify\n"
             if self.note:
                 self.note.update(title, message, icon)
             else:
@@ -94,8 +96,7 @@ class Caffeine(gobject.GObject):
 
     def timedActivation(self, time):
         """Calls toggleActivated after the number of seconds
-        specified by time has passed.
-        """
+        specified by time has passed."""
         message = ("Timed activation set; "+
             "Caffeine will prevent powersaving for the next " +
             self.timeDisplay(time))
