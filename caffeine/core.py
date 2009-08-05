@@ -67,12 +67,12 @@ class Caffeine(gobject.GObject):
         try:
 
             pynotify.init("Caffeine")
-            print "\nnotify\n"
             if self.note:
                 self.note.update(title, message, icon)
             else:
                 self.note = pynotify.Notification(title, message, icon)
             
+            ## Notify OSD doesn't seem to work when sleep is prevented
             if self.screenSaverCookie != None and self.sleepPrevented:
                 self.ssProxy.UnInhibit(self.screenSaverCookie)
 
