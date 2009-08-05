@@ -22,7 +22,6 @@ import gtk
 import pygtk
 import dbus
 import threading
-from applicationinstance import *
 try:
     import pynotify
 except:

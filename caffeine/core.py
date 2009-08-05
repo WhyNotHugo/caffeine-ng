@@ -26,6 +26,8 @@ import pynotify
 import dbus
 import threading
 
+import applicationinstance
+
 import caffeine
 
 class Caffeine(gobject.GObject):
@@ -33,6 +35,11 @@ class Caffeine(gobject.GObject):
     def __init__(self):
         
         gobject.GObject.__init__(self)
+        
+        ## Makes sure that only one instance of Caffeine is run for
+        ## each user on the system.
+        self.pid_name = '/tmp/caffeine' + str(os.getuid) + '.pid'
+        self.appInstance = applicationinstance.ApplicationInstance( self.pid_name )
 
         self.sleepPrevented = False
         self.screenSaverCookie = None
