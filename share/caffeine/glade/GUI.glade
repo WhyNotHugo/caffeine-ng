@@ -106,8 +106,6 @@ Tommy Brunn &lt;https://launchpad.net/~reklamnevon&gt;</property>
   </object>
   <object class="GtkWindow" id="window">
     <property name="window_position">center</property>
-    <property name="default_width">440</property>
-    <property name="default_height">200</property>
     <signal name="delete_event" handler="on_window_delete_event"/>
     <child>
       <object class="GtkVBox" id="vbox1">
@@ -132,6 +130,7 @@ Tommy Brunn &lt;https://launchpad.net/~reklamnevon&gt;</property>
                       <object class="GtkHBox" id="hbox1">
                         <property name="visible">True</property>
                         <property name="spacing">12</property>
+                        <property name="homogeneous">True</property>
                         <child>
                           <object class="GtkHButtonBox" id="hbuttonbox2">
                             <property name="visible">True</property>
@@ -174,15 +173,8 @@ Tommy Brunn &lt;https://launchpad.net/~reklamnevon&gt;</property>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
                         <property name="position">0</property>
                       </packing>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
                     </child>
                   </object>
                 </child>
