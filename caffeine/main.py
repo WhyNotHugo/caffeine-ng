@@ -23,11 +23,10 @@ import gtk
 import pygtk
 import dbus
 import threading
-from applicationinstance import *
 try:
     import pynotify
 except:
-    print "Please install pynotify"
+    print _("Please install")+" pynotify"
 
 ## local modules
 import caffeine
@@ -68,15 +67,15 @@ class GUI(object):
         self.menu = get("popup_menu")
             
         ## Build the timer submenu
-        TIMER_OPTIONS_LIST = [("10 seconds (for testing)", 10.0),
-                ("5 minutes", 300.0),
-                ("10 minutes", 600.0),
-                ("15 minutes", 900.0),
-                ("30 minutes", 1800.0),
-                ("1 hour", 3600.0),
-                ("2 hours", 7200.0),
-                ("3 hours", 10800.0),
-                ("4 hours", 14400.0)]
+        TIMER_OPTIONS_LIST = [(_("10 seconds (for testing)"), 10.0),
+                (_("5 minutes"), 300.0),
+                (_("10 minutes"), 600.0),
+                (_("15 minutes"), 900.0),
+                (_("30 minutes"), 1800.0),
+                (_("1 hour"), 3600.0),
+                (_("2 hours"), 7200.0),
+                (_("3 hours"), 10800.0),
+                (_("4 hours"), 14400.0)]
 
 
         time_menuitem = get("time_menuitem")

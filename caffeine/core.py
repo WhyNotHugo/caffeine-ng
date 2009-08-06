@@ -26,6 +26,8 @@ import pynotify
 import dbus
 import threading
 
+import applicationinstance
+
 import caffeine
 
 class Caffeine(gobject.GObject):
@@ -33,6 +35,11 @@ class Caffeine(gobject.GObject):
     def __init__(self):
         
         gobject.GObject.__init__(self)
+        
+        ## Makes sure that only one instance of Caffeine is run for
+        ## each user on the system.
+        self.pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
+        self.appInstance = applicationinstance.ApplicationInstance( self.pid_name )
 
         self.sleepPrevented = False
         self.screenSaverCookie = None
@@ -41,7 +48,10 @@ class Caffeine(gobject.GObject):
 
         self.note = None
     
-    ### This stuff is hard to follow, it needs some comments - Isaiah H.
+    ## The following four methods deal with adding the corrext syntax 
+    ## for plural forms of time units. For example, 1 minute and 2 
+    ## minutes. Will be obsolete once the application is 
+    ## internationalized, as not all languages use "s" for plural form. 
     def mconcat(self, base, sep, app):
         return (base + sep + app if base else app) if app else base
 
@@ -56,7 +66,7 @@ class Caffeine(gobject.GObject):
         return ('%d %s%s' % (nb, name, plural) if nb >= 1 else '')
 
     def timeDisplay(self, sec):
-        names = ['hour', 'minute', 'second']
+        names = [_('hour'), _('minute'), _('second')]
         tvalues = sec/3600, sec/60 % 60, sec % 60
         ls = list(self.decline(name, n) for name, n in zip(names, tvalues))
         return self.spokenConcat(ls)
@@ -83,7 +93,7 @@ class Caffeine(gobject.GObject):
                "User has requested that Caffeine disable the screen saver")
 
         except:
-            print "Exception occurred"
+            print _("Exception occurred")
             print message
         finally:
             return False
@@ -96,11 +106,9 @@ class Caffeine(gobject.GObject):
         """Calls toggleActivated after the number of seconds
         specified by time has passed.
         """
-        message = ("Timed activation set; "+
-            "Caffeine will prevent powersaving for the next " +
+        message = (_("Timed activation set; "+
+            "Caffeine will prevent powersaving for the next ") +
             self.timeDisplay(time))
-
-
 
         if not self.getActivated():
             self.toggleActivated()
@@ -135,9 +143,12 @@ class Caffeine(gobject.GObject):
                 failTimer.start()
             else:
                 print "Could not connect to the bus, even after repeated attempts. This program will now terminate."
-                errMsg = "Error: couldn't find bus to allow inhibiting of the screen saver.\n\n" \
-                    "Please visit the web-site listed in the 'About' dialog of this application " \
-                    "and check for a newer version of the software."
+                errMsg = _("Error: couldn't find bus to allow inhibiting"
+                        "of the screen saver.\n\n"+
+                    "Please visit the web-site listed in the "
+                    "'About' dialog of this application "
+                    "and check for a newer version of the software.")
+
                 errDlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK, message_format=errMsg)
                 errDlg.run()
                 errDlg.destroy()
@@ -198,7 +209,7 @@ class Caffeine(gobject.GObject):
 
             if self.timer != None and self.timer.name != "Expired":
 
-                message = ("Timed activation cancelled (was set for " +
+                message = _("Timed activation cancelled (was set for " +
                         self.timeDisplay(self.timer.interval) + ")")
 
                 #gobject.idle_add(self.notify, message, caffeine.EMPTY_ICON_PATH)
@@ -210,11 +221,12 @@ class Caffeine(gobject.GObject):
 
             elif self.timer != None and self.timer.name == "Expired":
 
-                message = (self.timeDisplay(self.timer.interval) + 
+                message = _(self.timeDisplay(self.timer.interval) + 
                     " have elapsed; powersaving is re-enabled")
 
     
-                gobject.idle_add(self.notify, message, caffeine.EMPTY_ICON_PATH)
+                self.notify(message, caffeine.EMPTY_ICON_PATH)
+
                 self.timer = None
         else:
 

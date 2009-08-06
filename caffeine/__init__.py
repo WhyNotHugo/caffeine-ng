@@ -69,5 +69,24 @@ def get_icon_pixbuf(size):
 
     return pixbuf
 
+### Setup translations
+###
+GETTEXT_DOMAIN = "caffeine"
+LOCALE_PATH = os.path.join(BASE_PATH, "share", "locale")
+
+import gtk.glade
+import gettext
+import locale
+
+locale.setlocale(locale.LC_ALL, '')
+
+for module in gtk.glade, gettext:
+    module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
+    module.textdomain(GETTEXT_DOMAIN)
+
+# register the gettext function for the whole interpreter as "_"
+import __builtin__
+__builtin__._ = gettext.gettext
+
 
 from caffeine.main import main
