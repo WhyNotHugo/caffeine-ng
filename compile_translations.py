@@ -4,11 +4,12 @@ import os
 import sys
 import commands
 
+if len(sys.argv) < 3:
+    print "usage: ./compile_translations <program-name> <po directory>"
+    sys.exit(1)
+
 po_dir = sys.argv[-1]
 prg_name = sys.argv[-2]
-if len(sys.argv) < 3:
-    print "usage: ./compile_translations <program-name> <basedir>"
-    sys.exit(1)
 
 
 po_files = []
