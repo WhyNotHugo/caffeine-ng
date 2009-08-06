@@ -21,11 +21,12 @@ def main():
             [os.path.join(path, file) for file in files if file not in
                 black_list])))
 
-    ### UPDATE THIS INFORMATION
     setup(name="caffeine",
-        version='0.1',
-        description="",
-        author="Isaiah Heyer",
+        version='0.3',
+        description="""A status bar application able to temporarily prevent
+        the activation of both the screensaver and the "sleep" powersaving
+        mode.""",
+        author="The Caffeine Developers",
         author_email="freshapplepy@gmail.com",
         url="https://launchpad.net/caffeine",
         packages=["caffeine"],
