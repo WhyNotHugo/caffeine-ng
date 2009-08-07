@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: caffeine 0.3\n"
-"POT-Creation-Date: 2009-08-05 20:16:53.412019\n"
+"Project-Id-Version: caffeine 0.4\n"
+"POT-Creation-Date: 2009-08-07 12:54:07.106287\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,59 +13,60 @@ msgstr ""
 "Content-Transfer-Encoding: utf-8\n"
 "Generated-By: ./generate_pot.py\n"
 msgid "Please install"
-#. file 'caffeine/main.py', line 30
+#. file 'caffeine/main.py', line 29
 msgstr ""
 msgid "10 seconds (for testing)"
-#. file 'caffeine/main.py', line 71
+#. file 'caffeine/main.py', line 70
 msgstr ""
 msgid "5 minutes"
-#. file 'caffeine/main.py', line 72
+#. file 'caffeine/main.py', line 71
 msgstr ""
 msgid "10 minutes"
-#. file 'caffeine/main.py', line 73
+#. file 'caffeine/main.py', line 72
 msgstr ""
 msgid "15 minutes"
-#. file 'caffeine/main.py', line 74
+#. file 'caffeine/main.py', line 73
 msgstr ""
 msgid "30 minutes"
-#. file 'caffeine/main.py', line 75
+#. file 'caffeine/main.py', line 74
 msgstr ""
 msgid "1 hour"
-#. file 'caffeine/main.py', line 76
+#. file 'caffeine/main.py', line 75
 msgstr ""
 msgid "2 hours"
-#. file 'caffeine/main.py', line 77
+#. file 'caffeine/main.py', line 76
 msgstr ""
 msgid "3 hours"
-#. file 'caffeine/main.py', line 78
+#. file 'caffeine/main.py', line 77
 msgstr ""
 msgid "4 hours"
-#. file 'caffeine/main.py', line 79
+#. file 'caffeine/main.py', line 78
 msgstr ""
 msgid "hour"
-#. file 'caffeine/core.py', line 59
+#. file 'caffeine/core.py', line 69
 msgstr ""
 msgid "minute"
-#. file 'caffeine/core.py', line 59
+#. file 'caffeine/core.py', line 69
 msgstr ""
 msgid "second"
-#. file 'caffeine/core.py', line 59
+#. file 'caffeine/core.py', line 69
 msgstr ""
 msgid "Exception occurred"
-#. file 'caffeine/core.py', line 86
+#. file 'caffeine/core.py', line 96
 msgstr ""
-msgid "Copyright © 2009 Brad Smith & Tommy Brunn"
-#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Timed activation set; "
+#. file 'caffeine/core.py', line 109
+msgstr ""
+msgid "Caffeine will prevent powersaving for the next "
+#. file 'caffeine/core.py', line 110
+msgstr ""
+msgid "Timed activation cancelled (was set for "
+#. file 'caffeine/core.py', line 212
+msgstr ""
+msgid " have elapsed; powersaving is re-enabled"
+#. file 'caffeine/core.py', line 225
 msgstr ""
 msgid "An application to temporarily prevent the activation of both the screen saver and the \"sleep\" powersaving mode."
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid ""
-"This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>."
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Activate for"
@@ -74,6 +75,6 @@ msgstr ""
 msgid "DPMS enabled"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
-msgid "<b>Configure Caffeine</b>"
+msgid "Configure Caffeine"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""

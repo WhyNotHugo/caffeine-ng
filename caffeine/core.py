@@ -209,7 +209,7 @@ class Caffeine(gobject.GObject):
 
             if self.timer != None and self.timer.name != "Expired":
 
-                message = _("Timed activation cancelled (was set for ") +
+                message = (_("Timed activation cancelled (was set for ") +
                         self.timeDisplay(self.timer.interval) + ")")
 
                 #gobject.idle_add(self.notify, message, caffeine.EMPTY_ICON_PATH)

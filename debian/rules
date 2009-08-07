@@ -6,4 +6,4 @@ include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/python-distutils.mk
 
 binary-install/onboard::
-	dh_icons -prss-notify
+	dh_icons -pcaffeine
