@@ -2,6 +2,6 @@ To run: "./bin/caffeine"
 To compile translations: "./compile_translations caffeine translations"
 
 If you want to test out a translation without changing the language for the
-whole session: "LANG=ru_RU.UTF-8 ./bin/rss-notify" (Replace ru_RU.UTF-8
+whole session: "LANG=ru_RU.UTF-8 ./bin/caffeine" (Replace ru_RU.UTF-8
 with whatever language you want to use.) Be aware that some stock items
 will not be translated unless you log in with a given language.

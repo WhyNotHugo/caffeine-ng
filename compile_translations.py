@@ -39,7 +39,7 @@ for po in po_files:
         os.mkdir(lang_lc_dir)
     
     cmd = ("msgfmt '"+po+"' -o '"+
-        os.path.join(lang_lc_dir,"rss-notify"+".mo'"))
+        os.path.join(lang_lc_dir,"caffeine"+".mo'"))
 
     output = commands.getoutput(cmd)
 

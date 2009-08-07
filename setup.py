@@ -27,7 +27,7 @@ def main():
         the activation of both the screensaver and the "sleep" powersaving
         mode.""",
         author="The Caffeine Developers",
-        author_email="freshapplepy@gmail.com",
+        author_email="bnsmith@gmail.com",
         url="https://launchpad.net/caffeine",
         packages=["caffeine"],
         data_files=data_files,

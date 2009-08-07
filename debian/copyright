@@ -6,16 +6,18 @@ Wed, 25 Feb 2009 20:09:30 -0600.
 Upstream Author(s): 
 	
 	Isaiah Heyer freshapplepy@gmail.com
+    Tommy Brunn tommy.brunn@gmail.com
+    Brad Smith bnsmith@gmail.com
 	
 Copyright: 
 
-    Copyright (C) 2009 Isaiah Heyer
+    Copyright (C) 2009 Isaiah Heyer, Tommy Brunn & Brad Smith
 
 License:
 
     This package is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
+    the Free Software Foundation; either version 3 of the License, or
     (at your option) any later version.
  
     This package is distributed in the hope that it will be useful,
