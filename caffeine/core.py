@@ -106,8 +106,8 @@ class Caffeine(gobject.GObject):
         """Calls toggleActivated after the number of seconds
         specified by time has passed.
         """
-        message = (_("Timed activation set; "+
-            "Caffeine will prevent powersaving for the next ") +
+        message = (_("Timed activation set; ")+
+            _("Caffeine will prevent powersaving for the next ") +
             self.timeDisplay(time))
 
         if not self.getActivated():
@@ -209,7 +209,7 @@ class Caffeine(gobject.GObject):
 
             if self.timer != None and self.timer.name != "Expired":
 
-                message = _("Timed activation cancelled (was set for " +
+                message = _("Timed activation cancelled (was set for ") +
                         self.timeDisplay(self.timer.interval) + ")")
 
                 #gobject.idle_add(self.notify, message, caffeine.EMPTY_ICON_PATH)
@@ -221,8 +221,8 @@ class Caffeine(gobject.GObject):
 
             elif self.timer != None and self.timer.name == "Expired":
 
-                message = _(self.timeDisplay(self.timer.interval) + 
-                    " have elapsed; powersaving is re-enabled")
+                message = (self.timeDisplay(self.timer.interval) + 
+                    _(" have elapsed; powersaving is re-enabled"))
 
     
                 self.notify(message, caffeine.EMPTY_ICON_PATH)

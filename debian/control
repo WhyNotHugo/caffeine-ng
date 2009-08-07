@@ -13,5 +13,5 @@ XB-Python-Version: ${python:Versions}
 Depends:${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
     python-gtk2,
     python-gnome2,
-Description: Rss Notify
- A simple application that runs in the background and notifies of new rss items
+Description: Caffeine
+ A status bar application able to temporarily prevent the activation of both the screensaver and the "sleep" powersaving mode.
