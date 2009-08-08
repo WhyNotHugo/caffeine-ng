@@ -84,8 +84,14 @@ class GUI(object):
             menuItem = gtk.MenuItem(label=label)
             menuItem.connect('activate', self.on_time_submenuitem_activate,
                     t)
-
             submenu.append(menuItem)
+
+        separator = gtk.SeparatorMenuItem()
+        submenu.append(separator)
+
+        menuItem = gtk.MenuItem(label=_("Other..."))
+        menuItem.connect('activate', self.on_other_submenuitem_activate)
+        submenu.append(menuItem)
 
         time_menuitem.set_submenu(submenu)
         submenu.show_all()
@@ -96,6 +102,11 @@ class GUI(object):
 
         ## about dialog
         self.about_dialog = get("aboutdialog")
+
+        ## other time selector
+        self.othertime_dialog = get("othertime_dialog")
+        self.othertime_hours = get("hours_spin")
+        self.othertime_minutes = get("minutes_spin")
 
         ## make the about dialog url clickable
         def url(dialog, link, data=None):
@@ -164,6 +175,28 @@ class GUI(object):
         response = self.about_dialog.run()
         self.about_dialog.hide()
 
+    def on_other_submenuitem_activate(self, menuitem, data=None):
+
+        self.othertime_dialog.show_all()
+
+    def on_othertime_delete_event(self, window, data=None):
+
+        window.hide_on_delete()
+        ## Returning True stops the window from being destroyed.
+        return True
+
+    def on_othertime_cancel(self, widget, data=None):
+
+        self.othertime_dialog.hide()
+
+    def on_othertime_ok(self, widget, data=None):
+
+        hours = int(self.othertime_hours.get_value())
+        minutes = int(self.othertime_minutes.get_value())
+        self.othertime_dialog.hide()
+        time = hours*60*60 + minutes*60
+        self.caffeine.timedActivation(time)
+
     def on_quit_menuitem_activate(self, menuitem, data=None):
 
         self.quit()
@@ -171,7 +204,10 @@ class GUI(object):
     
     def quit(self):
         ### Do anything that needs to be done before quitting.
-    
+
+        if self.caffeine.getActivated():
+            self.toggle_activated()
+
         if self.caffeine.timer:
             self.caffeine.timer.cancel()
         

@@ -53,7 +53,7 @@ class Caffeine(gobject.GObject):
 
         self.note = None
     
-    ## The following four methods deal with adding the corrext syntax 
+    ## The following four methods deal with adding the correct syntax 
     ## for plural forms of time units. For example, 1 minute and 2 
     ## minutes. Will be obsolete once the application is 
     ## internationalized, as not all languages use "s" for plural form. 
@@ -159,7 +159,6 @@ class Caffeine(gobject.GObject):
         self.toggleActivated()
 
     def toggleActivated(self, busFailures=0):
-        print "toggleActivated"
         attemptResult = self._toggleActivated()
         if attemptResult == False:
             busFailures += 1
