@@ -29,7 +29,7 @@
     <property name="has_separator">False</property>
     <property name="program_name">Caffeine</property>
     <property name="version">0.3</property>
-    <property name="copyright">Copyright &#xA9; 2009 Brad Smith,Tommy Brunn &amp; Isaiah Heyer</property>
+    <property name="copyright">Copyright &#xA9; 2009 Brad Smith, Tommy Brunn &amp; Isaiah Heyer</property>
     <property name="comments" translatable="yes">An application to temporarily prevent the activation of both the screen saver and the "sleep" powersaving mode.</property>
     <property name="website">http://launchpad.net/caffeine</property>
     <property name="license">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
@@ -242,5 +242,166 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkWindow" id="othertime_dialog">
+    <property name="title" translatable="yes">Caffeine</property>
+    <property name="window_position">mouse</property>
+    <property name="default_width">350</property>
+    <property name="default_height">150</property>
+    <child>
+      <object class="GtkVBox" id="duration_box">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkFrame" id="duration_frame">
+            <property name="visible">True</property>
+            <property name="border_width">10</property>
+            <property name="label_xalign">0</property>
+            <child>
+              <object class="GtkAlignment" id="alignment3">
+                <property name="visible">True</property>
+                <property name="top_padding">5</property>
+                <property name="left_padding">12</property>
+                <property name="right_padding">10</property>
+                <child>
+                  <object class="GtkHBox" id="hbox2">
+                    <property name="visible">True</property>
+                    <property name="spacing">10</property>
+                    <child>
+                      <object class="GtkVBox" id="hours_box">
+                        <property name="visible">True</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkLabel" id="hours_label">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes">Hours:</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSpinButton" id="hours_spin">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="adjustment">hours_adj</property>
+                            <property name="numeric">True</property>
+                            <property name="wrap">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkVBox" id="minutes_box">
+                        <property name="visible">True</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkLabel" id="minutes_label">
+                            <property name="visible">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes">Minutes:</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkSpinButton" id="minutes_spin">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="invisible_char">&#x25CF;</property>
+                            <property name="adjustment">minutes_adj</property>
+                            <property name="numeric">True</property>
+                            <property name="wrap">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child type="label">
+              <object class="GtkLabel" id="duration_label">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">&lt;b&gt;Duration&lt;/b&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkAlignment" id="button_align">
+            <property name="visible">True</property>
+            <property name="bottom_padding">10</property>
+            <property name="left_padding">10</property>
+            <property name="right_padding">10</property>
+            <child>
+              <object class="GtkHBox" id="ok_cancel_box">
+                <property name="visible">True</property>
+                <property name="spacing">10</property>
+                <child>
+                  <object class="GtkButton" id="ok_button">
+                    <property name="label" translatable="yes">OK</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                  </object>
+                  <packing>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="cancel_button">
+                    <property name="label" translatable="yes">Cancel</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                  </object>
+                  <packing>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAdjustment" id="hours_adj">
+    <property name="upper">168</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="minutes_adj">
+    <property name="upper">59</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
   </object>
 </interface>
