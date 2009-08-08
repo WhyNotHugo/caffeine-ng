@@ -66,14 +66,37 @@ class Caffeine(gobject.GObject):
             txt = self.mconcat(txt, ', ', w)
         return self.mconcat(txt, ' and ', ls[n-1])
 
-    def decline(self, name, nb):
+    def pluralize(self, name, time):
+        names = [_('hour'), _('minute')]
+        if time < 1:
+            return ""
+
+        if name == "hour":
+            if time < 2:
+                return "%d %s" % (time, _("hour"))
+            if time >= 2:
+                return "%d %s" % (time, _("hours"))
+
+        elif name == "minute":
+            if time < 2:
+                return "%d %s" % (time, _("minute"))
+            if time >= 2:
+                return "%d %s" % (time, _("minutes"))
+
+
+        
         plural = ('s' if nb > 1 and nb != 0 else '')
         return ('%d %s%s' % (nb, name, plural) if nb >= 1 else '')
 
     def timeDisplay(self, sec):
-        names = [_('hour'), _('minute'), _('second')]
-        tvalues = sec/3600, sec/60 % 60, sec % 60
-        ls = list(self.decline(name, n) for name, n in zip(names, tvalues))
+
+        hours = sec/3600
+        minutes = sec/60 % 60
+        ls = []
+        ls.append(self.pluralize("hour", hours))
+        ls.append(self.pluralize("minute", minutes))
+        print ls
+
         return self.spokenConcat(ls)
 
 

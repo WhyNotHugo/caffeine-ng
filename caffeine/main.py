@@ -67,8 +67,7 @@ class GUI(object):
         self.menu = get("popup_menu")
             
         ## Build the timer submenu
-        TIMER_OPTIONS_LIST = [(_("10 seconds (for testing)"), 10.0),
-                (_("5 minutes"), 300.0),
+        TIMER_OPTIONS_LIST = [(_("5 minutes"), 300.0),
                 (_("10 minutes"), 600.0),
                 (_("15 minutes"), 900.0),
                 (_("30 minutes"), 1800.0),
