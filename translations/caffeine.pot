@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: caffeine 0.4\n"
-"POT-Creation-Date: 2009-08-07 12:54:07.106287\n"
+"Project-Id-Version: caffeine 0.3\n"
+"POT-Creation-Date: 2009-08-08 10:57:47.605599\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,5 +76,17 @@ msgid "DPMS enabled"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Configure Caffeine"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Caffeine"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Hours:"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Minutes:"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "<b>Duration</b>"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""

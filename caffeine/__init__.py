@@ -69,6 +69,21 @@ def get_icon_pixbuf(size):
 
     return pixbuf
 
+## gconf stuff
+from caffeine.config import Configurator
+
+_key = '/apps/caffeine/prefs/'
+
+_conf = Configurator()
+
+### register all the options that will be used.
+_conf.register_opt("test_option", os.path.join(_key,
+    "test_option"), False)
+
+
+def get_configurator():
+    return _conf
+
 ### Setup translations
 ###
 GETTEXT_DOMAIN = "caffeine"

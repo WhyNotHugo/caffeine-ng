@@ -36,6 +36,11 @@ class Caffeine(gobject.GObject):
         
         gobject.GObject.__init__(self)
         
+        ## convience class for managing configurations
+        self.Conf = caffeine.get_configurator()
+
+        print self.Conf.get("test_option").get_bool()
+
         ## Makes sure that only one instance of Caffeine is run for
         ## each user on the system.
         self.pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
