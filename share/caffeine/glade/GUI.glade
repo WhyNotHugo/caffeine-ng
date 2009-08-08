@@ -246,8 +246,6 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
   <object class="GtkWindow" id="othertime_dialog">
     <property name="title" translatable="yes">Caffeine</property>
     <property name="window_position">mouse</property>
-    <property name="default_width">350</property>
-    <property name="default_height">150</property>
     <child>
       <object class="GtkVBox" id="duration_box">
         <property name="visible">True</property>
@@ -261,6 +259,7 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
               <object class="GtkAlignment" id="alignment3">
                 <property name="visible">True</property>
                 <property name="top_padding">5</property>
+                <property name="bottom_padding">12</property>
                 <property name="left_padding">12</property>
                 <property name="right_padding">10</property>
                 <child>
@@ -363,10 +362,11 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
                 <property name="spacing">10</property>
                 <child>
                   <object class="GtkButton" id="ok_button">
-                    <property name="label" translatable="yes">OK</property>
+                    <property name="label" translatable="yes">gtk-ok</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <property name="use_stock">True</property>
                   </object>
                   <packing>
                     <property name="position">0</property>
@@ -374,10 +374,11 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
                 </child>
                 <child>
                   <object class="GtkButton" id="cancel_button">
-                    <property name="label" translatable="yes">Cancel</property>
+                    <property name="label" translatable="yes">gtk-cancel</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <property name="use_stock">True</property>
                   </object>
                   <packing>
                     <property name="position">1</property>
