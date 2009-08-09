@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Icon=/usr/share/icons/Full_Cup.svg
+Icon=caffeine
 Name=Caffeine
 Comment=Temporarily deactivate the screensaver and sleep mode
 Exec=/usr/bin/caffeine
