@@ -64,7 +64,7 @@ class Caffeine(gobject.GObject):
         txt, n = '', len(ls)
         for w in ls[0:n-1]:
             txt = self.mconcat(txt, ', ', w)
-        return self.mconcat(txt, ' and ', ls[n-1])
+        return self.mconcat(txt, _(' and '), ls[n-1])
 
     def pluralize(self, name, time):
         names = [_('hour'), _('minute')]

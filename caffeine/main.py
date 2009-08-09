@@ -195,7 +195,8 @@ class GUI(object):
         minutes = int(self.othertime_minutes.get_value())
         self.othertime_dialog.hide()
         time = hours*60*60 + minutes*60
-        self.caffeine.timedActivation(time)
+        if time > 0:
+            self.caffeine.timedActivation(time)
 
     def on_quit_menuitem_activate(self, menuitem, data=None):
 

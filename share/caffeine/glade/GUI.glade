@@ -137,6 +137,7 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
                         <child>
                           <object class="GtkHButtonBox" id="hbuttonbox2">
                             <property name="visible">True</property>
+                            <property name="spacing">2</property>
                             <child>
                               <object class="GtkComboBox" id="combobox">
                                 <property name="visible">True</property>
@@ -247,8 +248,8 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
   </object>
   <object class="GtkWindow" id="othertime_dialog">
     <property name="border_width">5</property>
-    <property name="title" translatable="yes">Caffeine</property>
     <property name="window_position">mouse</property>
+    <property name="default_width">350</property>
     <signal name="delete_event" handler="on_othertime_delete_event"/>
     <child>
       <object class="GtkVBox" id="duration_box">

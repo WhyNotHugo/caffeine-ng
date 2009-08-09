@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 0.3\n"
-"POT-Creation-Date: 2009-08-08 13:46:14.680466\n"
+"POT-Creation-Date: 2009-08-09 17:05:54.253022\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,6 +39,9 @@ msgstr ""
 msgid "4 hours"
 #. file 'caffeine/main.py', line 77
 msgstr ""
+msgid "Other..."
+#. file 'caffeine/main.py', line 92
+msgstr ""
 msgid "hour"
 #. file 'caffeine/core.py', line 70
 #. file 'caffeine/core.py', line 76
@@ -63,15 +66,18 @@ msgid "Caffeine will prevent powersaving for the next "
 #. file 'caffeine/core.py', line 138
 msgstr ""
 msgid "Timed activation cancelled (was set for "
-#. file 'caffeine/core.py', line 240
+#. file 'caffeine/core.py', line 239
 msgstr ""
 msgid " have elapsed; powersaving is re-enabled"
-#. file 'caffeine/core.py', line 253
+#. file 'caffeine/core.py', line 252
 msgstr ""
 msgid "An application to temporarily prevent the activation of both the screen saver and the \"sleep\" powersaving mode."
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Activate for"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Preferences"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "DPMS enabled"
@@ -83,12 +89,12 @@ msgstr ""
 msgid "Caffeine"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
+msgid "Duration"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
 msgid "Hours:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Minutes:"
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid "<b>Duration</b>"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
