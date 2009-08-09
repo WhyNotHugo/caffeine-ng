@@ -106,6 +106,7 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
     </child>
   </object>
   <object class="GtkWindow" id="window">
+    <property name="title" translatable="yes">Preferences</property>
     <property name="window_position">center</property>
     <signal name="delete_event" handler="on_window_delete_event"/>
     <child>
@@ -116,6 +117,7 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
           <object class="GtkFrame" id="frame1">
             <property name="visible">True</property>
             <property name="label_xalign">0</property>
+            <property name="shadow_type">none</property>
             <child>
               <object class="GtkAlignment" id="alignment2">
                 <property name="visible">True</property>
@@ -247,7 +249,6 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Caffeine</property>
     <property name="window_position">mouse</property>
-    <property name="default_width">350</property>
     <signal name="delete_event" handler="on_othertime_delete_event"/>
     <child>
       <object class="GtkVBox" id="duration_box">
@@ -273,7 +274,7 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
             <property name="top_padding">5</property>
             <property name="bottom_padding">12</property>
             <property name="left_padding">12</property>
-            <property name="right_padding">10</property>
+            <property name="right_padding">12</property>
             <child>
               <object class="GtkHBox" id="hbox2">
                 <property name="visible">True</property>
@@ -369,6 +370,8 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
                 <signal name="clicked" handler="on_othertime_cancel"/>
               </object>
               <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
                 <property name="position">0</property>
               </packing>
             </child>
@@ -382,6 +385,8 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
                 <signal name="clicked" handler="on_othertime_ok"/>
               </object>
               <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
                 <property name="position">1</property>
               </packing>
             </child>
