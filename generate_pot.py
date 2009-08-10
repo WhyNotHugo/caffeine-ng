@@ -143,7 +143,7 @@ def scan_tree(pathname, calls=['_']):
         yield line
 
 
-def run():
+def main():
     if len(sys.argv) != 5:
         print 'usage: %s <basefolder> <name> <version> <outputfile>' % sys.argv[0]
         sys.exit()
@@ -173,4 +173,4 @@ def run():
     output.close()
 
 if __name__ == '__main__':
-    run()
+    main()
