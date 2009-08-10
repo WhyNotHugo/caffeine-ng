@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-08-08 13:46+0000\n"
-"PO-Revision-Date: 2009-08-08 19:01+0000\n"
+"POT-Creation-Date: 2009-08-09 17:05+0000\n"
+"PO-Revision-Date: 2009-08-09 22:32+0000\n"
 "Last-Translator: Tommy Brunn <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-09 03:32+0000\n"
+"X-Launchpad-Export-Date: 2009-08-10 03:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 29
@@ -53,6 +53,10 @@ msgstr "3 timmar"
 msgid "4 hours"
 msgstr "4 timmar"
 
+#. file 'caffeine/main.py', line 92
+msgid "Other..."
+msgstr "Annan..."
+
 #. file 'caffeine/core.py', line 70
 #. file 'caffeine/core.py', line 76
 msgid "hour"
@@ -77,17 +81,17 @@ msgstr "Undantag inträffade"
 
 #. file 'caffeine/core.py', line 137
 msgid "Timed activation set; "
-msgstr "Tidsbestämd aktivering inställd "
+msgstr "Tidsbestämd aktivering inställd; "
 
 #. file 'caffeine/core.py', line 138
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine aktivt i "
 
-#. file 'caffeine/core.py', line 240
+#. file 'caffeine/core.py', line 239
 msgid "Timed activation cancelled (was set for "
 msgstr "Tidsbestämd aktivering avstängd (var tidigare ställd till "
 
-#. file 'caffeine/core.py', line 253
+#. file 'caffeine/core.py', line 252
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " har gått; strömsparläge och skärmsläckare återställda"
 
@@ -101,7 +105,11 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
-msgstr "Aktivera under"
+msgstr "Aktivera i"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Preferences"
+msgstr "Inställningar"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "DPMS enabled"
@@ -109,11 +117,15 @@ msgstr "DPMS aktivt"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr "Konfigurera Caffeine"
+msgstr "Inställningar för Caffeine"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Caffeine"
 msgstr "Caffeine"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Duration"
+msgstr "Varaktighet"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Hours:"
@@ -122,10 +134,6 @@ msgstr "Timmar:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
 msgstr "Minuter:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "<b>Duration</b>"
-msgstr "<b>Tidslängd</b>"
 
 #~ msgid "10 seconds (for testing)"
 #~ msgstr "10 sekunder"
