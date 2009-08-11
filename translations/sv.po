@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-08-09 17:05+0000\n"
-"PO-Revision-Date: 2009-08-09 22:32+0000\n"
-"Last-Translator: Tommy Brunn <Unknown>\n"
+"POT-Creation-Date: 2009-08-09 22:43+0000\n"
+"PO-Revision-Date: 2009-08-10 04:27+0000\n"
+"Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-10 03:32+0000\n"
+"X-Launchpad-Export-Date: 2009-08-11 03:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 29
@@ -120,10 +120,6 @@ msgid "Configure Caffeine"
 msgstr "Inställningar för Caffeine"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Caffeine"
-msgstr "Caffeine"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
 msgstr "Varaktighet"
 
@@ -146,3 +142,6 @@ msgstr "Minuter:"
 
 #~ msgid "second"
 #~ msgstr "sekund"
+
+#~ msgid "Caffeine"
+#~ msgstr "Caffeine"
