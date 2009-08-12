@@ -22,7 +22,7 @@ import gtk
 import gobject
 import os
 import pynotify
-import subprocess
+import commands
 
 import dbus
 import threading
@@ -337,16 +337,15 @@ class Caffeine(gobject.GObject):
 
             def deactivate():
                 try:
-                    pid = subprocess.Popen(["xscreensaver-command",
-                        "-deactivate"]).pid
-                    print pid
+                    output = commands.getoutput(
+                            "xscreensaver-command -deactivate")
                 except Exception, data:
                     print data
 
                 return True
         
-            # reset the idle timer every minute.
-            self.source_id = gobject.timeout_add(60000, deactivate)
+            # reset the idle timer every 50 seconds.
+            self.source_id = gobject.timeout_add(50000, deactivate)
 
             print ("Caffeine is now preventing powersaving modes"+
                 " and screensaver activation (" +
