@@ -22,6 +22,7 @@ import gtk
 import gobject
 import os
 import pynotify
+import subprocess
 
 import dbus
 import threading
@@ -29,6 +30,7 @@ import threading
 import applicationinstance
 
 import caffeine
+import utils
 
 class Caffeine(gobject.GObject):
 
@@ -39,7 +41,7 @@ class Caffeine(gobject.GObject):
         ## convience class for managing configurations
         self.Conf = caffeine.get_configurator()
 
-        print self.Conf.get("test_option").get_bool()
+        #print self.Conf.get("test_option").get_bool()
 
         ## Makes sure that only one instance of Caffeine is run for
         ## each user on the system.
@@ -50,9 +52,22 @@ class Caffeine(gobject.GObject):
         self.screenSaverCookie = None
         self.powerManagementCookie = None
         self.timer = None
+        self.failTimer = None
+        self.source_id = None
 
         self.note = None
     
+
+    def quit(self):
+        """Cancels any timer thread running
+        so the program can quit right away.
+        """
+        if self.failTimer:
+            self.failTimer.cancel()
+
+        if self.timer:
+            self.timer.cancel()
+
     ## The following four methods deal with adding the correct syntax 
     ## for plural forms of time units. For example, 1 minute and 2 
     ## minutes. Will be obsolete once the application is 
@@ -61,10 +76,11 @@ class Caffeine(gobject.GObject):
         return (base + sep + app if base else app) if app else base
 
     def spokenConcat(self, ls):
+        and_str = _(" and ")
         txt, n = '', len(ls)
         for w in ls[0:n-1]:
             txt = self.mconcat(txt, ', ', w)
-        return self.mconcat(txt, _(' and '), ls[n-1])
+        return self.mconcat(txt, and_str, ls[n-1])
 
     def pluralize(self, name, time):
         names = [_('hour'), _('minute')]
@@ -95,7 +111,6 @@ class Caffeine(gobject.GObject):
         ls = []
         ls.append(self.pluralize("hour", hours))
         ls.append(self.pluralize("minute", minutes))
-        print ls
 
         return self.spokenConcat(ls)
 
@@ -165,9 +180,9 @@ class Caffeine(gobject.GObject):
             if busFailures < 12:
                 print "Failed to establish a connection with a required bus (" + str(busFailures) + " failures so far)"
                 print "This may be due to the required subsystem not having completed its initialization. Will try again in 10 seconds."
-                failTimer = threading.Timer(10, self.toggleActivated,
+                self.failTimer = threading.Timer(10, self.toggleActivated,
                         args=[busFailures])
-                failTimer.start()
+                self.failTimer.start()
             else:
                 print "Could not connect to the bus, even after repeated attempts. This program will now terminate."
                 errMsg = _("Error: couldn't find bus to allow inhibiting"
@@ -197,14 +212,15 @@ class Caffeine(gobject.GObject):
         pmProxy = None
         bus_names = bus.list_names()
 
-        probableWindowManager = ""
+        probableDE = ""
+
         # For Gnome
         if 'org.gnome.ScreenSaver' in bus_names:
             ssProxy = bus.get_object('org.gnome.ScreenSaver',
                     '/org/gnome/ScreenSaver')
 
             self.ssProxy = ssProxy
-            probableWindowManager = "Gnome"
+            probableDE = "Gnome"
 
         # For KDE
         elif ('org.freedesktop.ScreenSaver' in bus_names and
@@ -218,11 +234,17 @@ class Caffeine(gobject.GObject):
                     'org.freedesktop.PowerManagement.Inhibit',
                     '/org/freedesktop/PowerManagement/Inhibit')
 
-            probableWindowManager = "KDE"
+            probableDE = "KDE"
+        # For XScreensaver
+        elif "xscreensaver" in utils.getProcesses().keys():
+            self._toggleXSS()
+            return True
+            
         else:
             return False
         
         if self.sleepPrevented:
+            ### sleep prevention was on now turn it off
             
             if self.screenSaverCookie != None:
                 ssProxy.UnInhibit(self.screenSaverCookie)
@@ -239,11 +261,11 @@ class Caffeine(gobject.GObject):
                 message = (_("Timed activation cancelled (was set for ") +
                         self.timeDisplay(self.timer.interval) + ")")
 
-                #gobject.idle_add(self.notify, message, caffeine.EMPTY_ICON_PATH)
                 self.notify(message, caffeine.EMPTY_ICON_PATH)
 
                 self.timer.cancel()
                 self.timer = None
+
                 
 
             elif self.timer != None and self.timer.name == "Expired":
@@ -269,9 +291,69 @@ class Caffeine(gobject.GObject):
 
             print ("Caffeine is now preventing powersaving modes"+
                 " and screensaver activation (" +
-                probableWindowManager + ")")
+                probableDE + ")")
 
         return True
+
+
+    def _toggleXSS(self):
+        """Toggle whether XScreensaver is activated"""
+        
+        probableDE = "XScreensaver"
+        if self.sleepPrevented:
+            ### sleep prevention was on now turn it off
+            self.sleepPrevented = False
+            print "Caffeine is now dormant; powersaving is re-enabled"
+
+            # If the user clicks on the full coffee-cup to disable 
+            # sleep prevention, it should also
+            # cancel the timer for timed activation.
+
+            gobject.source_remove(self.source_id)
+
+            if self.timer != None and self.timer.name != "Expired":
+
+                message = (_("Timed activation cancelled (was set for ") +
+                        self.timeDisplay(self.timer.interval) + ")")
+
+                self.notify(message, caffeine.EMPTY_ICON_PATH)
+
+                self.timer.cancel()
+                self.timer = None
+                
+
+            elif self.timer != None and self.timer.name == "Expired":
+
+                message = (self.timeDisplay(self.timer.interval) + 
+                    _(" have elapsed; powersaving is re-enabled"))
+
+    
+                self.notify(message, caffeine.EMPTY_ICON_PATH)
+
+                self.timer = None
+        else:
+
+            self.sleepPrevented = True
+
+            def deactivate():
+                try:
+                    pid = subprocess.Popen(["xscreensaver-command",
+                        "-deactivate"]).pid
+                    print pid
+                except Exception, data:
+                    print data
+
+                return True
+        
+            # reset the idle timer every minute.
+            self.source_id = gobject.timeout_add(60000, deactivate)
+
+            print ("Caffeine is now preventing powersaving modes"+
+                " and screensaver activation (" +
+                probableDE + ")")
+
+
+
 
 
 ## register a signal

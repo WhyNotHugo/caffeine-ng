@@ -205,13 +205,13 @@ class GUI(object):
     
     def quit(self):
         ### Do anything that needs to be done before quitting.
-
+    
+        ### Make sure PM and SV is uninhibited
         if self.caffeine.getActivated():
             self.toggle_activated()
 
-        if self.caffeine.timer:
-            self.caffeine.timer.cancel()
-        
+        self.caffeine.quit()
+
         gtk.main_quit()
 
 
