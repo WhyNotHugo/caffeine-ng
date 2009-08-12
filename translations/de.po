@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-08-09 22:43+0000\n"
+"POT-Creation-Date: 2009-08-10 10:41+0000\n"
 "PO-Revision-Date: 2009-08-09 04:36+0000\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-11 03:32+0000\n"
+"X-Launchpad-Export-Date: 2009-08-12 03:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 29
@@ -57,41 +57,45 @@ msgstr "4 Stunden"
 msgid "Other..."
 msgstr ""
 
-#. file 'caffeine/core.py', line 70
-#. file 'caffeine/core.py', line 76
+#. file 'caffeine/core.py', line 64
+msgid " and "
+msgstr ""
+
+#. file 'caffeine/core.py', line 71
+#. file 'caffeine/core.py', line 77
 msgid "hour"
 msgstr "Stunde"
 
-#. file 'caffeine/core.py', line 70
-#. file 'caffeine/core.py', line 82
+#. file 'caffeine/core.py', line 71
+#. file 'caffeine/core.py', line 83
 msgid "minute"
 msgstr "Minute"
 
-#. file 'caffeine/core.py', line 78
+#. file 'caffeine/core.py', line 79
 msgid "hours"
 msgstr ""
 
-#. file 'caffeine/core.py', line 84
+#. file 'caffeine/core.py', line 85
 msgid "minutes"
 msgstr ""
 
-#. file 'caffeine/core.py', line 124
+#. file 'caffeine/core.py', line 125
 msgid "Exception occurred"
 msgstr ""
 
-#. file 'caffeine/core.py', line 137
+#. file 'caffeine/core.py', line 138
 msgid "Timed activation set; "
 msgstr ""
 
-#. file 'caffeine/core.py', line 138
+#. file 'caffeine/core.py', line 139
 msgid "Caffeine will prevent powersaving for the next "
 msgstr ""
 
-#. file 'caffeine/core.py', line 239
+#. file 'caffeine/core.py', line 240
 msgid "Timed activation cancelled (was set for "
 msgstr ""
 
-#. file 'caffeine/core.py', line 252
+#. file 'caffeine/core.py', line 253
 msgid " have elapsed; powersaving is re-enabled"
 msgstr ""
 
