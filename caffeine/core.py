@@ -244,9 +244,12 @@ class Caffeine(gobject.GObject):
             if self.sleepPrevented:
                 ### Toggle DPMS
                 commands.getoutput("xset -dpms")
+                self.sleepPrevented = False
             else:
                 commands.getoutput("xset +dpms")
-            return False
+                self.sleepPrevented = True
+
+            return True
         
         if self.sleepPrevented:
             ### Toggle DPMS
