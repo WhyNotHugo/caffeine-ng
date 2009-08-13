@@ -173,38 +173,12 @@ class Caffeine(gobject.GObject):
         self.timer.name = "Expired"
         self.toggleActivated()
 
-    def toggleActivated(self, busFailures=0):
-        attemptResult = self._toggleActivated()
-        if attemptResult == False:
-            busFailures += 1
-            if busFailures < 12:
-                print "Failed to establish a connection with a required bus (" + str(busFailures) + " failures so far)"
-                print "This may be due to the required subsystem not having completed its initialization. Will try again in 10 seconds."
-                self.failTimer = threading.Timer(10, self.toggleActivated,
-                        args=[busFailures])
-                self.failTimer.start()
-            else:
-                print "Could not connect to the bus, even after repeated attempts. This program will now terminate."
-                errMsg = _("Error: couldn't find bus to allow inhibiting"
-                        "of the screen saver.\n\n"+
-                    "Please visit the web-site listed in the "
-                    "'About' dialog of this application "
-                    "and check for a newer version of the software.")
 
-                errDlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK, message_format=errMsg)
-                errDlg.run()
-                errDlg.destroy()
-                sys.exit(2)
-        else:
-            self.emit("activation-toggled", self.getActivated())
-            if busFailures != 0:
-                print "Connection to the bus succeeded; resuming normal operation"
-
-
-    def _toggleActivated(self):
+    def toggleActivated(self):
         """This function may fail to peform the toggling,
         if it cannot find the required bus. In this case, it
         will return False."""
+        
 
         bus = dbus.SessionBus()
 
@@ -240,22 +214,11 @@ class Caffeine(gobject.GObject):
             self._toggleXSS()
             return True
             
-        else:
-            if self.sleepPrevented:
-                ### Toggle DPMS
-                commands.getoutput("xset -dpms")
-                self.sleepPrevented = False
-            else:
-                commands.getoutput("xset +dpms")
-                self.sleepPrevented = True
-
-            return True
-        
         if self.sleepPrevented:
+            ### sleep prevention was on now turn it off
+
             ### Toggle DPMS
             commands.getoutput("xset -dpms")
-
-            ### sleep prevention was on now turn it off
             
             if self.screenSaverCookie != None:
                 ssProxy.UnInhibit(self.screenSaverCookie)
@@ -288,6 +251,7 @@ class Caffeine(gobject.GObject):
                 self.notify(message, caffeine.EMPTY_ICON_PATH)
 
                 self.timer = None
+
         else:
 
             ### Toggle DPMS
@@ -298,8 +262,9 @@ class Caffeine(gobject.GObject):
                     "User has requested that Caffeine disable"+
                     " the powersaving modes")
 
-            self.screenSaverCookie = ssProxy.Inhibit("Caffeine",
-               "User has requested that Caffeine disable the screen saver")
+            if ssProxy:
+                self.screenSaverCookie = ssProxy.Inhibit("Caffeine",
+                    "User has requested that Caffeine disable the screen saver")
 
             self.sleepPrevented = True
 
@@ -307,6 +272,8 @@ class Caffeine(gobject.GObject):
                 " and screensaver activation (" +
                 probableDE + ")")
 
+
+        self.emit("activation-toggled", self.getActivated())
         return True
 
 
@@ -323,7 +290,8 @@ class Caffeine(gobject.GObject):
             # sleep prevention, it should also
             # cancel the timer for timed activation.
 
-            gobject.source_remove(self.source_id)
+            if self.source_id != None:
+                gobject.source_remove(self.source_id)
 
             if self.timer != None and self.timer.name != "Expired":
 
@@ -366,6 +334,7 @@ class Caffeine(gobject.GObject):
                 probableDE + ")")
 
 
+        self.emit("activation-toggled", self.getActivated())
 
 
 
