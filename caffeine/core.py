@@ -241,9 +241,17 @@ class Caffeine(gobject.GObject):
             return True
             
         else:
+            if self.sleepPrevented:
+                ### Toggle DPMS
+                commands.getoutput("xset -dpms")
+            else:
+                commands.getoutput("xset +dpms")
             return False
         
         if self.sleepPrevented:
+            ### Toggle DPMS
+            commands.getoutput("xset -dpms")
+
             ### sleep prevention was on now turn it off
             
             if self.screenSaverCookie != None:
@@ -278,6 +286,9 @@ class Caffeine(gobject.GObject):
 
                 self.timer = None
         else:
+
+            ### Toggle DPMS
+            commands.getoutput("xset +dpms")
 
             if pmProxy:
                 self.powerManagementCookie = pmProxy.Inhibit("Caffeine",
