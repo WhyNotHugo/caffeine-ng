@@ -1,4 +1,4 @@
-# Norwegian translation for caffeine
+# Basque translation for caffeine
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the caffeine package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-08-10 10:41+0000\n"
-"PO-Revision-Date: 2009-08-08 09:55+0000\n"
-"Last-Translator: Tommy Brunn <Unknown>\n"
-"Language-Team: Norwegian <no@li.org>\n"
+"PO-Revision-Date: 2009-08-19 10:30+0000\n"
+"Last-Translator: Mikel Alzibar <mikelalzibar@gmail.com>\n"
+"Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,116 +19,120 @@ msgstr ""
 
 #. file 'caffeine/main.py', line 29
 msgid "Please install"
-msgstr ""
+msgstr "Mesedez instalatu"
 
 #. file 'caffeine/main.py', line 70
 msgid "5 minutes"
-msgstr ""
+msgstr "5 minutu"
 
 #. file 'caffeine/main.py', line 71
 msgid "10 minutes"
-msgstr ""
+msgstr "10 minutu"
 
 #. file 'caffeine/main.py', line 72
 msgid "15 minutes"
-msgstr ""
+msgstr "15 minutu"
 
 #. file 'caffeine/main.py', line 73
 msgid "30 minutes"
-msgstr ""
+msgstr "30 minutu"
 
 #. file 'caffeine/main.py', line 74
 msgid "1 hour"
-msgstr "1 time"
+msgstr "Ordu 1"
 
 #. file 'caffeine/main.py', line 75
 msgid "2 hours"
-msgstr ""
+msgstr "2 ordu"
 
 #. file 'caffeine/main.py', line 76
 msgid "3 hours"
-msgstr ""
+msgstr "3 ordu"
 
 #. file 'caffeine/main.py', line 77
 msgid "4 hours"
-msgstr ""
+msgstr "4 ordu"
 
 #. file 'caffeine/main.py', line 92
 msgid "Other..."
-msgstr ""
+msgstr "Beste batzuk ..."
 
 #. file 'caffeine/core.py', line 64
 msgid " and "
-msgstr ""
+msgstr " eta "
 
 #. file 'caffeine/core.py', line 71
 #. file 'caffeine/core.py', line 77
 msgid "hour"
-msgstr "time"
+msgstr "ordu"
 
 #. file 'caffeine/core.py', line 71
 #. file 'caffeine/core.py', line 83
 msgid "minute"
-msgstr "minutt"
+msgstr "minutu"
 
 #. file 'caffeine/core.py', line 79
 msgid "hours"
-msgstr ""
+msgstr "ordu"
 
 #. file 'caffeine/core.py', line 85
 msgid "minutes"
-msgstr ""
+msgstr "minutu"
 
 #. file 'caffeine/core.py', line 125
 msgid "Exception occurred"
-msgstr ""
+msgstr "Salbuespen bat gertatu da"
 
 #. file 'caffeine/core.py', line 138
 msgid "Timed activation set; "
-msgstr ""
+msgstr "Denboraren araberako aktibazioa indarrean; "
 
 #. file 'caffeine/core.py', line 139
 msgid "Caffeine will prevent powersaving for the next "
-msgstr ""
+msgstr "Caffeine-k energia aurreztea indargabetuko du hurrengo denboran: "
 
 #. file 'caffeine/core.py', line 240
 msgid "Timed activation cancelled (was set for "
 msgstr ""
+"Denboraren araberako aktibazioa ezeztatua (hurrengo denborarako "
+"konfiguratua: "
 
 #. file 'caffeine/core.py', line 253
 msgid " have elapsed; powersaving is re-enabled"
-msgstr ""
+msgstr " pasa dira; energia aurreztea berriro aktibatu da"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
+"Denbora jakin batean pantaila-babeslea eta energia aurreztea indargabetzen "
+"dituen aplikazioa"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
-msgstr ""
+msgstr "Aktibatu"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
-msgstr ""
+msgstr "Hobespenak"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "DPMS enabled"
-msgstr ""
+msgstr "DPMS aktibatuta"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr ""
+msgstr "Caffeine konfiguratu"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
-msgstr ""
+msgstr "Iraupena"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Hours:"
-msgstr ""
+msgstr "Orduak:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
-msgstr ""
+msgstr "Minutuak:"
