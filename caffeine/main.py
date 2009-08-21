@@ -23,6 +23,9 @@ import gtk
 import pygtk
 import dbus
 import threading
+import ctypes
+import optparse
+
 try:
     import pynotify
 except:
@@ -31,14 +34,15 @@ except:
 ## local modules
 import caffeine
 import core
+import applicationinstance
 
 class GUI(object):
 
     def __init__(self):
         
-        self.caffeine = core.Caffeine()
+        self.Core = core.Caffeine()
 
-        self.caffeine.connect("activation-toggled",
+        self.Core.connect("activation-toggled",
                 self.on_activation_toggled)
         
         ## set the icons for the window border.
@@ -122,13 +126,21 @@ class GUI(object):
 
         builder.connect_signals(self)
 
+    
+    def setActive(self, active):
 
-
+        if active:
+            if not self.Core.getActivated():
+                self.Core.toggleActivated()
+        else:
+            if self.Core.getActivated():
+                self.Core.toggleActivated()
+            
     def toggle_activated(self):
         """Toggles whether screen saver prevention
         is active.
         """
-        self.caffeine.toggleActivated()
+        self.Core.toggleActivated()
         
     def on_activation_toggled(self, source, active):
 
@@ -165,7 +177,7 @@ class GUI(object):
     #### Menu callbacks
     def on_time_submenuitem_activate(self, menuitem, time):
 
-        self.caffeine.timedActivation(time)
+        self.Core.timedActivation(time)
 
     def on_prefs_menuitem_activate(self, menuitem, data=None):
         self.window.show_all()
@@ -196,7 +208,7 @@ class GUI(object):
         self.othertime_dialog.hide()
         time = hours*60*60 + minutes*60
         if time > 0:
-            self.caffeine.timedActivation(time)
+            self.Core.timedActivation(time)
 
     def on_quit_menuitem_activate(self, menuitem, data=None):
 
@@ -207,10 +219,10 @@ class GUI(object):
         ### Do anything that needs to be done before quitting.
     
         ### Make sure PM and SV is uninhibited
-        if self.caffeine.getActivated():
+        if self.Core.getActivated():
             self.toggle_activated()
 
-        self.caffeine.quit()
+        self.Core.quit()
 
         gtk.main_quit()
 
@@ -218,6 +230,36 @@ class GUI(object):
 def main():
 
     gtk.gdk.threads_init()
+
+    ## register the process id as 'caffeine'
+    libc = ctypes.cdll.LoadLibrary('libc.so.6')
+    libc.prctl(15, 'caffeine', 0, 0, 0)
+  
+    ## handle command line arguments
+    parser = optparse.OptionParser()
+    parser.add_option("-a", "--activate", action="store_true",
+            dest="activated",
+            help="Disables power management and screen saving.")
+
+    parser.add_option("-d", "--deactivate", action="store_false",
+            dest="activated",
+            help="Re-enables power management and screen saving.")
+    
+
+    options, args = parser.parse_args()
+    
+    ## Makes sure that only one instance of the Caffeine is run for
+    ## each user on the system.
+    pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
+    appInstance = applicationinstance.ApplicationInstance(pid_name)
+    if appInstance.isAnother():
+        appInstance.killOther()
+
     main = GUI()
+    appInstance.startApplication()
+        
+    main.setActive(options.activated)
+
 
     gtk.main()
+    appInstance.exitApplication()
