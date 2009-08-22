@@ -7,95 +7,97 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-08-10 10:41+0000\n"
+"POT-Creation-Date: 2009-08-21 12:21+0000\n"
 "PO-Revision-Date: 2009-08-14 04:46+0000\n"
 "Last-Translator: Magnun Leno <magnun.leno@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-21 09:58+0000\n"
+"X-Launchpad-Export-Date: 2009-08-22 09:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 29
+#. file 'caffeine/main.py', line 32
 msgid "Please install"
 msgstr "Por favor instale"
 
-#. file 'caffeine/main.py', line 70
+#. file 'caffeine/main.py', line 74
 msgid "5 minutes"
 msgstr "5 minutos"
 
-#. file 'caffeine/main.py', line 71
+#. file 'caffeine/main.py', line 75
 msgid "10 minutes"
 msgstr "10 minutos"
 
-#. file 'caffeine/main.py', line 72
+#. file 'caffeine/main.py', line 76
 msgid "15 minutes"
 msgstr "15 minutos"
 
-#. file 'caffeine/main.py', line 73
+#. file 'caffeine/main.py', line 77
 msgid "30 minutes"
 msgstr "30 minutos"
 
-#. file 'caffeine/main.py', line 74
+#. file 'caffeine/main.py', line 78
 msgid "1 hour"
 msgstr "1 hora"
 
-#. file 'caffeine/main.py', line 75
+#. file 'caffeine/main.py', line 79
 msgid "2 hours"
 msgstr "2 horas"
 
-#. file 'caffeine/main.py', line 76
+#. file 'caffeine/main.py', line 80
 msgid "3 hours"
 msgstr "3 horas"
 
-#. file 'caffeine/main.py', line 77
+#. file 'caffeine/main.py', line 81
 msgid "4 hours"
 msgstr "4 horas"
 
-#. file 'caffeine/main.py', line 92
+#. file 'caffeine/main.py', line 96
 msgid "Other..."
 msgstr "Outro..."
 
-#. file 'caffeine/core.py', line 64
+#. file 'caffeine/core.py', line 79
 msgid " and "
 msgstr " e "
 
-#. file 'caffeine/core.py', line 71
-#. file 'caffeine/core.py', line 77
+#. file 'caffeine/core.py', line 86
+#. file 'caffeine/core.py', line 92
 msgid "hour"
 msgstr "hora"
 
-#. file 'caffeine/core.py', line 71
-#. file 'caffeine/core.py', line 83
+#. file 'caffeine/core.py', line 86
+#. file 'caffeine/core.py', line 98
 msgid "minute"
 msgstr "minuto"
 
-#. file 'caffeine/core.py', line 79
+#. file 'caffeine/core.py', line 94
 msgid "hours"
 msgstr "horas"
 
-#. file 'caffeine/core.py', line 85
+#. file 'caffeine/core.py', line 100
 msgid "minutes"
 msgstr "minutos"
 
-#. file 'caffeine/core.py', line 125
+#. file 'caffeine/core.py', line 139
 msgid "Exception occurred"
 msgstr "Uma exceção ocorreu"
 
-#. file 'caffeine/core.py', line 138
+#. file 'caffeine/core.py', line 152
 msgid "Timed activation set; "
 msgstr "Ativação por tempo habilitada; "
 
-#. file 'caffeine/core.py', line 139
+#. file 'caffeine/core.py', line 153
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine irá impedir o modo de economia de energia pelos próximos "
 
-#. file 'caffeine/core.py', line 240
+#. file 'caffeine/core.py', line 235
+#. file 'caffeine/core.py', line 298
 msgid "Timed activation cancelled (was set for "
 msgstr "Ativação por tempo cancelada (configurada para "
 
-#. file 'caffeine/core.py', line 253
+#. file 'caffeine/core.py', line 248
+#. file 'caffeine/core.py', line 310
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " se passaram; o modo economia de energia está ativo"
 
