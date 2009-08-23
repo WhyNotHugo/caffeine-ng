@@ -99,11 +99,6 @@ class Caffeine(gobject.GObject):
             if time >= 2:
                 return "%d %s" % (time, _("minutes"))
 
-
-        
-        plural = ('s' if nb > 1 and nb != 0 else '')
-        return ('%d %s%s' % (nb, name, plural) if nb >= 1 else '')
-
     def _timeDisplay(self, sec):
 
         hours = sec/3600

@@ -136,6 +136,10 @@ class GUI(object):
             if self.Core.getActivated():
                 self.Core.toggleActivated()
             
+    def timedActivation(self, time):
+
+        self.Core.timedActivation(time)
+
     def toggle_activated(self):
         """Toggles whether screen saver prevention
         is active.
@@ -149,9 +153,6 @@ class GUI(object):
                 active]
 
         self.status_icon.set_from_file(icon_file)
-
-
-
 
     ### Callbacks
     def on_L_click(self, status_icon, data=None):
@@ -177,7 +178,7 @@ class GUI(object):
     #### Menu callbacks
     def on_time_submenuitem_activate(self, menuitem, time):
 
-        self.Core.timedActivation(time)
+        self.timedActivation(time)
 
     def on_prefs_menuitem_activate(self, menuitem, data=None):
         self.window.show_all()
@@ -238,13 +239,19 @@ def main():
     ## handle command line arguments
     parser = optparse.OptionParser()
     parser.add_option("-a", "--activate", action="store_true",
-            dest="activated",
+            dest="activated", default=False,
             help="Disables power management and screen saving.")
 
     parser.add_option("-d", "--deactivate", action="store_false",
-            dest="activated",
+            dest="activated", default=False,
             help="Re-enables power management and screen saving.")
+
+    parser.add_option("-t", metavar="MINUTES",
+            dest="timed",
+            help=("If the -a option is given, "+
+                "activates caffeine for MINUTES and then deactivates."))
     
+
 
     options, args = parser.parse_args()
     
@@ -256,10 +263,24 @@ def main():
         appInstance.killOther()
 
     main = GUI()
-    appInstance.startApplication()
         
     main.setActive(options.activated)
+    if options.activated and options.timed:
+        parts = options.timed.split(":")
+        if len(parts) < 2:
+            print "-t argument must be in the hour:minute format."
+            sys.exit(2)
+
+        try:
+            hours = int(parts[0])
+            minutes = int(parts[1])
+        except:
+            print "Invalid time argument."
+            sys.exit(2)
+
+        main.timedActivation((hours * 3600.0)+(minutes * 60.0))
 
 
+    appInstance.startApplication()
     gtk.main()
     appInstance.exitApplication()
