@@ -1,5 +1,5 @@
 caffeine (0.3-0ubuntu0~ppa0) jaunty; urgency=low
 
-  * Description.
+  * Added Screensaver and DPMS support, command line options.
 
- -- Isaiah Heyer <freshapplepy@gmail.com>  Thu, 06 Aug 2009 14:58:59 -0500
+ -- Isaiah Heyer <freshapplepy@gmail.com>  Sat, 22 Aug 2009 21:36:54 -0500
