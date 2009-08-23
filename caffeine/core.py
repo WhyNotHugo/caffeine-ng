@@ -68,21 +68,21 @@ class Caffeine(gobject.GObject):
         if self.timer:
             self.timer.cancel()
 
-    ## The following four methods deal with adding the correct syntax 
-    ## for plural forms of time units. For example, 1 minute and 2 
-    ## minutes. Will be obsolete once the application is 
-    ## internationalized, as not all languages use "s" for plural form. 
-    def mconcat(self, base, sep, app):
+    ## The following four methods deal with adding the correct syntax
+    ## for plural forms of time units. For example, 1 minute and 2
+    ## minutes. Will be obsolete once the application is
+    ## internationalized, as not all languages use "s" for plural form.
+    def _mconcat(self, base, sep, app):
         return (base + sep + app if base else app) if app else base
 
-    def spokenConcat(self, ls):
+    def _spokenConcat(self, ls):
         and_str = _(" and ")
         txt, n = '', len(ls)
         for w in ls[0:n-1]:
-            txt = self.mconcat(txt, ', ', w)
-        return self.mconcat(txt, and_str, ls[n-1])
+            txt = self._mconcat(txt, ', ', w)
+        return self._mconcat(txt, and_str, ls[n-1])
 
-    def pluralize(self, name, time):
+    def _pluralize(self, name, time):
         names = [_('hour'), _('minute')]
         if time < 1:
             return ""
@@ -104,18 +104,18 @@ class Caffeine(gobject.GObject):
         plural = ('s' if nb > 1 and nb != 0 else '')
         return ('%d %s%s' % (nb, name, plural) if nb >= 1 else '')
 
-    def timeDisplay(self, sec):
+    def _timeDisplay(self, sec):
 
         hours = sec/3600
         minutes = sec/60 % 60
         ls = []
-        ls.append(self.pluralize("hour", hours))
-        ls.append(self.pluralize("minute", minutes))
+        ls.append(self._pluralize("hour", hours))
+        ls.append(self._pluralize("minute", minutes))
 
-        return self.spokenConcat(ls)
+        return self._spokenConcat(ls)
 
 
-    def notify(self, message, icon, title="Caffeine"):
+    def _notify(self, message, icon, title="Caffeine"):
         """Easy way to use pynotify"""
         try:
 
@@ -151,13 +151,13 @@ class Caffeine(gobject.GObject):
         """
         message = (_("Timed activation set; ")+
             _("Caffeine will prevent powersaving for the next ") +
-            self.timeDisplay(time))
+            self._timeDisplay(time))
 
         if not self.getActivated():
             self.toggleActivated()
-        
 
-        self.notify(message, caffeine.FULL_ICON_PATH)
+
+        self._notify(message, caffeine.FULL_ICON_PATH)
 
         ## and deactivate after time has passed.
         ## Stop already running timer
@@ -233,9 +233,9 @@ class Caffeine(gobject.GObject):
             if self.timer != None and self.timer.name != "Expired":
 
                 message = (_("Timed activation cancelled (was set for ") +
-                        self.timeDisplay(self.timer.interval) + ")")
+                        self._timeDisplay(self.timer.interval) + ")")
 
-                self.notify(message, caffeine.EMPTY_ICON_PATH)
+                self._notify(message, caffeine.EMPTY_ICON_PATH)
 
                 self.timer.cancel()
                 self.timer = None
@@ -244,11 +244,11 @@ class Caffeine(gobject.GObject):
 
             elif self.timer != None and self.timer.name == "Expired":
 
-                message = (self.timeDisplay(self.timer.interval) + 
+                message = (self._timeDisplay(self.timer.interval) +
                     _(" have elapsed; powersaving is re-enabled"))
 
-    
-                self.notify(message, caffeine.EMPTY_ICON_PATH)
+
+                self._notify(message, caffeine.EMPTY_ICON_PATH)
 
                 self.timer = None
 
@@ -296,9 +296,9 @@ class Caffeine(gobject.GObject):
             if self.timer != None and self.timer.name != "Expired":
 
                 message = (_("Timed activation cancelled (was set for ") +
-                        self.timeDisplay(self.timer.interval) + ")")
+                        self._timeDisplay(self.timer.interval) + ")")
 
-                self.notify(message, caffeine.EMPTY_ICON_PATH)
+                self._notify(message, caffeine.EMPTY_ICON_PATH)
 
                 self.timer.cancel()
                 self.timer = None
@@ -306,11 +306,11 @@ class Caffeine(gobject.GObject):
 
             elif self.timer != None and self.timer.name == "Expired":
 
-                message = (self.timeDisplay(self.timer.interval) + 
+                message = (self._timeDisplay(self.timer.interval) +
                     _(" have elapsed; powersaving is re-enabled"))
 
-    
-                self.notify(message, caffeine.EMPTY_ICON_PATH)
+
+                self._notify(message, caffeine.EMPTY_ICON_PATH)
 
                 self.timer = None
         else:
