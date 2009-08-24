@@ -48,11 +48,30 @@ class Caffeine(gobject.GObject):
         self.pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
         self.appInstance = applicationinstance.ApplicationInstance( self.pid_name )
 
-        self.sleepPrevented = False
+        ## This variable is set to a string describing the type of screensaver and
+        ## powersaving systems used on this computer. It is detected when the user
+        ## first attempts to inhibit the screensaver and powersaving, and can be set
+        ## to one of the following values: "Gnome", "KDE", "XSS+DPMS" or "DPMS".
+        self.screensaverAndPowersavingType = None
+
+        # Set to True when the detection routine is in progress
+        self.attemptingToDetect = False
+
+        self.dbusDetectionTimer = None
+        self.dbusDetectionFailures = 0
+
+        # Set to True when sleep seems to be prevented from the perspective of the user.
+        # This does not necessarily mean that sleep really is prevented, because the
+        # detection routine could be in progress.
+        self.sleepAppearsPrevented = False
+
+        # Set to True when sleep mode has been successfully inhibited somehow. This should
+        # match up with "self.sleepAppearsPrevented" most of the time.
+        self.sleepIsPrevented = False
+
         self.screenSaverCookie = None
         self.powerManagementCookie = None
         self.timer = None
-        self.failTimer = None
         self.source_id = None
 
         self.note = None
@@ -62,11 +81,11 @@ class Caffeine(gobject.GObject):
         """Cancels any timer thread running
         so the program can quit right away.
         """
-        if self.failTimer:
-            self.failTimer.cancel()
-
         if self.timer:
             self.timer.cancel()
+
+        if self.dbusDetectionTimer:
+            self.dbusDetectionTimer.cancel()
 
     ## The following four methods deal with adding the correct syntax
     ## for plural forms of time units. For example, 1 minute and 2
@@ -121,24 +140,24 @@ class Caffeine(gobject.GObject):
                 self.note = pynotify.Notification(title, message, icon)
             
             ## Notify OSD doesn't seem to work when sleep is prevented
-            if self.screenSaverCookie != None and self.sleepPrevented:
+            if self.screenSaverCookie != None and self.sleepIsPrevented:
                 self.ssProxy.UnInhibit(self.screenSaverCookie)
 
             self.note.show()
 
-            if self.screenSaverCookie != None and self.sleepPrevented:
+            if self.screenSaverCookie != None and self.sleepIsPrevented:
                 self.screenSaverCookie = self.ssProxy.Inhibit("Caffeine",
                "User has requested that Caffeine disable the screen saver")
 
-        except:
-            print _("Exception occurred")
+        except Exception, e:
+            print _("Exception occurred") + " " + str(e)
             print message
         finally:
             return False
 
 
     def getActivated(self):
-        return self.sleepPrevented
+        return self.sleepAppearsPrevented
 
     def timedActivation(self, time):
         """Calls toggleActivated after the number of seconds
@@ -147,6 +166,7 @@ class Caffeine(gobject.GObject):
         message = (_("Timed activation set; ")+
             _("Caffeine will prevent powersaving for the next ") +
             self._timeDisplay(time))
+        print "Timed activation set for " + self._timeDisplay(time)
 
         if not self.getActivated():
             self.toggleActivated()
@@ -170,58 +190,17 @@ class Caffeine(gobject.GObject):
 
 
     def toggleActivated(self):
-        """This function may fail to peform the toggling,
-        if it cannot find the required bus. In this case, it
-        will return False."""
-        
+        """This function toggles the inhibition of the screensaver and powersaving
+        features of the current computer, detecting the the type of screensaver and powersaving
+        in use, if it has not been detected already."""
 
-        bus = dbus.SessionBus()
-
-        ssProxy = None
-        pmProxy = None
-        bus_names = bus.list_names()
-
-        probableDE = ""
-
-        # For Gnome
-        if 'org.gnome.ScreenSaver' in bus_names:
-            ssProxy = bus.get_object('org.gnome.ScreenSaver',
-                    '/org/gnome/ScreenSaver')
-
-            self.ssProxy = ssProxy
-            probableDE = "Gnome"
-
-        # For KDE
-        elif ('org.freedesktop.ScreenSaver' in bus_names and
-            'org.freedesktop.PowerManagement.Inhibit' in bus_names):
-
-            ssProxy = bus.get_object(
-                    'org.freedesktop.ScreenSaver',
-                    '/ScreenSaver')
-
-            pmProxy = bus.get_object(
-                    'org.freedesktop.PowerManagement.Inhibit',
-                    '/org/freedesktop/PowerManagement/Inhibit')
-
-            probableDE = "KDE"
-        # For XScreensaver
-        elif "xscreensaver" in utils.getProcesses().keys():
-            self._toggleXSS()
-            return True
-            
-        if self.sleepPrevented:
+        if self.sleepAppearsPrevented:
             ### sleep prevention was on now turn it off
 
-            ### Toggle DPMS
-            commands.getoutput("xset -dpms")
-            
-            if self.screenSaverCookie != None:
-                ssProxy.UnInhibit(self.screenSaverCookie)
-
-            self.sleepPrevented = False
+            self.sleepAppearsPrevented = False
             print "Caffeine is now dormant; powersaving is re-enabled"
 
-            # If the user clicks on the full coffee-cup to disable 
+            # If the user clicks on the full coffee-cup to disable
             # sleep prevention, it should also
             # cancel the timer for timed activation.
 
@@ -229,6 +208,7 @@ class Caffeine(gobject.GObject):
 
                 message = (_("Timed activation cancelled (was set for ") +
                         self._timeDisplay(self.timer.interval) + ")")
+                print "Timed activation cancelled"
 
                 self._notify(message, caffeine.EMPTY_ICON_PATH)
 
@@ -241,7 +221,7 @@ class Caffeine(gobject.GObject):
 
                 message = (self._timeDisplay(self.timer.interval) +
                     _(" have elapsed; powersaving is re-enabled"))
-
+                print "Timed activation period has elapsed"
 
                 self._notify(message, caffeine.EMPTY_ICON_PATH)
 
@@ -249,68 +229,127 @@ class Caffeine(gobject.GObject):
 
         else:
 
-            ### Toggle DPMS
-            commands.getoutput("xset +dpms")
-
-            if pmProxy:
-                self.powerManagementCookie = pmProxy.Inhibit("Caffeine",
-                    "User has requested that Caffeine disable"+
-                    " the powersaving modes")
-
-            if ssProxy:
-                self.screenSaverCookie = ssProxy.Inhibit("Caffeine",
-                    "User has requested that Caffeine disable the screen saver")
-
-            self.sleepPrevented = True
-
-            print ("Caffeine is now preventing powersaving modes"+
-                " and screensaver activation (" +
-                probableDE + ")")
-
+            self.sleepAppearsPrevented = True
 
         self.emit("activation-toggled", self.getActivated())
-        return True
+        self._performTogglingActions()
 
+    def _detectScreensaverAndPowersavingType(self):
+        """This method always runs when the first attempt to inhibit the screensaver and
+        powersaving is made. It detects what screensaver/powersaving software is running.
+        After detection is complete, it will finish the inhibiting process."""
+        print ("Attempting to detect screensaver and powersaving type... (" + str(self.dbusDetectionFailures) + " dbus failures so far)")
+        bus = dbus.SessionBus()
+        if 'org.gnome.ScreenSaver' in bus.list_names():
+            self.screensaverAndPowersavingType = "Gnome"
+        elif 'org.freedesktop.ScreenSaver' in bus.list_names() and \
+             'org.freedesktop.PowerManagement.Inhibit' in bus.list_names():
+            self.screensaverAndPowersavingType = "KDE"
+        else:
+            self.dbusDetectionFailures += 1
+            if self.dbusDetectionFailures <= 8:
+                self.dbusDetectionTimer = threading.Timer(15, self._detectScreensaverAndPowersavingType)
+                self.dbusDetectionTimer.start()
+                return
+            else:
+                # At this point, all attempts to connect to the relevant dbus interfaces have failed.
+                # This user must be using something other than the Gnome or KDE screensaver programs.
+                if "xscreensaver" in utils.getProcesses().keys():
+                    self.screensaverAndPowersavingType = "XSS+DPMS"
+                else:
+                    self.screensaverAndPowersavingType = "DPMS"
+
+        self.attemptingToDetect = False
+        self.dbusDetectionFailures = 0
+        self.dbusDetectionTimer = None
+        print ("Successfully detected screensaver and powersaving type: " + str(self.screensaverAndPowersavingType))
+        if self.sleepAppearsPrevented != self.sleepIsPrevented:
+            self._performTogglingActions()
+
+    def _performTogglingActions(self):
+        """This method performs the actions that affect the screensaver and
+        powersaving."""
+        if self.screensaverAndPowersavingType == None:
+            if self.attemptingToDetect == False:
+                self.attemptingToDetect = True
+                self._detectScreensaverAndPowersavingType()
+            return
+
+        if self.screensaverAndPowersavingType == "Gnome":
+            self._toggleGnome()
+        elif self.screensaverAndPowersavingType == "KDE":
+            self._toggleKDE()
+        elif self.screensaverAndPowersavingType == "XSS+DPMS":
+            self._toggleXSSAndDPMS()
+        elif self.screensaverAndPowersavingType == "DPMS":
+            self._toggleDPMS()
+
+        if self.sleepIsPrevented == False:
+            print ("Caffeine is now preventing powersaving modes"+
+                " and screensaver activation (" +
+                self.screensaverAndPowersavingType + ")")
+
+        self.sleepIsPrevented = not self.sleepIsPrevented
+
+    def _toggleGnome(self):
+        """Toggle the screensaver and powersaving with the interfaces used by Gnome."""
+
+        bus = dbus.SessionBus()
+        self.ssProxy = bus.get_object('org.gnome.ScreenSaver',
+                    '/org/gnome/ScreenSaver')
+        if self.sleepIsPrevented:
+            if self.screenSaverCookie != None:
+                self.ssProxy.UnInhibit(self.screenSaverCookie)
+        else:
+            self.screenSaverCookie = self.ssProxy.Inhibit("Caffeine",
+                    "User has requested that Caffeine disable the screen saver")
+
+    def _toggleKDE(self):
+        """Toggle the screensaver and powersaving with the interfaces used by KDE."""
+
+        bus = dbus.SessionBus()
+        self.ssProxy = bus.get_object(
+                'org.freedesktop.ScreenSaver', '/ScreenSaver')
+        pmProxy = bus.get_object(
+                'org.freedesktop.PowerManagement.Inhibit',
+                '/org/freedesktop/PowerManagement/Inhibit')
+        if self.sleepIsPrevented:
+            if self.screenSaverCookie != None:
+                self.ssProxy.UnInhibit(self.screenSaverCookie)
+            if self.powerManagementCookie != None:
+                pmProxy.UnInhibit(self.powerManagementCookie)
+        else:
+            self.powerManagementCookie = pmProxy.Inhibit("Caffeine",
+                    "User has requested that Caffeine disable"+
+                    " the powersaving modes")
+            self.screenSaverCookie = self.ssProxy.Inhibit("Caffeine",
+                    "User has requested that Caffeine disable the screen saver")
+
+    def _toggleXSSAndDPMS(self):
+        self._toggleXSS()
+        self._toggleDPMS()
+
+    def _toggleDPMS(self):
+        """Toggle the DPMS powersaving subsystem."""
+        if self.sleepIsPrevented:
+            commands.getoutput("xset -dpms")
+        else:
+            commands.getoutput("xset +dpms")
 
     def _toggleXSS(self):
-        """Toggle whether XScreensaver is activated"""
-        
-        probableDE = "XScreensaver"
-        if self.sleepPrevented:
-            ### sleep prevention was on now turn it off
-            self.sleepPrevented = False
-            print "Caffeine is now dormant; powersaving is re-enabled"
+        """Toggle whether XScreensaver is activated (powersaving is unaffected)"""
 
-            # If the user clicks on the full coffee-cup to disable 
+        if self.sleepIsPrevented:
+            ### sleep prevention was on now turn it off
+
+            # If the user clicks on the full coffee-cup to disable
             # sleep prevention, it should also
             # cancel the timer for timed activation.
 
             if self.source_id != None:
                 gobject.source_remove(self.source_id)
 
-            if self.timer != None and self.timer.name != "Expired":
-
-                message = (_("Timed activation cancelled (was set for ") +
-                        self._timeDisplay(self.timer.interval) + ")")
-
-                self._notify(message, caffeine.EMPTY_ICON_PATH)
-
-                self.timer.cancel()
-                self.timer = None
-                
-
-            elif self.timer != None and self.timer.name == "Expired":
-
-                message = (self._timeDisplay(self.timer.interval) +
-                    _(" have elapsed; powersaving is re-enabled"))
-
-
-                self._notify(message, caffeine.EMPTY_ICON_PATH)
-
-                self.timer = None
         else:
-
-            self.sleepPrevented = True
 
             def deactivate():
                 try:
@@ -323,11 +362,6 @@ class Caffeine(gobject.GObject):
         
             # reset the idle timer every 50 seconds.
             self.source_id = gobject.timeout_add(50000, deactivate)
-
-            print ("Caffeine is now preventing powersaving modes"+
-                " and screensaver activation (" +
-                probableDE + ")")
-
 
         self.emit("activation-toggled", self.getActivated())
 
