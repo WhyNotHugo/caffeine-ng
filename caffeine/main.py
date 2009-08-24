@@ -246,10 +246,11 @@ def main():
             dest="activated", default=False,
             help="Re-enables power management and screen saving.")
 
-    parser.add_option("-t", metavar="MINUTES",
+    parser.add_option("-t", "--time",
+            metavar="HOURS:MINUTES",
             dest="timed",
             help=("If the -a option is given, "+
-                "activates caffeine for MINUTES and then deactivates."))
+                "activates caffeine for HOURS:MINUTES."))
     
 
 

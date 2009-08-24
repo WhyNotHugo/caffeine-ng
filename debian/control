@@ -1,5 +1,5 @@
 Source: caffeine
-Section: web
+Section: misc
 Priority: optional
 Maintainer: Isaiah Heyer <freshapplepy@gmail.com>
 Build-Depends: cdbs (>=0.4.49), debhelper (>= 5), python-central (>= 0.6)
