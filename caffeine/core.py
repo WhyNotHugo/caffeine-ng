@@ -238,7 +238,7 @@ class Caffeine(gobject.GObject):
         """This method always runs when the first attempt to inhibit the screensaver and
         powersaving is made. It detects what screensaver/powersaving software is running.
         After detection is complete, it will finish the inhibiting process."""
-        print ("Attempting to detect screensaver and powersaving type... (" + str(self.dbusDetectionFailures) + " dbus failures so far)")
+        print ("Attempting to detect screensaver/powersaving type... (" + str(self.dbusDetectionFailures) + " dbus failures so far)")
         bus = dbus.SessionBus()
         if 'org.gnome.ScreenSaver' in bus.list_names():
             self.screensaverAndPowersavingType = "Gnome"
@@ -332,9 +332,9 @@ class Caffeine(gobject.GObject):
     def _toggleDPMS(self):
         """Toggle the DPMS powersaving subsystem."""
         if self.sleepIsPrevented:
-            commands.getoutput("xset -dpms")
-        else:
             commands.getoutput("xset +dpms")
+        else:
+            commands.getoutput("xset -dpms")
 
     def _toggleXSS(self):
         """Toggle whether XScreensaver is activated (powersaving is unaffected)"""
