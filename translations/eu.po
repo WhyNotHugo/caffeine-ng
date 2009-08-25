@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-08-21 12:21+0000\n"
+"POT-Creation-Date: 2009-08-24 23:37+0000\n"
 "PO-Revision-Date: 2009-08-21 19:01+0000\n"
 "Last-Translator: Mikel Alzibar <mikelalzibar@gmail.com>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-24 09:46+0000\n"
+"X-Launchpad-Export-Date: 2009-08-25 09:46+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 32
@@ -57,49 +57,47 @@ msgstr "4 ordu"
 msgid "Other..."
 msgstr "Beste batzuk ..."
 
-#. file 'caffeine/core.py', line 79
+#. file 'caffeine/core.py', line 98
 msgid " and "
 msgstr " eta "
 
-#. file 'caffeine/core.py', line 86
-#. file 'caffeine/core.py', line 92
+#. file 'caffeine/core.py', line 105
+#. file 'caffeine/core.py', line 111
 msgid "hour"
 msgstr "ordu"
 
-#. file 'caffeine/core.py', line 86
-#. file 'caffeine/core.py', line 98
+#. file 'caffeine/core.py', line 105
+#. file 'caffeine/core.py', line 117
 msgid "minute"
 msgstr "minutu"
 
-#. file 'caffeine/core.py', line 94
+#. file 'caffeine/core.py', line 113
 msgid "hours"
 msgstr "ordu"
 
-#. file 'caffeine/core.py', line 100
+#. file 'caffeine/core.py', line 119
 msgid "minutes"
 msgstr "minutu"
 
-#. file 'caffeine/core.py', line 139
+#. file 'caffeine/core.py', line 153
 msgid "Exception occurred"
 msgstr "Salbuespen bat gertatu da"
 
-#. file 'caffeine/core.py', line 152
+#. file 'caffeine/core.py', line 166
 msgid "Timed activation set; "
 msgstr "Denboraren araberako aktibazioa indarrean; "
 
-#. file 'caffeine/core.py', line 153
+#. file 'caffeine/core.py', line 167
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine-k energia aurreztea indargabetuko du hurrengo denboran: "
 
-#. file 'caffeine/core.py', line 235
-#. file 'caffeine/core.py', line 298
+#. file 'caffeine/core.py', line 209
 msgid "Timed activation cancelled (was set for "
 msgstr ""
 "Denboraren araberako aktibazioa ezeztatua (hurrengo denborarako "
 "konfiguratua: "
 
-#. file 'caffeine/core.py', line 248
-#. file 'caffeine/core.py', line 310
+#. file 'caffeine/core.py', line 223
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " pasa dira; energia aurreztea berriro aktibatu da"
 

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-08-21 12:21+0000\n"
+"POT-Creation-Date: 2009-08-24 23:37+0000\n"
 "PO-Revision-Date: 2009-08-14 04:46+0000\n"
 "Last-Translator: Magnun Leno <magnun.leno@gmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-08-24 09:46+0000\n"
+"X-Launchpad-Export-Date: 2009-08-25 09:46+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 32
@@ -57,47 +57,45 @@ msgstr "4 horas"
 msgid "Other..."
 msgstr "Outro..."
 
-#. file 'caffeine/core.py', line 79
+#. file 'caffeine/core.py', line 98
 msgid " and "
 msgstr " e "
 
-#. file 'caffeine/core.py', line 86
-#. file 'caffeine/core.py', line 92
+#. file 'caffeine/core.py', line 105
+#. file 'caffeine/core.py', line 111
 msgid "hour"
 msgstr "hora"
 
-#. file 'caffeine/core.py', line 86
-#. file 'caffeine/core.py', line 98
+#. file 'caffeine/core.py', line 105
+#. file 'caffeine/core.py', line 117
 msgid "minute"
 msgstr "minuto"
 
-#. file 'caffeine/core.py', line 94
+#. file 'caffeine/core.py', line 113
 msgid "hours"
 msgstr "horas"
 
-#. file 'caffeine/core.py', line 100
+#. file 'caffeine/core.py', line 119
 msgid "minutes"
 msgstr "minutos"
 
-#. file 'caffeine/core.py', line 139
+#. file 'caffeine/core.py', line 153
 msgid "Exception occurred"
 msgstr "Uma exceção ocorreu"
 
-#. file 'caffeine/core.py', line 152
+#. file 'caffeine/core.py', line 166
 msgid "Timed activation set; "
 msgstr "Ativação por tempo habilitada; "
 
-#. file 'caffeine/core.py', line 153
+#. file 'caffeine/core.py', line 167
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine irá impedir o modo de economia de energia pelos próximos "
 
-#. file 'caffeine/core.py', line 235
-#. file 'caffeine/core.py', line 298
+#. file 'caffeine/core.py', line 209
 msgid "Timed activation cancelled (was set for "
 msgstr "Ativação por tempo cancelada (configurada para "
 
-#. file 'caffeine/core.py', line 248
-#. file 'caffeine/core.py', line 310
+#. file 'caffeine/core.py', line 223
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " se passaram; o modo economia de energia está ativo"
 
