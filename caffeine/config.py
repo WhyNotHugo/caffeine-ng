@@ -27,7 +27,7 @@ class Configurator(object):
 
     def __init__(self):
 
-        self._client = gconf.client_get_default()
+        self.client = gconf.client_get_default()
 
         self._configs = {}
 
@@ -40,9 +40,9 @@ class Configurator(object):
 
     def set(self, name, value):
         
-        self._client.set_value(self._configs[name], value)
+        self.client.set_value(self._configs[name], value)
 
     def get(self, name):
 
-        return self._client.get(self._configs[name])
+        return self.client.get(self._configs[name])
 

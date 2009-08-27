@@ -39,6 +39,10 @@ IMAGE_PATH = join(BASE_PATH, 'share', 'caffeine', 'images')
 GLADE_PATH = join(BASE_PATH, 'share', 'caffeine', 'glade')
 ICON_PATH  = join(BASE_PATH, 'share', 'icons')
 
+_autostart_dir = join(os.getenv("HOME"), ".config", "autostart")
+_desktop_file  = join(BASE_PATH, 'share', 'applications',
+        'caffeine.desktop')
+
 FULL_ICON_PATH = join(IMAGE_PATH, "Full_Cup.svg")
 EMPTY_ICON_PATH = join(IMAGE_PATH, "Empty_Cup.svg")
 
@@ -72,13 +76,41 @@ def get_icon_pixbuf(size):
 ## gconf stuff
 from caffeine.config import Configurator
 
-_key = '/apps/caffeine/prefs/'
+_key = '/apps/caffeine/prefs'
 
 _conf = Configurator()
 
 ### register all the options that will be used.
-_conf.register_opt("test_option", os.path.join(_key,
-    "test_option"), False)
+import gconf
+_conf.client.add_dir(_key, gconf.CLIENT_PRELOAD_NONE)
+
+_conf.register_opt("autostart", os.path.join(_key,
+    "autostart"), False)
+
+## Functions to add/remove Caffeine from the list of startup programs
+import shutil
+
+def add_to_startup():
+    """Adds caffeine to the programs that start
+    on login.
+    """
+    if not os.path.exists(_autostart_dir):
+        os.makedirs(_autostart_dir)
+    shutil.copy(_desktop_file, _autostart_dir)
+
+def remove_from_startup():
+    """Removes caffeine from the programs that start
+    on login.
+    """
+
+    filename = os.path.join(_autostart_dir, "caffeine.desktop")
+    if os.path.exists(filename):
+        os.remove(filename)
+
+if _conf.get("autostart").get_bool():
+    add_to_startup()
+else:
+    remove_from_startup()
 
 
 def get_configurator():

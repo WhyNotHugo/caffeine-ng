@@ -50,7 +50,8 @@ class GUI(object):
             caffeine.get_icon_pixbuf(24), caffeine.get_icon_pixbuf(32),
             caffeine.get_icon_pixbuf(48))
 
-
+    
+        self.Conf = caffeine.get_configurator()
         
         builder = gtk.Builder()
         builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
@@ -70,6 +71,7 @@ class GUI(object):
         ## popup menu
         self.menu = get("popup_menu")
             
+        ### configuration widget
         ## Build the timer submenu
         TIMER_OPTIONS_LIST = [(_("5 minutes"), 300.0),
                 (_("10 minutes"), 600.0),
@@ -103,6 +105,11 @@ class GUI(object):
 
         ## Preferences editor.
         self.window = get("window")
+        self.autostart_cb = get("autostart_cbutton")
+        self.Conf.client.notify_add("/apps/caffeine/prefs/autostart",
+                self.on_gconf_autostart_changed)
+
+        self.autostart_cb.set_active(self.Conf.get("autostart").get_bool())
 
         ## about dialog
         self.about_dialog = get("aboutdialog")
@@ -174,6 +181,21 @@ class GUI(object):
     def on_close_button_clicked(self, button, data=None):
 
         self.window.hide_all()
+
+    ## configuration callbacks
+    def on_gconf_autostart_changed(self, client, cnxn_id, entry, data=None):
+        if self.Conf.get("autostart").get_bool() != self.autostart_cb.get_active():
+            self.autostart_cb.set_active(
+                self.Conf.get("autostart").get_bool())
+        
+        if self.Conf.get("autostart").get_bool():
+            caffeine.add_to_startup()
+        else:
+            caffeine.remove_from_startup()
+
+
+    def on_autostart_cbutton_toggled(self, cbutton, data=None):
+        self.Conf.set("autostart", cbutton.get_active())
 
     #### Menu callbacks
     def on_time_submenuitem_activate(self, menuitem, time):
