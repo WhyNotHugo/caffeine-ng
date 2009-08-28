@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
-  <object class="GtkListStore" id="running_liststore">
+  <object class="GtkListStore" id="recent_liststore">
     <columns>
       <!-- column-name proc-icon -->
       <column type="GdkPixbuf"/>
@@ -10,12 +10,14 @@
       <column type="gchararray"/>
     </columns>
   </object>
-  <object class="GtkListStore" id="recent_liststore">
+  <object class="GtkListStore" id="running_liststore">
     <columns>
       <!-- column-name proc-icon -->
       <column type="GdkPixbuf"/>
       <!-- column-name proc-name -->
       <column type="gchararray"/>
+      <!-- column-name proc-id -->
+      <column type="gint"/>
     </columns>
   </object>
   <object class="GtkDialog" id="dialog">
@@ -67,14 +69,32 @@
                                 <property name="model">running_liststore</property>
                                 <property name="search_column">1</property>
                                 <child>
-                                  <object class="GtkTreeViewColumn" id="treeviewcolumn1">
-                                    <property name="title">Name</property>
+                                  <object class="GtkTreeViewColumn" id="running_tvc1">
+                                    <property name="title">Process Name</property>
                                     <property name="clickable">True</property>
-                                    <property name="sort_indicator">True</property>
+                                    <child>
+                                      <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1"/>
+                                      <attributes>
+                                        <attribute name="pixbuf">0</attribute>
+                                      </attributes>
+                                    </child>
                                     <child>
                                       <object class="GtkCellRendererText" id="cellrenderertext1"/>
                                       <attributes>
                                         <attribute name="text">1</attribute>
+                                      </attributes>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkTreeViewColumn" id="running_tvc2">
+                                    <property name="title">ID</property>
+                                    <property name="clickable">True</property>
+                                    <property name="sort_order">descending</property>
+                                    <child>
+                                      <object class="GtkCellRendererText" id="cellrenderertext3"/>
+                                      <attributes>
+                                        <attribute name="text">2</attribute>
                                       </attributes>
                                     </child>
                                   </object>
@@ -123,12 +143,11 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="model">recent_liststore</property>
-                                <property name="headers_visible">False</property>
                                 <property name="headers_clickable">False</property>
                                 <property name="search_column">1</property>
                                 <child>
                                   <object class="GtkTreeViewColumn" id="treeviewcolumn2">
-                                    <property name="title">Running Processes</property>
+                                    <property name="title">Process Name</property>
                                     <child>
                                       <object class="GtkCellRendererText" id="cellrenderertext2"/>
                                       <attributes>

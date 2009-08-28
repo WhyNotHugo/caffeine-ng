@@ -18,8 +18,10 @@
 #
 
 
-import os, sys
+import os
+import sys
 import gtk
+import gobject
 import pygtk
 import dbus
 import threading
@@ -35,6 +37,31 @@ except:
 import caffeine
 import core
 import applicationinstance
+import utils
+
+def get_icon_for_process(proc_name):
+
+    icon_theme = gtk.icon_theme_get_default()
+    try:
+        pixbuf = icon_theme.load_icon(proc_name, 16, gtk.ICON_LOOKUP_NO_SVG)
+    except:
+        try:
+            possible_icon_name = proc_name.split("-")[0]
+            pixbuf = icon_theme.load_icon(possible_icon_name, 16,
+                    gtk.ICON_LOOKUP_NO_SVG)
+        except:
+            pass
+        else:
+            return pixbuf
+
+        try:
+            pixbuf = icon_theme.load_icon("application-x-executable", 
+                    16, gtk.ICON_LOOKUP_NO_SVG)
+        except:
+            return None
+
+    return pixbuf
+
 
 class ProcAdd(object):
 
@@ -48,16 +75,81 @@ class ProcAdd(object):
 
         self.dialog = get("dialog")
         self.entry = get("entry")
-
+        
+        ## populate the treemodels
         self.running_treeview = get("running_treeview")
+
         running_selection = self.running_treeview.get_selection()
         self.running_selection = running_selection
+
+        self.running_liststore = get("running_liststore")
+        self.running_liststore.set_sort_func(10, self.sort_proc_func)
+        self.running_liststore.set_sort_column_id(10, gtk.SORT_ASCENDING)
+        self.running_liststore.set_sort_func(11, self.sort_id_func)
+        self.running_liststore.set_sort_column_id(11, gtk.SORT_DESCENDING)
+
+        running_tvc1 = get("running_tvc1")
+        running_tvc1.set_sort_column_id(10)
+
+        running_tvc2 = get("running_tvc2")
+        running_tvc2.set_sort_column_id(11)
+
+        self.update_running_liststore()
+        gobject.timeout_add(5000, self.update_running_liststore)
+
+
         ## allow the user to select multiple rows
         running_selection.connect("changed", self.on_running_selection_changed)
         
         builder.connect_signals(self)
-        
     
+           
+    def sort_proc_func(self, model, iter1, iter2, data=None):
+        v1 = model.get_value(iter1, 1)
+        v2 = model.get_value(iter2, 1)
+        if v1 < v2:
+            return -1
+        elif v1 > v2:
+            return 1
+
+        return 0
+
+    def sort_id_func(self, model, iter1, iter2, data=None):
+        
+        v1 = model.get_value(iter1, 2)
+        v2 = model.get_value(iter2, 2)
+        if v1 < v2:
+            return -1
+        elif v1 > v2:
+            return 1
+
+        return 0
+
+
+    def update_running_liststore(self):
+
+        sel_id = None
+        model, iter = self.running_selection.get_selected()
+
+        if iter != None:
+            sel_id = model.get_value(iter, 2)
+
+        self.running_liststore.clear()
+
+        for proc_name, id in self.get_running_processes():
+            iter = self.running_liststore.append([
+                get_icon_for_process(proc_name), proc_name, id])
+            ## keep the same process selected if possible
+            if id == sel_id:
+                self.running_selection.select_iter(iter)   
+
+
+        return True
+
+    def get_running_processes(self):
+        
+        return [(name.lower(), pid) for name, pid in utils.getProcesses()]
+
     def run(self):
         self.entry.set_text("")
         self.running_selection.unselect_all()
@@ -79,7 +171,6 @@ class ProcAdd(object):
             self.entry.select_region(0, -1)
 
     def on_add_button_clicked(self, button, data=None):
-        print self.entry.get_text()
         self.dialog.hide()
 
     def on_cancel_button_clicked(self, button, data=None):
@@ -238,25 +329,14 @@ class GUI(object):
         self.menu.popup(None, None,
                 gtk.status_icon_position_menu, 3, time, self.status_icon)
         
-    
-    def get_icon_for_process(self, proc_name):
-        icon_theme = gtk.icon_theme_get_default()
-        try:
-            pixbuf = icon_theme.load_icon(proc_name, 16, gtk.ICON_LOOKUP_NO_SVG)
-        except:
-            return None
-
-        return pixbuf
-
     #### Window callbacks
     def on_add_button_clicked(self, button, data=None):
         response = self.ProcAdd.run()
         if response == 1:
             proc_name = self.ProcAdd.get_process_name()
             if proc_name:
-                print self.get_icon_for_process(proc_name)
 
-                self.proc_liststore.append([self.get_icon_for_process(proc_name),
+                self.proc_liststore.append([get_icon_for_process(proc_name),
                     proc_name])
                 
 

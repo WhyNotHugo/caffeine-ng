@@ -23,34 +23,45 @@ import sys
 def getProcessName(pid):
     """Gets process name from process id"""
 
-    processName = file("/proc/%s/status" % pid).readline()[6:-1]
+    truncProcessName = open("/proc/%s/status" % pid).readline()[6:-1]
+    processName = truncProcessName
+
+    line = open("/proc/%s/cmdline" % pid).readline()
+    parts = line.split("\x00")
+    for part in parts:
+        cmdName = part.split("/")[-1]
+
+        if cmdName.startswith(truncProcessName):
+            processName = cmdName
 
     return processName
 
-
-
 def getProcesses():
 
-    processDict = {}
+    processList = []
 
     for pid in os.listdir("/proc/"):
-
         try:
-
             pid = int(pid)
 
         except:
-
             continue
 
         try:
-
             processName = getProcessName(pid)
 
         except:
-
             continue
 
-        processDict[processName] = pid
+        processList.append((processName, pid))
 
-    return processDict
+    return processList
+
+def isProcessRunning(name):
+
+    for proc_name, pid in getProcesses():
+        if name == proc_name:
+            return True
+
+    return False
+

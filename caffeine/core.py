@@ -254,7 +254,7 @@ class Caffeine(gobject.GObject):
             else:
                 # At this point, all attempts to connect to the relevant dbus interfaces have failed.
                 # This user must be using something other than the Gnome or KDE screensaver programs.
-                if "xscreensaver" in utils.getProcesses().keys():
+                if utils.isProcessRunning("xscreensaver"):
                     self.screensaverAndPowersavingType = "XSS+DPMS"
                 else:
                     self.screensaverAndPowersavingType = "DPMS"
