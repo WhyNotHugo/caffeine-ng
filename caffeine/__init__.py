@@ -34,6 +34,22 @@ while True:
     
     c = join(c, pardir)
 
+if os.getenv("XDG_DATA_HOME"):
+    _data_dir = os.getenv("XDG_DATA_HOME")
+else:
+    _data_dir = os.path.join(os.getenv("HOME"), ".local", "share")
+
+_data_dir = os.path.join(_data_dir, "caffeine")
+
+if not os.path.exists(_data_dir):
+    os.makedirs(_data_dir)
+
+DATA_DIR = _data_dir
+## file with a list of programs that caffeine should 
+## activate when they are running
+
+WHITELIST = os.path.join(DATA_DIR, "whitelist.xml")
+
 
 IMAGE_PATH = join(BASE_PATH, 'share', 'caffeine', 'images')
 GLADE_PATH = join(BASE_PATH, 'share', 'caffeine', 'glade')
@@ -86,6 +102,8 @@ _conf.client.add_dir(_key, gconf.CLIENT_PRELOAD_NONE)
 
 _conf.register_opt("autostart", os.path.join(_key,
     "autostart"), False)
+_conf.register_opt("act_for_flash", os.path.join(_key,
+    "act_for_flash"), False)
 
 ## Functions to add/remove Caffeine from the list of startup programs
 import shutil

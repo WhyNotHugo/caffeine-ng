@@ -36,6 +36,67 @@ import caffeine
 import core
 import applicationinstance
 
+class ProcAdd(object):
+
+    def __init__(self):
+        
+        builder = gtk.Builder()
+        builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
+            "proc.glade"))
+
+        get = builder.get_object
+
+        self.dialog = get("dialog")
+        self.entry = get("entry")
+
+        self.running_treeview = get("running_treeview")
+        running_selection = self.running_treeview.get_selection()
+        self.running_selection = running_selection
+        ## allow the user to select multiple rows
+        running_selection.connect("changed", self.on_running_selection_changed)
+        
+        builder.connect_signals(self)
+        
+    
+    def run(self):
+        self.entry.set_text("")
+        self.running_selection.unselect_all()
+
+        response = self.dialog.run()
+        self.dialog.hide()
+        return response
+        
+
+    def get_process_name(self):
+        return self.entry.get_text().strip()
+
+    def on_running_selection_changed(self, treeselection, data=None):
+
+        model, iter = treeselection.get_selected()
+        
+        if iter != None:
+            self.entry.set_text(model.get_value(iter, 1))
+            self.entry.select_region(0, -1)
+
+    def on_add_button_clicked(self, button, data=None):
+        print self.entry.get_text()
+        self.dialog.hide()
+
+    def on_cancel_button_clicked(self, button, data=None):
+        self.dialog.hide()
+
+    def hide(self):
+        self.dialog.hide()
+
+
+    def on_window_delete_event(self, window, data=None):
+
+        window.hide_on_delete()
+        ## Returning True stops the window from being destroyed.
+        return True
+   
+
+
 class GUI(object):
 
     def __init__(self):
@@ -45,6 +106,7 @@ class GUI(object):
         self.Core.connect("activation-toggled",
                 self.on_activation_toggled)
         
+        self.ProcAdd = ProcAdd()
         ## set the icons for the window border.
         gtk.window_set_default_icon_list(caffeine.get_icon_pixbuf(16),
             caffeine.get_icon_pixbuf(24), caffeine.get_icon_pixbuf(32),
@@ -111,6 +173,7 @@ class GUI(object):
 
         self.autostart_cb.set_active(self.Conf.get("autostart").get_bool())
 
+
         ## about dialog
         self.about_dialog = get("aboutdialog")
 
@@ -172,6 +235,11 @@ class GUI(object):
         
     
     #### Window callbacks
+    def on_add_button_clicked(self, button, data=None):
+        response = self.ProcAdd.run()
+        if response == 1:
+            print self.ProcAdd.get_process_name()
+
     def on_window_delete_event(self, window, data=None):
 
         window.hide_on_delete()
@@ -181,6 +249,8 @@ class GUI(object):
     def on_close_button_clicked(self, button, data=None):
 
         self.window.hide_all()
+
+    
 
     ## configuration callbacks
     def on_gconf_autostart_changed(self, client, cnxn_id, entry, data=None):

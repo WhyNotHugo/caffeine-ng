@@ -2,26 +2,6 @@
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
-  <object class="GtkListStore" id="model1">
-    <columns>
-      <!-- column-name gchararray -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Auto</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Gnome-Screensaver</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">KScreensaver</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">XScreensaver</col>
-      </row>
-    </data>
-  </object>
   <object class="GtkAboutDialog" id="aboutdialog">
     <property name="border_width">5</property>
     <property name="destroy_with_parent">True</property>
@@ -65,46 +45,32 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
     </child>
   </object>
   <object class="GtkStatusIcon" id="statusicon"/>
-  <object class="GtkMenu" id="popup_menu">
-    <property name="visible">True</property>
-    <child>
-      <object class="GtkMenuItem" id="time_menuitem">
-        <property name="visible">True</property>
-        <property name="label" translatable="yes">Activate for</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkImageMenuItem" id="prefs_menuitem">
-        <property name="label">gtk-preferences</property>
-        <property name="visible">True</property>
-        <property name="use_underline">True</property>
-        <property name="use_stock">True</property>
-        <property name="always_show_image">True</property>
-        <signal name="activate" handler="on_prefs_menuitem_activate"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkImageMenuItem" id="about_menuitem">
-        <property name="label">gtk-about</property>
-        <property name="visible">True</property>
-        <property name="use_underline">True</property>
-        <property name="use_stock">True</property>
-        <property name="always_show_image">True</property>
-        <signal name="activate" handler="on_about_menuitem_activate"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkImageMenuItem" id="quit_menuitem">
-        <property name="label">gtk-quit</property>
-        <property name="visible">True</property>
-        <property name="use_underline">True</property>
-        <property name="use_stock">True</property>
-        <property name="always_show_image">True</property>
-        <signal name="activate" handler="on_quit_menuitem_activate"/>
-      </object>
-    </child>
+  <object class="GtkListStore" id="proc_liststore">
+    <columns>
+      <!-- column-name proc_name -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">nexuiz*</col>
+      </row>
+    </data>
   </object>
+  <object class="GtkListStore" id="liststore1">
+    <columns>
+      <!-- column-name proc_icon -->
+      <column type="GdkPixbuf"/>
+      <!-- column-name running_proc -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0"/>
+        <col id="1" translatable="yes">nexuiz</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="liststore2"/>
   <object class="GtkWindow" id="window">
     <property name="title" translatable="yes">Preferences</property>
     <property name="window_position">center</property>
@@ -187,6 +153,129 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="position">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkAlignment" id="alignment4">
+                                <property name="visible">True</property>
+                                <property name="left_padding">10</property>
+                                <child>
+                                  <object class="GtkVBox" id="vbox4">
+                                    <property name="visible">True</property>
+                                    <property name="orientation">vertical</property>
+                                    <property name="spacing">5</property>
+                                    <child>
+                                      <object class="GtkLabel" id="label5">
+                                        <property name="visible">True</property>
+                                        <property name="xalign">0</property>
+                                        <property name="label" translatable="yes">Caffeine can activate automatically
+whenever certain programs are runnning.</property>
+                                      </object>
+                                      <packing>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkHBox" id="hbox2">
+                                        <property name="visible">True</property>
+                                        <child>
+                                          <object class="GtkLabel" id="label6">
+                                            <property name="visible">True</property>
+                                            <property name="xalign">0</property>
+                                            <property name="label" translatable="yes">List of programs that Caffeine activates for:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkScrolledWindow" id="scrolledwindow1">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="hscrollbar_policy">automatic</property>
+                                        <property name="vscrollbar_policy">automatic</property>
+                                        <property name="shadow_type">in</property>
+                                        <child>
+                                          <object class="GtkTreeView" id="treeview1">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="model">proc_liststore</property>
+                                            <property name="rules_hint">True</property>
+                                            <child>
+                                              <object class="GtkTreeViewColumn" id="treeviewcolumn1">
+                                                <property name="title">Process Name</property>
+                                                <child>
+                                                  <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1"/>
+                                                </child>
+                                                <child>
+                                                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                                                  <attributes>
+                                                    <attribute name="text">0</attribute>
+                                                  </attributes>
+                                                </child>
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="position">2</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkHButtonBox" id="hbuttonbox2">
+                                        <property name="visible">True</property>
+                                        <property name="spacing">5</property>
+                                        <property name="layout_style">end</property>
+                                        <child>
+                                          <object class="GtkButton" id="remove_button">
+                                            <property name="label" translatable="yes">gtk-remove</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">True</property>
+                                            <property name="use_stock">True</property>
+                                            <signal name="clicked" handler="on_remove_button_clicked"/>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">False</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkButton" id="add_button">
+                                            <property name="label" translatable="yes">gtk-add</property>
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">True</property>
+                                            <property name="receives_default">True</property>
+                                            <property name="use_stock">True</property>
+                                            <signal name="clicked" handler="on_add_button_clicked"/>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">False</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="position">3</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="position">3</property>
                               </packing>
                             </child>
                             <child>
@@ -430,5 +519,109 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
     <property name="upper">59</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
+  </object>
+  <object class="GtkDialog" id="proc_add_dialog">
+    <property name="border_width">5</property>
+    <property name="type_hint">normal</property>
+    <property name="has_separator">False</property>
+    <child internal-child="vbox">
+      <object class="GtkVBox" id="dialog-vbox2">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child internal-child="action_area">
+          <object class="GtkHButtonBox" id="dialog-action_area2">
+            <property name="visible">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <object class="GtkButton" id="button2">
+                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="button1">
+                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <action-widgets>
+      <action-widget response="-6">button2</action-widget>
+      <action-widget response="-5">button1</action-widget>
+    </action-widgets>
+  </object>
+  <object class="GtkMenu" id="popup_menu">
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkMenuItem" id="time_menuitem">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Activate for</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="prefs_menuitem">
+        <property name="label">gtk-preferences</property>
+        <property name="visible">True</property>
+        <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
+        <property name="always_show_image">True</property>
+        <signal name="activate" handler="on_prefs_menuitem_activate"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="about_menuitem">
+        <property name="label">gtk-about</property>
+        <property name="visible">True</property>
+        <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
+        <property name="always_show_image">True</property>
+        <signal name="activate" handler="on_about_menuitem_activate"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImageMenuItem" id="quit_menuitem">
+        <property name="label">gtk-quit</property>
+        <property name="visible">True</property>
+        <property name="use_underline">True</property>
+        <property name="use_stock">True</property>
+        <property name="always_show_image">True</property>
+        <signal name="activate" handler="on_quit_menuitem_activate"/>
+      </object>
+    </child>
   </object>
 </interface>
