@@ -45,17 +45,6 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
     </child>
   </object>
   <object class="GtkStatusIcon" id="statusicon"/>
-  <object class="GtkListStore" id="proc_liststore">
-    <columns>
-      <!-- column-name proc_name -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">nexuiz*</col>
-      </row>
-    </data>
-  </object>
   <object class="GtkListStore" id="liststore1">
     <columns>
       <!-- column-name proc_icon -->
@@ -71,6 +60,14 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
     </data>
   </object>
   <object class="GtkListStore" id="liststore2"/>
+  <object class="GtkListStore" id="proc_liststore">
+    <columns>
+      <!-- column-name proc-icon -->
+      <column type="GdkPixbuf"/>
+      <!-- column-name proc-name -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
   <object class="GtkWindow" id="window">
     <property name="title" translatable="yes">Preferences</property>
     <property name="window_position">center</property>
@@ -211,11 +208,14 @@ whenever certain programs are runnning.</property>
                                                 <property name="title">Process Name</property>
                                                 <child>
                                                   <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1"/>
+                                                  <attributes>
+                                                    <attribute name="pixbuf">0</attribute>
+                                                  </attributes>
                                                 </child>
                                                 <child>
                                                   <object class="GtkCellRendererText" id="cellrenderertext1"/>
                                                   <attributes>
-                                                    <attribute name="text">0</attribute>
+                                                    <attribute name="text">1</attribute>
                                                   </attributes>
                                                 </child>
                                               </object>
@@ -487,19 +487,7 @@ whenever certain programs are runnning.</property>
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="ok_button">
-                <property name="label" translatable="yes">gtk-ok</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="use_stock">True</property>
-                <signal name="clicked" handler="on_othertime_ok"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
+              <placeholder/>
             </child>
           </object>
           <packing>

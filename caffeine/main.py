@@ -133,7 +133,12 @@ class GUI(object):
         ## popup menu
         self.menu = get("popup_menu")
             
-        ### configuration widget
+        ####
+        ### configuration window widets
+        ####
+        self.proc_liststore = get("proc_liststore")
+
+
         ## Build the timer submenu
         TIMER_OPTIONS_LIST = [(_("5 minutes"), 300.0),
                 (_("10 minutes"), 600.0),
@@ -234,11 +239,26 @@ class GUI(object):
                 gtk.status_icon_position_menu, 3, time, self.status_icon)
         
     
+    def get_icon_for_process(self, proc_name):
+        icon_theme = gtk.icon_theme_get_default()
+        try:
+            pixbuf = icon_theme.load_icon(proc_name, 16, gtk.ICON_LOOKUP_NO_SVG)
+        except:
+            return None
+
+        return pixbuf
+
     #### Window callbacks
     def on_add_button_clicked(self, button, data=None):
         response = self.ProcAdd.run()
         if response == 1:
-            print self.ProcAdd.get_process_name()
+            proc_name = self.ProcAdd.get_process_name()
+            if proc_name:
+                print self.get_icon_for_process(proc_name)
+
+                self.proc_liststore.append([self.get_icon_for_process(proc_name),
+                    proc_name])
+                
 
     def on_window_delete_event(self, window, data=None):
 
