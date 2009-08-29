@@ -81,7 +81,7 @@ class Caffeine(gobject.GObject):
         self.note = None
         
         ## check for processes to activate for.
-        id = gobject.timeout_add(5000, self.check_for_process)
+        id = gobject.timeout_add(10000, self.check_for_process)
 
     def check_for_process(self):
         print self.preventedForProcess

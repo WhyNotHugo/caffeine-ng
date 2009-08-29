@@ -67,6 +67,11 @@ class ProcAdd(object):
 
     def __init__(self):
         
+        self.recent_processes = []
+        self.dead_processes = []
+
+        self.running_id = None
+
         builder = gtk.Builder()
         builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
             "proc.glade"))
@@ -93,13 +98,32 @@ class ProcAdd(object):
 
         running_tvc2 = get("running_tvc2")
         running_tvc2.set_sort_column_id(11)
+        
+        running_selection.connect("changed", self.on_running_selection_changed)
 
         self.update_running_liststore()
-        gobject.timeout_add(5000, self.update_running_liststore)
 
+        ###
+        self.recent_treeview = get("recent_treeview")
 
-        ## allow the user to select multiple rows
-        running_selection.connect("changed", self.on_running_selection_changed)
+        recent_selection = self.recent_treeview.get_selection()
+        self.recent_selection = recent_selection
+
+        self.recent_liststore = get("recent_liststore")
+        self.recent_liststore.set_sort_func(10, self.sort_proc_func)
+        self.recent_liststore.set_sort_column_id(10, gtk.SORT_ASCENDING)
+        self.recent_liststore.set_sort_func(11, self.sort_id_func)
+        self.recent_liststore.set_sort_column_id(11, gtk.SORT_DESCENDING)
+
+        recent_tvc1 = get("recent_tvc1")
+        recent_tvc1.set_sort_column_id(10)
+
+        recent_tvc2 = get("recent_tvc2")
+        recent_tvc2.set_sort_column_id(11)
+
+        gobject.timeout_add(5000, self.update_recent_liststore)
+
+        recent_selection.connect("changed", self.on_recent_selection_changed)
         
         builder.connect_signals(self)
     
@@ -145,17 +169,62 @@ class ProcAdd(object):
 
 
         return True
+    
+    def update_recent_liststore(self):
+
+        sel_id = None
+        model, iter = self.recent_selection.get_selected()
+
+        if iter != None:
+            sel_id = model.get_value(iter, 2)
+
+        self.recent_liststore.clear()
+
+        for proc_name, id in self.get_recent_processes():
+            iter = self.recent_liststore.append([
+                get_icon_for_process(proc_name), proc_name, id])
+            ## keep the same process selected if possible
+            if id == sel_id:
+                self.recent_selection.select_iter(iter)
+
+
+        return True
+
+
 
     def get_running_processes(self):
         
         return [(name.lower(), pid) for name, pid in utils.getProcesses()]
+    
+    def get_recent_processes(self):
+        
+
+        running_pids = [pid for name, 
+                pid in utils.getProcesses()]
+
+        if self.recent_processes:
+
+            self.dead_processes += [(name, pid) for name,
+                pid in self.recent_processes if pid not in running_pids]
+        
+        self.recent_processes = self.get_running_processes()
+        return self.dead_processes
+
 
     def run(self):
+
+        if self.running_id != None:
+            gobject.source_remove(self.running_id)
+
+        self.running_id = gobject.timeout_add(5000,
+                self.update_running_liststore)
+
         self.entry.set_text("")
         self.running_selection.unselect_all()
+        self.recent_selection.unselect_all()
 
         response = self.dialog.run()
-        self.dialog.hide()
+        self.hide()
         return response
         
 
@@ -164,11 +233,25 @@ class ProcAdd(object):
 
     def on_running_selection_changed(self, treeselection, data=None):
 
+        self.recent_selection.unselect_all()
+
         model, iter = treeselection.get_selected()
         
         if iter != None:
             self.entry.set_text(model.get_value(iter, 1))
             self.entry.select_region(0, -1)
+
+    def on_recent_selection_changed(self, treeselection, data=None):
+        
+        self.running_selection.unselect_all()
+
+        model, iter = treeselection.get_selected()
+        
+        if iter != None:
+            self.entry.set_text(model.get_value(iter, 1))
+            self.entry.select_region(0, -1)
+
+
 
     def on_add_button_clicked(self, button, data=None):
         self.dialog.hide()
@@ -177,6 +260,10 @@ class ProcAdd(object):
         self.dialog.hide()
 
     def hide(self):
+        
+        if self.running_id != None:
+            gobject.source_remove(self.running_id)
+
         self.dialog.hide()
 
 
