@@ -31,6 +31,7 @@ import applicationinstance
 
 import caffeine
 import utils
+import procmanager
 
 class Caffeine(gobject.GObject):
 
@@ -41,8 +42,9 @@ class Caffeine(gobject.GObject):
         ## convience class for managing configurations
         self.Conf = caffeine.get_configurator()
 
-        #print self.Conf.get("test_option").get_bool()
-
+        ## object to manage processes to activate for.
+        self.ProcMan = caffeine.get_ProcManager()
+        
         ## Makes sure that only one instance of Caffeine is run for
         ## each user on the system.
         self.pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
@@ -68,14 +70,35 @@ class Caffeine(gobject.GObject):
         # Set to True when sleep mode has been successfully inhibited somehow. This should
         # match up with "self.sleepAppearsPrevented" most of the time.
         self.sleepIsPrevented = False
+        self.preventedForProcess = False
 
         self.screenSaverCookie = None
         self.powerManagementCookie = None
         self.timer = None
-        self.source_id = None
+        self.inhibit_id = None
+
 
         self.note = None
-    
+        
+        ## check for processes to activate for.
+        id = gobject.timeout_add(5000, self.check_for_process)
+
+    def check_for_process(self):
+        print self.preventedForProcess
+        activate = False
+        for proc in self.ProcMan.get_process_list():
+            if utils.isProcessRunning(proc):
+                activate = True
+                if not self.getActivated():
+                    self.toggleActivated()
+
+                self.preventedForProcess = True
+
+        if not activate and self.preventedForProcess:
+            if self.getActivated():
+                self.toggleActivated()
+
+        return True
 
     def quit(self):
         """Cancels any timer thread running
@@ -193,6 +216,9 @@ class Caffeine(gobject.GObject):
         """This function toggles the inhibition of the screensaver and powersaving
         features of the current computer, detecting the the type of screensaver and powersaving
         in use, if it has not been detected already."""
+
+        if self.preventedForProcess:
+            self.preventedForProcess = False
 
         if self.sleepAppearsPrevented:
             ### sleep prevention was on now turn it off
@@ -347,8 +373,8 @@ class Caffeine(gobject.GObject):
             # sleep prevention, it should also
             # cancel the timer for timed activation.
 
-            if self.source_id != None:
-                gobject.source_remove(self.source_id)
+            if self.inhibit_id != None:
+                gobject.source_remove(self.inhibit_id)
 
         else:
 
@@ -362,7 +388,7 @@ class Caffeine(gobject.GObject):
                 return True
         
             # reset the idle timer every 50 seconds.
-            self.source_id = gobject.timeout_add(50000, deactivate)
+            self.inhibit_id = gobject.timeout_add(50000, deactivate)
 
         self.emit("activation-toggled", self.getActivated())
 

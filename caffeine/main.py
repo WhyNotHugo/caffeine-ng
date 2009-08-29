@@ -198,6 +198,10 @@ class GUI(object):
                 self.on_activation_toggled)
         
         self.ProcAdd = ProcAdd()
+
+        ## object to manage processes to activate for.
+        self.ProcMan = caffeine.get_ProcManager()
+
         ## set the icons for the window border.
         gtk.window_set_default_icon_list(caffeine.get_icon_pixbuf(16),
             caffeine.get_icon_pixbuf(24), caffeine.get_icon_pixbuf(32),
@@ -335,10 +339,12 @@ class GUI(object):
         if response == 1:
             proc_name = self.ProcAdd.get_process_name()
             if proc_name:
-
                 self.proc_liststore.append([get_icon_for_process(proc_name),
                     proc_name])
                 
+                self.ProcMan.add_proc(proc_name)
+                
+
 
     def on_window_delete_event(self, window, data=None):
 

@@ -48,7 +48,12 @@ DATA_DIR = _data_dir
 ## file with a list of programs that caffeine should 
 ## activate when they are running
 
-WHITELIST = os.path.join(DATA_DIR, "whitelist.xml")
+WHITELIST = os.path.join(DATA_DIR, "whitelist.txt")
+from caffeine import procmanager
+_ProcMan = procmanager.ProcManager()
+
+def get_ProcManager():
+    return _ProcMan
 
 
 IMAGE_PATH = join(BASE_PATH, 'share', 'caffeine', 'images')
