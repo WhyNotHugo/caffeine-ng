@@ -72,6 +72,8 @@ class ProcAdd(object):
 
         self.running_id = None
 
+        self.user_set = True
+
         builder = gtk.Builder()
         builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
             "proc.glade"))
@@ -159,13 +161,16 @@ class ProcAdd(object):
             sel_id = model.get_value(iter, 2)
 
         self.running_liststore.clear()
-
+        
         for proc_name, id in self.get_running_processes():
             iter = self.running_liststore.append([
                 get_icon_for_process(proc_name), proc_name, id])
+
             ## keep the same process selected if possible
             if id == sel_id:
+                self.user_set = False
                 self.running_selection.select_iter(iter)
+                self.user_set = True
 
 
         return True
@@ -180,17 +185,24 @@ class ProcAdd(object):
 
         self.recent_liststore.clear()
 
-        for proc_name, id in self.get_recent_processes():
-            iter = self.recent_liststore.append([
-                get_icon_for_process(proc_name), proc_name, id])
+        seen = []
+        
+        recent = self.get_recent_processes()
+        recent.reverse()
+        for proc_name, id in recent:
+
+            if proc_name not in seen:
+                iter = self.recent_liststore.append([
+                    get_icon_for_process(proc_name), proc_name, id])
+
+            seen.append(proc_name)
             ## keep the same process selected if possible
             if id == sel_id:
+                self.user_set = False
                 self.recent_selection.select_iter(iter)
-
+                self.user_set = True
 
         return True
-
-
 
     def get_running_processes(self):
         
@@ -198,15 +210,17 @@ class ProcAdd(object):
     
     def get_recent_processes(self):
         
-
         running_pids = [pid for name, 
                 pid in utils.getProcesses()]
 
         if self.recent_processes:
+            ## don't let the list get too long
+            if len(self.dead_processes) > 100:
+                self.dead_processes = self.dead_processes[25:100]
 
             self.dead_processes += [(name, pid) for name,
                 pid in self.recent_processes if pid not in running_pids]
-        
+            
         self.recent_processes = self.get_running_processes()
         return self.dead_processes
 
@@ -232,8 +246,9 @@ class ProcAdd(object):
         return self.entry.get_text().strip()
 
     def on_running_selection_changed(self, treeselection, data=None):
-
-        self.recent_selection.unselect_all()
+        
+        if not self.user_set:
+            return 
 
         model, iter = treeselection.get_selected()
         
@@ -243,7 +258,8 @@ class ProcAdd(object):
 
     def on_recent_selection_changed(self, treeselection, data=None):
         
-        self.running_selection.unselect_all()
+        if not self.user_set:
+            return 
 
         model, iter = treeselection.get_selected()
         

@@ -52,12 +52,6 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
       <!-- column-name running_proc -->
       <column type="gchararray"/>
     </columns>
-    <data>
-      <row>
-        <col id="0"/>
-        <col id="1" translatable="yes">nexuiz</col>
-      </row>
-    </data>
   </object>
   <object class="GtkListStore" id="liststore2"/>
   <object class="GtkListStore" id="proc_liststore">

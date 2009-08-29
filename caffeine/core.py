@@ -84,7 +84,6 @@ class Caffeine(gobject.GObject):
         id = gobject.timeout_add(10000, self.check_for_process)
 
     def check_for_process(self):
-        print self.preventedForProcess
         activate = False
         for proc in self.ProcMan.get_process_list():
             if utils.isProcessRunning(proc):
