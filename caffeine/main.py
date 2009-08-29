@@ -141,7 +141,7 @@ class ProcAdd(object):
                 get_icon_for_process(proc_name), proc_name, id])
             ## keep the same process selected if possible
             if id == sel_id:
-                self.running_selection.select_iter(iter)   
+                self.running_selection.select_iter(iter)
 
 
         return True
@@ -229,9 +229,16 @@ class GUI(object):
         self.menu = get("popup_menu")
             
         ####
-        ### configuration window widets
+        ### configuration window widgets
         ####
+        proc_treeview = get("treeview")
+        self.selection = proc_treeview.get_selection()
+        self.selection.set_mode(gtk.SELECTION_MULTIPLE)
+
         self.proc_liststore = get("proc_liststore")
+        for line in open(caffeine.WHITELIST):
+            name = line.strip()
+            self.proc_liststore.append([get_icon_for_process(name), name])
 
 
         ## Build the timer submenu
@@ -344,7 +351,13 @@ class GUI(object):
                 
                 self.ProcMan.add_proc(proc_name)
                 
+    def on_remove_button_clicked(self, button, data=None):
 
+        model, paths = self.selection.get_selected_rows()
+        paths.reverse()
+        for path in paths:
+            self.ProcMan.remove_proc(model[path][1])
+            model.remove(model.get_iter(path))
 
     def on_window_delete_event(self, window, data=None):
 

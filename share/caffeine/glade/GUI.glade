@@ -198,7 +198,7 @@ whenever certain programs are runnning.</property>
                                         <property name="vscrollbar_policy">automatic</property>
                                         <property name="shadow_type">in</property>
                                         <child>
-                                          <object class="GtkTreeView" id="treeview1">
+                                          <object class="GtkTreeView" id="treeview">
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="model">proc_liststore</property>
