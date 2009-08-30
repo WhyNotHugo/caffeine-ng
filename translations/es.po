@@ -1,4 +1,4 @@
-# Italian translation for caffeine
+# Spanish translation for caffeine
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the caffeine package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-08-24 23:37+0000\n"
-"PO-Revision-Date: 2009-08-09 04:36+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
-"Language-Team: Italian <it@li.org>\n"
+"PO-Revision-Date: 2009-08-30 02:02+0000\n"
+"Last-Translator: Ildefonso Gómez <Unknown>\n"
+"Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,52 +19,52 @@ msgstr ""
 
 #. file 'caffeine/main.py', line 32
 msgid "Please install"
-msgstr ""
+msgstr "Por favor instale"
 
 #. file 'caffeine/main.py', line 74
 msgid "5 minutes"
-msgstr "5 minuti"
+msgstr "5 minutos"
 
 #. file 'caffeine/main.py', line 75
 msgid "10 minutes"
-msgstr "10 minuti"
+msgstr "10 minutos"
 
 #. file 'caffeine/main.py', line 76
 msgid "15 minutes"
-msgstr "15 minuti"
+msgstr "41 mm"
 
 #. file 'caffeine/main.py', line 77
 msgid "30 minutes"
-msgstr "30 minuti"
+msgstr "30 minutos"
 
 #. file 'caffeine/main.py', line 78
 msgid "1 hour"
-msgstr "1 ora"
+msgstr "1 hora"
 
 #. file 'caffeine/main.py', line 79
 msgid "2 hours"
-msgstr ""
+msgstr "2  horas"
 
 #. file 'caffeine/main.py', line 80
 msgid "3 hours"
-msgstr "3 ore"
+msgstr "3 horas"
 
 #. file 'caffeine/main.py', line 81
 msgid "4 hours"
-msgstr "4 ore"
+msgstr "4 horas"
 
 #. file 'caffeine/main.py', line 96
 msgid "Other..."
-msgstr ""
+msgstr "Otro..."
 
 #. file 'caffeine/core.py', line 98
 msgid " and "
-msgstr ""
+msgstr " y "
 
 #. file 'caffeine/core.py', line 105
 #. file 'caffeine/core.py', line 111
 msgid "hour"
-msgstr "ora"
+msgstr "hora"
 
 #. file 'caffeine/core.py', line 105
 #. file 'caffeine/core.py', line 117
@@ -73,15 +73,15 @@ msgstr "minuto"
 
 #. file 'caffeine/core.py', line 113
 msgid "hours"
-msgstr ""
+msgstr "horas"
 
 #. file 'caffeine/core.py', line 119
 msgid "minutes"
-msgstr ""
+msgstr "minutos"
 
 #. file 'caffeine/core.py', line 153
 msgid "Exception occurred"
-msgstr ""
+msgstr "Ocurrió una excepción"
 
 #. file 'caffeine/core.py', line 166
 msgid "Timed activation set; "
@@ -107,28 +107,28 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
-msgstr ""
+msgstr "Activar para"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "DPMS enabled"
-msgstr ""
+msgstr "DPMS habilitado"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr ""
+msgstr "Configurar Caffeine"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
-msgstr ""
+msgstr "Duración"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Hours:"
-msgstr ""
+msgstr "Horas:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
-msgstr ""
+msgstr "Minutos:"
