@@ -1,4 +1,4 @@
-# Portuguese translation for caffeine
+# Spanish translation for caffeine
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the caffeine package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-08-24 23:37+0000\n"
-"PO-Revision-Date: 2009-08-14 04:46+0000\n"
-"Last-Translator: Magnun Leno <magnun.leno@gmail.com>\n"
-"Language-Team: Portuguese <pt@li.org>\n"
+"PO-Revision-Date: 2009-08-30 11:16+0000\n"
+"Last-Translator: Ildefonso Gómez <Unknown>\n"
+"Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,7 +43,7 @@ msgstr "1 hora"
 
 #. file 'caffeine/main.py', line 79
 msgid "2 hours"
-msgstr "2 horas"
+msgstr "2  horas"
 
 #. file 'caffeine/main.py', line 80
 msgid "3 hours"
@@ -55,11 +55,11 @@ msgstr "4 horas"
 
 #. file 'caffeine/main.py', line 96
 msgid "Other..."
-msgstr "Outro..."
+msgstr "Otro..."
 
 #. file 'caffeine/core.py', line 98
 msgid " and "
-msgstr " e "
+msgstr " y "
 
 #. file 'caffeine/core.py', line 105
 #. file 'caffeine/core.py', line 111
@@ -81,43 +81,41 @@ msgstr "minutos"
 
 #. file 'caffeine/core.py', line 153
 msgid "Exception occurred"
-msgstr "Uma exceção ocorreu"
+msgstr "Ocurrió una excepción"
 
 #. file 'caffeine/core.py', line 166
 msgid "Timed activation set; "
-msgstr "Ativação por tempo habilitada; "
+msgstr ""
 
 #. file 'caffeine/core.py', line 167
 msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine irá impedir o modo de economia de energia pelos próximos "
+msgstr ""
 
 #. file 'caffeine/core.py', line 209
 msgid "Timed activation cancelled (was set for "
-msgstr "Ativação por tempo cancelada (configurada para "
+msgstr ""
 
 #. file 'caffeine/core.py', line 223
 msgid " have elapsed; powersaving is re-enabled"
-msgstr " se passaram; o modo economia de energia está ativo"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
-"Uma aplicação que previne temporariamente a ativação do protetor de tela e o "
-"modo \"sleep\" de economia de energia."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
-msgstr "Ativar por"
+msgstr "Activar para"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
-msgstr "Preferências"
+msgstr "Preferencias"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "DPMS enabled"
-msgstr "DPMS ativado"
+msgstr "DPMS habilitado"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
@@ -125,7 +123,7 @@ msgstr "Configurar Caffeine"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
-msgstr "Duração"
+msgstr "Duración"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Hours:"
