@@ -23,6 +23,7 @@ import gobject
 import os
 import pynotify
 import commands
+import time
 
 import dbus
 import threading
@@ -32,6 +33,8 @@ import applicationinstance
 import caffeine
 import utils
 import procmanager
+
+import Xlib.display
 
 class Caffeine(gobject.GObject):
 
@@ -70,7 +73,9 @@ class Caffeine(gobject.GObject):
         # Set to True when sleep mode has been successfully inhibited somehow. This should
         # match up with "self.sleepAppearsPrevented" most of the time.
         self.sleepIsPrevented = False
+
         self.preventedForProcess = False
+        self.preventedForQL = False
 
         self.screenSaverCookie = None
         self.powerManagementCookie = None
@@ -81,9 +86,13 @@ class Caffeine(gobject.GObject):
         self.note = None
         
         ## check for processes to activate for.
-        id = gobject.timeout_add(10000, self.check_for_process)
+        id = gobject.timeout_add(10000, self._check_for_process)
 
-    def check_for_process(self):
+        ## check for Quake Live :D
+        id = gobject.timeout_add(30000, self._check_for_QL)
+        self.atimes = {}
+
+    def _check_for_process(self):
         activate = False
         for proc in self.ProcMan.get_process_list():
             if utils.isProcessRunning(proc):
@@ -94,6 +103,28 @@ class Caffeine(gobject.GObject):
                 self.preventedForProcess = True
 
         if not activate and self.preventedForProcess:
+            if self.getActivated():
+                self.toggleActivated()
+
+        return True
+    
+    def _check_for_QL(self):
+        
+        screen = Xlib.display.Display().screen()
+        root_win = screen.root
+        
+        activate = False
+        ## iterate through all of the X windows
+        for window in root_win.query_tree()._data['children']:
+            window_name = window.get_wm_name()
+            if window_name == "QuakeLive":
+                print "QuakeLive baby!"
+                activate = True
+                if not self.getActivated():
+                    self.toggleActivated()
+                    self.preventedForQL = True
+
+        if not activate and self.preventedForQL:
             if self.getActivated():
                 self.toggleActivated()
 
@@ -177,11 +208,12 @@ class Caffeine(gobject.GObject):
         finally:
             return False
 
+    
 
     def getActivated(self):
         return self.sleepAppearsPrevented
 
-    def timedActivation(self, time):
+    def timedActivation(self, time, note=True):
         """Calls toggleActivated after the number of seconds
         specified by time has passed.
         """
@@ -194,7 +226,8 @@ class Caffeine(gobject.GObject):
             self.toggleActivated()
 
 
-        self._notify(message, caffeine.FULL_ICON_PATH)
+        if note:
+            self._notify(message, caffeine.FULL_ICON_PATH)
 
         ## and deactivate after time has passed.
         ## Stop already running timer
@@ -218,6 +251,9 @@ class Caffeine(gobject.GObject):
 
         if self.preventedForProcess:
             self.preventedForProcess = False
+
+        if self.preventedForQL:
+            self.preventedForQL = False
 
         if self.sleepAppearsPrevented:
             ### sleep prevention was on now turn it off

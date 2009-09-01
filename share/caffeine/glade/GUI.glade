@@ -261,9 +261,6 @@ whenever certain programs are runnning.</property>
                                         <property name="position">3</property>
                                       </packing>
                                     </child>
-                                    <child>
-                                      <placeholder/>
-                                    </child>
                                   </object>
                                 </child>
                               </object>
@@ -271,9 +268,6 @@ whenever certain programs are runnning.</property>
                                 <property name="expand">False</property>
                                 <property name="position">3</property>
                               </packing>
-                            </child>
-                            <child>
-                              <placeholder/>
                             </child>
                           </object>
                           <packing>

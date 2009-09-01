@@ -126,7 +126,9 @@ class ProcAdd(object):
         gobject.timeout_add(5000, self.update_recent_liststore)
 
         recent_selection.connect("changed", self.on_recent_selection_changed)
-        
+
+
+                
         builder.connect_signals(self)
     
            
@@ -290,7 +292,7 @@ class ProcAdd(object):
         return True
    
 
-
+        
 class GUI(object):
 
     def __init__(self):
