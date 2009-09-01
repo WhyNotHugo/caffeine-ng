@@ -1,5 +1,5 @@
-caffeine (0.3-0ubuntu0~ppa0) jaunty; urgency=low
+caffeine (0.3-0ubuntu0~ppa5~jaunty) jaunty; urgency=low
 
-  * Added Screensaver and DPMS support, command line options.
+  * Added Auto-activation for programs.
 
- -- Isaiah Heyer <freshapplepy@gmail.com>  Sat, 22 Aug 2009 21:36:54 -0500
+ -- Isaiah Heyer <freshapplepy@gmail.com>  Tue, 01 Sep 2009 10:53:15 -0500

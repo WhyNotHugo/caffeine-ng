@@ -49,6 +49,12 @@ DATA_DIR = _data_dir
 ## activate when they are running
 
 WHITELIST = os.path.join(DATA_DIR, "whitelist.txt")
+## create file if it doesn't exist
+if not os.path.isfile(WHITELIST):
+    file = open(WHITELIST, "w")
+    file.close()
+
+
 from caffeine import procmanager
 _ProcMan = procmanager.ProcManager()
 
