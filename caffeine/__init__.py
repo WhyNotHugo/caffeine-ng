@@ -22,7 +22,7 @@ import os
 from os.path import join, abspath, dirname, pardir
 import gtk
 
-VERSION = "0.3"
+VERSION = "0.4"
 BASE_PATH = None
 
 c = abspath(dirname(__file__))
@@ -113,6 +113,8 @@ _conf.client.add_dir(_key, gconf.CLIENT_PRELOAD_NONE)
 
 _conf.register_opt("autostart", os.path.join(_key,
     "autostart"), False)
+_conf.register_opt("act_for_ql", os.path.join(_key,
+    "act_for_ql"), False)
 _conf.register_opt("act_for_flash", os.path.join(_key,
     "act_for_flash"), False)
 

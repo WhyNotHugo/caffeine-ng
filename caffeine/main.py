@@ -22,7 +22,9 @@ import os
 import sys
 import gtk
 import gobject
+import glib
 import pygtk
+
 import dbus
 import threading
 import ctypes
@@ -42,26 +44,35 @@ import utils
 def get_icon_for_process(proc_name):
 
     icon_theme = gtk.icon_theme_get_default()
-    try:
-        pixbuf = icon_theme.load_icon(proc_name, 16, gtk.ICON_LOOKUP_NO_SVG)
-    except:
-        try:
-            possible_icon_name = proc_name.split("-")[0]
-            pixbuf = icon_theme.load_icon(possible_icon_name, 16,
-                    gtk.ICON_LOOKUP_NO_SVG)
-        except:
-            pass
-        else:
+    iconInfo = icon_theme.lookup_icon(proc_name, 16,
+            gtk.ICON_LOOKUP_NO_SVG)
+
+    if iconInfo != None:
+        if iconInfo.get_filename():
+            pixbuf = iconInfo.load_icon()
+            return pixbuf
+    
+    possible_icon_names = proc_name.split("-")
+    for icon_name in possible_icon_names:
+        icon_name = icon_name.split("/")[-1]
+
+        iconInfo = icon_theme.lookup_icon(icon_name, 16,
+                gtk.ICON_LOOKUP_NO_SVG)
+        if iconInfo != None:
+            if iconInfo.get_filename():
+                pixbuf = iconInfo.load_icon()
+                return pixbuf
+    
+
+
+    iconInfo = icon_theme.lookup_icon("application-x-executable", 16,
+                gtk.ICON_LOOKUP_NO_SVG)
+    if iconInfo != None:
+        if iconInfo.get_filename():
+            pixbuf = iconInfo.load_icon()
             return pixbuf
 
-        try:
-            pixbuf = icon_theme.load_icon("application-x-executable", 
-                    16, gtk.ICON_LOOKUP_NO_SVG)
-        except:
-            return None
-
-    return pixbuf
-
+    return None
 
 class ProcAdd(object):
 
@@ -126,8 +137,6 @@ class ProcAdd(object):
         gobject.timeout_add(5000, self.update_recent_liststore)
 
         recent_selection.connect("changed", self.on_recent_selection_changed)
-
-
                 
         builder.connect_signals(self)
     
@@ -379,11 +388,18 @@ class GUI(object):
 
         ## Preferences editor.
         self.window = get("window")
+
         self.autostart_cb = get("autostart_cbutton")
+        self.ql_cb = get("ql_cbutton")
+
         self.Conf.client.notify_add("/apps/caffeine/prefs/autostart",
                 self.on_gconf_autostart_changed)
 
+        self.Conf.client.notify_add("/apps/caffeine/prefs/act_for_ql",
+                self.on_gconf_ql_changed)
+
         self.autostart_cb.set_active(self.Conf.get("autostart").get_bool())
+        self.ql_cb.set_active(self.Conf.get("act_for_ql").get_bool())
 
 
         ## about dialog
@@ -478,11 +494,12 @@ class GUI(object):
 
     ## configuration callbacks
     def on_gconf_autostart_changed(self, client, cnxn_id, entry, data=None):
-        if self.Conf.get("autostart").get_bool() != self.autostart_cb.get_active():
-            self.autostart_cb.set_active(
-                self.Conf.get("autostart").get_bool())
+        autostart = self.Conf.get("autostart").get_bool() 
+
+        if autostart != self.autostart_cb.get_active():
+            self.autostart_cb.set_active(autostart)
         
-        if self.Conf.get("autostart").get_bool():
+        if autostart:
             caffeine.add_to_startup()
         else:
             caffeine.remove_from_startup()
@@ -490,6 +507,20 @@ class GUI(object):
 
     def on_autostart_cbutton_toggled(self, cbutton, data=None):
         self.Conf.set("autostart", cbutton.get_active())
+
+    def on_gconf_ql_changed(self, client, cnxn_id, entry, data=None):
+        act_for_ql = self.Conf.get("act_for_ql").get_bool()
+
+        self.Core.setActivateForQL(act_for_ql)
+
+        if act_for_ql != self.ql_cb.get_active():
+            self.ql_cb.set_active(act_for_ql)
+
+    def on_ql_cbutton_toggled(self, cbutton, data=None):
+        self.Conf.set("act_for_ql", cbutton.get_active())
+
+    def on_flash_cbutton_toggled(self, cbutton, data=None):
+        pass
 
     #### Menu callbacks
     def on_time_submenuitem_activate(self, menuitem, time):

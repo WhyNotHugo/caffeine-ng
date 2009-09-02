@@ -88,45 +88,63 @@ class Caffeine(gobject.GObject):
         ## check for processes to activate for.
         id = gobject.timeout_add(10000, self._check_for_process)
 
-        ## check for Quake Live :D
-        id = gobject.timeout_add(30000, self._check_for_QL)
-        self.atimes = {}
+        ## check for Quake Live.
+        self.ql_id = None
+        if self.Conf.get("act_for_ql").get_bool():
+            self.setActivateForQL(True)
+
+    def setActivateForQL(self, do_activate):
+        
+        ## In case it is currently activated for QL
+        self._check_for_QL()
+
+        if self.ql_id != None:
+            gobject.source_remove(self.ql_id)
+
+        self.ql_id = None
+
+        if do_activate:
+            self.ql_id = gobject.timeout_add(15000, self._check_for_QL)
+
+        
+    def _check_for_QL(self):
+        
+        screen = Xlib.display.Display().screen()
+        root_win = screen.root
+        
+        print "_check_for_QL"
+        activate = False
+        ## iterate through all of the X windows
+        for window in root_win.query_tree()._data['children']:
+            window_name = window.get_wm_name()
+
+            width = window.get_geometry()._data["width"]
+            height = window.get_geometry()._data["height"]
+            if window_name == "QuakeLive":
+                #if (width == screen.width_in_pixels and 
+                #    height == screen.height_in_pixels):
+
+                print "QuakeLive baby!"
+                activate = True
+                self.setActivated()
+                self.preventedForQL = True
+
+        if not activate and self.preventedForQL:
+            self.setDeactivated()
+
+        return True
 
     def _check_for_process(self):
         activate = False
         for proc in self.ProcMan.get_process_list():
             if utils.isProcessRunning(proc):
                 activate = True
-                if not self.getActivated():
-                    self.toggleActivated()
+                self.setActivated()
 
                 self.preventedForProcess = True
 
         if not activate and self.preventedForProcess:
-            if self.getActivated():
-                self.toggleActivated()
-
-        return True
-    
-    def _check_for_QL(self):
-        
-        screen = Xlib.display.Display().screen()
-        root_win = screen.root
-        
-        activate = False
-        ## iterate through all of the X windows
-        for window in root_win.query_tree()._data['children']:
-            window_name = window.get_wm_name()
-            if window_name == "QuakeLive":
-                print "QuakeLive baby!"
-                activate = True
-                if not self.getActivated():
-                    self.toggleActivated()
-                    self.preventedForQL = True
-
-        if not activate and self.preventedForQL:
-            if self.getActivated():
-                self.toggleActivated()
+            self.setDeactivated()
 
         return True
 
@@ -222,9 +240,8 @@ class Caffeine(gobject.GObject):
             self._timeDisplay(time))
         print "Timed activation set for " + self._timeDisplay(time)
 
-        if not self.getActivated():
-            self.toggleActivated()
 
+        self.setActivated()
 
         if note:
             self._notify(message, caffeine.FULL_ICON_PATH)
@@ -243,6 +260,14 @@ class Caffeine(gobject.GObject):
         self.timer.name = "Expired"
         self.toggleActivated()
 
+    
+    def setActivated(self):
+        if not self.getActivated():
+            self.toggleActivated()
+
+    def setDeactivated(self):
+        if self.getActivated():
+            self.toggleActivated()
 
     def toggleActivated(self):
         """This function toggles the inhibition of the screensaver and powersaving
