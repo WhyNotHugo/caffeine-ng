@@ -1,5 +1,5 @@
-caffeine (0.3-0ubuntu0~ppa5~jaunty) jaunty; urgency=low
+caffeine (1.0-0ubuntu0~ppa5~jaunty) jaunty; urgency=low
 
   * Added Auto-activation for programs.
 
- -- Isaiah Heyer <freshapplepy@gmail.com>  Tue, 01 Sep 2009 10:53:15 -0500
+ -- Isaiah Heyer <freshapplepy@gmail.com>  Thu, 03 Sep 2009 21:12:15 -0500

@@ -22,7 +22,7 @@ import os
 from os.path import join, abspath, dirname, pardir
 import gtk
 
-VERSION = "0.4"
+VERSION = "1.0"
 BASE_PATH = None
 
 c = abspath(dirname(__file__))
