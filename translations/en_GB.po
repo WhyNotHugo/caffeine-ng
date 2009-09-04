@@ -7,97 +7,109 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-08-24 23:37+0000\n"
+"POT-Creation-Date: 2009-09-03 21:15+0000\n"
 "PO-Revision-Date: 2009-08-27 10:45+0000\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-03 10:29+0000\n"
+"X-Launchpad-Export-Date: 2009-09-04 10:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 32
+#. file 'caffeine/main.py', line 36
 msgid "Please install"
 msgstr "Please install"
 
-#. file 'caffeine/main.py', line 74
+#. file 'caffeine/main.py', line 359
 msgid "5 minutes"
 msgstr "5 minutes"
 
-#. file 'caffeine/main.py', line 75
+#. file 'caffeine/main.py', line 360
 msgid "10 minutes"
 msgstr "10 minutes"
 
-#. file 'caffeine/main.py', line 76
+#. file 'caffeine/main.py', line 361
 msgid "15 minutes"
 msgstr "15 minutes"
 
-#. file 'caffeine/main.py', line 77
+#. file 'caffeine/main.py', line 362
 msgid "30 minutes"
 msgstr "30 minutes"
 
-#. file 'caffeine/main.py', line 78
+#. file 'caffeine/main.py', line 363
 msgid "1 hour"
 msgstr "1 hour"
 
-#. file 'caffeine/main.py', line 79
+#. file 'caffeine/main.py', line 364
 msgid "2 hours"
 msgstr "2 hours"
 
-#. file 'caffeine/main.py', line 80
+#. file 'caffeine/main.py', line 365
 msgid "3 hours"
 msgstr "3 hours"
 
-#. file 'caffeine/main.py', line 81
+#. file 'caffeine/main.py', line 366
 msgid "4 hours"
 msgstr "4 hours"
 
-#. file 'caffeine/main.py', line 96
+#. file 'caffeine/main.py', line 381
 msgid "Other..."
 msgstr "Other..."
 
-#. file 'caffeine/core.py', line 98
+#. file 'caffeine/core.py', line 169
 msgid " and "
 msgstr " and "
 
-#. file 'caffeine/core.py', line 105
-#. file 'caffeine/core.py', line 111
+#. file 'caffeine/core.py', line 176
+#. file 'caffeine/core.py', line 182
 msgid "hour"
 msgstr "hour"
 
-#. file 'caffeine/core.py', line 105
-#. file 'caffeine/core.py', line 117
+#. file 'caffeine/core.py', line 176
+#. file 'caffeine/core.py', line 188
 msgid "minute"
 msgstr "minute"
 
-#. file 'caffeine/core.py', line 113
+#. file 'caffeine/core.py', line 184
 msgid "hours"
 msgstr "hours"
 
-#. file 'caffeine/core.py', line 119
+#. file 'caffeine/core.py', line 190
 msgid "minutes"
 msgstr "minutes"
 
-#. file 'caffeine/core.py', line 153
+#. file 'caffeine/core.py', line 224
 msgid "Exception occurred"
 msgstr "Exception occurred"
 
-#. file 'caffeine/core.py', line 166
+#. file 'caffeine/core.py', line 238
 msgid "Timed activation set; "
 msgstr "Timed activation set; "
 
-#. file 'caffeine/core.py', line 167
+#. file 'caffeine/core.py', line 239
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine will prevent powersaving for the next "
 
-#. file 'caffeine/core.py', line 209
+#. file 'caffeine/core.py', line 295
 msgid "Timed activation cancelled (was set for "
 msgstr "Timed activation cancelled (was set for "
 
-#. file 'caffeine/core.py', line 223
+#. file 'caffeine/core.py', line 309
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " have elapsed; powersaving is re-enabled"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Select a process name..."
+msgstr ""
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Running Processes"
+msgstr ""
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Recent Processes"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -108,16 +120,38 @@ msgstr ""
 "saver and the \"sleep\" powersaving mode."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for"
-msgstr "Activate for"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
 msgstr "Preferences"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "DPMS enabled"
-msgstr "DPMS enabled"
+msgid "Autostart"
+msgstr ""
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Start Caffeine on login."
+msgstr ""
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Automatic activation"
+msgstr ""
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid ""
+"Caffeine can activate automatically\n"
+"whenever certain programs are runnning."
+msgstr ""
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "List of programs that Caffeine activates for:"
+msgstr ""
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Activate for Quake Live."
+msgstr ""
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Activate for Flash video."
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
@@ -134,3 +168,10 @@ msgstr "Hours:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
 msgstr "Minutes:"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Activate for"
+msgstr "Activate for"
+
+#~ msgid "DPMS enabled"
+#~ msgstr "DPMS enabled"
