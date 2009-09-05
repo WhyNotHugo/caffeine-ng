@@ -122,32 +122,36 @@ class Caffeine(gobject.GObject):
         
     def _check_for_QL(self):
         
-        screen = Xlib.display.Display().screen()
-        root_win = screen.root
-        
-        print "_check_for_QL"
-        activate = False
-        ## iterate through all of the X windows
-        for window in root_win.query_tree()._data['children']:
-            window_name = window.get_wm_name()
+        try:
+            screen = Xlib.display.Display().screen()
+            root_win = screen.root
+            
+            print "_check_for_QL"
+            activate = False
+            ## iterate through all of the X windows
+            for window in root_win.query_tree()._data['children']:
+                window_name = window.get_wm_name()
 
-            width = window.get_geometry()._data["width"]
-            height = window.get_geometry()._data["height"]
-            if window_name == "QuakeLive":
-                #if (width == screen.width_in_pixels and 
-                #    height == screen.height_in_pixels):
+                width = window.get_geometry()._data["width"]
+                height = window.get_geometry()._data["height"]
+                if window_name == "QuakeLive":
+                    #if (width == screen.width_in_pixels and 
+                    #    height == screen.height_in_pixels):
 
-                print "QuakeLive baby!"
-                activate = True
-                self.setActivated(True)
-                self.preventedForQL = True
+                    print "QuakeLive baby!"
+                    activate = True
+                    self.setActivated(True)
+                    self.preventedForQL = True
 
-        if not activate and self.preventedForQL:
-            self.setActivated(False)
+            if not activate and self.preventedForQL:
+                self.setActivated(False)
+
+        except:
+            pass
 
         return True
 
-    def _check_for_process(self):
+        def _check_for_process(self):
         activate = False
         for proc in self.ProcMan.get_process_list():
             if utils.isProcessRunning(proc):
