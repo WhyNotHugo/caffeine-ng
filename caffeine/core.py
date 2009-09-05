@@ -48,6 +48,9 @@ class Caffeine(gobject.GObject):
         ## object to manage processes to activate for.
         self.ProcMan = caffeine.get_ProcManager()
         
+        ## Status string.
+        self.status_string = ""
+
         ## Makes sure that only one instance of Caffeine is run for
         ## each user on the system.
         self.pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
@@ -93,6 +96,16 @@ class Caffeine(gobject.GObject):
         if self.Conf.get("act_for_ql").get_bool():
             self.setActivateForQL(True)
 
+        ## check for Flash video.
+        self.flash_id = None
+        if self.Conf.get("act_for_flash").get_bool():
+            self.setActivateForFlash(True)
+
+
+
+    def setActivateForFlash(self, do_activate):
+        pass
+
     def setActivateForQL(self, do_activate):
         
         ## In case it is currently activated for QL
@@ -126,11 +139,11 @@ class Caffeine(gobject.GObject):
 
                 print "QuakeLive baby!"
                 activate = True
-                self.setActivated()
+                self.setActivated(True)
                 self.preventedForQL = True
 
         if not activate and self.preventedForQL:
-            self.setDeactivated()
+            self.setActivated(False)
 
         return True
 
@@ -139,12 +152,12 @@ class Caffeine(gobject.GObject):
         for proc in self.ProcMan.get_process_list():
             if utils.isProcessRunning(proc):
                 activate = True
-                self.setActivated()
+                self.setActivated(True)
 
                 self.preventedForProcess = True
 
         if not activate and self.preventedForProcess:
-            self.setDeactivated()
+            self.setActivated(False)
 
         return True
 
@@ -240,8 +253,12 @@ class Caffeine(gobject.GObject):
             self._timeDisplay(time))
         print "Timed activation set for " + self._timeDisplay(time)
 
+        self.status_string = _("Activated for ")+self._timeDisplay(time)
+        self.emit("activation-toggled", self.getActivated(),
+                self.status_string)
 
-        self.setActivated()
+
+        self.setActivated(True)
 
         if note:
             self._notify(message, caffeine.FULL_ICON_PATH)
@@ -261,12 +278,8 @@ class Caffeine(gobject.GObject):
         self.toggleActivated()
 
     
-    def setActivated(self):
-        if not self.getActivated():
-            self.toggleActivated()
-
-    def setDeactivated(self):
-        if self.getActivated():
+    def setActivated(self, activate):
+        if self.getActivated() != activate:
             self.toggleActivated()
 
     def toggleActivated(self):
@@ -285,6 +298,7 @@ class Caffeine(gobject.GObject):
 
             self.sleepAppearsPrevented = False
             print "Caffeine is now dormant; powersaving is re-enabled"
+            self.status_string = _("Caffeine is dormant; powersaving is enabled")
 
             # If the user clicks on the full coffee-cup to disable
             # sleep prevention, it should also
@@ -317,8 +331,18 @@ class Caffeine(gobject.GObject):
 
             self.sleepAppearsPrevented = True
 
-        self.emit("activation-toggled", self.getActivated())
+       
         self._performTogglingActions()
+
+        if self.status_string == "":
+                self.status_string = (_("Caffeine is preventing powersaving modes and screensaver activation ")+"("+
+                    self.screensaverAndPowersavingType + ")")
+        
+        self.emit("activation-toggled", self.getActivated(),
+                self.status_string)
+        self.status_string = ""
+        
+
 
     def _detectScreensaverAndPowersavingType(self):
         """This method always runs when the first attempt to inhibit the screensaver and
@@ -450,12 +474,9 @@ class Caffeine(gobject.GObject):
             # reset the idle timer every 50 seconds.
             self.inhibit_id = gobject.timeout_add(50000, deactivate)
 
-        self.emit("activation-toggled", self.getActivated())
-
-
 
 ## register a signal
 gobject.signal_new("activation-toggled", Caffeine,
-        gobject.SIGNAL_RUN_FIRST, None, [bool])
+        gobject.SIGNAL_RUN_FIRST, None, [bool, str])
 
 

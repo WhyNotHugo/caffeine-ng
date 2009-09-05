@@ -337,6 +337,9 @@ class GUI(object):
         ## gets thrown out with the garbage, and won't be seen.
         self.status_icon = get("statusicon")
 
+        tooltip = _("Caffeine is dormant; powersaving is enabled")
+        self.status_icon.set_tooltip(tooltip)
+
         self.status_icon.set_from_file(caffeine.EMPTY_ICON_PATH)
 
         ## popup menu
@@ -444,13 +447,16 @@ class GUI(object):
         """
         self.Core.toggleActivated()
         
-    def on_activation_toggled(self, source, active):
+    def on_activation_toggled(self, source, active, tooltip):
 
         ## toggle the icon, indexing with a bool.
         icon_file = [caffeine.EMPTY_ICON_PATH, caffeine.FULL_ICON_PATH][
                 active]
 
         self.status_icon.set_from_file(icon_file)
+        ## update the tooltip
+
+        self.status_icon.set_tooltip(tooltip)
 
     ### Callbacks
     def on_L_click(self, status_icon, data=None):
