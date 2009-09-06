@@ -48,6 +48,8 @@ DATA_DIR = _data_dir
 ## file with a list of programs that caffeine should 
 ## activate when they are running
 
+## Log file.
+LOG = os.path.join(DATA_DIR, "log")
 WHITELIST = os.path.join(DATA_DIR, "whitelist.txt")
 ## create file if it doesn't exist
 if not os.path.isfile(WHITELIST):

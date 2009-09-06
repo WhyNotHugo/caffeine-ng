@@ -29,6 +29,8 @@
 import sys
 import logging
 
+import caffeine
+
 SWITCH_TO_GREEN = "\033[1;32m"
 SWITCH_TO_YELLOW = "\033[1;33m"
 SWITCH_TO_RED = "\033[1;31m"
@@ -37,14 +39,19 @@ RESET_TO_NORMAL = "\033[0m"
 FORMAT_STRING = '%(asctime)s %(levelname)s %(message)s'
 DATE_FORMAT_STRING = '%d%b%Y %H:%M:%S'
 
-info_formatter = logging.Formatter('%(asctime)s ' + SWITCH_TO_GREEN + 'INFO ' + RESET_TO_NORMAL + ' %(message)s', '%d%b%Y %H:%M:%S')
+### write logs to a file:
+file_handler = logging.FileHandler(caffeine.LOG)
+
+info_formatter = logging.Formatter('%(asctime)s ' + SWITCH_TO_GREEN + 'INFO ' + RESET_TO_NORMAL + ' %(message)s', '(%d %b %Y) %H:%M:%S')
 info_handler = logging.StreamHandler(sys.stdout)
 info_handler.setFormatter(info_formatter)
 
 info_logger = logging.getLogger("InfoLogger")
 info_logger.setLevel(logging.INFO)
 info_logger.addHandler(info_handler)
+info_logger.addHandler(file_handler)
 
+####
 warn_formatter = logging.Formatter('%(asctime)s ' + SWITCH_TO_YELLOW + 'WARN ' + RESET_TO_NORMAL + ' %(message)s', '%d%b%Y %H:%M:%S')
 warn_handler = logging.StreamHandler(sys.stdout)
 warn_handler.setFormatter(warn_formatter)
@@ -52,7 +59,9 @@ warn_handler.setFormatter(warn_formatter)
 warn_logger = logging.getLogger("WarnLogger")
 warn_logger.setLevel(logging.WARN)
 warn_logger.addHandler(warn_handler)
+warn_logger.addHandler(file_handler)
 
+####
 error_formatter = logging.Formatter(SWITCH_TO_RED + '%(asctime)s ERROR %(message)s' + RESET_TO_NORMAL, '%d%b%Y %H:%M:%S')
 error_handler = logging.StreamHandler(sys.stderr)
 error_handler.setFormatter(error_formatter)
@@ -60,6 +69,8 @@ error_handler.setFormatter(error_formatter)
 error_logger = logging.getLogger("ErrorLogger")
 error_logger.setLevel(logging.ERROR)
 error_logger.addHandler(error_handler)
+error_logger.addHandler(file_handler)
+
 
 def info(msg):
     info_logger = logging.getLogger("InfoLogger")

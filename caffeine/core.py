@@ -33,6 +33,7 @@ import applicationinstance
 import caffeine
 import utils
 import procmanager
+import caffeinelogging as logging
 
 import Xlib.display
 
@@ -126,7 +127,6 @@ class Caffeine(gobject.GObject):
             screen = Xlib.display.Display().screen()
             root_win = screen.root
             
-            print "_check_for_QL"
             activate = False
             ## iterate through all of the X windows
             for window in root_win.query_tree()._data['children']:
@@ -138,7 +138,8 @@ class Caffeine(gobject.GObject):
                     #if (width == screen.width_in_pixels and 
                     #    height == screen.height_in_pixels):
 
-                    print "QuakeLive baby!"
+                    logging.info("QuakeLive detected")
+
                     activate = True
                     self.setActivated(True)
                     self.preventedForQL = True
@@ -255,7 +256,8 @@ class Caffeine(gobject.GObject):
         message = (_("Timed activation set; ")+
             _("Caffeine will prevent powersaving for the next ") +
             self._timeDisplay(time))
-        print "Timed activation set for " + self._timeDisplay(time)
+        
+        logging.info("Timed activation set for " + self._timeDisplay(time))
 
         self.status_string = _("Activated for ")+self._timeDisplay(time)
         self.emit("activation-toggled", self.getActivated(),
@@ -301,7 +303,7 @@ class Caffeine(gobject.GObject):
             ### sleep prevention was on now turn it off
 
             self.sleepAppearsPrevented = False
-            print "Caffeine is now dormant; powersaving is re-enabled"
+            logging.info("Caffeine is now dormant; powersaving is re-enabled")
             self.status_string = _("Caffeine is dormant; powersaving is enabled")
 
             # If the user clicks on the full coffee-cup to disable
@@ -312,7 +314,8 @@ class Caffeine(gobject.GObject):
 
                 message = (_("Timed activation cancelled (was set for ") +
                         self._timeDisplay(self.timer.interval) + ")")
-                print "Timed activation cancelled"
+
+                logging.info("Timed activation cancelled")
 
                 self._notify(message, caffeine.EMPTY_ICON_PATH)
 
@@ -325,7 +328,8 @@ class Caffeine(gobject.GObject):
 
                 message = (self._timeDisplay(self.timer.interval) +
                     _(" have elapsed; powersaving is re-enabled"))
-                print "Timed activation period has elapsed"
+
+                logging.info("Timed activation period has elapsed")
 
                 self._notify(message, caffeine.EMPTY_ICON_PATH)
 
@@ -352,7 +356,7 @@ class Caffeine(gobject.GObject):
         """This method always runs when the first attempt to inhibit the screensaver and
         powersaving is made. It detects what screensaver/powersaving software is running.
         After detection is complete, it will finish the inhibiting process."""
-        print ("Attempting to detect screensaver/powersaving type... (" + str(self.dbusDetectionFailures) + " dbus failures so far)")
+        logging.info("Attempting to detect screensaver/powersaving type... (" + str(self.dbusDetectionFailures) + " dbus failures so far)")
         bus = dbus.SessionBus()
         if 'org.gnome.ScreenSaver' in bus.list_names():
             self.screensaverAndPowersavingType = "Gnome"
@@ -376,7 +380,9 @@ class Caffeine(gobject.GObject):
         self.attemptingToDetect = False
         self.dbusDetectionFailures = 0
         self.dbusDetectionTimer = None
-        print ("Successfully detected screensaver and powersaving type: " + str(self.screensaverAndPowersavingType))
+
+        logging.info("Successfully detected screensaver and powersaving type: " + str(self.screensaverAndPowersavingType))
+
         if self.sleepAppearsPrevented != self.sleepIsPrevented:
             self._performTogglingActions()
 
@@ -399,7 +405,7 @@ class Caffeine(gobject.GObject):
             self._toggleDPMS()
 
         if self.sleepIsPrevented == False:
-            print ("Caffeine is now preventing powersaving modes"+
+            logging.info("Caffeine is now preventing powersaving modes"+
                 " and screensaver activation (" +
                 self.screensaverAndPowersavingType + ")")
 
