@@ -151,7 +151,7 @@ class Caffeine(gobject.GObject):
 
         return True
 
-        def _check_for_process(self):
+    def _check_for_process(self):
         activate = False
         for proc in self.ProcMan.get_process_list():
             if utils.isProcessRunning(proc):
