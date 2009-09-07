@@ -52,7 +52,7 @@ info_logger.addHandler(info_handler)
 info_logger.addHandler(file_handler)
 
 ####
-warn_formatter = logging.Formatter('%(asctime)s ' + SWITCH_TO_YELLOW + 'WARN ' + RESET_TO_NORMAL + ' %(message)s', '%d%b%Y %H:%M:%S')
+warn_formatter = logging.Formatter('%(asctime)s ' + SWITCH_TO_YELLOW + 'WARN ' + RESET_TO_NORMAL + ' %(message)s', '(%d %b %Y) %H:%M:%S')
 warn_handler = logging.StreamHandler(sys.stdout)
 warn_handler.setFormatter(warn_formatter)
 
@@ -62,7 +62,7 @@ warn_logger.addHandler(warn_handler)
 warn_logger.addHandler(file_handler)
 
 ####
-error_formatter = logging.Formatter(SWITCH_TO_RED + '%(asctime)s ERROR %(message)s' + RESET_TO_NORMAL, '%d%b%Y %H:%M:%S')
+error_formatter = logging.Formatter(SWITCH_TO_RED + '%(asctime)s ERROR %(message)s' + RESET_TO_NORMAL, '(%d %b %Y) %H:%M:%S')
 error_handler = logging.StreamHandler(sys.stderr)
 error_handler.setFormatter(error_formatter)
 
