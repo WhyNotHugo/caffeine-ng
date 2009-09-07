@@ -40,36 +40,60 @@ FORMAT_STRING = '%(asctime)s %(levelname)s %(message)s'
 DATE_FORMAT_STRING = '%d%b%Y %H:%M:%S'
 
 ### write logs to a file:
-file_handler = logging.FileHandler(caffeine.LOG)
+file_info_handler = logging.FileHandler(caffeine.LOG)
+file_info_formatter = logging.Formatter('%(asctime)s INFO: %(message)s',
+        '(%d %b %Y) %H:%M:%S')
+file_info_handler.setFormatter(file_info_formatter)
+###
 
-info_formatter = logging.Formatter('%(asctime)s ' + SWITCH_TO_GREEN + 'INFO ' + RESET_TO_NORMAL + ' %(message)s', '(%d %b %Y) %H:%M:%S')
+
+info_handler = logging.StreamHandler(sys.stdout)
+
+info_formatter = logging.Formatter('%(asctime)s ' + SWITCH_TO_GREEN + 'INFO: ' + RESET_TO_NORMAL + ' %(message)s', '(%d %b %Y) %H:%M:%S')
 info_handler = logging.StreamHandler(sys.stdout)
 info_handler.setFormatter(info_formatter)
 
 info_logger = logging.getLogger("InfoLogger")
 info_logger.setLevel(logging.INFO)
 info_logger.addHandler(info_handler)
-info_logger.addHandler(file_handler)
+info_logger.addHandler(file_info_handler)
 
 ####
-warn_formatter = logging.Formatter('%(asctime)s ' + SWITCH_TO_YELLOW + 'WARN ' + RESET_TO_NORMAL + ' %(message)s', '(%d %b %Y) %H:%M:%S')
+
+### write logs to a file:
+file_warn_handler = logging.FileHandler(caffeine.LOG)
+file_warn_formatter = logging.Formatter('%(asctime)s WARNING: %(message)s',
+        '(%d %b %Y) %H:%M:%S')
+file_warn_handler.setFormatter(file_warn_formatter)
+###
+
+warn_formatter = logging.Formatter('%(asctime)s ' + SWITCH_TO_YELLOW + 'WARNING: ' + RESET_TO_NORMAL + ' %(message)s', '(%d %b %Y) %H:%M:%S')
 warn_handler = logging.StreamHandler(sys.stdout)
 warn_handler.setFormatter(warn_formatter)
 
 warn_logger = logging.getLogger("WarnLogger")
 warn_logger.setLevel(logging.WARN)
 warn_logger.addHandler(warn_handler)
-warn_logger.addHandler(file_handler)
+warn_logger.addHandler(file_warn_handler)
 
 ####
-error_formatter = logging.Formatter(SWITCH_TO_RED + '%(asctime)s ERROR %(message)s' + RESET_TO_NORMAL, '(%d %b %Y) %H:%M:%S')
+
+### write logs to a file:
+file_error_handler = logging.FileHandler(caffeine.LOG)
+file_error_formatter = logging.Formatter('%(asctime)s ERROR: %(message)s',
+        '(%d %b %Y) %H:%M:%S')
+file_error_handler.setFormatter(file_error_formatter)
+###
+
+
+error_formatter = logging.Formatter(SWITCH_TO_RED + '%(asctime)s ERROR: %(message)s' + RESET_TO_NORMAL, '(%d %b %Y) %H:%M:%S')
 error_handler = logging.StreamHandler(sys.stderr)
 error_handler.setFormatter(error_formatter)
 
 error_logger = logging.getLogger("ErrorLogger")
 error_logger.setLevel(logging.ERROR)
 error_logger.addHandler(error_handler)
-error_logger.addHandler(file_handler)
+error_logger.addHandler(file_error_handler)
 
 
 def info(msg):

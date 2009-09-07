@@ -430,13 +430,9 @@ class GUI(object):
     
     def setActive(self, active):
 
-        if active:
-            if not self.Core.getActivated():
-                self.Core.toggleActivated()
-        else:
-            if self.Core.getActivated():
-                self.Core.toggleActivated()
+        self.Core.setActivated(active)
             
+
     def timedActivation(self, time):
 
         self.Core.timedActivation(time)
@@ -575,8 +571,7 @@ class GUI(object):
         logging.info("Caffeine is preparing to quit")
 
         ### Make sure PM and SV is uninhibited
-        if self.Core.getActivated():
-            self.toggle_activated()
+        self.Core.setActivated(True)
 
         self.Core.quit()
 

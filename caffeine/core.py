@@ -107,6 +107,9 @@ class Caffeine(gobject.GObject):
     def setActivateForFlash(self, do_activate):
         pass
 
+    def _check_for_Flash(self):
+        return True
+
     def setActivateForQL(self, do_activate):
         
         ## In case it is currently activated for QL
@@ -135,16 +138,16 @@ class Caffeine(gobject.GObject):
                 width = window.get_geometry()._data["width"]
                 height = window.get_geometry()._data["height"]
                 if window_name == "QuakeLive":
-                    #if (width == screen.width_in_pixels and 
-                    #    height == screen.height_in_pixels):
-
-                    logging.info("QuakeLive detected")
+                    
+                    if self.getActivated() == False:
+                        logging.info("Caffeine has detected that 'QuakeLive' is running, and will auto-activate")
 
                     activate = True
                     self.setActivated(True)
                     self.preventedForQL = True
 
             if not activate and self.preventedForQL:
+                logging.info("Caffeine had previously auto-activated for QuakeLive, but it is no longer running; deactivating...")
                 self.setActivated(False)
 
         except:
@@ -241,8 +244,8 @@ class Caffeine(gobject.GObject):
                "User has requested that Caffeine disable the screen saver")
 
         except Exception, e:
-            print _("Exception occurred") + " " + str(e)
-            print message
+            logging.error("Exception occurred:\n" + " " + str(e))
+            logging.error("Exception occurred attempting to display message:\n" + message)
         finally:
             return False
 
@@ -274,7 +277,7 @@ class Caffeine(gobject.GObject):
         ## and deactivate after time has passed.
         ## Stop already running timer
         if self.timer:
-            logging.info("Timed activation cancelled due to a second timed activation request (was set for " +
+            logging.info("Previous timed activation cancelled due to a second timed activation request (was set for " +
                     self._timeDisplay(self.timer.interval) + ")")
             self.timer.cancel()
 
@@ -334,7 +337,7 @@ class Caffeine(gobject.GObject):
                 message = (self._timeDisplay(self.timer.interval) +
                     _(" have elapsed; powersaving is re-enabled"))
 
-                logging.info("Timed activation period has elapsed")
+                logging.info("Timed activation period (" + self._timeDisplay(self.timer.interval) + ") has elapsed")
 
                 self._notify(message, caffeine.EMPTY_ICON_PATH)
 
@@ -482,7 +485,7 @@ class Caffeine(gobject.GObject):
                     output = commands.getoutput(
                             "xscreensaver-command -deactivate")
                 except Exception, data:
-                    print data
+                    logging.error("Exception occurred:\n" + data)
 
                 return True
         
