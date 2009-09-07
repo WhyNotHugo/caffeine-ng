@@ -40,6 +40,7 @@ import caffeine
 import core
 import applicationinstance
 import utils
+import caffeinelogging as logging
 
 def get_icon_for_process(proc_name):
 
@@ -299,7 +300,6 @@ class ProcAdd(object):
         window.hide_on_delete()
         ## Returning True stops the window from being destroyed.
         return True
-   
 
         
 class GUI(object):
@@ -460,6 +460,7 @@ class GUI(object):
 
     ### Callbacks
     def on_L_click(self, status_icon, data=None):
+        logging.info("User has clicked the Caffeine icon")
         self.toggle_activated()
     
     def on_R_click(self, status_icon, mbutton, time, data=None):
@@ -571,7 +572,8 @@ class GUI(object):
     
     def quit(self):
         ### Do anything that needs to be done before quitting.
-    
+        logging.info("Caffeine is preparing to quit")
+
         ### Make sure PM and SV is uninhibited
         if self.Core.getActivated():
             self.toggle_activated()

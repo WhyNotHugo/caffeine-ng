@@ -157,11 +157,13 @@ class Caffeine(gobject.GObject):
         for proc in self.ProcMan.get_process_list():
             if utils.isProcessRunning(proc):
                 activate = True
+                logging.info("Caffeine has detected that the process '" + proc + "' is running, and will auto-activate")
                 self.setActivated(True)
 
                 self.preventedForProcess = True
 
         if not activate and self.preventedForProcess:
+            logging.info("Caffeine had previously auto-activated for a process, but that process is no longer running; deactivating...")
             self.setActivated(False)
 
         return True
@@ -272,6 +274,8 @@ class Caffeine(gobject.GObject):
         ## and deactivate after time has passed.
         ## Stop already running timer
         if self.timer:
+            logging.info("Timed activation cancelled due to a second timed activation request (was set for " +
+                    self._timeDisplay(self.timer.interval) + ")")
             self.timer.cancel()
 
         self.timer = threading.Timer(time, self._deactivate)
@@ -315,7 +319,8 @@ class Caffeine(gobject.GObject):
                 message = (_("Timed activation cancelled (was set for ") +
                         self._timeDisplay(self.timer.interval) + ")")
 
-                logging.info("Timed activation cancelled")
+                logging.info("Timed activation cancelled (was set for " +
+                        self._timeDisplay(self.timer.interval) + ")")
 
                 self._notify(message, caffeine.EMPTY_ICON_PATH)
 
