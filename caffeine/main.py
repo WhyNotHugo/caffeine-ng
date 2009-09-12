@@ -394,6 +394,7 @@ class GUI(object):
 
         self.autostart_cb = get("autostart_cbutton")
         self.ql_cb = get("ql_cbutton")
+        self.flash_cb = get("flash_cbutton")
 
         self.Conf.client.notify_add("/apps/caffeine/prefs/autostart",
                 self.on_gconf_autostart_changed)
@@ -401,9 +402,12 @@ class GUI(object):
         self.Conf.client.notify_add("/apps/caffeine/prefs/act_for_ql",
                 self.on_gconf_ql_changed)
 
+        self.Conf.client.notify_add("/apps/caffeine/prefs/act_for_flash",
+                self.on_gconf_flash_changed)
+
         self.autostart_cb.set_active(self.Conf.get("autostart").get_bool())
         self.ql_cb.set_active(self.Conf.get("act_for_ql").get_bool())
-
+        self.flash_cb.set_active(self.Conf.get("act_for_flash").get_bool())
 
         ## about dialog
         self.about_dialog = get("aboutdialog")
@@ -511,6 +515,7 @@ class GUI(object):
     def on_autostart_cbutton_toggled(self, cbutton, data=None):
         self.Conf.set("autostart", cbutton.get_active())
 
+    ### Quake Live
     def on_gconf_ql_changed(self, client, cnxn_id, entry, data=None):
         act_for_ql = self.Conf.get("act_for_ql").get_bool()
 
@@ -521,9 +526,19 @@ class GUI(object):
 
     def on_ql_cbutton_toggled(self, cbutton, data=None):
         self.Conf.set("act_for_ql", cbutton.get_active())
+    
+    ### Flash
+    def on_gconf_flash_changed(self, client, cnxn_id, entry, data=None):
+        
+        act_for_flash = self.Conf.get("act_for_flash").get_bool()
+
+        self.Core.setActivateForFlash(act_for_flash)
+
+        if act_for_flash != self.flash_cb.get_active():
+            self.flash_cb.set_active(act_for_flash)
 
     def on_flash_cbutton_toggled(self, cbutton, data=None):
-        pass
+        self.Conf.set("act_for_flash", cbutton.get_active())
 
     #### Menu callbacks
     def on_time_submenuitem_activate(self, menuitem, time):

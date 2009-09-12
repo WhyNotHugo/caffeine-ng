@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 1.0\n"
-"POT-Creation-Date: 2009-09-05 15:03:12.120134\n"
+"POT-Creation-Date: 2009-09-11 23:14:45.238517\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgid "Please install"
 msgstr ""
 msgid "Caffeine is dormant; powersaving is enabled"
 #. file 'caffeine/main.py', line 340
-#. file 'caffeine/core.py', line 301
+#. file 'caffeine/core.py', line 360
 msgstr ""
 msgid "5 minutes"
 #. file 'caffeine/main.py', line 362
@@ -47,42 +47,39 @@ msgid "Other..."
 #. file 'caffeine/main.py', line 384
 msgstr ""
 msgid " and "
-#. file 'caffeine/core.py', line 182
+#. file 'caffeine/core.py', line 235
 msgstr ""
 msgid "hour"
-#. file 'caffeine/core.py', line 189
-#. file 'caffeine/core.py', line 195
+#. file 'caffeine/core.py', line 242
+#. file 'caffeine/core.py', line 248
 msgstr ""
 msgid "minute"
-#. file 'caffeine/core.py', line 189
-#. file 'caffeine/core.py', line 201
+#. file 'caffeine/core.py', line 242
+#. file 'caffeine/core.py', line 254
 msgstr ""
 msgid "hours"
-#. file 'caffeine/core.py', line 197
+#. file 'caffeine/core.py', line 250
 msgstr ""
 msgid "minutes"
-#. file 'caffeine/core.py', line 203
-msgstr ""
-msgid "Exception occurred"
-#. file 'caffeine/core.py', line 237
-msgstr ""
-msgid "Timed activation set; "
-#. file 'caffeine/core.py', line 251
-msgstr ""
-msgid "Caffeine will prevent powersaving for the next "
-#. file 'caffeine/core.py', line 252
-msgstr ""
-msgid "Activated for "
 #. file 'caffeine/core.py', line 256
 msgstr ""
+msgid "Timed activation set; "
+#. file 'caffeine/core.py', line 304
+msgstr ""
+msgid "Caffeine will prevent powersaving for the next "
+#. file 'caffeine/core.py', line 305
+msgstr ""
+msgid "Activated for "
+#. file 'caffeine/core.py', line 310
+msgstr ""
 msgid "Timed activation cancelled (was set for "
-#. file 'caffeine/core.py', line 309
+#. file 'caffeine/core.py', line 368
 msgstr ""
 msgid " have elapsed; powersaving is re-enabled"
-#. file 'caffeine/core.py', line 323
+#. file 'caffeine/core.py', line 385
 msgstr ""
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-#. file 'caffeine/core.py', line 338
+#. file 'caffeine/core.py', line 402
 msgstr ""
 msgid "Select a process name..."
 #. file 'share/caffeine/glade/proc.glade', line ?

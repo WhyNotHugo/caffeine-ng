@@ -80,6 +80,7 @@ class Caffeine(gobject.GObject):
 
         self.preventedForProcess = False
         self.preventedForQL = False
+        self.preventedForFlash = False
 
         self.screenSaverCookie = None
         self.powerManagementCookie = None
@@ -98,6 +99,7 @@ class Caffeine(gobject.GObject):
             self.setActivateForQL(True)
 
         ## check for Flash video.
+        self.flash_atimes = {}
         self.flash_id = None
         if self.Conf.get("act_for_flash").get_bool():
             self.setActivateForFlash(True)
@@ -105,14 +107,55 @@ class Caffeine(gobject.GObject):
 
 
     def setActivateForFlash(self, do_activate):
-        pass
+        
+        ## In case caffeine is currently activated for Flash
+        self._check_for_Flash()
+
+        if self.flash_id != None:
+            gobject.source_remove(self.flash_id)
+
+        self.flash_id = None
+
+        if do_activate:
+            self.flash_id = gobject.timeout_add(15000,
+                    self._check_for_Flash)
 
     def _check_for_Flash(self):
+        print "_check_for_Flash"
+        try:
+            tmp = "/tmp"
+            activate = False
+            ## look for filenames that begin with 'Flash'
+            for file in os.listdir(tmp):
+                if file.startswith("Flash"):
+                    filepath = os.path.join(tmp, file)
+                    ## Time of last access.
+                    atime = os.stat(filepath).st_atime
+                    ### see if user is buffering a flash video
+                    if self.flash_atimes.get(filepath) != None and atime:
+                        self.timedActivation(5*60, note=False)
+                        self.preventedForFlash = True
+
+                    self.flash_atimes[filepath] = atime
+
+            if not activate and self.preventedForFlash:
+                self.setActivated(False, note=False)
+
+
+            ## clear out old filenames
+            for key in self.flash_atimes.keys():
+                if not os.path.exists(key):
+                    self.flash_atimes.pop(key)
+
+        except Exception, data:
+            print data
+
         return True
+
 
     def setActivateForQL(self, do_activate):
         
-        ## In case it is currently activated for QL
+        ## In case caffeine is currently activated for QL
         self._check_for_QL()
 
         if self.ql_id != None:
@@ -291,11 +334,11 @@ class Caffeine(gobject.GObject):
         self.toggleActivated()
 
     
-    def setActivated(self, activate):
+    def setActivated(self, activate, note=True):
         if self.getActivated() != activate:
-            self.toggleActivated()
+            self.toggleActivated(note)
 
-    def toggleActivated(self):
+    def toggleActivated(self, note=True):
         """This function toggles the inhibition of the screensaver and powersaving
         features of the current computer, detecting the the type of screensaver and powersaving
         in use, if it has not been detected already."""
@@ -305,6 +348,9 @@ class Caffeine(gobject.GObject):
 
         if self.preventedForQL:
             self.preventedForQL = False
+
+        if self.preventedForFlash:
+            self.preventedForFlash = False
 
         if self.sleepAppearsPrevented:
             ### sleep prevention was on now turn it off
@@ -325,7 +371,8 @@ class Caffeine(gobject.GObject):
                 logging.info("Timed activation cancelled (was set for " +
                         self._timeDisplay(self.timer.interval) + ")")
 
-                self._notify(message, caffeine.EMPTY_ICON_PATH)
+                if note:
+                    self._notify(message, caffeine.EMPTY_ICON_PATH)
 
                 self.timer.cancel()
                 self.timer = None
@@ -339,7 +386,8 @@ class Caffeine(gobject.GObject):
 
                 logging.info("Timed activation period (" + self._timeDisplay(self.timer.interval) + ") has elapsed")
 
-                self._notify(message, caffeine.EMPTY_ICON_PATH)
+                if note:
+                    self._notify(message, caffeine.EMPTY_ICON_PATH)
 
                 self.timer = None
 
