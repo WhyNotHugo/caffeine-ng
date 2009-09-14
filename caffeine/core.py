@@ -121,7 +121,6 @@ class Caffeine(gobject.GObject):
                     self._check_for_Flash)
 
     def _check_for_Flash(self):
-        print "_check_for_Flash"
         try:
             tmp = "/tmp"
             activate = False
@@ -132,15 +131,21 @@ class Caffeine(gobject.GObject):
                     ## Time of last access.
                     atime = os.stat(filepath).st_atime
                     ### see if user is buffering a flash video
-                    if self.flash_atimes.get(filepath) != None and atime:
+                    if (self.flash_atimes.get(filepath) != None and
+                            self.flash_atimes.get(filepath) != atime):
+                        
+                        logging.info("Caffeine has detected that Flash video is playing, and will auto-activate")
+
+
+                        activate = True
+                        self.status_string = _("Activated for Flash.")
+
                         self.timedActivation(5*60, note=False)
+
                         self.preventedForFlash = True
 
+
                     self.flash_atimes[filepath] = atime
-
-            if not activate and self.preventedForFlash:
-                self.setActivated(False, note=False)
-
 
             ## clear out old filenames
             for key in self.flash_atimes.keys():
@@ -183,6 +188,9 @@ class Caffeine(gobject.GObject):
                 if window_name == "QuakeLive":
                     
                     if self.getActivated() == False:
+
+                        self.status_string = _("Activated for Quake Live")
+
                         logging.info("Caffeine has detected that 'QuakeLive' is running, and will auto-activate")
 
                     activate = True
@@ -307,8 +315,10 @@ class Caffeine(gobject.GObject):
         
         logging.info("Timed activation set for " + self._timeDisplay(time))
 
-        self.status_string = _("Activated for ")+self._timeDisplay(time)
-        self.emit("activation-toggled", self.getActivated(),
+        if self.status_string == "":
+
+            self.status_string = _("Activated for ")+self._timeDisplay(time)
+            self.emit("activation-toggled", self.getActivated(),
                 self.status_string)
 
 
@@ -324,14 +334,14 @@ class Caffeine(gobject.GObject):
                     self._timeDisplay(self.timer.interval) + ")")
             self.timer.cancel()
 
-        self.timer = threading.Timer(time, self._deactivate)
+        self.timer = threading.Timer(time, self._deactivate, args=[note])
         self.timer.name = "Active"
         self.timer.start()
 
     
-    def _deactivate(self):
+    def _deactivate(self, note):
         self.timer.name = "Expired"
-        self.toggleActivated()
+        self.toggleActivated(note=note)
 
     
     def setActivated(self, activate, note=True):
