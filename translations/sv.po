@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-09-14 17:30+0000\n"
-"PO-Revision-Date: 2009-09-07 11:29+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2009-09-15 17:49+0000\n"
+"Last-Translator: Tommy Brunn <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-15 11:24+0000\n"
+"X-Launchpad-Export-Date: 2009-09-16 09:58+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
@@ -64,11 +64,11 @@ msgstr "Annan..."
 
 #. file 'caffeine/core.py', line 141
 msgid "Activated for Flash."
-msgstr ""
+msgstr "Aktiverad p.g.a. Flash"
 
 #. file 'caffeine/core.py', line 192
 msgid "Activated for Quake Live"
-msgstr ""
+msgstr "Aktiverad p.g.a. Quake Live"
 
 #. file 'caffeine/core.py', line 243
 msgid " and "
