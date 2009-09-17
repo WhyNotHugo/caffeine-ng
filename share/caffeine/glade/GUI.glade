@@ -413,14 +413,14 @@ whenever certain programs are runnning.</property>
           </packing>
         </child>
         <child>
-          <object class="GtkAlignment" id="alignment3">
+          <object class="GtkAlignment" id="ot_alignment">
             <property name="visible">True</property>
             <property name="top_padding">5</property>
             <property name="bottom_padding">12</property>
             <property name="left_padding">12</property>
             <property name="right_padding">12</property>
             <child>
-              <object class="GtkHBox" id="hbox2">
+              <object class="GtkHBox" id="ot_hbox2">
                 <property name="visible">True</property>
                 <property name="spacing">10</property>
                 <child>

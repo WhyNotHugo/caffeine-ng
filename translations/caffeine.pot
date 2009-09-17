@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 1.0\n"
-"POT-Creation-Date: 2009-09-14 17:30:09.184572\n"
+"POT-Creation-Date: 2009-09-17 10:53:25.962917\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
