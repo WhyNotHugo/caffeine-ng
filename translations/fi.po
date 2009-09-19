@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-09-17 10:53+0000\n"
-"PO-Revision-Date: 2009-08-09 04:36+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2009-09-18 14:56+0000\n"
+"Last-Translator: Tommi Saira <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-18 10:49+0000\n"
+"X-Launchpad-Export-Date: 2009-09-19 11:22+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
 msgid "Please install"
-msgstr "Ole hyvä ja installoi"
+msgstr "Ole hyvä ja asenna"
 
 #. file 'caffeine/main.py', line 340
 #. file 'caffeine/core.py', line 370
@@ -60,7 +60,7 @@ msgstr "4 tuntia"
 
 #. file 'caffeine/main.py', line 384
 msgid "Other..."
-msgstr ""
+msgstr "Muu..."
 
 #. file 'caffeine/core.py', line 141
 msgid "Activated for Flash."
@@ -114,37 +114,39 @@ msgstr ""
 
 #. file 'caffeine/core.py', line 412
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-msgstr ""
+msgstr "Caffeine estää  virransäästön ja näytönsäästäjän toiminnan "
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
-msgstr ""
+msgstr "Valitaan prosessin nimeä..."
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Running Processes"
-msgstr ""
+msgstr "Prosessi on käynnissä"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
-msgstr ""
+msgstr "Nykyinen prosessi"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
+"Sovellus on väliaikaisesti estänyt näytönsäästäjän sekä virransäästön "
+"toiminnan."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
-msgstr ""
+msgstr "Asetukset"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Autostart"
-msgstr ""
+msgstr "Automaattikäynnistys"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login."
-msgstr ""
+msgstr "Käynnistä caffeine sisään kirjauduttuessa"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
@@ -170,19 +172,19 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr "Konfiguroi Caffeine"
+msgstr "Muokkaa Caffeineä"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
-msgstr ""
+msgstr "Kesto"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Hours:"
-msgstr ""
+msgstr "Tuntia:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
-msgstr ""
+msgstr "Minuutteja:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
