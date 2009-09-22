@@ -118,10 +118,13 @@ Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
                                 <property name="left_padding">10</property>
                                 <child>
                                   <object class="GtkCheckButton" id="autostart_cbutton">
-                                    <property name="label" translatable="yes">Start Caffeine on login.</property>
+                                    <property name="label" translatable="yes">Start Caffeine on login</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
+                                    <property name="tooltip_text" translatable="yes">Enable this option to automatically run Caffeine as soon as
+your computer has finished starting up and you have
+successfully entered your username and password.</property>
                                     <property name="draw_indicator">True</property>
                                     <signal name="toggled" handler="on_autostart_cbutton_toggled"/>
                                   </object>
@@ -195,6 +198,11 @@ whenever certain programs are runnning.</property>
                                           <object class="GtkTreeView" id="treeview">
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
+                                            <property name="tooltip_text" translatable="yes">When Caffeine detects that one of the processes in this
+list is running, it will prevent the activation of the screensaver
+and powersaving modes. This can be useful for applications
+(particularly full-screen applications) that do not properly
+prevent the screensaver and powersaving modes on their own.</property>
                                             <property name="model">proc_liststore</property>
                                             <property name="rules_hint">True</property>
                                             <child>
@@ -271,13 +279,18 @@ whenever certain programs are runnning.</property>
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkCheckButton" id="ql_cbutton">
-                                        <property name="label" translatable="yes">Activate for Quake Live.</property>
+                                      <object class="GtkCheckButton" id="flash_cbutton">
+                                        <property name="label" translatable="yes">Activate for Flash video</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">False</property>
+                                        <property name="tooltip_text" translatable="yes">Some websites, such as www.youtube.com, show videos using
+a technology known as "Flash". Enable this option to cause
+Caffeine to automatically prevent the activation of the
+screensaver and powersaving modes when a Flash video is
+embedded in the web page that you are currently browsing.</property>
                                         <property name="draw_indicator">True</property>
-                                        <signal name="toggled" handler="on_ql_cbutton_toggled"/>
+                                        <signal name="toggled" handler="on_flash_cbutton_toggled"/>
                                       </object>
                                       <packing>
                                         <property name="position">5</property>
@@ -293,13 +306,17 @@ whenever certain programs are runnning.</property>
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkCheckButton" id="flash_cbutton">
-                                        <property name="label" translatable="yes">Activate for Flash video.</property>
+                                      <object class="GtkCheckButton" id="ql_cbutton">
+                                        <property name="label" translatable="yes">Activate for Quake Live</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">False</property>
+                                        <property name="tooltip_text" translatable="yes">Enable this option to cause Caffeine to automatically prevent
+the activation of the screensaver and powersaving modes
+when it detects that you are playing the Quake Live video
+game. Visit www.quakelive.com to play the game for free.</property>
                                         <property name="draw_indicator">True</property>
-                                        <signal name="toggled" handler="on_flash_cbutton_toggled"/>
+                                        <signal name="toggled" handler="on_ql_cbutton_toggled"/>
                                       </object>
                                       <packing>
                                         <property name="position">7</property>

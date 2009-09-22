@@ -138,7 +138,7 @@ class Caffeine(gobject.GObject):
 
 
                         activate = True
-                        self.status_string = _("Activated for Flash.")
+                        self.status_string = _("Activated for Flash video")
 
                         self.timedActivation(5*60, note=False)
 
