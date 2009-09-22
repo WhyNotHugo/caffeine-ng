@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 1.0\n"
-"POT-Creation-Date: 2009-09-17 10:53:25.962917\n"
+"POT-Creation-Date: 2009-09-21 22:56:29.564906\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgid "Please install"
 msgstr ""
 msgid "Caffeine is dormant; powersaving is enabled"
 #. file 'caffeine/main.py', line 340
-#. file 'caffeine/core.py', line 370
+#. file 'caffeine/core.py', line 372
 msgstr ""
 msgid "5 minutes"
 #. file 'caffeine/main.py', line 362
@@ -46,46 +46,46 @@ msgstr ""
 msgid "Other..."
 #. file 'caffeine/main.py', line 384
 msgstr ""
-msgid "Activated for Flash."
-#. file 'caffeine/core.py', line 141
+msgid "Activated for Flash video"
+#. file 'caffeine/core.py', line 143
 msgstr ""
 msgid "Activated for Quake Live"
-#. file 'caffeine/core.py', line 192
+#. file 'caffeine/core.py', line 194
 msgstr ""
 msgid " and "
-#. file 'caffeine/core.py', line 243
+#. file 'caffeine/core.py', line 245
 msgstr ""
 msgid "hour"
-#. file 'caffeine/core.py', line 250
-#. file 'caffeine/core.py', line 256
-msgstr ""
-msgid "minute"
-#. file 'caffeine/core.py', line 250
-#. file 'caffeine/core.py', line 262
-msgstr ""
-msgid "hours"
+#. file 'caffeine/core.py', line 252
 #. file 'caffeine/core.py', line 258
 msgstr ""
-msgid "minutes"
+msgid "minute"
+#. file 'caffeine/core.py', line 252
 #. file 'caffeine/core.py', line 264
 msgstr ""
+msgid "hours"
+#. file 'caffeine/core.py', line 260
+msgstr ""
+msgid "minutes"
+#. file 'caffeine/core.py', line 266
+msgstr ""
 msgid "Timed activation set; "
-#. file 'caffeine/core.py', line 312
+#. file 'caffeine/core.py', line 314
 msgstr ""
 msgid "Caffeine will prevent powersaving for the next "
-#. file 'caffeine/core.py', line 313
+#. file 'caffeine/core.py', line 315
 msgstr ""
 msgid "Activated for "
-#. file 'caffeine/core.py', line 320
+#. file 'caffeine/core.py', line 322
 msgstr ""
 msgid "Timed activation cancelled (was set for "
-#. file 'caffeine/core.py', line 378
+#. file 'caffeine/core.py', line 380
 msgstr ""
 msgid " have elapsed; powersaving is re-enabled"
-#. file 'caffeine/core.py', line 395
+#. file 'caffeine/core.py', line 397
 msgstr ""
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-#. file 'caffeine/core.py', line 412
+#. file 'caffeine/core.py', line 414
 msgstr ""
 msgid "Select a process name..."
 #. file 'share/caffeine/glade/proc.glade', line ?
@@ -105,7 +105,13 @@ msgstr ""
 msgid "Autostart"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
-msgid "Start Caffeine on login."
+msgid "Start Caffeine on login"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid ""
+"Enable this option to automatically run Caffeine as soon as\n"
+"your computer has finished starting up and you have\n"
+"successfully entered your username and password."
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Automatic activation"
@@ -119,10 +125,33 @@ msgstr ""
 msgid "List of programs that Caffeine activates for:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
-msgid "Activate for Quake Live."
+msgid ""
+"When Caffeine detects that one of the processes in this\n"
+"list is running, it will prevent the activation of the screensaver\n"
+"and powersaving modes. This can be useful for applications\n"
+"(particularly full-screen applications) that do not properly\n"
+"prevent the screensaver and powersaving modes on their own."
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
-msgid "Activate for Flash video."
+msgid "Activate for Flash video"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid ""
+"Some websites, such as www.youtube.com, show videos using\n"
+"a technology known as \"Flash\". Enable this option to cause\n"
+"Caffeine to automatically prevent the activation of the\n"
+"screensaver and powersaving modes when a Flash video is\n"
+"embedded in the web page that you are currently browsing."
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Activate for Quake Live"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid ""
+"Enable this option to cause Caffeine to automatically prevent\n"
+"the activation of the screensaver and powersaving modes\n"
+"when it detects that you are playing the Quake Live video\n"
+"game. Visit www.quakelive.com to play the game for free."
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Configure Caffeine"

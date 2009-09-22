@@ -134,7 +134,9 @@ class Caffeine(gobject.GObject):
                     if (self.flash_atimes.get(filepath) != None and
                             self.flash_atimes.get(filepath) != atime):
                         
-                        logging.info("Caffeine has detected that Flash video is playing, and will auto-activate")
+                        logging.info("Caffeine has detected "+
+                            "that Flash video is playing, "+
+                            "and will activate for 5 minutes.")
 
 
                         activate = True
