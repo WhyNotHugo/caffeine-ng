@@ -20,6 +20,19 @@ You should have received a copy of the GNU General Public License along with thi
     <property name="authors">Brad Smith &lt;https://launchpad.net/~bnsmith&gt;
 Tommy Brunn &lt;https://launchpad.net/~reklamnevon&gt;
 Isaiah Heyer &lt;https://launchpad.net/~freshapplepy&gt;</property>
+    <property name="translator_credits">Tommy Brunn
+Dragula
+Ildefonso G&#xF3;mez
+Magnun Leno
+Helen McCall
+Mikel Alzibar
+Krit Marukawisutthigul
+Muszela Bal&#xE1;zs
+pablitofuerte
+Federico Vera
+Tommi Saira
+DiegoJ
+Steve Dodier</property>
     <property name="logo_icon_name">caffeine</property>
     <property name="wrap_license">True</property>
     <child internal-child="vbox">

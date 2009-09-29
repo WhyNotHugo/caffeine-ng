@@ -18,10 +18,9 @@ for dirpath, dirnames, filenames in os.walk(po_dir):
         if file.split('.')[-1] == "po":
             po_files.append(os.path.join(dirpath, file))
 
-print po_files
 for po in po_files:
     lang = po.split('/')[-1]
-    print lang
+    print "Compiling for Locale: "+"".join(lang.split(".")[:-1])
     lang = lang.split('-')[-1]
     lang = lang.split('.')[0]
     lang = lang.strip()
@@ -29,7 +28,6 @@ for po in po_files:
         continue
 
     lang_dir = os.path.join('share/locale',lang)
-    print lang_dir
 
     if not os.path.isdir(lang_dir):
         os.mkdir(lang_dir)
@@ -42,5 +40,3 @@ for po in po_files:
         os.path.join(lang_lc_dir,"caffeine"+".mo'"))
 
     output = commands.getoutput(cmd)
-
-    print output
