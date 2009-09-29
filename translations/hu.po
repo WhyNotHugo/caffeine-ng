@@ -1,4 +1,4 @@
-# English (United Kingdom) translation for caffeine
+# Hungarian translation for caffeine
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the caffeine package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-09-26 22:18+0000\n"
-"PO-Revision-Date: 2009-09-28 06:55+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
-"Language-Team: English (United Kingdom) <en_GB@li.org>\n"
+"PO-Revision-Date: 2009-09-28 08:29+0000\n"
+"Last-Translator: Muszela Balázs <bazsi86@gmail.com>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,48 +19,48 @@ msgstr ""
 
 #. file 'caffeine/main.py', line 36
 msgid "Please install"
-msgstr "Please install"
+msgstr ""
 
 #. file 'caffeine/main.py', line 340
 #. file 'caffeine/core.py', line 372
 msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "Caffeine is dormant; powersaving is enabled"
+msgstr ""
 
 #. file 'caffeine/main.py', line 362
 msgid "5 minutes"
-msgstr "5 minutes"
+msgstr "5 perc"
 
 #. file 'caffeine/main.py', line 363
 msgid "10 minutes"
-msgstr "10 minutes"
+msgstr "10 perc"
 
 #. file 'caffeine/main.py', line 364
 msgid "15 minutes"
-msgstr "15 minutes"
+msgstr "15 perc"
 
 #. file 'caffeine/main.py', line 365
 msgid "30 minutes"
-msgstr "30 minutes"
+msgstr "30 perc"
 
 #. file 'caffeine/main.py', line 366
 msgid "1 hour"
-msgstr "1 hour"
+msgstr "1 óra"
 
 #. file 'caffeine/main.py', line 367
 msgid "2 hours"
-msgstr "2 hours"
+msgstr "2 óra"
 
 #. file 'caffeine/main.py', line 368
 msgid "3 hours"
-msgstr "3 hours"
+msgstr "3 óra"
 
 #. file 'caffeine/main.py', line 369
 msgid "4 hours"
-msgstr "4 hours"
+msgstr "4 óra"
 
 #. file 'caffeine/main.py', line 384
 msgid "Other..."
-msgstr "Other..."
+msgstr "Egyéb..."
 
 #. file 'caffeine/core.py', line 143
 msgid "Activated for Flash video"
@@ -72,77 +72,75 @@ msgstr ""
 
 #. file 'caffeine/core.py', line 245
 msgid " and "
-msgstr " and "
+msgstr " és "
 
 #. file 'caffeine/core.py', line 252
 #. file 'caffeine/core.py', line 258
 msgid "hour"
-msgstr "hour"
+msgstr "óra"
 
 #. file 'caffeine/core.py', line 252
 #. file 'caffeine/core.py', line 264
 msgid "minute"
-msgstr "minute"
+msgstr "perc"
 
 #. file 'caffeine/core.py', line 260
 msgid "hours"
-msgstr "hours"
+msgstr "óra"
 
 #. file 'caffeine/core.py', line 266
 msgid "minutes"
-msgstr "minutes"
+msgstr "perc"
 
 #. file 'caffeine/core.py', line 314
 msgid "Timed activation set; "
-msgstr "Timed activation set; "
+msgstr ""
 
 #. file 'caffeine/core.py', line 315
 msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine will prevent powersaving for the next "
+msgstr ""
 
 #. file 'caffeine/core.py', line 322
 msgid "Activated for "
-msgstr "Activated for "
+msgstr ""
 
 #. file 'caffeine/core.py', line 380
 msgid "Timed activation cancelled (was set for "
-msgstr "Timed activation cancelled (was set for "
+msgstr ""
 
 #. file 'caffeine/core.py', line 397
 msgid " have elapsed; powersaving is re-enabled"
-msgstr " have elapsed; powersaving is re-enabled"
+msgstr ""
 
 #. file 'caffeine/core.py', line 414
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-msgstr "Caffeine is preventing powersaving modes and screensaver activation "
+msgstr ""
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
-msgstr "Select a process name..."
+msgstr ""
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Running Processes"
-msgstr "Running Processes"
+msgstr ""
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
-msgstr "Recent Processes"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
-"An application to temporarily prevent the activation of both the screen "
-"saver and the \"sleep\" powersaving mode."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
-msgstr "Preferences"
+msgstr "Beállítások"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Autostart"
-msgstr "Autostart"
+msgstr "Automatikus indítás"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
@@ -164,12 +162,10 @@ msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
 msgstr ""
-"Caffeine can be activated automatically\n"
-"whenever certain applications are running."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
-msgstr "List of applications that Caffeine is activated for:"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -207,32 +203,20 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr "Configure Caffeine"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
-msgstr "Duration"
+msgstr "Időtartam"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Hours:"
-msgstr "Hours:"
+msgstr "Óra:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
-msgstr "Minutes:"
+msgstr "Perc:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
-msgstr "Activate for"
-
-#~ msgid "Exception occurred"
-#~ msgstr "Exception occurred"
-
-#~ msgid "DPMS enabled"
-#~ msgstr "DPMS enabled"
-
-#~ msgid "Activate for Flash video."
-#~ msgstr "Activate for Flash video."
-
-#~ msgid "Activate for Quake Live."
-#~ msgstr "Activate for Quake Live."
+msgstr ""

@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-09-26 22:18+0000\n"
-"PO-Revision-Date: 2009-09-24 16:40+0000\n"
-"Last-Translator: DiegoJ <diegojromerolopez@gmail.com>\n"
+"PO-Revision-Date: 2009-09-28 10:11+0000\n"
+"Last-Translator: pablitofuerte <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-27 06:22+0000\n"
+"X-Launchpad-Export-Date: 2009-09-29 06:19+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
@@ -98,11 +98,11 @@ msgstr ""
 
 #. file 'caffeine/core.py', line 315
 msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine evitará el ahorro de energía por los próximos "
+msgstr "Caffeine evitará el ahorro de energía durante los próximos "
 
 #. file 'caffeine/core.py', line 322
 msgid "Activated for "
-msgstr "Activo por "
+msgstr "Activar durante "
 
 #. file 'caffeine/core.py', line 380
 msgid "Timed activation cancelled (was set for "
@@ -110,7 +110,7 @@ msgstr ""
 
 #. file 'caffeine/core.py', line 397
 msgid " have elapsed; powersaving is re-enabled"
-msgstr ""
+msgstr " han transcurrido; el ahorro de energía se vuelve a habilitar"
 
 #. file 'caffeine/core.py', line 414
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
@@ -133,6 +133,8 @@ msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
+"Una aplicación para evitar temporalmente la activación del protector de "
+"pantalla y el modo de ahorro de energía."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
@@ -140,7 +142,7 @@ msgstr "Preferencias"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Autostart"
-msgstr "Autoiniciar"
+msgstr "Inicio automático"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
@@ -163,7 +165,7 @@ msgid ""
 "whenever certain programs are runnning."
 msgstr ""
 "Caffeine puede activarse automáticamente\n"
-"cuando un ciertos programas se están ejecutando."
+"cuando ciertos programas se están ejecutando."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
@@ -180,7 +182,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
-msgstr ""
+msgstr "Activar para vídeos Flash"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -193,7 +195,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Quake Live"
-msgstr ""
+msgstr "Activar para Quake Live"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -221,7 +223,7 @@ msgstr "Minutos:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
-msgstr "Activar para"
+msgstr "Activar durante"
 
 #~ msgid "DPMS enabled"
 #~ msgstr "DPMS habilitado"
