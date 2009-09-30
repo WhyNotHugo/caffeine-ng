@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-09-21 22:56+0000\n"
-"PO-Revision-Date: 2009-09-16 10:56+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"POT-Creation-Date: 2009-09-29 15:48+0000\n"
+"PO-Revision-Date: 2009-09-29 13:03+0000\n"
+"Last-Translator: Tommy Brunn <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-23 11:11+0000\n"
+"X-Launchpad-Export-Date: 2009-09-30 06:47+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
@@ -64,7 +64,7 @@ msgstr "Annan..."
 
 #. file 'caffeine/core.py', line 143
 msgid "Activated for Flash video"
-msgstr ""
+msgstr "Aktiverad p.g.a. Flash-video."
 
 #. file 'caffeine/core.py', line 194
 msgid "Activated for Quake Live"
@@ -146,7 +146,7 @@ msgstr "Autostart"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
-msgstr ""
+msgstr "Starta Caffeine automatiskt"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -154,6 +154,8 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
+"Aktivera detta alternativ för att köra Caffeine automatiskt \n"
+"så snart som din dator startat och du loggat in."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
@@ -179,10 +181,15 @@ msgid ""
 "(particularly full-screen applications) that do not properly\n"
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
+"När Caffeine upptäcker att en av processerna i\n"
+"listan körs så förhindras skärmsläckaren automatiskt\n"
+"från att aktiveras. Detta kan vara praktiskt för applikationer\n"
+"(speciellt fullskärmsapplikationer) som inte själv\n"
+"förhindrar att skärmsläckaren aktiveras."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
-msgstr ""
+msgstr "Aktivera vid Flash-video"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -192,10 +199,15 @@ msgid ""
 "screensaver and powersaving modes when a Flash video is\n"
 "embedded in the web page that you are currently browsing."
 msgstr ""
+"Vissa hemsidor, såsom www.youtube.com, vidar videor\n"
+"genom en teknik vid namn \"Flash\". Aktivera detta\n"
+"alternativ för att låta Caffeine automatiskt förhindra\n"
+"skärmsläckaren från att aktiveras så länge Flash-videor\n"
+"spelas."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Quake Live"
-msgstr ""
+msgstr "Aktivera för Quake Live"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -204,6 +216,10 @@ msgid ""
 "when it detects that you are playing the Quake Live video\n"
 "game. Visit www.quakelive.com to play the game for free."
 msgstr ""
+"Aktivera detta alternativ för att låta Caffeine automatiskt\n"
+"förhindra skärmsläckaren från att aktiveras medan ni\n"
+"spelar datorspelet Quake Live. Gå till www.quakelive.com\n"
+"för att gratis ta del av spelet."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
