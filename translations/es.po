@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-09-29 15:48+0000\n"
-"PO-Revision-Date: 2009-09-29 07:11+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2009-09-30 23:28+0000\n"
+"Last-Translator: Demuxer <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-09-30 06:47+0000\n"
+"X-Launchpad-Export-Date: 2009-10-01 06:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
@@ -94,7 +94,7 @@ msgstr "minutos"
 
 #. file 'caffeine/core.py', line 314
 msgid "Timed activation set; "
-msgstr ""
+msgstr "Activación por tiempo establecida "
 
 #. file 'caffeine/core.py', line 315
 msgid "Caffeine will prevent powersaving for the next "
@@ -106,7 +106,7 @@ msgstr "Activar durante "
 
 #. file 'caffeine/core.py', line 380
 msgid "Timed activation cancelled (was set for "
-msgstr ""
+msgstr "Activación por tiempo cancelada (se fijó durante "
 
 #. file 'caffeine/core.py', line 397
 msgid " have elapsed; powersaving is re-enabled"
@@ -115,6 +115,8 @@ msgstr " han transcurrido; el ahorro de energía se vuelve a habilitar"
 #. file 'caffeine/core.py', line 414
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
+"Caffeine previene de la activación del protector de pantalla y del modo de "
+"ahorro de energía "
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
@@ -154,6 +156,9 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
+"Activar esta opción para iniciar Caffeine automáticamente \n"
+"tan pronto como su sistema arranque y haya introducido \n"
+"correctamente su nombre de usuario y contraseña."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
@@ -179,6 +184,14 @@ msgid ""
 "(particularly full-screen applications) that do not properly\n"
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
+"Cuando Caffeine detecta que alguno de los procesos de esta lista está en "
+"ejecución, \n"
+"previene de la activación del protector de pantalla y el modo de ahorro de "
+"energía.\n"
+"Esto es útil para algunas aplicaciones (en particular, aquellas aplicaciones "
+"a pantalla completa) \n"
+"que por sí mismas no previenen de la activación del protector de pantalla y "
+"el modo de ahorro de energía."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
@@ -192,6 +205,12 @@ msgid ""
 "screensaver and powersaving modes when a Flash video is\n"
 "embedded in the web page that you are currently browsing."
 msgstr ""
+"Algunas páginas web, como es el caso de www.youtube.com, \n"
+"muestran vídeos usando una tecnología conocida como \"Flash\".\n"
+"Active esta opción para que Caffeine prevenga automáticamente \n"
+"la activación del protector de pantalla y el modo de ahorro de energía \n"
+"cuando exista algún vídeo Flash integrado en la página web \n"
+"en la que se encuentre navegando actualmente."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Quake Live"
@@ -204,6 +223,10 @@ msgid ""
 "when it detects that you are playing the Quake Live video\n"
 "game. Visit www.quakelive.com to play the game for free."
 msgstr ""
+"Active esta opción para que Caffeine prevenga automáticamente \n"
+"la activación del protector de pantalla y el modo de ahorro de energía, \n"
+"cuando detecte que está jugando al Quake Live.\n"
+"Visite www.quakelive.com para jugar gratis al Quake Live."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
