@@ -28,6 +28,7 @@
 
 import sys
 import logging
+import logging.handlers
 
 import caffeine
 
@@ -40,7 +41,9 @@ FORMAT_STRING = '%(asctime)s %(levelname)s %(message)s'
 DATE_FORMAT_STRING = '%d%b%Y %H:%M:%S'
 
 ### write logs to a file:
-file_info_handler = logging.FileHandler(caffeine.LOG)
+file_info_handler = logging.handlers.RotatingFileHandler(caffeine.LOG,
+        maxBytes=1*1024*1024, backupCount=5)
+
 file_info_formatter = logging.Formatter('%(asctime)s INFO: %(message)s',
         '(%d %b %Y) %H:%M:%S')
 file_info_handler.setFormatter(file_info_formatter)
@@ -61,7 +64,10 @@ info_logger.addHandler(file_info_handler)
 ####
 
 ### write logs to a file:
-file_warn_handler = logging.FileHandler(caffeine.LOG)
+
+file_warn_handler = logging.handlers.RotatingFileHandler(caffeine.LOG,
+        maxBytes=1*1024*1024, backupCount=5)
+
 file_warn_formatter = logging.Formatter('%(asctime)s WARNING: %(message)s',
         '(%d %b %Y) %H:%M:%S')
 file_warn_handler.setFormatter(file_warn_formatter)
@@ -79,7 +85,10 @@ warn_logger.addHandler(file_warn_handler)
 ####
 
 ### write logs to a file:
-file_error_handler = logging.FileHandler(caffeine.LOG)
+
+file_error_handler = logging.handlers.RotatingFileHandler(caffeine.LOG,
+        maxBytes=1*1024*1024, backupCount=5)
+
 file_error_formatter = logging.Formatter('%(asctime)s ERROR: %(message)s',
         '(%d %b %Y) %H:%M:%S')
 file_error_handler.setFormatter(file_error_formatter)

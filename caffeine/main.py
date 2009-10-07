@@ -218,7 +218,7 @@ class ProcAdd(object):
 
     def get_running_processes(self):
         
-        return [(name.lower(), pid) for name, pid in utils.getProcesses()]
+        return [(name, pid) for name, pid in utils.getProcesses()]
     
     def get_recent_processes(self):
         

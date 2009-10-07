@@ -48,7 +48,7 @@ def getProcesses():
             continue
 
         try:
-            processName = getProcessName(pid)
+            processName = getProcessName(pid).lower()
 
         except:
             continue

@@ -179,6 +179,7 @@ successfully entered your username and password.</property>
 whenever certain programs are runnning.</property>
                                       </object>
                                       <packing>
+                                        <property name="expand">False</property>
                                         <property name="position">0</property>
                                       </packing>
                                     </child>
@@ -197,6 +198,7 @@ whenever certain programs are runnning.</property>
                                         </child>
                                       </object>
                                       <packing>
+                                        <property name="expand">False</property>
                                         <property name="position">1</property>
                                       </packing>
                                     </child>
@@ -279,6 +281,7 @@ prevent the screensaver and powersaving modes on their own.</property>
                                         </child>
                                       </object>
                                       <packing>
+                                        <property name="expand">False</property>
                                         <property name="position">3</property>
                                       </packing>
                                     </child>
@@ -306,6 +309,7 @@ embedded in the web page that you are currently browsing.</property>
                                         <signal name="toggled" handler="on_flash_cbutton_toggled"/>
                                       </object>
                                       <packing>
+                                        <property name="expand">False</property>
                                         <property name="position">5</property>
                                       </packing>
                                     </child>
@@ -332,6 +336,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
                                         <signal name="toggled" handler="on_ql_cbutton_toggled"/>
                                       </object>
                                       <packing>
+                                        <property name="expand">False</property>
                                         <property name="position">7</property>
                                       </packing>
                                     </child>
@@ -339,7 +344,6 @@ game. Visit www.quakelive.com to play the game for free.</property>
                                 </child>
                               </object>
                               <packing>
-                                <property name="expand">False</property>
                                 <property name="position">3</property>
                               </packing>
                             </child>
