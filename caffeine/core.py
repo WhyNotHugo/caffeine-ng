@@ -482,6 +482,7 @@ class Caffeine(gobject.GObject):
     def _toggleGnome(self):
         """Toggle the screensaver and powersaving with the interfaces used by Gnome."""
 
+        self._toggleDPMS()
         bus = dbus.SessionBus()
         self.ssProxy = bus.get_object('org.gnome.ScreenSaver',
                     '/org/gnome/ScreenSaver')
