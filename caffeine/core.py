@@ -135,7 +135,7 @@ class Caffeine(gobject.GObject):
                         
                         ### If caffeine is activated for any other
                         ### reason, don't activate.
-                        if self.preventedForFlash:
+                        if self.preventedForFlash or not self.getActivated():
                             
                             logging.info("Caffeine has detected "+
                             "that Flash video is playing, "+
