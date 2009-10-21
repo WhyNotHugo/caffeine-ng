@@ -123,7 +123,6 @@ class Caffeine(gobject.GObject):
     def _check_for_Flash(self):
         try:
             tmp = "/tmp"
-            activate = False
             ## look for filenames that begin with 'Flash'
             for file in os.listdir(tmp):
                 if file.startswith("Flash"):
@@ -134,17 +133,20 @@ class Caffeine(gobject.GObject):
                     if (self.flash_atimes.get(filepath) != None and
                             self.flash_atimes.get(filepath) != atime):
                         
-                        logging.info("Caffeine has detected "+
+                        ### If caffeine is activated for any other
+                        ### reason, don't activate.
+                        if self.preventedForFlash:
+                            
+                            logging.info("Caffeine has detected "+
                             "that Flash video is playing, "+
                             "and will activate for 5 minutes.")
 
 
-                        activate = True
-                        self.status_string = _("Activated for Flash video")
+                            self.status_string = _("Activated for Flash video")
 
-                        self.timedActivation(5*60, note=False)
+                            self.timedActivation(5*60, note=False)
 
-                        self.preventedForFlash = True
+                            self.preventedForFlash = True
 
 
                     self.flash_atimes[filepath] = atime
