@@ -147,6 +147,12 @@ class Caffeine(gobject.GObject):
                             self.timedActivation(5*60, note=False)
 
                             self.preventedForFlash = True
+                        else:
+
+                            logging.info("Caffeine has detected "+
+                                "that Flash video is playing but will "+
+                                "NOT activate because Caffeine is already "+
+                                "activated for a different reason.")
 
 
                     self.flash_atimes[filepath] = atime
