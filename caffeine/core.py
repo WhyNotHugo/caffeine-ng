@@ -419,6 +419,8 @@ class Caffeine(gobject.GObject):
         self._performTogglingActions()
 
         if self.status_string == "":
+            ### Fixes bug #458847.
+            if self.screensaverAndPowersavingType != None:
                 self.status_string = (_("Caffeine is preventing powersaving modes and screensaver activation ")+"("+
                     self.screensaverAndPowersavingType + ")")
         
