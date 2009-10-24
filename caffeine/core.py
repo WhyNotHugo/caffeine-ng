@@ -121,22 +121,6 @@ class Caffeine(gobject.GObject):
             self.flash_id = gobject.timeout_add(15000,
                     self._check_for_Flash)
 
-    def _get_duration(self, flv_file):
-        cmd = 'ffmpeg -i '+flv_file+' 2>&1 | grep "Duration" | cut -d " " -f 4 | sed s/,//'
-        try:
-            output = commands.getoutput(cmd)
-            h, m, s = output.split(":")
-            s = s.split(".")[0]
-            h = int(h) 
-            m = int(m)
-            s = int(s)
-            seconds = (h * 360) + (m * 60) + s
-
-            return seconds
-        except:
-            import traceback
-            traceback.print_exc()
-
 
     def _check_for_Flash(self):
         try:
@@ -145,7 +129,7 @@ class Caffeine(gobject.GObject):
             for file in os.listdir(tmp):
                 if file.startswith("Flash"):
                     filepath = os.path.join(tmp, file)
-                    duration = self._get_duration(filepath)
+                    duration = utils.getFLVLength(filepath)
 
                     duration = int(time.time()) + duration
                     end_time = time.localtime(duration)
