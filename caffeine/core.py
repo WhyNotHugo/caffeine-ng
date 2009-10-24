@@ -99,10 +99,11 @@ class Caffeine(gobject.GObject):
             self.setActivateForQL(True)
 
         ## check for Flash video.
-        self.flash_atimes = {}
+        self.flash_durations = {}
         self.flash_id = None
         if self.Conf.get("act_for_flash").get_bool():
             self.setActivateForFlash(True)
+        print self.status_string
 
 
 
@@ -120,6 +121,23 @@ class Caffeine(gobject.GObject):
             self.flash_id = gobject.timeout_add(15000,
                     self._check_for_Flash)
 
+    def _get_duration(self, flv_file):
+        cmd = 'ffmpeg -i '+flv_file+' 2>&1 | grep "Duration" | cut -d " " -f 4 | sed s/,//'
+        try:
+            output = commands.getoutput(cmd)
+            h, m, s = output.split(":")
+            s = s.split(".")[0]
+            h = int(h) 
+            m = int(m)
+            s = int(s)
+            seconds = (h * 360) + (m * 60) + s
+
+            return seconds
+        except:
+            import traceback
+            traceback.print_exc()
+
+
     def _check_for_Flash(self):
         try:
             tmp = "/tmp"
@@ -127,40 +145,54 @@ class Caffeine(gobject.GObject):
             for file in os.listdir(tmp):
                 if file.startswith("Flash"):
                     filepath = os.path.join(tmp, file)
-                    ## Time of last access.
-                    atime = os.stat(filepath).st_atime
-                    ### see if user is buffering a flash video
-                    if (self.flash_atimes.get(filepath) != None and
-                            self.flash_atimes.get(filepath) != atime):
-                        
-                        ### If caffeine is activated for any other
-                        ### reason, don't activate.
-                        if self.preventedForFlash or not self.getActivated():
+                    duration = self._get_duration(filepath)
+
+                    duration = int(time.time()) + duration
+                    end_time = time.localtime(duration)
+
+                    if filepath not in self.flash_durations:
+                        self.flash_durations[filepath] = end_time
+
                             
-                            logging.info("Caffeine has detected "+
-                            "that Flash video is playing, "+
-                            "and will activate for 5 minutes.")
-
-
-                            self.status_string = _("Activated for Flash video")
-
-                            self.timedActivation(5*60, note=False)
-
-                            self.preventedForFlash = True
-                        else:
-
-                            logging.info("Caffeine has detected "+
-                                "that Flash video is playing but will "+
-                                "NOT activate because Caffeine is already "+
-                                "activated for a different reason.")
-
-
-                    self.flash_atimes[filepath] = atime
-
-            ## clear out old filenames
-            for key in self.flash_atimes.keys():
+            ### clear out old filenames
+            for key in self.flash_durations.keys():
                 if not os.path.exists(key):
-                    self.flash_atimes.pop(key)
+                    self.flash_durations.pop(key)
+
+            dtimes = []
+            for t in self.flash_durations.values():
+                
+                dtimes.append(int(time.mktime(t) - time.time()))
+
+            dtimes.sort(reverse=True)
+
+            if dtimes == []:
+                if self.preventedForFlash:
+                    self.setActivated(False, note=False)
+                return True
+
+            dtime = dtimes[0]
+            if dtime <= 0:
+                return True
+
+            if self.preventedForFlash or not self.getActivated():
+
+                logging.info("Caffeine has detected "+
+                            "that Flash video is playing, "+
+                            "and will activate for "+str(dtime)+
+                            " seconds.")
+                
+                self.status_string = _("Activated for Flash video")
+                self.timedActivation(dtime, note=False)
+                self.status_string = _("Activated for Flash video")
+                self.preventedForFlash = True
+            else:
+                logging.info("Caffeine has detected "+
+                    "that Flash video is playing but will "+
+                    "NOT activate because Caffeine is already "+
+                    "activated for a different reason.")
+
+
 
         except Exception, data:
             print data
@@ -281,7 +313,10 @@ class Caffeine(gobject.GObject):
         ls.append(self._pluralize("hour", hours))
         ls.append(self._pluralize("minute", minutes))
 
-        return self._spokenConcat(ls)
+        string = self._spokenConcat(ls)
+        if not string:
+            string = "0 minutes"
+        return string
 
 
     def _notify(self, message, icon, title="Caffeine"):
@@ -332,7 +367,7 @@ class Caffeine(gobject.GObject):
                 self.status_string)
 
 
-        self.setActivated(True)
+        self.setActivated(True, note)
 
         if note:
             self._notify(message, caffeine.FULL_ICON_PATH)
@@ -341,7 +376,8 @@ class Caffeine(gobject.GObject):
         ## Stop already running timer
         if self.timer:
             logging.info("Previous timed activation cancelled due to a second timed activation request (was set for " +
-                    self._timeDisplay(self.timer.interval) + ")")
+                    self._timeDisplay(self.timer.interval) + " or "+
+                    str(time)+" seconds )")
             self.timer.cancel()
 
         self.timer = threading.Timer(time, self._deactivate, args=[note])
@@ -363,15 +399,10 @@ class Caffeine(gobject.GObject):
         features of the current computer, detecting the the type of screensaver and powersaving
         in use, if it has not been detected already."""
 
-        if self.preventedForProcess:
-            self.preventedForProcess = False
-
-        if self.preventedForQL:
-            self.preventedForQL = False
-
-        if self.preventedForFlash:
-            self.preventedForFlash = False
-
+        self.preventedForProcess = False
+        self.preventedForQL = False
+        self.preventedForFlash = False
+        
         if self.sleepAppearsPrevented:
             ### sleep prevention was on now turn it off
 
@@ -533,8 +564,10 @@ class Caffeine(gobject.GObject):
         """Toggle the DPMS powersaving subsystem."""
         if self.sleepIsPrevented:
             commands.getoutput("xset +dpms")
+            commands.getoutput("xset s on")
         else:
             commands.getoutput("xset -dpms")
+            commands.getoutput("xset s off")
 
     def _toggleXSS(self):
         """Toggle whether XScreensaver is activated (powersaving is unaffected)"""

@@ -337,10 +337,12 @@ class GUI(object):
         ## gets thrown out with the garbage, and won't be seen.
         self.status_icon = get("statusicon")
 
-        tooltip = _("Caffeine is dormant; powersaving is enabled")
-        self.status_icon.set_tooltip(tooltip)
+        self.set_icon_activated(self.Core.getActivated())
 
-        self.status_icon.set_from_file(caffeine.EMPTY_ICON_PATH)
+        tooltip = self.Core.status_string
+        if not tooltip:
+            tooltip = _("Caffeine is dormant; powersaving is enabled")
+        self.status_icon.set_tooltip(tooltip)
 
         ## popup menu
         self.menu = get("popup_menu")
@@ -449,14 +451,18 @@ class GUI(object):
         
     def on_activation_toggled(self, source, active, tooltip):
 
-        ## toggle the icon, indexing with a bool.
-        icon_file = [caffeine.EMPTY_ICON_PATH, caffeine.FULL_ICON_PATH][
-                active]
-
-        self.status_icon.set_from_file(icon_file)
-        ## update the tooltip
+        self.set_icon_activated(active)
 
         self.status_icon.set_tooltip(tooltip)
+
+    def set_icon_activated(self, activated):
+        
+        ## toggle the icon, indexing with a bool.
+        icon_file = [caffeine.EMPTY_ICON_PATH, caffeine.FULL_ICON_PATH][
+                activated]
+
+        self.status_icon.set_from_file(icon_file)
+
 
     ### Callbacks
     def on_L_click(self, status_icon, data=None):
@@ -630,7 +636,9 @@ def main():
 
     main = GUI()
         
-    main.setActive(options.activated)
+    if options.activated:
+        main.setActive(options.activated)
+
     if options.activated and options.timed:
         parts = options.timed.split(":")
         if len(parts) < 2:
