@@ -179,7 +179,7 @@ class Caffeine(gobject.GObject):
 
 
         except Exception, data:
-            print data
+            logging.error("Exception: " + str(data))
 
         return True
 
@@ -200,8 +200,10 @@ class Caffeine(gobject.GObject):
         
     def _check_for_QL(self):
         
+        dsp = None
         try:
-            screen = Xlib.display.Display().screen()
+            dsp = Xlib.display.Display()
+            screen = dsp.screen()
             root_win = screen.root
             
             activate = False
@@ -227,8 +229,12 @@ class Caffeine(gobject.GObject):
                 logging.info("Caffeine had previously auto-activated for QuakeLive, but it is no longer running; deactivating...")
                 self.setActivated(False)
 
-        except:
-            pass
+        except Exception, data:
+            logging.error("Exception: " + str(data))
+        
+        finally:
+            if dsp != None:
+                dsp.close()
 
         return True
 

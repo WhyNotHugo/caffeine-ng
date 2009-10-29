@@ -45,33 +45,24 @@ import caffeinelogging as logging
 def get_icon_for_process(proc_name):
 
     icon_theme = gtk.icon_theme_get_default()
-    iconInfo = icon_theme.lookup_icon(proc_name, 16,
-            gtk.ICON_LOOKUP_NO_SVG)
-
-    if iconInfo != None:
-        if iconInfo.get_filename():
-            pixbuf = iconInfo.load_icon()
-            return pixbuf
+    try:
+        return icon_theme.load_icon(proc_name, 16, gtk.ICON_LOOKUP_NO_SVG)
+    except glib.GError, e:
+        pass
     
     possible_icon_names = proc_name.split("-")
     for icon_name in possible_icon_names:
         icon_name = icon_name.split("/")[-1]
 
-        iconInfo = icon_theme.lookup_icon(icon_name, 16,
-                gtk.ICON_LOOKUP_NO_SVG)
-        if iconInfo != None:
-            if iconInfo.get_filename():
-                pixbuf = iconInfo.load_icon()
-                return pixbuf
-    
+        try:
+            return icon_theme.load_icon(icon_name, 16, gtk.ICON_LOOKUP_NO_SVG)
+        except glib.GError, e:
+            continue
 
-
-    iconInfo = icon_theme.lookup_icon("application-x-executable", 16,
-                gtk.ICON_LOOKUP_NO_SVG)
-    if iconInfo != None:
-        if iconInfo.get_filename():
-            pixbuf = iconInfo.load_icon()
-            return pixbuf
+    try:
+        return icon_theme.load_icon("application-x-executable", 16, gtk.ICON_LOOKUP_NO_SVG)
+    except glib.GError, e:
+        pass
 
     return None
 
