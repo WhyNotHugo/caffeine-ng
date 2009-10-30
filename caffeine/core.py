@@ -215,15 +215,16 @@ class Caffeine(gobject.GObject):
                 height = window.get_geometry()._data["height"]
                 if window_name == "QuakeLive":
                     
-                    if self.getActivated() == False:
+                    activate = True
+
+                    if self.preventedForQL or not self.getActivated():
 
                         self.status_string = _("Activated for Quake Live")
 
                         logging.info("Caffeine has detected that 'QuakeLive' is running, and will auto-activate")
 
-                    activate = True
-                    self.setActivated(True)
-                    self.preventedForQL = True
+                        self.setActivated(True)
+                        self.preventedForQL = True
 
             if not activate and self.preventedForQL:
                 logging.info("Caffeine had previously auto-activated for QuakeLive, but it is no longer running; deactivating...")
@@ -242,12 +243,25 @@ class Caffeine(gobject.GObject):
         activate = False
         for proc in self.ProcMan.get_process_list():
             if utils.isProcessRunning(proc):
+
                 activate = True
-                logging.info("Caffeine has detected that the process '" + proc + "' is running, and will auto-activate")
-                self.setActivated(True)
 
-                self.preventedForProcess = True
+                if self.preventedForProcess or not self.getActivated():
+                    
+                    logging.info("Caffeine has detected that the process '" + proc + "' is running, and will auto-activate")
 
+                    self.setActivated(True)
+
+                    self.preventedForProcess = True
+                else:
+
+                    logging.info("Caffeine has detected that the process '"+
+                    proc + "' is running, but will NOT auto-activate"+
+                    " as Caffeine has already been activated for a different"+
+                    " reason.")
+
+
+        ### No process in the list is running, deactivate.
         if not activate and self.preventedForProcess:
             logging.info("Caffeine had previously auto-activated for a process, but that process is no longer running; deactivating...")
             self.setActivated(False)
