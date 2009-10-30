@@ -42,29 +42,38 @@ import applicationinstance
 import utils
 import caffeinelogging as logging
 
+icon_theme = gtk.icon_theme_get_default()
+generic = icon_theme.load_icon("application-x-executable", 16, gtk.ICON_LOOKUP_NO_SVG)
+
+
+cached_icons = {"generic":generic}
 def get_icon_for_process(proc_name):
 
-    icon_theme = gtk.icon_theme_get_default()
-    try:
-        return icon_theme.load_icon(proc_name, 16, gtk.ICON_LOOKUP_NO_SVG)
-    except glib.GError, e:
-        pass
-    
+    global cached_icons
+    global generic
+
     possible_icon_names = proc_name.split("-")
+    possible_icon_names.insert(0, proc_name)
+
     for icon_name in possible_icon_names:
+
         icon_name = icon_name.split("/")[-1]
 
+        ### Check to see if we have loaded this already.
         try:
-            return icon_theme.load_icon(icon_name, 16, gtk.ICON_LOOKUP_NO_SVG)
+            return cached_icons[icon_name]
+        except KeyError:
+            pass
+        try:
+            icon = icon_theme.load_icon(proc_name, 16, gtk.ICON_LOOKUP_NO_SVG)
+            cached_icons[icon_name] = icon
+            return icon
+
         except glib.GError, e:
-            continue
+            cached_icons[icon_name] = generic
+    
+    return cached_icons["generic"]
 
-    try:
-        return icon_theme.load_icon("application-x-executable", 16, gtk.ICON_LOOKUP_NO_SVG)
-    except glib.GError, e:
-        pass
-
-    return None
 
 class ProcAdd(object):
 
