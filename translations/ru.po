@@ -1,4 +1,4 @@
-# Swedish translation for caffeine
+# Russian translation for caffeine
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the caffeine package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-10-20 16:31+0000\n"
-"PO-Revision-Date: 2009-09-30 08:09+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
-"Language-Team: Swedish <sv@li.org>\n"
+"PO-Revision-Date: 2009-11-14 19:36+0000\n"
+"Last-Translator: Sergey Sedov <Unknown>\n"
+"Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,134 +19,132 @@ msgstr ""
 
 #. file 'caffeine/main.py', line 36
 msgid "Please install"
-msgstr "Var god installera"
+msgstr "Установите"
 
 #. file 'caffeine/main.py', line 340
 #. file 'caffeine/core.py', line 372
 msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "Caffeine inaktivt; strömsparläge åter tillgängligt."
+msgstr ""
 
 #. file 'caffeine/main.py', line 362
 msgid "5 minutes"
-msgstr "5 minuter"
+msgstr "5 минут"
 
 #. file 'caffeine/main.py', line 363
 msgid "10 minutes"
-msgstr "10 minuter"
+msgstr "10 минут"
 
 #. file 'caffeine/main.py', line 364
 msgid "15 minutes"
-msgstr "15 minuter"
+msgstr "15 минут"
 
 #. file 'caffeine/main.py', line 365
 msgid "30 minutes"
-msgstr "30 minuter"
+msgstr "30 минут"
 
 #. file 'caffeine/main.py', line 366
 msgid "1 hour"
-msgstr "1 timme"
+msgstr "1 час"
 
 #. file 'caffeine/main.py', line 367
 msgid "2 hours"
-msgstr "2 timmar"
+msgstr "2 часа"
 
 #. file 'caffeine/main.py', line 368
 msgid "3 hours"
-msgstr "3 timmar"
+msgstr "3 часа"
 
 #. file 'caffeine/main.py', line 369
 msgid "4 hours"
-msgstr "4 timmar"
+msgstr "4 часа"
 
 #. file 'caffeine/main.py', line 384
 msgid "Other..."
-msgstr "Annan..."
+msgstr ""
 
 #. file 'caffeine/core.py', line 143
 msgid "Activated for Flash video"
-msgstr "Aktiverad p.g.a. Flash-video."
+msgstr ""
 
 #. file 'caffeine/core.py', line 194
 msgid "Activated for Quake Live"
-msgstr "Aktiverad p.g.a. Quake Live"
+msgstr ""
 
 #. file 'caffeine/core.py', line 245
 msgid " and "
-msgstr " och "
+msgstr ""
 
 #. file 'caffeine/core.py', line 252
 #. file 'caffeine/core.py', line 258
 msgid "hour"
-msgstr "timme"
+msgstr ""
 
 #. file 'caffeine/core.py', line 252
 #. file 'caffeine/core.py', line 264
 msgid "minute"
-msgstr "minut"
+msgstr ""
 
 #. file 'caffeine/core.py', line 260
 msgid "hours"
-msgstr "timmar"
+msgstr ""
 
 #. file 'caffeine/core.py', line 266
 msgid "minutes"
-msgstr "minuter"
+msgstr ""
 
 #. file 'caffeine/core.py', line 314
 msgid "Timed activation set; "
-msgstr "Tidsbestämd aktivering inställd; "
+msgstr ""
 
 #. file 'caffeine/core.py', line 315
 msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine aktivt i "
+msgstr ""
 
 #. file 'caffeine/core.py', line 322
 msgid "Activated for "
-msgstr "Aktivt under "
+msgstr ""
 
 #. file 'caffeine/core.py', line 380
 msgid "Timed activation cancelled (was set for "
-msgstr "Tidsbestämd aktivering avstängd (var tidigare ställd till "
+msgstr ""
 
 #. file 'caffeine/core.py', line 397
 msgid " have elapsed; powersaving is re-enabled"
-msgstr " har gått; strömsparläge och skärmsläckare återställda"
+msgstr ""
 
 #. file 'caffeine/core.py', line 414
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-msgstr "Caffeine förhindrar strömsparulägen och skärmsläckaraktivering "
+msgstr ""
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
-msgstr "Välj process..."
+msgstr ""
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Running Processes"
-msgstr "Aktiva Processer"
+msgstr ""
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
-msgstr "Nyligen Aktiva Processer"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
-"En applikation för att tillfälligt hindra aktivering av såväl skärmsläckare "
-"som viloläge."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
-msgstr "Inställningar"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Autostart"
-msgstr "Autostart"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
-msgstr "Starta Caffeine automatiskt"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -154,24 +152,20 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
-"Aktivera detta alternativ för att köra Caffeine automatiskt \n"
-"så snart som din dator startat och du loggat in."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
-msgstr "Automatiskt aktivering"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
 msgstr ""
-"Caffeine kan aktiveras automatiskt\n"
-" när vissa program är körs"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
-msgstr "Lista över program som Caffeine aktiveras automatiskt för:"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -181,15 +175,10 @@ msgid ""
 "(particularly full-screen applications) that do not properly\n"
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
-"När Caffeine upptäcker att en av processerna i\n"
-"listan körs så förhindras skärmsläckaren automatiskt\n"
-"från att aktiveras. Detta kan vara praktiskt för applikationer\n"
-"(speciellt fullskärmsapplikationer) som inte själv\n"
-"förhindrar att skärmsläckaren aktiveras."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
-msgstr "Aktivera vid Flash-video"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -199,15 +188,10 @@ msgid ""
 "screensaver and powersaving modes when a Flash video is\n"
 "embedded in the web page that you are currently browsing."
 msgstr ""
-"Vissa hemsidor, såsom www.youtube.com, vidar videor\n"
-"genom en teknik vid namn \"Flash\". Aktivera detta\n"
-"alternativ för att låta Caffeine automatiskt förhindra\n"
-"skärmsläckaren från att aktiveras så länge Flash-videor\n"
-"spelas."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Quake Live"
-msgstr "Aktivera för Quake Live"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -216,60 +200,23 @@ msgid ""
 "when it detects that you are playing the Quake Live video\n"
 "game. Visit www.quakelive.com to play the game for free."
 msgstr ""
-"Aktivera detta alternativ för att låta Caffeine automatiskt\n"
-"förhindra skärmsläckaren från att aktiveras medan ni\n"
-"spelar datorspelet Quake Live. Gå till www.quakelive.com\n"
-"för att gratis ta del av spelet."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr "Inställningar för Caffeine"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
-msgstr "Varaktighet"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Hours:"
-msgstr "Timmar:"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
-msgstr "Minuter:"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
-msgstr "Aktivera i"
-
-#~ msgid "10 seconds (for testing)"
-#~ msgstr "10 sekunder"
-
-#~ msgid "<b>Configure Caffeine</b>"
-#~ msgstr "<b>Konfigurera Caffeine</b>"
-
-#~ msgid "DPMS enabled"
-#~ msgstr "DPMS aktivt"
-
-#~ msgid "Copyright © 2009 Brad Smith & Tommy Brunn"
-#~ msgstr "Copyright © 2009 Brad Smith & Tommy Brunn"
-
-#~ msgid "Exception occurred"
-#~ msgstr "Undantag inträffade"
-
-#~ msgid "second"
-#~ msgstr "sekund"
-
-#~ msgid "Caffeine"
-#~ msgstr "Caffeine"
-
-#~ msgid "Start Caffeine on login."
-#~ msgstr "Starta Caffeine vid inloggning."
-
-#~ msgid "Activate for Quake Live."
-#~ msgstr "Aktivera för Quake Live."
-
-#~ msgid "Activate for Flash video."
-#~ msgstr "Aktivera för Flash-video."
-
-#~ msgid "Activated for Flash."
-#~ msgstr "Aktiverad p.g.a. Flash"
+msgstr ""
