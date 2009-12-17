@@ -8,131 +8,135 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-10-20 16:31+0000\n"
-"PO-Revision-Date: 2009-11-19 05:28+0000\n"
-"Last-Translator: Muszela Balázs <bazsi86@gmail.com>\n"
+"PO-Revision-Date: 2009-12-16 13:32+0000\n"
+"Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-20 04:43+0000\n"
+"X-Launchpad-Export-Date: 2009-12-17 04:46+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
 msgid "Please install"
-msgstr ""
+msgstr "Kérem telepítse"
 
-#. file 'caffeine/main.py', line 340
-#. file 'caffeine/core.py', line 372
+#. file 'caffeine/main.py', line 344
+#. file 'caffeine/core.py', line 403
 msgid "Caffeine is dormant; powersaving is enabled"
-msgstr ""
+msgstr "A koffein adagolás leállt; az energiakezelés újra aktív"
 
-#. file 'caffeine/main.py', line 362
+#. file 'caffeine/main.py', line 364
 msgid "5 minutes"
 msgstr "5 perc"
 
-#. file 'caffeine/main.py', line 363
+#. file 'caffeine/main.py', line 365
 msgid "10 minutes"
 msgstr "10 perc"
 
-#. file 'caffeine/main.py', line 364
+#. file 'caffeine/main.py', line 366
 msgid "15 minutes"
 msgstr "15 perc"
 
-#. file 'caffeine/main.py', line 365
+#. file 'caffeine/main.py', line 367
 msgid "30 minutes"
 msgstr "30 perc"
 
-#. file 'caffeine/main.py', line 366
+#. file 'caffeine/main.py', line 368
 msgid "1 hour"
 msgstr "1 óra"
 
-#. file 'caffeine/main.py', line 367
+#. file 'caffeine/main.py', line 369
 msgid "2 hours"
 msgstr "2 óra"
 
-#. file 'caffeine/main.py', line 368
+#. file 'caffeine/main.py', line 370
 msgid "3 hours"
 msgstr "3 óra"
 
-#. file 'caffeine/main.py', line 369
+#. file 'caffeine/main.py', line 371
 msgid "4 hours"
 msgstr "4 óra"
 
-#. file 'caffeine/main.py', line 384
+#. file 'caffeine/main.py', line 386
 msgid "Other..."
 msgstr "Egyéb..."
 
-#. file 'caffeine/core.py', line 143
+#. file 'caffeine/core.py', line 169
+#. file 'caffeine/core.py', line 171
 msgid "Activated for Flash video"
-msgstr ""
+msgstr "Flash videóknál aktiválni"
 
-#. file 'caffeine/core.py', line 194
+#. file 'caffeine/core.py', line 215
 msgid "Activated for Quake Live"
-msgstr ""
+msgstr "Quake Live közben aktiválni"
 
-#. file 'caffeine/core.py', line 245
+#. file 'caffeine/core.py', line 277
 msgid " and "
 msgstr " és "
 
-#. file 'caffeine/core.py', line 252
-#. file 'caffeine/core.py', line 258
+#. file 'caffeine/core.py', line 284
+#. file 'caffeine/core.py', line 290
 msgid "hour"
 msgstr "óra"
 
-#. file 'caffeine/core.py', line 252
-#. file 'caffeine/core.py', line 264
+#. file 'caffeine/core.py', line 284
+#. file 'caffeine/core.py', line 296
 msgid "minute"
 msgstr "perc"
 
-#. file 'caffeine/core.py', line 260
+#. file 'caffeine/core.py', line 292
 msgid "hours"
 msgstr "óra"
 
-#. file 'caffeine/core.py', line 266
+#. file 'caffeine/core.py', line 298
 msgid "minutes"
 msgstr "perc"
 
-#. file 'caffeine/core.py', line 314
+#. file 'caffeine/core.py', line 349
 msgid "Timed activation set; "
-msgstr ""
+msgstr "Aktiválás időtartama: "
 
-#. file 'caffeine/core.py', line 315
+#. file 'caffeine/core.py', line 350
 msgid "Caffeine will prevent powersaving for the next "
-msgstr ""
+msgstr "Az energiakezelés blokkolásának időtartama: "
 
-#. file 'caffeine/core.py', line 322
+#. file 'caffeine/core.py', line 246
+#. file 'caffeine/core.py', line 357
 msgid "Activated for "
-msgstr ""
+msgstr "Aktiválás időtartama: "
 
-#. file 'caffeine/core.py', line 380
+#. file 'caffeine/core.py', line 411
 msgid "Timed activation cancelled (was set for "
-msgstr ""
+msgstr "Az aktiválás leállítva (beállított időtartam: "
 
-#. file 'caffeine/core.py', line 397
+#. file 'caffeine/core.py', line 428
 msgid " have elapsed; powersaving is re-enabled"
-msgstr ""
+msgstr " letelt; az energiakezelés újra aktív"
 
-#. file 'caffeine/core.py', line 414
+#. file 'caffeine/core.py', line 447
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-msgstr ""
+msgstr "A Caffeine blokkolja az energiakezelést, illetve a képernyővédőt "
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
-msgstr ""
+msgstr "Válasszon egy folyamatot..."
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Running Processes"
-msgstr ""
+msgstr "Futó folyamatok"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
-msgstr ""
+msgstr "Jelenlegi folyamatok"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
+"Egy alkalmazás az energiakezelés, illetve a képernyővédő ideiglenes "
+"blokkolására."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
@@ -152,20 +156,24 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
+"Az opció engedélyezésével a Caffeine automatikusan elindul, ha a \n"
+"rendszer felállt és helyesen megadta felhasználónevét, illetve jelszavát."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
-msgstr ""
+msgstr "Automatikus aktiválás"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
 msgstr ""
+"Egyes alkalmazások esetén a \n"
+"Caffeine automatikusan aktiválódik."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
-msgstr ""
+msgstr "A Caffeine az alábbi alkalmazásoknál:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -175,6 +183,11 @@ msgid ""
 "(particularly full-screen applications) that do not properly\n"
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
+"Ha a Caffeine automatikusan letiltja a képernyővédőt\n"
+"és az energiakezelést, ha érzékeli, hogy valamelyik\n"
+"alkalmazás elindul a megadott listából. Hasznos lehet\n"
+"olyan teljes képernyős alkalmazásoknál, amikben\n"
+"alapból nem található ilyen funkció."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
