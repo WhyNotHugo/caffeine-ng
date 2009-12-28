@@ -8,113 +8,115 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-10-20 16:31+0000\n"
-"PO-Revision-Date: 2009-08-21 19:01+0000\n"
-"Last-Translator: Mikel Alzibar <mikelalzibar@gmail.com>\n"
+"PO-Revision-Date: 2009-12-27 21:59+0000\n"
+"Last-Translator: Arrate <arratel@gmail.com>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-19 04:38+0000\n"
+"X-Launchpad-Export-Date: 2009-12-28 04:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
 msgid "Please install"
 msgstr "Mesedez instalatu"
 
-#. file 'caffeine/main.py', line 340
-#. file 'caffeine/core.py', line 372
+#. file 'caffeine/main.py', line 344
+#. file 'caffeine/core.py', line 403
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr ""
 
-#. file 'caffeine/main.py', line 362
+#. file 'caffeine/main.py', line 364
 msgid "5 minutes"
 msgstr "5 minutu"
 
-#. file 'caffeine/main.py', line 363
+#. file 'caffeine/main.py', line 365
 msgid "10 minutes"
 msgstr "10 minutu"
 
-#. file 'caffeine/main.py', line 364
+#. file 'caffeine/main.py', line 366
 msgid "15 minutes"
 msgstr "15 minutu"
 
-#. file 'caffeine/main.py', line 365
+#. file 'caffeine/main.py', line 367
 msgid "30 minutes"
 msgstr "30 minutu"
 
-#. file 'caffeine/main.py', line 366
+#. file 'caffeine/main.py', line 368
 msgid "1 hour"
 msgstr "Ordu 1"
 
-#. file 'caffeine/main.py', line 367
+#. file 'caffeine/main.py', line 369
 msgid "2 hours"
 msgstr "2 ordu"
 
-#. file 'caffeine/main.py', line 368
+#. file 'caffeine/main.py', line 370
 msgid "3 hours"
 msgstr "3 ordu"
 
-#. file 'caffeine/main.py', line 369
+#. file 'caffeine/main.py', line 371
 msgid "4 hours"
 msgstr "4 ordu"
 
-#. file 'caffeine/main.py', line 384
+#. file 'caffeine/main.py', line 386
 msgid "Other..."
 msgstr "Beste batzuk ..."
 
-#. file 'caffeine/core.py', line 143
+#. file 'caffeine/core.py', line 169
+#. file 'caffeine/core.py', line 171
 msgid "Activated for Flash video"
 msgstr ""
 
-#. file 'caffeine/core.py', line 194
+#. file 'caffeine/core.py', line 215
 msgid "Activated for Quake Live"
 msgstr ""
 
-#. file 'caffeine/core.py', line 245
+#. file 'caffeine/core.py', line 277
 msgid " and "
 msgstr " eta "
 
-#. file 'caffeine/core.py', line 252
-#. file 'caffeine/core.py', line 258
+#. file 'caffeine/core.py', line 284
+#. file 'caffeine/core.py', line 290
 msgid "hour"
 msgstr "ordu"
 
-#. file 'caffeine/core.py', line 252
-#. file 'caffeine/core.py', line 264
+#. file 'caffeine/core.py', line 284
+#. file 'caffeine/core.py', line 296
 msgid "minute"
 msgstr "minutu"
 
-#. file 'caffeine/core.py', line 260
+#. file 'caffeine/core.py', line 292
 msgid "hours"
 msgstr "ordu"
 
-#. file 'caffeine/core.py', line 266
+#. file 'caffeine/core.py', line 298
 msgid "minutes"
 msgstr "minutu"
 
-#. file 'caffeine/core.py', line 314
+#. file 'caffeine/core.py', line 349
 msgid "Timed activation set; "
 msgstr "Denboraren araberako aktibazioa indarrean; "
 
-#. file 'caffeine/core.py', line 315
+#. file 'caffeine/core.py', line 350
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine-k energia aurreztea indargabetuko du hurrengo denboran: "
 
-#. file 'caffeine/core.py', line 322
+#. file 'caffeine/core.py', line 246
+#. file 'caffeine/core.py', line 357
 msgid "Activated for "
 msgstr ""
 
-#. file 'caffeine/core.py', line 380
+#. file 'caffeine/core.py', line 411
 msgid "Timed activation cancelled (was set for "
 msgstr ""
 "Denboraren araberako aktibazioa ezeztatua (hurrengo denborarako "
 "konfiguratua: "
 
-#. file 'caffeine/core.py', line 397
+#. file 'caffeine/core.py', line 428
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " pasa dira; energia aurreztea berriro aktibatu da"
 
-#. file 'caffeine/core.py', line 414
+#. file 'caffeine/core.py', line 447
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
 
@@ -144,7 +146,7 @@ msgstr "Hobespenak"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Autostart"
-msgstr ""
+msgstr "Hasiera automatikoa"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
@@ -159,13 +161,13 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
-msgstr ""
+msgstr "Aktibazio automatikoa"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
-msgstr ""
+msgstr "Caffeine automatikoki aktibatu daiteke"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
