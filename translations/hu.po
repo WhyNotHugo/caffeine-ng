@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-10-20 16:31+0000\n"
-"PO-Revision-Date: 2009-12-18 17:48+0000\n"
-"Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
+"PO-Revision-Date: 2010-01-19 15:06+0000\n"
+"Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-12-19 04:35+0000\n"
+"X-Launchpad-Export-Date: 2010-01-20 04:38+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
@@ -135,8 +135,8 @@ msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
-"Egy alkalmazás az energiakezelés, illetve a képernyővédő ideiglenes "
-"letiltására."
+"Az energiakezelés, illetve a képernyővédő ideiglenes letiltására szolgáló "
+"alkalmazás."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
@@ -148,7 +148,7 @@ msgstr "Automatikus indítás"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
-msgstr "Caffeine indítása bejelentkezéskor"
+msgstr "A Caffeine indítása bejelentkezéskor"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -156,8 +156,8 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
-"Az opció engedélyezésével a Caffeine automatikusan elindul, ha a\n"
-"rendszer felállt és helyesen megadta felhasználónevét, illetve jelszavát."
+"Az opció engedélyezésével a Caffeine automatikusan elindul a\n"
+"rendszerrel együtt, ha helyesen adta meg felhasználónevét, illetve jelszavát."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
@@ -183,11 +183,11 @@ msgid ""
 "(particularly full-screen applications) that do not properly\n"
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
-"Ha a Caffeine automatikusan letiltja a képernyővédőt\n"
+"A Caffeine automatikusan letiltja a képernyővédőt\n"
 "és az energiakezelést, ha érzékeli, hogy valamelyik\n"
 "alkalmazás elindul a megadott listából. Hasznos lehet\n"
-"olyan teljes képernyős alkalmazásoknál, amikben\n"
-"alapból nem található ilyen funkció."
+"olyan teljes képernyős alkalmazásoknál, amelyekben\n"
+"nem található ilyen funkció."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
@@ -219,8 +219,8 @@ msgid ""
 "game. Visit www.quakelive.com to play the game for free."
 msgstr ""
 "Engedélyezve ezt az opciót a Caffeine automatikusan letiltja\n"
-"a képernyővédőt, illetve az energiakezelőt, ha érzékeli, hogy fut\n"
-"a Quake Live. Látogasson el a www.quakelive.com honlapra\n"
+"a képernyővédőt, illetve az energiakezelőt, ha a Quake Live\n"
+"futását érzékeli. Látogasson el a www.quakelive.com honlapra,\n"
 "és próbálja ki a játékot ingyen."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
@@ -241,4 +241,4 @@ msgstr "Perc:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
-msgstr "Aktiválni"
+msgstr "Aktiválás"
