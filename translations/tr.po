@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-10-20 16:31+0000\n"
-"PO-Revision-Date: 2009-12-16 06:45+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2010-01-29 22:02+0000\n"
+"Last-Translator: Gökhan KILINÇ <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-12-17 04:46+0000\n"
+"X-Launchpad-Export-Date: 2010-01-30 04:44+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
 msgid "Please install"
-msgstr ""
+msgstr "Lütfen yükleyiniz"
 
 #. file 'caffeine/main.py', line 344
 #. file 'caffeine/core.py', line 403
@@ -65,7 +65,7 @@ msgstr "Diğer..."
 #. file 'caffeine/core.py', line 169
 #. file 'caffeine/core.py', line 171
 msgid "Activated for Flash video"
-msgstr ""
+msgstr "Flash görüntü için etkinleştirildi"
 
 #. file 'caffeine/core.py', line 215
 msgid "Activated for Quake Live"
@@ -78,7 +78,7 @@ msgstr " ve "
 #. file 'caffeine/core.py', line 284
 #. file 'caffeine/core.py', line 290
 msgid "hour"
-msgstr "saat"
+msgstr ""
 
 #. file 'caffeine/core.py', line 284
 #. file 'caffeine/core.py', line 296
@@ -128,7 +128,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
-msgstr ""
+msgstr "En Son İşlemler"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -146,7 +146,7 @@ msgstr "Otomatik Başlat"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
-msgstr ""
+msgstr "Caffeine' i oturum açıldığında başlat"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -157,7 +157,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
-msgstr ""
+msgstr "Otomatik etkinleştirme"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -193,7 +193,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Quake Live"
-msgstr ""
+msgstr "Quake Live için etkinleştir"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -205,7 +205,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr ""
+msgstr "Caffeine' i yapılandırın"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -213,7 +213,7 @@ msgstr "Süre"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Hours:"
-msgstr "Saat:"
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
