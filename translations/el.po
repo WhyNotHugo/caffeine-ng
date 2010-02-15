@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-10-20 16:31+0000\n"
-"PO-Revision-Date: 2010-02-14 19:47+0000\n"
+"PO-Revision-Date: 2010-02-15 13:59+0000\n"
 "Last-Translator: thunk <thunk77@gmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-02-15 04:53+0000\n"
+"X-Launchpad-Export-Date: 2010-02-15 14:59+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
@@ -25,7 +25,7 @@ msgstr "Παρακαλώ εγκαταστήστε"
 #. file 'caffeine/core.py', line 403
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr ""
-"Το Caffeine είναι ανενεργό: η εξοικονόμηση ενέργειας είναι σε εφαρμογή"
+"Το Caffeine είναι αδρανές: η εξοικονόμηση ενέργειας είναι σε εφαρμογή"
 
 #. file 'caffeine/main.py', line 364
 msgid "5 minutes"
@@ -96,11 +96,11 @@ msgstr "λεπτά"
 
 #. file 'caffeine/core.py', line 349
 msgid "Timed activation set; "
-msgstr "Η χρονομερτημένη ενεργοποίηση ρυθμίστηκε για: "
+msgstr "Το χρονόμετρο ενεργοποίησης ρυθμίστηκε για "
 
 #. file 'caffeine/core.py', line 350
 msgid "Caffeine will prevent powersaving for the next "
-msgstr "Το Caffeine θα αποτρέπει τη διαχείριση ενέργειας για τα επόμενα "
+msgstr "Το Caffeine θα αποτρέπει την εξοικονόμηση ενέργειας για "
 
 #. file 'caffeine/core.py', line 246
 #. file 'caffeine/core.py', line 357
@@ -109,16 +109,16 @@ msgstr "Ενεργοποιήθηκε για "
 
 #. file 'caffeine/core.py', line 411
 msgid "Timed activation cancelled (was set for "
-msgstr "Η χρονομρτρημένη ενεργοποίηση ακυρώθηκε (είχε ρυθμιστεί για "
+msgstr "Το χρονόμετρο ενεργοποίησης ακυρώθηκε (είχε ρυθμιστεί για "
 
 #. file 'caffeine/core.py', line 428
 msgid " have elapsed; powersaving is re-enabled"
-msgstr " έχουν περάσει: η εξοικονόμηση ενέργειας είναι ξανά σε εφαρμογή"
+msgstr " πέρασαν/πέρασε: η εξοικονόμηση ενέργειας είναι ξανά σε εφαρμογή"
 
 #. file 'caffeine/core.py', line 447
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
-"Το Caffeine αποτρέπει τις ρυθμίσεις εξοικονόμησης ενέργειας και την "
+"Το Caffeine αποτρέπει τις λειτουργίες εξοικονόμησης ενέργειας και την "
 "ενεργοποίηση της προστασίας οθόνης "
 
 #. file 'share/caffeine/glade/proc.glade', line ?
@@ -138,8 +138,8 @@ msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
-"Μια εφαρμογή που αποτρέπει προσωρινά την ενεργοποίηση τόσο της προστασίας "
-"οθόνης, όσο και τις ρυθμίσης εξοικονόμησης ενέργειας."
+"Μια εφαρμογή που αποτρέπει προσωρινά την ενεργοποίηση της προστασίας οθόνης "
+"και της ρύθμισης εξοικονόμησης ενέργειας \"sleep\"."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
@@ -188,10 +188,10 @@ msgid ""
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
 "Όταν το Caffeine εντοπίσει ότι κάποια από τις διεργασίες σε αυτή τη\n"
-"λίστα είναι σε εφαρμογή, θα εμποδίσει την ενεργοποίηση της προστασίας "
+"λίστα είναι σε εφαρμογή, θα αποτρέψει την ενεργοποίηση της προστασίας "
 "οθόνης\n"
-"και τις επιλογές εξοικονόμησης ενέργειας. Αυτό μπορεί να είναι χρήσιμο για "
-"εφαρμογές\n"
+"και τις λειτουργίες εξοικονόμησης ενέργειας. Αυτό μπορεί να είναι χρήσιμο "
+"για εφαρμογές\n"
 "(ειδικά σε προβολή πλήρους οθόνης) οι οποίες δεν αποτρέπουν \n"
 "σωστά την προστασία οθόνης και την εξοικονόμηση ενέργειας από μόνες τους."
 
@@ -209,9 +209,8 @@ msgid ""
 msgstr ""
 "Κάποιες ιστοσελίδες, όπως το www.youtube.com, προβάλλουν βίντεο "
 "χρησιμοποιώντας\n"
-"μια τεχνολογία γνωστή ως \"Flash\". Ενεργοποιήστε αυτή την επιλογή για να "
-"ρυθμίσετε το\n"
-"Caffeine έτσι ώστε να εμποδίζει αυτόματα την ενεργοποίηση της\n"
+"μια τεχνολογία γνωστή ως \"Flash\". Ενεργοποιήστε αυτή την επιλογή για να\n"
+"αποτρέψετε αυτόματα την ενεργοποίηση της\n"
 "προστασίας οθόνης και της εξοικονόμησης ενέργειας όποτε ένα βίντεο τύπου "
 "Flash είναι\n"
 "ενσωματωμένο σε μια ιστοσελίδα στην οποία κάνετε περιήγηση."
@@ -227,11 +226,9 @@ msgid ""
 "when it detects that you are playing the Quake Live video\n"
 "game. Visit www.quakelive.com to play the game for free."
 msgstr ""
-"Ενεργοποιήστε αυτή την επιλογή για να ρυθμίσετε το Caffeine έτσι ώστε να "
-"εμποδίζει\n"
-"την ενεργοποίηση της προστασίας οθόνης και των επιλογών εξοικονόμησης "
-"ενέργειας\n"
-"όταν εντοπίσει οτι παίζετε το βιντεοπαιχνίδι Quake Live.\n"
+"Ενεργοποιήστε αυτή την επιλογή για να αποτρέψετε αυτόματα\n"
+"την ενεργοποίηση της προστασίας οθόνης και της εξοικονόμησης ενέργειας \n"
+"όταν το Caffeine εντοπίσει οτι παίζετε το βιντεοπαιχνίδι Quake Live.\n"
 "Επισκευτείτε την ιστοσελίδα www.quakelive.com για να παίξετε το παιχνίδι "
 "δωρεάν."
 
