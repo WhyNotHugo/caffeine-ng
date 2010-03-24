@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: caffeine 1.0\n"
-"POT-Creation-Date: 2009-10-20 16:31:15.614774\n"
+"Project-Id-Version: caffeine 2.0\n"
+"POT-Creation-Date: 2010-03-23 21:27:05.513291\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,85 +16,77 @@ msgid "Please install"
 #. file 'caffeine/main.py', line 36
 msgstr ""
 msgid "Caffeine is dormant; powersaving is enabled"
-#. file 'caffeine/main.py', line 340
-#. file 'caffeine/core.py', line 372
+#. file 'caffeine/main.py', line 344
+#. file 'caffeine/core.py', line 415
 msgstr ""
 msgid "5 minutes"
-#. file 'caffeine/main.py', line 362
-msgstr ""
-msgid "10 minutes"
-#. file 'caffeine/main.py', line 363
-msgstr ""
-msgid "15 minutes"
 #. file 'caffeine/main.py', line 364
 msgstr ""
-msgid "30 minutes"
+msgid "10 minutes"
 #. file 'caffeine/main.py', line 365
 msgstr ""
-msgid "1 hour"
+msgid "15 minutes"
 #. file 'caffeine/main.py', line 366
 msgstr ""
-msgid "2 hours"
+msgid "30 minutes"
 #. file 'caffeine/main.py', line 367
 msgstr ""
-msgid "3 hours"
+msgid "1 hour"
 #. file 'caffeine/main.py', line 368
 msgstr ""
-msgid "4 hours"
+msgid "2 hours"
 #. file 'caffeine/main.py', line 369
 msgstr ""
+msgid "3 hours"
+#. file 'caffeine/main.py', line 370
+msgstr ""
+msgid "4 hours"
+#. file 'caffeine/main.py', line 371
+msgstr ""
 msgid "Other..."
-#. file 'caffeine/main.py', line 384
+#. file 'caffeine/main.py', line 386
 msgstr ""
 msgid "Activated for Flash video"
-#. file 'caffeine/core.py', line 143
+#. file 'caffeine/core.py', line 169
+#. file 'caffeine/core.py', line 171
 msgstr ""
 msgid "Activated for Quake Live"
-#. file 'caffeine/core.py', line 194
+#. file 'caffeine/core.py', line 222
 msgstr ""
 msgid " and "
-#. file 'caffeine/core.py', line 245
+#. file 'caffeine/core.py', line 289
 msgstr ""
 msgid "hour"
-#. file 'caffeine/core.py', line 252
-#. file 'caffeine/core.py', line 258
+#. file 'caffeine/core.py', line 296
+#. file 'caffeine/core.py', line 302
 msgstr ""
 msgid "minute"
-#. file 'caffeine/core.py', line 252
-#. file 'caffeine/core.py', line 264
+#. file 'caffeine/core.py', line 296
+#. file 'caffeine/core.py', line 308
 msgstr ""
 msgid "hours"
-#. file 'caffeine/core.py', line 260
+#. file 'caffeine/core.py', line 304
 msgstr ""
 msgid "minutes"
-#. file 'caffeine/core.py', line 266
+#. file 'caffeine/core.py', line 310
 msgstr ""
 msgid "Timed activation set; "
-#. file 'caffeine/core.py', line 314
+#. file 'caffeine/core.py', line 361
 msgstr ""
 msgid "Caffeine will prevent powersaving for the next "
-#. file 'caffeine/core.py', line 315
+#. file 'caffeine/core.py', line 362
 msgstr ""
 msgid "Activated for "
-#. file 'caffeine/core.py', line 322
+#. file 'caffeine/core.py', line 369
 msgstr ""
 msgid "Timed activation cancelled (was set for "
-#. file 'caffeine/core.py', line 380
+#. file 'caffeine/core.py', line 423
 msgstr ""
 msgid " have elapsed; powersaving is re-enabled"
-#. file 'caffeine/core.py', line 397
+#. file 'caffeine/core.py', line 440
 msgstr ""
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-#. file 'caffeine/core.py', line 414
-msgstr ""
-msgid "Select a process name..."
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgstr ""
-msgid "Running Processes"
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgstr ""
-msgid "Recent Processes"
-#. file 'share/caffeine/glade/proc.glade', line ?
+#. file 'caffeine/core.py', line 459
 msgstr ""
 msgid "An application to temporarily prevent the activation of both the screen saver and the \"sleep\" powersaving mode."
 #. file 'share/caffeine/glade/GUI.glade', line ?
@@ -168,4 +160,13 @@ msgid "Minutes:"
 msgstr ""
 msgid "Activate for"
 #. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Select a process name..."
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgstr ""
+msgid "Running Processes"
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgstr ""
+msgid "Recent Processes"
+#. file 'share/caffeine/glade/proc.glade', line ?
 msgstr ""

@@ -22,7 +22,7 @@ def main():
                 black_list])))
 
     setup(name="caffeine",
-        version='0.3',
+        version='2.0',
         description="""A status bar application able to temporarily prevent
         the activation of both the screensaver and the "sleep" powersaving
         mode.""",
