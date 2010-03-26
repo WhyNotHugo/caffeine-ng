@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-10-20 16:31+0000\n"
-"PO-Revision-Date: 2009-12-05 06:18+0000\n"
-"Last-Translator: Miguel de Dios <tres.14159@gmail.com>\n"
+"POT-Creation-Date: 2010-03-23 21:27+0000\n"
+"PO-Revision-Date: 2010-03-25 21:59+0000\n"
+"Last-Translator: Julián Alarcón <alarconj@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-12-06 04:45+0000\n"
+"X-Launchpad-Export-Date: 2010-03-26 04:51+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
@@ -65,11 +65,11 @@ msgstr "Otro..."
 #. file 'caffeine/core.py', line 169
 #. file 'caffeine/core.py', line 171
 msgid "Activated for Flash video"
-msgstr "Activado para el vídeo Flash"
+msgstr "Activado para vídeo en Flash"
 
 #. file 'caffeine/core.py', line 215
 msgid "Activated for Quake Live"
-msgstr "Activado para el Quake Live"
+msgstr "Activado para Quake Live"
 
 #. file 'caffeine/core.py', line 277
 msgid " and "
@@ -95,7 +95,7 @@ msgstr "minutos"
 
 #. file 'caffeine/core.py', line 349
 msgid "Timed activation set; "
-msgstr "Activación por tiempo establecida "
+msgstr "Activación por tiempo establecida; "
 
 #. file 'caffeine/core.py', line 350
 msgid "Caffeine will prevent powersaving for the next "
@@ -104,33 +104,21 @@ msgstr "Caffeine evitará el ahorro de energía durante los próximos "
 #. file 'caffeine/core.py', line 246
 #. file 'caffeine/core.py', line 357
 msgid "Activated for "
-msgstr "Activar durante "
+msgstr "Activado por "
 
 #. file 'caffeine/core.py', line 411
 msgid "Timed activation cancelled (was set for "
-msgstr "Activación por tiempo cancelada (se fijó durante "
+msgstr "Activación por tiempo cancelada (se estableció por "
 
 #. file 'caffeine/core.py', line 428
 msgid " have elapsed; powersaving is re-enabled"
-msgstr " han transcurrido; el ahorro de energía se vuelve a habilitar"
+msgstr " han transcurrido; el ahorro de energía se ha reactivado"
 
 #. file 'caffeine/core.py', line 447
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
-"Caffeine previene de la activación del protector de pantalla y del modo de "
-"ahorro de energía "
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Select a process name..."
-msgstr "Seleccione el nombre de un proceso ..."
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Running Processes"
-msgstr "Procesos en ejecución"
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Recent Processes"
-msgstr "Procesos Recientes"
+"Caffeine esta evitando los modos de ahorro de energía y la activación del "
+"protector de pantalla "
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -159,8 +147,8 @@ msgid ""
 "successfully entered your username and password."
 msgstr ""
 "Activar esta opción para iniciar Caffeine automáticamente \n"
-"tan pronto como su sistema arranque y haya introducido \n"
-"correctamente su nombre de usuario y contraseña."
+"tan pronto como el sistema arranque y se haya introducido \n"
+"correctamente el nombre de usuario y contraseña."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
@@ -188,7 +176,7 @@ msgid ""
 msgstr ""
 "Cuando Caffeine detecta que alguno de los procesos de esta lista está en "
 "ejecución, \n"
-"previene de la activación del protector de pantalla y el modo de ahorro de "
+"evita la activación del protector de pantalla y el modo de ahorro de "
 "energía.\n"
 "Esto es útil para algunas aplicaciones (en particular, aquellas aplicaciones "
 "a pantalla completa) \n"
@@ -197,7 +185,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
-msgstr "Activar para vídeos Flash"
+msgstr "Activado para vídeo en Flash"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -227,7 +215,7 @@ msgid ""
 msgstr ""
 "Active esta opción para que Caffeine prevenga automáticamente \n"
 "la activación del protector de pantalla y el modo de ahorro de energía, \n"
-"cuando detecte que está jugando al Quake Live.\n"
+"cuando detecte que está jugando Quake Live.\n"
 "Visite www.quakelive.com para jugar gratis al Quake Live."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
@@ -249,6 +237,18 @@ msgstr "Minutos:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
 msgstr "Activar durante"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Select a process name..."
+msgstr "Seleccione el nombre de un proceso..."
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Running Processes"
+msgstr "Procesos en ejecución"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Recent Processes"
+msgstr "Procesos recientes"
 
 #~ msgid "DPMS enabled"
 #~ msgstr "DPMS habilitado"

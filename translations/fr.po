@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-10-20 16:31+0000\n"
-"PO-Revision-Date: 2010-01-30 03:41+0000\n"
-"Last-Translator: Adnane Belmadiaf <Unknown>\n"
+"POT-Creation-Date: 2010-03-23 21:27+0000\n"
+"PO-Revision-Date: 2010-03-25 12:24+0000\n"
+"Last-Translator: pomah <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-01-31 04:53+0000\n"
+"X-Launchpad-Export-Date: 2010-03-26 04:51+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
@@ -122,18 +122,6 @@ msgstr ""
 "Caffeine anticipe le régime d'économie d'énergie et l'activation du "
 "conservateur de l'écran "
 
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Select a process name..."
-msgstr "Choisissez le nom du proces..."
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Running Processes"
-msgstr "Des procès courants"
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Recent Processes"
-msgstr "Procès récents"
-
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "An application to temporarily prevent the activation of both the screen "
@@ -148,7 +136,7 @@ msgstr "Préférences"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Autostart"
-msgstr "Lancement Automatique"
+msgstr "Démarrage automatique"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
@@ -253,6 +241,18 @@ msgstr "Minutes:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
 msgstr "Activer pendant"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Select a process name..."
+msgstr "Choisissez le nom du proces..."
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Running Processes"
+msgstr "Des procès courants"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Recent Processes"
+msgstr "Procès récents"
 
 #~ msgid "Exception occurred"
 #~ msgstr "Une exception s'est produite"
