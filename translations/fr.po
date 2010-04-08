@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-03-23 21:27+0000\n"
-"PO-Revision-Date: 2010-03-26 05:19+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2010-04-07 22:34+0000\n"
+"Last-Translator: backslashn <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-03-27 05:03+0000\n"
+"X-Launchpad-Export-Date: 2010-04-08 07:22+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 36
@@ -24,7 +24,7 @@ msgstr "Merci d'installer"
 #. file 'caffeine/main.py', line 344
 #. file 'caffeine/core.py', line 403
 msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "Caffeine est inactif; l'économie d'énergie est activée"
+msgstr "Caffeine est inactif; le mode \"économie d'énergie\" est activée"
 
 #. file 'caffeine/main.py', line 364
 msgid "5 minutes"
@@ -65,7 +65,7 @@ msgstr "Autre..."
 #. file 'caffeine/core.py', line 169
 #. file 'caffeine/core.py', line 171
 msgid "Activated for Flash video"
-msgstr "Activé pour la vidéo Flash"
+msgstr "Activé pour les vidéos Flash"
 
 #. file 'caffeine/core.py', line 215
 msgid "Activated for Quake Live"
@@ -99,28 +99,27 @@ msgstr "Activation à une certaine durée, installée; "
 
 #. file 'caffeine/core.py', line 350
 msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine empêchera l'activation de l'économie d'énergie pendant "
+msgstr ""
+"Caffeine empêchera l'activation du mode \"économie d'énergie\" pendant "
 
 #. file 'caffeine/core.py', line 246
 #. file 'caffeine/core.py', line 357
 msgid "Activated for "
-msgstr "Включён для "
+msgstr "Activé pour "
 
 #. file 'caffeine/core.py', line 411
 msgid "Timed activation cancelled (was set for "
-msgstr ""
-"L'activation à une certaine durée est fermée (était préalablement installée "
-"sur "
+msgstr "Activation temporaire annulée (précédemment activé pour "
 
 #. file 'caffeine/core.py', line 428
 msgid " have elapsed; powersaving is re-enabled"
-msgstr " se sont écoulées; la sauvegarde d'énergie est réactivée"
+msgstr " se sont écoulées; le mode \"économie d'énergie\" est réactivée"
 
 #. file 'caffeine/core.py', line 447
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
-"Caffeine anticipe le régime d'économie d'énergie et l'activation du "
-"conservateur de l'écran "
+"Caffeine empêche l'activation des modes \"économie d'énergie\" et de "
+"l'économiseur d'écran "
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -140,7 +139,7 @@ msgstr "Démarrage automatique"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
-msgstr "Lance Caffeine a l'ouverture de session"
+msgstr "Démarrer Caffeine à l'ouverture de session"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -148,9 +147,9 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
-"Activer cette option pour lancer Caffeine dès que\n"
-"votre ordinateur a terminer de démarrer et que vous\n"
-"avez saisi votre identifiant et mot de passe."
+"Activez cette option pour lancer Caffeine dès que\n"
+"votre ordinateur a terminé de démarrer et que vous\n"
+"avez saisi votre identifiant et votre mot de passe."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
@@ -161,12 +160,13 @@ msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
 msgstr ""
-"Caffeine est capable de s'activer automatiquement\n"
-"même si un programme précis est en cours d'exécution."
+"Caffeine peut automatiquement s'activer\n"
+"lorsque certaines applications sont en cours d'excution"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
-msgstr "Une liste des programmes pour lesquels Caffeine se lance"
+msgstr ""
+"Liste des applications pour lesquelles Caffeine s'active automatiquement"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -187,7 +187,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
-msgstr "Activer pour la vidéo flash"
+msgstr "Activer pour les vidéos Flash"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -224,7 +224,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr "Configurations de Caffeine"
+msgstr "Configurer Caffeine"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -244,15 +244,15 @@ msgstr "Activer pendant"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
-msgstr "Choisissez le nom du proces..."
+msgstr "Sélectionner le nom d'un processus..."
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Running Processes"
-msgstr "Des procès courants"
+msgstr "Processus actuellement en cours d'éxecution"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
-msgstr "Procès récents"
+msgstr "Processus ayant récemment été exécutés"
 
 #~ msgid "Exception occurred"
 #~ msgstr "Une exception s'est produite"
