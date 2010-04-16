@@ -24,6 +24,7 @@ import gtk
 import gobject
 import glib
 import pygtk
+import appindicator
 
 import dbus
 import threading
@@ -44,6 +45,7 @@ import caffeinelogging as logging
 
 icon_theme = gtk.icon_theme_get_default()
 generic = icon_theme.load_icon("application-x-executable", 16, gtk.ICON_LOOKUP_NO_SVG)
+
 
 
 cached_icons = {"generic":generic}
@@ -335,17 +337,25 @@ class GUI(object):
         ## IMPORTANT:
         ## status icon must be a instance variable  (ie self.)or else it 
         ## gets thrown out with the garbage, and won't be seen.
-        self.status_icon = get("statusicon")
+        #self.status_icon = get("statusicon")
+        self.AppInd = appindicator.Indicator ("caffeine",
+                        "caffeine",
+                        appindicator.CATEGORY_APPLICATION_STATUS)
+        self.AppInd.set_status (appindicator.STATUS_ACTIVE)
+        #self.AppInd.set_attention_icon ("caffeine")
 
         self.set_icon_activated(self.Core.getActivated())
 
         tooltip = self.Core.status_string
         if not tooltip:
             tooltip = _("Caffeine is dormant; powersaving is enabled")
-        self.status_icon.set_tooltip(tooltip)
+        #self.status_icon.set_tooltip(tooltip)
 
         ## popup menu
         self.menu = get("popup_menu")
+        self.menu.show()
+
+        self.AppInd.set_menu (self.menu)
             
         ####
         ### configuration window widgets
@@ -412,7 +422,7 @@ class GUI(object):
         self.flash_cb.set_active(self.Conf.get("act_for_flash").get_bool())
 
         ## about dialog
-        self.about_dialog = get("aboutdialog")
+        self.about_dialog = get("aboutdialog1")
 
         ## other time selector
         self.othertime_dialog = get("othertime_dialog")
@@ -427,9 +437,9 @@ class GUI(object):
 
         ## Handle mouse clicks on status_icon
         # left click
-        self.status_icon.connect("activate", self.on_L_click)
+        #self.status_icon.connect("activate", self.on_L_click)
         # right click
-        self.status_icon.connect("popup-menu", self.on_R_click)
+        #self.status_icon.connect("popup-menu", self.on_R_click)
 
         builder.connect_signals(self)
 
@@ -443,7 +453,7 @@ class GUI(object):
 
         self.Core.timedActivation(time)
 
-    def toggle_activated(self):
+    def toggleActivated(self):
         """Toggles whether screen saver prevention
         is active.
         """
@@ -453,15 +463,15 @@ class GUI(object):
 
         self.set_icon_activated(active)
 
-        self.status_icon.set_tooltip(tooltip)
+        #self.status_icon.set_tooltip(tooltip)
 
     def set_icon_activated(self, activated):
         
         ## toggle the icon, indexing with a bool.
-        icon_file = [caffeine.EMPTY_ICON_PATH, caffeine.FULL_ICON_PATH][
-                activated]
+        icon_name = ["caffeine-cup-empty", "caffeine"][activated]
 
-        self.status_icon.set_from_file(icon_file)
+
+        self.AppInd.set_icon (icon_name)
 
 
     ### Callbacks
@@ -547,6 +557,14 @@ class GUI(object):
         self.Conf.set("act_for_flash", cbutton.get_active())
 
     #### Menu callbacks
+    def on_activate_menuitem_activate (self, menuitem, data=None):
+
+        self.toggleActivated()
+        
+        label = ["Disable Screensaver", "Enable Screensaver"]
+        menuitem.set_label (label[self.Core.getActivated()])
+
+
     def on_time_submenuitem_activate(self, menuitem, time):
 
         self.timedActivation(time)

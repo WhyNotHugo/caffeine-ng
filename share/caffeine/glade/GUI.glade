@@ -8,7 +8,7 @@
     <property name="type_hint">normal</property>
     <property name="has_separator">False</property>
     <property name="program_name">Caffeine</property>
-    <property name="version">1.0</property>
+    <property name="version">2.0</property>
     <property name="copyright">Copyright &#xA9; 2009 Brad Smith, Tommy Brunn &amp; Isaiah Heyer</property>
     <property name="comments" translatable="yes">An application to temporarily prevent the activation of both the screen saver and the "sleep" powersaving mode.</property>
     <property name="website">http://launchpad.net/caffeine</property>
@@ -38,7 +38,6 @@ Steve Dodier</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
           <placeholder/>
@@ -84,7 +83,6 @@ Steve Dodier</property>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkFrame" id="frame1">
             <property name="visible">True</property>
@@ -100,7 +98,6 @@ Steve Dodier</property>
                 <child>
                   <object class="GtkVBox" id="vbox2">
                     <property name="visible">True</property>
-                    <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkHBox" id="hbox1">
                         <property name="visible">True</property>
@@ -109,7 +106,6 @@ Steve Dodier</property>
                         <child>
                           <object class="GtkVBox" id="vbox3">
                             <property name="visible">True</property>
-                            <property name="orientation">vertical</property>
                             <property name="spacing">4</property>
                             <child>
                               <object class="GtkLabel" id="label3">
@@ -169,7 +165,6 @@ successfully entered your username and password.</property>
                                 <child>
                                   <object class="GtkVBox" id="vbox4">
                                     <property name="visible">True</property>
-                                    <property name="orientation">vertical</property>
                                     <property name="spacing">5</property>
                                     <child>
                                       <object class="GtkLabel" id="label5">
@@ -251,7 +246,7 @@ prevent the screensaver and powersaving modes on their own.</property>
                                         <property name="layout_style">end</property>
                                         <child>
                                           <object class="GtkButton" id="remove_button">
-                                            <property name="label" translatable="yes">gtk-remove</property>
+                                            <property name="label">gtk-remove</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
@@ -266,7 +261,7 @@ prevent the screensaver and powersaving modes on their own.</property>
                                         </child>
                                         <child>
                                           <object class="GtkButton" id="add_button">
-                                            <property name="label" translatable="yes">gtk-add</property>
+                                            <property name="label">gtk-add</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
@@ -398,7 +393,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
                 </child>
                 <child>
                   <object class="GtkButton" id="close_button">
-                    <property name="label" translatable="yes">gtk-close</property>
+                    <property name="label">gtk-close</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -431,7 +426,6 @@ game. Visit www.quakelive.com to play the game for free.</property>
     <child>
       <object class="GtkVBox" id="duration_box">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <child>
           <object class="GtkLabel" id="otd_label">
             <property name="visible">True</property>
@@ -460,7 +454,6 @@ game. Visit www.quakelive.com to play the game for free.</property>
                 <child>
                   <object class="GtkVBox" id="hours_box">
                     <property name="visible">True</property>
-                    <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkLabel" id="hours_label">
                         <property name="visible">True</property>
@@ -494,7 +487,6 @@ game. Visit www.quakelive.com to play the game for free.</property>
                 <child>
                   <object class="GtkVBox" id="minutes_box">
                     <property name="visible">True</property>
-                    <property name="orientation">vertical</property>
                     <child>
                       <object class="GtkLabel" id="minutes_label">
                         <property name="visible">True</property>
@@ -539,7 +531,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="cancel_button">
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -554,7 +546,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
             </child>
             <child>
               <object class="GtkButton" id="othertime_ok_button">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -593,7 +585,6 @@ game. Visit www.quakelive.com to play the game for free.</property>
     <child internal-child="vbox">
       <object class="GtkVBox" id="dialog-vbox2">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
           <placeholder/>
@@ -610,7 +601,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="button2">
-                <property name="label" translatable="yes">gtk-cancel</property>
+                <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -624,7 +615,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
             </child>
             <child>
               <object class="GtkButton" id="button1">
-                <property name="label" translatable="yes">gtk-ok</property>
+                <property name="label">gtk-ok</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -652,6 +643,19 @@ game. Visit www.quakelive.com to play the game for free.</property>
   </object>
   <object class="GtkMenu" id="popup_menu">
     <property name="visible">True</property>
+    <child>
+      <object class="GtkMenuItem" id="activate_menuitem">
+        <property name="visible">True</property>
+        <property name="label" translatable="yes">Disable Screensaver</property>
+        <property name="use_underline">True</property>
+        <signal name="activate" handler="on_activate_menuitem_activate"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="menuitem2">
+        <property name="visible">True</property>
+      </object>
+    </child>
     <child>
       <object class="GtkMenuItem" id="time_menuitem">
         <property name="visible">True</property>
