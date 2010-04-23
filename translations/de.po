@@ -7,128 +7,117 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-10-20 16:31+0000\n"
-"PO-Revision-Date: 2009-11-22 05:54+0000\n"
-"Last-Translator: Oliver Laub <oliver.laub@web.de>\n"
+"POT-Creation-Date: 2010-04-16 16:20+0000\n"
+"PO-Revision-Date: 2010-04-22 23:34+0000\n"
+"Last-Translator: Jan-Christoph Borchardt <jan@inquata.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-23 04:51+0000\n"
+"X-Launchpad-Export-Date: 2010-04-23 03:51+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 36
+#. file 'caffeine/main.py', line 37
 msgid "Please install"
 msgstr "Bitte installieren"
 
-#. file 'caffeine/main.py', line 340
-#. file 'caffeine/core.py', line 372
+#. file 'caffeine/main.py', line 351
+#. file 'caffeine/core.py', line 415
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine ist im Ruhezustand; Energiesparmaßnahmen sind aktiv"
 
-#. file 'caffeine/main.py', line 362
+#. file 'caffeine/main.py', line 374
 msgid "5 minutes"
 msgstr "5 Minuten"
 
-#. file 'caffeine/main.py', line 363
+#. file 'caffeine/main.py', line 375
 msgid "10 minutes"
 msgstr "10 Minuten"
 
-#. file 'caffeine/main.py', line 364
+#. file 'caffeine/main.py', line 376
 msgid "15 minutes"
 msgstr "15 Minuten"
 
-#. file 'caffeine/main.py', line 365
+#. file 'caffeine/main.py', line 377
 msgid "30 minutes"
 msgstr "30 Minuten"
 
-#. file 'caffeine/main.py', line 366
+#. file 'caffeine/main.py', line 378
 msgid "1 hour"
 msgstr "1 Stunde"
 
-#. file 'caffeine/main.py', line 367
+#. file 'caffeine/main.py', line 379
 msgid "2 hours"
 msgstr "2 Stunden"
 
-#. file 'caffeine/main.py', line 368
+#. file 'caffeine/main.py', line 380
 msgid "3 hours"
 msgstr "3 Stunden"
 
-#. file 'caffeine/main.py', line 369
+#. file 'caffeine/main.py', line 381
 msgid "4 hours"
 msgstr "4 Stunden"
 
-#. file 'caffeine/main.py', line 384
+#. file 'caffeine/main.py', line 396
 msgid "Other..."
-msgstr "Andere ..."
+msgstr "Andere …"
 
-#. file 'caffeine/core.py', line 143
+#. file 'caffeine/core.py', line 169
+#. file 'caffeine/core.py', line 171
 msgid "Activated for Flash video"
 msgstr "Aktiviert für Flash Video"
 
-#. file 'caffeine/core.py', line 194
+#. file 'caffeine/core.py', line 222
 msgid "Activated for Quake Live"
 msgstr "Aktiviert für Quake Live"
 
-#. file 'caffeine/core.py', line 245
+#. file 'caffeine/core.py', line 289
 msgid " and "
 msgstr " und "
 
-#. file 'caffeine/core.py', line 252
-#. file 'caffeine/core.py', line 258
+#. file 'caffeine/core.py', line 296
+#. file 'caffeine/core.py', line 302
 msgid "hour"
 msgstr "Stunde"
 
-#. file 'caffeine/core.py', line 252
-#. file 'caffeine/core.py', line 264
+#. file 'caffeine/core.py', line 296
+#. file 'caffeine/core.py', line 308
 msgid "minute"
 msgstr "Minute"
 
-#. file 'caffeine/core.py', line 260
+#. file 'caffeine/core.py', line 304
 msgid "hours"
 msgstr "Stunden"
 
-#. file 'caffeine/core.py', line 266
+#. file 'caffeine/core.py', line 310
 msgid "minutes"
 msgstr "Minuten"
 
-#. file 'caffeine/core.py', line 314
+#. file 'caffeine/core.py', line 361
 msgid "Timed activation set; "
 msgstr "Zeitgesteuerte Aktivierung eingestellt; "
 
-#. file 'caffeine/core.py', line 315
+#. file 'caffeine/core.py', line 362
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine wird Energiesparmaßnahmen verhindern für die nächste(n) "
 
-#. file 'caffeine/core.py', line 322
+#. file 'caffeine/core.py', line 369
 msgid "Activated for "
 msgstr "Aktiviert für "
 
-#. file 'caffeine/core.py', line 380
+#. file 'caffeine/core.py', line 423
 msgid "Timed activation cancelled (was set for "
 msgstr "Zeitgesteuerte Aktivierung abgebrochen (war eingestellt auf "
 
-#. file 'caffeine/core.py', line 397
+#. file 'caffeine/core.py', line 440
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " sind vergangen; Energiesparmaßnahmen sind wieder aktiv"
 
-#. file 'caffeine/core.py', line 414
+#. file 'caffeine/core.py', line 459
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
 "Caffeine verhindert Energiesparmaßnahmen und die Aktivierung des "
 "Bildschirmschoners "
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Select a process name..."
-msgstr "Wählen Sie einen Prozessnamen…"
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Running Processes"
-msgstr "Laufende Prozesse"
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Recent Processes"
-msgstr "Kürzlich abgelaufene Prozesse"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -184,11 +173,11 @@ msgid ""
 "(particularly full-screen applications) that do not properly\n"
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
-"Wenn Caffeine entdeckt, daß ein Prozess von dieser\n"
+"Wenn Caffeine entdeckt, dass ein Prozess von dieser\n"
 "Liste läuft, wird es das Starten von Bildschirmschonern\n"
 "und des Energiesparmodus verhindern. Das kann für\n"
 "Anwendungen sinnvoll sein (insbesondere Anwendungen\n"
-"im Vollbildmodus), die nicht von sich aus dies verhindern."
+"im Vollbildmodus), die dies nicht von sich aus verhindern."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
@@ -203,7 +192,7 @@ msgid ""
 "embedded in the web page that you are currently browsing."
 msgstr ""
 "Manche Internetseiten, wie beispielsweise www.youtube.com,\n"
-"zeigen Videos mittels einer Technologie, die sich \"Flash\" nennt.\n"
+"zeigen Videos mittels einer Technologie, die sich »Flash« nennt.\n"
 "Das Einschalten dieser Option bewirkt, dass Caffeine das Aktivieren\n"
 "des Bildschirmschoners oder des Energiesparmodus verhindert,\n"
 "sobald eine Webseite mit eingebettetem Flash-Video angeschaut wird."
@@ -221,8 +210,8 @@ msgid ""
 msgstr ""
 "Das Einschalten dieser Option bewirkt, dass Caffeine das Aktivieren\n"
 "des Bildschirmschoners oder des Energiesparmodus verhindert,\n"
-"sobald herausgefunden wird, daß gerade \"Quake Live\" gespielt wird.\n"
-"Besuchen Sie www.quakelive.com um das Spiel kostenlos zu spielen."
+"sobald herausgefunden wird, dass gerade »Quake Live« gespielt wird.\n"
+"Besuchen Sie www.quakelive.com, um das Spiel kostenlos zu spielen."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
@@ -241,5 +230,21 @@ msgid "Minutes:"
 msgstr "Minuten:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr "Bildschirmschoner deaktivieren"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
 msgstr "Aktiviere für"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Select a process name..."
+msgstr "Wählen Sie einen Prozessnamen…"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Running Processes"
+msgstr "Laufende Prozesse"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Recent Processes"
+msgstr "Kürzlich abgelaufene Prozesse"
