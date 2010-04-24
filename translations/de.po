@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-04-16 16:20+0000\n"
-"PO-Revision-Date: 2010-04-22 23:34+0000\n"
+"PO-Revision-Date: 2010-04-24 00:48+0000\n"
 "Last-Translator: Jan-Christoph Borchardt <jan@inquata.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-23 03:51+0000\n"
+"X-Launchpad-Export-Date: 2010-04-24 03:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 37
@@ -145,7 +145,7 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
-"Aktivieren Sie diese Option um Caffeine zu starten\n"
+"Aktivieren Sie diese Option, um Caffeine zu starten\n"
 "sobald der Rechner hochgefahren ist und Sie\n"
 "Benutzernamen und Passwort eingegeben haben."
 
@@ -163,7 +163,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
-msgstr "Liste von Programmen für die Caffeine aktiviert ist:"
+msgstr "Liste von Programmen, für die Caffeine aktiviert ist:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -215,7 +215,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr "Konfiguriere Caffeine"
+msgstr "Caffeine konfigurieren"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -239,7 +239,7 @@ msgstr "Aktiviere für"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
-msgstr "Wählen Sie einen Prozessnamen…"
+msgstr "Wählen Sie einen Prozessnamen …"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Running Processes"
