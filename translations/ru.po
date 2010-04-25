@@ -7,58 +7,58 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-03-23 21:27+0000\n"
-"PO-Revision-Date: 2010-04-05 04:27+0000\n"
-"Last-Translator: Андрей Калинин <prize2step@gmail.com>\n"
+"POT-Creation-Date: 2010-04-16 16:20+0000\n"
+"PO-Revision-Date: 2010-04-24 08:57+0000\n"
+"Last-Translator: Minakov Arthur <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-06 04:05+0000\n"
+"X-Launchpad-Export-Date: 2010-04-25 03:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 36
+#. file 'caffeine/main.py', line 37
 msgid "Please install"
 msgstr "Установите"
 
-#. file 'caffeine/main.py', line 344
-#. file 'caffeine/core.py', line 403
+#. file 'caffeine/main.py', line 351
+#. file 'caffeine/core.py', line 415
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine приостановлен; энергосбережение включено"
 
-#. file 'caffeine/main.py', line 364
+#. file 'caffeine/main.py', line 374
 msgid "5 minutes"
 msgstr "5 минут"
 
-#. file 'caffeine/main.py', line 365
+#. file 'caffeine/main.py', line 375
 msgid "10 minutes"
 msgstr "10 минут"
 
-#. file 'caffeine/main.py', line 366
+#. file 'caffeine/main.py', line 376
 msgid "15 minutes"
 msgstr "15 минут"
 
-#. file 'caffeine/main.py', line 367
+#. file 'caffeine/main.py', line 377
 msgid "30 minutes"
 msgstr "30 минут"
 
-#. file 'caffeine/main.py', line 368
+#. file 'caffeine/main.py', line 378
 msgid "1 hour"
 msgstr "1 час"
 
-#. file 'caffeine/main.py', line 369
+#. file 'caffeine/main.py', line 379
 msgid "2 hours"
 msgstr "2 часа"
 
-#. file 'caffeine/main.py', line 370
+#. file 'caffeine/main.py', line 380
 msgid "3 hours"
 msgstr "3 часа"
 
-#. file 'caffeine/main.py', line 371
+#. file 'caffeine/main.py', line 381
 msgid "4 hours"
 msgstr "4 часа"
 
-#. file 'caffeine/main.py', line 386
+#. file 'caffeine/main.py', line 396
 msgid "Other..."
 msgstr "Другое..."
 
@@ -67,54 +67,53 @@ msgstr "Другое..."
 msgid "Activated for Flash video"
 msgstr "Активирован для Flash видео"
 
-#. file 'caffeine/core.py', line 215
+#. file 'caffeine/core.py', line 222
 msgid "Activated for Quake Live"
 msgstr "Активирован для Quake Live"
 
-#. file 'caffeine/core.py', line 277
+#. file 'caffeine/core.py', line 289
 msgid " and "
 msgstr " и "
 
-#. file 'caffeine/core.py', line 284
-#. file 'caffeine/core.py', line 290
+#. file 'caffeine/core.py', line 296
+#. file 'caffeine/core.py', line 302
 msgid "hour"
 msgstr "ч."
 
-#. file 'caffeine/core.py', line 284
 #. file 'caffeine/core.py', line 296
+#. file 'caffeine/core.py', line 308
 msgid "minute"
 msgstr "мин."
 
-#. file 'caffeine/core.py', line 292
+#. file 'caffeine/core.py', line 304
 msgid "hours"
 msgstr "ч."
 
-#. file 'caffeine/core.py', line 298
+#. file 'caffeine/core.py', line 310
 msgid "minutes"
 msgstr "мин."
 
-#. file 'caffeine/core.py', line 349
+#. file 'caffeine/core.py', line 361
 msgid "Timed activation set; "
 msgstr "Установлена активация по времени; "
 
-#. file 'caffeine/core.py', line 350
+#. file 'caffeine/core.py', line 362
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine будет отключать энергосбережение в течении "
 
-#. file 'caffeine/core.py', line 246
-#. file 'caffeine/core.py', line 357
+#. file 'caffeine/core.py', line 369
 msgid "Activated for "
 msgstr "Активирован для "
 
-#. file 'caffeine/core.py', line 411
+#. file 'caffeine/core.py', line 423
 msgid "Timed activation cancelled (was set for "
 msgstr "Активация по времени отключена (была назначена на "
 
-#. file 'caffeine/core.py', line 428
+#. file 'caffeine/core.py', line 440
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " закончился; энергосбережение запущено"
 
-#. file 'caffeine/core.py', line 447
+#. file 'caffeine/core.py', line 459
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
 "Caffeine предотвращает энергосбережение и активацию хранителя экрана "
@@ -230,6 +229,10 @@ msgstr "Часы:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
 msgstr "Минуты:"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr "Отключить хранитель экрана"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
