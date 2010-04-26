@@ -7,58 +7,58 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-10-20 16:31+0000\n"
-"PO-Revision-Date: 2009-12-02 05:54+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"POT-Creation-Date: 2010-04-16 16:20+0000\n"
+"PO-Revision-Date: 2010-04-26 00:30+0000\n"
+"Last-Translator: Sérgio Marques <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-12-03 04:48+0000\n"
+"X-Launchpad-Export-Date: 2010-04-26 03:45+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 36
+#. file 'caffeine/main.py', line 37
 msgid "Please install"
 msgstr "Por favor instale"
 
-#. file 'caffeine/main.py', line 344
-#. file 'caffeine/core.py', line 403
+#. file 'caffeine/main.py', line 351
+#. file 'caffeine/core.py', line 415
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine está a dormir: gestão de energia está activa"
 
-#. file 'caffeine/main.py', line 364
+#. file 'caffeine/main.py', line 374
 msgid "5 minutes"
 msgstr "5 minutos"
 
-#. file 'caffeine/main.py', line 365
+#. file 'caffeine/main.py', line 375
 msgid "10 minutes"
 msgstr "10 minutos"
 
-#. file 'caffeine/main.py', line 366
+#. file 'caffeine/main.py', line 376
 msgid "15 minutes"
 msgstr "15 minutos"
 
-#. file 'caffeine/main.py', line 367
+#. file 'caffeine/main.py', line 377
 msgid "30 minutes"
 msgstr "30 minutos"
 
-#. file 'caffeine/main.py', line 368
+#. file 'caffeine/main.py', line 378
 msgid "1 hour"
 msgstr "1 hora"
 
-#. file 'caffeine/main.py', line 369
+#. file 'caffeine/main.py', line 379
 msgid "2 hours"
 msgstr "2 horas"
 
-#. file 'caffeine/main.py', line 370
+#. file 'caffeine/main.py', line 380
 msgid "3 hours"
 msgstr "3 horas"
 
-#. file 'caffeine/main.py', line 371
+#. file 'caffeine/main.py', line 381
 msgid "4 hours"
 msgstr "4 horas"
 
-#. file 'caffeine/main.py', line 386
+#. file 'caffeine/main.py', line 396
 msgid "Other..."
 msgstr "Outro..."
 
@@ -67,70 +67,57 @@ msgstr "Outro..."
 msgid "Activated for Flash video"
 msgstr "Activado para Flash video"
 
-#. file 'caffeine/core.py', line 215
+#. file 'caffeine/core.py', line 222
 msgid "Activated for Quake Live"
 msgstr "Activado para Quake Live"
 
-#. file 'caffeine/core.py', line 277
+#. file 'caffeine/core.py', line 289
 msgid " and "
 msgstr " e "
 
-#. file 'caffeine/core.py', line 284
-#. file 'caffeine/core.py', line 290
+#. file 'caffeine/core.py', line 296
+#. file 'caffeine/core.py', line 302
 msgid "hour"
 msgstr "hora"
 
-#. file 'caffeine/core.py', line 284
 #. file 'caffeine/core.py', line 296
+#. file 'caffeine/core.py', line 308
 msgid "minute"
 msgstr "minuto"
 
-#. file 'caffeine/core.py', line 292
+#. file 'caffeine/core.py', line 304
 msgid "hours"
 msgstr "horas"
 
-#. file 'caffeine/core.py', line 298
+#. file 'caffeine/core.py', line 310
 msgid "minutes"
 msgstr "minutos"
 
-#. file 'caffeine/core.py', line 349
+#. file 'caffeine/core.py', line 361
 msgid "Timed activation set; "
 msgstr "Ativação por tempo habilitada; "
 
-#. file 'caffeine/core.py', line 350
+#. file 'caffeine/core.py', line 362
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "O Caffeine irá impedir o modo de Gestão de energia nos próximos "
 
-#. file 'caffeine/core.py', line 246
-#. file 'caffeine/core.py', line 357
+#. file 'caffeine/core.py', line 369
 msgid "Activated for "
 msgstr "Ativado para "
 
-#. file 'caffeine/core.py', line 411
+#. file 'caffeine/core.py', line 423
 msgid "Timed activation cancelled (was set for "
 msgstr "Ativação por tempo cancelada (configurada para "
 
-#. file 'caffeine/core.py', line 428
+#. file 'caffeine/core.py', line 440
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " se passaram; o modo economia de energia está ativo"
 
-#. file 'caffeine/core.py', line 447
+#. file 'caffeine/core.py', line 459
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
 "Caffeine está a impedir os modos de gestão de energia e a ativação da "
 "Protetor de tela "
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Select a process name..."
-msgstr "Seleccione um nome de processo ..."
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Running Processes"
-msgstr "Processos ativos"
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Recent Processes"
-msgstr "Processos Recentes"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -243,8 +230,24 @@ msgid "Minutes:"
 msgstr "Minutos:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr "Desactivar protecção de ecrã"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
 msgstr "Ativar por"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Select a process name..."
+msgstr "Seleccione um nome de processo ..."
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Running Processes"
+msgstr "Processos ativos"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Recent Processes"
+msgstr "Processos Recentes"
 
 #~ msgid "DPMS enabled"
 #~ msgstr "DPMS ativado"
