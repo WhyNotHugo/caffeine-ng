@@ -344,7 +344,7 @@ class GUI(object):
         self.AppInd.set_status (appindicator.STATUS_ACTIVE)
         #self.AppInd.set_attention_icon ("caffeine")
 
-        self.set_icon_activated(self.Core.getActivated())
+        self.set_icon_is_activated(self.Core.getActivated())
 
         tooltip = self.Core.status_string
         if not tooltip:
@@ -422,7 +422,7 @@ class GUI(object):
         self.flash_cb.set_active(self.Conf.get("act_for_flash").get_bool())
 
         ## about dialog
-        self.about_dialog = get("aboutdialog1")
+        self.about_dialog = get("aboutdialog")
 
         ## other time selector
         self.othertime_dialog = get("othertime_dialog")
@@ -461,11 +461,11 @@ class GUI(object):
         
     def on_activation_toggled(self, source, active, tooltip):
 
-        self.set_icon_activated(active)
+        self.set_icon_is_activated(active)
 
         #self.status_icon.set_tooltip(tooltip)
 
-    def set_icon_activated(self, activated):
+    def set_icon_is_activated(self, activated):
         
         ## toggle the icon, indexing with a bool.
         icon_name = ["caffeine-cup-empty", "caffeine"][activated]
@@ -512,6 +512,11 @@ class GUI(object):
     def on_close_button_clicked(self, button, data=None):
 
         self.window.hide_all()
+
+    def on_about_button_clicked (self, button, data=None):
+
+        response = self.about_dialog.run()
+        self.about_dialog.hide()
 
     
 
@@ -572,10 +577,24 @@ class GUI(object):
     def on_prefs_menuitem_activate(self, menuitem, data=None):
         self.window.show_all()
 
+    def _run_dialog(self):
+        print 2
+        response = self.about_dialog.run()
+        print response
+        print 3
+        self.about_dialog.destroy()
+        print 4
+        
+        return False
+
     def on_about_menuitem_activate(self, menuitem, data=None):
 
-        response = self.about_dialog.run()
-        self.about_dialog.hide()
+        gobject.idle_add(self._run_dialog)
+        print 1
+        #response = self.about_dialog.run()
+        #self.about_dialog.set_position (gtk.WIN_POS_CENTER_ALWAYS)
+        #self.about_dialog.show()
+        #self.about_dialog.destroy()
 
     def on_other_submenuitem_activate(self, menuitem, data=None):
 
