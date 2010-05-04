@@ -338,7 +338,7 @@ class GUI(object):
         ## status icon must be a instance variable  (ie self.)or else it 
         ## gets thrown out with the garbage, and won't be seen.
         #self.status_icon = get("statusicon")
-        self.AppInd = appindicator.Indicator ("caffeine",
+        self.AppInd = appindicator.Indicator ("caffeine-cup-empty",
                         "caffeine",
                         appindicator.CATEGORY_APPLICATION_STATUS)
         self.AppInd.set_status (appindicator.STATUS_ACTIVE)
@@ -468,7 +468,7 @@ class GUI(object):
     def set_icon_is_activated(self, activated):
         
         ## toggle the icon, indexing with a bool.
-        icon_name = ["caffeine-cup-empty", "caffeine"][activated]
+        icon_name = ["caffeine-cup-empty", "caffeine-cup-full"][activated]
 
 
         self.AppInd.set_icon (icon_name)
