@@ -2,7 +2,7 @@ Source: caffeine
 Section: misc
 Priority: optional
 Maintainer: Isaiah Heyer <freshapplepy@gmail.com>
-Build-Depends: cdbs (>=0.4.49), debhelper (>= 7), python-central (>= 0.6), python-gnome2-dev
+Build-Depends: cdbs (>=0.4.49), debhelper (>= 7), python-central (>= 0.6)
 XS-Python-Version: >= 2.6
 Standards-Version: 3.8.3
 Homepage: https://launchpad.net/caffeine
