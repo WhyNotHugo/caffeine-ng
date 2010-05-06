@@ -1,5 +1,5 @@
-caffeine (2.0~bzr255-0ubuntu0~ppa0~lucid) lucid; urgency=low
+caffeine (2.0~bzr256-0ubuntu0~ppa0~lucid) lucid; urgency=low
 
-  * Added Auto-activation for programs.
+  * Fixed icon issue.
 
- -- Isaiah Heyer <freshapplepy@gmail.com>  Wed, 05 May 2010 13:34:43 -0500
+ -- Isaiah Heyer <freshapplepy@gmail.com>  Thu, 06 May 2010 10:48:11 -0500
