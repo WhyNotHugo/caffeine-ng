@@ -2,138 +2,142 @@
 # Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the caffeine package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
-#
+#  <>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-05-04 12:06+0000\n"
-"PO-Revision-Date: 2010-05-04 10:57+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-05-06 10:45+0000\n"
+"PO-Revision-Date: 2010-05-06 03:22+0000\n"
+"Last-Translator: Marcos X. <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-05-05 03:52+0000\n"
+"X-Launchpad-Export-Date: 2010-05-07 04:06+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 37
 msgid "Please install"
-msgstr ""
+msgstr "Instalar"
 
 #. file 'caffeine/main.py', line 351
 #. file 'caffeine/core.py', line 415
 msgid "Caffeine is dormant; powersaving is enabled"
-msgstr ""
+msgstr "Caffeine está inactivo. O modo de baixo consumo está activado"
 
 #. file 'caffeine/main.py', line 374
 msgid "5 minutes"
-msgstr ""
+msgstr "5 minutos"
 
 #. file 'caffeine/main.py', line 375
 msgid "10 minutes"
-msgstr ""
+msgstr "10 minutos"
 
 #. file 'caffeine/main.py', line 376
 msgid "15 minutes"
-msgstr ""
+msgstr "15 minutos"
 
 #. file 'caffeine/main.py', line 377
 msgid "30 minutes"
-msgstr ""
+msgstr "30 minutos"
 
 #. file 'caffeine/main.py', line 378
 msgid "1 hour"
-msgstr ""
+msgstr "1 hora"
 
 #. file 'caffeine/main.py', line 379
 msgid "2 hours"
-msgstr ""
+msgstr "2 horas"
 
 #. file 'caffeine/main.py', line 380
 msgid "3 hours"
-msgstr ""
+msgstr "3 horas"
 
 #. file 'caffeine/main.py', line 381
 msgid "4 hours"
-msgstr ""
+msgstr "4 horas"
 
 #. file 'caffeine/main.py', line 396
 msgid "Other..."
-msgstr ""
+msgstr "Outro..."
 
 #. file 'caffeine/core.py', line 169
 #. file 'caffeine/core.py', line 171
 msgid "Activated for Flash video"
-msgstr ""
+msgstr "Activado para Flash"
 
 #. file 'caffeine/core.py', line 222
 msgid "Activated for Quake Live"
-msgstr ""
+msgstr "Activado para Quake Live"
 
 #. file 'caffeine/core.py', line 289
 msgid " and "
-msgstr ""
+msgstr " e "
 
 #. file 'caffeine/core.py', line 296
 #. file 'caffeine/core.py', line 302
 msgid "hour"
-msgstr ""
+msgstr "hora"
 
 #. file 'caffeine/core.py', line 296
 #. file 'caffeine/core.py', line 308
 msgid "minute"
-msgstr ""
+msgstr "minuto"
 
 #. file 'caffeine/core.py', line 304
 msgid "hours"
-msgstr ""
+msgstr "horas"
 
 #. file 'caffeine/core.py', line 310
 msgid "minutes"
-msgstr ""
+msgstr "minutos"
 
 #. file 'caffeine/core.py', line 361
 msgid "Timed activation set; "
-msgstr ""
+msgstr "Activouse o temporizador. "
 
 #. file 'caffeine/core.py', line 362
 msgid "Caffeine will prevent powersaving for the next "
-msgstr ""
+msgstr "Caffeine inhibirá o modo de baixo consumo durante "
 
 #. file 'caffeine/core.py', line 369
 msgid "Activated for "
-msgstr ""
+msgstr "Activado "
 
 #. file 'caffeine/core.py', line 423
 msgid "Timed activation cancelled (was set for "
-msgstr ""
+msgstr "Desactivouse o temporizador (fora programado para "
 
 #. file 'caffeine/core.py', line 440
 msgid " have elapsed; powersaving is re-enabled"
-msgstr ""
+msgstr " desde a temporización. Reactivouse o modo de baixo consumo"
 
 #. file 'caffeine/core.py', line 459
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
+"Caffeine está inhibindo a activación do modo de baixo consumo e do protector "
+"de pantalla de "
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
+"Un aplicativo que inhibe temporalmente a activación do protector de pantalla "
+"e do modo de baixo consumo \\\"suspender\\\"."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Autostart"
-msgstr ""
+msgstr "Inicio automático"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
-msgstr ""
+msgstr "Iniciar Caffeine cando se inicie a sesión"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -141,20 +145,25 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
+"Se esta opción está activada Caffeine executarase\n"
+"tan pronto como o computador remate o arranque e\n"
+"vostede introduza un usuario e contrasinal correctos."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
-msgstr ""
+msgstr "Activación automática"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
 msgstr ""
+"Caffeine pode activarse automaticamente\n"
+"cando se executen certos aplicativos."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
-msgstr ""
+msgstr "Lista de programas para os que Caffeine estará activado:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -164,10 +173,16 @@ msgid ""
 "(particularly full-screen applications) that do not properly\n"
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
+"Cando Caffeine detecta que un dos procesos da lista está\n"
+"activo, inhibe a iniciación do protector de pantalla e do modo\n"
+"de baixo consumo. Isto resulta útil con aplicativos (espe-\n"
+"cialmente os programas en pantalla completa) que non\n"
+"inhiben por si mesmos o protector de pantalla e o modo\n"
+"de aforro de enerxia."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
-msgstr ""
+msgstr "Activar para vídeo Flash"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -177,10 +192,16 @@ msgid ""
 "screensaver and powersaving modes when a Flash video is\n"
 "embedded in the web page that you are currently browsing."
 msgstr ""
+"Algúns sitios web, como www.youtube.com, mostran os vídeos\n"
+"usando unha tecnoloxía coñecida como  \"Flash\". Se activa\n"
+"esta opción, Caffeine inhibirá automaticamente os\n"
+"modos protector de pantalla e baixo consumo cando\n"
+"haxa un vídeo Flash encaixado na páxina web que\n"
+"estea visitando."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Quake Live"
-msgstr ""
+msgstr "Activar para Quake Live"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -189,39 +210,44 @@ msgid ""
 "when it detects that you are playing the Quake Live video\n"
 "game. Visit www.quakelive.com to play the game for free."
 msgstr ""
+"Se esta opción está activada, Caffeine inhibirá automaticamente a iniciación "
+"do protector de pantalla\n"
+"e do modo de baixo consumo sempre que detecte a\n"
+"reprodución dun xogo de vídeo en Quake Live.\n"
+"Visite  www.quakelive.com e xogue de balde."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr ""
+msgstr "Configurar Caffeine"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
-msgstr ""
+msgstr "Duración"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Hours:"
-msgstr ""
+msgstr "Horas:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
-msgstr ""
+msgstr "Minutos:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
-msgstr ""
+msgstr "Desactivar o protector de pantalla"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
-msgstr ""
+msgstr "Activar durante"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
-msgstr ""
+msgstr "Seleccionar un nome de proceso..."
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Running Processes"
-msgstr ""
+msgstr "Procesos activos"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
-msgstr ""
+msgstr "Procesos recentes"
