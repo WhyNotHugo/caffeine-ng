@@ -1,5 +1,5 @@
-caffeine (2.0~bzr256-0ubuntu0~ppa0~lucid) lucid; urgency=low
+caffeine (2.0~bzr258-0ubuntu0~ppa0~lucid) lucid; urgency=low
 
   * Fixed icon issue.
 
- -- Isaiah Heyer <freshapplepy@gmail.com>  Thu, 06 May 2010 10:48:11 -0500
+ -- Isaiah Heyer <freshapplepy@gmail.com>  Fri, 07 May 2010 11:17:16 -0500

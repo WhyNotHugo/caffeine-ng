@@ -127,15 +127,18 @@ class Caffeine(gobject.GObject):
             tmp = "/tmp"
             ## look for filenames that begin with 'Flash'
             for file in os.listdir(tmp):
-                if file.startswith("Flash"):
-                    filepath = os.path.join(tmp, file)
-                    duration = utils.getFLVLength(filepath)
+                try:
+                    if file.startswith("Flash"):
+                        filepath = os.path.join(tmp, file)
+                        duration = utils.getFLVLength(filepath)
 
-                    duration = int(time.time()) + duration
-                    end_time = time.localtime(duration)
+                        duration = int(time.time()) + duration
+                        end_time = time.localtime(duration)
 
-                    if filepath not in self.flash_durations:
-                        self.flash_durations[filepath] = end_time
+                        if filepath not in self.flash_durations:
+                            self.flash_durations[filepath] = end_time
+                except Exception, data:
+                    logging.error("Exception: " + str(data))
 
                             
             ### clear out old filenames

@@ -34,23 +34,23 @@ while True:
     
     c = join(c, pardir)
 
-if os.getenv("XDG_DATA_HOME"):
-    _data_dir = os.getenv("XDG_DATA_HOME")
+if os.getenv("XDG_CONFIG_HOME"):
+    _config_dir = os.getenv("XDG_CONFIG_HOME")
 else:
-    _data_dir = os.path.join(os.getenv("HOME"), ".local", "share")
+    _config_dir = os.path.join(os.getenv("HOME"), ".config")
 
-_data_dir = os.path.join(_data_dir, "caffeine")
+_config_dir = os.path.join(_config_dir, "caffeine")
 
-if not os.path.exists(_data_dir):
-    os.makedirs(_data_dir)
+if not os.path.exists(_config_dir):
+    os.makedirs(_config_dir)
 
-DATA_DIR = _data_dir
+CONFIG_DIR = _config_dir
 ## file with a list of programs that caffeine should 
 ## activate when they are running
 
 ## Log file.
-LOG = os.path.join(DATA_DIR, "log")
-WHITELIST = os.path.join(DATA_DIR, "whitelist.txt")
+LOG = os.path.join(CONFIG_DIR, "log")
+WHITELIST = os.path.join(CONFIG_DIR, "whitelist.txt")
 ## create file if it doesn't exist
 if not os.path.isfile(WHITELIST):
     file = open(WHITELIST, "w")
