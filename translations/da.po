@@ -7,128 +7,115 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-10-20 16:31+0000\n"
-"PO-Revision-Date: 2009-11-25 06:00+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"POT-Creation-Date: 2010-05-07 11:17+0000\n"
+"PO-Revision-Date: 2010-05-16 11:17+0000\n"
+"Last-Translator: Kim Jensen <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-11-26 04:40+0000\n"
+"X-Launchpad-Export-Date: 2010-05-20 05:32+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 36
+#. file 'caffeine/main.py', line 37
 msgid "Please install"
-msgstr ""
+msgstr "Installér venligst"
 
-#. file 'caffeine/main.py', line 344
-#. file 'caffeine/core.py', line 403
+#. file 'caffeine/main.py', line 351
+#. file 'caffeine/core.py', line 418
 msgid "Caffeine is dormant; powersaving is enabled"
-msgstr ""
+msgstr "Caffeine hviler; strømstyringen er indkoblet"
 
-#. file 'caffeine/main.py', line 364
+#. file 'caffeine/main.py', line 374
 msgid "5 minutes"
 msgstr "5 minutter"
 
-#. file 'caffeine/main.py', line 365
+#. file 'caffeine/main.py', line 375
 msgid "10 minutes"
 msgstr "10 minutter"
 
-#. file 'caffeine/main.py', line 366
+#. file 'caffeine/main.py', line 376
 msgid "15 minutes"
 msgstr "15 minutter"
 
-#. file 'caffeine/main.py', line 367
+#. file 'caffeine/main.py', line 377
 msgid "30 minutes"
 msgstr "30 minutter"
 
-#. file 'caffeine/main.py', line 368
+#. file 'caffeine/main.py', line 378
 msgid "1 hour"
 msgstr "1 time"
 
-#. file 'caffeine/main.py', line 369
+#. file 'caffeine/main.py', line 379
 msgid "2 hours"
 msgstr "2 timer"
 
-#. file 'caffeine/main.py', line 370
+#. file 'caffeine/main.py', line 380
 msgid "3 hours"
 msgstr "3 timer"
 
-#. file 'caffeine/main.py', line 371
+#. file 'caffeine/main.py', line 381
 msgid "4 hours"
 msgstr "4 timer"
 
-#. file 'caffeine/main.py', line 386
+#. file 'caffeine/main.py', line 396
 msgid "Other..."
-msgstr ""
+msgstr "Andet..."
 
-#. file 'caffeine/core.py', line 169
-#. file 'caffeine/core.py', line 171
+#. file 'caffeine/core.py', line 172
+#. file 'caffeine/core.py', line 174
 msgid "Activated for Flash video"
-msgstr ""
+msgstr "Aktiveret for Flash video"
 
-#. file 'caffeine/core.py', line 215
+#. file 'caffeine/core.py', line 225
 msgid "Activated for Quake Live"
-msgstr ""
+msgstr "Aktiveret for Quake Live"
 
-#. file 'caffeine/core.py', line 277
+#. file 'caffeine/core.py', line 292
 msgid " and "
-msgstr ""
+msgstr " og "
 
-#. file 'caffeine/core.py', line 284
-#. file 'caffeine/core.py', line 290
+#. file 'caffeine/core.py', line 299
+#. file 'caffeine/core.py', line 305
 msgid "hour"
 msgstr "time"
 
-#. file 'caffeine/core.py', line 284
-#. file 'caffeine/core.py', line 296
+#. file 'caffeine/core.py', line 299
+#. file 'caffeine/core.py', line 311
 msgid "minute"
 msgstr "minut"
 
-#. file 'caffeine/core.py', line 292
+#. file 'caffeine/core.py', line 307
 msgid "hours"
 msgstr "timer"
 
-#. file 'caffeine/core.py', line 298
+#. file 'caffeine/core.py', line 313
 msgid "minutes"
 msgstr "minutter"
 
-#. file 'caffeine/core.py', line 349
+#. file 'caffeine/core.py', line 364
 msgid "Timed activation set; "
-msgstr ""
+msgstr "Tidsstyring aktiv; "
 
-#. file 'caffeine/core.py', line 350
+#. file 'caffeine/core.py', line 365
 msgid "Caffeine will prevent powersaving for the next "
-msgstr ""
+msgstr "Caffeine vil frakoble strømstyringen i "
 
-#. file 'caffeine/core.py', line 246
-#. file 'caffeine/core.py', line 357
+#. file 'caffeine/core.py', line 372
 msgid "Activated for "
-msgstr ""
+msgstr "Aktiveret for "
 
-#. file 'caffeine/core.py', line 411
+#. file 'caffeine/core.py', line 426
 msgid "Timed activation cancelled (was set for "
-msgstr ""
+msgstr "Tidsstyring annulleret (var angivet til "
 
-#. file 'caffeine/core.py', line 428
+#. file 'caffeine/core.py', line 443
 msgid " have elapsed; powersaving is re-enabled"
-msgstr ""
+msgstr " er forløbet; strømstyringen er atter indkoblet"
 
-#. file 'caffeine/core.py', line 447
+#. file 'caffeine/core.py', line 462
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-msgstr ""
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Select a process name..."
-msgstr ""
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Running Processes"
-msgstr ""
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Recent Processes"
-msgstr ""
+msgstr "Caffeine forebygger strømstyring og aktivering af pauseskærm "
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -142,11 +129,11 @@ msgstr "Indstillinger"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Autostart"
-msgstr "Autostart"
+msgstr "Automatisk opstart"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
-msgstr "Start Caffeine ved logind"
+msgstr "Start Caffeine ved log ind"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -154,6 +141,9 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
+"Anvend denne funktion for at starte Caffeine automatisk\\n\n"
+"når din computer er færdig med at starte op samt at du\\n\n"
+"har indtastet korrekt brugernavn og adgangskode."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
@@ -164,10 +154,12 @@ msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
 msgstr ""
+"Caffeine kan aktivere automatisk når bestemte\\n\n"
+"programmer køre."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
-msgstr ""
+msgstr "Liste med programmer som Caffeine kan aktiverer:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -180,7 +172,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
-msgstr ""
+msgstr "Aktivér for Flash video"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -193,7 +185,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Quake Live"
-msgstr ""
+msgstr "Aktivér for Quake Live"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -205,7 +197,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr "Konfigurere Caffeine"
+msgstr "Caffeine konfigurering"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -220,5 +212,21 @@ msgid "Minutes:"
 msgstr "Minutter:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr "Deaktivér pauseskærm"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
-msgstr "Aktivere for"
+msgstr "Aktivér for"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Select a process name..."
+msgstr "Vælge et procesnavn..."
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Running Processes"
+msgstr "Kørende processer"
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Recent Processes"
+msgstr "Seneste processer"
