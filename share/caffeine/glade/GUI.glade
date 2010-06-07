@@ -672,7 +672,6 @@ game. Visit www.quakelive.com to play the game for free.</property>
         <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
-        <property name="always_show_image">True</property>
         <signal name="activate" handler="on_prefs_menuitem_activate"/>
       </object>
     </child>
@@ -681,7 +680,6 @@ game. Visit www.quakelive.com to play the game for free.</property>
         <property name="label">gtk-about</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
-        <property name="always_show_image">True</property>
         <signal name="activate" handler="on_about_menuitem_activate"/>
       </object>
     </child>
@@ -691,7 +689,6 @@ game. Visit www.quakelive.com to play the game for free.</property>
         <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
-        <property name="always_show_image">True</property>
         <signal name="activate" handler="on_quit_menuitem_activate"/>
       </object>
     </child>
