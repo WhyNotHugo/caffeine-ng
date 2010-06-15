@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-04-16 16:20+0000\n"
+"POT-Creation-Date: 2010-06-07 18:41+0000\n"
 "PO-Revision-Date: 2010-04-29 04:48+0000\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-04-30 03:55+0000\n"
+"X-Launchpad-Export-Date: 2010-06-15 03:36+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 37
@@ -22,7 +22,7 @@ msgid "Please install"
 msgstr "Por favor instale"
 
 #. file 'caffeine/main.py', line 351
-#. file 'caffeine/core.py', line 415
+#. file 'caffeine/core.py', line 418
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine está inativo; a economia de energia está habilitada"
 
@@ -62,58 +62,58 @@ msgstr "4 horas"
 msgid "Other..."
 msgstr "Outro..."
 
-#. file 'caffeine/core.py', line 169
-#. file 'caffeine/core.py', line 171
+#. file 'caffeine/core.py', line 172
+#. file 'caffeine/core.py', line 174
 msgid "Activated for Flash video"
 msgstr "Ativado para video Flash"
 
-#. file 'caffeine/core.py', line 222
+#. file 'caffeine/core.py', line 225
 msgid "Activated for Quake Live"
 msgstr "Ativado para Quake Live"
 
-#. file 'caffeine/core.py', line 289
+#. file 'caffeine/core.py', line 292
 msgid " and "
 msgstr " e "
 
-#. file 'caffeine/core.py', line 296
-#. file 'caffeine/core.py', line 302
+#. file 'caffeine/core.py', line 299
+#. file 'caffeine/core.py', line 305
 msgid "hour"
 msgstr "hora"
 
-#. file 'caffeine/core.py', line 296
-#. file 'caffeine/core.py', line 308
+#. file 'caffeine/core.py', line 299
+#. file 'caffeine/core.py', line 311
 msgid "minute"
 msgstr "minuto"
 
-#. file 'caffeine/core.py', line 304
+#. file 'caffeine/core.py', line 307
 msgid "hours"
 msgstr "horas"
 
-#. file 'caffeine/core.py', line 310
+#. file 'caffeine/core.py', line 313
 msgid "minutes"
 msgstr "minutos"
 
-#. file 'caffeine/core.py', line 361
+#. file 'caffeine/core.py', line 364
 msgid "Timed activation set; "
 msgstr "Ativação temporizada em uso; "
 
-#. file 'caffeine/core.py', line 362
+#. file 'caffeine/core.py', line 365
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine iré impedir o modo de economia de energia por "
 
-#. file 'caffeine/core.py', line 369
+#. file 'caffeine/core.py', line 372
 msgid "Activated for "
 msgstr "Ativado para "
 
-#. file 'caffeine/core.py', line 423
+#. file 'caffeine/core.py', line 426
 msgid "Timed activation cancelled (was set for "
 msgstr "Ativação temporizada cancelada (foi configurada para "
 
-#. file 'caffeine/core.py', line 440
+#. file 'caffeine/core.py', line 443
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " se passaram; o modo de economia de energia está re-ativado."
 
-#. file 'caffeine/core.py', line 459
+#. file 'caffeine/core.py', line 462
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
 "Caffeine está prevenindo os modos de economia de energia e ativação da "
