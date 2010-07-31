@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-06-07 18:41+0000\n"
-"PO-Revision-Date: 2010-07-26 04:37+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2010-07-30 23:09+0000\n"
+"Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-07-27 04:01+0000\n"
+"X-Launchpad-Export-Date: 2010-07-31 03:46+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 37
 msgid "Please install"
-msgstr "Ole hyvä ja asenna"
+msgstr "Asenna"
 
 #. file 'caffeine/main.py', line 351
 #. file 'caffeine/core.py', line 418
@@ -83,7 +83,7 @@ msgstr "tunti"
 #. file 'caffeine/core.py', line 299
 #. file 'caffeine/core.py', line 311
 msgid "minute"
-msgstr "minuuttia"
+msgstr "minuutti"
 
 #. file 'caffeine/core.py', line 307
 msgid "hours"
@@ -190,7 +190,7 @@ msgid ""
 "embedded in the web page that you are currently browsing."
 msgstr ""
 "Jotkut web-sivustot, kuten www.youtube.com, näyttävät videoita\n"
-"niinsanotulla flash-tekniikalla. Ota tämä asetus käyttöön, jotta\n"
+"niin sanotulla flash-tekniikalla. Ota tämä asetus käyttöön, jotta\n"
 "Caffeine voi estää automaattisesti näytönsäästäjän ja virransäästötilan\n"
 "aktivoitumisen, kun katselemaasi web-sivuun on upotettu flash-video."
 
@@ -212,7 +212,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr "Muokkaa Caffeineä"
+msgstr "Muokkaa Caffeinea"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -236,15 +236,15 @@ msgstr "Aktivoi"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
-msgstr "Valitaan prosessin nimeä..."
+msgstr "Valitse prosessin nimi..."
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Running Processes"
-msgstr "Prosessi on käynnissä"
+msgstr "Käynnissä olevat prosessit"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
-msgstr "Nykyinen prosessi"
+msgstr "Äskettäiset prosessit"
 
 #~ msgid "Start Caffeine on login."
 #~ msgstr "Käynnistä caffeine sisään kirjauduttuessa"
