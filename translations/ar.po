@@ -8,23 +8,23 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-08-09 18:55+0000\n"
-"PO-Revision-Date: 2010-08-14 08:42+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2010-09-25 12:44+0000\n"
+"Last-Translator: Ahmed Mohammed <Unknown>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-15 06:28+0000\n"
+"X-Launchpad-Export-Date: 2010-09-29 05:22+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 37
 msgid "Please install"
-msgstr "المرجو التثبيت"
+msgstr "يرجى تنصيب"
 
 #. file 'caffeine/main.py', line 351
 #. file 'caffeine/core.py', line 418
 msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "الكافيين غير مشغل ، تم تفعيل الاقتصاد في إستهلاك الطاقة"
+msgstr "Caffeineغير فاعل ، تم تفعيل الاقتصاد في إستهلاك الطاقة"
 
 #. file 'caffeine/main.py', line 374
 msgid "5 minutes"
@@ -48,7 +48,7 @@ msgstr "ساعة"
 
 #. file 'caffeine/main.py', line 379
 msgid "2 hours"
-msgstr "ساعتين"
+msgstr "2 ساعات"
 
 #. file 'caffeine/main.py', line 380
 msgid "3 hours"
@@ -60,7 +60,7 @@ msgstr "4 ساعات"
 
 #. file 'caffeine/main.py', line 396
 msgid "Other..."
-msgstr "آخر..."
+msgstr "أخرى..."
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
@@ -69,7 +69,7 @@ msgstr "تفعيل لتشغيل فيديو الفلاش"
 
 #. file 'caffeine/core.py', line 225
 msgid "Activated for Quake Live"
-msgstr ""
+msgstr "مفعّل لأجل Quake Live"
 
 #. file 'caffeine/core.py', line 292
 msgid " and "
@@ -95,33 +95,33 @@ msgstr "دقائق"
 
 #. file 'caffeine/core.py', line 364
 msgid "Timed activation set; "
-msgstr ""
+msgstr "إعداد التفعيل الموقت "
 
 #. file 'caffeine/core.py', line 365
 msgid "Caffeine will prevent powersaving for the next "
-msgstr ""
+msgstr "Caffeine سيمنع حفظ الطاقة حتى "
 
 #. file 'caffeine/core.py', line 372
 msgid "Activated for "
-msgstr "التفعيل لمدة "
+msgstr "مفعّل ل "
 
 #. file 'caffeine/core.py', line 426
 msgid "Timed activation cancelled (was set for "
-msgstr ""
+msgstr "تفعيل الوقت لاغي (كان موقتا ل "
 
 #. file 'caffeine/core.py', line 443
 msgid " have elapsed; powersaving is re-enabled"
-msgstr ""
+msgstr " تم الانقضاء ; طور توفير الطاقة مفعّل"
 
 #. file 'caffeine/core.py', line 462
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-msgstr ""
+msgstr "Caffeine يمنع تفعيل طور توفير الطاقة و حافظة الشاشة "
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
-msgstr ""
+msgstr "تطبيق لمنع تفعيل حافظة الشاشة و طور حفظ الطاقة تلقائيا."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
@@ -141,20 +141,25 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
+"تفعيل هذا الاختيار يتيح تشغيل Caffeine بعد الانتهاء \n"
+"من تشغيل حاسوبك و بعد ان تنتهي من \n"
+"ادخال اسم المستخدم و كلمة العبور بنجاح."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
-msgstr "نفعيل تلقائي"
+msgstr "تفعيل تلقائي"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
 msgstr ""
+"يمكن تفعيل Caffeine تلقائيا\n"
+"عند تشغيل برامج معينة."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
-msgstr ""
+msgstr "لائحة ببرامج يتم تفعيل Caffeine لأجلها:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -164,10 +169,15 @@ msgid ""
 "(particularly full-screen applications) that do not properly\n"
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
+"عندما يعثر Caffeine على عملية من العمليات\n"
+" المدرجة في هذه اللائحة , يقوم بتعطيل تفعيل حافظة الشاشة\n"
+" و طور حفظ الطاقة.هذا الإجراء يكون\n"
+" نافعا للتطبيقات (عمليا التي تملأ الشاشة\n"
+" التي لا تمنع حافظة الشاشة و طور حفظ الطاقة بنفسها."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
-msgstr ""
+msgstr "تفعيل لفيديو فلاش"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -177,10 +187,14 @@ msgid ""
 "screensaver and powersaving modes when a Flash video is\n"
 "embedded in the web page that you are currently browsing."
 msgstr ""
+"بعض المواقع , مثل www.youtube.com , تظهر الفيديو بإستخدام \n"
+"تقنية بإسم الفلاش.تفعيل هذا الاختيار يتيح ل Caffeine منع تفعيل\n"
+"حافظة الشاشة و طور توفير الطاقة تلقائيا عندما يكون هناك ملف فيديو فلاش\n"
+" مضمنا في صفحة ويب تستعرضها."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Quake Live"
-msgstr ""
+msgstr "تفعيل لأجل Quake live"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -189,39 +203,43 @@ msgid ""
 "when it detects that you are playing the Quake Live video\n"
 "game. Visit www.quakelive.com to play the game for free."
 msgstr ""
+"تفعيل هذا الاختيار للسماح ل Caffeine تلقائيا بمنع\n"
+"تفعيل حافظة الشاشة و طور حفظ الطاقة\n"
+"عندما يكتشف انك تقوم بتشغيل ملف لعبة Quake\n"
+"حي .قم بزيارة www.quakelive.com لتلعب اللعبة مجانا."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
-msgstr ""
+msgstr "ضبط Caffeine"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
-msgstr ""
+msgstr "مدة"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Hours:"
-msgstr ""
+msgstr "ساعات:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
-msgstr ""
+msgstr "دقائق:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
-msgstr ""
+msgstr "تعطيل حافظة الشاشة"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
-msgstr ""
+msgstr "تفعيل لأجل"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
-msgstr ""
+msgstr "اختيار اسم عملية..."
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Running Processes"
-msgstr ""
+msgstr "العمليات الجارية"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
-msgstr ""
+msgstr "العمليات الاحدث"
