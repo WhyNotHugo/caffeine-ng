@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.0\n"
-"POT-Creation-Date: 2010-08-09 18:55:04.822476\n"
+"POT-Creation-Date: 2010-09-29 15:23:35.529645\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,6 +45,13 @@ msgid "4 hours"
 msgstr ""
 msgid "Other..."
 #. file 'caffeine/main.py', line 396
+msgstr ""
+msgid "Disable Screensaver"
+#. file 'caffeine/main.py', line 569
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Enable Screensaver"
+#. file 'caffeine/main.py', line 569
 msgstr ""
 msgid "Activated for Flash video"
 #. file 'caffeine/core.py', line 172
@@ -156,9 +163,6 @@ msgid "Hours:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Minutes:"
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid "Disable Screensaver"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Activate for"

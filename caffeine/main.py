@@ -566,7 +566,7 @@ class GUI(object):
 
         self.toggleActivated()
         
-        label = ["Disable Screensaver", "Enable Screensaver"]
+        label = [_("Disable Screensaver"), _("Enable Screensaver")]
         menuitem.set_label (label[self.Core.getActivated()])
 
 
