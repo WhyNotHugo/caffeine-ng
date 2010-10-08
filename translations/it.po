@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-08-09 18:55+0000\n"
-"PO-Revision-Date: 2010-05-19 16:53+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"POT-Creation-Date: 2010-09-29 15:23+0000\n"
+"PO-Revision-Date: 2010-10-05 18:48+0000\n"
+"Last-Translator: Nazareno Patania <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-14 06:19+0000\n"
+"X-Launchpad-Export-Date: 2010-10-08 04:43+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 37
@@ -61,6 +61,15 @@ msgstr "4 ore"
 #. file 'caffeine/main.py', line 396
 msgid "Other..."
 msgstr "Altro..."
+
+#. file 'caffeine/main.py', line 569
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr "Disabilita Salvaschermo"
+
+#. file 'caffeine/main.py', line 569
+msgid "Enable Screensaver"
+msgstr "Attiva Salvaschermo"
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
@@ -228,10 +237,6 @@ msgstr "Ore:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
 msgstr "Minuti:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver"
-msgstr "Disabilita Salvaschermo"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
