@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-08-09 18:55+0000\n"
-"PO-Revision-Date: 2010-05-04 14:39+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"POT-Creation-Date: 2010-09-29 15:23+0000\n"
+"PO-Revision-Date: 2010-10-09 21:10+0000\n"
+"Last-Translator: William HAREL <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-14 06:19+0000\n"
+"X-Launchpad-Export-Date: 2010-10-10 04:58+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 37
@@ -61,6 +61,15 @@ msgstr "4 heures"
 #. file 'caffeine/main.py', line 396
 msgid "Other..."
 msgstr "Autre..."
+
+#. file 'caffeine/main.py', line 569
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr "Désactiver l'écran de veille"
+
+#. file 'caffeine/main.py', line 569
+msgid "Enable Screensaver"
+msgstr "Autoriser l'écran de veille"
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
@@ -236,10 +245,6 @@ msgstr "Heures:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
 msgstr "Minutes:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver"
-msgstr "Désactiver l'écran de veille"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
