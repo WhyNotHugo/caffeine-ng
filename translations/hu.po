@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-08-09 18:55+0000\n"
-"PO-Revision-Date: 2010-04-28 04:37+0000\n"
+"POT-Creation-Date: 2010-09-29 15:23+0000\n"
+"PO-Revision-Date: 2010-10-11 08:37+0000\n"
 "Last-Translator: Richard Somlói <level@somloirichard.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-14 06:19+0000\n"
+"X-Launchpad-Export-Date: 2010-10-12 04:56+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 37
@@ -24,7 +24,7 @@ msgstr "Kérem telepítse"
 #. file 'caffeine/main.py', line 351
 #. file 'caffeine/core.py', line 418
 msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "A Caffeine leállt; az energiakezelés újra aktív"
+msgstr "A Caffeine leállt, az energiakezelés újra aktív"
 
 #. file 'caffeine/main.py', line 374
 msgid "5 minutes"
@@ -61,6 +61,15 @@ msgstr "4 órára"
 #. file 'caffeine/main.py', line 396
 msgid "Other..."
 msgstr "Egyéb..."
+
+#. file 'caffeine/main.py', line 569
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr "Képernyővédő tiltása"
+
+#. file 'caffeine/main.py', line 569
+msgid "Enable Screensaver"
+msgstr "Képernyővédő engedélyezése"
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
@@ -111,7 +120,7 @@ msgstr "Az aktiválás leállítva (beállított időtartam: "
 
 #. file 'caffeine/core.py', line 443
 msgid " have elapsed; powersaving is re-enabled"
-msgstr " letelt; az energiakezelés újra aktív"
+msgstr " letelt, az energiakezelés újra aktív"
 
 #. file 'caffeine/core.py', line 462
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
@@ -225,10 +234,6 @@ msgstr "Óra:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
 msgstr "Perc:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver"
-msgstr "Képernyővédő kikapcsolása"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
