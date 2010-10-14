@@ -119,6 +119,8 @@ _conf.register_opt("act_for_ql", os.path.join(_key,
     "act_for_ql"), False)
 _conf.register_opt("act_for_flash", os.path.join(_key,
     "act_for_flash"), False)
+_conf.register_opt("show_tray_icon", os.path.join(_key,
+    "show_tray_icon"), True)
 
 ## Functions to add/remove Caffeine from the list of startup programs
 import shutil

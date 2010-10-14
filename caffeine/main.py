@@ -407,6 +407,7 @@ class GUI(object):
         self.autostart_cb = get("autostart_cbutton")
         self.ql_cb = get("ql_cbutton")
         self.flash_cb = get("flash_cbutton")
+        self.trayicon_cb = get("trayicon_cbutton")
 
         self.Conf.client.notify_add("/apps/caffeine/prefs/autostart",
                 self.on_gconf_autostart_changed)
@@ -417,9 +418,13 @@ class GUI(object):
         self.Conf.client.notify_add("/apps/caffeine/prefs/act_for_flash",
                 self.on_gconf_flash_changed)
 
+        self.Conf.client.notify_add("/apps/caffeine/prefs/show_tray_icon",
+                self.on_gconf_trayicon_changed)
+
         self.autostart_cb.set_active(self.Conf.get("autostart").get_bool())
         self.ql_cb.set_active(self.Conf.get("act_for_ql").get_bool())
         self.flash_cb.set_active(self.Conf.get("act_for_flash").get_bool())
+        self.trayicon_cb.set_active(self.Conf.get("show_tray_icon").get_bool())
 
         ## about dialog
         self.about_dialog = get("aboutdialog")
@@ -555,11 +560,23 @@ class GUI(object):
 
         self.Core.setActivateForFlash(act_for_flash)
 
-        if act_for_flash != self.flash_cb.get_active():
-            self.flash_cb.set_active(act_for_flash)
+        #if act_for_flash != self.flash_cb.get_active():
+        self.flash_cb.set_active(act_for_flash)
 
     def on_flash_cbutton_toggled(self, cbutton, data=None):
+
         self.Conf.set("act_for_flash", cbutton.get_active())
+
+    ### Tray icon
+
+    def on_gconf_trayicon_changed(self, client, cnxn_id, entry, data=None):
+        show_tray_icon = self.Conf.get("show_tray_icon").get_bool()
+
+    
+    
+        #if show_tray_icon !=  
+    def on_trayicon_cbutton_toggled(self, cbutton, data=None):
+        self.Conf.set("show_tray_icon", cbutton.get_active())
 
     #### Menu callbacks
     def on_activate_menuitem_activate (self, menuitem, data=None):

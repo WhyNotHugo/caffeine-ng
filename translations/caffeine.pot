@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.0\n"
-"POT-Creation-Date: 2010-09-29 15:23:35.529645\n"
+"POT-Creation-Date: 2010-10-13 22:51:32.411326\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,11 +47,11 @@ msgid "Other..."
 #. file 'caffeine/main.py', line 396
 msgstr ""
 msgid "Disable Screensaver"
-#. file 'caffeine/main.py', line 569
+#. file 'caffeine/main.py', line 586
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Enable Screensaver"
-#. file 'caffeine/main.py', line 569
+#. file 'caffeine/main.py', line 586
 msgstr ""
 msgid "Activated for Flash video"
 #. file 'caffeine/core.py', line 172
@@ -151,6 +151,12 @@ msgid ""
 "the activation of the screensaver and powersaving modes\n"
 "when it detects that you are playing the Quake Live video\n"
 "game. Visit www.quakelive.com to play the game for free."
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Tray icon"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Show tray icon"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Configure Caffeine"

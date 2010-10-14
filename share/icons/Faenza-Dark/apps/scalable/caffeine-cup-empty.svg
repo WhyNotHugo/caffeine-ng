@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="22"
+   height="22"
+   id="svg2816"
+   style="display:inline"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="full_cup.svg"
+   inkscape:export-filename="/home/nevon/Desktop/ubuntu_mono_light/32x32/empty_cup.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="825"
+     id="namedview6"
+     showgrid="false"
+     showguides="false"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="5.6568542"
+     inkscape:cx="5.8904435"
+     inkscape:cy="11.472705"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2816">
+    <sodipodi:guide
+       orientation="0,1"
+       position="11.125,2.8125"
+       id="guide2816" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="12.25,21.3125"
+       id="guide2818" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="21.9375,13"
+       id="guide2820" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="2,11.0625"
+       id="guide2822" />
+    <sodipodi:guide
+       orientation="1,0"
+       position="18.8125,11.75"
+       id="guide3596" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="14.5625,14.3125"
+       id="guide3598" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="-6.625,-24.375"
+       id="guide3783" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2818">
+    <linearGradient
+       id="linearGradient3741">
+      <stop
+         style="stop-color:#3c3b37;stop-opacity:1;"
+         offset="0"
+         id="stop3743" />
+      <stop
+         style="stop-color:#5c5b56;stop-opacity:1;"
+         offset="1"
+         id="stop3745" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 11 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="22 : 11 : 1"
+       inkscape:persp3d-origin="11 : 7.3333333 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       id="perspective2898" />
+    <inkscape:perspective
+       id="perspective10-4"
+       inkscape:persp3d-origin="11 : 7.3333333 : 1"
+       inkscape:vp_z="22 : 11 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 11 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3733"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3938"
+       inkscape:persp3d-origin="12 : 8 : 1"
+       inkscape:vp_z="24 : 12 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 12 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3985"
+       inkscape:persp3d-origin="12 : 8 : 1"
+       inkscape:vp_z="24 : 12 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 12 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <path
+     style="opacity:0.6;fill:#3a3935;fill-opacity:1;stroke:none"
+     d="m 1.03125,8.7382814 c 0,6.0624996 0.0625,11.4999996 8.4375,11.4999996 6.974045,0 8.117352,-3.694702 8.3125,-8.5 2.019425,-0.0018 3.1875,-0.06004 3.1875,-0.5625 l 0,-1.125 c 0,-0.6035306 -1.343015,-0.5624996 -3.125,-0.5624996 5.81e-4,-0.250971 0,-0.495767 0,-0.75 l -16.8125,0 z"
+     id="path4168" />
+  <path
+     id="path4170"
+     d="m 1.69417,9.4453874 c 0,3.8086466 -0.622517,9.8427186 7.752483,9.8427186 6.974045,0 7.321857,-3.274857 7.517005,-8.080155 2.019425,-0.0018 3.364277,0.249317 3.364277,-0.253141 l 0.0221,-0.638864 c 0,-0.6035306 -1.497695,-0.3194316 -3.27968,-0.3194316 5.81e-4,-0.250971 4e-6,-0.296894 4e-6,-0.551127 l -15.376189,0 z"
+     style="fill:#eae3d0;fill-opacity:1;stroke:none"
+     sodipodi:nodetypes="cscccccc" />
+</svg>
