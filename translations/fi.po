@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-08-09 18:55+0000\n"
-"PO-Revision-Date: 2010-07-31 04:32+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"POT-Creation-Date: 2010-10-13 22:51+0000\n"
+"PO-Revision-Date: 2010-10-18 19:15+0000\n"
+"Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-14 06:19+0000\n"
+"X-Launchpad-Export-Date: 2010-10-19 05:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 37
@@ -61,6 +61,15 @@ msgstr "4 tuntia"
 #. file 'caffeine/main.py', line 396
 msgid "Other..."
 msgstr "Muu..."
+
+#. file 'caffeine/main.py', line 586
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr "Estä näytönsäästäjän toiminta"
+
+#. file 'caffeine/main.py', line 586
+msgid "Enable Screensaver"
+msgstr "Käytä näytönsäästäjää"
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
@@ -143,9 +152,9 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
-"Aseta tämä valinta käynnistääksesi Caffeinen niin pian\n"
-"kuin tietokoneesi on käynnistynyt ja olet syöttänyt\n"
-"käyttäjätunnuksesi ja salasanasi."
+"Aseta tämä valinta käynnistääksesi Caffeinen heti\n"
+"tietokoneesi käynnistyttyä ja syötettyäsi\n"
+"käyttäjätunnuksesi sekä salasanasi."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
@@ -211,6 +220,14 @@ msgstr ""
 "www.quakelive.com pelataksesi peliä ilmaiseksi."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Tray icon"
+msgstr "Ilmoitusalueen kuvake"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Show tray icon"
+msgstr "Näytä ilmoitusalueen kuvake"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
 msgstr "Muokkaa Caffeinea"
 
@@ -225,10 +242,6 @@ msgstr "Tuntia:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
 msgstr "Minuutteja:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver"
-msgstr "Estä näytönsäästäjän toiminta"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for"
