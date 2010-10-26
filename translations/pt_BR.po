@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-09-29 15:23+0000\n"
-"PO-Revision-Date: 2010-10-03 06:48+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"POT-Creation-Date: 2010-10-13 22:51+0000\n"
+"PO-Revision-Date: 2010-10-25 13:03+0000\n"
+"Last-Translator: Gabriel <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-10-04 05:00+0000\n"
+"X-Launchpad-Export-Date: 2010-10-26 04:43+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 37
@@ -62,12 +62,12 @@ msgstr "4 horas"
 msgid "Other..."
 msgstr "Outro..."
 
-#. file 'caffeine/main.py', line 569
+#. file 'caffeine/main.py', line 586
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Desabilitar o protetor de tela"
 
-#. file 'caffeine/main.py', line 569
+#. file 'caffeine/main.py', line 586
 msgid "Enable Screensaver"
 msgstr "Habilitar Protetor de Tela"
 
@@ -142,7 +142,7 @@ msgstr "Configurações"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Autostart"
-msgstr "Início automático"
+msgstr "Iniciar automaticamente"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
@@ -222,6 +222,14 @@ msgstr ""
 "a ativação de protetores de tela e modos de economia de energia\n"
 "quando detectar que você está jogando o Quake Live \n"
 "Visite www.quakelive.com para jogar gratuitamente."
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Tray icon"
+msgstr "Icone na bandeja"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Show tray icon"
+msgstr "Exibir ícone na área de notificação"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
