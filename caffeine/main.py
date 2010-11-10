@@ -341,7 +341,7 @@ class GUI(object):
         self.AppInd = appindicator.Indicator ("caffeine-cup-empty",
                         "caffeine",
                         appindicator.CATEGORY_APPLICATION_STATUS)
-        self.AppInd.set_status (appindicator.STATUS_ACTIVE)
+        self.AppInd.set_status (self.Conf.get("show_tray_icon").get_bool())
         #self.AppInd.set_attention_icon ("caffeine")
 
         self.set_icon_is_activated(self.Core.getActivated())
@@ -572,11 +572,18 @@ class GUI(object):
     def on_gconf_trayicon_changed(self, client, cnxn_id, entry, data=None):
         show_tray_icon = self.Conf.get("show_tray_icon").get_bool()
 
+        self.AppInd.set_status (
+            [appindicator.STATUS_PASSIVE, appindicator.STATUS_ACTIVE][show_tray_icon]
+            )
     
+        if show_tray_icon != self.trayicon_cb.get_active():
+            self.trayicon_cb.set_active(show_tray_icon)
     
         #if show_tray_icon !=  
     def on_trayicon_cbutton_toggled(self, cbutton, data=None):
-        self.Conf.set("show_tray_icon", cbutton.get_active())
+        state = cbutton.get_active()
+
+        self.Conf.set("show_tray_icon", state)
 
     #### Menu callbacks
     def on_activate_menuitem_activate (self, menuitem, data=None):
