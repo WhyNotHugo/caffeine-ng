@@ -653,7 +653,7 @@ class GUI(object):
         logging.info("Caffeine is preparing to quit")
 
         ### Make sure PM and SV is uninhibited
-        self.Core.setActivated(True)
+        self.Core.setActivated(False)
 
         self.Core.quit()
 
