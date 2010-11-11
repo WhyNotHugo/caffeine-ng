@@ -343,8 +343,8 @@ class GUI(object):
                         appindicator.CATEGORY_APPLICATION_STATUS)
         show_tray_icon = self.Conf.get("show_tray_icon").get_bool()
         
-        if show_tray_icon is False:
-            note = pynotify.Notification("Caffeine is now running", "To show the tray icon, run 'caffeine -icon'", "caffeine")
+        if show_tray_icon is False and options.preferences is not True:
+            note = pynotify.Notification(_("Caffeine is now running"), _("To show the tray icon, run ") + "'caffeine -p' ", "caffeine")
 
             note.show()
         
@@ -668,6 +668,8 @@ class GUI(object):
         gtk.main_quit()
 
 
+options = None
+
 def main():
 
     gtk.gdk.threads_init()
@@ -699,6 +701,7 @@ def main():
 
 
 
+    global options
     options, args = parser.parse_args()
     
     ## Makes sure that only one instance of the Caffeine is run for
