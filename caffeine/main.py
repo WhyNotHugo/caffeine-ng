@@ -344,7 +344,7 @@ class GUI(object):
         show_tray_icon = self.Conf.get("show_tray_icon").get_bool()
         
         if show_tray_icon is False and options.preferences is not True:
-            note = pynotify.Notification(_("Caffeine is now running"), _("To show the tray icon, run ") + "'caffeine -p' ", "caffeine")
+            note = pynotify.Notification(_("Caffeine is now running"), _("To show the tray icon, \nrun ") + "'caffeine -p' " + _("or open Caffeine Preferences from your system menu."), "caffeine")
 
             note.show()
         
@@ -591,6 +591,8 @@ class GUI(object):
     def on_trayicon_cbutton_toggled(self, cbutton, data=None):
         state = cbutton.get_active()
 
+        #if state = False:
+            
         self.Conf.set("show_tray_icon", state)
 
     #### Menu callbacks
@@ -610,19 +612,14 @@ class GUI(object):
         self.window.show_all()
 
     def _run_dialog(self):
-        print 2
         response = self.about_dialog.run()
-        print response
-        print 3
         self.about_dialog.destroy()
-        print 4
         
         return False
 
     def on_about_menuitem_activate(self, menuitem, data=None):
 
         gobject.idle_add(self._run_dialog)
-        print 1
         #response = self.about_dialog.run()
         #self.about_dialog.set_position (gtk.WIN_POS_CENTER_ALWAYS)
         #self.about_dialog.show()
