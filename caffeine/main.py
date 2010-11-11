@@ -344,7 +344,7 @@ class GUI(object):
         show_tray_icon = self.Conf.get("show_tray_icon").get_bool()
         
         if show_tray_icon is False and options.preferences is not True:
-            note = pynotify.Notification(_("Caffeine is now running"), _("To show the tray icon, \nrun ") + "'caffeine -p' " + _("or open Caffeine Preferences from your system menu."), "caffeine")
+            note = pynotify.Notification(_("Caffeine is running"), _("To show the tray icon, \nrun ") + "'caffeine -p' " + _("or open Caffeine Preferences from your system menu."), "caffeine")
 
             note.show()
         

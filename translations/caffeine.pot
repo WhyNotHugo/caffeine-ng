@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.0\n"
-"POT-Creation-Date: 2010-11-10 20:21:57.725319\n"
+"POT-Creation-Date: 2010-11-11 10:58:49.939302\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 msgid "Please install"
 #. file 'caffeine/main.py', line 37
 msgstr ""
-msgid "Caffeine is now running"
+msgid "Caffeine is running"
 #. file 'caffeine/main.py', line 347
 msgstr ""
 msgid "Caffeine is dormant; powersaving is enabled"
@@ -50,11 +50,11 @@ msgid "Other..."
 #. file 'caffeine/main.py', line 404
 msgstr ""
 msgid "Disable Screensaver"
-#. file 'caffeine/main.py', line 601
+#. file 'caffeine/main.py', line 603
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Enable Screensaver"
-#. file 'caffeine/main.py', line 601
+#. file 'caffeine/main.py', line 603
 msgstr ""
 msgid "Activated for Flash video"
 #. file 'caffeine/core.py', line 172
