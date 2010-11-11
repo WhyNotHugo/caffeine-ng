@@ -341,7 +341,15 @@ class GUI(object):
         self.AppInd = appindicator.Indicator ("caffeine-cup-empty",
                         "caffeine",
                         appindicator.CATEGORY_APPLICATION_STATUS)
-        self.AppInd.set_status (self.Conf.get("show_tray_icon").get_bool())
+        show_tray_icon = self.Conf.get("show_tray_icon").get_bool()
+        
+        if show_tray_icon is False:
+            note = pynotify.Notification("Caffeine is now running", "To show the tray icon, run 'caffeine -icon'", "caffeine")
+
+            note.show()
+        
+        
+        self.AppInd.set_status ([appindicator.STATUS_PASSIVE, appindicator.STATUS_ACTIVE][show_tray_icon])
         #self.AppInd.set_attention_icon ("caffeine")
 
         self.set_icon_is_activated(self.Core.getActivated())
@@ -683,7 +691,12 @@ def main():
             dest="timed",
             help=("If the -a option is given, "+
                 "activates caffeine for HOURS:MINUTES."))
-    
+
+    parser.add_option("-p", "--preferences", action="store_true",
+            dest="preferences", default=False,
+            help="Starts Caffeine with the Preferences dialog open.")
+
+
 
 
     options, args = parser.parse_args()
@@ -714,7 +727,9 @@ def main():
             sys.exit(2)
 
         main.timedActivation((hours * 3600.0)+(minutes * 60.0))
-
+    
+    if options.preferences:
+        main.window.show_all()
 
     appInstance.startApplication()
     gtk.main()
