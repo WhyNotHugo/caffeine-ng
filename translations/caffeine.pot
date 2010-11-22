@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.0\n"
-"POT-Creation-Date: 2010-11-16 23:27:18.871163\n"
+"POT-Creation-Date: 2010-11-22 17:31:46.888398\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,48 +13,21 @@ msgstr ""
 "Content-Transfer-Encoding: utf-8\n"
 "Generated-By: ./generate_pot.py\n"
 msgid "Please install"
-#. file 'caffeine/main.py', line 43
+#. file 'caffeine/main.py', line 42
 msgstr ""
 msgid "Caffeine is running"
-#. file 'caffeine/main.py', line 360
+#. file 'caffeine/main.py', line 359
 msgstr ""
 msgid "Caffeine is dormant; powersaving is enabled"
-#. file 'caffeine/main.py', line 370
+#. file 'caffeine/main.py', line 369
 #. file 'caffeine/core.py', line 418
 msgstr ""
-msgid "5 minutes"
-#. file 'caffeine/main.py', line 395
-msgstr ""
-msgid "10 minutes"
-#. file 'caffeine/main.py', line 396
-msgstr ""
-msgid "15 minutes"
-#. file 'caffeine/main.py', line 397
-msgstr ""
-msgid "30 minutes"
-#. file 'caffeine/main.py', line 398
-msgstr ""
-msgid "1 hour"
-#. file 'caffeine/main.py', line 399
-msgstr ""
-msgid "2 hours"
-#. file 'caffeine/main.py', line 400
-msgstr ""
-msgid "3 hours"
-#. file 'caffeine/main.py', line 401
-msgstr ""
-msgid "4 hours"
-#. file 'caffeine/main.py', line 402
-msgstr ""
-msgid "Other..."
-#. file 'caffeine/main.py', line 417
-msgstr ""
 msgid "Disable Screensaver"
-#. file 'caffeine/main.py', line 625
+#. file 'caffeine/main.py', line 593
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Enable Screensaver"
-#. file 'caffeine/main.py', line 625
+#. file 'caffeine/main.py', line 593
 msgstr ""
 msgid "Activated for Flash video"
 #. file 'caffeine/core.py', line 172
@@ -174,7 +147,7 @@ msgstr ""
 msgid "Minutes:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
-msgid "Activate for"
+msgid "Disable Screensaver for..."
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Select a process name..."

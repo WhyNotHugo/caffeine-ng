@@ -32,7 +32,6 @@ except:
     appindicator_avail = False
 
 import dbus
-import threading
 import ctypes
 import optparse
 
@@ -391,35 +390,10 @@ class GUI(object):
             self.proc_liststore.append([get_icon_for_process(name), name])
 
 
-        ## Build the timer submenu
-        TIMER_OPTIONS_LIST = [(_("5 minutes"), 300.0),
-                (_("10 minutes"), 600.0),
-                (_("15 minutes"), 900.0),
-                (_("30 minutes"), 1800.0),
-                (_("1 hour"), 3600.0),
-                (_("2 hours"), 7200.0),
-                (_("3 hours"), 10800.0),
-                (_("4 hours"), 14400.0)]
 
+        #time_menuitem = get("time_menuitem")
 
-        time_menuitem = get("time_menuitem")
-        submenu = gtk.Menu()
-
-        for label, t in TIMER_OPTIONS_LIST:
-            menuItem = gtk.MenuItem(label=label)
-            menuItem.connect('activate', self.on_time_submenuitem_activate,
-                    t)
-            submenu.append(menuItem)
-
-        separator = gtk.SeparatorMenuItem()
-        submenu.append(separator)
-
-        menuItem = gtk.MenuItem(label=_("Other..."))
-        menuItem.connect('activate', self.on_other_submenuitem_activate)
-        submenu.append(menuItem)
-
-        time_menuitem.set_submenu(submenu)
-        submenu.show_all()
+        #time_menuitem.set_submenu(submenu)
         
 
         ## Preferences editor.
@@ -543,12 +517,6 @@ class GUI(object):
 
         self.window.hide_all()
 
-    def on_about_button_clicked (self, button, data=None):
-
-        response = self.about_dialog.run()
-        self.about_dialog.hide()
-
-    
 
     ## configuration callbacks
     def on_gconf_autostart_changed(self, client, cnxn_id, entry, data=None):
@@ -626,30 +594,24 @@ class GUI(object):
         menuitem.set_label (label[self.Core.getActivated()])
 
 
-    def on_time_submenuitem_activate(self, menuitem, time):
+    def on_time_menuitem_activate(self, menuitem, data=None):
 
-        self.timedActivation(time)
+        self.othertime_dialog.show_all()
 
     def on_prefs_menuitem_activate(self, menuitem, data=None):
         self.window.show_all()
 
-    def _run_dialog(self):
-        response = self.about_dialog.run()
-        self.about_dialog.destroy()
-        
-        return False
-
     def on_about_menuitem_activate(self, menuitem, data=None):
 
-        gobject.idle_add(self._run_dialog)
-        #response = self.about_dialog.run()
-        #self.about_dialog.set_position (gtk.WIN_POS_CENTER_ALWAYS)
-        #self.about_dialog.show()
-        #self.about_dialog.destroy()
+        if appindicator_avail:
+            gtk.gdk.threads_enter()
 
-    def on_other_submenuitem_activate(self, menuitem, data=None):
+        self.about_dialog.set_position (gtk.WIN_POS_CENTER_ALWAYS)
+        response = self.about_dialog.run()
+        self.about_dialog.hide()
 
-        self.othertime_dialog.show_all()
+        if appindicator_avail:
+            gtk.gdk.threads_leave()
 
     def on_othertime_delete_event(self, window, data=None):
 
@@ -669,6 +631,7 @@ class GUI(object):
         time = hours*60*60 + minutes*60
         if time > 0:
             self.Core.timedActivation(time)
+
 
     def on_quit_menuitem_activate(self, menuitem, data=None):
 

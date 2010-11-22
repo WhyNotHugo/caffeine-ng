@@ -422,13 +422,8 @@ game. Visit www.quakelive.com to play the game for free.</property>
                 <property name="visible">True</property>
                 <property name="layout_style">edge</property>
                 <child>
-                  <object class="GtkButton" id="about_button">
-                    <property name="label">gtk-about</property>
+                  <object class="GtkLabel" id="label7">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="use_stock">True</property>
-                    <signal name="clicked" handler="on_about_button_clicked"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -702,8 +697,9 @@ game. Visit www.quakelive.com to play the game for free.</property>
     </child>
     <child>
       <object class="GtkMenuItem" id="time_menuitem">
-        <property name="label" translatable="yes">Activate for</property>
+        <property name="label" translatable="yes">Disable Screensaver for...</property>
         <property name="use_underline">True</property>
+        <signal name="activate" handler="on_time_menuitem_activate"/>
       </object>
     </child>
     <child>
@@ -718,6 +714,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
     <child>
       <object class="GtkImageMenuItem" id="about_menuitem">
         <property name="label">gtk-about</property>
+        <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
         <signal name="activate" handler="on_about_menuitem_activate"/>
