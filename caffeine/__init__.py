@@ -22,6 +22,8 @@ import os
 from os.path import join, abspath, dirname, pardir
 import gtk
 
+from xdg.BaseDirectory import xdg_config_home
+
 VERSION = "2.0"
 BASE_PATH = None
 
@@ -34,12 +36,7 @@ while True:
     
     c = join(c, pardir)
 
-if os.getenv("XDG_CONFIG_HOME"):
-    _config_dir = os.getenv("XDG_CONFIG_HOME")
-else:
-    _config_dir = os.path.join(os.getenv("HOME"), ".config")
-
-_config_dir = os.path.join(_config_dir, "caffeine")
+_config_dir = os.path.join(xdg_config_home, "caffeine")
 
 if not os.path.exists(_config_dir):
     os.makedirs(_config_dir)
@@ -68,7 +65,7 @@ IMAGE_PATH = join(BASE_PATH, 'share', 'caffeine', 'images')
 GLADE_PATH = join(BASE_PATH, 'share', 'caffeine', 'glade')
 ICON_PATH  = join(BASE_PATH, 'share', 'icons')
 
-_autostart_dir = join(os.getenv("HOME"), ".config", "autostart")
+_autostart_dir = join(xdg_config_home, "autostart")
 _desktop_file  = join(BASE_PATH, 'share', 'applications',
         'caffeine.desktop')
 
