@@ -24,6 +24,7 @@ import gtk
 import gobject
 import glib
 import pygtk
+import webbrowser 
 
 appindicator_avail = True
 try:
@@ -431,7 +432,8 @@ class GUI(object):
 
         ## make the about dialog url clickable
         def url(dialog, link, data=None):
-            pass
+            webbrowser.open(link)
+
         gtk.about_dialog_set_url_hook(url, None)
 
 
