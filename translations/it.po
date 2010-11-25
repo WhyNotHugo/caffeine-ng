@@ -7,71 +7,35 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-11-11 10:58+0000\n"
-"PO-Revision-Date: 2010-11-11 10:43+0000\n"
-"Last-Translator: Nazareno Patania <Unknown>\n"
+"POT-Creation-Date: 2010-11-22 17:31+0000\n"
+"PO-Revision-Date: 2010-11-24 10:07+0000\n"
+"Last-Translator: zdnko <zdnko@yahoo.it>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-12 04:53+0000\n"
+"X-Launchpad-Export-Date: 2010-11-25 05:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 37
+#. file 'caffeine/main.py', line 42
 msgid "Please install"
 msgstr "Installa"
 
-#. file 'caffeine/main.py', line 347
-msgid "Caffeine is running"
-msgstr ""
-
 #. file 'caffeine/main.py', line 359
+msgid "Caffeine is running"
+msgstr "Caffeine è in esecuzione"
+
+#. file 'caffeine/main.py', line 369
 #. file 'caffeine/core.py', line 418
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine non è attivo; la sospensione automatica è abilitata"
 
-#. file 'caffeine/main.py', line 382
-msgid "5 minutes"
-msgstr "5 minuti"
-
-#. file 'caffeine/main.py', line 383
-msgid "10 minutes"
-msgstr "10 minuti"
-
-#. file 'caffeine/main.py', line 384
-msgid "15 minutes"
-msgstr "15 minuti"
-
-#. file 'caffeine/main.py', line 385
-msgid "30 minutes"
-msgstr "30 minuti"
-
-#. file 'caffeine/main.py', line 386
-msgid "1 hour"
-msgstr "1 ora"
-
-#. file 'caffeine/main.py', line 387
-msgid "2 hours"
-msgstr "2 ore"
-
-#. file 'caffeine/main.py', line 388
-msgid "3 hours"
-msgstr "3 ore"
-
-#. file 'caffeine/main.py', line 389
-msgid "4 hours"
-msgstr "4 ore"
-
-#. file 'caffeine/main.py', line 404
-msgid "Other..."
-msgstr "Altro..."
-
-#. file 'caffeine/main.py', line 603
+#. file 'caffeine/main.py', line 593
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Disabilita Salvaschermo"
 
-#. file 'caffeine/main.py', line 603
+#. file 'caffeine/main.py', line 593
 msgid "Enable Screensaver"
 msgstr "Attiva Salvaschermo"
 
@@ -251,8 +215,8 @@ msgid "Minutes:"
 msgstr "Minuti:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for"
-msgstr "Attiva per"
+msgid "Disable Screensaver for..."
+msgstr "Disabilita il Salvaschermo per..."
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
@@ -265,3 +229,33 @@ msgstr "Processi attivi"
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
 msgstr "Processi recenti"
+
+#~ msgid "4 hours"
+#~ msgstr "4 ore"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 minuti"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 minuti"
+
+#~ msgid "15 minutes"
+#~ msgstr "15 minuti"
+
+#~ msgid "30 minutes"
+#~ msgstr "30 minuti"
+
+#~ msgid "1 hour"
+#~ msgstr "1 ora"
+
+#~ msgid "3 hours"
+#~ msgstr "3 ore"
+
+#~ msgid "2 hours"
+#~ msgstr "2 ore"
+
+#~ msgid "Other..."
+#~ msgstr "Altro..."
+
+#~ msgid "Activate for"
+#~ msgstr "Attiva per"
