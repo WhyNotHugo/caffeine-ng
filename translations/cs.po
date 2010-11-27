@@ -7,60 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-08-09 18:55+0000\n"
-"PO-Revision-Date: 2010-04-17 05:28+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"POT-Creation-Date: 2010-11-22 17:31+0000\n"
+"PO-Revision-Date: 2010-11-26 16:19+0000\n"
+"Last-Translator: Konki <pavel.konkol@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-14 06:19+0000\n"
+"X-Launchpad-Export-Date: 2010-11-27 05:02+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 37
+#. file 'caffeine/main.py', line 42
 msgid "Please install"
 msgstr "Prosím instalujte"
 
-#. file 'caffeine/main.py', line 351
+#. file 'caffeine/main.py', line 359
+msgid "Caffeine is running"
+msgstr "Caffeine běží"
+
+#. file 'caffeine/main.py', line 369
 #. file 'caffeine/core.py', line 418
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine spí, šetření energií je povoleno"
 
-#. file 'caffeine/main.py', line 374
-msgid "5 minutes"
-msgstr "5 minut"
+#. file 'caffeine/main.py', line 593
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr "Zakázat špořič obrazovky"
 
-#. file 'caffeine/main.py', line 375
-msgid "10 minutes"
-msgstr "10 minut"
-
-#. file 'caffeine/main.py', line 376
-msgid "15 minutes"
-msgstr "15 minut"
-
-#. file 'caffeine/main.py', line 377
-msgid "30 minutes"
-msgstr "30 minut"
-
-#. file 'caffeine/main.py', line 378
-msgid "1 hour"
-msgstr "1 hodina"
-
-#. file 'caffeine/main.py', line 379
-msgid "2 hours"
-msgstr "2 hodiny"
-
-#. file 'caffeine/main.py', line 380
-msgid "3 hours"
-msgstr "3 hodiny"
-
-#. file 'caffeine/main.py', line 381
-msgid "4 hours"
-msgstr "4 hodiny"
-
-#. file 'caffeine/main.py', line 396
-msgid "Other..."
-msgstr "Jiný..."
+#. file 'caffeine/main.py', line 593
+msgid "Enable Screensaver"
+msgstr "Povolit šetřič obrazovky"
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
@@ -210,6 +187,14 @@ msgstr ""
 "hry zdarma."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Tray icon"
+msgstr "Ikona v panelu na ploše"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Show tray icon"
+msgstr "Zobrazovat ikonu v panelu"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
 msgstr "Nastavit Caffeine"
 
@@ -226,12 +211,8 @@ msgid "Minutes:"
 msgstr "Minuty:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver"
-msgstr "Zakázat špořič obrazovky"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for"
-msgstr "Aktivovat pro"
+msgid "Disable Screensaver for..."
+msgstr ""
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
@@ -244,3 +225,33 @@ msgstr "Běžící procesy"
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
 msgstr "Nedávné procesy"
+
+#~ msgid "2 hours"
+#~ msgstr "2 hodiny"
+
+#~ msgid "4 hours"
+#~ msgstr "4 hodiny"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 minut"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 minut"
+
+#~ msgid "15 minutes"
+#~ msgstr "15 minut"
+
+#~ msgid "30 minutes"
+#~ msgstr "30 minut"
+
+#~ msgid "1 hour"
+#~ msgstr "1 hodina"
+
+#~ msgid "3 hours"
+#~ msgstr "3 hodiny"
+
+#~ msgid "Other..."
+#~ msgstr "Jiný..."
+
+#~ msgid "Activate for"
+#~ msgstr "Aktivovat pro"
