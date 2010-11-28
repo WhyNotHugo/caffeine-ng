@@ -7,67 +7,35 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-10-13 22:51+0000\n"
-"PO-Revision-Date: 2010-11-01 08:28+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"POT-Creation-Date: 2010-11-27 16:44+0000\n"
+"PO-Revision-Date: 2010-11-27 21:28+0000\n"
+"Last-Translator: Marcos Lans <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-02 04:55+0000\n"
+"X-Launchpad-Export-Date: 2010-11-28 04:58+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 37
+#. file 'caffeine/main.py', line 43
 msgid "Please install"
 msgstr "Instalar"
 
-#. file 'caffeine/main.py', line 351
+#. file 'caffeine/main.py', line 360
+msgid "Caffeine is running"
+msgstr "Caffeine está executańdose"
+
+#. file 'caffeine/main.py', line 370
 #. file 'caffeine/core.py', line 418
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine está inactivo. O modo de baixo consumo está activado"
 
-#. file 'caffeine/main.py', line 374
-msgid "5 minutes"
-msgstr "5 minutos"
-
-#. file 'caffeine/main.py', line 375
-msgid "10 minutes"
-msgstr "10 minutos"
-
-#. file 'caffeine/main.py', line 376
-msgid "15 minutes"
-msgstr "15 minutos"
-
-#. file 'caffeine/main.py', line 377
-msgid "30 minutes"
-msgstr "30 minutos"
-
-#. file 'caffeine/main.py', line 378
-msgid "1 hour"
-msgstr "1 hora"
-
-#. file 'caffeine/main.py', line 379
-msgid "2 hours"
-msgstr "2 horas"
-
-#. file 'caffeine/main.py', line 380
-msgid "3 hours"
-msgstr "3 horas"
-
-#. file 'caffeine/main.py', line 381
-msgid "4 hours"
-msgstr "4 horas"
-
-#. file 'caffeine/main.py', line 396
-msgid "Other..."
-msgstr "Outro..."
-
-#. file 'caffeine/main.py', line 586
+#. file 'caffeine/main.py', line 595
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Desactivar o protector de pantalla"
 
-#. file 'caffeine/main.py', line 586
+#. file 'caffeine/main.py', line 595
 msgid "Enable Screensaver"
 msgstr "Activar o salvapantallasI"
 
@@ -250,8 +218,8 @@ msgid "Minutes:"
 msgstr "Minutos:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for"
-msgstr "Activar durante"
+msgid "Disable Screensaver for..."
+msgstr "Desactivar o salvapantallas para..."
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
@@ -264,3 +232,33 @@ msgstr "Procesos activos"
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
 msgstr "Procesos recentes"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 minutos"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 minutos"
+
+#~ msgid "15 minutes"
+#~ msgstr "15 minutos"
+
+#~ msgid "30 minutes"
+#~ msgstr "30 minutos"
+
+#~ msgid "1 hour"
+#~ msgstr "1 hora"
+
+#~ msgid "2 hours"
+#~ msgstr "2 horas"
+
+#~ msgid "3 hours"
+#~ msgstr "3 horas"
+
+#~ msgid "4 hours"
+#~ msgstr "4 horas"
+
+#~ msgid "Other..."
+#~ msgstr "Outro..."
+
+#~ msgid "Activate for"
+#~ msgstr "Activar durante"

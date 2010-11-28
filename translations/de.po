@@ -7,35 +7,35 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-11-22 17:31+0000\n"
-"PO-Revision-Date: 2010-11-26 11:37+0000\n"
+"POT-Creation-Date: 2010-11-27 16:44+0000\n"
+"PO-Revision-Date: 2010-11-27 08:22+0000\n"
 "Last-Translator: cmdrhenner <cmdrhenner@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-27 05:02+0000\n"
+"X-Launchpad-Export-Date: 2010-11-28 04:58+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 42
+#. file 'caffeine/main.py', line 43
 msgid "Please install"
 msgstr "Bitte installieren"
 
-#. file 'caffeine/main.py', line 359
+#. file 'caffeine/main.py', line 360
 msgid "Caffeine is running"
 msgstr "Caffeine läuft"
 
-#. file 'caffeine/main.py', line 369
+#. file 'caffeine/main.py', line 370
 #. file 'caffeine/core.py', line 418
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine ist im Ruhezustand; Energiesparmaßnahmen sind aktiv"
 
-#. file 'caffeine/main.py', line 593
+#. file 'caffeine/main.py', line 595
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Bildschirmschoner deaktivieren"
 
-#. file 'caffeine/main.py', line 593
+#. file 'caffeine/main.py', line 595
 msgid "Enable Screensaver"
 msgstr "Bildschirmschoner aktivieren"
 
