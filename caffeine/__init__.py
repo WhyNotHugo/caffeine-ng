@@ -24,7 +24,7 @@ import gtk
 
 from xdg.BaseDirectory import xdg_config_home
 
-VERSION = "2.0"
+VERSION = "2.2"
 BASE_PATH = None
 
 c = abspath(dirname(__file__))
