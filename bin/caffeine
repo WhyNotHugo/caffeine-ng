@@ -29,12 +29,13 @@ x,y = sys.version_info[0:2]
 x = str(x)
 y = str(y)
 
-sys.path.insert(1, join(dirname(__file__), pardir, 'share', 'pyshared'))
 sys.path.insert(1, join(dirname(__file__), pardir,'lib',
     'python'+x+'.'+y,'dist-packages'))
 
 sys.path.insert(1, join(dirname(__file__), pardir,'lib',
     'python'))
+
+sys.path.append(join(dirname(__file__), pardir, 'share', 'pyshared'))
 
 import caffeine
 
