@@ -3,3 +3,5 @@
 gtk-update-icon-cache /usr/share/icons/hicolor
 gtk-update-icon-cache /usr/share/icons/ubuntu-mono-light
 gtk-update-icon-cache /usr/share/icons/ubuntu-mono-dark
+
+exit 0
