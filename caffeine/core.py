@@ -124,12 +124,10 @@ class Caffeine(gobject.GObject):
 
     def _check_for_Flash(self):
         try:
-            tmp = "/tmp"
-            ## look for filenames that begin with 'Flash'
-            for file in os.listdir(tmp):
-                try:
-                    if file.startswith("Flash"):
-                        filepath = os.path.join(tmp, file)
+            ## look for files opened by flashplayer that begin with 'Flash'
+            for filepath in commands.getoutput("pgrep -f flashplayer | xargs -I PID find /proc/PID/fd -lname '/tmp/Flash*'").split("\n"):
+                if filepath != "":
+                    try:
                         duration = utils.getFLVLength(filepath)
 
                         duration = int(time.time()) + duration
@@ -137,8 +135,8 @@ class Caffeine(gobject.GObject):
 
                         if filepath not in self.flash_durations:
                             self.flash_durations[filepath] = end_time
-                except Exception, data:
-                    logging.error("Exception: " + str(data))
+                    except Exception, data:
+                        logging.error("Exception: " + str(data))
 
                             
             ### clear out old filenames
