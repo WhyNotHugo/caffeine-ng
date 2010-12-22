@@ -314,6 +314,7 @@ class Caffeine(gobject.GObject):
 
         hours = sec/3600
         minutes = sec/60 % 60
+        print minutes
         ls = []
         ls.append(self._pluralize("hour", hours))
         ls.append(self._pluralize("minute", minutes))

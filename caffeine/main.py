@@ -369,6 +369,8 @@ class GUI(object):
         
         
 
+        self.activate_menuitem = get("activate_menuitem")
+
         self.set_icon_is_activated(self.Core.getActivated())
 
         tooltip = self.Core.status_string
@@ -379,6 +381,7 @@ class GUI(object):
         ## popup menu
         self.menu = get("popup_menu")
         self.menu.show()
+
 
         if appindicator_avail:
 
@@ -473,6 +476,7 @@ class GUI(object):
 
         self.set_icon_is_activated(active)
 
+
         #self.status_icon.set_tooltip(tooltip)
 
     def set_icon_is_activated(self, activated):
@@ -485,6 +489,8 @@ class GUI(object):
         else:
             self.status_icon.set_from_icon_name(icon_name)
 
+        label = [_("Disable Screensaver"), _("Enable Screensaver")]
+        self.activate_menuitem.set_label (label[self.Core.getActivated()])
 
     ### Callbacks
     def on_L_click(self, status_icon, data=None):

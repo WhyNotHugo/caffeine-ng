@@ -730,29 +730,4 @@ game. Visit www.quakelive.com to play the game for free.</property>
       </object>
     </child>
   </object>
-  <object class="GtkAboutDialog" id="aboutdialog1">
-    <property name="border_width">5</property>
-    <property name="type_hint">normal</property>
-    <property name="program_name">Glade</property>
-    <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox3">
-        <property name="visible">True</property>
-        <property name="spacing">2</property>
-        <child>
-          <placeholder/>
-        </child>
-        <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area3">
-            <property name="visible">True</property>
-            <property name="layout_style">end</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="pack_type">end</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
 </interface>
