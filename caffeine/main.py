@@ -50,7 +50,13 @@ import utils
 import caffeinelogging as logging
 
 icon_theme = gtk.icon_theme_get_default()
-generic = icon_theme.load_icon("application-x-executable", 16, gtk.ICON_LOOKUP_NO_SVG)
+try:
+
+    generic = icon_theme.load_icon("application-x-executable", 16, gtk.ICON_LOOKUP_NO_SVG)
+except glib.GError, e:
+
+    generic = gtk.gdk.pixbuf_new_from_file(caffeine.GENERIC_PROCESS_ICON_PATH)
+
 
 
 

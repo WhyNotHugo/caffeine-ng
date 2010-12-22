@@ -14,7 +14,8 @@ Depends:${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
     python-gtk2,
     python-gnome2,
     python-xlib,
-    python-appindicator
+    python-appindicator,
+    python-xdg
 Description: Caffeine
  A status bar application able to temporarily prevent the activation
  of both the screensaver and the "sleep" powersaving mode.

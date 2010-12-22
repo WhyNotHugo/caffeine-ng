@@ -72,6 +72,8 @@ _desktop_file  = join(BASE_PATH, 'share', 'applications',
 FULL_ICON_PATH = join(IMAGE_PATH, "Full_Cup.svg")
 EMPTY_ICON_PATH = join(IMAGE_PATH, "Empty_Cup.svg")
 
+GENERIC_PROCESS_ICON_PATH = join(IMAGE_PATH, "application-x-executable.png")
+
 ICON_NAME = 'caffeine'
 icon_theme = gtk.icon_theme_get_default()
 
