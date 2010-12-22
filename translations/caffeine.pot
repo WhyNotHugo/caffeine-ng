@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.2\n"
-"POT-Creation-Date: 2010-12-01 14:59:52.735559\n"
+"POT-Creation-Date: 2010-12-22 13:12:50.197259\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,60 +16,62 @@ msgid "Please install"
 #. file 'caffeine/main.py', line 43
 msgstr ""
 msgid "Caffeine is running"
-#. file 'caffeine/main.py', line 360
+#. file 'caffeine/main.py', line 366
 msgstr ""
 msgid "Caffeine is dormant; powersaving is enabled"
-#. file 'caffeine/main.py', line 370
-#. file 'caffeine/core.py', line 418
+#. file 'caffeine/main.py', line 378
+#. file 'caffeine/core.py', line 417
 msgstr ""
 msgid "Disable Screensaver"
-#. file 'caffeine/main.py', line 595
+#. file 'caffeine/main.py', line 492
+#. file 'caffeine/main.py', line 607
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Enable Screensaver"
-#. file 'caffeine/main.py', line 595
+#. file 'caffeine/main.py', line 492
+#. file 'caffeine/main.py', line 607
 msgstr ""
 msgid "Activated for Flash video"
+#. file 'caffeine/core.py', line 170
 #. file 'caffeine/core.py', line 172
-#. file 'caffeine/core.py', line 174
 msgstr ""
 msgid "Activated for Quake Live"
-#. file 'caffeine/core.py', line 225
+#. file 'caffeine/core.py', line 223
 msgstr ""
 msgid " and "
-#. file 'caffeine/core.py', line 292
+#. file 'caffeine/core.py', line 290
 msgstr ""
 msgid "hour"
-#. file 'caffeine/core.py', line 299
-#. file 'caffeine/core.py', line 305
+#. file 'caffeine/core.py', line 297
+#. file 'caffeine/core.py', line 303
 msgstr ""
 msgid "minute"
-#. file 'caffeine/core.py', line 299
-#. file 'caffeine/core.py', line 311
+#. file 'caffeine/core.py', line 297
+#. file 'caffeine/core.py', line 309
 msgstr ""
 msgid "hours"
-#. file 'caffeine/core.py', line 307
+#. file 'caffeine/core.py', line 305
 msgstr ""
 msgid "minutes"
-#. file 'caffeine/core.py', line 313
+#. file 'caffeine/core.py', line 311
 msgstr ""
 msgid "Timed activation set; "
-#. file 'caffeine/core.py', line 364
+#. file 'caffeine/core.py', line 363
 msgstr ""
 msgid "Caffeine will prevent powersaving for the next "
-#. file 'caffeine/core.py', line 365
+#. file 'caffeine/core.py', line 364
 msgstr ""
 msgid "Activated for "
-#. file 'caffeine/core.py', line 372
+#. file 'caffeine/core.py', line 371
 msgstr ""
 msgid "Timed activation cancelled (was set for "
-#. file 'caffeine/core.py', line 426
+#. file 'caffeine/core.py', line 425
 msgstr ""
 msgid " have elapsed; powersaving is re-enabled"
-#. file 'caffeine/core.py', line 443
+#. file 'caffeine/core.py', line 442
 msgstr ""
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-#. file 'caffeine/core.py', line 462
+#. file 'caffeine/core.py', line 461
 msgstr ""
 msgid "An application to temporarily prevent the activation of both the screen saver and the \"sleep\" powersaving mode."
 #. file 'share/caffeine/glade/GUI.glade', line ?
