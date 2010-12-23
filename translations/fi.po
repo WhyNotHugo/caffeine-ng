@@ -7,90 +7,92 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-11-22 17:31+0000\n"
+"POT-Creation-Date: 2010-12-22 13:12+0000\n"
 "PO-Revision-Date: 2010-11-24 06:58+0000\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-11-25 05:01+0000\n"
+"X-Launchpad-Export-Date: 2010-12-23 05:06+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 42
+#. file 'caffeine/main.py', line 43
 msgid "Please install"
 msgstr "Asenna"
 
-#. file 'caffeine/main.py', line 359
+#. file 'caffeine/main.py', line 366
 msgid "Caffeine is running"
 msgstr "Caffeine on käynnissä"
 
-#. file 'caffeine/main.py', line 369
-#. file 'caffeine/core.py', line 418
+#. file 'caffeine/main.py', line 378
+#. file 'caffeine/core.py', line 417
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine ei ole aktiivinen; virransäästöominaisuudet ovat käytössä"
 
-#. file 'caffeine/main.py', line 593
+#. file 'caffeine/main.py', line 492
+#. file 'caffeine/main.py', line 607
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Estä näytönsäästäjän toiminta"
 
-#. file 'caffeine/main.py', line 593
+#. file 'caffeine/main.py', line 492
+#. file 'caffeine/main.py', line 607
 msgid "Enable Screensaver"
 msgstr "Käytä näytönsäästäjää"
 
+#. file 'caffeine/core.py', line 170
 #. file 'caffeine/core.py', line 172
-#. file 'caffeine/core.py', line 174
 msgid "Activated for Flash video"
 msgstr "Aktivoitu flash-videota varten"
 
-#. file 'caffeine/core.py', line 225
+#. file 'caffeine/core.py', line 223
 msgid "Activated for Quake Live"
 msgstr "Aktivoitu Quake Liveä varten"
 
-#. file 'caffeine/core.py', line 292
+#. file 'caffeine/core.py', line 290
 msgid " and "
 msgstr " ja "
 
-#. file 'caffeine/core.py', line 299
-#. file 'caffeine/core.py', line 305
+#. file 'caffeine/core.py', line 297
+#. file 'caffeine/core.py', line 303
 msgid "hour"
 msgstr "tunti"
 
-#. file 'caffeine/core.py', line 299
-#. file 'caffeine/core.py', line 311
+#. file 'caffeine/core.py', line 297
+#. file 'caffeine/core.py', line 309
 msgid "minute"
 msgstr "minuutti"
 
-#. file 'caffeine/core.py', line 307
+#. file 'caffeine/core.py', line 305
 msgid "hours"
 msgstr "tuntia"
 
-#. file 'caffeine/core.py', line 313
+#. file 'caffeine/core.py', line 311
 msgid "minutes"
 msgstr "minuuttia"
 
-#. file 'caffeine/core.py', line 364
+#. file 'caffeine/core.py', line 363
 msgid "Timed activation set; "
 msgstr "Ajastettu aktivointi asetettu; "
 
-#. file 'caffeine/core.py', line 365
+#. file 'caffeine/core.py', line 364
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine estää virransäästötoimet seuraavan "
 
-#. file 'caffeine/core.py', line 372
+#. file 'caffeine/core.py', line 371
 msgid "Activated for "
 msgstr "Aktivoitu "
 
-#. file 'caffeine/core.py', line 426
+#. file 'caffeine/core.py', line 425
 msgid "Timed activation cancelled (was set for "
 msgstr "Ajastettu aktivointi peruttu (oli asetettu "
 
-#. file 'caffeine/core.py', line 443
+#. file 'caffeine/core.py', line 442
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " on kulunut loppuun; virransäästöominaisuudet on otettu käyttöön"
 
-#. file 'caffeine/core.py', line 462
+#. file 'caffeine/core.py', line 461
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr "Caffeine estää  virransäästön ja näytönsäästäjän toiminnan "
 
@@ -250,6 +252,9 @@ msgstr "Äskettäiset prosessit"
 
 #~ msgid "4 hours"
 #~ msgstr "4 tuntia"
+
+#~ msgid "second"
+#~ msgstr "sekunteja"
 
 #~ msgid "Other..."
 #~ msgstr "Muu..."

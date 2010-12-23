@@ -7,115 +7,94 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-08-09 18:55+0000\n"
+"POT-Creation-Date: 2010-12-22 13:12+0000\n"
 "PO-Revision-Date: 2010-03-09 12:47+0000\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-08-14 06:19+0000\n"
+"X-Launchpad-Export-Date: 2010-12-23 05:06+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#. file 'caffeine/main.py', line 37
+#. file 'caffeine/main.py', line 43
 msgid "Please install"
 msgstr "Mesedez instalatu"
 
-#. file 'caffeine/main.py', line 351
-#. file 'caffeine/core.py', line 418
+#. file 'caffeine/main.py', line 366
+msgid "Caffeine is running"
+msgstr ""
+
+#. file 'caffeine/main.py', line 378
+#. file 'caffeine/core.py', line 417
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr ""
 
-#. file 'caffeine/main.py', line 374
-msgid "5 minutes"
-msgstr "5 minutu"
+#. file 'caffeine/main.py', line 492
+#. file 'caffeine/main.py', line 607
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr ""
 
-#. file 'caffeine/main.py', line 375
-msgid "10 minutes"
-msgstr "10 minutu"
+#. file 'caffeine/main.py', line 492
+#. file 'caffeine/main.py', line 607
+msgid "Enable Screensaver"
+msgstr ""
 
-#. file 'caffeine/main.py', line 376
-msgid "15 minutes"
-msgstr "15 minutu"
-
-#. file 'caffeine/main.py', line 377
-msgid "30 minutes"
-msgstr "30 minutu"
-
-#. file 'caffeine/main.py', line 378
-msgid "1 hour"
-msgstr "Ordu 1"
-
-#. file 'caffeine/main.py', line 379
-msgid "2 hours"
-msgstr "2 ordu"
-
-#. file 'caffeine/main.py', line 380
-msgid "3 hours"
-msgstr "3 ordu"
-
-#. file 'caffeine/main.py', line 381
-msgid "4 hours"
-msgstr "4 ordu"
-
-#. file 'caffeine/main.py', line 396
-msgid "Other..."
-msgstr "Beste batzuk ..."
-
+#. file 'caffeine/core.py', line 170
 #. file 'caffeine/core.py', line 172
-#. file 'caffeine/core.py', line 174
 msgid "Activated for Flash video"
 msgstr ""
 
-#. file 'caffeine/core.py', line 225
+#. file 'caffeine/core.py', line 223
 msgid "Activated for Quake Live"
 msgstr ""
 
-#. file 'caffeine/core.py', line 292
+#. file 'caffeine/core.py', line 290
 msgid " and "
 msgstr " eta "
 
-#. file 'caffeine/core.py', line 299
-#. file 'caffeine/core.py', line 305
+#. file 'caffeine/core.py', line 297
+#. file 'caffeine/core.py', line 303
 msgid "hour"
 msgstr "ordu"
 
-#. file 'caffeine/core.py', line 299
-#. file 'caffeine/core.py', line 311
+#. file 'caffeine/core.py', line 297
+#. file 'caffeine/core.py', line 309
 msgid "minute"
 msgstr "minutu"
 
-#. file 'caffeine/core.py', line 307
+#. file 'caffeine/core.py', line 305
 msgid "hours"
 msgstr "ordu"
 
-#. file 'caffeine/core.py', line 313
+#. file 'caffeine/core.py', line 311
 msgid "minutes"
 msgstr "minutu"
 
-#. file 'caffeine/core.py', line 364
+#. file 'caffeine/core.py', line 363
 msgid "Timed activation set; "
 msgstr "Denboraren araberako aktibazioa indarrean; "
 
-#. file 'caffeine/core.py', line 365
+#. file 'caffeine/core.py', line 364
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine-k energia aurreztea indargabetuko du hurrengo denboran: "
 
-#. file 'caffeine/core.py', line 372
+#. file 'caffeine/core.py', line 371
 msgid "Activated for "
 msgstr ""
 
-#. file 'caffeine/core.py', line 426
+#. file 'caffeine/core.py', line 425
 msgid "Timed activation cancelled (was set for "
 msgstr ""
 "Denboraren araberako aktibazioa ezeztatua (hurrengo denborarako "
 "konfiguratua: "
 
-#. file 'caffeine/core.py', line 443
+#. file 'caffeine/core.py', line 442
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " pasa dira; energia aurreztea berriro aktibatu da"
 
-#. file 'caffeine/core.py', line 462
+#. file 'caffeine/core.py', line 461
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
 
@@ -195,6 +174,14 @@ msgid ""
 msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Tray icon"
+msgstr ""
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Show tray icon"
+msgstr ""
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
 msgstr "Caffeine konfiguratu"
 
@@ -211,12 +198,8 @@ msgid "Minutes:"
 msgstr "Minutuak:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver"
+msgid "Disable Screensaver for..."
 msgstr ""
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for"
-msgstr "Aktibatu"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
@@ -230,8 +213,38 @@ msgstr "Prozesuak exekutatzen"
 msgid "Recent Processes"
 msgstr ""
 
+#~ msgid "3 hours"
+#~ msgstr "3 ordu"
+
+#~ msgid "5 minutes"
+#~ msgstr "5 minutu"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 minutu"
+
+#~ msgid "15 minutes"
+#~ msgstr "15 minutu"
+
+#~ msgid "30 minutes"
+#~ msgstr "30 minutu"
+
+#~ msgid "1 hour"
+#~ msgstr "Ordu 1"
+
+#~ msgid "2 hours"
+#~ msgstr "2 ordu"
+
+#~ msgid "4 hours"
+#~ msgstr "4 ordu"
+
+#~ msgid "Other..."
+#~ msgstr "Beste batzuk ..."
+
 #~ msgid "Exception occurred"
 #~ msgstr "Salbuespen bat gertatu da"
 
 #~ msgid "DPMS enabled"
 #~ msgstr "DPMS aktibatuta"
+
+#~ msgid "Activate for"
+#~ msgstr "Aktibatu"
