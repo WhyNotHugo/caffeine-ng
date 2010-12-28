@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-12-22 13:12+0000\n"
-"PO-Revision-Date: 2010-08-02 04:33+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2010-12-27 23:34+0000\n"
+"Last-Translator: Pricop Alexandru-Mihai <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-23 05:06+0000\n"
+"X-Launchpad-Export-Date: 2010-12-28 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 43
@@ -23,7 +23,7 @@ msgstr "Instalați"
 
 #. file 'caffeine/main.py', line 366
 msgid "Caffeine is running"
-msgstr ""
+msgstr "Caffeine rulează"
 
 #. file 'caffeine/main.py', line 378
 #. file 'caffeine/core.py', line 417
@@ -40,7 +40,7 @@ msgstr "Dezactivează ecranul de veghe"
 #. file 'caffeine/main.py', line 492
 #. file 'caffeine/main.py', line 607
 msgid "Enable Screensaver"
-msgstr ""
+msgstr "Activeză Screensaver"
 
 #. file 'caffeine/core.py', line 170
 #. file 'caffeine/core.py', line 172
@@ -195,11 +195,11 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Tray icon"
-msgstr ""
+msgstr "Icoană tray"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Show tray icon"
-msgstr ""
+msgstr "Arată icoană tray"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
@@ -219,7 +219,7 @@ msgstr "Minute:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver for..."
-msgstr ""
+msgstr "Dezactivează Screensaver pentru..."
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
