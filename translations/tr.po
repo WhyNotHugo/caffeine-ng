@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-12-22 13:12+0000\n"
-"PO-Revision-Date: 2010-10-03 06:50+0000\n"
-"Last-Translator: ironic <ironic@ubuntu-tr.net>\n"
+"PO-Revision-Date: 2011-01-05 07:58+0000\n"
+"Last-Translator: Gökhan KILINÇ <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-23 05:06+0000\n"
+"X-Launchpad-Export-Date: 2011-01-06 05:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 43
@@ -23,12 +23,12 @@ msgstr "Lütfen yükleyiniz"
 
 #. file 'caffeine/main.py', line 366
 msgid "Caffeine is running"
-msgstr ""
+msgstr "Caffeine çalışıyor"
 
 #. file 'caffeine/main.py', line 378
 #. file 'caffeine/core.py', line 417
 msgid "Caffeine is dormant; powersaving is enabled"
-msgstr ""
+msgstr "Caffeine devre dışı: güç koruması aktif edildi."
 
 #. file 'caffeine/main.py', line 492
 #. file 'caffeine/main.py', line 607
@@ -48,7 +48,7 @@ msgstr "Flash görüntü için etkinleştirildi"
 
 #. file 'caffeine/core.py', line 223
 msgid "Activated for Quake Live"
-msgstr ""
+msgstr "Quake Live için etkinleştirildi"
 
 #. file 'caffeine/core.py', line 290
 msgid " and "
