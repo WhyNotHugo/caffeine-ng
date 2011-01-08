@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-12-22 13:12+0000\n"
-"PO-Revision-Date: 2010-11-24 06:58+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2011-01-07 09:23+0000\n"
+"Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-23 05:06+0000\n"
+"X-Launchpad-Export-Date: 2011-01-08 05:10+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. file 'caffeine/main.py', line 43
@@ -101,8 +101,8 @@ msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
-"Sovellus on väliaikaisesti estänyt näytönsäästäjän sekä virransäästön "
-"toiminnan."
+"Sovellus näytönsäästäjän sekä virransäästön toiminnan väliaikaiseksi "
+"estämiseksi."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
@@ -215,7 +215,7 @@ msgstr "Minuutteja:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver for..."
-msgstr ""
+msgstr "Estä näytönsäästäjä..."
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
