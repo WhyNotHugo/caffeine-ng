@@ -347,6 +347,7 @@ class GUI(object):
         get = builder.get_object
         
         show_tray_icon = self.Conf.get("show_tray_icon").get_bool()
+        show_notification = self.Conf.get("show_notification").get_bool()
 
         if appindicator_avail:
             self.AppInd = appindicator.Indicator ("caffeine-cup-empty",
@@ -362,7 +363,7 @@ class GUI(object):
             self.status_icon = get("statusicon")
             self.status_icon.set_visible(show_tray_icon)
         
-        if show_tray_icon is False and options.preferences is not True:
+        if show_tray_icon is False and show_notification is True and options.preferences is not True:
             note = pynotify.Notification(_("Caffeine is running"), _("To show the tray icon, \nrun ") + "'caffeine -p' " + _("or open Caffeine Preferences from your system menu."), "caffeine")
 
             note.show()
@@ -413,6 +414,9 @@ class GUI(object):
         self.ql_cb = get("ql_cbutton")
         self.flash_cb = get("flash_cbutton")
         self.trayicon_cb = get("trayicon_cbutton")
+        self.notification_cb = get("notification_cbutton")
+
+        self.notification_cb.set_sensitive(not show_tray_icon)
 
         self.Conf.client.notify_add("/apps/caffeine/prefs/autostart",
                 self.on_gconf_autostart_changed)
@@ -426,10 +430,14 @@ class GUI(object):
         self.Conf.client.notify_add("/apps/caffeine/prefs/show_tray_icon",
                 self.on_gconf_trayicon_changed)
 
+        self.Conf.client.notify_add("/apps/caffeine/prefs/show_notification",
+                self.on_gconf_notification_changed)
+
         self.autostart_cb.set_active(self.Conf.get("autostart").get_bool())
         self.ql_cb.set_active(self.Conf.get("act_for_ql").get_bool())
         self.flash_cb.set_active(self.Conf.get("act_for_flash").get_bool())
         self.trayicon_cb.set_active(self.Conf.get("show_tray_icon").get_bool())
+        self.notification_cb.set_active(self.Conf.get("show_notification").get_bool())
 
         ## about dialog
         self.about_dialog = get("aboutdialog")
@@ -567,7 +575,6 @@ class GUI(object):
 
         self.Core.setActivateForFlash(act_for_flash)
 
-        #if act_for_flash != self.flash_cb.get_active():
         self.flash_cb.set_active(act_for_flash)
 
     def on_flash_cbutton_toggled(self, cbutton, data=None):
@@ -588,16 +595,28 @@ class GUI(object):
         else:
             self.status_icon.set_visible(show_tray_icon)
 
-        if show_tray_icon != self.trayicon_cb.get_active():
-            self.trayicon_cb.set_active(show_tray_icon)
-    
-        #if show_tray_icon !=  
-    def on_trayicon_cbutton_toggled(self, cbutton, data=None):
-        state = cbutton.get_active()
+        self.trayicon_cb.set_active(show_tray_icon)
 
-        #if state = False:
+        self.notification_cb.set_sensitive(not show_tray_icon)
+    
+    def on_trayicon_cbutton_toggled(self, cbutton, data=None):
+
+        self.Conf.set("show_tray_icon", cbutton.get_active())
+
+    # Startup Notifications
+    def on_gconf_notification_changed(self, client, cnxn_id, entry, data=None):
+        
+        show_notification = self.Conf.get("show_notification").get_bool()
+
+        self.notification_cb.set_active(show_notification)
+
+    def on_notification_cbutton_toggled(self, cbutton, data=None):
             
-        self.Conf.set("show_tray_icon", state)
+        self.Conf.set("show_notification", cbutton.get_active())
+
+
+
+
 
     #### Menu callbacks
     def on_activate_menuitem_activate (self, menuitem, data=None):
