@@ -347,6 +347,7 @@ class GUI(object):
         get = builder.get_object
         
         show_tray_icon = self.Conf.get("show_tray_icon").get_bool()
+        show_notification = self.Conf.get("show_notification").get_bool()
 
         if appindicator_avail:
             self.AppInd = appindicator.Indicator ("caffeine-cup-empty",
@@ -362,7 +363,7 @@ class GUI(object):
             self.status_icon = get("statusicon")
             self.status_icon.set_visible(show_tray_icon)
         
-        if show_tray_icon is False and options.preferences is not True:
+        if show_notification is True and options.preferences is not True:
             note = pynotify.Notification(_("Caffeine is running"), _("To show the tray icon, \nrun ") + "'caffeine -p' " + _("or open Caffeine Preferences from your system menu."), "caffeine")
 
             note.show()
@@ -413,6 +414,7 @@ class GUI(object):
         self.ql_cb = get("ql_cbutton")
         self.flash_cb = get("flash_cbutton")
         self.trayicon_cb = get("trayicon_cbutton")
+        self.notification_cb = get("notification_cbutton")
 
         self.Conf.client.notify_add("/apps/caffeine/prefs/autostart",
                 self.on_gconf_autostart_changed)
@@ -430,6 +432,7 @@ class GUI(object):
         self.ql_cb.set_active(self.Conf.get("act_for_ql").get_bool())
         self.flash_cb.set_active(self.Conf.get("act_for_flash").get_bool())
         self.trayicon_cb.set_active(self.Conf.get("show_tray_icon").get_bool())
+        self.notification_cb.set_active(self.Conf.get("show_notification").get_bool())
 
         ## about dialog
         self.about_dialog = get("aboutdialog")
@@ -598,6 +601,13 @@ class GUI(object):
         #if state = False:
             
         self.Conf.set("show_tray_icon", state)
+    
+    def on_notification_cbutton_toggled(self, cbutton, data=None):
+        state = cbutton.get_active()
+
+        #if state = False:
+            
+        self.Conf.set("show_notification", state)
 
     #### Menu callbacks
     def on_activate_menuitem_activate (self, menuitem, data=None):
