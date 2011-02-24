@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-12-22 13:12+0000\n"
-"PO-Revision-Date: 2010-10-12 07:40+0000\n"
+"PO-Revision-Date: 2011-02-23 07:41+0000\n"
 "Last-Translator: Richard Somlói <level@somloirichard.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-23 05:06+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-02-24 04:46+0000\n"
+"X-Generator: Launchpad (build 12351)\n"
 
 #. file 'caffeine/main.py', line 43
 msgid "Please install"
@@ -23,7 +23,7 @@ msgstr "Kérem telepítse"
 
 #. file 'caffeine/main.py', line 366
 msgid "Caffeine is running"
-msgstr ""
+msgstr "A Caffeine fut"
 
 #. file 'caffeine/main.py', line 378
 #. file 'caffeine/core.py', line 417
@@ -191,11 +191,11 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Tray icon"
-msgstr ""
+msgstr "Tálcaikon"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Show tray icon"
-msgstr ""
+msgstr "Tálcaikon megjelenítése"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Configure Caffeine"
@@ -215,7 +215,7 @@ msgstr "Perc:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver for..."
-msgstr ""
+msgstr "Képernyővédő tiltása…"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
