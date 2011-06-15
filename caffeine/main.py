@@ -636,15 +636,15 @@ class GUI(object):
 
     def on_about_menuitem_activate(self, menuitem, data=None):
 
-        if appindicator_avail:
-            gtk.gdk.threads_enter()
+        #if appindicator_avail:
+        #    gtk.gdk.threads_enter()
 
         self.about_dialog.set_position (gtk.WIN_POS_CENTER_ALWAYS)
         response = self.about_dialog.run()
         self.about_dialog.hide()
 
-        if appindicator_avail:
-            gtk.gdk.threads_leave()
+        #if appindicator_avail:
+        #    gtk.gdk.threads_leave()
 
     def on_othertime_delete_event(self, window, data=None):
 
