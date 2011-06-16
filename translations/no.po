@@ -7,37 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-12-22 13:12+0000\n"
+"POT-Creation-Date: 2011-06-15 14:18+0000\n"
 "PO-Revision-Date: 2009-08-08 09:55+0000\n"
 "Last-Translator: Tommy Brunn <Unknown>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-23 05:06+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-06-16 04:43+0000\n"
+"X-Generator: Launchpad (build 13168)\n"
 
 #. file 'caffeine/main.py', line 43
 msgid "Please install"
 msgstr ""
 
-#. file 'caffeine/main.py', line 366
+#. file 'caffeine/main.py', line 367
 msgid "Caffeine is running"
 msgstr ""
 
-#. file 'caffeine/main.py', line 378
-#. file 'caffeine/core.py', line 417
+#. file 'caffeine/main.py', line 379
+#. file 'caffeine/core.py', line 416
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr ""
 
-#. file 'caffeine/main.py', line 492
-#. file 'caffeine/main.py', line 607
+#. file 'caffeine/main.py', line 500
+#. file 'caffeine/main.py', line 626
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr ""
 
-#. file 'caffeine/main.py', line 492
-#. file 'caffeine/main.py', line 607
+#. file 'caffeine/main.py', line 500
+#. file 'caffeine/main.py', line 626
 msgid "Enable Screensaver"
 msgstr ""
 
@@ -72,27 +72,27 @@ msgstr ""
 msgid "minutes"
 msgstr ""
 
-#. file 'caffeine/core.py', line 363
+#. file 'caffeine/core.py', line 362
 msgid "Timed activation set; "
 msgstr ""
 
-#. file 'caffeine/core.py', line 364
+#. file 'caffeine/core.py', line 363
 msgid "Caffeine will prevent powersaving for the next "
 msgstr ""
 
-#. file 'caffeine/core.py', line 371
+#. file 'caffeine/core.py', line 370
 msgid "Activated for "
 msgstr ""
 
-#. file 'caffeine/core.py', line 425
+#. file 'caffeine/core.py', line 424
 msgid "Timed activation cancelled (was set for "
 msgstr ""
 
-#. file 'caffeine/core.py', line 442
+#. file 'caffeine/core.py', line 441
 msgid " have elapsed; powersaving is re-enabled"
 msgstr ""
 
-#. file 'caffeine/core.py', line 461
+#. file 'caffeine/core.py', line 460
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr ""
 
@@ -175,6 +175,10 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Show tray icon"
+msgstr ""
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Show notification on startup"
 msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
