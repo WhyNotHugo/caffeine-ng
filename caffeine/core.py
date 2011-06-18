@@ -472,7 +472,10 @@ class Caffeine(gobject.GObject):
         After detection is complete, it will finish the inhibiting process."""
         logging.info("Attempting to detect screensaver/powersaving type... (" + str(self.dbusDetectionFailures) + " dbus failures so far)")
         bus = dbus.SessionBus()
-        if 'org.gnome.ScreenSaver' in bus.list_names():
+        
+        if 'org.gnome.Shell' in bus.list_names() and 'org.gnome.SessionManager' in bus.list_names():
+            self.screensaverAndPowersavingType = "Gnome3"
+        elif 'org.gnome.ScreenSaver' in bus.list_names():
             self.screensaverAndPowersavingType = "Gnome"
         elif 'org.freedesktop.ScreenSaver' in bus.list_names() and \
              'org.freedesktop.PowerManagement.Inhibit' in bus.list_names():
@@ -511,6 +514,8 @@ class Caffeine(gobject.GObject):
 
         if self.screensaverAndPowersavingType == "Gnome":
             self._toggleGnome()
+        if self.screensaverAndPowersavingType == "Gnome3":
+            self._toggleGnome3()
         elif self.screensaverAndPowersavingType == "KDE":
             self._toggleKDE()
         elif self.screensaverAndPowersavingType == "XSS+DPMS":
@@ -538,6 +543,20 @@ class Caffeine(gobject.GObject):
         else:
             self.screenSaverCookie = self.ssProxy.Inhibit("Caffeine",
                     "User has requested that Caffeine disable the screen saver")
+            
+    def _toggleGnome3(self):
+        """Toggle the screensaver and powersaving with the interfaces used by Gnome 3."""
+
+        self._toggleDPMS()
+        bus = dbus.SessionBus()
+        self.susuProxy = bus.get_object('org.gnome.SessionManager', '/org/gnome/SessionManager')
+        if self.sleepIsPrevented:
+            if self.screenSaverCookie != None:
+                self.susuProxy.Uninhibit(self.screenSaverCookie)
+        else:
+            self.screenSaverCookie = self.susuProxy.Inhibit("Caffeine",dbus.UInt32(0),
+                    "User has requested that Caffeine disable the screen saver",dbus.UInt32(8))
+
 
     def _toggleKDE(self):
         """Toggle the screensaver and powersaving with the interfaces used by KDE."""
