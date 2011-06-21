@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+
+import xml.etree.ElementTree as xml
+import commands
+import sys
+from bzrlib.branch import BzrBranch
+
+version = open("VERSION").readline().strip()
+
+
+branch = BzrBranch.open(".")
+revno = branch.revno()
+revno += 1
+revno = str(revno)
+
+
+glade_file = "share/caffeine/glade/GUI.glade"
+
+tree = xml.parse(glade_file)
+
+rootElement = tree.getroot()
+
+for elem in rootElement:
+    
+    if elem.get("id") == "aboutdialog":
+
+        for child in elem:
+            if child.get("name") == "version":
+
+                if child.text != version+" (bzr "+revno+")":
+
+                    print "ERROR: Incorrect version information in GUI.glade, run RUN_BEFORE_COMMIT to fix."
+                    
+                    sys.exit(1)
+
+sys.exit(0)
