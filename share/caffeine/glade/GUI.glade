@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
-  <!-- interface-naming-policy project-wide -->
+  <requires lib="gtk+" version="2.16" />
+  
   <object class="GtkAboutDialog" id="aboutdialog">
     <property name="border_width">5</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
     <property name="program_name">Caffeine</property>
-    <property name="version">2.2</property>
-    <property name="copyright">Copyright © 2009 Brad Smith, Tommy Brunn &amp; Isaiah Heyer</property>
+    <property name="version">2.2 (bzr 378)</property>
+    <property name="copyright">Copyright &#169; 2009 Brad Smith, Tommy Brunn &amp; Isaiah Heyer</property>
     <property name="comments" translatable="yes">An application to temporarily prevent the activation of both the screen saver and the "sleep" powersaving mode.</property>
     <property name="website">http://launchpad.net/caffeine</property>
     <property name="license">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
@@ -19,21 +18,21 @@ You should have received a copy of the GNU General Public License along with thi
     <property name="authors">Brad Smith http://launchpad.net/~bnsmith
 Tommy Brunn http://launchpad.net/~reklamnevon
 Isaiah Heyer http://launchpad.net/~freshapplepy</property>
-    <property name="translator_credits">Joan Rodríguez
+    <property name="translator_credits">Joan Rodr&#237;guez
 Ahmed Mohammed
 thunk
 Adnane Belmadiaf
 Marcos Lans
 Ursache Dogariu Daniel
-Richard Somlói
+Richard Soml&#243;i
 Magnun Leno
 Pekka Niemi
 Bruce Doan
 Woland
 Tommy Brunn
-Jiri Grönroos
+Jiri Gr&#246;nroos
 Dragula 
-Claudia Cotună
+Claudia Cotun&#259;
 Adam M.
 zeugma
 Claudio Gontijo
@@ -47,7 +46,7 @@ Vagner K. Dos Santos
         <property name="visible">True</property>
         <property name="spacing">2</property>
         <child>
-          <placeholder/>
+          <placeholder />
         </child>
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area1">
@@ -63,22 +62,22 @@ Vagner K. Dos Santos
       </object>
     </child>
   </object>
-  <object class="GtkStatusIcon" id="statusicon"/>
+  <object class="GtkStatusIcon" id="statusicon" />
   <object class="GtkListStore" id="liststore1">
     <columns>
-      <!-- column-name proc_icon -->
-      <column type="GdkPixbuf"/>
-      <!-- column-name running_proc -->
-      <column type="gchararray"/>
+      
+      <column type="GdkPixbuf" />
+      
+      <column type="gchararray" />
     </columns>
   </object>
-  <object class="GtkListStore" id="liststore2"/>
+  <object class="GtkListStore" id="liststore2" />
   <object class="GtkListStore" id="proc_liststore">
     <columns>
-      <!-- column-name proc-icon -->
-      <column type="GdkPixbuf"/>
-      <!-- column-name proc-name -->
-      <column type="gchararray"/>
+      
+      <column type="GdkPixbuf" />
+      
+      <column type="gchararray" />
     </columns>
   </object>
   <object class="GtkWindow" id="window">
@@ -86,7 +85,7 @@ Vagner K. Dos Santos
     <property name="window_position">center</property>
     <property name="default_width">400</property>
     <property name="default_height">500</property>
-    <signal name="delete_event" handler="on_window_delete_event"/>
+    <signal handler="on_window_delete_event" name="delete_event" />
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -120,7 +119,7 @@ Vagner K. Dos Santos
                                 <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Autostart</property>
                                 <attributes>
-                                  <attribute name="weight" value="bold"/>
+                                  <attribute name="weight" value="bold" />
                                 </attributes>
                               </object>
                               <packing>
@@ -142,7 +141,7 @@ Vagner K. Dos Santos
 your computer has finished starting up and you have
 successfully entered your username and password.</property>
                                     <property name="draw_indicator">True</property>
-                                    <signal name="toggled" handler="on_autostart_cbutton_toggled"/>
+                                    <signal handler="on_autostart_cbutton_toggled" name="toggled" />
                                   </object>
                                 </child>
                               </object>
@@ -157,7 +156,7 @@ successfully entered your username and password.</property>
                                 <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Automatic activation</property>
                                 <attributes>
-                                  <attribute name="weight" value="bold"/>
+                                  <attribute name="weight" value="bold" />
                                 </attributes>
                               </object>
                               <packing>
@@ -226,13 +225,13 @@ prevent the screensaver and powersaving modes on their own.</property>
                                               <object class="GtkTreeViewColumn" id="treeviewcolumn1">
                                                 <property name="title">Process Name</property>
                                                 <child>
-                                                  <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1"/>
+                                                  <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1" />
                                                   <attributes>
                                                     <attribute name="pixbuf">0</attribute>
                                                   </attributes>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                                                  <object class="GtkCellRendererText" id="cellrenderertext1" />
                                                   <attributes>
                                                     <attribute name="text">1</attribute>
                                                   </attributes>
@@ -258,7 +257,7 @@ prevent the screensaver and powersaving modes on their own.</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
                                             <property name="use_stock">True</property>
-                                            <signal name="clicked" handler="on_remove_button_clicked"/>
+                                            <signal handler="on_remove_button_clicked" name="clicked" />
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -273,7 +272,7 @@ prevent the screensaver and powersaving modes on their own.</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
                                             <property name="use_stock">True</property>
-                                            <signal name="clicked" handler="on_add_button_clicked"/>
+                                            <signal handler="on_add_button_clicked" name="clicked" />
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -308,7 +307,7 @@ Caffeine to automatically prevent the activation of the
 screensaver and powersaving modes when a Flash video is
 embedded in the web page that you are currently browsing.</property>
                                         <property name="draw_indicator">True</property>
-                                        <signal name="toggled" handler="on_flash_cbutton_toggled"/>
+                                        <signal handler="on_flash_cbutton_toggled" name="toggled" />
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -335,7 +334,7 @@ the activation of the screensaver and powersaving modes
 when it detects that you are playing the Quake Live video
 game. Visit www.quakelive.com to play the game for free.</property>
                                         <property name="draw_indicator">True</property>
-                                        <signal name="toggled" handler="on_ql_cbutton_toggled"/>
+                                        <signal handler="on_ql_cbutton_toggled" name="toggled" />
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -355,7 +354,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
                                 <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Tray icon</property>
                                 <attributes>
-                                  <attribute name="weight" value="bold"/>
+                                  <attribute name="weight" value="bold" />
                                 </attributes>
                               </object>
                               <packing>
@@ -374,7 +373,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="draw_indicator">True</property>
-                                    <signal name="toggled" handler="on_trayicon_cbutton_toggled"/>
+                                    <signal handler="on_trayicon_cbutton_toggled" name="toggled" />
                                   </object>
                                 </child>
                               </object>
@@ -395,7 +394,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="draw_indicator">True</property>
-                                    <signal name="toggled" handler="on_notification_cbutton_toggled"/>
+                                    <signal handler="on_notification_cbutton_toggled" name="toggled" />
                                   </object>
                                 </child>
                               </object>
@@ -423,7 +422,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">Configure Caffeine</property>
                 <attributes>
-                  <attribute name="weight" value="semibold"/>
+                  <attribute name="weight" value="semibold" />
                 </attributes>
               </object>
             </child>
@@ -459,7 +458,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="use_stock">True</property>
-                    <signal name="clicked" handler="on_close_button_clicked"/>
+                    <signal handler="on_close_button_clicked" name="clicked" />
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -483,7 +482,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
     <property name="border_width">5</property>
     <property name="window_position">mouse</property>
     <property name="default_width">350</property>
-    <signal name="delete_event" handler="on_othertime_delete_event"/>
+    <signal handler="on_othertime_delete_event" name="delete_event" />
     <child>
       <object class="GtkVBox" id="duration_box">
         <property name="visible">True</property>
@@ -493,7 +492,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
             <property name="xalign">0</property>
             <property name="label" translatable="yes">Duration</property>
             <attributes>
-              <attribute name="weight" value="bold"/>
+              <attribute name="weight" value="bold" />
             </attributes>
           </object>
           <packing>
@@ -530,7 +529,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
                       <object class="GtkSpinButton" id="hours_spin">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="invisible_char">●</property>
+                        <property name="invisible_char">&#9679;</property>
                         <property name="adjustment">hours_adj</property>
                         <property name="numeric">True</property>
                         <property name="wrap">True</property>
@@ -563,7 +562,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
                       <object class="GtkSpinButton" id="minutes_spin">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="invisible_char">●</property>
+                        <property name="invisible_char">&#9679;</property>
                         <property name="adjustment">minutes_adj</property>
                         <property name="numeric">True</property>
                         <property name="wrap">True</property>
@@ -597,7 +596,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
-                <signal name="clicked" handler="on_othertime_cancel"/>
+                <signal handler="on_othertime_cancel" name="clicked" />
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -612,7 +611,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
-                <signal name="clicked" handler="on_othertime_ok"/>
+                <signal handler="on_othertime_ok" name="clicked" />
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -647,13 +646,13 @@ game. Visit www.quakelive.com to play the game for free.</property>
         <property name="visible">True</property>
         <property name="spacing">2</property>
         <child>
-          <placeholder/>
+          <placeholder />
         </child>
         <child>
-          <placeholder/>
+          <placeholder />
         </child>
         <child>
-          <placeholder/>
+          <placeholder />
         </child>
         <child internal-child="action_area">
           <object class="GtkHButtonBox" id="dialog-action_area2">
@@ -708,7 +707,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
         <property name="visible">True</property>
         <property name="label" translatable="yes">Disable Screensaver</property>
         <property name="use_underline">True</property>
-        <signal name="activate" handler="on_activate_menuitem_activate"/>
+        <signal handler="on_activate_menuitem_activate" name="activate" />
       </object>
     </child>
     <child>
@@ -720,7 +719,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
       <object class="GtkMenuItem" id="time_menuitem">
         <property name="label" translatable="yes">Disable Screensaver for...</property>
         <property name="use_underline">True</property>
-        <signal name="activate" handler="on_time_menuitem_activate"/>
+        <signal handler="on_time_menuitem_activate" name="activate" />
       </object>
     </child>
     <child>
@@ -729,7 +728,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
         <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
-        <signal name="activate" handler="on_prefs_menuitem_activate"/>
+        <signal handler="on_prefs_menuitem_activate" name="activate" />
       </object>
     </child>
     <child>
@@ -738,7 +737,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
         <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
-        <signal name="activate" handler="on_about_menuitem_activate"/>
+        <signal handler="on_about_menuitem_activate" name="activate" />
       </object>
     </child>
     <child>
@@ -747,7 +746,7 @@ game. Visit www.quakelive.com to play the game for free.</property>
         <property name="visible">True</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
-        <signal name="activate" handler="on_quit_menuitem_activate"/>
+        <signal handler="on_quit_menuitem_activate" name="activate" />
       </object>
     </child>
   </object>
