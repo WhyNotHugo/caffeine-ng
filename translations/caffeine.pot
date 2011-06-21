@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.2\n"
-"POT-Creation-Date: 2011-06-21 13:43:44.494832\n"
+"POT-Creation-Date: 2011-06-21 13:46:37.769735\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,6 +76,18 @@ msgstr ""
 msgid "An application to temporarily prevent the activation of both the screen saver and the \"sleep\" powersaving mode."
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
+msgid "Duration"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Hours:"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Minutes:"
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Disable Screensaver for..."
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgstr ""
 msgid "Preferences"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
@@ -138,21 +150,6 @@ msgid "Show tray icon"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Show notification on startup"
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid "Configure Caffeine"
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid "Duration"
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid "Hours:"
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid "Minutes:"
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid "Disable Screensaver for..."
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Select a process name..."
