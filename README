@@ -6,3 +6,8 @@ whole session: "LANG=ru_RU.UTF-8 ./bin/caffeine" (Replace ru_RU.UTF-8
 with whatever language you want to use. You will need to a language pack
 for the specific language) Be aware that some stock items
 will not be translated unless you log in with a given language.
+
+
+DEVELOPERS:
+
+    Install `check_pre_commit.py` by copying it to ~/.bazaar/plugins/ before submitting any commits.

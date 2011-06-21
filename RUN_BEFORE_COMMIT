@@ -4,6 +4,9 @@ import xml.etree.ElementTree as xml
 import commands
 from bzrlib.branch import BzrBranch
 
+
+print commands.getoutput("./update_translations.py")
+
 version = open("VERSION").readline().strip()
 
 
