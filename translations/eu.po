@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-06-15 14:18+0000\n"
+"POT-Creation-Date: 2011-06-21 13:46+0000\n"
 "PO-Revision-Date: 2010-03-09 12:47+0000\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-06-16 04:43+0000\n"
+"X-Launchpad-Export-Date: 2011-06-22 04:39+0000\n"
 "X-Generator: Launchpad (build 13168)\n"
 
 #. file 'caffeine/main.py', line 43
@@ -107,6 +107,22 @@ msgstr ""
 "dituen aplikazioa"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Duration"
+msgstr "Iraupena"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Hours:"
+msgstr "Orduak:"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Minutes:"
+msgstr "Minutuak:"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver for..."
+msgstr ""
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
 msgstr "Hobespenak"
 
@@ -185,26 +201,6 @@ msgstr ""
 msgid "Show notification on startup"
 msgstr ""
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Configure Caffeine"
-msgstr "Caffeine konfiguratu"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Duration"
-msgstr "Iraupena"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Hours:"
-msgstr "Orduak:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Minutes:"
-msgstr "Minutuak:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver for..."
-msgstr ""
-
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
 msgstr "Prozesu izen bat aukera ezazu..."
@@ -246,6 +242,9 @@ msgstr ""
 
 #~ msgid "Exception occurred"
 #~ msgstr "Salbuespen bat gertatu da"
+
+#~ msgid "Configure Caffeine"
+#~ msgstr "Caffeine konfiguratu"
 
 #~ msgid "DPMS enabled"
 #~ msgstr "DPMS aktibatuta"

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-06-15 14:18+0000\n"
+"POT-Creation-Date: 2011-06-21 13:46+0000\n"
 "PO-Revision-Date: 2010-10-11 07:17+0000\n"
 "Last-Translator: Xeriab Nabil <kodeburner@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-06-16 04:43+0000\n"
+"X-Launchpad-Export-Date: 2011-06-22 04:39+0000\n"
 "X-Generator: Launchpad (build 13168)\n"
 
 #. file 'caffeine/main.py', line 43
@@ -101,6 +101,22 @@ msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr "تطبيق لمنع تفعيل حافظة الشاشة و طور حفظ الطاقة تلقائيا."
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Duration"
+msgstr "مدة"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Hours:"
+msgstr "ساعات:"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Minutes:"
+msgstr "دقائق:"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver for..."
+msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
@@ -199,26 +215,6 @@ msgstr ""
 msgid "Show notification on startup"
 msgstr ""
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Configure Caffeine"
-msgstr "ضبط Caffeine"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Duration"
-msgstr "مدة"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Hours:"
-msgstr "ساعات:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Minutes:"
-msgstr "دقائق:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver for..."
-msgstr ""
-
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
 msgstr "اختيار اسم عملية..."
@@ -260,3 +256,6 @@ msgstr "العمليات الاحدث"
 
 #~ msgid "Other..."
 #~ msgstr "أخرى..."
+
+#~ msgid "Configure Caffeine"
+#~ msgstr "ضبط Caffeine"
