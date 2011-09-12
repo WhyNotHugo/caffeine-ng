@@ -1,16 +1,16 @@
-# Galician translation for caffeine
-# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# Bosnian translation for caffeine
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the caffeine package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
-#  <>, 2010.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-06-21 13:46+0000\n"
-"PO-Revision-Date: 2011-09-12 00:10+0000\n"
-"Last-Translator: Marcos Lans <Unknown>\n"
-"Language-Team: Galician <gl@li.org>\n"
+"PO-Revision-Date: 2011-09-11 13:23+0000\n"
+"Last-Translator: Kenan Dervišević <kenan3008@gmail.com>\n"
+"Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,120 +19,118 @@ msgstr ""
 
 #. file 'caffeine/main.py', line 43
 msgid "Please install"
-msgstr "Instalar"
+msgstr "Molimo instalirajte"
 
 #. file 'caffeine/main.py', line 367
 msgid "Caffeine is running"
-msgstr "Caffeine está executańdose"
+msgstr "Caffeine je pokrenut"
 
 #. file 'caffeine/main.py', line 379
 #. file 'caffeine/core.py', line 416
 msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "Caffeine está inactivo. O modo de baixo consumo está activado"
+msgstr "Caffeine je u mirovanju; štednja energije je omogućena"
 
 #. file 'caffeine/main.py', line 500
 #. file 'caffeine/main.py', line 626
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
-msgstr "Desactivar o protector de pantalla"
+msgstr "Onemogući čuvar ekrana"
 
 #. file 'caffeine/main.py', line 500
 #. file 'caffeine/main.py', line 626
 msgid "Enable Screensaver"
-msgstr "Activar o salvapantallasI"
+msgstr "Omogući čuvar ekrana"
 
 #. file 'caffeine/core.py', line 170
 #. file 'caffeine/core.py', line 172
 msgid "Activated for Flash video"
-msgstr "Activado para Flash"
+msgstr "Aktivirano za Flash video"
 
 #. file 'caffeine/core.py', line 223
 msgid "Activated for Quake Live"
-msgstr "Activado para Quake Live"
+msgstr "Aktivirano za Quake Live"
 
 #. file 'caffeine/core.py', line 290
 msgid " and "
-msgstr " e "
+msgstr " i "
 
 #. file 'caffeine/core.py', line 297
 #. file 'caffeine/core.py', line 303
 msgid "hour"
-msgstr "hora"
+msgstr "sat"
 
 #. file 'caffeine/core.py', line 297
 #. file 'caffeine/core.py', line 309
 msgid "minute"
-msgstr "minuto"
+msgstr "minuta"
 
 #. file 'caffeine/core.py', line 305
 msgid "hours"
-msgstr "horas"
+msgstr "sati"
 
 #. file 'caffeine/core.py', line 311
 msgid "minutes"
-msgstr "minutos"
+msgstr "minuta"
 
 #. file 'caffeine/core.py', line 362
 msgid "Timed activation set; "
-msgstr "Activouse o temporizador. "
+msgstr "Vremenska aktivacija je postavljena; "
 
 #. file 'caffeine/core.py', line 363
 msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine inhibirá o modo de baixo consumo durante "
+msgstr "Caffeine će onemogućiti štednju energije u sljedećih "
 
 #. file 'caffeine/core.py', line 370
 msgid "Activated for "
-msgstr "Activado "
+msgstr "Aktivirano za "
 
 #. file 'caffeine/core.py', line 424
 msgid "Timed activation cancelled (was set for "
-msgstr "Desactivouse o temporizador (fora programado para "
+msgstr "Vremenska aktivacija je otkazana (bila je postavljena za "
 
 #. file 'caffeine/core.py', line 441
 msgid " have elapsed; powersaving is re-enabled"
-msgstr " desde a temporización. Reactivouse o modo de baixo consumo"
+msgstr " je proteklo; štednja energije je ponovo omogućena"
 
 #. file 'caffeine/core.py', line 460
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-msgstr ""
-"Caffeine está inhibindo a activación do modo de baixo consumo e do protector "
-"de pantalla de "
+msgstr "Caffeine onemogućava štednju energije i aktivaciju čuvara ekrana "
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "An application to temporarily prevent the activation of both the screen "
 "saver and the \"sleep\" powersaving mode."
 msgstr ""
-"Un aplicativo que inhibe temporalmente a activación do protector de pantalla "
-"e do modo 'Suspender'."
+"Aplikacija za privremeno onemogućavanje aktivacije čuvara ekrana i moda za "
+"štednju energije"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
-msgstr "Duración"
+msgstr "Trajanje"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Hours:"
-msgstr "Horas:"
+msgstr "Sati:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Minutes:"
-msgstr "Minutos:"
+msgstr "Minute:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver for..."
-msgstr "Desactivar o salvapantallas para..."
+msgstr "Onemogući čuvar ekrana..."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
-msgstr "Preferencias"
+msgstr "Postavke"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Autostart"
-msgstr "Inicio automático"
+msgstr "Automatsko pokretanje"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Start Caffeine on login"
-msgstr "Iniciar Caffeine cando se inicie a sesión"
+msgstr "Pokreni Caffeine nakon prijave"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -140,25 +138,25 @@ msgid ""
 "your computer has finished starting up and you have\n"
 "successfully entered your username and password."
 msgstr ""
-"Se esta opción está activada Caffeine executarase\n"
-"tan pronto como o computador remate o arranque e\n"
-"vostede introduza un usuario e contrasinal correctos."
+"Omogućite ovu opciju da automatski pokrenete Caffeine\n"
+"prilikom pokretanja vašeg računara, nakon što uspješno\n"
+"unesete vaše korisničko ime i šifru."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
-msgstr "Activación automática"
+msgstr "Automatska aktivacija"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
 msgstr ""
-"Caffeine pode activarse automaticamente\n"
-"cando se executen certos aplicativos."
+"Caffeine se može automatski aktivirati\n"
+"kada se pokrenu određeni programi."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
-msgstr "Lista de programas para os que Caffeine estará activado:"
+msgstr "Lista programa za koje će Caffeine biti aktiviran:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -168,16 +166,15 @@ msgid ""
 "(particularly full-screen applications) that do not properly\n"
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
-"Cando Caffeine detecta que un dos procesos da lista está\n"
-"activo, inhibe a iniciación do protector de pantalla e do modo\n"
-"de baixo consumo. Isto resulta útil con aplicativos (espe-\n"
-"cialmente os programas en pantalla completa) que non\n"
-"inhiben por si mesmos o protector de pantalla e o modo\n"
-"de aforro de enerxia."
+"Kada Caffeine otkrije da je pokrenut proces koji se\n"
+"nalazi u ovoj listi, onemogućit će aktivaciju čuvara \n"
+"ekrana i modova za štednju energije. Ovo je korisno\n"
+"za aplikacije (posebno one koje koriste prikaz preko cijelog ekrana)\n"
+"koje samostalno ne vrše ispravno onemogućavanje ovih opcija."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Flash video"
-msgstr "Activar para vídeo Flash"
+msgstr "Aktiviraj za Flash video"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -187,16 +184,14 @@ msgid ""
 "screensaver and powersaving modes when a Flash video is\n"
 "embedded in the web page that you are currently browsing."
 msgstr ""
-"Algúns sitios web, como www.youtube.com, mostran os vídeos\n"
-"usando unha tecnoloxía coñecida como  \"Flash\". Se activa\n"
-"esta opción, Caffeine inhibirá automaticamente os\n"
-"modos protector de pantalla e baixo consumo cando\n"
-"haxa un vídeo Flash encaixado na páxina web que\n"
-"estea visitando."
+"Neke web stranice, kao npr. www.youtube.com, prikazuju video\n"
+"pomoću tehnologije pod nazivom \"Flash\". Ako omogućite ovu opciju,\n"
+"Caffeine će automatski onemogućiti aktivaciju čuvara ekrana i modova\n"
+"za štednju energije za svaku web stranicu koja ima ugrađen Flash video."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Activate for Quake Live"
-msgstr "Activar para Quake Live"
+msgstr "Aktiviraj za Quake Live"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -205,65 +200,31 @@ msgid ""
 "when it detects that you are playing the Quake Live video\n"
 "game. Visit www.quakelive.com to play the game for free."
 msgstr ""
-"Se esta opción está activada, Caffeine inhibirá automaticamente a iniciación "
-"do protector de pantalla\n"
-"e do modo de baixo consumo sempre que detecte a\n"
-"reprodución dun xogo de vídeo en Quake Live.\n"
-"Visite  www.quakelive.com e xogue de balde."
+"Ako omogućite ovu opciju, Caffeine će automatski onemogućiti\n"
+"aktivaciju čuvara ekrana i modova za štednju energije kada otkrije\n"
+"da igrate Quake Live video igru. Za besplatno igranje, posjetite\n"
+"www.quakelive.com."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Tray icon"
-msgstr "Icona da bandexa"
+msgstr "Tray ikona"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Show tray icon"
-msgstr "Mostrar a icona na bandexa"
+msgstr "Prikaži tray ikonu"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Show notification on startup"
-msgstr "Mostrar as notificacións ao iniciar"
+msgstr "Prikaži napomenu pri pokretanju"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
-msgstr "Seleccionar un nome de proceso..."
+msgstr "Odaberite naziv procesa..."
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Running Processes"
-msgstr "Procesos activos"
+msgstr "Pokrenuti procesi"
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
-msgstr "Procesos recentes"
-
-#~ msgid "5 minutes"
-#~ msgstr "5 minutos"
-
-#~ msgid "10 minutes"
-#~ msgstr "10 minutos"
-
-#~ msgid "15 minutes"
-#~ msgstr "15 minutos"
-
-#~ msgid "30 minutes"
-#~ msgstr "30 minutos"
-
-#~ msgid "1 hour"
-#~ msgstr "1 hora"
-
-#~ msgid "2 hours"
-#~ msgstr "2 horas"
-
-#~ msgid "3 hours"
-#~ msgstr "3 horas"
-
-#~ msgid "4 hours"
-#~ msgstr "4 horas"
-
-#~ msgid "Other..."
-#~ msgstr "Outro..."
-
-#~ msgid "Configure Caffeine"
-#~ msgstr "Configurar Caffeine"
-
-#~ msgid "Activate for"
-#~ msgstr "Activar durante"
+msgstr "Nedavno pokrenuti procesi"
