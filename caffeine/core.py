@@ -473,10 +473,8 @@ class Caffeine(gobject.GObject):
         logging.info("Attempting to detect screensaver/powersaving type... (" + str(self.dbusDetectionFailures) + " dbus failures so far)")
         bus = dbus.SessionBus()
         
-        if 'org.gnome.Shell' in bus.list_names() and 'org.gnome.SessionManager' in bus.list_names():
+        if  'org.gnome.SessionManager' in bus.list_names():
             self.screensaverAndPowersavingType = "Gnome3"
-        elif 'org.gnome.ScreenSaver' in bus.list_names():
-            self.screensaverAndPowersavingType = "Gnome"
         elif 'org.freedesktop.ScreenSaver' in bus.list_names() and \
              'org.freedesktop.PowerManagement.Inhibit' in bus.list_names():
             self.screensaverAndPowersavingType = "KDE"
@@ -530,19 +528,6 @@ class Caffeine(gobject.GObject):
 
         self.sleepIsPrevented = not self.sleepIsPrevented
 
-    def _toggleGnome(self):
-        """Toggle the screensaver and powersaving with the interfaces used by Gnome."""
-
-        self._toggleDPMS()
-        bus = dbus.SessionBus()
-        self.ssProxy = bus.get_object('org.gnome.ScreenSaver',
-                    '/org/gnome/ScreenSaver')
-        if self.sleepIsPrevented:
-            if self.screenSaverCookie != None:
-                self.ssProxy.UnInhibit(self.screenSaverCookie)
-        else:
-            self.screenSaverCookie = self.ssProxy.Inhibit("Caffeine",
-                    "User has requested that Caffeine disable the screen saver")
             
     def _toggleGnome3(self):
         """Toggle the screensaver and powersaving with the interfaces used by Gnome 3."""
