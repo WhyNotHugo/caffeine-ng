@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-06-21 13:46+0000\n"
+"POT-Creation-Date: 2011-10-05 19:49+0000\n"
 "PO-Revision-Date: 2011-08-06 03:21+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-08-07 04:38+0000\n"
-"X-Generator: Launchpad (build 13613)\n"
+"X-Launchpad-Export-Date: 2011-10-06 04:42+0000\n"
+"X-Generator: Launchpad (build 14085)\n"
 
 #. file 'caffeine/main.py', line 43
 msgid "Please install"
@@ -235,3 +235,36 @@ msgstr "Proses Berjalan"
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
 msgstr "Proses Baru-baru Ini"
+
+#~ msgid "Other..."
+#~ msgstr "Lain..."
+
+#~ msgid "5 minutes"
+#~ msgstr "5 minit"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 minit"
+
+#~ msgid "15 minutes"
+#~ msgstr "15 minit"
+
+#~ msgid "30 minutes"
+#~ msgstr "30 minit"
+
+#~ msgid "1 hour"
+#~ msgstr "1 jam"
+
+#~ msgid "2 hours"
+#~ msgstr "2 jam"
+
+#~ msgid "3 hours"
+#~ msgstr "3 jam"
+
+#~ msgid "4 hours"
+#~ msgstr "4 jam"
+
+#~ msgid "Configure Caffeine"
+#~ msgstr "Konfigur Caffeine"
+
+#~ msgid "Activate for"
+#~ msgstr "Diaktifkan untuk"
