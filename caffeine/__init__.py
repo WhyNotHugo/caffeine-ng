@@ -25,16 +25,19 @@ import gtk
 from xdg.BaseDirectory import xdg_config_home
 
 VERSION = "2.2"
-BASE_PATH = None
 
-c = abspath(dirname(__file__))
-while True:
-    ls = os.listdir(c)
-    if "bin" in ls and "share" in ls:
-        BASE_PATH = c
-        break
-    
-    c = join(c, pardir)
+def getBasePath():
+    c = abspath(dirname(__file__))
+    while True:
+        if os.path.exists(os.path.join(c, "bin")) and \
+           os.path.exists(os.path.join(c, "share/caffeine")) :
+            return c
+
+        c = join(c, pardir)
+        if not os.path.exists(c):
+            raise Exception("Can't determine BASE_PATH")
+
+BASE_PATH = getBasePath()
 
 _config_dir = os.path.join(xdg_config_home, "caffeine")
 
