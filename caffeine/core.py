@@ -36,6 +36,7 @@ import procmanager
 import caffeinelogging as logging
 
 import Xlib.display
+import kaa.metadata
 
 class Caffeine(gobject.GObject):
 
@@ -126,14 +127,13 @@ class Caffeine(gobject.GObject):
         try:
             ## look for files opened by flashplayer that begin with 'Flash'
             for filepath in commands.getoutput("pgrep -f flashplayer | xargs -I PID find /proc/PID/fd -lname '/tmp/Flash*'").split("\n"):
-                if filepath != "":
+                if filepath != "" and filepath not in self.flash_durations:
                     try:
-                        duration = utils.getFLVLength(filepath)
+                        meta = kaa.metadata.parse(filepath)
 
-                        duration = int(time.time()) + duration
-                        end_time = time.localtime(duration)
-
-                        if filepath not in self.flash_durations:
+                        #partially loaded flash files are some times corrupted...
+                        if meta != None and meta.length != None:
+                            end_time = time.localtime(int(time.time() + meta.length))
                             self.flash_durations[filepath] = end_time
                     except Exception, data:
                         logging.error("Exception: " + str(data))
