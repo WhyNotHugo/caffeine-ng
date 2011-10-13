@@ -160,13 +160,12 @@ def get_configurator():
 GETTEXT_DOMAIN = "caffeine"
 LOCALE_PATH = os.path.join(BASE_PATH, "share", "locale")
 
-import gtk.glade
 import gettext
 import locale
 
 locale.setlocale(locale.LC_ALL, '')
 
-for module in gtk.glade, gettext:
+for module in locale, gettext:
     module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
     module.textdomain(GETTEXT_DOMAIN)
 
