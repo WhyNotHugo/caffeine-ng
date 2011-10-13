@@ -7,39 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-05 19:49+0000\n"
+"POT-Creation-Date: 2011-10-12 23:12+0000\n"
 "PO-Revision-Date: 2011-07-04 10:10+0000\n"
 "Last-Translator: kingdruid <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-07 04:39+0000\n"
-"X-Generator: Launchpad (build 14085)\n"
-
-#. file 'caffeine/main.py', line 43
-msgid "Please install"
-msgstr "Будь ласка, встановіть"
-
-#. file 'caffeine/main.py', line 367
-msgid "Caffeine is running"
-msgstr "Caffeine працює"
-
-#. file 'caffeine/main.py', line 379
-#. file 'caffeine/core.py', line 416
-msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "Caffeine призупинено; енергозбереження активовано"
-
-#. file 'caffeine/main.py', line 500
-#. file 'caffeine/main.py', line 626
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver"
-msgstr "Вимкнути екранну заставку"
-
-#. file 'caffeine/main.py', line 500
-#. file 'caffeine/main.py', line 626
-msgid "Enable Screensaver"
-msgstr "Увімкнути екранну заставку"
+"X-Launchpad-Export-Date: 2011-10-13 04:43+0000\n"
+"X-Generator: Launchpad (build 14124)\n"
 
 #. file 'caffeine/core.py', line 170
 #. file 'caffeine/core.py', line 172
@@ -84,6 +60,11 @@ msgstr "Caffeine буде вимикати енергозбереження на
 msgid "Activated for "
 msgstr "Активовано для "
 
+#. file 'caffeine/core.py', line 416
+#. file 'caffeine/main.py', line 379
+msgid "Caffeine is dormant; powersaving is enabled"
+msgstr "Caffeine призупинено; енергозбереження активовано"
+
 #. file 'caffeine/core.py', line 424
 msgid "Timed activation cancelled (was set for "
 msgstr "Активація за часом скасована (була встановлена для "
@@ -95,6 +76,25 @@ msgstr " закінчилась; енергозбереення увімкнен
 #. file 'caffeine/core.py', line 460
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr "Caffeine вимикає енергозбереження та екранну заставку "
+
+#. file 'caffeine/main.py', line 43
+msgid "Please install"
+msgstr "Будь ласка, встановіть"
+
+#. file 'caffeine/main.py', line 367
+msgid "Caffeine is running"
+msgstr "Caffeine працює"
+
+#. file 'caffeine/main.py', line 500
+#. file 'caffeine/main.py', line 626
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr "Вимкнути екранну заставку"
+
+#. file 'caffeine/main.py', line 500
+#. file 'caffeine/main.py', line 626
+msgid "Enable Screensaver"
+msgstr "Увімкнути екранну заставку"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
