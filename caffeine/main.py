@@ -20,24 +20,24 @@
 
 import os
 import sys
-import gtk
-import gobject
-import glib
-import pygtk
-import webbrowser 
+from gi.repository import Gtk, GObject, Gio
 
 appindicator_avail = True
 try:
-    import appindicator
+    from gi.repository import AppIndicator3
 except:
     appindicator_avail = False
+
+import gi
+import webbrowser 
+
 
 import dbus
 import ctypes
 import optparse
 
 try:
-    import pynotify
+    from gi.repository import Notify
 except:
 
     print _("Please install")+" pynotify"
@@ -49,13 +49,13 @@ import applicationinstance
 import utils
 import caffeinelogging as logging
 
-icon_theme = gtk.icon_theme_get_default()
+icon_theme = Gtk.IconTheme.get_default()
 try:
 
-    generic = icon_theme.load_icon("application-x-executable", 16, gtk.ICON_LOOKUP_NO_SVG)
-except glib.GError, e:
+    generic = icon_theme.load_icon("application-x-executable", 16, Gtk.IconLookupFlags.NO_SVG)
+except GObject.GError, e:
 
-    generic = gtk.gdk.pixbuf_new_from_file(caffeine.GENERIC_PROCESS_ICON_PATH)
+    generic = GdkPixbuf.Pixbuf.new_from_file(caffeine.GENERIC_PROCESS_ICON_PATH)
 
 
 
@@ -79,11 +79,11 @@ def get_icon_for_process(proc_name):
         except KeyError:
             pass
         try:
-            icon = icon_theme.load_icon(proc_name, 16, gtk.ICON_LOOKUP_NO_SVG)
+            icon = icon_theme.load_icon(proc_name, 16, Gtk.IconLookupFlags.NO_SVG)
             cached_icons[icon_name] = icon
             return icon
 
-        except glib.GError, e:
+        except GObject.GError, e:
             cached_icons[icon_name] = generic
     
     return cached_icons["generic"]
@@ -100,7 +100,7 @@ class ProcAdd(object):
 
         self.user_set = True
 
-        builder = gtk.Builder()
+        builder = Gtk.Builder()
         builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
             "proc.glade"))
 
@@ -117,9 +117,9 @@ class ProcAdd(object):
 
         self.running_liststore = get("running_liststore")
         self.running_liststore.set_sort_func(10, self.sort_proc_func)
-        self.running_liststore.set_sort_column_id(10, gtk.SORT_ASCENDING)
+        self.running_liststore.set_sort_column_id(10, Gtk.SortType.ASCENDING)
         self.running_liststore.set_sort_func(11, self.sort_id_func)
-        self.running_liststore.set_sort_column_id(11, gtk.SORT_DESCENDING)
+        self.running_liststore.set_sort_column_id(11, Gtk.SortType.DESCENDING)
 
         running_tvc1 = get("running_tvc1")
         running_tvc1.set_sort_column_id(10)
@@ -139,9 +139,9 @@ class ProcAdd(object):
 
         self.recent_liststore = get("recent_liststore")
         self.recent_liststore.set_sort_func(10, self.sort_proc_func)
-        self.recent_liststore.set_sort_column_id(10, gtk.SORT_ASCENDING)
+        self.recent_liststore.set_sort_column_id(10, Gtk.SortType.ASCENDING)
         self.recent_liststore.set_sort_func(11, self.sort_id_func)
-        self.recent_liststore.set_sort_column_id(11, gtk.SORT_DESCENDING)
+        self.recent_liststore.set_sort_column_id(11, Gtk.SortType.DESCENDING)
 
         recent_tvc1 = get("recent_tvc1")
         recent_tvc1.set_sort_column_id(10)
@@ -149,7 +149,7 @@ class ProcAdd(object):
         recent_tvc2 = get("recent_tvc2")
         recent_tvc2.set_sort_column_id(11)
 
-        gobject.timeout_add(5000, self.update_recent_liststore)
+        GObject.timeout_add(5000, self.update_recent_liststore)
 
         recent_selection.connect("changed", self.on_recent_selection_changed)
                 
@@ -254,9 +254,9 @@ class ProcAdd(object):
     def run(self):
 
         if self.running_id != None:
-            gobject.source_remove(self.running_id)
+            GObject.source_remove(self.running_id)
 
-        self.running_id = gobject.timeout_add(5000,
+        self.running_id = GObject.timeout_add(5000,
                 self.update_running_liststore)
 
         self.entry.set_text("")
@@ -304,7 +304,7 @@ class ProcAdd(object):
     def hide(self):
         
         if self.running_id != None:
-            gobject.source_remove(self.running_id)
+            GObject.source_remove(self.running_id)
 
         self.dialog.hide()
 
@@ -330,15 +330,10 @@ class GUI(object):
         ## object to manage processes to activate for.
         self.ProcMan = caffeine.get_ProcManager()
 
-        ## set the icons for the window border.
-        gtk.window_set_default_icon_list(caffeine.get_icon_pixbuf(16),
-            caffeine.get_icon_pixbuf(24), caffeine.get_icon_pixbuf(32),
-            caffeine.get_icon_pixbuf(48))
-
-    
-        self.Conf = caffeine.get_configurator()
+            
+        settings = Gio.Settings.new(caffeine.BASE_KEY)
         
-        builder = gtk.Builder()
+        builder = Gtk.Builder()
         builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
             "GUI.glade"))
         
@@ -346,14 +341,15 @@ class GUI(object):
         # again and again
         get = builder.get_object
         
-        show_tray_icon = self.Conf.get("show_tray_icon").get_bool()
-        show_notification = self.Conf.get("show_notification").get_bool()
+        show_tray_icon = settings.get_boolean("show-tray-icon")
+        show_notification = settings.get_boolean("show-notification")
 
         if appindicator_avail:
-            self.AppInd = appindicator.Indicator ("caffeine-cup-empty",
+            self.AppInd = AppIndicator3.Indicator.new("caffeine-cup-empty",
                             "caffeine",
-                            appindicator.CATEGORY_APPLICATION_STATUS)
-            self.AppInd.set_status ([appindicator.STATUS_PASSIVE, appindicator.STATUS_ACTIVE][show_tray_icon])
+                            AppIndicator3.IndicatorCategory.APPLICATION_STATUS)
+            #print [AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon]
+            self.AppInd.set_status ([AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon])
 
         else:
             ## IMPORTANT:
@@ -364,7 +360,7 @@ class GUI(object):
             self.status_icon.set_visible(show_tray_icon)
         
         if show_tray_icon is False and show_notification is True and options.preferences is not True:
-            note = pynotify.Notification(_("Caffeine is running"), _("To show the tray icon, \nrun ") + "'caffeine -p' " + _("or open Caffeine Preferences from your system menu."), "caffeine")
+            note = Notify.Notification(_("Caffeine is running"), _("To show the tray icon, \nrun ") + "'caffeine -p' " + _("or open Caffeine Preferences from your system menu."), "caffeine")
 
             note.show()
         
@@ -393,7 +389,7 @@ class GUI(object):
         ####
         proc_treeview = get("treeview")
         self.selection = proc_treeview.get_selection()
-        self.selection.set_mode(gtk.SELECTION_MULTIPLE)
+        self.selection.set_mode(Gtk.SelectionMode.MULTIPLE)
 
         self.proc_liststore = get("proc_liststore")
         for line in open(caffeine.WHITELIST):
@@ -409,6 +405,13 @@ class GUI(object):
 
         ## Preferences editor.
         self.window = get("window")
+        
+        ## set the icons for the window border.
+        self.window.set_default_icon_list([caffeine.get_icon_pixbuf(16),
+            caffeine.get_icon_pixbuf(24), caffeine.get_icon_pixbuf(32),
+            caffeine.get_icon_pixbuf(48)])
+
+
 
         self.autostart_cb = get("autostart_cbutton")
         self.ql_cb = get("ql_cbutton")
@@ -418,26 +421,19 @@ class GUI(object):
 
         self.notification_cb.set_sensitive(not show_tray_icon)
 
-        self.Conf.client.notify_add("/apps/caffeine/prefs/autostart",
-                self.on_gconf_autostart_changed)
+        settings.connect("changed::autostart", self.on_autostart_changed)
+        settings.connect("changed::act-for-quake", self.on_ql_changed)
+        settings.connect("changed::act-for-flash", self.on_flash_changed)
+        settings.connect("changed::show-tray-icon", self.on_trayicon_changed)
+        settings.connect("changed::show-notification", self.on_notification_changed)
 
-        self.Conf.client.notify_add("/apps/caffeine/prefs/act_for_ql",
-                self.on_gconf_ql_changed)
 
-        self.Conf.client.notify_add("/apps/caffeine/prefs/act_for_flash",
-                self.on_gconf_flash_changed)
+        settings.bind("autostart", self.autostart_cb, "active", Gio.SettingsBindFlags.DEFAULT)
+        settings.bind("act-for-quake", self.ql_cb, "active", Gio.SettingsBindFlags.DEFAULT)
+        settings.bind("act-for-flash", self.flash_cb, "active", Gio.SettingsBindFlags.DEFAULT)
+        settings.bind("show-tray-icon", self.trayicon_cb, "active", Gio.SettingsBindFlags.DEFAULT)
+        settings.bind("show-notification", self.notification_cb, "active", Gio.SettingsBindFlags.DEFAULT)
 
-        self.Conf.client.notify_add("/apps/caffeine/prefs/show_tray_icon",
-                self.on_gconf_trayicon_changed)
-
-        self.Conf.client.notify_add("/apps/caffeine/prefs/show_notification",
-                self.on_gconf_notification_changed)
-
-        self.autostart_cb.set_active(self.Conf.get("autostart").get_bool())
-        self.ql_cb.set_active(self.Conf.get("act_for_ql").get_bool())
-        self.flash_cb.set_active(self.Conf.get("act_for_flash").get_bool())
-        self.trayicon_cb.set_active(self.Conf.get("show_tray_icon").get_bool())
-        self.notification_cb.set_active(self.Conf.get("show_notification").get_bool())
 
         ## about dialog
         self.about_dialog = get("aboutdialog")
@@ -446,12 +442,6 @@ class GUI(object):
         self.othertime_dialog = get("othertime_dialog")
         self.othertime_hours = get("hours_spin")
         self.othertime_minutes = get("minutes_spin")
-
-        ## make the about dialog url clickable
-        def url(dialog, link, data=None):
-            webbrowser.open(link)
-
-        gtk.about_dialog_set_url_hook(url, None)
 
 
         if appindicator_avail is False:
@@ -508,7 +498,7 @@ class GUI(object):
     def on_R_click(self, status_icon, mbutton, time, data=None):
         ## popdown menu
         self.menu.popup(None, None,
-                gtk.status_icon_position_menu, 3, time, self.status_icon)
+                Gtk.status_icon_position_menu, 3, time, self.status_icon)
         
     #### Window callbacks
     def on_add_button_clicked(self, button, data=None):
@@ -537,15 +527,12 @@ class GUI(object):
 
     def on_close_button_clicked(self, button, data=None):
 
-        self.window.hide_all()
+        self.window.hide()
 
 
     ## configuration callbacks
-    def on_gconf_autostart_changed(self, client, cnxn_id, entry, data=None):
-        autostart = self.Conf.get("autostart").get_bool() 
-
-        if autostart != self.autostart_cb.get_active():
-            self.autostart_cb.set_active(autostart)
+    def on_autostart_changed(self, settings, key, data=None):
+        autostart = settings.get_boolean(key)
         
         if autostart:
             caffeine.add_to_startup()
@@ -553,44 +540,37 @@ class GUI(object):
             caffeine.remove_from_startup()
 
 
-    def on_autostart_cbutton_toggled(self, cbutton, data=None):
-        self.Conf.set("autostart", cbutton.get_active())
-
     ### Quake Live
-    def on_gconf_ql_changed(self, client, cnxn_id, entry, data=None):
-        act_for_ql = self.Conf.get("act_for_ql").get_bool()
+    def on_ql_changed(self, settings, key, data=None):
+        act_for_ql = settings.get_boolean(key)
 
         self.Core.setActivateForQL(act_for_ql)
 
         if act_for_ql != self.ql_cb.get_active():
             self.ql_cb.set_active(act_for_ql)
 
-    def on_ql_cbutton_toggled(self, cbutton, data=None):
-        self.Conf.set("act_for_ql", cbutton.get_active())
     
     ### Flash
-    def on_gconf_flash_changed(self, client, cnxn_id, entry, data=None):
+    def on_flash_changed(self, settings, key, data=None):
         
-        act_for_flash = self.Conf.get("act_for_flash").get_bool()
+        act_for_flash = settings.get_boolean(key)
 
         self.Core.setActivateForFlash(act_for_flash)
 
-        self.flash_cb.set_active(act_for_flash)
+        #self.flash_cb.set_active(act_for_flash)
 
-    def on_flash_cbutton_toggled(self, cbutton, data=None):
+    #def on_flash_cbutton_toggled(self, cbutton, data=None):
 
-        self.Conf.set("act_for_flash", cbutton.get_active())
+    #    self.Conf.set("act_for_flash", cbutton.get_active())
 
     ### Tray icon
 
-    def on_gconf_trayicon_changed(self, client, cnxn_id, entry, data=None):
-        show_tray_icon = self.Conf.get("show_tray_icon").get_bool()
+    def on_trayicon_changed(self, settings, key, data=None):
+        show_tray_icon = settings.get_boolean(key)
 
         if appindicator_avail:
 
-            self.AppInd.set_status (
-                [appindicator.STATUS_PASSIVE, appindicator.STATUS_ACTIVE][show_tray_icon]
-                )
+            self.AppInd.set_status ([AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon])
     
         else:
             self.status_icon.set_visible(show_tray_icon)
@@ -599,20 +579,17 @@ class GUI(object):
 
         self.notification_cb.set_sensitive(not show_tray_icon)
     
-    def on_trayicon_cbutton_toggled(self, cbutton, data=None):
+   # def on_trayicon_cbutton_toggled(self, cbutton, data=None):
 
-        self.Conf.set("show_tray_icon", cbutton.get_active())
+   #     self.Conf.set("show_tray_icon", cbutton.get_active())
 
     # Startup Notifications
-    def on_gconf_notification_changed(self, client, cnxn_id, entry, data=None):
+    def on_notification_changed(self, settings, key, data=None):
+        pass
         
-        show_notification = self.Conf.get("show_notification").get_bool()
-
-        self.notification_cb.set_active(show_notification)
-
-    def on_notification_cbutton_toggled(self, cbutton, data=None):
+    #def on_notification_cbutton_toggled(self, cbutton, data=None):
             
-        self.Conf.set("show_notification", cbutton.get_active())
+    #    self.Conf.set("show_notification", cbutton.get_active())
 
 
 
@@ -636,15 +613,11 @@ class GUI(object):
 
     def on_about_menuitem_activate(self, menuitem, data=None):
 
-        #if appindicator_avail:
-        #    gtk.gdk.threads_enter()
 
-        self.about_dialog.set_position (gtk.WIN_POS_CENTER_ALWAYS)
+        self.about_dialog.set_position (Gtk.WindowPosition.CENTER_ALWAYS)
         response = self.about_dialog.run()
         self.about_dialog.hide()
 
-        #if appindicator_avail:
-        #    gtk.gdk.threads_leave()
 
     def on_othertime_delete_event(self, window, data=None):
 
@@ -680,14 +653,13 @@ class GUI(object):
 
         self.Core.quit()
 
-        gtk.main_quit()
-
+        Gtk.main_quit()
 
 options = None
 
 def main():
 
-    gtk.gdk.threads_init()
+    GObject.threads_init()
 
     ## register the process id as 'caffeine'
     libc = ctypes.cdll.LoadLibrary('libc.so.6')
@@ -750,5 +722,5 @@ def main():
         main.window.show_all()
 
     appInstance.startApplication()
-    gtk.main()
+    Gtk.main()
     appInstance.exitApplication()

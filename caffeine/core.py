@@ -18,12 +18,12 @@
 #
 
 
-import gtk
-import gobject
+from gi.repository import Gtk, GObject, Gio, Notify
 import os
-import pynotify
+import os.path
 import commands
 import time
+import sys
 
 import dbus
 import threading
@@ -36,17 +36,16 @@ import procmanager
 import caffeinelogging as logging
 
 import Xlib.display
-import kaa.metadata
+#import kaa.metadata
 
-class Caffeine(gobject.GObject):
+os.chdir(os.path.abspath(os.path.dirname(__file__)))
+class Caffeine(GObject.GObject):
 
     def __init__(self):
         
-        gobject.GObject.__init__(self)
-        
-        ## convience class for managing configurations
-        self.Conf = caffeine.get_configurator()
+        GObject.GObject.__init__(self)
 
+        
         ## object to manage processes to activate for.
         self.ProcMan = caffeine.get_ProcManager()
         
@@ -92,17 +91,19 @@ class Caffeine(gobject.GObject):
         self.note = None
         
         ## check for processes to activate for.
-        id = gobject.timeout_add(10000, self._check_for_process)
+        id = GObject.timeout_add(10000, self._check_for_process)
 
+        
+        settings = Gio.Settings.new(caffeine.BASE_KEY)
         ## check for Quake Live.
         self.ql_id = None
-        if self.Conf.get("act_for_ql").get_bool():
+        if settings.get_boolean("act-for-quake"):
             self.setActivateForQL(True)
 
         ## check for Flash video.
         self.flash_durations = {}
         self.flash_id = None
-        if self.Conf.get("act_for_flash").get_bool():
+        if settings.get_boolean("act-for-flash"):
             self.setActivateForFlash(True)
         print self.status_string
 
@@ -114,30 +115,31 @@ class Caffeine(gobject.GObject):
         self._check_for_Flash()
 
         if self.flash_id != None:
-            gobject.source_remove(self.flash_id)
+            GObject.source_remove(self.flash_id)
 
         self.flash_id = None
 
         if do_activate:
-            self.flash_id = gobject.timeout_add(15000,
+            self.flash_id = GObject.timeout_add(15000,
                     self._check_for_Flash)
 
 
     def _check_for_Flash(self):
+
         try:
             ## look for files opened by flashplayer that begin with 'Flash'
-            for filepath in commands.getoutput("pgrep -f flashplayer | xargs -I PID find /proc/PID/fd -lname '/tmp/Flash*'").split("\n"):
+
+            output = commands.getoutput("python flash_detect.py")
+
+            if output == "1":
+                return True
+
+            for row in output.split("\n"):
+                filepath, length = row.split(" ")
+                length = int(length)
                 if filepath != "" and filepath not in self.flash_durations:
-                    try:
-                        meta = kaa.metadata.parse(filepath)
-
-                        #partially loaded flash files are some times corrupted...
-                        if meta != None and meta.length != None:
-                            end_time = time.localtime(int(time.time() + meta.length))
-                            self.flash_durations[filepath] = end_time
-                    except Exception, data:
-                        logging.error("Exception: " + str(data))
-
+                    end_time = time.localtime(int(time.time() + length))
+                    self.flash_durations[filepath] = end_time
                             
             ### clear out old filenames
             for key in self.flash_durations.keys():
@@ -191,12 +193,12 @@ class Caffeine(gobject.GObject):
         self._check_for_QL()
 
         if self.ql_id != None:
-            gobject.source_remove(self.ql_id)
+            GObject.source_remove(self.ql_id)
 
         self.ql_id = None
 
         if do_activate:
-            self.ql_id = gobject.timeout_add(15000, self._check_for_QL)
+            self.ql_id = GObject.timeout_add(15000, self._check_for_QL)
 
         
     def _check_for_QL(self):
@@ -328,11 +330,11 @@ class Caffeine(gobject.GObject):
         """Easy way to use pynotify"""
         try:
 
-            pynotify.init("Caffeine")
+            Notify.init("Caffeine")
             if self.note:
                 self.note.update(title, message, icon)
             else:
-                self.note = pynotify.Notification(title, message, icon)
+                self.note = Notify.Notification(title, message, icon)
             
             ## Notify OSD doesn't seem to work when sleep is prevented
             if self.screenSaverCookie != None and self.sleepIsPrevented:
@@ -589,7 +591,7 @@ class Caffeine(gobject.GObject):
             # cancel the timer for timed activation.
 
             if self.inhibit_id != None:
-                gobject.source_remove(self.inhibit_id)
+                GObject.source_remove(self.inhibit_id)
 
         else:
 
@@ -603,11 +605,11 @@ class Caffeine(gobject.GObject):
                 return True
         
             # reset the idle timer every 50 seconds.
-            self.inhibit_id = gobject.timeout_add(50000, deactivate)
+            self.inhibit_id = GObject.timeout_add(50000, deactivate)
 
 
 ## register a signal
-gobject.signal_new("activation-toggled", Caffeine,
-        gobject.SIGNAL_RUN_FIRST, None, [bool, str])
+GObject.signal_new("activation-toggled", Caffeine,
+        GObject.SignalFlags.RUN_FIRST, None, [bool, str])
 
 

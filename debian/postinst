@@ -4,4 +4,6 @@ gtk-update-icon-cache /usr/share/icons/hicolor
 gtk-update-icon-cache /usr/share/icons/ubuntu-mono-light
 gtk-update-icon-cache /usr/share/icons/ubuntu-mono-dark
 
+glib-compile-schemas /usr/share/glib-2.0/schemas
+
 exit 0

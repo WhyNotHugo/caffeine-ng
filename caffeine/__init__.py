@@ -20,11 +20,11 @@
 
 import os
 from os.path import join, abspath, dirname, pardir
-import gtk
+from gi.repository import Gtk, Gio
 
 from xdg.BaseDirectory import xdg_config_home
 
-VERSION = "2.2"
+VERSION = "2.4"
 
 def getBasePath():
     c = abspath(dirname(__file__))
@@ -38,6 +38,7 @@ def getBasePath():
             raise Exception("Can't determine BASE_PATH")
 
 BASE_PATH = getBasePath()
+BASE_KEY = "net.launchpad.caffeine"
 
 _config_dir = os.path.join(xdg_config_home, "caffeine")
 
@@ -78,53 +79,31 @@ EMPTY_ICON_PATH = join(IMAGE_PATH, "Empty_Cup.svg")
 GENERIC_PROCESS_ICON_PATH = join(IMAGE_PATH, "application-x-executable.png")
 
 ICON_NAME = 'caffeine'
-icon_theme = gtk.icon_theme_get_default()
+icon_theme = Gtk.IconTheme.get_default()
 
 def get_icon_pixbuf(size):
     global icon_theme
     global ICON_NAME
     
     iconInfo = icon_theme.lookup_icon(ICON_NAME, size,
-        gtk.ICON_LOOKUP_NO_SVG)
+        Gtk.IconLookupFlags.NO_SVG)
     
     if iconInfo:
         # icon is found
         base_size = iconInfo.get_base_size()
         if base_size != size:
             ## No sizexsize icon in the users theme so use the default
-            icon_theme = gtk.IconTheme()
+            icon_theme = Gtk.IconTheme()
             icon_theme.set_search_path((ICON_PATH,))
     else:
         icon_theme.append_search_path(ICON_PATH)
         iconInfo = icon_theme.lookup_icon(ICON_NAME, size,
-            gtk.ICON_LOOKUP_NO_SVG)
+            Gtk.IconLookupFlags.NO_SVG)
 
     pixbuf = icon_theme.load_icon(ICON_NAME, size,
-                gtk.ICON_LOOKUP_NO_SVG)
+                Gtk.IconLookupFlags.NO_SVG)
 
     return pixbuf
-
-## gconf stuff
-from caffeine.config import Configurator
-
-_key = '/apps/caffeine/prefs'
-
-_conf = Configurator()
-
-### register all the options that will be used.
-import gconf
-_conf.client.add_dir(_key, gconf.CLIENT_PRELOAD_NONE)
-
-_conf.register_opt("autostart", os.path.join(_key,
-    "autostart"), False)
-_conf.register_opt("act_for_ql", os.path.join(_key,
-    "act_for_ql"), False)
-_conf.register_opt("act_for_flash", os.path.join(_key,
-    "act_for_flash"), False)
-_conf.register_opt("show_tray_icon", os.path.join(_key,
-    "show_tray_icon"), True)
-_conf.register_opt("show_notification", os.path.join(_key,
-    "show_notification"), True)
 
 ## Functions to add/remove Caffeine from the list of startup programs
 import shutil
@@ -146,14 +125,12 @@ def remove_from_startup():
     if os.path.exists(filename):
         os.remove(filename)
 
-if _conf.get("autostart").get_bool():
+settings = Gio.Settings.new(BASE_KEY)
+if settings.get_boolean("autostart"):
     add_to_startup()
 else:
     remove_from_startup()
 
-
-def get_configurator():
-    return _conf
 
 ### Setup translations
 ###

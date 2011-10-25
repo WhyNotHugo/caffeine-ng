@@ -1,5 +1,5 @@
-caffeine (2.2~bzrxxx-0ubuntu0~ppa0~lucid) lucid; urgency=low
+caffeine (2.4~bzrxxx-0ubuntu0~ppa0~lucid) oneiric; urgency=low
 
-  * Fixed icon issue.
+  * 
 
- -- Isaiah Heyer <freshapplepy@gmail.com>  Wed, 01 Dec 2010 20:17:18 -0600
+ -- Isaiah <freshapplepy@gmail.com>  Tue, 25 Oct 2011 12:37:04 -0500
