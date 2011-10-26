@@ -7,73 +7,73 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-20 14:12+0000\n"
+"POT-Creation-Date: 2011-10-25 22:40+0000\n"
 "PO-Revision-Date: 2011-03-28 08:10+0000\n"
 "Last-Translator: Elco <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-21 04:57+0000\n"
-"X-Generator: Launchpad (build 14165)\n"
+"X-Launchpad-Export-Date: 2011-10-26 05:15+0000\n"
+"X-Generator: Launchpad (build 14189)\n"
 
-#. file 'caffeine/core.py', line 170
 #. file 'caffeine/core.py', line 172
+#. file 'caffeine/core.py', line 174
 msgid "Activated for Flash video"
 msgstr "Geactiveerd voor Flash film"
 
-#. file 'caffeine/core.py', line 223
+#. file 'caffeine/core.py', line 225
 msgid "Activated for Quake Live"
 msgstr "Geactiveerd voor Quake Live"
 
-#. file 'caffeine/core.py', line 290
+#. file 'caffeine/core.py', line 292
 msgid " and "
 msgstr " en "
 
-#. file 'caffeine/core.py', line 297
-#. file 'caffeine/core.py', line 303
+#. file 'caffeine/core.py', line 299
+#. file 'caffeine/core.py', line 305
 msgid "hour"
 msgstr "uur"
 
-#. file 'caffeine/core.py', line 297
-#. file 'caffeine/core.py', line 309
+#. file 'caffeine/core.py', line 299
+#. file 'caffeine/core.py', line 311
 msgid "minute"
 msgstr "minuut"
 
-#. file 'caffeine/core.py', line 305
+#. file 'caffeine/core.py', line 307
 msgid "hours"
 msgstr "uren"
 
-#. file 'caffeine/core.py', line 311
+#. file 'caffeine/core.py', line 313
 msgid "minutes"
 msgstr "minuten"
 
-#. file 'caffeine/core.py', line 362
+#. file 'caffeine/core.py', line 364
 msgid "Timed activation set; "
 msgstr "Tijdelijke activering actief; "
 
-#. file 'caffeine/core.py', line 363
+#. file 'caffeine/core.py', line 365
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine zal energiebesparing blokkeren voor de volgende "
 
-#. file 'caffeine/core.py', line 370
+#. file 'caffeine/core.py', line 372
 msgid "Activated for "
 msgstr "Geactiveerd voor "
 
-#. file 'caffeine/core.py', line 416
-#. file 'caffeine/main.py', line 379
+#. file 'caffeine/core.py', line 418
+#. file 'caffeine/main.py', line 375
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine is in slaapstand; Energiebesparing is actief"
 
-#. file 'caffeine/core.py', line 424
+#. file 'caffeine/core.py', line 426
 msgid "Timed activation cancelled (was set for "
 msgstr "Getimede activering geannuleerd (was geconfigureerd voor "
 
-#. file 'caffeine/core.py', line 441
+#. file 'caffeine/core.py', line 443
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " zijn voorbij; Energiebesparing is opnieuw actief"
 
-#. file 'caffeine/core.py', line 460
+#. file 'caffeine/core.py', line 462
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr "Caffeine houdt energiebesparende modi en schermbeveiliging tegen "
 
@@ -81,28 +81,26 @@ msgstr "Caffeine houdt energiebesparende modi en schermbeveiliging tegen "
 msgid "Please install"
 msgstr "Installeren a.u.b."
 
-#. file 'caffeine/main.py', line 367
+#. file 'caffeine/main.py', line 363
 msgid "Caffeine is running"
 msgstr "Cafeïne staat aan"
 
-#. file 'caffeine/main.py', line 500
-#. file 'caffeine/main.py', line 626
+#. file 'caffeine/main.py', line 490
+#. file 'caffeine/main.py', line 603
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Schermbeveiliging blokkeren"
 
-#. file 'caffeine/main.py', line 500
-#. file 'caffeine/main.py', line 626
+#. file 'caffeine/main.py', line 490
+#. file 'caffeine/main.py', line 603
 msgid "Enable Screensaver"
 msgstr "Schermbeveiliging aanzetten"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
-"An application to temporarily prevent the activation of both the screen "
-"saver and the \"sleep\" powersaving mode."
+"An application to temporarily prevent the activation of both\n"
+" the screen saver and the \"sleep\" powersaving mode."
 msgstr ""
-"Een toepassing om tijdelijk de activatie van schermbeveiliging en "
-"energiebesparende modi te blokkeren"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -214,6 +212,10 @@ msgstr "Systeemvakpictogram tonen"
 msgid "Show notification on startup"
 msgstr ""
 
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "    "
+msgstr ""
+
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
 msgstr "Selecteer een proces naam"
@@ -249,6 +251,13 @@ msgstr "Recente Processen"
 
 #~ msgid "Other..."
 #~ msgstr "Overige..."
+
+#~ msgid ""
+#~ "An application to temporarily prevent the activation of both the screen "
+#~ "saver and the \"sleep\" powersaving mode."
+#~ msgstr ""
+#~ "Een toepassing om tijdelijk de activatie van schermbeveiliging en "
+#~ "energiebesparende modi te blokkeren"
 
 #~ msgid "Configure Caffeine"
 #~ msgstr "Configureer Caffeine"

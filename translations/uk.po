@@ -7,73 +7,73 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-20 14:12+0000\n"
+"POT-Creation-Date: 2011-10-25 22:40+0000\n"
 "PO-Revision-Date: 2011-07-04 10:10+0000\n"
 "Last-Translator: kingdruid <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-21 04:57+0000\n"
-"X-Generator: Launchpad (build 14165)\n"
+"X-Launchpad-Export-Date: 2011-10-26 05:15+0000\n"
+"X-Generator: Launchpad (build 14189)\n"
 
-#. file 'caffeine/core.py', line 170
 #. file 'caffeine/core.py', line 172
+#. file 'caffeine/core.py', line 174
 msgid "Activated for Flash video"
 msgstr "Активувати для Flash відео"
 
-#. file 'caffeine/core.py', line 223
+#. file 'caffeine/core.py', line 225
 msgid "Activated for Quake Live"
 msgstr "Активувати для Quake Live"
 
-#. file 'caffeine/core.py', line 290
+#. file 'caffeine/core.py', line 292
 msgid " and "
 msgstr " та "
 
-#. file 'caffeine/core.py', line 297
-#. file 'caffeine/core.py', line 303
+#. file 'caffeine/core.py', line 299
+#. file 'caffeine/core.py', line 305
 msgid "hour"
 msgstr "година"
 
-#. file 'caffeine/core.py', line 297
-#. file 'caffeine/core.py', line 309
+#. file 'caffeine/core.py', line 299
+#. file 'caffeine/core.py', line 311
 msgid "minute"
 msgstr "хвилина"
 
-#. file 'caffeine/core.py', line 305
+#. file 'caffeine/core.py', line 307
 msgid "hours"
 msgstr "годин"
 
-#. file 'caffeine/core.py', line 311
+#. file 'caffeine/core.py', line 313
 msgid "minutes"
 msgstr "хвилин"
 
-#. file 'caffeine/core.py', line 362
+#. file 'caffeine/core.py', line 364
 msgid "Timed activation set; "
 msgstr "Встановлення активації за часом; "
 
-#. file 'caffeine/core.py', line 363
+#. file 'caffeine/core.py', line 365
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine буде вимикати енергозбереження на протязі наступних "
 
-#. file 'caffeine/core.py', line 370
+#. file 'caffeine/core.py', line 372
 msgid "Activated for "
 msgstr "Активовано для "
 
-#. file 'caffeine/core.py', line 416
-#. file 'caffeine/main.py', line 379
+#. file 'caffeine/core.py', line 418
+#. file 'caffeine/main.py', line 375
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine призупинено; енергозбереження активовано"
 
-#. file 'caffeine/core.py', line 424
+#. file 'caffeine/core.py', line 426
 msgid "Timed activation cancelled (was set for "
 msgstr "Активація за часом скасована (була встановлена для "
 
-#. file 'caffeine/core.py', line 441
+#. file 'caffeine/core.py', line 443
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " закінчилась; енергозбереення увімкнено"
 
-#. file 'caffeine/core.py', line 460
+#. file 'caffeine/core.py', line 462
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 msgstr "Caffeine вимикає енергозбереження та екранну заставку "
 
@@ -81,28 +81,26 @@ msgstr "Caffeine вимикає енергозбереження та екран
 msgid "Please install"
 msgstr "Будь ласка, встановіть"
 
-#. file 'caffeine/main.py', line 367
+#. file 'caffeine/main.py', line 363
 msgid "Caffeine is running"
 msgstr "Caffeine працює"
 
-#. file 'caffeine/main.py', line 500
-#. file 'caffeine/main.py', line 626
+#. file 'caffeine/main.py', line 490
+#. file 'caffeine/main.py', line 603
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Вимкнути екранну заставку"
 
-#. file 'caffeine/main.py', line 500
-#. file 'caffeine/main.py', line 626
+#. file 'caffeine/main.py', line 490
+#. file 'caffeine/main.py', line 603
 msgid "Enable Screensaver"
 msgstr "Увімкнути екранну заставку"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
-"An application to temporarily prevent the activation of both the screen "
-"saver and the \"sleep\" powersaving mode."
+"An application to temporarily prevent the activation of both\n"
+" the screen saver and the \"sleep\" powersaving mode."
 msgstr ""
-"Додаток для тимчасового вимкнення енергозбереження, екранної заставки та "
-"переходу в режим сну."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -217,6 +215,10 @@ msgstr "Показувати піктограму в лотку"
 msgid "Show notification on startup"
 msgstr "Показувати повідомлення під час запуску"
 
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "    "
+msgstr ""
+
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
 msgstr "Вибрати назву процесу..."
@@ -228,6 +230,13 @@ msgstr "Запущені процеси"
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Recent Processes"
 msgstr "Нещодавні процеси"
+
+#~ msgid ""
+#~ "An application to temporarily prevent the activation of both the screen "
+#~ "saver and the \"sleep\" powersaving mode."
+#~ msgstr ""
+#~ "Додаток для тимчасового вимкнення енергозбереження, екранної заставки та "
+#~ "переходу в режим сну."
 
 #~ msgid "Configure Caffeine"
 #~ msgstr "Налатування Caffeine"
