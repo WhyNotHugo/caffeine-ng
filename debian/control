@@ -11,8 +11,6 @@ Package: caffeine
 Architecture: all
 XB-Python-Version: ${python:Versions}
 Depends:${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
-    python-gtk2,
-    python-gnome2,
     python-xlib,
     python-appindicator,
     python-xdg,
