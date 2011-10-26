@@ -1,15 +1,17 @@
 <interface>
   <requires lib="gtk+" version="2.16" />
-  
   <object class="GtkAboutDialog" id="aboutdialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
+    <property name="default_width">200</property>
+    <property name="default_height">200</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
     <property name="program_name">Caffeine</property>
-    <property name="version">2.2 (bzr 405)</property>
-    <property name="copyright">Copyright &#169; 2009 Brad Smith, Tommy Brunn &amp; Isaiah Heyer</property>
-    <property name="comments" translatable="yes">An application to temporarily prevent the activation of both the screen saver and the "sleep" powersaving mode.</property>
+    <property name="version">2.4 (bzr 407)</property>
+    <property name="copyright">Copyright &#169; 2011 Brad Smith, Tommy Brunn &amp; Isaiah Heyer</property>
+    <property name="comments" translatable="yes">An application to temporarily prevent the activation of both
+ the screen saver and the "sleep" powersaving mode.</property>
     <property name="website">http://launchpad.net/caffeine</property>
     <property name="license">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
@@ -42,16 +44,15 @@ Vagner K. Dos Santos
     </property>
     <property name="logo_icon_name">caffeine</property>
     <property name="wrap_license">True</property>
+    <property name="license_type">gpl-3-0</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -148,8 +149,6 @@ Vagner K. Dos Santos
                         <property name="invisible_char">&#9679;</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
                         <property name="adjustment">hours_adj</property>
                         <property name="numeric">True</property>
                         <property name="wrap">True</property>
@@ -191,8 +190,6 @@ Vagner K. Dos Santos
                         <property name="invisible_char">&#9679;</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">True</property>
-                        <property name="secondary_icon_sensitive">True</property>
                         <property name="adjustment">minutes_adj</property>
                         <property name="numeric">True</property>
                         <property name="wrap">True</property>
@@ -334,12 +331,12 @@ Vagner K. Dos Santos
     <property name="border_width">5</property>
     <property name="type_hint">normal</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox2">
+      <object class="GtkBox" id="dialog-vbox2">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area2">
+          <object class="GtkButtonBox" id="dialog-action_area2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -478,7 +475,6 @@ your computer has finished starting up and you have
 successfully entered your username and password.</property>
                                     <property name="use_action_appearance">False</property>
                                     <property name="draw_indicator">True</property>
-                                    <signal handler="on_autostart_cbutton_toggled" name="toggled" swapped="no" />
                                   </object>
                                 </child>
                               </object>
@@ -556,8 +552,6 @@ whenever certain programs are runnning.</property>
                                       <object class="GtkScrolledWindow" id="scrolledwindow1">
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
-                                        <property name="hscrollbar_policy">automatic</property>
-                                        <property name="vscrollbar_policy">automatic</property>
                                         <property name="shadow_type">in</property>
                                         <child>
                                           <object class="GtkTreeView" id="treeview">
@@ -570,6 +564,9 @@ and powersaving modes. This can be useful for applications
 prevent the screensaver and powersaving modes on their own.</property>
                                             <property name="model">proc_liststore</property>
                                             <property name="rules_hint">True</property>
+                                            <child internal-child="selection">
+                                              <object class="GtkTreeSelection" id="treeview-selection1" />
+                                            </child>
                                             <child>
                                               <object class="GtkTreeViewColumn" id="treeviewcolumn1">
                                                 <property name="title">Process Name</property>
@@ -665,7 +662,6 @@ screensaver and powersaving modes when a Flash video is
 embedded in the web page that you are currently browsing.</property>
                                         <property name="use_action_appearance">False</property>
                                         <property name="draw_indicator">True</property>
-                                        <signal handler="on_flash_cbutton_toggled" name="toggled" swapped="no" />
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -696,7 +692,6 @@ when it detects that you are playing the Quake Live video
 game. Visit www.quakelive.com to play the game for free.</property>
                                         <property name="use_action_appearance">False</property>
                                         <property name="draw_indicator">True</property>
-                                        <signal handler="on_ql_cbutton_toggled" name="toggled" swapped="no" />
                                       </object>
                                       <packing>
                                         <property name="expand">False</property>
@@ -742,7 +737,6 @@ game. Visit www.quakelive.com to play the game for free.</property>
                                     <property name="receives_default">False</property>
                                     <property name="use_action_appearance">False</property>
                                     <property name="draw_indicator">True</property>
-                                    <signal handler="on_trayicon_cbutton_toggled" name="toggled" swapped="no" />
                                   </object>
                                 </child>
                               </object>
@@ -766,7 +760,6 @@ game. Visit www.quakelive.com to play the game for free.</property>
                                     <property name="receives_default">False</property>
                                     <property name="use_action_appearance">False</property>
                                     <property name="draw_indicator">True</property>
-                                    <signal handler="on_notification_cbutton_toggled" name="toggled" swapped="no" />
                                   </object>
                                 </child>
                               </object>
@@ -815,16 +808,16 @@ game. Visit www.quakelive.com to play the game for free.</property>
               <object class="GtkHButtonBox" id="hbuttonbox1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="layout_style">edge</property>
                 <child>
                   <object class="GtkLabel" id="label7">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">    </property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">0</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
                 <child>
@@ -839,8 +832,8 @@ game. Visit www.quakelive.com to play the game for free.</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">1</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
               </object>
