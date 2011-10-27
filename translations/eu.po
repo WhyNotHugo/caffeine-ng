@@ -8,23 +8,23 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-10-25 22:40+0000\n"
-"PO-Revision-Date: 2010-03-09 12:47+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2011-10-26 12:40+0000\n"
+"Last-Translator: Ibai Oihanguren <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-26 05:15+0000\n"
-"X-Generator: Launchpad (build 14189)\n"
+"X-Launchpad-Export-Date: 2011-10-27 05:23+0000\n"
+"X-Generator: Launchpad (build 14197)\n"
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
 msgid "Activated for Flash video"
-msgstr ""
+msgstr "Aktibatu flash bideoentzat"
 
 #. file 'caffeine/core.py', line 225
 msgid "Activated for Quake Live"
-msgstr ""
+msgstr "Aktibatu Quake Liverentzat"
 
 #. file 'caffeine/core.py', line 292
 msgid " and "
@@ -58,12 +58,12 @@ msgstr "Caffeine-k energia aurreztea indargabetuko du hurrengo denboran: "
 
 #. file 'caffeine/core.py', line 372
 msgid "Activated for "
-msgstr ""
+msgstr "Aktibatuta honentzat: "
 
 #. file 'caffeine/core.py', line 418
 #. file 'caffeine/main.py', line 375
 msgid "Caffeine is dormant; powersaving is enabled"
-msgstr ""
+msgstr "Caffeine lo dago; energia aurreztea gaituta dago"
 
 #. file 'caffeine/core.py', line 426
 msgid "Timed activation cancelled (was set for "
@@ -85,18 +85,18 @@ msgstr "Mesedez instalatu"
 
 #. file 'caffeine/main.py', line 363
 msgid "Caffeine is running"
-msgstr ""
+msgstr "Caffeine martxan dago"
 
 #. file 'caffeine/main.py', line 490
 #. file 'caffeine/main.py', line 603
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
-msgstr ""
+msgstr "Desgaitu pantaila-babeslea"
 
 #. file 'caffeine/main.py', line 490
 #. file 'caffeine/main.py', line 603
 msgid "Enable Screensaver"
-msgstr ""
+msgstr "Gaitu pantaila-babeslea"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
