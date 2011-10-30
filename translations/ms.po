@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-10-25 22:40+0000\n"
-"PO-Revision-Date: 2011-08-06 03:21+0000\n"
+"PO-Revision-Date: 2011-10-29 15:56+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-27 05:23+0000\n"
+"X-Launchpad-Export-Date: 2011-10-30 05:18+0000\n"
 "X-Generator: Launchpad (build 14197)\n"
 
 #. file 'caffeine/core.py', line 172
@@ -104,6 +104,8 @@ msgid ""
 "An application to temporarily prevent the activation of both\n"
 " the screen saver and the \"sleep\" powersaving mode."
 msgstr ""
+"Aplikasi untuk halang buat sementara pengaktifan kedua-dua\n"
+" penyelamat skrin dan mod penjimatan kuasa \"tidur\"."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -224,7 +226,7 @@ msgstr "Papar pemberitahuan semasa permulaan"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
