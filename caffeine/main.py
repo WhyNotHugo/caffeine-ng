@@ -437,6 +437,7 @@ class GUI(object):
 
         ## about dialog
         self.about_dialog = get("aboutdialog")
+        self.about_dialog.set_translator_credits(_("translator-credits"))
 
         ## other time selector
         self.othertime_dialog = get("othertime_dialog")
