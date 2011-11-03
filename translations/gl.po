@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-25 22:40+0000\n"
-"PO-Revision-Date: 2011-10-31 14:59+0000\n"
-"Last-Translator: Marcos Lans <Unknown>\n"
+"POT-Creation-Date: 2011-11-02 16:50+0000\n"
+"PO-Revision-Date: 2011-11-02 22:02+0000\n"
+"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-01 05:07+0000\n"
-"X-Generator: Launchpad (build 14197)\n"
+"X-Launchpad-Export-Date: 2011-11-03 05:25+0000\n"
+"X-Generator: Launchpad (build 14214)\n"
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
@@ -87,14 +87,20 @@ msgstr "Instalar"
 msgid "Caffeine is running"
 msgstr "Caffeine está executańdose"
 
-#. file 'caffeine/main.py', line 490
-#. file 'caffeine/main.py', line 603
+#. file 'caffeine/main.py', line 440
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Marcos Lans https://launchpad.net/~markooss"
+
+#. file 'caffeine/main.py', line 491
+#. file 'caffeine/main.py', line 604
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Desactivar o salvapantallas"
 
-#. file 'caffeine/main.py', line 490
-#. file 'caffeine/main.py', line 603
+#. file 'caffeine/main.py', line 491
+#. file 'caffeine/main.py', line 604
 msgid "Enable Screensaver"
 msgstr "Activar o salvapantallas"
 

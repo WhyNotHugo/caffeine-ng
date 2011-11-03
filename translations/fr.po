@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-10-25 22:40+0000\n"
-"PO-Revision-Date: 2010-12-23 09:14+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"POT-Creation-Date: 2011-11-02 16:50+0000\n"
+"PO-Revision-Date: 2011-11-02 22:02+0000\n"
+"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-27 05:23+0000\n"
-"X-Generator: Launchpad (build 14197)\n"
+"X-Launchpad-Export-Date: 2011-11-03 05:25+0000\n"
+"X-Generator: Launchpad (build 14214)\n"
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
@@ -88,14 +88,32 @@ msgstr "Merci d'installer"
 msgid "Caffeine is running"
 msgstr "Cafféine est lancé"
 
-#. file 'caffeine/main.py', line 490
-#. file 'caffeine/main.py', line 603
+#. file 'caffeine/main.py', line 440
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Alexander Aen Markevitch https://launchpad.net/~alexander-markevitch\n"
+"  AstroMb https://launchpad.net/~matthieu-bachschmidt\n"
+"  Belenyx https://launchpad.net/~bele-nyx\n"
+"  Christelle PILET https://launchpad.net/~christelle-pilet\n"
+"  Jeremy Moiny https://launchpad.net/~joliegrenouille2\n"
+"  Nicolas Delvaux https://launchpad.net/~malizor\n"
+"  Raphael Durand https://launchpad.net/~rdurand\n"
+"  Steve Dodier-Lazaro https://launchpad.net/~sidi\n"
+"  Tommy Brunn https://launchpad.net/~tommybrunn\n"
+"  William HAREL https://launchpad.net/~williamharel\n"
+"  backslashn https://launchpad.net/~backslashn\n"
+"  bouchard renaud https://launchpad.net/~renaud-bouchard\n"
+"  pomah https://launchpad.net/~pomah"
+
+#. file 'caffeine/main.py', line 491
+#. file 'caffeine/main.py', line 604
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Désactiver l'écran de veille"
 
-#. file 'caffeine/main.py', line 490
-#. file 'caffeine/main.py', line 603
+#. file 'caffeine/main.py', line 491
+#. file 'caffeine/main.py', line 604
 msgid "Enable Screensaver"
 msgstr "Autoriser l'écran de veille"
 
@@ -224,11 +242,11 @@ msgstr "Afficher l'icône de notification"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Show notification on startup"
-msgstr ""
+msgstr "Afficher une notification au démarrage"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
