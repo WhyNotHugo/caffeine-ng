@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.4\n"
-"POT-Creation-Date: 2011-11-02 16:50:47.173186\n"
+"POT-Creation-Date: 2011-11-10 23:09:23.216335\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgid "Activated for "
 msgstr ""
 msgid "Caffeine is dormant; powersaving is enabled"
 #. file 'caffeine/core.py', line 418
-#. file 'caffeine/main.py', line 375
+#. file 'caffeine/main.py', line 200
 msgstr ""
 msgid "Timed activation cancelled (was set for "
 #. file 'caffeine/core.py', line 426
@@ -62,19 +62,19 @@ msgid "Please install"
 #. file 'caffeine/main.py', line 43
 msgstr ""
 msgid "Caffeine is running"
-#. file 'caffeine/main.py', line 363
+#. file 'caffeine/main.py', line 188
 msgstr ""
 msgid "translator-credits"
-#. file 'caffeine/main.py', line 440
+#. file 'caffeine/main.py', line 265
 msgstr ""
 msgid "Disable Screensaver"
-#. file 'caffeine/main.py', line 491
-#. file 'caffeine/main.py', line 604
+#. file 'caffeine/main.py', line 316
+#. file 'caffeine/main.py', line 429
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Enable Screensaver"
-#. file 'caffeine/main.py', line 491
-#. file 'caffeine/main.py', line 604
+#. file 'caffeine/main.py', line 316
+#. file 'caffeine/main.py', line 429
 msgstr ""
 msgid ""
 "An application to temporarily prevent the activation of both\n"
@@ -161,11 +161,5 @@ msgid "    "
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Select a process name..."
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgstr ""
-msgid "Running Processes"
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgstr ""
-msgid "Recent Processes"
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgstr ""

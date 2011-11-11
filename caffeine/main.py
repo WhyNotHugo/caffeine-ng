@@ -93,9 +93,6 @@ class ProcAdd(object):
 
     def __init__(self):
         
-        self.recent_processes = []
-        self.dead_processes = []
-
         self.running_id = None
 
         self.user_set = True
@@ -108,160 +105,16 @@ class ProcAdd(object):
 
         self.dialog = get("dialog")
         self.entry = get("entry")
+        self.entry.grab_focus()
         
-        ## populate the treemodels
-        self.running_treeview = get("running_treeview")
-
-        running_selection = self.running_treeview.get_selection()
-        self.running_selection = running_selection
-
-        self.running_liststore = get("running_liststore")
-        self.running_liststore.set_sort_func(10, self.sort_proc_func)
-        self.running_liststore.set_sort_column_id(10, Gtk.SortType.ASCENDING)
-        self.running_liststore.set_sort_func(11, self.sort_id_func)
-        self.running_liststore.set_sort_column_id(11, Gtk.SortType.DESCENDING)
-
-        running_tvc1 = get("running_tvc1")
-        running_tvc1.set_sort_column_id(10)
-
-        running_tvc2 = get("running_tvc2")
-        running_tvc2.set_sort_column_id(11)
-        
-        running_selection.connect("changed", self.on_running_selection_changed)
-
-        self.update_running_liststore()
 
         ###
-        self.recent_treeview = get("recent_treeview")
-
-        recent_selection = self.recent_treeview.get_selection()
-        self.recent_selection = recent_selection
-
-        self.recent_liststore = get("recent_liststore")
-        self.recent_liststore.set_sort_func(10, self.sort_proc_func)
-        self.recent_liststore.set_sort_column_id(10, Gtk.SortType.ASCENDING)
-        self.recent_liststore.set_sort_func(11, self.sort_id_func)
-        self.recent_liststore.set_sort_column_id(11, Gtk.SortType.DESCENDING)
-
-        recent_tvc1 = get("recent_tvc1")
-        recent_tvc1.set_sort_column_id(10)
-
-        recent_tvc2 = get("recent_tvc2")
-        recent_tvc2.set_sort_column_id(11)
-
-        GObject.timeout_add(5000, self.update_recent_liststore)
-
-        recent_selection.connect("changed", self.on_recent_selection_changed)
-                
         builder.connect_signals(self)
     
-           
-    def sort_proc_func(self, model, iter1, iter2, data=None):
-        v1 = model.get_value(iter1, 1)
-        v2 = model.get_value(iter2, 1)
-        if v1 < v2:
-            return -1
-        elif v1 > v2:
-            return 1
-
-        return 0
-
-    def sort_id_func(self, model, iter1, iter2, data=None):
-        
-        v1 = model.get_value(iter1, 2)
-        v2 = model.get_value(iter2, 2)
-        if v1 < v2:
-            return -1
-        elif v1 > v2:
-            return 1
-
-        return 0
-
-
-    def update_running_liststore(self):
-
-        sel_id = None
-        model, iter = self.running_selection.get_selected()
-
-        if iter != None:
-            sel_id = model.get_value(iter, 2)
-
-        self.running_liststore.clear()
-        
-        for proc_name, id in self.get_running_processes():
-            iter = self.running_liststore.append([
-                get_icon_for_process(proc_name), proc_name, id])
-
-            ## keep the same process selected if possible
-            if id == sel_id:
-                self.user_set = False
-                self.running_selection.select_iter(iter)
-                self.user_set = True
-
-
-        return True
-    
-    def update_recent_liststore(self):
-
-        sel_id = None
-        model, iter = self.recent_selection.get_selected()
-
-        if iter != None:
-            sel_id = model.get_value(iter, 2)
-
-        self.recent_liststore.clear()
-
-        seen = []
-        
-        recent = self.get_recent_processes()
-        recent.reverse()
-        for proc_name, id in recent:
-
-            if proc_name not in seen:
-                iter = self.recent_liststore.append([
-                    get_icon_for_process(proc_name), proc_name, id])
-
-            seen.append(proc_name)
-            ## keep the same process selected if possible
-            if id == sel_id:
-                self.user_set = False
-                self.recent_selection.select_iter(iter)
-                self.user_set = True
-
-        return True
-
-    def get_running_processes(self):
-        
-        return [(name, pid) for name, pid in utils.getProcesses()]
-    
-    def get_recent_processes(self):
-        
-        running_pids = [pid for name, 
-                pid in utils.getProcesses()]
-
-        if self.recent_processes:
-            ## don't let the list get too long
-            if len(self.dead_processes) > 100:
-                self.dead_processes = self.dead_processes[25:100]
-
-            self.dead_processes += [(name, pid) for name,
-                pid in self.recent_processes if pid not in running_pids]
-            
-        self.recent_processes = self.get_running_processes()
-        return self.dead_processes
-
-
     def run(self):
 
-        if self.running_id != None:
-            GObject.source_remove(self.running_id)
-
-        self.running_id = GObject.timeout_add(5000,
-                self.update_running_liststore)
 
         self.entry.set_text("")
-        self.running_selection.unselect_all()
-        self.recent_selection.unselect_all()
 
         response = self.dialog.run()
         self.hide()
@@ -271,30 +124,6 @@ class ProcAdd(object):
     def get_process_name(self):
         return self.entry.get_text().strip()
 
-    def on_running_selection_changed(self, treeselection, data=None):
-        
-        if not self.user_set:
-            return 
-
-        model, iter = treeselection.get_selected()
-        
-        if iter != None:
-            self.entry.set_text(model.get_value(iter, 1))
-            self.entry.select_region(0, -1)
-
-    def on_recent_selection_changed(self, treeselection, data=None):
-        
-        if not self.user_set:
-            return 
-
-        model, iter = treeselection.get_selected()
-        
-        if iter != None:
-            self.entry.set_text(model.get_value(iter, 1))
-            self.entry.select_region(0, -1)
-
-
-
     def on_add_button_clicked(self, button, data=None):
         self.dialog.hide()
 
@@ -303,11 +132,7 @@ class ProcAdd(object):
 
     def hide(self):
         
-        if self.running_id != None:
-            GObject.source_remove(self.running_id)
-
         self.dialog.hide()
-
 
     def on_window_delete_event(self, window, data=None):
 
