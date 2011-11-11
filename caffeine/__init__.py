@@ -24,7 +24,7 @@ from gi.repository import Gtk, Gio
 
 from xdg.BaseDirectory import xdg_config_home
 
-VERSION = "2.4"
+VERSION = "2.4.1"
 
 def getBasePath():
     c = abspath(dirname(__file__))

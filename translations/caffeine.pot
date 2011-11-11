@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: caffeine 2.4\n"
-"POT-Creation-Date: 2011-11-10 23:15:19.149805\n"
+"Project-Id-Version: caffeine 2.4.1\n"
+"POT-Creation-Date: 2011-11-11 11:25:24.440185\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
