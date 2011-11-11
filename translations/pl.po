@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-02 16:50+0000\n"
-"PO-Revision-Date: 2011-11-04 06:42+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2011-11-06 08:45+0000\n"
+"Last-Translator: Mateusz Tybura <wujciol@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-05 06:00+0000\n"
+"X-Launchpad-Export-Date: 2011-11-07 05:48+0000\n"
 "X-Generator: Launchpad (build 14231)\n"
 
 #. file 'caffeine/core.py', line 172
@@ -96,7 +96,8 @@ msgstr ""
 "  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
 "  Dariusz Jakoniuk https://launchpad.net/~darcio53\n"
 "  Filip Stepien https://launchpad.net/~filstep\n"
-"  Marcin Biedroń https://launchpad.net/~biedro"
+"  Marcin Biedroń https://launchpad.net/~biedro\n"
+"  Mateusz Tybura https://launchpad.net/~wujciol"
 
 #. file 'caffeine/main.py', line 491
 #. file 'caffeine/main.py', line 604
@@ -114,6 +115,8 @@ msgid ""
 "An application to temporarily prevent the activation of both\n"
 " the screen saver and the \"sleep\" powersaving mode."
 msgstr ""
+"Aplikacja tymczasowo uniemożliwiająca aktywację\n"
+" wygaszacza ekranu i \"uśpienia\""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -230,11 +233,11 @@ msgstr "Pokaż ikonkę w obszarze powiadomień"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Show notification on startup"
-msgstr ""
+msgstr "Pokaż powiadomienie przy starcie"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."

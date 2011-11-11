@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-02 16:50+0000\n"
-"PO-Revision-Date: 2011-11-04 06:46+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2011-11-09 14:04+0000\n"
+"Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-05 06:00+0000\n"
-"X-Generator: Launchpad (build 14231)\n"
+"X-Launchpad-Export-Date: 2011-11-10 05:01+0000\n"
+"X-Generator: Launchpad (build 14263)\n"
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
@@ -110,6 +110,8 @@ msgid ""
 "An application to temporarily prevent the activation of both\n"
 " the screen saver and the \"sleep\" powersaving mode."
 msgstr ""
+"Egy alkalmazás amely ideiglenesen megakadályozza, hogy életbe lépjen \n"
+" a monitor energiatakarékossági módja vagy a képernyőkímélő"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -226,7 +228,7 @@ msgstr "Értesítés megjelenítése induláskor"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
