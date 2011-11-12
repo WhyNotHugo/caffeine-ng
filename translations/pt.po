@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-02 16:50+0000\n"
+"POT-Creation-Date: 2011-11-11 11:25+0000\n"
 "PO-Revision-Date: 2011-11-04 06:43+0000\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-05 06:00+0000\n"
-"X-Generator: Launchpad (build 14231)\n"
+"X-Launchpad-Export-Date: 2011-11-12 04:57+0000\n"
+"X-Generator: Launchpad (build 14277)\n"
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
@@ -61,7 +61,7 @@ msgid "Activated for "
 msgstr "Ativado para "
 
 #. file 'caffeine/core.py', line 418
-#. file 'caffeine/main.py', line 375
+#. file 'caffeine/main.py', line 200
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine está a dormir: gestão de energia está activa"
 
@@ -83,11 +83,11 @@ msgstr ""
 msgid "Please install"
 msgstr "Por favor instale"
 
-#. file 'caffeine/main.py', line 363
+#. file 'caffeine/main.py', line 188
 msgid "Caffeine is running"
 msgstr "Caffeine está a ser executado"
 
-#. file 'caffeine/main.py', line 440
+#. file 'caffeine/main.py', line 265
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -98,14 +98,14 @@ msgstr ""
 "  Sérgio Marques https://launchpad.net/~sergio+marques\n"
 "  Tiago Silva https://launchpad.net/~tiagosilva"
 
-#. file 'caffeine/main.py', line 491
-#. file 'caffeine/main.py', line 604
+#. file 'caffeine/main.py', line 316
+#. file 'caffeine/main.py', line 429
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Desactivar protecção de ecrã"
 
-#. file 'caffeine/main.py', line 491
-#. file 'caffeine/main.py', line 604
+#. file 'caffeine/main.py', line 316
+#. file 'caffeine/main.py', line 429
 msgid "Enable Screensaver"
 msgstr "Permitir Proteção de Ecran"
 
@@ -237,14 +237,6 @@ msgstr ""
 msgid "Select a process name..."
 msgstr "Seleccione um nome de processo ..."
 
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Running Processes"
-msgstr "Processos ativos"
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Recent Processes"
-msgstr "Processos Recentes"
-
 #~ msgid "Other..."
 #~ msgstr "Outro..."
 
@@ -277,6 +269,12 @@ msgstr "Processos Recentes"
 
 #~ msgid "Activate for"
 #~ msgstr "Ativar por"
+
+#~ msgid "Recent Processes"
+#~ msgstr "Processos Recentes"
+
+#~ msgid "Running Processes"
+#~ msgstr "Processos ativos"
 
 #~ msgid ""
 #~ "An application to temporarily prevent the activation of both the screen "

@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-02 16:50+0000\n"
+"POT-Creation-Date: 2011-11-11 11:25+0000\n"
 "PO-Revision-Date: 2011-11-04 06:45+0000\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-05 06:00+0000\n"
-"X-Generator: Launchpad (build 14231)\n"
+"X-Launchpad-Export-Date: 2011-11-12 04:57+0000\n"
+"X-Generator: Launchpad (build 14277)\n"
 
 #. file 'caffeine/core.py', line 172
 #. file 'caffeine/core.py', line 174
@@ -61,7 +61,7 @@ msgid "Activated for "
 msgstr "Geactiveerd voor "
 
 #. file 'caffeine/core.py', line 418
-#. file 'caffeine/main.py', line 375
+#. file 'caffeine/main.py', line 200
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine is in slaapstand; Energiebesparing is actief"
 
@@ -81,11 +81,11 @@ msgstr "Caffeine houdt energiebesparende modi en schermbeveiliging tegen "
 msgid "Please install"
 msgstr "Installeren a.u.b."
 
-#. file 'caffeine/main.py', line 363
+#. file 'caffeine/main.py', line 188
 msgid "Caffeine is running"
 msgstr "Cafeïne staat aan"
 
-#. file 'caffeine/main.py', line 440
+#. file 'caffeine/main.py', line 265
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -97,14 +97,14 @@ msgstr ""
 "  Lars Vierbergen https://launchpad.net/~vierbergenlars\n"
 "  Zillode https://launchpad.net/~zillode"
 
-#. file 'caffeine/main.py', line 491
-#. file 'caffeine/main.py', line 604
+#. file 'caffeine/main.py', line 316
+#. file 'caffeine/main.py', line 429
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Schermbeveiliging blokkeren"
 
-#. file 'caffeine/main.py', line 491
-#. file 'caffeine/main.py', line 604
+#. file 'caffeine/main.py', line 316
+#. file 'caffeine/main.py', line 429
 msgid "Enable Screensaver"
 msgstr "Schermbeveiliging aanzetten"
 
@@ -232,14 +232,6 @@ msgstr ""
 msgid "Select a process name..."
 msgstr "Selecteer een proces naam"
 
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Running Processes"
-msgstr "Actieve Processen"
-
-#. file 'share/caffeine/glade/proc.glade', line ?
-msgid "Recent Processes"
-msgstr "Recente Processen"
-
 #~ msgid "5 minutes"
 #~ msgstr "5 minuten"
 
@@ -263,6 +255,12 @@ msgstr "Recente Processen"
 
 #~ msgid "Other..."
 #~ msgstr "Overige..."
+
+#~ msgid "Running Processes"
+#~ msgstr "Actieve Processen"
+
+#~ msgid "Recent Processes"
+#~ msgstr "Recente Processen"
 
 #~ msgid ""
 #~ "An application to temporarily prevent the activation of both the screen "
