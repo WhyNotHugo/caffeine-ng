@@ -3,6 +3,8 @@
 import kaa.metadata
 import commands
 import sys
+import os
+import stat
 
 if __name__ == "__main__":
 
@@ -11,13 +13,16 @@ if __name__ == "__main__":
         if not bool(output):
             print 1
             sys.exit(1)
+
         for filepath in output.split("\n"):
             if filepath != "":
                 meta = kaa.metadata.parse(filepath)
-                url = meta.url
-                length = meta.length
-                print url[7:]+" "+str(length).split(".")[0]
+                url = meta.url[7:]
+                length = str(meta.length)
+                iden = str(os.stat(url).st_ino) + length
+                print iden+" "+length.split(".")[0]
 
     except Exception, data:
-        print 1
-        sys.exit(1)
+        print 2
+        print data
+        sys.exit(2)

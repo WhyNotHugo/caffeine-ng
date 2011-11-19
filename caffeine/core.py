@@ -126,24 +126,43 @@ class Caffeine(GObject.GObject):
 
     def _check_for_Flash(self):
 
+        class escape(Exception):pass
+
         try:
             ## look for files opened by flashplayer that begin with 'Flash'
 
             output = commands.getoutput("python flash_detect.py")
 
             if output == "1":
-                return True
+                raise escape
 
+            elif output.startswith("2\n"):
+                data = output.split("\n")[-1]
+                logging.error("Exception: " + str(data))
+
+                raise escape
+                
+
+
+            parsed = []
             for row in output.split("\n"):
-                filepath, length = row.split(" ")
-                length = int(length)
-                if filepath != "" and filepath not in self.flash_durations:
-                    end_time = time.localtime(int(time.time() + length))
-                    self.flash_durations[filepath] = end_time
-                            
-            ### clear out old filenames
+                try:
+                    iden, length = row.split(" ")
+                    length = int(length)
+                    parsed.append([iden, length])
+                
+                except Exception, data:
+                    logging.error("Exception: " + str(data))
+
+            for iden, length in parsed:
+                if iden != "" and iden not in self.flash_durations:
+                        end_time = time.localtime(int(time.time() + length))
+                        self.flash_durations[iden] = end_time
+
+            idens = [iden for iden, length in parsed]
+
             for key in self.flash_durations.keys():
-                if not os.path.exists(key):
+                if key not in idens:
                     self.flash_durations.pop(key)
 
             dtimes = []
@@ -156,11 +175,11 @@ class Caffeine(GObject.GObject):
             if dtimes == []:
                 if self.preventedForFlash:
                     self.setActivated(False, note=False)
-                return True
+                raise escape
 
             dtime = dtimes[0]
             if dtime <= 0:
-                return True
+                raise escape
 
             if self.preventedForFlash or not self.getActivated():
 
@@ -179,10 +198,18 @@ class Caffeine(GObject.GObject):
                     "NOT activate because Caffeine is already "+
                     "activated for a different reason.")
 
+            return True
 
+
+        except escape:
+            pass
 
         except Exception, data:
+
             logging.error("Exception: " + str(data))
+            
+        if self.preventedForFlash:
+            self.setActivated(False, note=False)
 
         return True
 
