@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-18 20:12+0000\n"
-"PO-Revision-Date: 2011-11-04 06:45+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2011-12-20 09:23+0000\n"
+"Last-Translator: tzem <athmakrigiannis@gmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-20 05:36+0000\n"
-"X-Generator: Launchpad (build 14299)\n"
+"X-Launchpad-Export-Date: 2011-12-21 05:22+0000\n"
+"X-Generator: Launchpad (build 14538)\n"
 
 #. file 'caffeine/core.py', line 191
 #. file 'caffeine/core.py', line 193
@@ -86,7 +86,7 @@ msgstr "Παρακαλώ εγκαταστήστε"
 
 #. file 'caffeine/main.py', line 188
 msgid "Caffeine is running"
-msgstr ""
+msgstr "Caffeine βρίσκεται σε λειτουργία"
 
 #. file 'caffeine/main.py', line 265
 msgid "translator-credits"
@@ -94,6 +94,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
 "  thunk https://launchpad.net/~thunk\n"
+"  tzem https://launchpad.net/~athmakrigiannis\n"
 "  Μανώλης Σκόνδρας https://launchpad.net/~emmaskon"
 
 #. file 'caffeine/main.py', line 316
@@ -105,7 +106,7 @@ msgstr "Απενεργοποίηση προστασίας οθόνης"
 #. file 'caffeine/main.py', line 316
 #. file 'caffeine/main.py', line 429
 msgid "Enable Screensaver"
-msgstr ""
+msgstr "Ενέργοποίηση της προστασίας οθόνης"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
@@ -127,7 +128,7 @@ msgstr "Λεπτά:"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver for..."
-msgstr ""
+msgstr "Απενεργοποίηση προστασίας οθόνης για..."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
@@ -222,19 +223,19 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Tray icon"
-msgstr ""
+msgstr "Εικονίδιο συστήματος"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Show tray icon"
-msgstr ""
+msgstr "Εμφάνιση εικονιδίου συστήματος"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Show notification on startup"
-msgstr ""
+msgstr "Δείτε την ειδοποίηση κατα την εκκίνηση"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
