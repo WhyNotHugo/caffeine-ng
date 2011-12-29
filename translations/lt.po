@@ -1,0 +1,227 @@
+# Lithuanian translation for caffeine
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the caffeine package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: caffeine\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-11-18 20:12+0000\n"
+"PO-Revision-Date: 2011-12-28 17:03+0000\n"
+"Last-Translator: Craftaz <Unknown>\n"
+"Language-Team: Lithuanian <lt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-12-29 04:50+0000\n"
+"X-Generator: Launchpad (build 14560)\n"
+
+#. file 'caffeine/core.py', line 191
+#. file 'caffeine/core.py', line 193
+msgid "Activated for Flash video"
+msgstr "Įjungti peržiūrimiems Flash vaizdo įrašams"
+
+#. file 'caffeine/core.py', line 252
+msgid "Activated for Quake Live"
+msgstr "Įjungti Quake puslapiui"
+
+#. file 'caffeine/core.py', line 319
+msgid " and "
+msgstr " ir "
+
+#. file 'caffeine/core.py', line 326
+#. file 'caffeine/core.py', line 332
+msgid "hour"
+msgstr "valanda"
+
+#. file 'caffeine/core.py', line 326
+#. file 'caffeine/core.py', line 338
+msgid "minute"
+msgstr "minutė"
+
+#. file 'caffeine/core.py', line 334
+msgid "hours"
+msgstr "valandų"
+
+#. file 'caffeine/core.py', line 340
+msgid "minutes"
+msgstr "minučių"
+
+#. file 'caffeine/core.py', line 391
+msgid "Timed activation set; "
+msgstr "Aktyvuotas riboto laiko režimas "
+
+#. file 'caffeine/core.py', line 392
+msgid "Caffeine will prevent powersaving for the next "
+msgstr "Caffeine, veikiant šioms programoms, neleis kompiuteriui užmigti "
+
+#. file 'caffeine/core.py', line 399
+msgid "Activated for "
+msgstr "Įjungta "
+
+#. file 'caffeine/core.py', line 445
+#. file 'caffeine/main.py', line 200
+msgid "Caffeine is dormant; powersaving is enabled"
+msgstr "Caffeine neveikia; energijos taupymas yra įjungtas"
+
+#. file 'caffeine/core.py', line 453
+msgid "Timed activation cancelled (was set for "
+msgstr "Riboto laiko veikimas išjungtas (buvo nustatytas "
+
+#. file 'caffeine/core.py', line 470
+msgid " have elapsed; powersaving is re-enabled"
+msgstr " praėjo; įjungtas energijos taupymo rėžimas"
+
+#. file 'caffeine/core.py', line 489
+msgid "Caffeine is preventing powersaving modes and screensaver activation "
+msgstr ""
+"Caffeine neleidžia kompiuteriui pereiti į  miego rėžimą ar įjungti ekrano "
+"užsklandą kol veikia sąraše esančios programos. "
+
+#. file 'caffeine/main.py', line 43
+msgid "Please install"
+msgstr "Instaliuokite"
+
+#. file 'caffeine/main.py', line 188
+msgid "Caffeine is running"
+msgstr "Šiuo metu Caffeine veikia"
+
+#. file 'caffeine/main.py', line 265
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Craftaz https://launchpad.net/~thecloudmaker"
+
+#. file 'caffeine/main.py', line 316
+#. file 'caffeine/main.py', line 429
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver"
+msgstr "Išjungti ekrano užsklandą"
+
+#. file 'caffeine/main.py', line 316
+#. file 'caffeine/main.py', line 429
+msgid "Enable Screensaver"
+msgstr "Įjungti ekrano užsklandą"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid ""
+"An application to temporarily prevent the activation of both\n"
+" the screen saver and the \"sleep\" powersaving mode."
+msgstr ""
+"Programa nustatyta laikinai neleisti kompiuteriui\n"
+"įjungti ekrano užsklandos ar užmigti"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Duration"
+msgstr "Trukmė"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Hours:"
+msgstr "Valandos:"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Minutes:"
+msgstr "Minutės:"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Disable Screensaver for..."
+msgstr "Išjungiama ekrano užsklanda..."
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Preferences"
+msgstr "Nustatymai"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Autostart"
+msgstr "Automatinis pasileidimas"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Start Caffeine on login"
+msgstr "Paleisti Caffeine prisijungiant"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid ""
+"Enable this option to automatically run Caffeine as soon as\n"
+"your computer has finished starting up and you have\n"
+"successfully entered your username and password."
+msgstr "Caffeine automatiškai bus paleista įjungiant kompiuterį"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Automatic activation"
+msgstr "Automatinis aktyvavimas"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid ""
+"Caffeine can activate automatically\n"
+"whenever certain programs are runnning."
+msgstr ""
+"Caffeine bus automatiškai paleista \n"
+"veikiant tam tikroms programoms"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "List of programs that Caffeine activates for:"
+msgstr "Programų sąrašas"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid ""
+"When Caffeine detects that one of the processes in this\n"
+"list is running, it will prevent the activation of the screensaver\n"
+"and powersaving modes. This can be useful for applications\n"
+"(particularly full-screen applications) that do not properly\n"
+"prevent the screensaver and powersaving modes on their own."
+msgstr ""
+"Veikiant šiame saraše esančioms programoms,\n"
+"Caffeine neleis kompiuteriui užmigti ar įjungti\n"
+"ekrano užsklandos."
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Activate for Flash video"
+msgstr "Įjungti Flash įskiepiui"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid ""
+"Some websites, such as www.youtube.com, show videos using\n"
+"a technology known as \"Flash\". Enable this option to cause\n"
+"Caffeine to automatically prevent the activation of the\n"
+"screensaver and powersaving modes when a Flash video is\n"
+"embedded in the web page that you are currently browsing."
+msgstr ""
+"www.youtube.com vaizdo pergrojimui naudoja įskiepį pavadinimu\n"
+"\"Flash\". Įjunkite šį pasirinkimą noredami, kad kompiuteris neužmigtų\n"
+"ir neįjungtų ekrano užsklandos žiurint vaizdo įrašus ar naudojantis\n"
+"kitomis programomis sukurtomis \"Flash\"."
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Activate for Quake Live"
+msgstr "Įjungti Quake Live puslapiui"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid ""
+"Enable this option to cause Caffeine to automatically prevent\n"
+"the activation of the screensaver and powersaving modes\n"
+"when it detects that you are playing the Quake Live video\n"
+"game. Visit www.quakelive.com to play the game for free."
+msgstr ""
+"Noredami neleisti kompiuteriui užmigti ar įjungti ekrano užsklandos\n"
+"kol yra naudojamasi www.quakelive.com, įjunkite šį pasirinkimą."
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Tray icon"
+msgstr "Piktograma užduočių juostoje"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Show tray icon"
+msgstr "Rodyti piktogramą užduočių juostoje"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "Show notification on startup"
+msgstr "Rodyti pranešimą paleidžiant programą"
+
+#. file 'share/caffeine/glade/GUI.glade', line ?
+msgid "    "
+msgstr "    "
+
+#. file 'share/caffeine/glade/proc.glade', line ?
+msgid "Select a process name..."
+msgstr "Pasirinkite užduočių pavadinimą..."
