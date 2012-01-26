@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-18 20:12+0000\n"
-"PO-Revision-Date: 2011-11-04 06:46+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2012-01-25 18:54+0000\n"
+"Last-Translator: Jan Bares <janb175@gmail.com>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-20 05:35+0000\n"
-"X-Generator: Launchpad (build 14299)\n"
+"X-Launchpad-Export-Date: 2012-01-26 05:30+0000\n"
+"X-Generator: Launchpad (build 14719)\n"
 
 #. file 'caffeine/core.py', line 191
 #. file 'caffeine/core.py', line 193
@@ -91,6 +91,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Adam M. https://launchpad.net/~adydas95\n"
 "  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
+"  Jan Bares https://launchpad.net/~janb175\n"
 "  Konki https://launchpad.net/~pavel-konkol\n"
 "  Roman Horník https://launchpad.net/~roman.hornik"
 
@@ -110,6 +111,7 @@ msgid ""
 "An application to temporarily prevent the activation of both\n"
 " the screen saver and the \"sleep\" powersaving mode."
 msgstr ""
+"Aplikace pro dočasné zabránění aktivace spořiče obrazovky i režimu spánku"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -223,7 +225,7 @@ msgstr "Zobrazovat ikonu v panelu"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Show notification on startup"
-msgstr ""
+msgstr "Zobrazit oznámení při spuštění"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "    "
