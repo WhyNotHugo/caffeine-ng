@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-18 20:12+0000\n"
-"PO-Revision-Date: 2011-11-04 06:46+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2012-06-19 08:07+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-20 05:36+0000\n"
-"X-Generator: Launchpad (build 14299)\n"
+"X-Launchpad-Export-Date: 2012-06-20 04:39+0000\n"
+"X-Generator: Launchpad (build 15435)\n"
 
 #. file 'caffeine/core.py', line 191
 #. file 'caffeine/core.py', line 193
@@ -91,13 +91,13 @@ msgstr "Caffeine se está ejecutando"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Adolfo Jayme Barrientos https://launchpad.net/~fitoschido\n"
 "  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
 "  DiegoJ https://launchpad.net/~diegojromerolopez\n"
 "  Fabian  https://launchpad.net/~fabiutah\n"
 "  Fido https://launchpad.net/~fedevera\n"
-"  Fitoschido https://launchpad.net/~fitoschido\n"
 "  Ildefonso Gómez https://launchpad.net/~ilde\n"
-"  Julián Alarcón https://launchpad.net/~alarconj\n"
+"  Julian Alarcon https://launchpad.net/~alarconj\n"
 "  Martín V. https://launchpad.net/~martinvukovic\n"
 "  pablitofuerte https://launchpad.net/~pablitofuerte"
 
@@ -238,7 +238,7 @@ msgstr "Mostrar notificación en el arranque"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
