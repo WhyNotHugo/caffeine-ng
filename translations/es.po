@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-18 20:12+0000\n"
-"PO-Revision-Date: 2012-06-20 07:27+0000\n"
+"PO-Revision-Date: 2012-07-01 10:57+0000\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-06-21 05:30+0000\n"
-"X-Generator: Launchpad (build 15435)\n"
+"X-Launchpad-Export-Date: 2012-07-02 04:39+0000\n"
+"X-Generator: Launchpad (build 15520)\n"
 
 #. file 'caffeine/core.py', line 191
 #. file 'caffeine/core.py', line 193
@@ -67,7 +67,7 @@ msgstr "Caffeine está durmiendo; se activó el ahorro de energía"
 
 #. file 'caffeine/core.py', line 453
 msgid "Timed activation cancelled (was set for "
-msgstr "Activación por tiempo cancelada (se estableció por "
+msgstr ""
 
 #. file 'caffeine/core.py', line 470
 msgid " have elapsed; powersaving is re-enabled"
@@ -96,6 +96,7 @@ msgstr ""
 "  DiegoJ https://launchpad.net/~diegojromerolopez\n"
 "  Fabian  https://launchpad.net/~fabiutah\n"
 "  Fido https://launchpad.net/~fedevera\n"
+"  Iddar Olivares https://launchpad.net/~iddar-olivares-servicios\n"
 "  Ildefonso Gómez https://launchpad.net/~ilde\n"
 "  Julian Alarcon https://launchpad.net/~alarconj\n"
 "  Martín V. https://launchpad.net/~martinvukovic\n"
