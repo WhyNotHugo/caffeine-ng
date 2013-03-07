@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-18 20:12+0000\n"
-"PO-Revision-Date: 2013-02-20 10:27+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2013-03-06 15:45+0000\n"
+"Last-Translator: Atanas Kovachki <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-02-21 05:23+0000\n"
-"X-Generator: Launchpad (build 16491)\n"
+"X-Launchpad-Export-Date: 2013-03-07 05:00+0000\n"
+"X-Generator: Launchpad (build 16514)\n"
 
 #. file 'caffeine/core.py', line 191
 #. file 'caffeine/core.py', line 193
@@ -91,14 +91,14 @@ msgstr "Caffeine вече е стартиран"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Atanas Kovachki https://launchpad.net/~crashdeburn\n"
+"  Atanas Kovachki https://launchpad.net/~zdar\n"
 "  Caffeine Developers https://launchpad.net/~caffeine-developers"
 
 #. file 'caffeine/main.py', line 316
 #. file 'caffeine/main.py', line 429
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
-msgstr "Изключи скрийнсейвърът"
+msgstr "Изключване на скрийнсейвъра"
 
 #. file 'caffeine/main.py', line 316
 #. file 'caffeine/main.py', line 429
@@ -235,3 +235,49 @@ msgstr "    "
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
 msgstr "Изберете името на процеса..."
+
+#~ msgid "5 minutes"
+#~ msgstr "5 минути"
+
+#~ msgid "10 minutes"
+#~ msgstr "10 минути"
+
+#~ msgid "15 minutes"
+#~ msgstr "15 минути"
+
+#~ msgid "30 minutes"
+#~ msgstr "30 минути"
+
+#~ msgid "1 hour"
+#~ msgstr "1 час"
+
+#~ msgid "2 hours"
+#~ msgstr "2 часа"
+
+#~ msgid "3 hours"
+#~ msgstr "3 часа"
+
+#~ msgid "4 hours"
+#~ msgstr "4 часа"
+
+#~ msgid "Configure Caffeine"
+#~ msgstr "Конфигуриране на Caffeine"
+
+#~ msgid "Running Processes"
+#~ msgstr "Стартирани процеси"
+
+#~ msgid "Recent Processes"
+#~ msgstr "Последни процеси"
+
+#~ msgid "Activate for"
+#~ msgstr "Активиране за"
+
+#~ msgid ""
+#~ "An application to temporarily prevent the activation of both the screen "
+#~ "saver and the \"sleep\" powersaving mode."
+#~ msgstr ""
+#~ "Приложение за временно предотвратяване на стартирането на скрийнсейвъра или "
+#~ "прехода в режим на приспиване за пестене на енергия."
+
+#~ msgid "Other..."
+#~ msgstr "Друго..."
