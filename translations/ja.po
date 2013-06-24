@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-18 20:12+0000\n"
-"PO-Revision-Date: 2011-11-04 06:44+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2013-06-23 12:38+0000\n"
+"Last-Translator: Akira Nakagawa <matyapiro31@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-20 05:36+0000\n"
-"X-Generator: Launchpad (build 14299)\n"
+"X-Launchpad-Export-Date: 2013-06-24 04:45+0000\n"
+"X-Generator: Launchpad (build 16677)\n"
 
 #. file 'caffeine/core.py', line 191
 #. file 'caffeine/core.py', line 193
@@ -58,7 +58,7 @@ msgstr ""
 
 #. file 'caffeine/core.py', line 399
 msgid "Activated for "
-msgstr ""
+msgstr "アクティベート対象: "
 
 #. file 'caffeine/core.py', line 445
 #. file 'caffeine/main.py', line 200
@@ -89,6 +89,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Akira Nakagawa https://launchpad.net/~matyapiro31\n"
 "  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
 "  frederyk https://launchpad.net/~frederyk"
 
@@ -96,7 +97,7 @@ msgstr ""
 #. file 'caffeine/main.py', line 429
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
-msgstr ""
+msgstr "スクリーンセーバーの無効化"
 
 #. file 'caffeine/main.py', line 316
 #. file 'caffeine/main.py', line 429
