@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-18 20:12+0000\n"
-"PO-Revision-Date: 2011-11-04 06:44+0000\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"PO-Revision-Date: 2013-08-04 17:17+0000\n"
+"Last-Translator: Stuartlittle1970@gmail.com <Stuartlittle1970@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-20 05:36+0000\n"
-"X-Generator: Launchpad (build 14299)\n"
+"X-Launchpad-Export-Date: 2013-08-05 05:34+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #. file 'caffeine/core.py', line 191
 #. file 'caffeine/core.py', line 193
@@ -91,6 +91,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
 "  Fedik https://launchpad.net/~fedikw\n"
+"  Stuartlittle1970@gmail.com https://launchpad.net/~stuartlittle1970\n"
 "  kingdruid https://launchpad.net/~kingdruid"
 
 #. file 'caffeine/main.py', line 316
@@ -109,6 +110,8 @@ msgid ""
 "An application to temporarily prevent the activation of both\n"
 " the screen saver and the \"sleep\" powersaving mode."
 msgstr ""
+"Додаток для тимчасового запобігання активації екранної заставки\n"
+"та режиму зниженого енергоспоживання."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Duration"
@@ -225,7 +228,7 @@ msgstr "Показувати повідомлення під час запуск
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #. file 'share/caffeine/glade/proc.glade', line ?
 msgid "Select a process name..."
