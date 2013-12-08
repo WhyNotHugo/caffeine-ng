@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.4.1\n"
-"POT-Creation-Date: 2011-11-18 20:12:28.654134\n"
+"POT-Creation-Date: 2013-12-08 23:27:13.232308\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,12 +69,12 @@ msgid "translator-credits"
 msgstr ""
 msgid "Disable Screensaver"
 #. file 'caffeine/main.py', line 316
-#. file 'caffeine/main.py', line 429
+#. file 'caffeine/main.py', line 431
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Enable Screensaver"
 #. file 'caffeine/main.py', line 316
-#. file 'caffeine/main.py', line 429
+#. file 'caffeine/main.py', line 431
 msgstr ""
 msgid ""
 "An application to temporarily prevent the activation of both\n"

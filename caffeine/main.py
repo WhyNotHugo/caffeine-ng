@@ -323,9 +323,11 @@ class GUI(object):
     
     def on_R_click(self, status_icon, mbutton, time, data=None):
         ## popdown menu
-        self.menu.popup(None, None,
-                Gtk.status_icon_position_menu, 3, time, self.status_icon)
-        
+        self.menu.show_all()
+        def func(menu, user_data): 
+            return status_icon.position_menu(self.menu, status_icon) 
+        self.menu.popup(None, None, func, self.status_icon, 3, time)
+    
     #### Window callbacks
     def on_add_button_clicked(self, button, data=None):
         response = self.ProcAdd.run()
