@@ -8,7 +8,7 @@
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
     <property name="program_name">Caffeine</property>
-    <property name="version">2.5 (bzr 503)</property>
+    <property name="version">2.5 (bzr 504)</property>
     <property name="copyright">Copyright &#169; 2011&#8211;2013 Brad Smith, Tommy Brunn, Isaiah Heyer &amp; Reuben Thomas</property>
     <property name="comments" translatable="yes">An application to temporarily prevent the activation of both
  the screen saver and the "sleep" powersaving mode.</property>
@@ -20,7 +20,8 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
     <property name="authors">Brad Smith http://launchpad.net/~bnsmith
 Tommy Brunn http://launchpad.net/~reklamnevon
-Isaiah Heyer http://launchpad.net/~freshapplepy</property>
+Isaiah Heyer http://launchpad.net/~freshapplepy
+Reuben Thomas http://launchpad.net/~rrt</property>
     <property name="translator_credits">Joan Rodr&#237;guez
 Ahmed Mohammed
 thunk
@@ -598,17 +599,6 @@ prevent the screensaver and powersaving modes on their own.</property>
                                       </packing>
                                     </child>
                                     <child>
-                                      <object class="GtkHSeparator" id="hseparator1">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">4</property>
-                                      </packing>
-                                    </child>
-                                    <child>
                                       <object class="GtkCheckButton" id="flash_cbutton">
                                         <property name="label" translatable="yes">Activate for Flash video</property>
                                         <property name="visible">True</property>
@@ -628,17 +618,6 @@ embedded in the web page that you are currently browsing.</property>
                                         <property name="position">5</property>
                                       </packing>
                                     </child>
-                                    <child>
-                                      <object class="GtkHSeparator" id="hseparator2">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">6</property>
-                                      </packing>
-                                    </child>
                                   </object>
                                 </child>
                               </object>
@@ -646,67 +625,6 @@ embedded in the web page that you are currently browsing.</property>
                                 <property name="expand">True</property>
                                 <property name="fill">True</property>
                                 <property name="position">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label2">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">Tray icon</property>
-                                <attributes>
-                                  <attribute name="weight" value="bold" />
-                                </attributes>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">4</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkAlignment" id="alignment5">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="left_padding">10</property>
-                                <child>
-                                  <object class="GtkCheckButton" id="trayicon_cbutton">
-                                    <property name="label" translatable="yes">Show tray icon</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="draw_indicator">True</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">5</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkAlignment" id="alignment6">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="left_padding">20</property>
-                                <child>
-                                  <object class="GtkCheckButton" id="notification_cbutton">
-                                    <property name="label" translatable="yes">Show notification on startup</property>
-                                    <property name="visible">True</property>
-                                    <property name="sensitive">False</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">False</property>
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="draw_indicator">True</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">6</property>
                               </packing>
                             </child>
                           </object>

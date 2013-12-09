@@ -151,21 +151,10 @@ class GUI(object):
         # again and again
         get = builder.get_object
         
-        show_tray_icon = settings.get_boolean("show-tray-icon")
-        show_notification = settings.get_boolean("show-notification")
-
         self.AppInd = AppIndicator3.Indicator.new("caffeine-cup-empty",
                                                   "caffeine",
                                                   AppIndicator3.IndicatorCategory.APPLICATION_STATUS)
-        #print [AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon]
-        self.AppInd.set_status ([AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon])
-
-        if show_tray_icon is False and show_notification is True and options.preferences is not True:
-            note = Notify.Notification(_("Caffeine is running"), _("To show the tray icon, \nrun ") + "'caffeine -p' " + _("or open Caffeine Preferences from your system menu."), "caffeine")
-
-            note.show()
-        
-        
+        self.AppInd.set_status (AppIndicator3.IndicatorStatus.ACTIVE)
 
         self.activate_menuitem = get("activate_menuitem")
 
@@ -213,19 +202,9 @@ class GUI(object):
 
         self.ql_cb = get("ql_cbutton")
         self.flash_cb = get("flash_cbutton")
-        self.trayicon_cb = get("trayicon_cbutton")
-        self.notification_cb = get("notification_cbutton")
-
-        self.notification_cb.set_sensitive(not show_tray_icon)
 
         settings.connect("changed::act-for-flash", self.on_flash_changed)
-        settings.connect("changed::show-tray-icon", self.on_trayicon_changed)
-        settings.connect("changed::show-notification", self.on_notification_changed)
-
-
         settings.bind("act-for-flash", self.flash_cb, "active", Gio.SettingsBindFlags.DEFAULT)
-        settings.bind("show-tray-icon", self.trayicon_cb, "active", Gio.SettingsBindFlags.DEFAULT)
-        settings.bind("show-notification", self.notification_cb, "active", Gio.SettingsBindFlags.DEFAULT)
 
 
         ## about dialog
@@ -326,32 +305,6 @@ class GUI(object):
     #def on_flash_cbutton_toggled(self, cbutton, data=None):
 
     #    self.Conf.set("act_for_flash", cbutton.get_active())
-
-    ### Tray icon
-
-    def on_trayicon_changed(self, settings, key, data=None):
-        show_tray_icon = settings.get_boolean(key)
-
-        self.AppInd.set_status ([AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon])
-
-        self.trayicon_cb.set_active(show_tray_icon)
-
-        self.notification_cb.set_sensitive(not show_tray_icon)
-    
-   # def on_trayicon_cbutton_toggled(self, cbutton, data=None):
-
-   #     self.Conf.set("show_tray_icon", cbutton.get_active())
-
-    # Startup Notifications
-    def on_notification_changed(self, settings, key, data=None):
-        pass
-        
-    #def on_notification_cbutton_toggled(self, cbutton, data=None):
-            
-    #    self.Conf.set("show_notification", cbutton.get_active())
-
-
-
 
 
     #### Menu callbacks
