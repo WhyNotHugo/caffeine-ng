@@ -95,10 +95,6 @@ class Caffeine(GObject.GObject):
 
         
         settings = Gio.Settings.new(caffeine.BASE_KEY)
-        ## check for Quake Live.
-        self.ql_id = None
-        if settings.get_boolean("act-for-quake"):
-            self.setActivateForQL(True)
 
         ## check for Flash video.
         self.flash_durations = {}
@@ -228,47 +224,6 @@ class Caffeine(GObject.GObject):
             self.ql_id = GObject.timeout_add(15000, self._check_for_QL)
 
         
-    def _check_for_QL(self):
-        
-        dsp = None
-        try:
-            dsp = Xlib.display.Display()
-            screen = dsp.screen()
-            root_win = screen.root
-            
-            activate = False
-            ## iterate through all of the X windows
-            for window in root_win.query_tree()._data['children']:
-                window_name = window.get_wm_name()
-
-                width = window.get_geometry()._data["width"]
-                height = window.get_geometry()._data["height"]
-                if window_name == "QuakeLive":
-                    
-                    activate = True
-
-                    if self.preventedForQL or not self.getActivated():
-
-                        self.status_string = _("Activated for Quake Live")
-
-                        logging.info("Caffeine has detected that 'QuakeLive' is running, and will auto-activate")
-
-                        self.setActivated(True)
-                        self.preventedForQL = True
-
-            if not activate and self.preventedForQL:
-                logging.info("Caffeine had previously auto-activated for QuakeLive, but it is no longer running; deactivating...")
-                self.setActivated(False)
-
-        except Exception, data:
-            logging.error("Exception: " + str(data))
-        
-        finally:
-            if dsp != None:
-                dsp.close()
-
-        return True
-
     def _check_for_process(self):
         activate = False
         for proc in self.ProcMan.get_process_list():

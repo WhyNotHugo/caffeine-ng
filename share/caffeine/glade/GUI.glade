@@ -8,7 +8,7 @@
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
     <property name="program_name">Caffeine</property>
-    <property name="version">2.4.1 (bzr 494)</property>
+    <property name="version">2.4.1 (bzr 496)</property>
     <property name="copyright">Copyright &#169; 2011 Brad Smith, Tommy Brunn &amp; Isaiah Heyer</property>
     <property name="comments" translatable="yes">An application to temporarily prevent the activation of both
  the screen saver and the "sleep" powersaving mode.</property>
@@ -678,25 +678,6 @@ embedded in the web page that you are currently browsing.</property>
                                         <property name="expand">False</property>
                                         <property name="fill">True</property>
                                         <property name="position">6</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkCheckButton" id="ql_cbutton">
-                                        <property name="label" translatable="yes">Activate for Quake Live</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">False</property>
-                                        <property name="tooltip_text" translatable="yes">Enable this option to cause Caffeine to automatically prevent
-the activation of the screensaver and powersaving modes
-when it detects that you are playing the Quake Live video
-game. Visit www.quakelive.com to play the game for free.</property>
-                                        <property name="use_action_appearance">False</property>
-                                        <property name="draw_indicator">True</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">7</property>
                                       </packing>
                                     </child>
                                   </object>

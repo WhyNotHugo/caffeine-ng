@@ -5,11 +5,6 @@
             <summary></summary>
             <description></description>
         </key>
-        <key type="b" name="act-for-quake">
-            <default>false</default>
-            <summary></summary>
-            <description></description>
-        </key>
         <key type="b" name="autostart">
             <default>false</default>
             <summary></summary>

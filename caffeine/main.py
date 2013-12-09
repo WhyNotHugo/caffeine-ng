@@ -247,14 +247,12 @@ class GUI(object):
         self.notification_cb.set_sensitive(not show_tray_icon)
 
         settings.connect("changed::autostart", self.on_autostart_changed)
-        settings.connect("changed::act-for-quake", self.on_ql_changed)
         settings.connect("changed::act-for-flash", self.on_flash_changed)
         settings.connect("changed::show-tray-icon", self.on_trayicon_changed)
         settings.connect("changed::show-notification", self.on_notification_changed)
 
 
         settings.bind("autostart", self.autostart_cb, "active", Gio.SettingsBindFlags.DEFAULT)
-        settings.bind("act-for-quake", self.ql_cb, "active", Gio.SettingsBindFlags.DEFAULT)
         settings.bind("act-for-flash", self.flash_cb, "active", Gio.SettingsBindFlags.DEFAULT)
         settings.bind("show-tray-icon", self.trayicon_cb, "active", Gio.SettingsBindFlags.DEFAULT)
         settings.bind("show-notification", self.notification_cb, "active", Gio.SettingsBindFlags.DEFAULT)
@@ -368,16 +366,6 @@ class GUI(object):
             caffeine.remove_from_startup()
 
 
-    ### Quake Live
-    def on_ql_changed(self, settings, key, data=None):
-        act_for_ql = settings.get_boolean(key)
-
-        self.Core.setActivateForQL(act_for_ql)
-
-        if act_for_ql != self.ql_cb.get_active():
-            self.ql_cb.set_active(act_for_ql)
-
-    
     ### Flash
     def on_flash_changed(self, settings, key, data=None):
         
