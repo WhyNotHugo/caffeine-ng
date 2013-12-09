@@ -1,5 +1,5 @@
-caffeine (2.4.1~bzrxxx-0ubuntu0~ppa0~oneiric) oneiric; urgency=low
+caffeine (2.4.1~bzr487-0ubuntu0~ppa0~saucy) saucy; urgency=low
 
-  * 
+  * Fix right-click on icon (LP #892663)
 
- -- Isaiah <freshapplepy@gmail.com>  Tue, 25 Oct 2011 12:37:04 -0500
+ -- Reuben Thomas <rrt@sc3d.org>  Mon, 09 Dec 2013 00:01:47 +0000
