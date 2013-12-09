@@ -4,3 +4,4 @@
 ./debian/caffeine.*.debhelper
 ./debian/caffeine.substvars
 ./debian/files
+./debian/caffeine
