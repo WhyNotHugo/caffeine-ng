@@ -6,5 +6,5 @@ Comment=Change your Caffeine configuration
 Exec=/usr/bin/caffeine -p
 Terminal=false
 Type=Application
-Categories=Settings;DesktopSettings
+Categories=Settings;DesktopSettings;
 StartupNotify=false
