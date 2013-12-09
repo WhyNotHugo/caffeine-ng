@@ -21,12 +21,7 @@
 import os
 import sys
 from gi.repository import Gtk, GObject, Gio
-
-appindicator_avail = True
-try:
-    from gi.repository import AppIndicator3
-except:
-    appindicator_avail = False
+from gi.repository import AppIndicator3
 
 import gi
 import webbrowser 
@@ -169,21 +164,12 @@ class GUI(object):
         show_tray_icon = settings.get_boolean("show-tray-icon")
         show_notification = settings.get_boolean("show-notification")
 
-        if appindicator_avail:
-            self.AppInd = AppIndicator3.Indicator.new("caffeine-cup-empty",
-                            "caffeine",
-                            AppIndicator3.IndicatorCategory.APPLICATION_STATUS)
-            #print [AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon]
-            self.AppInd.set_status ([AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon])
+        self.AppInd = AppIndicator3.Indicator.new("caffeine-cup-empty",
+                                                  "caffeine",
+                                                  AppIndicator3.IndicatorCategory.APPLICATION_STATUS)
+        #print [AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon]
+        self.AppInd.set_status ([AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon])
 
-        else:
-            ## IMPORTANT:
-            ## status icon must be a instance variable  (ie self.)or else it 
-            ## gets thrown out with the garbage, and won't be seen.
-
-            self.status_icon = get("statusicon")
-            self.status_icon.set_visible(show_tray_icon)
-        
         if show_tray_icon is False and show_notification is True and options.preferences is not True:
             note = Notify.Notification(_("Caffeine is running"), _("To show the tray icon, \nrun ") + "'caffeine -p' " + _("or open Caffeine Preferences from your system menu."), "caffeine")
 
@@ -204,10 +190,7 @@ class GUI(object):
         self.menu = get("popup_menu")
         self.menu.show()
 
-
-        if appindicator_avail:
-
-            self.AppInd.set_menu (self.menu)
+        self.AppInd.set_menu (self.menu)
             
         ####
         ### configuration window widgets
@@ -264,15 +247,6 @@ class GUI(object):
         self.othertime_hours = get("hours_spin")
         self.othertime_minutes = get("minutes_spin")
 
-
-        if appindicator_avail is False:
-            ## Handle mouse clicks on status_icon
-            # left click
-            self.status_icon.connect("activate", self.on_L_click)
-            # right click
-            self.status_icon.connect("popup-menu", self.on_R_click)
-
-            
         builder.connect_signals(self)
 
     
@@ -303,10 +277,7 @@ class GUI(object):
         ## toggle the icon, indexing with a bool.
         icon_name = ["caffeine-cup-empty", "caffeine-cup-full"][activated]
 
-        if appindicator_avail:
-            self.AppInd.set_icon (icon_name)
-        else:
-            self.status_icon.set_from_icon_name(icon_name)
+        self.AppInd.set_icon (icon_name)
 
         label = [_("Disable Screensaver"), _("Enable Screensaver")]
         self.activate_menuitem.set_label (label[self.Core.getActivated()])
@@ -371,12 +342,7 @@ class GUI(object):
     def on_trayicon_changed(self, settings, key, data=None):
         show_tray_icon = settings.get_boolean(key)
 
-        if appindicator_avail:
-
-            self.AppInd.set_status ([AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon])
-    
-        else:
-            self.status_icon.set_visible(show_tray_icon)
+        self.AppInd.set_status ([AppIndicator3.IndicatorStatus.PASSIVE, AppIndicator3.IndicatorStatus.ACTIVE][show_tray_icon])
 
         self.trayicon_cb.set_active(show_tray_icon)
 
