@@ -1,17 +1,13 @@
-This package was debianized by Isaiah Heyer <freshapplepy@gmail.com> on
-Wed, 25 Feb 2009 20:09:30 -0600.
-
-#It was downloaded from <url://example.com>
-
-Upstream Author(s): 
+Upstream Authors:
 	
-	Isaiah Heyer freshapplepy@gmail.com
+    Isaiah Heyer freshapplepy@gmail.com
     Tommy Brunn tommy.brunn@gmail.com
     Brad Smith bnsmith@gmail.com
+    Reuben Thomas rrt@sc3d.org
 	
-Copyright: 
+Copyright:
 
-    Copyright (C) 2009 Isaiah Heyer, Tommy Brunn & Brad Smith
+    Copyright (C) 2009-2013 Isaiah Heyer, Tommy Brunn, Brad Smith and Reuben Thomas
 
 License:
 
@@ -32,9 +28,5 @@ License:
 On Debian systems, the complete text of the GNU General
 Public License can be found in `/usr/share/common-licenses/GPL'.
 
-The Debian packaging is (C) 2009, Isaiah Heyer <freshapplepy@gmail.com> and
-is licensed under the GPL, see above.
-
-
-# Please also look if there are files or directories which have a
-# different copyright/license attached and list them here.
+The Debian packaging is (C) 2009-2013 Isaiah Heyer <freshapplepy@gmail.com> and
+Reuben Thomas <rrt@sc3d.org>, and is licensed under the GPL, see above.

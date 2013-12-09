@@ -1,8 +1,8 @@
 #!/usr/bin/make -f
 
-DEB_PYTHON_SYSTEM=pycentral
+export PYBUILD_NAME=caffeine
 
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/class/python-distutils.mk
+%:
+	dh $@ --with python2 --buildsystem=pybuild
 
 

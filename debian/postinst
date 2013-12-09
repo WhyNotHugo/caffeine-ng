@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/sh -e
+
+#DEBHELPER#
 
 gtk-update-icon-cache /usr/share/icons/hicolor
 gtk-update-icon-cache /usr/share/icons/ubuntu-mono-light

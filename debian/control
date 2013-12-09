@@ -1,21 +1,21 @@
 Source: caffeine
 Section: misc
 Priority: optional
-Maintainer: Isaiah Heyer <freshapplepy@gmail.com>
-Build-Depends: cdbs (>=0.4.49), debhelper (>= 7), python-central (>= 0.6)
-XS-Python-Version: >= 2.6
+Maintainer: Reuben Thomas <rrt@sc3d.org>
+Build-Depends: debhelper (>= 8), dh-python, python-all (>= 2.6.6-3~), python-setuptools
+X-Python-Version: >= 2.6
 Standards-Version: 3.8.3
 Homepage: https://launchpad.net/caffeine
 
 Package: caffeine
 Architecture: all
-XB-Python-Version: ${python:Versions}
 Depends:${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
     python-xlib,
     python-appindicator,
     python-xdg,
     python-notify,
     python-kaa-metadata
-Description: Caffeine
- A status bar application able to temporarily prevent the activation
- of both the screensaver and the "sleep" powersaving mode.
+Description: Override the screensaver
+ Caffeine allows the user to prevent the activation of both the
+ screensaver and the "sleep" powersaving mode, either  manually or
+ when certain applications are running.
