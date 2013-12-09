@@ -20,22 +20,12 @@
 
 import os
 import sys
-from gi.repository import Gtk, GObject, Gio
-from gi.repository import AppIndicator3
-
 import gi
+from gi.repository import Gtk, GObject, Gio, AppIndicator3, Notify
 import webbrowser 
-
-
 import dbus
 import ctypes
 import optparse
-
-try:
-    from gi.repository import Notify
-except:
-
-    print _("Please install")+" pynotify"
 
 ## local modules
 import caffeine

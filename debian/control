@@ -11,7 +11,7 @@ Package: caffeine
 Architecture: all
 Depends:${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
     python-xlib,
-    gir1.2-appindicator3-0.1,
+    gir1.2-appindicator3-0.1, gir1.2-notify-0.7,
     python-xdg,
     python-notify,
     python-kaa-metadata

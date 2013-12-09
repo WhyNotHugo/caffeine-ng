@@ -1,4 +1,4 @@
-caffeine (2.5~bzr499~ppa0~saucy) saucy; urgency=low
+caffeine (2.5~bzr500~ppa0~saucy) saucy; urgency=low
 
   * Fix right-click on icon (LP #892663)
   * Several new localisations.
@@ -6,5 +6,6 @@ caffeine (2.5~bzr499~ppa0~saucy) saucy; urgency=low
   * Replace autostart option with an XDG autostart .desktop file.
   * Remove specific support for Quake Live.
   * Require appindicator3; remove non-appindicator support.
+  * Put requirement for notify support in package, not code.
 
  -- Reuben Thomas <rrt@sc3d.org>  Mon, 09 Dec 2013 00:01:47 +0000
