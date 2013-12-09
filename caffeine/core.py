@@ -86,6 +86,8 @@ class Caffeine(GObject.GObject):
         self.timer = None
         self.inhibit_id = None
 
+        # prevent trying to check for it before it's created at self._notify
+        self.ssProxy = None
 
         self.note = None
         
@@ -315,15 +317,17 @@ class Caffeine(GObject.GObject):
             if self.note:
                 self.note.update(title, message, icon)
             else:
-                self.note = Notify.Notification(title, message, icon)
+                self.note = Notify.Notification.new(title, message, icon)
             
             ## Notify OSD doesn't seem to work when sleep is prevented
-            if self.screenSaverCookie != None and self.sleepIsPrevented:
+            if (self.screenSaverCookie != None and self.sleepIsPrevented and
+                self.ssProxy is not None):
                 self.ssProxy.UnInhibit(self.screenSaverCookie)
 
             self.note.show()
 
-            if self.screenSaverCookie != None and self.sleepIsPrevented:
+            if (self.screenSaverCookie != None and self.sleepIsPrevented and
+                self.ssProxy is not None):
                 self.screenSaverCookie = self.ssProxy.Inhibit("Caffeine",
                "User has requested that Caffeine disable the screen saver")
 
