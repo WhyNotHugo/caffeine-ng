@@ -1,0 +1,6 @@
+./.pybuild
+./build
+./debian/caffeine.debhelper.log
+./debian/caffeine.*.debhelper
+./debian/caffeine.substvars
+./debian/files
