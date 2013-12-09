@@ -12,5 +12,6 @@ caffeine (2.5~bzr506~ppa0~saucy) saucy; urgency=low
     environment, not the application.
   * Remove hash-bang lines from non-executable files (fix LP #931875).
   * Fix race condition for notifications, patch from André Ericson (LP #892865).
+  * Fix i18n issues (LP #941495).
 
  -- Reuben Thomas <rrt@sc3d.org>  Mon, 09 Dec 2013 00:01:47 +0000

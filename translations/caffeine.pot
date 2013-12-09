@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.5\n"
-"POT-Creation-Date: 2013-12-09 14:00:19.077702\n"
+"POT-Creation-Date: 2013-12-09 22:00:26.528499\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -166,9 +166,8 @@ msgid "Automatic activation"
 msgstr ""
 msgid ""
 "Caffeine can activate automatically\n"
-"whenever certain programs are runnning."
+"whenever certain programs are running."
 #. file 'share/caffeine/glade/GUI.glade', line ?
-#. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "List of programs that Caffeine activates for:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
@@ -182,6 +181,9 @@ msgid ""
 "prevent the screensaver and powersaving modes on their own."
 #. file 'share/caffeine/glade/GUI.glade', line ?
 #. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
+msgstr ""
+msgid "Process Name"
+#. file 'share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Activate for Flash video"
 #. file 'share/caffeine/glade/GUI.glade', line ?
@@ -203,4 +205,9 @@ msgstr ""
 msgid "Select a process name..."
 #. file 'share/caffeine/glade/proc.glade', line ?
 #. file 'debian/caffeine/usr/share/caffeine/glade/proc.glade', line ?
+msgstr ""
+msgid ""
+"Caffeine can activate automatically\n"
+"whenever certain programs are runnning."
+#. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
 msgstr ""
