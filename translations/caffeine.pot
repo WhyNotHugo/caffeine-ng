@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.4.1\n"
-"POT-Creation-Date: 2013-12-09 02:14:27.310625\n"
+"POT-Creation-Date: 2013-12-09 03:04:36.189629\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,32 +119,32 @@ msgid "Caffeine is running"
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 188
 msgstr ""
 msgid "translator-credits"
-#. file 'caffeine/main.py', line 263
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 263
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 263
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 263
+#. file 'caffeine/main.py', line 260
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 260
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 260
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 260
 msgstr ""
 msgid "Disable Screensaver"
-#. file 'caffeine/main.py', line 314
-#. file 'caffeine/main.py', line 419
+#. file 'caffeine/main.py', line 311
+#. file 'caffeine/main.py', line 406
 #. file 'share/caffeine/glade/GUI.glade', line ?
 #. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 314
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 419
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 314
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 419
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 314
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 419
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 311
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 406
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 311
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 406
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 311
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 406
 msgstr ""
 msgid "Enable Screensaver"
-#. file 'caffeine/main.py', line 314
-#. file 'caffeine/main.py', line 419
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 314
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 419
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 314
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 419
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 314
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 419
+#. file 'caffeine/main.py', line 311
+#. file 'caffeine/main.py', line 406
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 311
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 406
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 311
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 406
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 311
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 406
 msgstr ""
 msgid ""
 "An application to temporarily prevent the activation of both\n"
@@ -169,21 +169,6 @@ msgid "Disable Screensaver for..."
 #. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Preferences"
-#. file 'share/caffeine/glade/GUI.glade', line ?
-#. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid "Autostart"
-#. file 'share/caffeine/glade/GUI.glade', line ?
-#. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid "Start Caffeine on login"
-#. file 'share/caffeine/glade/GUI.glade', line ?
-#. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid ""
-"Enable this option to automatically run Caffeine as soon as\n"
-"your computer has finished starting up and you have\n"
-"successfully entered your username and password."
 #. file 'share/caffeine/glade/GUI.glade', line ?
 #. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
 msgstr ""

@@ -238,7 +238,6 @@ class GUI(object):
 
 
 
-        self.autostart_cb = get("autostart_cbutton")
         self.ql_cb = get("ql_cbutton")
         self.flash_cb = get("flash_cbutton")
         self.trayicon_cb = get("trayicon_cbutton")
@@ -246,13 +245,11 @@ class GUI(object):
 
         self.notification_cb.set_sensitive(not show_tray_icon)
 
-        settings.connect("changed::autostart", self.on_autostart_changed)
         settings.connect("changed::act-for-flash", self.on_flash_changed)
         settings.connect("changed::show-tray-icon", self.on_trayicon_changed)
         settings.connect("changed::show-notification", self.on_notification_changed)
 
 
-        settings.bind("autostart", self.autostart_cb, "active", Gio.SettingsBindFlags.DEFAULT)
         settings.bind("act-for-flash", self.flash_cb, "active", Gio.SettingsBindFlags.DEFAULT)
         settings.bind("show-tray-icon", self.trayicon_cb, "active", Gio.SettingsBindFlags.DEFAULT)
         settings.bind("show-notification", self.notification_cb, "active", Gio.SettingsBindFlags.DEFAULT)
@@ -354,16 +351,6 @@ class GUI(object):
     def on_close_button_clicked(self, button, data=None):
 
         self.window.hide()
-
-
-    ## configuration callbacks
-    def on_autostart_changed(self, settings, key, data=None):
-        autostart = settings.get_boolean(key)
-        
-        if autostart:
-            caffeine.add_to_startup()
-        else:
-            caffeine.remove_from_startup()
 
 
     ### Flash

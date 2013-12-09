@@ -69,7 +69,6 @@ IMAGE_PATH = join(BASE_PATH, 'share', 'caffeine', 'images')
 GLADE_PATH = join(BASE_PATH, 'share', 'caffeine', 'glade')
 ICON_PATH  = join(BASE_PATH, 'share', 'icons')
 
-_autostart_dir = join(xdg_config_home, "autostart")
 _desktop_file  = join(BASE_PATH, 'share', 'applications',
         'caffeine.desktop')
 
@@ -104,33 +103,6 @@ def get_icon_pixbuf(size):
                 Gtk.IconLookupFlags.NO_SVG)
 
     return pixbuf
-
-## Functions to add/remove Caffeine from the list of startup programs
-import shutil
-
-def add_to_startup():
-    """Adds caffeine to the programs that start
-    on login.
-    """
-    if not os.path.exists(_autostart_dir):
-        os.makedirs(_autostart_dir)
-    shutil.copy(_desktop_file, _autostart_dir)
-
-def remove_from_startup():
-    """Removes caffeine from the programs that start
-    on login.
-    """
-
-    filename = os.path.join(_autostart_dir, "caffeine.desktop")
-    if os.path.exists(filename):
-        os.remove(filename)
-
-settings = Gio.Settings.new(BASE_KEY)
-if settings.get_boolean("autostart"):
-    add_to_startup()
-else:
-    remove_from_startup()
-
 
 ### Setup translations
 ###
