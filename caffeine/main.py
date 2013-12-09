@@ -159,11 +159,6 @@ class GUI(object):
 
         self.set_icon_is_activated(self.Core.getActivated())
 
-        tooltip = self.Core.status_string
-        if not tooltip:
-            tooltip = _("Caffeine is dormant; powersaving is enabled")
-        #self.status_icon.set_tooltip(tooltip)
-
         ## popup menu
         self.menu = get("popup_menu")
         self.menu.show()
@@ -233,12 +228,8 @@ class GUI(object):
         """
         self.Core.toggleActivated()
         
-    def on_activation_toggled(self, source, active, tooltip):
-
+    def on_activation_toggled(self, source, active):
         self.set_icon_is_activated(active)
-
-
-        #self.status_icon.set_tooltip(tooltip)
 
     def set_icon_is_activated(self, activated):
         
