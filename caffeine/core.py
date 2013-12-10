@@ -17,17 +17,14 @@
 #
 
 
-from gi.repository import Gtk, GObject, Notify
+from gi.repository import GObject
 import os
 import os.path
-import commands
-import sys
 import dbus
 
 import applicationinstance
 import caffeine
 import utils
-import procmanager
 import logging
 
 
@@ -56,16 +53,9 @@ class Caffeine(GObject.GObject):
 
         self.preventedForProcess = False
         self.screenSaverCookie = None
-        self.powerManagementCookie = None
-        self.inhibit_id = None
 
-        # prevent trying to check for it before it's created at self._notify
-        self.ssProxy = None
-
-        self.note = None
-        
         ## check for processes to activate for.
-        id = GObject.timeout_add(10000, self._check_for_process)
+        GObject.timeout_add(10000, self._check_for_process)
         
         print self.status_string
 
@@ -99,47 +89,18 @@ class Caffeine(GObject.GObject):
 
         return True
 
-    def _notify(self, message, icon, title="Caffeine"):
-        """Easy way to use pynotify"""
-        try:
-
-            Notify.init("Caffeine")
-            if self.note:
-                self.note.update(title, message, icon)
-            else:
-                self.note = Notify.Notification.new(title, message, icon)
-            
-            ## Notify OSD doesn't seem to work when sleep is prevented
-            if (self.screenSaverCookie != None and self.sleepIsPrevented and
-                self.ssProxy is not None):
-                self.ssProxy.UnInhibit(self.screenSaverCookie)
-
-            self.note.show()
-
-            if (self.screenSaverCookie != None and self.sleepIsPrevented and
-                self.ssProxy is not None):
-                self.screenSaverCookie = self.ssProxy.Inhibit("Caffeine",
-               "User has requested that Caffeine disable the screen saver")
-
-        except Exception, e:
-            logging.error("Exception occurred:\n" + " " + str(e))
-            logging.error("Exception occurred attempting to display message:\n" + message)
-        finally:
-            return False
-
     def getActivated(self):
         return self.sleepIsPrevented
 
-    def _deactivate(self, note):
-        self.timer.name = "Expired"
-        self.toggleActivated(note=note)
+    def _deactivate(self):
+        self.toggleActivated()
 
     
-    def setActivated(self, activate, note=True):
+    def setActivated(self, activate):
         if self.getActivated() != activate:
-            self.toggleActivated(note)
+            self.toggleActivated()
 
-    def toggleActivated(self, note=True):
+    def toggleActivated(self):
         """This function toggles the inhibition of the screensaver and powersaving
         features of the current computer."""
 

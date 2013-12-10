@@ -10,9 +10,8 @@ Homepage: https://launchpad.net/caffeine
 Package: caffeine
 Architecture: all
 Depends:${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
-    python-xlib,
-    gir1.2-gtk-2.0, gir1.2-appindicator3-0.1, gir1.2-notify-0.7,
-    python-dbus, python-xdg, python-notify, python-kaa-metadata
+    gir1.2-gtk-2.0, gir1.2-appindicator3-0.1,
+    python-dbus, python-xdg, python-kaa-metadata
 Description: Override the screensaver
  Caffeine allows the user to prevent the activation of both the
  screensaver and the "sleep" powersaving mode, either  manually or

@@ -18,7 +18,6 @@
 
 import os
 import os.path
-import time
  
  
 #class used to handle one application instance mechanism

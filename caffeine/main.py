@@ -18,10 +18,7 @@
 
 
 import os
-import sys
-import gi
-from gi.repository import Gtk, GObject, AppIndicator3, Notify
-import dbus
+from gi.repository import Gtk, GdkPixbuf, GObject, AppIndicator3
 import ctypes
 import optparse
 
@@ -29,7 +26,6 @@ import optparse
 import caffeine
 import core
 import applicationinstance
-import utils
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -248,7 +244,7 @@ class GUI(object):
 
     def on_about_menuitem_activate(self, menuitem, data=None):
         self.about_dialog.set_position (Gtk.WindowPosition.CENTER_ALWAYS)
-        response = self.about_dialog.run()
+        self.about_dialog.run()
         self.about_dialog.hide()
 
     def on_quit_menuitem_activate(self, menuitem, data=None):
