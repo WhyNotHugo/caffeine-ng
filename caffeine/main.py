@@ -192,9 +192,6 @@ class GUI(object):
             caffeine.get_icon_pixbuf(24), caffeine.get_icon_pixbuf(32),
             caffeine.get_icon_pixbuf(48)])
 
-
-
-        self.ql_cb = get("ql_cbutton")
         self.flash_cb = get("flash_cbutton")
 
         settings.connect("changed::act-for-flash", self.on_flash_changed)
