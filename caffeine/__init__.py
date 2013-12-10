@@ -19,7 +19,7 @@
 
 import os
 from os.path import join, abspath, dirname, pardir
-from gi.repository import Gtk, Gio
+from gi.repository import Gtk
 
 from xdg.BaseDirectory import xdg_config_home
 
