@@ -11,10 +11,12 @@ caffeine (2.5~bzr510~ppa0~saucy) saucy; urgency=low
   * Remove ability to disable icon: this should be done by the desktop
     environment, not the application.
   * Remove hash-bang lines from non-executable files (fix LP #931875).
-  * Fix race condition for notifications, patch from André Ericson (LP #892865).
+  * Fix race condition for notifications, patch from André Ericson
+    (LP #892865).
   * Fix i18n issues (LP #941495).
   * Fix Open Build Service desktop file errors (LP #931874).
   * Add dependencies for all required libraries (LP #1093324).
-  * Fix recognition of apps which mention their name in their arguments (LP #1249796).
+  * Fix recognition of apps which mention their name in their arguments
+    (LP #1249796).
 
  -- Reuben Thomas <rrt@sc3d.org>  Mon, 09 Dec 2013 00:01:47 +0000

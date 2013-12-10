@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.5\n"
-"POT-Creation-Date: 2013-12-10 00:38:41.149223\n"
+"POT-Creation-Date: 2013-12-10 00:44:02.028261\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,123 +15,120 @@ msgstr ""
 msgid "Activated for Flash video"
 #. file 'caffeine/core.py', line 182
 #. file 'caffeine/core.py', line 184
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 188
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 190
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 188
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 190
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 188
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 190
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 182
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 184
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 182
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 184
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 182
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 184
 msgstr ""
 msgid " and "
 #. file 'caffeine/core.py', line 269
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 275
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 275
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 275
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 269
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 269
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 269
 msgstr ""
 msgid "hour"
 #. file 'caffeine/core.py', line 276
 #. file 'caffeine/core.py', line 282
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 276
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 282
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 288
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 276
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 282
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 288
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 276
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 282
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 288
 msgstr ""
 msgid "minute"
 #. file 'caffeine/core.py', line 276
 #. file 'caffeine/core.py', line 288
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 282
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 294
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 282
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 294
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 282
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 294
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 276
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 288
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 276
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 288
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 276
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 288
 msgstr ""
 msgid "hours"
 #. file 'caffeine/core.py', line 284
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 284
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 284
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 284
+msgstr ""
+msgid "minutes"
+#. file 'caffeine/core.py', line 290
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 290
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 290
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 290
 msgstr ""
-msgid "minutes"
-#. file 'caffeine/core.py', line 290
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 296
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 296
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 296
-msgstr ""
 msgid "Timed activation set; "
 #. file 'caffeine/core.py', line 343
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 349
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 349
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 349
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 343
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 343
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 343
 msgstr ""
 msgid "Caffeine will prevent powersaving for the next "
 #. file 'caffeine/core.py', line 344
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 350
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 350
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 350
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 344
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 344
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 344
 msgstr ""
 msgid "Activated for "
 #. file 'caffeine/core.py', line 351
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 357
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 357
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 357
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 351
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 351
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 351
 msgstr ""
 msgid "Caffeine is dormant; powersaving is enabled"
 #. file 'caffeine/core.py', line 397
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 403
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 164
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 403
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 164
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 403
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 164
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 397
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 397
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 397
 msgstr ""
 msgid "Timed activation cancelled (was set for "
 #. file 'caffeine/core.py', line 405
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 411
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 411
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 411
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 405
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 405
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 405
 msgstr ""
 msgid " have elapsed; powersaving is re-enabled"
 #. file 'caffeine/core.py', line 422
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 428
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 428
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 428
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 422
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 422
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 422
 msgstr ""
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
 #. file 'caffeine/core.py', line 441
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 447
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 447
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 447
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 441
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 441
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 441
 msgstr ""
 msgid "translator-credits"
 #. file 'caffeine/main.py', line 206
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 211
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 211
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 211
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 206
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 206
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 206
 msgstr ""
 msgid "Disable Screensaver"
 #. file 'caffeine/main.py', line 241
 #. file 'caffeine/main.py', line 305
 #. file 'share/caffeine/glade/GUI.glade', line ?
 #. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 250
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 314
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 250
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 314
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 250
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 314
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 241
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 305
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 241
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 305
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 241
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 305
 msgstr ""
 msgid "Enable Screensaver"
 #. file 'caffeine/main.py', line 241
 #. file 'caffeine/main.py', line 305
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 250
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 314
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 250
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 314
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 250
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 314
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 241
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 305
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 241
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 305
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 241
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 305
 msgstr ""
 msgid ""
 "An application to temporarily prevent the activation of both\n"
@@ -167,6 +164,7 @@ msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are running."
 #. file 'share/caffeine/glade/GUI.glade', line ?
+#. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "List of programs that Caffeine activates for:"
 #. file 'share/caffeine/glade/GUI.glade', line ?
@@ -183,6 +181,7 @@ msgid ""
 msgstr ""
 msgid "Process Name"
 #. file 'share/caffeine/glade/GUI.glade', line ?
+#. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
 msgstr ""
 msgid "Activate for Flash video"
 #. file 'share/caffeine/glade/GUI.glade', line ?
@@ -204,9 +203,4 @@ msgstr ""
 msgid "Select a process name..."
 #. file 'share/caffeine/glade/proc.glade', line ?
 #. file 'debian/caffeine/usr/share/caffeine/glade/proc.glade', line ?
-msgstr ""
-msgid ""
-"Caffeine can activate automatically\n"
-"whenever certain programs are runnning."
-#. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
 msgstr ""
