@@ -30,7 +30,9 @@ import caffeine
 import core
 import applicationinstance
 import utils
-import caffeinelogging as logging
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 icon_theme = Gtk.IconTheme.get_default()
 try:

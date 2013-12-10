@@ -30,7 +30,7 @@ import applicationinstance
 import caffeine
 import utils
 import procmanager
-import caffeinelogging as logging
+import logging
 
 
 os.chdir(os.path.abspath(os.path.dirname(__file__)))

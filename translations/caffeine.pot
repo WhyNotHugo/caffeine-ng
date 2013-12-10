@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.5\n"
-"POT-Creation-Date: 2013-12-10 20:44:46.357717\n"
+"POT-Creation-Date: 2013-12-10 20:53:55.306585\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,14 +49,14 @@ msgid "Caffeine is preventing powersaving modes and screensaver activation"
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 229
 msgstr ""
 msgid "translator-credits"
-#. file 'caffeine/main.py', line 172
+#. file 'caffeine/main.py', line 174
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 174
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 174
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 174
 msgstr ""
 msgid "Disable Screensaver"
-#. file 'caffeine/main.py', line 198
-#. file 'caffeine/main.py', line 244
+#. file 'caffeine/main.py', line 200
+#. file 'caffeine/main.py', line 246
 #. file 'share/caffeine/glade/GUI.glade', line ?
 #. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 200
@@ -67,8 +67,8 @@ msgid "Disable Screensaver"
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 246
 msgstr ""
 msgid "Enable Screensaver"
-#. file 'caffeine/main.py', line 198
-#. file 'caffeine/main.py', line 244
+#. file 'caffeine/main.py', line 200
+#. file 'caffeine/main.py', line 246
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 200
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 246
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 200
