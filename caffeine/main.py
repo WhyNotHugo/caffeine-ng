@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright © 2009 The Caffeine Developers
+# Copyright © 2009-2013 The Caffeine Developers
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -228,7 +228,7 @@ class GUI(object):
         """
         self.Core.toggleActivated()
         
-    def on_activation_toggled(self, source, active):
+    def on_activation_toggled(self, source, active, tooltip):
         self.set_icon_is_activated(active)
 
     def set_icon_is_activated(self, activated):
