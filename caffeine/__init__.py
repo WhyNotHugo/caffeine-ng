@@ -37,7 +37,6 @@ def getBasePath():
             raise Exception("Can't determine BASE_PATH")
 
 BASE_PATH = getBasePath()
-BASE_KEY = "net.launchpad.caffeine"
 
 _config_dir = os.path.join(xdg_config_home, "caffeine")
 

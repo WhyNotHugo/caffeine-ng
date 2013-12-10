@@ -17,7 +17,7 @@
 #
 
 
-from gi.repository import Gtk, GObject, Gio, Notify
+from gi.repository import Gtk, GObject, Notify
 import os
 import os.path
 import commands
@@ -70,8 +70,6 @@ class Caffeine(GObject.GObject):
         ## check for processes to activate for.
         id = GObject.timeout_add(10000, self._check_for_process)
         
-        settings = Gio.Settings.new(caffeine.BASE_KEY)
-
         print self.status_string
 
 

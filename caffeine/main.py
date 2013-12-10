@@ -20,7 +20,7 @@
 import os
 import sys
 import gi
-from gi.repository import Gtk, GObject, Gio, AppIndicator3, Notify
+from gi.repository import Gtk, GObject, AppIndicator3, Notify
 import dbus
 import ctypes
 import optparse
@@ -126,8 +126,6 @@ class GUI(object):
         ## object to manage processes to activate for.
         self.ProcMan = caffeine.get_ProcManager()
             
-        settings = Gio.Settings.new(caffeine.BASE_KEY)
-        
         builder = Gtk.Builder()
         builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
             "GUI.glade"))
