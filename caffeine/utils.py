@@ -31,6 +31,7 @@ def getProcessName(pid):
 
         if cmdName.startswith(truncProcessName):
             processName = cmdName
+            break
 
     return processName
 

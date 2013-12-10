@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.5\n"
-"POT-Creation-Date: 2013-12-09 22:53:12.564876\n"
+"POT-Creation-Date: 2013-12-10 00:38:41.149223\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,8 +13,8 @@ msgstr ""
 "Content-Transfer-Encoding: utf-8\n"
 "Generated-By: ./generate_pot.py\n"
 msgid "Activated for Flash video"
-#. file 'caffeine/core.py', line 188
-#. file 'caffeine/core.py', line 190
+#. file 'caffeine/core.py', line 182
+#. file 'caffeine/core.py', line 184
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 188
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 190
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 188
@@ -23,14 +23,14 @@ msgid "Activated for Flash video"
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 190
 msgstr ""
 msgid " and "
-#. file 'caffeine/core.py', line 275
+#. file 'caffeine/core.py', line 269
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 275
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 275
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 275
 msgstr ""
 msgid "hour"
+#. file 'caffeine/core.py', line 276
 #. file 'caffeine/core.py', line 282
-#. file 'caffeine/core.py', line 288
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 282
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 288
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 282
@@ -39,8 +39,8 @@ msgid "hour"
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 288
 msgstr ""
 msgid "minute"
-#. file 'caffeine/core.py', line 282
-#. file 'caffeine/core.py', line 294
+#. file 'caffeine/core.py', line 276
+#. file 'caffeine/core.py', line 288
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 282
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 294
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 282
@@ -49,37 +49,37 @@ msgid "minute"
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 294
 msgstr ""
 msgid "hours"
-#. file 'caffeine/core.py', line 290
+#. file 'caffeine/core.py', line 284
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 290
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 290
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 290
 msgstr ""
 msgid "minutes"
-#. file 'caffeine/core.py', line 296
+#. file 'caffeine/core.py', line 290
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 296
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 296
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 296
 msgstr ""
 msgid "Timed activation set; "
-#. file 'caffeine/core.py', line 349
+#. file 'caffeine/core.py', line 343
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 349
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 349
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 349
 msgstr ""
 msgid "Caffeine will prevent powersaving for the next "
-#. file 'caffeine/core.py', line 350
+#. file 'caffeine/core.py', line 344
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 350
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 350
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 350
 msgstr ""
 msgid "Activated for "
-#. file 'caffeine/core.py', line 357
+#. file 'caffeine/core.py', line 351
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 357
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 357
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 357
 msgstr ""
 msgid "Caffeine is dormant; powersaving is enabled"
-#. file 'caffeine/core.py', line 403
+#. file 'caffeine/core.py', line 397
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 403
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 164
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 403
@@ -88,19 +88,19 @@ msgid "Caffeine is dormant; powersaving is enabled"
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 164
 msgstr ""
 msgid "Timed activation cancelled (was set for "
-#. file 'caffeine/core.py', line 411
+#. file 'caffeine/core.py', line 405
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 411
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 411
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 411
 msgstr ""
 msgid " have elapsed; powersaving is re-enabled"
-#. file 'caffeine/core.py', line 428
+#. file 'caffeine/core.py', line 422
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 428
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 428
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 428
 msgstr ""
 msgid "Caffeine is preventing powersaving modes and screensaver activation "
-#. file 'caffeine/core.py', line 447
+#. file 'caffeine/core.py', line 441
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 447
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 447
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 447
