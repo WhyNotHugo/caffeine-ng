@@ -6,5 +6,5 @@ Comment=Temporarily deactivate the screensaver and sleep mode
 Exec=/usr/bin/caffeine
 Terminal=false
 Type=Application
-Categories=Utility;DesktopUtility;
+Categories=Utility;TrayIcon;
 StartupNotify=false
