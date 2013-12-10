@@ -21,6 +21,7 @@ import os
 from gi.repository import Gtk, GdkPixbuf, GObject, AppIndicator3
 import ctypes
 import optparse
+import signal
 
 ## local modules
 import caffeine
@@ -249,6 +250,7 @@ class GUI(object):
 options = None
 
 def main():
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
 
     GObject.threads_init()
 

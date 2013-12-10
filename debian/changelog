@@ -27,5 +27,6 @@ caffeine (2.5~bzr526~ppa0~saucy) saucy; urgency=low
   * Remove --preferences command-line option, no longer needed.
   * Remove --time command-line option: we're not supporting timed
     disabling any more.
+  * Make Ctrl+C work (LP #907517).
 
  -- Reuben Thomas <rrt@sc3d.org>  Mon, 09 Dec 2013 00:01:47 +0000
