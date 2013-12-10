@@ -262,11 +262,11 @@ def main():
     parser = optparse.OptionParser()
     parser.add_option("-a", "--activate", action="store_true",
             dest="activated", default=False,
-            help="Disables power management and screen saving.")
+            help="Disables power management and screen saving")
 
     parser.add_option("-d", "--deactivate", action="store_false",
             dest="activated", default=False,
-            help="Re-enables power management and screen saving.")
+            help="Re-enables power management and screen saving")
 
     global options
     options, args = parser.parse_args()
