@@ -1,4 +1,4 @@
-caffeine (2.5~bzr510~ppa0~saucy) saucy; urgency=low
+caffeine (2.5~bzr516~ppa0~saucy) saucy; urgency=low
 
   * New maintainer: Reuben Thomas <rrt@sc3d.org>
   * Fix right-click on icon (LP #892663)

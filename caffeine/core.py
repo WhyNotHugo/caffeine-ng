@@ -228,51 +228,6 @@ class Caffeine(GObject.GObject):
         if self.timer:
             self.timer.cancel()
 
-    ## The following four methods deal with adding the correct syntax
-    ## for plural forms of time units. For example, 1 minute and 2
-    ## minutes. Will be obsolete once the application is
-    ## internationalized, as not all languages use "s" for plural form.
-    def _mconcat(self, base, sep, app):
-        return (base + sep + app if base else app) if app else base
-
-    def _spokenConcat(self, ls):
-        and_str = _(" and ")
-        txt, n = '', len(ls)
-        for w in ls[0:n-1]:
-            txt = self._mconcat(txt, ', ', w)
-        return self._mconcat(txt, and_str, ls[n-1])
-
-    def _pluralize(self, name, time):
-        names = [_('hour'), _('minute')]
-        if time < 1:
-            return ""
-
-        if name == "hour":
-            if time < 2:
-                return "%d %s" % (time, _("hour"))
-            if time >= 2:
-                return "%d %s" % (time, _("hours"))
-
-        elif name == "minute":
-            if time < 2:
-                return "%d %s" % (time, _("minute"))
-            if time >= 2:
-                return "%d %s" % (time, _("minutes"))
-
-    def _timeDisplay(self, sec):
-
-        hours = sec/3600
-        minutes = sec/60 % 60
-        ls = []
-        ls.append(self._pluralize("hour", hours))
-        ls.append(self._pluralize("minute", minutes))
-
-        string = self._spokenConcat(ls)
-        if not string:
-            string = "0 minutes"
-        return string
-
-
     def _notify(self, message, icon, title="Caffeine"):
         """Easy way to use pynotify"""
         try:
@@ -311,14 +266,13 @@ class Caffeine(GObject.GObject):
         specified by time has passed.
         """
         message = (_("Timed activation set; ")+
-            _("Caffeine will prevent powersaving for the next ") +
-            self._timeDisplay(time))
+                   _("Caffeine will prevent powersaving for %(time)d s") % {'time': time})
         
-        logging.info("Timed activation set for " + self._timeDisplay(time))
+        logging.info("Timed activation set for " + str(time) + " s")
 
         if self.status_string == "":
 
-            self.status_string = _("Activated for ")+self._timeDisplay(time)
+            self.status_string = _("Activated for %(time)d s" % {'time': time})
             self.emit("activation-toggled", self.getActivated(),
                 self.status_string)
 
@@ -332,8 +286,7 @@ class Caffeine(GObject.GObject):
         ## Stop already running timer
         if self.timer:
             logging.info("Previous timed activation cancelled due to a second timed activation request (was set for " +
-                    self._timeDisplay(self.timer.interval) + " or "+
-                    str(time)+" seconds )")
+                         str(self.timer.interval) + " s or " + str(time)+" s)")
             self.timer.cancel()
 
         self.timer = threading.Timer(time, self._deactivate, args=[note])
@@ -369,11 +322,9 @@ class Caffeine(GObject.GObject):
 
             if self.timer != None and self.timer.name != "Expired":
 
-                message = (_("Timed activation cancelled (was set for ") +
-                        self._timeDisplay(self.timer.interval) + ")")
+                message = (_("Timed activation cancelled (was set for %(time)d s)") % {'time': time})
 
-                logging.info("Timed activation cancelled (was set for " +
-                        self._timeDisplay(self.timer.interval) + ")")
+                logging.info("Timed activation cancelled (was set for " + str(self.timer.interval) + " s)")
 
                 if note:
                     self._notify(message, caffeine.EMPTY_ICON_PATH)
@@ -383,10 +334,9 @@ class Caffeine(GObject.GObject):
 
             elif self.timer != None and self.timer.name == "Expired":
 
-                message = (self._timeDisplay(self.timer.interval) +
-                    _(" have elapsed; powersaving is re-enabled"))
+                message = (str(self.timer.interval) +_(" s have elapsed; powersaving is re-enabled"))
 
-                logging.info("Timed activation period (" + self._timeDisplay(self.timer.interval) + ") has elapsed")
+                logging.info("Timed activation period (" + str(self.timer.interval) + " s) has elapsed")
 
                 if note:
                     self._notify(message, caffeine.EMPTY_ICON_PATH)
