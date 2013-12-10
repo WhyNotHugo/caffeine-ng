@@ -1,4 +1,4 @@
-caffeine (2.5~bzr516~ppa0~saucy) saucy; urgency=low
+caffeine (2.5~bzr525~ppa0~saucy) saucy; urgency=low
 
   * New maintainer: Reuben Thomas <rrt@sc3d.org>
   * Fix right-click on icon (LP #892663)
@@ -24,5 +24,6 @@ caffeine (2.5~bzr516~ppa0~saucy) saucy; urgency=low
     rpmbuild (LP #595889).
   * Remove non-working Flash support.
   * Remove custom logging module.
+  * Remove --preferences command-line option, no longer needed.
 
  -- Reuben Thomas <rrt@sc3d.org>  Mon, 09 Dec 2013 00:01:47 +0000

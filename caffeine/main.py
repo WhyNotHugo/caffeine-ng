@@ -292,11 +292,7 @@ def main():
             metavar="HOURS:MINUTES",
             dest="timed",
             help=("If the -a option is given, "+
-                "activates caffeine for HOURS:MINUTES."))
-
-    parser.add_option("-p", "--preferences", action="store_true",
-            dest="preferences", default=False,
-            help="Starts Caffeine with the Preferences dialog open.")
+                "activates Caffeine for HOURS:MINUTES."))
 
     global options
     options, args = parser.parse_args()
