@@ -18,5 +18,7 @@ caffeine (2.5~bzr510~ppa0~saucy) saucy; urgency=low
   * Add dependencies for all required libraries (LP #1093324).
   * Fix recognition of apps which mention their name in their arguments
     (LP #1249796).
+  * Use freedesktop ScreenSaver DBus API instead of per-desktop APIs.
+    (LP #1239935).
 
  -- Reuben Thomas <rrt@sc3d.org>  Mon, 09 Dec 2013 00:01:47 +0000
