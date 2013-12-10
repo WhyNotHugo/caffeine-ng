@@ -21,7 +21,6 @@ import os
 import sys
 import gi
 from gi.repository import Gtk, GObject, Gio, AppIndicator3, Notify
-import webbrowser 
 import dbus
 import ctypes
 import optparse

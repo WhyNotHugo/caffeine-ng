@@ -23,18 +23,14 @@ import os.path
 import commands
 import time
 import sys
-
 import dbus
 import threading
 
 import applicationinstance
-
 import caffeine
 import utils
 import procmanager
 import caffeinelogging as logging
-
-import Xlib.display
 
 
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
