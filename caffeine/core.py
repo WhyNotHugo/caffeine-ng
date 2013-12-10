@@ -35,15 +35,16 @@ import procmanager
 import caffeinelogging as logging
 
 import Xlib.display
-#import kaa.metadata
+
 
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
+
+
 class Caffeine(GObject.GObject):
 
     def __init__(self):
         
         GObject.GObject.__init__(self)
-
         
         ## object to manage processes to activate for.
         self.ProcMan = caffeine.get_ProcManager()
@@ -74,7 +75,6 @@ class Caffeine(GObject.GObject):
         
         ## check for processes to activate for.
         id = GObject.timeout_add(10000, self._check_for_process)
-
         
         settings = Gio.Settings.new(caffeine.BASE_KEY)
 
@@ -86,9 +86,7 @@ class Caffeine(GObject.GObject):
         print self.status_string
 
 
-
     def setActivateForFlash(self, do_activate):
-        
         ## In case caffeine is currently activated for Flash
         self._check_for_Flash()
 
@@ -103,24 +101,18 @@ class Caffeine(GObject.GObject):
 
 
     def _check_for_Flash(self):
-
         class escape(Exception):pass
 
         try:
             ## look for files opened by flashplayer that begin with 'Flash'
-
             output = commands.getoutput("python flash_detect.py")
-
             if output == "1":
                 raise escape
 
             elif output.startswith("2\n"):
                 data = output.split("\n")[-1]
                 logging.error("Exception: " + str(data))
-
                 raise escape
-                
-
 
             parsed = []
             for row in output.split("\n"):
@@ -191,7 +183,6 @@ class Caffeine(GObject.GObject):
 
         return True
 
-
     def _check_for_process(self):
         activate = False
         for proc in self.ProcMan.get_process_list():
@@ -255,8 +246,6 @@ class Caffeine(GObject.GObject):
             logging.error("Exception occurred attempting to display message:\n" + message)
         finally:
             return False
-
-    
 
     def getActivated(self):
         return self.sleepIsPrevented
@@ -380,5 +369,3 @@ class Caffeine(GObject.GObject):
 ## register a signal
 GObject.signal_new("activation-toggled", Caffeine,
         GObject.SignalFlags.RUN_FIRST, None, [bool, str])
-
-

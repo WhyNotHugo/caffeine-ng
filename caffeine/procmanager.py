@@ -22,7 +22,6 @@ import os
 class ProcManager(object):
 
     def __init__(self):
-
         self.whitelist_file = caffeine.WHITELIST
         self.proc_list = []
 
@@ -56,5 +55,3 @@ class ProcManager(object):
         file = open(self.whitelist_file, "w")
         file.write("\n".join(self.proc_list))
         file.close()
-
-

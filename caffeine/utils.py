@@ -36,7 +36,6 @@ def getProcessName(pid):
     return processName
 
 def getProcesses():
-
     processList = []
 
     for pid in os.listdir("/proc/"):
@@ -57,10 +56,8 @@ def getProcesses():
     return processList
 
 def isProcessRunning(name):
-
     for proc_name, pid in getProcesses():
         if name == proc_name:
             return True
 
     return False
-

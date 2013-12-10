@@ -35,13 +35,9 @@ import caffeinelogging as logging
 
 icon_theme = Gtk.IconTheme.get_default()
 try:
-
     generic = icon_theme.load_icon("application-x-executable", 16, Gtk.IconLookupFlags.NO_SVG)
 except GObject.GError, e:
-
     generic = GdkPixbuf.Pixbuf.new_from_file(caffeine.GENERIC_PROCESS_ICON_PATH)
-
-
 
 
 cached_icons = {"generic":generic}
@@ -76,9 +72,7 @@ def get_icon_for_process(proc_name):
 class ProcAdd(object):
 
     def __init__(self):
-        
         self.running_id = None
-
         self.user_set = True
 
         builder = Gtk.Builder()
@@ -90,14 +84,10 @@ class ProcAdd(object):
         self.dialog = get("dialog")
         self.entry = get("entry")
         self.entry.grab_focus()
-        
 
-        ###
         builder.connect_signals(self)
     
     def run(self):
-
-
         self.entry.set_text("")
 
         response = self.dialog.run()
@@ -115,11 +105,9 @@ class ProcAdd(object):
         self.dialog.hide()
 
     def hide(self):
-        
         self.dialog.hide()
 
     def on_window_delete_event(self, window, data=None):
-
         window.hide_on_delete()
         ## Returning True stops the window from being destroyed.
         return True
@@ -138,7 +126,6 @@ class GUI(object):
 
         ## object to manage processes to activate for.
         self.ProcMan = caffeine.get_ProcManager()
-
             
         settings = Gio.Settings.new(caffeine.BASE_KEY)
         
@@ -165,9 +152,7 @@ class GUI(object):
 
         self.AppInd.set_menu (self.menu)
             
-        ####
         ### configuration window widgets
-        ####
         proc_treeview = get("treeview")
         self.selection = proc_treeview.get_selection()
         self.selection.set_mode(Gtk.SelectionMode.MULTIPLE)
@@ -176,13 +161,6 @@ class GUI(object):
         for line in open(caffeine.WHITELIST):
             name = line.strip()
             self.proc_liststore.append([get_icon_for_process(name), name])
-
-
-
-        #time_menuitem = get("time_menuitem")
-
-        #time_menuitem.set_submenu(submenu)
-        
 
         ## Preferences editor.
         self.window = get("window")
@@ -197,26 +175,17 @@ class GUI(object):
         settings.connect("changed::act-for-flash", self.on_flash_changed)
         settings.bind("act-for-flash", self.flash_cb, "active", Gio.SettingsBindFlags.DEFAULT)
 
-
         ## about dialog
         self.about_dialog = get("aboutdialog")
         self.about_dialog.set_translator_credits(_("translator-credits"))
-
-        ## other time selector
-        self.othertime_dialog = get("othertime_dialog")
-        self.othertime_hours = get("hours_spin")
-        self.othertime_minutes = get("minutes_spin")
 
         builder.connect_signals(self)
 
     
     def setActive(self, active):
-
         self.Core.setActivated(active)
-            
 
     def timedActivation(self, time):
-
         self.Core.timedActivation(time)
 
     def toggleActivated(self):
@@ -229,7 +198,6 @@ class GUI(object):
         self.set_icon_is_activated(active)
 
     def set_icon_is_activated(self, activated):
-        
         ## toggle the icon, indexing with a bool.
         icon_name = ["caffeine-cup-empty", "caffeine-cup-full"][activated]
 
@@ -262,7 +230,6 @@ class GUI(object):
                 self.ProcMan.add_proc(proc_name)
                 
     def on_remove_button_clicked(self, button, data=None):
-
         model, paths = self.selection.get_selected_rows()
         paths.reverse()
         for path in paths:
@@ -270,78 +237,37 @@ class GUI(object):
             model.remove(model.get_iter(path))
 
     def on_window_delete_event(self, window, data=None):
-
         window.hide_on_delete()
         ## Returning True stops the window from being destroyed.
         return True
 
     def on_close_button_clicked(self, button, data=None):
-
         self.window.hide()
 
 
     ### Flash
     def on_flash_changed(self, settings, key, data=None):
-        
         act_for_flash = settings.get_boolean(key)
-
         self.Core.setActivateForFlash(act_for_flash)
-
-        #self.flash_cb.set_active(act_for_flash)
-
-    #def on_flash_cbutton_toggled(self, cbutton, data=None):
-
-    #    self.Conf.set("act_for_flash", cbutton.get_active())
 
 
     #### Menu callbacks
     def on_activate_menuitem_activate (self, menuitem, data=None):
-
         self.toggleActivated()
         
         label = [_("Disable Screensaver"), _("Enable Screensaver")]
         menuitem.set_label (label[self.Core.getActivated()])
 
-
-    def on_time_menuitem_activate(self, menuitem, data=None):
-
-        self.othertime_dialog.show_all()
-
     def on_prefs_menuitem_activate(self, menuitem, data=None):
         self.window.show_all()
 
     def on_about_menuitem_activate(self, menuitem, data=None):
-
-
         self.about_dialog.set_position (Gtk.WindowPosition.CENTER_ALWAYS)
         response = self.about_dialog.run()
         self.about_dialog.hide()
 
-
-    def on_othertime_delete_event(self, window, data=None):
-
-        window.hide_on_delete()
-        ## Returning True stops the window from being destroyed.
-        return True
-
-    def on_othertime_cancel(self, widget, data=None):
-
-        self.othertime_dialog.hide()
-
-    def on_othertime_ok(self, widget, data=None):
-
-        hours = int(self.othertime_hours.get_value())
-        minutes = int(self.othertime_minutes.get_value())
-        self.othertime_dialog.hide()
-        time = hours*60*60 + minutes*60
-        if time > 0:
-            self.Core.timedActivation(time)
-
-
     def on_quit_menuitem_activate(self, menuitem, data=None):
-
         self.quit()
-
     
     def quit(self):
         ### Do anything that needs to be done before quitting.
@@ -383,9 +309,6 @@ def main():
     parser.add_option("-p", "--preferences", action="store_true",
             dest="preferences", default=False,
             help="Starts Caffeine with the Preferences dialog open.")
-
-
-
 
     global options
     options, args = parser.parse_args()
