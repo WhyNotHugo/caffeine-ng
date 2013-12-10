@@ -39,7 +39,6 @@ except GObject.GError, e:
 
 cached_icons = {"generic":generic}
 def get_icon_for_process(proc_name):
-
     global cached_icons
     global generic
 
@@ -86,11 +85,9 @@ class ProcAdd(object):
     
     def run(self):
         self.entry.set_text("")
-
         response = self.dialog.run()
         self.hide()
         return response
-        
 
     def get_process_name(self):
         return self.entry.get_text().strip()
@@ -115,9 +112,7 @@ class GUI(object):
     def __init__(self):
         
         self.Core = core.Caffeine()
-
-        self.Core.connect("activation-toggled",
-                self.on_activation_toggled)
+        self.Core.connect("activation-toggled", self.on_activation_toggled)
         
         self.ProcAdd = ProcAdd()
 
@@ -138,13 +133,11 @@ class GUI(object):
         self.AppInd.set_status (AppIndicator3.IndicatorStatus.ACTIVE)
 
         self.activate_menuitem = get("activate_menuitem")
-
         self.set_icon_is_activated(self.Core.getActivated())
 
         ## popup menu
         self.menu = get("popup_menu")
         self.menu.show()
-
         self.AppInd.set_menu (self.menu)
             
         ### configuration window widgets
@@ -176,9 +169,7 @@ class GUI(object):
         self.Core.setActivated(active)
 
     def toggleActivated(self):
-        """Toggles whether screen saver prevention
-        is active.
-        """
+        """Toggles whether screen saver prevention is active."""
         self.Core.toggleActivated()
         
     def on_activation_toggled(self, source, active, tooltip):
@@ -194,10 +185,6 @@ class GUI(object):
         self.activate_menuitem.set_label (label[self.Core.getActivated()])
 
     ### Callbacks
-    def on_L_click(self, status_icon, data=None):
-        logging.info("User has clicked the Caffeine icon")
-        self.toggleActivated()
-    
     def on_R_click(self, status_icon, mbutton, time, data=None):
         ## popdown menu
         self.menu.show_all()

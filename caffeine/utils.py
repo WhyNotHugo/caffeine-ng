@@ -41,13 +41,11 @@ def getProcesses():
     for pid in os.listdir("/proc/"):
         try:
             pid = int(pid)
-
         except:
             continue
 
         try:
             processName = getProcessName(pid).lower()
-
         except:
             continue
 

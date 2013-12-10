@@ -34,7 +34,6 @@ os.chdir(os.path.abspath(os.path.dirname(__file__)))
 class Caffeine(GObject.GObject):
 
     def __init__(self):
-        
         GObject.GObject.__init__(self)
         
         ## object to manage processes to activate for.
