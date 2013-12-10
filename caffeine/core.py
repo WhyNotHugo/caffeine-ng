@@ -21,10 +21,8 @@ from gi.repository import Gtk, GObject, Notify
 import os
 import os.path
 import commands
-import time
 import sys
 import dbus
-import threading
 
 import applicationinstance
 import caffeine
@@ -59,7 +57,6 @@ class Caffeine(GObject.GObject):
         self.preventedForProcess = False
         self.screenSaverCookie = None
         self.powerManagementCookie = None
-        self.timer = None
         self.inhibit_id = None
 
         # prevent trying to check for it before it's created at self._notify
@@ -102,13 +99,6 @@ class Caffeine(GObject.GObject):
 
         return True
 
-    def quit(self):
-        """Cancels any timer thread running
-        so the program can quit right away.
-        """
-        if self.timer:
-            self.timer.cancel()
-
     def _notify(self, message, icon, title="Caffeine"):
         """Easy way to use pynotify"""
         try:
@@ -140,39 +130,6 @@ class Caffeine(GObject.GObject):
     def getActivated(self):
         return self.sleepIsPrevented
 
-    def timedActivation(self, time, note=True):
-        """Calls toggleActivated after the number of seconds
-        specified by time has passed.
-        """
-        message = (_("Timed activation set; ")+
-                   _("Caffeine will prevent powersaving for %(time)d s") % {'time': time})
-        
-        logging.info("Timed activation set for " + str(time) + " s")
-
-        if self.status_string == "":
-
-            self.status_string = _("Activated for %(time)d s" % {'time': time})
-            self.emit("activation-toggled", self.getActivated(),
-                self.status_string)
-
-
-        self.setActivated(True, note)
-
-        if note:
-            self._notify(message, caffeine.FULL_ICON_PATH)
-
-        ## and deactivate after time has passed.
-        ## Stop already running timer
-        if self.timer:
-            logging.info("Previous timed activation cancelled due to a second timed activation request (was set for " +
-                         str(self.timer.interval) + " s or " + str(time)+" s)")
-            self.timer.cancel()
-
-        self.timer = threading.Timer(time, self._deactivate, args=[note])
-        self.timer.name = "Active"
-        self.timer.start()
-
-    
     def _deactivate(self, note):
         self.timer.name = "Expired"
         self.toggleActivated(note=note)
@@ -193,33 +150,6 @@ class Caffeine(GObject.GObject):
 
             logging.info("Caffeine is now dormant; powersaving is re-enabled")
             self.status_string = _("Caffeine is dormant; powersaving is enabled")
-
-            # If the user clicks on the full coffee-cup to disable
-            # sleep prevention, it should also
-            # cancel the timer for timed activation.
-
-            if self.timer != None and self.timer.name != "Expired":
-
-                message = (_("Timed activation cancelled (was set for %(time)d s)") % {'time': time})
-
-                logging.info("Timed activation cancelled (was set for " + str(self.timer.interval) + " s)")
-
-                if note:
-                    self._notify(message, caffeine.EMPTY_ICON_PATH)
-
-                self.timer.cancel()
-                self.timer = None
-
-            elif self.timer != None and self.timer.name == "Expired":
-
-                message = (str(self.timer.interval) +_(" s have elapsed; powersaving is re-enabled"))
-
-                logging.info("Timed activation period (" + str(self.timer.interval) + " s) has elapsed")
-
-                if note:
-                    self._notify(message, caffeine.EMPTY_ICON_PATH)
-
-                self.timer = None
 
         self._performTogglingActions()
 

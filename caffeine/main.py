@@ -179,9 +179,6 @@ class GUI(object):
     def setActive(self, active):
         self.Core.setActivated(active)
 
-    def timedActivation(self, time):
-        self.Core.timedActivation(time)
-
     def toggleActivated(self):
         """Toggles whether screen saver prevention
         is active.
@@ -264,8 +261,6 @@ class GUI(object):
         ### Make sure PM and SV is uninhibited
         self.Core.setActivated(False)
 
-        self.Core.quit()
-
         Gtk.main_quit()
 
 options = None
@@ -288,12 +283,6 @@ def main():
             dest="activated", default=False,
             help="Re-enables power management and screen saving.")
 
-    parser.add_option("-t", "--time",
-            metavar="HOURS:MINUTES",
-            dest="timed",
-            help=("If the -a option is given, "+
-                "activates Caffeine for HOURS:MINUTES."))
-
     global options
     options, args = parser.parse_args()
     
@@ -308,24 +297,6 @@ def main():
         
     if options.activated:
         main.setActive(options.activated)
-
-    if options.activated and options.timed:
-        parts = options.timed.split(":")
-        if len(parts) < 2:
-            print "-t argument must be in the hour:minute format."
-            sys.exit(2)
-
-        try:
-            hours = int(parts[0])
-            minutes = int(parts[1])
-        except:
-            print "Invalid time argument."
-            sys.exit(2)
-
-        main.timedActivation((hours * 3600.0)+(minutes * 60.0))
-    
-    if options.preferences:
-        main.window.show_all()
 
     appInstance.startApplication()
     Gtk.main()
