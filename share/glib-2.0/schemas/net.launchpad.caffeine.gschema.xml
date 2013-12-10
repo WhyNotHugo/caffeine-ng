@@ -1,9 +1,0 @@
-<schemalist>
-    <schema id="net.launchpad.caffeine" path="/net/launchpad/caffeine/">
-        <key type="b" name="act-for-flash">
-            <default>false</default>
-            <summary></summary>
-            <description></description>
-        </key>
-    </schema>
-</schemalist>

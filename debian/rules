@@ -4,5 +4,3 @@ export PYBUILD_NAME=caffeine
 
 %:
 	dh $@ --with python2 --buildsystem=pybuild
-
-

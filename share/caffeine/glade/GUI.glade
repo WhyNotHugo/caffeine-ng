@@ -8,7 +8,7 @@
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
     <property name="program_name">Caffeine</property>
-    <property name="version">2.5 (bzr 520)</property>
+    <property name="version">2.5 (bzr 521)</property>
     <property name="copyright">Copyright &#169; 2009&#8211;2013 Brad Smith, Tommy Brunn, Isaiah Heyer &amp; Reuben Thomas</property>
     <property name="comments" translatable="yes">An application to temporarily prevent the activation of both
  the screen saver and the "sleep" powersaving mode.</property>
@@ -409,26 +409,6 @@ prevent the screensaver and powersaving modes on their own.</property>
                                         <property name="expand">False</property>
                                         <property name="fill">True</property>
                                         <property name="position">3</property>
-                                      </packing>
-                                    </child>
-                                    <child>
-                                      <object class="GtkCheckButton" id="flash_cbutton">
-                                        <property name="label" translatable="yes">Activate for Flash video</property>
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">True</property>
-                                        <property name="receives_default">False</property>
-                                        <property name="tooltip_text" translatable="yes">Some websites, such as www.youtube.com, show videos using
-a technology known as "Flash". Enable this option to cause
-Caffeine to automatically prevent the activation of the
-screensaver and powersaving modes when a Flash video is
-embedded in the web page that you are currently browsing.</property>
-                                        <property name="use_action_appearance">False</property>
-                                        <property name="draw_indicator">True</property>
-                                      </object>
-                                      <packing>
-                                        <property name="expand">False</property>
-                                        <property name="fill">True</property>
-                                        <property name="position">5</property>
                                       </packing>
                                     </child>
                                   </object>

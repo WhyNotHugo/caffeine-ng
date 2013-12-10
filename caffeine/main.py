@@ -169,11 +169,6 @@ class GUI(object):
             caffeine.get_icon_pixbuf(24), caffeine.get_icon_pixbuf(32),
             caffeine.get_icon_pixbuf(48)])
 
-        self.flash_cb = get("flash_cbutton")
-
-        settings.connect("changed::act-for-flash", self.on_flash_changed)
-        settings.bind("act-for-flash", self.flash_cb, "active", Gio.SettingsBindFlags.DEFAULT)
-
         ## about dialog
         self.about_dialog = get("aboutdialog")
         self.about_dialog.set_translator_credits(_("translator-credits"))
@@ -242,12 +237,6 @@ class GUI(object):
 
     def on_close_button_clicked(self, button, data=None):
         self.window.hide()
-
-
-    ### Flash
-    def on_flash_changed(self, settings, key, data=None):
-        act_for_flash = settings.get_boolean(key)
-        self.Core.setActivateForFlash(act_for_flash)
 
 
     #### Menu callbacks

@@ -22,5 +22,6 @@ caffeine (2.5~bzr516~ppa0~saucy) saucy; urgency=low
     (LP #1239935).
   * Put description string on one line in setup.py to placate
     rpmbuild (LP #595889).
+  * Remove non-working Flash support.
 
  -- Reuben Thomas <rrt@sc3d.org>  Mon, 09 Dec 2013 00:01:47 +0000
