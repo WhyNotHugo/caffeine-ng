@@ -7,101 +7,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-18 20:12+0000\n"
+"POT-Creation-Date: 2013-12-11 00:10+0000\n"
 "PO-Revision-Date: 2012-05-25 07:31+0000\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-26 05:13+0000\n"
-"X-Generator: Launchpad (build 15288)\n"
+"X-Launchpad-Export-Date: 2013-12-11 05:46+0000\n"
+"X-Generator: Launchpad (build 16869)\n"
 
-#. file 'caffeine/core.py', line 191
-#. file 'caffeine/core.py', line 193
-msgid "Activated for Flash video"
-msgstr "Aktiveret for Flash video"
-
-#. file 'caffeine/core.py', line 252
-msgid "Activated for Quake Live"
-msgstr "Aktiveret for Quake Live"
-
-#. file 'caffeine/core.py', line 319
-msgid " and "
-msgstr " og "
-
-#. file 'caffeine/core.py', line 326
-#. file 'caffeine/core.py', line 332
-msgid "hour"
-msgstr "time"
-
-#. file 'caffeine/core.py', line 326
-#. file 'caffeine/core.py', line 338
-msgid "minute"
-msgstr "minut"
-
-#. file 'caffeine/core.py', line 334
-msgid "hours"
-msgstr "timer"
-
-#. file 'caffeine/core.py', line 340
-msgid "minutes"
-msgstr "minutter"
-
-#. file 'caffeine/core.py', line 391
-msgid "Timed activation set; "
-msgstr "Tidsstyring aktiv; "
-
-#. file 'caffeine/core.py', line 392
-msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine vil frakoble strømstyringen i "
-
-#. file 'caffeine/core.py', line 399
-msgid "Activated for "
-msgstr "Aktiveret for "
-
-#. file 'caffeine/core.py', line 445
-#. file 'caffeine/main.py', line 200
+#. file 'caffeine/core.py', line 112
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine hviler; strømstyringen er slået til"
 
-#. file 'caffeine/core.py', line 453
-msgid "Timed activation cancelled (was set for "
-msgstr "Tidsstyring annulleret (var angivet til "
-
-#. file 'caffeine/core.py', line 470
-msgid " have elapsed; powersaving is re-enabled"
-msgstr " er forløbet; strømstyringen er atter slået til"
-
-#. file 'caffeine/core.py', line 489
-msgid "Caffeine is preventing powersaving modes and screensaver activation "
+#. file 'caffeine/core.py', line 117
+msgid "Caffeine is preventing powersaving modes and screensaver activation"
 msgstr ""
-"Caffeine modvirker strømstyringsprofiler og aktivering af pauseskærm "
 
-#. file 'caffeine/main.py', line 43
-msgid "Please install"
-msgstr "Installér venligst"
-
-#. file 'caffeine/main.py', line 188
-msgid "Caffeine is running"
-msgstr "Caffeine kører"
-
-#. file 'caffeine/main.py', line 265
+#. file 'caffeine/main.py', line 164
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
-"  Kim Jensen https://launchpad.net/~kims\n"
-"  Zilvador https://launchpad.net/~zilvador"
+"  Daniel Ejsing-Duun https://launchpad.net/~zilvador\n"
+"  Kim Jensen https://launchpad.net/~kims-deactivatedaccount"
 
-#. file 'caffeine/main.py', line 316
-#. file 'caffeine/main.py', line 429
+#. file 'caffeine/main.py', line 185
+#. file 'caffeine/main.py', line 227
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Deaktivér pauseskærm"
 
-#. file 'caffeine/main.py', line 316
-#. file 'caffeine/main.py', line 429
+#. file 'caffeine/main.py', line 185
+#. file 'caffeine/main.py', line 227
 msgid "Enable Screensaver"
 msgstr "Aktivér pauseskærm"
 
@@ -116,42 +55,8 @@ msgstr ""
 " the screen saver and the \"sleep\" powersaving mode."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Duration"
-msgstr "Varighed"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Hours:"
-msgstr "Timer:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Minutes:"
-msgstr "Minutter:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver for..."
-msgstr "Deaktivér pauseskærmen i..."
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
 msgstr "Indstillinger"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Autostart"
-msgstr "Automatisk opstart"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Start Caffeine on login"
-msgstr "Start Caffeine ved indlogning"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Enable this option to automatically run Caffeine as soon as\n"
-"your computer has finished starting up and you have\n"
-"successfully entered your username and password."
-msgstr ""
-"Anvend denne funktion for automatisk at starte Caffeine,\n"
-"når din computer er færdig med at starte op og du\n"
-"har indtastet et korrekt brugernavn og adgangskode."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
@@ -160,10 +65,8 @@ msgstr "Automatisk aktivering"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "Caffeine can activate automatically\n"
-"whenever certain programs are runnning."
+"whenever certain programs are running."
 msgstr ""
-"Caffeine kan aktivere sig automatisk,\n"
-"når bestemte programmer kører."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
@@ -184,50 +87,8 @@ msgstr ""
 "at modvirke pauseskærmen og strømsparetilstande."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for Flash video"
-msgstr "Aktivér for Flash-video"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Some websites, such as www.youtube.com, show videos using\n"
-"a technology known as \"Flash\". Enable this option to cause\n"
-"Caffeine to automatically prevent the activation of the\n"
-"screensaver and powersaving modes when a Flash video is\n"
-"embedded in the web page that you are currently browsing."
+msgid "Process Name"
 msgstr ""
-"Nogle hjemmesider, såsom www.youtube.com, viser videoer\n"
-"med en teknologi kaldet \"Flash\". Aktivér dette for at få\n"
-"Caffeine til automatisk at forhindre pauseskærmen og\n"
-"strømsparetilstanden i at starte, når en Flash-video er\n"
-"indlejret på den hjemmeside, du kigger på."
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for Quake Live"
-msgstr "Aktivér for Quake Live"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Enable this option to cause Caffeine to automatically prevent\n"
-"the activation of the screensaver and powersaving modes\n"
-"when it detects that you are playing the Quake Live video\n"
-"game. Visit www.quakelive.com to play the game for free."
-msgstr ""
-"Aktivér dette for at få Caffeine til automatisk at forhindre\n"
-" pauseskærmen og strømsparetilstanden i at starte, når\n"
-"den ser, at du er i videospillet Quake Live. Gå ind på\n"
-"www.quakelive.com for at spille det gratis."
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Tray icon"
-msgstr "Statusikon"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Show tray icon"
-msgstr "Vis statusikon"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Show notification on startup"
-msgstr "Vis besked ved opstart"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "    "
@@ -261,6 +122,33 @@ msgstr "Vælg et procesnavn..."
 #~ msgid "3 hours"
 #~ msgstr "3 timer"
 
+#~ msgid "hour"
+#~ msgstr "time"
+
+#~ msgid "minute"
+#~ msgstr "minut"
+
+#~ msgid "hours"
+#~ msgstr "timer"
+
+#~ msgid "minutes"
+#~ msgstr "minutter"
+
+#~ msgid "Minutes:"
+#~ msgstr "Minutter:"
+
+#~ msgid "Duration"
+#~ msgstr "Varighed"
+
+#~ msgid "Hours:"
+#~ msgstr "Timer:"
+
+#~ msgid "Autostart"
+#~ msgstr "Automatisk opstart"
+
+#~ msgid "Activate for Quake Live"
+#~ msgstr "Aktivér for Quake Live"
+
 #~ msgid "Configure Caffeine"
 #~ msgstr "Caffeine konfigurering"
 
@@ -270,8 +158,85 @@ msgstr "Vælg et procesnavn..."
 #~ msgid "Activate for"
 #~ msgstr "Aktivér for"
 
+#~ msgid "Please install"
+#~ msgstr "Installér venligst"
+
 #~ msgid "Recent Processes"
 #~ msgstr "Seneste processer"
 
+#~ msgid "Activated for Quake Live"
+#~ msgstr "Aktiveret for Quake Live"
+
+#~ msgid "Activated for "
+#~ msgstr "Aktiveret for "
+
 #~ msgid "Other..."
 #~ msgstr "Andet..."
+
+#~ msgid "Activated for Flash video"
+#~ msgstr "Aktiveret for Flash video"
+
+#~ msgid " and "
+#~ msgstr " og "
+
+#~ msgid "Timed activation set; "
+#~ msgstr "Tidsstyring aktiv; "
+
+#~ msgid "Timed activation cancelled (was set for "
+#~ msgstr "Tidsstyring annulleret (var angivet til "
+
+#~ msgid "Caffeine will prevent powersaving for the next "
+#~ msgstr "Caffeine vil frakoble strømstyringen i "
+
+#~ msgid "Caffeine is preventing powersaving modes and screensaver activation "
+#~ msgstr ""
+#~ "Caffeine modvirker strømstyringsprofiler og aktivering af pauseskærm "
+
+#~ msgid " have elapsed; powersaving is re-enabled"
+#~ msgstr " er forløbet; strømstyringen er atter slået til"
+
+#~ msgid ""
+#~ "Caffeine can activate automatically\n"
+#~ "whenever certain programs are runnning."
+#~ msgstr ""
+#~ "Caffeine kan aktivere sig automatisk,\n"
+#~ "når bestemte programmer kører."
+
+#~ msgid "Start Caffeine on login"
+#~ msgstr "Start Caffeine ved indlogning"
+
+#~ msgid ""
+#~ "Enable this option to automatically run Caffeine as soon as\n"
+#~ "your computer has finished starting up and you have\n"
+#~ "successfully entered your username and password."
+#~ msgstr ""
+#~ "Anvend denne funktion for automatisk at starte Caffeine,\n"
+#~ "når din computer er færdig med at starte op og du\n"
+#~ "har indtastet et korrekt brugernavn og adgangskode."
+
+#~ msgid ""
+#~ "Enable this option to cause Caffeine to automatically prevent\n"
+#~ "the activation of the screensaver and powersaving modes\n"
+#~ "when it detects that you are playing the Quake Live video\n"
+#~ "game. Visit www.quakelive.com to play the game for free."
+#~ msgstr ""
+#~ "Aktivér dette for at få Caffeine til automatisk at forhindre\n"
+#~ " pauseskærmen og strømsparetilstanden i at starte, når\n"
+#~ "den ser, at du er i videospillet Quake Live. Gå ind på\n"
+#~ "www.quakelive.com for at spille det gratis."
+
+#~ msgid ""
+#~ "Some websites, such as www.youtube.com, show videos using\n"
+#~ "a technology known as \"Flash\". Enable this option to cause\n"
+#~ "Caffeine to automatically prevent the activation of the\n"
+#~ "screensaver and powersaving modes when a Flash video is\n"
+#~ "embedded in the web page that you are currently browsing."
+#~ msgstr ""
+#~ "Nogle hjemmesider, såsom www.youtube.com, viser videoer\n"
+#~ "med en teknologi kaldet \"Flash\". Aktivér dette for at få\n"
+#~ "Caffeine til automatisk at forhindre pauseskærmen og\n"
+#~ "strømsparetilstanden i at starte, når en Flash-video er\n"
+#~ "indlejret på den hjemmeside, du kigger på."
+
+#~ msgid "Activate for Flash video"
+#~ msgstr "Aktivér for Flash-video"
