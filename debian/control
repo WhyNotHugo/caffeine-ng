@@ -12,7 +12,7 @@ Architecture: all
 Depends:${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
     gir1.2-gtk-2.0, gir1.2-appindicator3-0.1,
     python-dbus, python-xdg, python-kaa-metadata
-Description: Override the screensaver
- Caffeine allows the user to prevent the activation of both the
- screensaver and the "sleep" powersaving mode, either  manually or
- when certain applications are running.
+Description: Prevent the desktop becoming idle
+ Caffeine allows the user to prevent the desktop becoming idle,
+ either manually or when certain applications are run. This
+ prevents screen-blanking, locking, suspending, and so on.
