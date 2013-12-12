@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-11 00:10+0000\n"
-"PO-Revision-Date: 2011-11-06 08:45+0000\n"
-"Last-Translator: Mateusz Tybura <wujciol@gmail.com>\n"
+"PO-Revision-Date: 2013-12-11 16:56+0000\n"
+"Last-Translator: Stanisław Michalski <9stas.pl4@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-12-11 05:46+0000\n"
+"X-Launchpad-Export-Date: 2013-12-12 05:18+0000\n"
 "X-Generator: Launchpad (build 16869)\n"
 
 #. file 'caffeine/core.py', line 112
@@ -24,6 +24,8 @@ msgstr "Caffeine jest w spoczynku; oszczędzanie energii jest włączone"
 #. file 'caffeine/core.py', line 117
 msgid "Caffeine is preventing powersaving modes and screensaver activation"
 msgstr ""
+"Caffeine zapobiega trybowi oszczędzania energii i aktywowaniu wygaszacza "
+"ekranu"
 
 #. file 'caffeine/main.py', line 164
 msgid "translator-credits"
@@ -32,7 +34,8 @@ msgstr ""
 "  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
 "  Dariusz Jakoniuk https://launchpad.net/~darcio53\n"
 "  Filip Stepien https://launchpad.net/~filstep\n"
-"  Mateusz Tybura https://launchpad.net/~wujciol"
+"  Mateusz Tybura https://launchpad.net/~wujciol\n"
+"  Stanisław Michalski https://launchpad.net/~stachu"
 
 #. file 'caffeine/main.py', line 185
 #. file 'caffeine/main.py', line 227
@@ -66,6 +69,8 @@ msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are running."
 msgstr ""
+"Caffeine może być aktywowana automatycznie\n"
+"gdy pewne programy są uruchomione."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
@@ -88,7 +93,7 @@ msgstr ""
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Process Name"
-msgstr ""
+msgstr "Nazwa procesu"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "    "
