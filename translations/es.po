@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-12-11 00:10+0000\n"
-"PO-Revision-Date: 2013-12-12 05:45+0000\n"
+"PO-Revision-Date: 2013-12-15 04:58+0000\n"
 "Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-12-13 05:54+0000\n"
+"X-Launchpad-Export-Date: 2013-12-15 05:30+0000\n"
 "X-Generator: Launchpad (build 16869)\n"
 
 #. file 'caffeine/core.py', line 112
@@ -24,6 +24,8 @@ msgstr "Caffeine está durmiendo; se activó el ahorro de energía"
 #. file 'caffeine/core.py', line 117
 msgid "Caffeine is preventing powersaving modes and screensaver activation"
 msgstr ""
+"Caffeine está evitando la activación del salvapantallas y los modos de "
+"ahorro de energía"
 
 #. file 'caffeine/main.py', line 164
 msgid "translator-credits"
