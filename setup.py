@@ -31,8 +31,8 @@ def main():
     data_files.append(tuple(("/" + autostart_dir, [os.path.join(autostart_dir, desktop_name)])))
 
     setup(name="caffeine",
-        version="2.5",
-        description="""A status bar application able to temporarily prevent the activation of both the screensaver and the "sleep" powersaving mode.""",
+        version="2.6",
+        description="""Manually and automatically control the desktop's idle state.""",
         author="The Caffeine Developers",
         author_email="bnsmith@gmail.com",
         url="https://launchpad.net/caffeine",
