@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 Icon=caffeine
 Name=Caffeine
 Comment=Temporarily deactivate the screensaver and sleep mode
@@ -7,4 +6,6 @@ Exec=/usr/bin/caffeine
 Terminal=false
 Type=Application
 Categories=Utility;TrayIcon;
+Keywords=Screensaver,Power,Saving,Blank
+OnlyShowIn=GNOME;Unity;
 StartupNotify=false
