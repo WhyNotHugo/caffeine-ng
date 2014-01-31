@@ -141,7 +141,7 @@ def main():
     ## handle command line arguments
     parser = argparse.ArgumentParser(prog='caffeine', description='Manually and automatically prevent desktop idleness')
     parser.add_argument('-V', '--version', action='version', version='caffeine ' + VERSION)
-    args = parser.parse_args()
+    parser.parse_args()
     
     ## Makes sure that only one instance of the Caffeine is run for
     ## each user on the system.
@@ -150,8 +150,7 @@ def main():
     if appInstance.isAnother():
         appInstance.killOther()
 
-    main = GUI()
-        
+    GUI()
     appInstance.startApplication()
     Gtk.main()
     appInstance.exitApplication()
