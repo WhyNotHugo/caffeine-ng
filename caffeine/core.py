@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright © 2009-2013 The Caffeine Developers
+# Copyright © 2009-2014 The Caffeine Developers
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,6 +20,8 @@
 from gi.repository import GObject
 import os
 import os.path
+import re
+import subprocess
 import dbus
 
 import applicationinstance
@@ -31,6 +33,10 @@ import logging
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
 
+# FIXME: Simplify preventedForProcess logic: use a set which we put
+# things in (preventedForProcess, preventedForFullScreen) for each
+# check; activate when the set becomes non-empty, and deactivate when
+# the set becomes empty.
 class Caffeine(GObject.GObject):
 
     def __init__(self):
@@ -53,33 +59,68 @@ class Caffeine(GObject.GObject):
         self.preventedForProcess = False
         self.screenSaverCookie = None
 
-        ## check for processes to activate for.
+        # Add hooks for checks to activate
+        GObject.timeout_add(50000, self._check_for_fullscreen) # FIXME: Calculate timeout from power settings (idle timeout minus a few seconds)
         GObject.timeout_add(10000, self._check_for_process)
         
         print self.status_string
+
+
+    def _check_for_fullscreen(self):
+        activate = False
+
+        # Enumerate the attached screens
+        displays = []
+
+        # xvinfo returns 1 on normal exit: https://bugs.freedesktop.org/show_bug.cgi?id=74227
+        p = subprocess.Popen(['xvinfo'], stdout=subprocess.PIPE)
+        p.wait()
+        if 0 <= p.returncode <= 1:
+            # Parse output
+            for l in p.stdout.read().splitlines():
+                m = re.match('screen #([0-9]+)$', str(l))
+                if m:
+                    displays.append(m.group(1))
+
+                    # Loop through every display looking for a fullscreen window
+                    for d in displays:
+                        # get ID of active window (the focussed window)
+                        out = subprocess.check_output(['xprop', '-display', ':0.' + d, '-root', '-f', '_NET_ACTIVE_WINDOW', '32x', ' $0', '_NET_ACTIVE_WINDOW'])
+                        m = re.match('.* (.*)$', str(out))
+                        assert(m)
+                        active_win = m.group(1)
+                    
+                        if active_win != "0x0": # Skip invalid window IDs
+                            # Check whether window is fullscreen
+                            out = subprocess.check_output(['xprop', '-display' ,':0.' + d, '-id', active_win, '_NET_WM_STATE'])
+                            m = re.search('_NET_WM_STATE_FULLSCREEN', str(out))
+                            if m:
+                                activate = True
+
+        if activate and not self.getActivated():
+            logging.info("Caffeine has detected a full-screen window, and will auto-activate")
+        elif not self.preventedForProcess and not activate and self.getActivated():
+            logging.info("Caffeine detects no full-screen window, and is not activated for a process; deactivating...")
+        self.setActivated(activate)
+
+        return True
 
 
     def _check_for_process(self):
         activate = False
         for proc in self.ProcMan.get_process_list():
             if utils.isProcessRunning(proc):
-
                 activate = True
 
                 if self.preventedForProcess or not self.getActivated():
-                    
                     logging.info("Caffeine has detected that the process '" + proc + "' is running, and will auto-activate")
-
                     self.setActivated(True)
-
                     self.preventedForProcess = True
                 else:
-
                     logging.info("Caffeine has detected that the process '"+
                     proc + "' is running, but will NOT auto-activate"+
                     " as Caffeine has already been activated for a different"+
                     " reason.")
-
 
         ### No process in the list is running, deactivate.
         if not activate and self.preventedForProcess:
