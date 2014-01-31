@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright © 2009-2013 The Caffeine Developers
+# Copyright © 2009-2014 The Caffeine Developers
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -38,76 +38,6 @@ except GObject.GError, e:
     generic = GdkPixbuf.Pixbuf.new_from_file(caffeine.GENERIC_PROCESS_ICON_PATH)
 
 
-cached_icons = {"generic":generic}
-def get_icon_for_process(proc_name):
-    global cached_icons
-    global generic
-
-    possible_icon_names = proc_name.split("-")
-    possible_icon_names.insert(0, proc_name)
-
-    for icon_name in possible_icon_names:
-
-        icon_name = icon_name.split("/")[-1]
-
-        ### Check to see if we have loaded this already.
-        try:
-            return cached_icons[icon_name]
-        except KeyError:
-            pass
-        try:
-            icon = icon_theme.load_icon(proc_name, 16, Gtk.IconLookupFlags.NO_SVG)
-            cached_icons[icon_name] = icon
-            return icon
-
-        except GObject.GError, e:
-            cached_icons[icon_name] = generic
-    
-    return cached_icons["generic"]
-
-
-class ProcAdd(object):
-
-    def __init__(self):
-        self.running_id = None
-        self.user_set = True
-
-        builder = Gtk.Builder()
-        builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
-            "proc.glade"))
-
-        get = builder.get_object
-
-        self.dialog = get("dialog")
-        self.entry = get("entry")
-        self.entry.grab_focus()
-
-        builder.connect_signals(self)
-    
-    def run(self):
-        self.entry.set_text("")
-        response = self.dialog.run()
-        self.hide()
-        return response
-
-    def get_process_name(self):
-        return self.entry.get_text().strip()
-
-    def on_add_button_clicked(self, button, data=None):
-        self.dialog.hide()
-
-    def on_cancel_button_clicked(self, button, data=None):
-        self.dialog.hide()
-
-    def hide(self):
-        self.dialog.hide()
-
-    def on_window_delete_event(self, window, data=None):
-        window.hide_on_delete()
-        ## Returning True stops the window from being destroyed.
-        return True
-
-        
 class GUI(object):
 
     def __init__(self):
@@ -115,11 +45,6 @@ class GUI(object):
         self.Core = core.Caffeine()
         self.Core.connect("activation-toggled", self.on_activation_toggled)
         
-        self.ProcAdd = ProcAdd()
-
-        ## object to manage processes to activate for.
-        self.ProcMan = caffeine.get_ProcManager()
-            
         builder = Gtk.Builder()
         builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
             "GUI.glade"))
@@ -141,24 +66,6 @@ class GUI(object):
         self.menu.show()
         self.AppInd.set_menu (self.menu)
             
-        ### configuration window widgets
-        proc_treeview = get("treeview")
-        self.selection = proc_treeview.get_selection()
-        self.selection.set_mode(Gtk.SelectionMode.MULTIPLE)
-
-        self.proc_liststore = get("proc_liststore")
-        for line in open(caffeine.WHITELIST):
-            name = line.strip()
-            self.proc_liststore.append([get_icon_for_process(name), name])
-
-        ## Preferences editor.
-        self.window = get("window")
-        
-        ## set the icons for the window border.
-        self.window.set_default_icon_list([caffeine.get_icon_pixbuf(16),
-            caffeine.get_icon_pixbuf(24), caffeine.get_icon_pixbuf(32),
-            caffeine.get_icon_pixbuf(48)])
-
         ## about dialog
         self.about_dialog = get("aboutdialog")
         self.about_dialog.set_translator_credits(_("translator-credits"))
@@ -193,33 +100,6 @@ class GUI(object):
             return status_icon.position_menu(self.menu, status_icon) 
         self.menu.popup(None, None, func, self.status_icon, 3, time)
     
-    #### Window callbacks
-    def on_add_button_clicked(self, button, data=None):
-        response = self.ProcAdd.run()
-        if response == 1:
-            proc_name = self.ProcAdd.get_process_name()
-            if proc_name:
-                self.proc_liststore.append([get_icon_for_process(proc_name),
-                    proc_name])
-                
-                self.ProcMan.add_proc(proc_name)
-                
-    def on_remove_button_clicked(self, button, data=None):
-        model, paths = self.selection.get_selected_rows()
-        paths.reverse()
-        for path in paths:
-            self.ProcMan.remove_proc(model[path][1])
-            model.remove(model.get_iter(path))
-
-    def on_window_delete_event(self, window, data=None):
-        window.hide_on_delete()
-        ## Returning True stops the window from being destroyed.
-        return True
-
-    def on_close_button_clicked(self, button, data=None):
-        self.window.hide()
-
-
     #### Menu callbacks
     def on_activate_menuitem_activate (self, menuitem, data=None):
         self.toggleActivated()

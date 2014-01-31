@@ -23,27 +23,18 @@ import os.path
 import re
 import subprocess
 import dbus
+import logging
 
 import applicationinstance
-import caffeine
-import utils
-import logging
 
 
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
 
-# FIXME: Simplify preventedForProcess logic: use a set which we put
-# things in (preventedForProcess, preventedForFullScreen) for each
-# check; activate when the set becomes non-empty, and deactivate when
-# the set becomes empty.
 class Caffeine(GObject.GObject):
 
     def __init__(self):
         GObject.GObject.__init__(self)
-        
-        ## object to manage processes to activate for.
-        self.ProcMan = caffeine.get_ProcManager()
         
         ## Status string.
         self.status_string = ""
@@ -56,17 +47,20 @@ class Caffeine(GObject.GObject):
         # Set to True when sleep mode has been successfully inhibited somehow.
         self.sleepIsPrevented = False
 
-        self.preventedForProcess = False
+        self.preventedForFullScreen = False
         self.screenSaverCookie = None
 
-        # Add hooks for checks to activate
+        # Add hook for full-screen check
         GObject.timeout_add(50000, self._check_for_fullscreen) # FIXME: Calculate timeout from power settings (idle timeout minus a few seconds)
-        GObject.timeout_add(10000, self._check_for_process)
         
         print self.status_string
 
 
     def _check_for_fullscreen(self):
+        # Don't check full-screen if we're manually activated
+        if self.getActivated() and not self.preventedForFullScreen:
+            return True
+
         activate = False
 
         # Enumerate the attached screens
@@ -99,35 +93,13 @@ class Caffeine(GObject.GObject):
 
         if activate and not self.getActivated():
             logging.info("Caffeine has detected a full-screen window, and will auto-activate")
-        elif not self.preventedForProcess and not activate and self.getActivated():
-            logging.info("Caffeine detects no full-screen window, and is not activated for a process; deactivating...")
+        elif not activate and self.getActivated():
+            logging.info("Caffeine detects no full-screen window and is not otherwise activated; deactivating...")
         self.setActivated(activate)
+        self.preventedForFullScreen = activate
 
         return True
 
-
-    def _check_for_process(self):
-        activate = False
-        for proc in self.ProcMan.get_process_list():
-            if utils.isProcessRunning(proc):
-                activate = True
-
-                if self.preventedForProcess or not self.getActivated():
-                    logging.info("Caffeine has detected that the process '" + proc + "' is running, and will auto-activate")
-                    self.setActivated(True)
-                    self.preventedForProcess = True
-                else:
-                    logging.info("Caffeine has detected that the process '"+
-                    proc + "' is running, but will NOT auto-activate"+
-                    " as Caffeine has already been activated for a different"+
-                    " reason.")
-
-        ### No process in the list is running, deactivate.
-        if not activate and self.preventedForProcess:
-            logging.info("Caffeine had previously auto-activated for a process, but that process is no longer running; deactivating...")
-            self.setActivated(False)
-
-        return True
 
     def getActivated(self):
         return self.sleepIsPrevented
@@ -141,21 +113,18 @@ class Caffeine(GObject.GObject):
             self.toggleActivated()
 
     def toggleActivated(self):
-        """This function toggles the inhibition of the screensaver and powersaving
-        features of the current computer."""
+        """This function toggles the inhibition of desktop idleness."""
 
-        self.preventedForProcess = False
-        
+        self.preventedForFullScreen = False
+
         if self.sleepIsPrevented:
-            ### sleep prevention was on now turn it off
-
-            logging.info("Caffeine is now dormant; powersaving is re-enabled")
-            self.status_string = _("Caffeine is dormant; powersaving is enabled")
+            logging.info("Caffeine is now dormant")
+            self.status_string = _("Caffeine is dormant")
 
         self._performTogglingActions()
 
         if self.status_string == "":
-            self.status_string = (_("Caffeine is preventing powersaving modes and screensaver activation"))
+            self.status_string = _("Caffeine is preventing desktop idleness")
         
         self.emit("activation-toggled", self.getActivated(),
                 self.status_string)
@@ -163,19 +132,17 @@ class Caffeine(GObject.GObject):
         
 
     def _performTogglingActions(self):
-        """This method performs the actions that affect the screensaver and
-        powersaving."""
+        """This method performs the actions that affect desktop idleness."""
 
         self._toggle()
 
         if self.sleepIsPrevented == False:
-            logging.info("Caffeine is now preventing powersaving modes"+
-                " and screensaver activation")
+            logging.info("Caffeine is now preventing desktop idleness")
 
         self.sleepIsPrevented = not self.sleepIsPrevented
 
     def _toggle(self):
-        """Toggle the screensaver and powersaving with the interfaces used by freedesktop.org."""
+        """Toggle inhibition of desktop idleness with the freedesktop.org interface."""
 
         bus = dbus.SessionBus()
         self.susuProxy = bus.get_object('org.freedesktop.ScreenSaver', '/org/freedesktop/ScreenSaver')
@@ -184,7 +151,7 @@ class Caffeine(GObject.GObject):
             if self.screenSaverCookie != None:
                 self.iface.UnInhibit(self.screenSaverCookie)
         else:
-            self.screenSaverCookie = self.iface.Inhibit('net.launchpad.caffeine', "User has requested that Caffeine disable the screen saver")
+            self.screenSaverCookie = self.iface.Inhibit('net.launchpad.caffeine', "Caffeine is inhibiting desktop idleness")
 
 ## register a signal
 GObject.signal_new("activation-toggled", Caffeine,

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright © 2009 The Caffeine Developers
+# Copyright © 2009-2014 The Caffeine Developers
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ from gi.repository import Gtk
 
 from xdg.BaseDirectory import xdg_config_home
 
-VERSION = "2.5"
+VERSION = "2.6"
 
 def getBasePath():
     c = abspath(dirname(__file__))
@@ -54,13 +54,6 @@ WHITELIST = os.path.join(CONFIG_DIR, "whitelist.txt")
 if not os.path.isfile(WHITELIST):
     file = open(WHITELIST, "w")
     file.close()
-
-
-from caffeine import procmanager
-_ProcMan = procmanager.ProcManager()
-
-def get_ProcManager():
-    return _ProcMan
 
 
 IMAGE_PATH = join(BASE_PATH, 'share', 'caffeine', 'images')
