@@ -20,7 +20,7 @@
 import os
 from gi.repository import Gtk, GdkPixbuf, GObject, AppIndicator3
 import ctypes
-import optparse
+import argparse
 import signal
 
 ## local modules
@@ -139,17 +139,9 @@ def main():
     libc.prctl(15, 'caffeine', 0, 0, 0)
   
     ## handle command line arguments
-    parser = optparse.OptionParser()
-    parser.add_option("-a", "--activate", action="store_true",
-            dest="activated", default=False,
-            help="Disables power management and screen saving")
-
-    parser.add_option("-d", "--deactivate", action="store_false",
-            dest="activated", default=False,
-            help="Re-enables power management and screen saving")
-
-    global options
-    options, args = parser.parse_args()
+    parser = argparse.ArgumentParser(prog='caffeine', description='Manually and automatically prevent desktop idleness')
+    parser.add_argument('-V', '--version', action='version', version='caffeine ' + VERSION)
+    args = parser.parse_args()
     
     ## Makes sure that only one instance of the Caffeine is run for
     ## each user on the system.
@@ -160,9 +152,6 @@ def main():
 
     main = GUI()
         
-    if options.activated:
-        main.setActive(options.activated)
-
     appInstance.startApplication()
     Gtk.main()
     appInstance.exitApplication()

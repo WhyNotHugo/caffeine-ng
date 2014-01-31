@@ -112,6 +112,7 @@ for module in locale, gettext:
 # register the gettext function for the whole interpreter as "_"
 import __builtin__
 __builtin__._ = gettext.gettext
+__builtin__.VERSION = VERSION
 
 
 from caffeine.main import main
