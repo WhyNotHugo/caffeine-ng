@@ -3,6 +3,9 @@ caffeine (2.6) saucy; urgency=low
   * Auto-activate the screensaver when a full-screen window is present.
   * Remove the ability to watch processes; applications should inhibit
     idleness themselves, and many now do.
+  * Remove -a and -d command-line arguments: single-instance
+    nature of Caffeine means it shouldn't be used from the command
+    line. xdg-screensaver should be used instead.
   * Bump to standards 3.9.5 (no change).
 
  -- Reuben Thomas <rrt@sc3d.org>  Thu, 30 Jan 2014 23:13:15 +0000
