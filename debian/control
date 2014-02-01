@@ -10,8 +10,7 @@ Homepage: https://launchpad.net/caffeine
 Package: caffeine
 Architecture: all
 Depends:${shlibs:Depends}, ${misc:Depends}, ${python:Depends},
-    gir1.2-gtk-2.0, gir1.2-appindicator3-0.1, x11-utils,
-    python-dbus, python-xdg, python-kaa-metadata
+    gir1.2-gtk-2.0, gir1.2-appindicator3-0.1, x11-utils, python-dbus
 Description: Prevent the desktop becoming idle
  Caffeine allows the user to prevent the desktop becoming idle,
  either manually or when certain applications are run. This
