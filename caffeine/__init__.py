@@ -21,8 +21,6 @@ import os
 from os.path import join, abspath, dirname, pardir
 from gi.repository import Gtk
 
-from xdg.BaseDirectory import xdg_config_home
-
 VERSION = "2.6"
 
 def getBasePath():
@@ -37,63 +35,7 @@ def getBasePath():
             raise Exception("Can't determine BASE_PATH")
 
 BASE_PATH = getBasePath()
-
-_config_dir = os.path.join(xdg_config_home, "caffeine")
-
-if not os.path.exists(_config_dir):
-    os.makedirs(_config_dir)
-
-CONFIG_DIR = _config_dir
-## file with a list of programs that caffeine should 
-## activate when they are running
-
-## Log file.
-LOG = os.path.join(CONFIG_DIR, "log")
-WHITELIST = os.path.join(CONFIG_DIR, "whitelist.txt")
-## create file if it doesn't exist
-if not os.path.isfile(WHITELIST):
-    file = open(WHITELIST, "w")
-    file.close()
-
-
-IMAGE_PATH = join(BASE_PATH, 'share', 'caffeine', 'images')
 GLADE_PATH = join(BASE_PATH, 'share', 'caffeine', 'glade')
-ICON_PATH  = join(BASE_PATH, 'share', 'icons')
-
-_desktop_file  = join(BASE_PATH, 'share', 'applications',
-        'caffeine.desktop')
-
-FULL_ICON_PATH = join(IMAGE_PATH, "Full_Cup.svg")
-EMPTY_ICON_PATH = join(IMAGE_PATH, "Empty_Cup.svg")
-
-GENERIC_PROCESS_ICON_PATH = join(IMAGE_PATH, "application-x-executable.png")
-
-ICON_NAME = 'caffeine'
-icon_theme = Gtk.IconTheme.get_default()
-
-def get_icon_pixbuf(size):
-    global icon_theme
-    global ICON_NAME
-    
-    iconInfo = icon_theme.lookup_icon(ICON_NAME, size,
-        Gtk.IconLookupFlags.NO_SVG)
-    
-    if iconInfo:
-        # icon is found
-        base_size = iconInfo.get_base_size()
-        if base_size != size:
-            ## No sizexsize icon in the users theme so use the default
-            icon_theme = Gtk.IconTheme()
-            icon_theme.set_search_path((ICON_PATH,))
-    else:
-        icon_theme.append_search_path(ICON_PATH)
-        iconInfo = icon_theme.lookup_icon(ICON_NAME, size,
-            Gtk.IconLookupFlags.NO_SVG)
-
-    pixbuf = icon_theme.load_icon(ICON_NAME, size,
-                Gtk.IconLookupFlags.NO_SVG)
-
-    return pixbuf
 
 ### Setup translations
 ###
@@ -112,7 +54,6 @@ for module in locale, gettext:
 # register the gettext function for the whole interpreter as "_"
 import __builtin__
 __builtin__._ = gettext.gettext
-__builtin__.VERSION = VERSION
 
 
 from caffeine.main import main

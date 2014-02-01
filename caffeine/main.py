@@ -31,13 +31,6 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
-icon_theme = Gtk.IconTheme.get_default()
-try:
-    generic = icon_theme.load_icon("application-x-executable", 16, Gtk.IconLookupFlags.NO_SVG)
-except GObject.GError, e:
-    generic = GdkPixbuf.Pixbuf.new_from_file(caffeine.GENERIC_PROCESS_ICON_PATH)
-
-
 class GUI(object):
 
     def __init__(self):
@@ -122,7 +115,7 @@ class GUI(object):
         ### Do anything that needs to be done before quitting.
         logging.info("Caffeine is preparing to quit")
 
-        ### Make sure PM and SV is uninhibited
+        ### Make sure desktop idleness is uninhibited
         self.Core.setActivated(False)
 
         Gtk.main_quit()
@@ -140,7 +133,7 @@ def main():
   
     ## handle command line arguments
     parser = argparse.ArgumentParser(prog='caffeine', description='Manually and automatically prevent desktop idleness')
-    parser.add_argument('-V', '--version', action='version', version='caffeine ' + VERSION)
+    parser.add_argument('-V', '--version', action='version', version='caffeine ' + caffeine.VERSION)
     parser.parse_args()
     
     ## Makes sure that only one instance of the Caffeine is run for
