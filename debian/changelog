@@ -1,8 +1,8 @@
-caffeine (2.6.1) saucy; urgency=low
+caffeine (2.6.2) saucy; urgency=low
 
   * Add a build number just to persuade Launchpad to rebuild.
 
- -- Reuben Thomas <rrt@sc3d.org>  Thu, 30 Jan 2014 23:13:15 +0000
+ -- Reuben Thomas <rrt@sc3d.org>  Tue, 25 Feb 2014 23:13:15 +0000
 
 caffeine (2.6) saucy; urgency=low
 

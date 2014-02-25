@@ -31,7 +31,7 @@ def main():
     data_files.append(tuple(("/" + autostart_dir, [os.path.join(autostart_dir, desktop_name)])))
 
     setup(name="caffeine",
-        version="2.6.1",
+        version="2.6.2",
         description="""Manually and automatically control the desktop's idle state.""",
         author="The Caffeine Developers",
         author_email="bnsmith@gmail.com",

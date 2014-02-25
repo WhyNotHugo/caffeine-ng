@@ -21,7 +21,7 @@ import os
 from os.path import join, abspath, dirname, pardir
 from gi.repository import Gtk
 
-VERSION = "2.6.1"
+VERSION = "2.6.2"
 
 def getBasePath():
     c = abspath(dirname(__file__))
