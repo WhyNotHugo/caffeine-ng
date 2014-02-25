@@ -7,90 +7,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-18 20:12+0000\n"
-"PO-Revision-Date: 2013-05-15 10:54+0000\n"
-"Last-Translator: Zillode <Unknown>\n"
+"POT-Creation-Date: 2013-12-11 00:10+0000\n"
+"PO-Revision-Date: 2013-12-11 12:57+0000\n"
+"Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-05-16 05:13+0000\n"
-"X-Generator: Launchpad (build 16626)\n"
+"X-Launchpad-Export-Date: 2013-12-12 05:18+0000\n"
+"X-Generator: Launchpad (build 16869)\n"
 
-#. file 'caffeine/core.py', line 191
-#. file 'caffeine/core.py', line 193
-msgid "Activated for Flash video"
-msgstr "Geactiveerd voor Flash film"
-
-#. file 'caffeine/core.py', line 252
-msgid "Activated for Quake Live"
-msgstr "Geactiveerd voor Quake Live"
-
-#. file 'caffeine/core.py', line 319
-msgid " and "
-msgstr " en "
-
-#. file 'caffeine/core.py', line 326
-#. file 'caffeine/core.py', line 332
-msgid "hour"
-msgstr "uur"
-
-#. file 'caffeine/core.py', line 326
-#. file 'caffeine/core.py', line 338
-msgid "minute"
-msgstr "minuut"
-
-#. file 'caffeine/core.py', line 334
-msgid "hours"
-msgstr "uren"
-
-#. file 'caffeine/core.py', line 340
-msgid "minutes"
-msgstr "minuten"
-
-#. file 'caffeine/core.py', line 391
-msgid "Timed activation set; "
-msgstr "Tijdelijke activering actief; "
-
-#. file 'caffeine/core.py', line 392
-msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine zal energiebesparing blokkeren voor de volgende "
-
-#. file 'caffeine/core.py', line 399
-msgid "Activated for "
-msgstr "Geactiveerd voor "
-
-#. file 'caffeine/core.py', line 445
-#. file 'caffeine/main.py', line 200
+#. file 'caffeine/core.py', line 112
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine is in slaapstand; Energiebesparing is actief"
 
-#. file 'caffeine/core.py', line 453
-msgid "Timed activation cancelled (was set for "
-msgstr "Getimede activering geannuleerd (was geconfigureerd voor "
+#. file 'caffeine/core.py', line 117
+msgid "Caffeine is preventing powersaving modes and screensaver activation"
+msgstr ""
 
-#. file 'caffeine/core.py', line 470
-msgid " have elapsed; powersaving is re-enabled"
-msgstr " zijn voorbij; Energiebesparing is opnieuw actief"
-
-#. file 'caffeine/core.py', line 489
-msgid "Caffeine is preventing powersaving modes and screensaver activation "
-msgstr "Caffeine houdt energiebesparende modi en schermbeveiliging tegen "
-
-#. file 'caffeine/main.py', line 43
-msgid "Please install"
-msgstr "Installeren a.u.b."
-
-#. file 'caffeine/main.py', line 188
-msgid "Caffeine is running"
-msgstr "Cafeïne staat aan"
-
-#. file 'caffeine/main.py', line 265
+#. file 'caffeine/main.py', line 164
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Adriaan Kleinhout https://launchpad.net/~adriaan-kleinhout\n"
-"  Bert Timmerman https://launchpad.net/~bert-timmerman\n"
 "  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
 "  Elco https://launchpad.net/~eajnab\n"
 "  Joostkam https://launchpad.net/~joost-kam\n"
@@ -98,14 +36,14 @@ msgstr ""
 "  Zillode https://launchpad.net/~zillode\n"
 "  erikjuh https://launchpad.net/~erikdeboer0"
 
-#. file 'caffeine/main.py', line 316
-#. file 'caffeine/main.py', line 429
+#. file 'caffeine/main.py', line 185
+#. file 'caffeine/main.py', line 227
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Disable Screensaver"
 msgstr "Schermbeveiliging blokkeren"
 
-#. file 'caffeine/main.py', line 316
-#. file 'caffeine/main.py', line 429
+#. file 'caffeine/main.py', line 185
+#. file 'caffeine/main.py', line 227
 msgid "Enable Screensaver"
 msgstr "Schermbeveiliging aanzetten"
 
@@ -118,42 +56,8 @@ msgstr ""
 "en slaapstand activatie tijdelijk te onderbreken."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Duration"
-msgstr "Duur"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Hours:"
-msgstr "Uren:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Minutes:"
-msgstr "Minuten:"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver for..."
-msgstr "Schermbeveiliging uitschakelen voor..."
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Preferences"
 msgstr "Voorkeuren"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Autostart"
-msgstr "Automatisch starten"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Start Caffeine on login"
-msgstr "Start Caffeine na het inloggen"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Enable this option to automatically run Caffeine as soon as\n"
-"your computer has finished starting up and you have\n"
-"successfully entered your username and password."
-msgstr ""
-"Selecteer deze optie om Caffeine automatisch te starten\\n\n"
-"nadat uw computer opgestart is en u succesvol\\n\n"
-"uw gebruikersnaam en wachtwoord ingegeven hebt."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "Automatic activation"
@@ -162,10 +66,8 @@ msgstr "Automatische activatie"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""
 "Caffeine can activate automatically\n"
-"whenever certain programs are runnning."
+"whenever certain programs are running."
 msgstr ""
-"Caffeine kan automatisch activeren\\n\n"
-"wanneer bepaalde programma's actief zijn."
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "List of programs that Caffeine activates for:"
@@ -187,45 +89,8 @@ msgstr ""
 "schermbeveiliging te blokkeren"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for Flash video"
-msgstr "Activeren voor Flash films"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Some websites, such as www.youtube.com, show videos using\n"
-"a technology known as \"Flash\". Enable this option to cause\n"
-"Caffeine to automatically prevent the activation of the\n"
-"screensaver and powersaving modes when a Flash video is\n"
-"embedded in the web page that you are currently browsing."
-msgstr "Activeren voor Quake Live"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for Quake Live"
-msgstr "Activeren voor Quake Live"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Enable this option to cause Caffeine to automatically prevent\n"
-"the activation of the screensaver and powersaving modes\n"
-"when it detects that you are playing the Quake Live video\n"
-"game. Visit www.quakelive.com to play the game for free."
+msgid "Process Name"
 msgstr ""
-"Deze optie zorgt ervoor dat Caffeine automatisch de\\n\n"
-"activatie van de schermbeveiliging en de energiebesparende modus\\n\n"
-"geblokkeerd worden wanneer je Quake Live aan het spelen bent.\\n\n"
-"Bezoek www.quakelive.com om gratis het spel te spelen."
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Tray icon"
-msgstr "Systeemvakpictogram"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Show tray icon"
-msgstr "Systeemvakpictogram tonen"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Show notification on startup"
-msgstr "Laat notificatie zien bij het opstarten"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid "    "
@@ -256,14 +121,56 @@ msgstr "Selecteer een proces naam"
 #~ msgid "4 hours"
 #~ msgstr "4 uren"
 
+#~ msgid "Activated for Quake Live"
+#~ msgstr "Geactiveerd voor Quake Live"
+
+#~ msgid "Timed activation set; "
+#~ msgstr "Tijdelijke activering actief; "
+
+#~ msgid "Caffeine will prevent powersaving for the next "
+#~ msgstr "Caffeine zal energiebesparing blokkeren voor de volgende "
+
+#~ msgid "hour"
+#~ msgstr "uur"
+
+#~ msgid "minute"
+#~ msgstr "minuut"
+
 #~ msgid "Other..."
 #~ msgstr "Overige..."
+
+#~ msgid "Activated for Flash video"
+#~ msgstr "Geactiveerd voor Flash film"
+
+#~ msgid "hours"
+#~ msgstr "uren"
+
+#~ msgid " and "
+#~ msgstr " en "
+
+#~ msgid "minutes"
+#~ msgstr "minuten"
 
 #~ msgid "Running Processes"
 #~ msgstr "Actieve Processen"
 
+#~ msgid "Activated for "
+#~ msgstr "Geactiveerd voor "
+
+#~ msgid "Timed activation cancelled (was set for "
+#~ msgstr "Getimede activering geannuleerd (was geconfigureerd voor "
+
+#~ msgid "Caffeine is preventing powersaving modes and screensaver activation "
+#~ msgstr "Caffeine houdt energiebesparende modi en schermbeveiliging tegen "
+
+#~ msgid "Autostart"
+#~ msgstr "Automatisch starten"
+
 #~ msgid "Recent Processes"
 #~ msgstr "Recente Processen"
+
+#~ msgid " have elapsed; powersaving is re-enabled"
+#~ msgstr " zijn voorbij; Energiebesparing is opnieuw actief"
 
 #~ msgid ""
 #~ "An application to temporarily prevent the activation of both the screen "
@@ -272,11 +179,67 @@ msgstr "Selecteer een proces naam"
 #~ "Een toepassing om tijdelijk de activatie van schermbeveiliging en "
 #~ "energiebesparende modi te blokkeren"
 
+#~ msgid ""
+#~ "Enable this option to cause Caffeine to automatically prevent\n"
+#~ "the activation of the screensaver and powersaving modes\n"
+#~ "when it detects that you are playing the Quake Live video\n"
+#~ "game. Visit www.quakelive.com to play the game for free."
+#~ msgstr ""
+#~ "Deze optie zorgt ervoor dat Caffeine automatisch de\\n\n"
+#~ "activatie van de schermbeveiliging en de energiebesparende modus\\n\n"
+#~ "geblokkeerd worden wanneer je Quake Live aan het spelen bent.\\n\n"
+#~ "Bezoek www.quakelive.com om gratis het spel te spelen."
+
+#~ msgid ""
+#~ "Some websites, such as www.youtube.com, show videos using\n"
+#~ "a technology known as \"Flash\". Enable this option to cause\n"
+#~ "Caffeine to automatically prevent the activation of the\n"
+#~ "screensaver and powersaving modes when a Flash video is\n"
+#~ "embedded in the web page that you are currently browsing."
+#~ msgstr "Activeren voor Quake Live"
+
+#~ msgid "Activate for Flash video"
+#~ msgstr "Activeren voor Flash films"
+
+#~ msgid ""
+#~ "Caffeine can activate automatically\n"
+#~ "whenever certain programs are runnning."
+#~ msgstr ""
+#~ "Caffeine kan automatisch activeren\\n\n"
+#~ "wanneer bepaalde programma's actief zijn."
+
+#~ msgid "Start Caffeine on login"
+#~ msgstr "Start Caffeine na het inloggen"
+
+#~ msgid ""
+#~ "Enable this option to automatically run Caffeine as soon as\n"
+#~ "your computer has finished starting up and you have\n"
+#~ "successfully entered your username and password."
+#~ msgstr ""
+#~ "Selecteer deze optie om Caffeine automatisch te starten\\n\n"
+#~ "nadat uw computer opgestart is en u succesvol\\n\n"
+#~ "uw gebruikersnaam en wachtwoord ingegeven hebt."
+
+#~ msgid "Minutes:"
+#~ msgstr "Minuten:"
+
 #~ msgid "Configure Caffeine"
 #~ msgstr "Configureer Caffeine"
+
+#~ msgid "Duration"
+#~ msgstr "Duur"
+
+#~ msgid "Hours:"
+#~ msgstr "Uren:"
 
 #~ msgid "Activate for"
 #~ msgstr "Activeren voor"
 
 #~ msgid "2 hours"
 #~ msgstr "2 uur"
+
+#~ msgid "Activate for Quake Live"
+#~ msgstr "Activeren voor Quake Live"
+
+#~ msgid "Please install"
+#~ msgstr "Installeren a.u.b."
