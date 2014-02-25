@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.6\n"
-"POT-Creation-Date: 2014-02-25 19:25:05.826187\n"
+"POT-Creation-Date: 2014-02-25 19:38:16.673607\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,15 +14,15 @@ msgstr ""
 "Generated-By: ./generate_pot.py\n"
 msgid "Caffeine is dormant"
 #. file 'caffeine/core.py', line 123
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 122
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 122
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 122
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 123
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 123
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 123
 msgstr ""
 msgid "Caffeine is preventing desktop idleness"
 #. file 'caffeine/core.py', line 128
-#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 127
-#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 127
-#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 127
+#. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 128
+#. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 128
+#. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 128
 msgstr ""
 msgid "translator-credits"
 #. file 'caffeine/main.py', line 64
@@ -55,7 +55,4 @@ msgstr ""
 msgid "Manually and automatically control the desktop’s idle state"
 #. file 'share/caffeine/glade/GUI.glade', line ?
 #. file 'debian/caffeine/usr/share/caffeine/glade/GUI.glade', line ?
-msgstr ""
-msgid "Select a process name..."
-#. file 'debian/caffeine/usr/share/caffeine/glade/proc.glade', line ?
 msgstr ""
