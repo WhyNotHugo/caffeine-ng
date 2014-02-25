@@ -1,3 +1,7 @@
+caffeine (2.6-1) saucy; urgency=low
+
+  * Add a build number just to persuade Launchpad to rebuild.
+
 caffeine (2.6) saucy; urgency=low
 
   * Auto-activate the screensaver when a full-screen window is present.
