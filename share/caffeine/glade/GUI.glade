@@ -8,7 +8,7 @@
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
     <property name="program_name">Caffeine</property>
-    <property name="version">2.6 (bzr 551)</property>
+    <property name="version">2.6 (bzr 552)</property>
     <property name="copyright">Copyright &#169; 2009&#8211;2014 Brad Smith, Tommy Brunn, Isaiah Heyer &amp; Reuben Thomas</property>
     <property name="comments" translatable="yes">Manually and automatically control the desktop&#8217;s idle state</property>
     <property name="website">http://launchpad.net/caffeine</property>
