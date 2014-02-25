@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine 2.6\n"
-"POT-Creation-Date: 2014-02-01 00:40:37.735229\n"
+"POT-Creation-Date: 2014-02-25 19:25:05.826187\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,13 +13,13 @@ msgstr ""
 "Content-Transfer-Encoding: utf-8\n"
 "Generated-By: ./generate_pot.py\n"
 msgid "Caffeine is dormant"
-#. file 'caffeine/core.py', line 122
+#. file 'caffeine/core.py', line 123
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 122
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 122
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 122
 msgstr ""
 msgid "Caffeine is preventing desktop idleness"
-#. file 'caffeine/core.py', line 127
+#. file 'caffeine/core.py', line 128
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/core.py', line 127
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/core.py', line 127
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/core.py', line 127
