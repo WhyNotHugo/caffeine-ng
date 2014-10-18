@@ -35,6 +35,7 @@ import webbrowser
 import dbus
 import ctypes
 import optparse
+import signal
 
 try:
     from gi.repository import Notify
@@ -461,6 +462,7 @@ class GUI(object):
 options = None
 
 def main():
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
 
     GObject.threads_init()
 
