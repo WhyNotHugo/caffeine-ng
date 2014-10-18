@@ -127,7 +127,7 @@ class Caffeine(GObject.GObject):
         try:
             ## look for files opened by flashplayer that begin with 'Flash'
 
-            output = commands.getoutput("python flash_detect.py")
+            output = commands.getoutput("python2 flash_detect.py")
 
             if output == "1":
                 raise escape
