@@ -1,9 +1,0 @@
-caffeine (2.5~bzr498~ppa0~saucy) saucy; urgency=low
-
-  * Fix right-click on icon (LP #892663)
-  * Several new localisations.
-  * Update and clean up packaging.
-  * Replace autostart option with an XDG autostart .desktop file.
-  * Remove specific support for Quake Live.
-
- -- Reuben Thomas <rrt@sc3d.org>  Mon, 09 Dec 2013 00:01:47 +0000
