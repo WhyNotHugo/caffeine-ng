@@ -39,6 +39,9 @@ Installation
 License
 -------
 
+Copyright (C) 2009 The Caffeine Developers
+Copyright (C) 2014 Hugo Osvaldo Barrera <hugo@barrera.io>
+
 Taurine is distributed under the GNU General Public License, either version
 3, or (at your option) any later version. See GPL for details.
 
