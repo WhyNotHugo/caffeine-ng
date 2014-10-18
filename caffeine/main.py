@@ -20,7 +20,7 @@
 
 import os
 import sys
-from gi.repository import Gtk, GObject, Gio
+from gi.repository import Gtk, GObject, Gio, GdkPixbuf
 
 appindicator_avail = True
 try:
