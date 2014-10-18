@@ -34,6 +34,9 @@ import ctypes
 import optparse
 import signal
 
+import logging
+import gettext.gettext as _
+
 try:
     from gi.repository.Notify import Notification
 except:
@@ -43,7 +46,6 @@ except:
 import caffeine
 from . import core
 from . import applicationinstance
-from . import caffeinelogging as logging
 
 icon_theme = Gtk.IconTheme.get_default()
 try:

@@ -32,9 +32,11 @@ from . import applicationinstance
 
 import caffeine
 from . import utils
-from . import caffeinelogging as logging
+import logging
 
+import gettext.gettext as _
 
+logging.basicConfig(level=logging.INFO)
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
 
@@ -264,7 +266,6 @@ class Caffeine(GObject.GObject):
         return self._mconcat(txt, and_str, ls[n-1])
 
     def _pluralize(self, name, time):
-        names = [_('hour'), _('minute')]
         if time < 1:
             return ""
 
