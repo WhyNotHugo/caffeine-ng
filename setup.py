@@ -31,16 +31,17 @@ def main():
                              [os.path.join(autostart_dir, desktop_name)])))
 
     setup(name="caffeine",
-          version="2.5",
+          version="2.6",
           description="""A status bar application able to temporarily prevent
           the activation of both the screensaver and the "sleep" powersaving
           mode.""",
           author="The Caffeine Developers",
-          author_email="bnsmith@gmail.com",
-          url="https://launchpad.net/caffeine",
+          author_email="hugo@barrera.io",
+          url="https://github.com/hobarrera/taurine",
           packages=["caffeine"],
           data_files=data_files,
-          scripts=[os.path.join("bin", "caffeine")]
+          scripts=[os.path.join("bin", "caffeine"),
+                   os.path.join("bin", "taurine")]
           )
 
 if __name__ == "__main__":

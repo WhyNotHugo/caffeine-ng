@@ -1,9 +1,9 @@
 [Desktop Entry]
 Encoding=UTF-8
 Icon=caffeine
-Name=Caffeine Preferences
-Comment=Change your Caffeine configuration
-Exec=/usr/bin/caffeine -p
+Name=Taurine Preferences
+Comment=Change your Taurine settings
+Exec=/usr/bin/taurine -p
 Terminal=false
 Type=Application
 Categories=Settings;DesktopSettings

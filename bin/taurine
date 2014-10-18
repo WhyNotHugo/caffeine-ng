@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# Copyright (c) 2014 Hugo Osvaldo Barrera
+# Copyright © 2009 The Caffeine Developers
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+import sys
+from os.path import join, dirname, pardir
+
+# if running locally
+sys.path.insert(0, join(dirname(__file__), pardir))
+
+# if installed
+x, y = sys.version_info[0:2]
+x = str(x)
+y = str(y)
+
+sys.path.insert(1, join(dirname(__file__), pardir, 'lib',
+                'python'+x+'.'+y, 'dist-packages'))
+
+sys.path.insert(1, join(dirname(__file__), pardir, 'lib',
+                'python'))
+
+sys.path.append(join(dirname(__file__), pardir, 'share', 'pyshared'))
+
+import caffeine
+
+caffeine.main()

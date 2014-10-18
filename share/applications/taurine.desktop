@@ -1,9 +1,9 @@
 [Desktop Entry]
 Encoding=UTF-8
 Icon=caffeine
-Name=Caffeine
+Name=Taurine
 Comment=Temporarily deactivate the screensaver and sleep mode
-Exec=/usr/bin/caffeine
+Exec=/usr/bin/taurine
 Terminal=false
 Type=Application
 Categories=Utility;
