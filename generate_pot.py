@@ -90,7 +90,7 @@ def scan_python_file(filename, calls):
                     elif pos == 1:
                         if handle:
                             if n.__class__ is ast.Const and \
-                               isinstance(n.value, basestring):
+                               isinstance(n.value, str):
                                 yield n.lineno, n.value
                             break
                         else:
@@ -100,12 +100,12 @@ def scan_python_file(filename, calls):
                 for n in scan(node):
                     yield n
 
-    fp = file(filename)
+    fp = open(filename)
     try:
         try:
             return scan(parse(fp.read()))
         except:
-            print >> sys.stderr, 'Syntax Error in file %r' % filename
+            print('Syntax Error in file %r' % filename, file=sys.stderr)
     finally:
         fp.close()
 
@@ -115,7 +115,7 @@ def scan_glade_file(filename):
     try:
         doc = minidom.parse(filename)
     except:
-        print >> sys.stderr, 'Syntax Error in file %r' % filename
+        print('Syntax Error in file %r' % filename, file=sys.stderr)
     for element in doc.getElementsByTagName('property'):
         if element.getAttribute('translatable') == 'yes':
             data = element.firstChild.nodeValue
@@ -145,30 +145,30 @@ def scan_tree(pathname, calls=['_']):
 
 def main():
     if len(sys.argv) != 5:
-        print 'usage: %s <basefolder> <name> <version> <outputfile>' % sys.argv[0]
+        print('usage: %s <basefolder> <name> <version> <outputfile>' %
+              sys.argv[0])
         sys.exit()
     output = sys.argv[4]
-    output = open(output,'w')
+    output = open(output, 'w')
 
-    print >> output, PO_HEADER % {
+    print(PO_HEADER % {
         'time':     datetime.now(),
         'filename': sys.argv[0],
         'name':     sys.argv[2],
         'version':  sys.argv[3]
-    }
+    }, file=output)
 
     basepath = sys.argv[1]
     for string, occurrences in scan_tree(basepath):
         try:
-            print >> output, 'msgid %s' % quote(string.encode("utf_8"))
-        except Exception,data:
-            print data
-            #print >> output, 'msgid %s' % quote(string)
-
+            print('msgid %s' % quote(string.encode("utf_8")), file=output)
+        except Exception as data:
+            print(data)
         else:
             for path, lineno in occurrences:
-                print >> output,'#. file %r, line %s' % (path, lineno or '?')
-            print >> output, 'msgstr ""'
+                print('#. file %r, line %s' % (path, lineno or '?'),
+                      file=output)
+            print('msgstr ""', file=output)
 
     output.close()
 

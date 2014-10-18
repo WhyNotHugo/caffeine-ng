@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
+# Copyright (c) 2014 Hugo Osvaldo Barrera
 # Copyright © 2009 The Caffeine Developers
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,23 +21,21 @@
 import caffeine
 import os
 
+
 class ProcManager(object):
 
     def __init__(self):
-
         self.whitelist_file = caffeine.WHITELIST
         self.proc_list = []
 
         if os.path.exists(self.whitelist_file):
-            
             self.import_proc(self.whitelist_file)
-    
+
     def get_process_list(self):
         return self.proc_list[:]
 
-
     def add_proc(self, name):
-        if not name in self.proc_list:
+        if name not in self.proc_list:
             self.proc_list.append(name)
         self.save()
 
@@ -47,15 +46,13 @@ class ProcManager(object):
     def import_proc(self, filename):
         for line in open(filename):
             line = line.strip()
-            if not line in self.proc_list:
+            if line not in self.proc_list:
                 self.proc_list.append(line)
 
         self.save()
-    
+
     def save(self):
         self.proc_list.sort()
         file = open(self.whitelist_file, "w")
         file.write("\n".join(self.proc_list))
         file.close()
-
-

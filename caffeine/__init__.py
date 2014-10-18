@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
+# Copyright (c) 2014 Hugo Osvaldo Barrera
 # Copyright © 2009 The Caffeine Developers
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,17 +21,18 @@
 
 import os
 from os.path import join, abspath, dirname, pardir
-from gi.repository import Gtk, Gio
+from gi.repository import Gtk
 
 from xdg.BaseDirectory import xdg_config_home
 
 VERSION = "2.4.1"
 
+
 def getBasePath():
     c = abspath(dirname(__file__))
     while True:
         if os.path.exists(os.path.join(c, "bin")) and \
-           os.path.exists(os.path.join(c, "share/caffeine")) :
+           os.path.exists(os.path.join(c, "share/caffeine")):
             return c
 
         c = join(c, pardir)
@@ -46,13 +48,13 @@ if not os.path.exists(_config_dir):
     os.makedirs(_config_dir)
 
 CONFIG_DIR = _config_dir
-## file with a list of programs that caffeine should 
-## activate when they are running
+# file with a list of programs that caffeine should
+# activate when they are running
 
-## Log file.
+# Log file.
 LOG = os.path.join(CONFIG_DIR, "log")
 WHITELIST = os.path.join(CONFIG_DIR, "whitelist.txt")
-## create file if it doesn't exist
+# create file if it doesn't exist
 if not os.path.isfile(WHITELIST):
     file = open(WHITELIST, "w")
     file.close()
@@ -61,16 +63,17 @@ if not os.path.isfile(WHITELIST):
 from caffeine import procmanager
 _ProcMan = procmanager.ProcManager()
 
+
 def get_ProcManager():
     return _ProcMan
 
 
 IMAGE_PATH = join(BASE_PATH, 'share', 'caffeine', 'images')
 GLADE_PATH = join(BASE_PATH, 'share', 'caffeine', 'glade')
-ICON_PATH  = join(BASE_PATH, 'share', 'icons')
+ICON_PATH = join(BASE_PATH, 'share', 'icons')
 
-_desktop_file  = join(BASE_PATH, 'share', 'applications',
-        'caffeine.desktop')
+_desktop_file = join(BASE_PATH, 'share', 'applications',
+                     'caffeine.desktop')
 
 FULL_ICON_PATH = join(IMAGE_PATH, "Full_Cup.svg")
 EMPTY_ICON_PATH = join(IMAGE_PATH, "Empty_Cup.svg")
@@ -80,32 +83,33 @@ GENERIC_PROCESS_ICON_PATH = join(IMAGE_PATH, "application-x-executable.png")
 ICON_NAME = 'caffeine'
 icon_theme = Gtk.IconTheme.get_default()
 
+
 def get_icon_pixbuf(size):
     global icon_theme
     global ICON_NAME
-    
+
     iconInfo = icon_theme.lookup_icon(ICON_NAME, size,
-        Gtk.IconLookupFlags.NO_SVG)
-    
+                                      Gtk.IconLookupFlags.NO_SVG)
+
     if iconInfo:
         # icon is found
         base_size = iconInfo.get_base_size()
         if base_size != size:
-            ## No sizexsize icon in the users theme so use the default
+            # No sizexsize icon in the users theme so use the default
             icon_theme = Gtk.IconTheme()
             icon_theme.set_search_path((ICON_PATH,))
     else:
         icon_theme.append_search_path(ICON_PATH)
         iconInfo = icon_theme.lookup_icon(ICON_NAME, size,
-            Gtk.IconLookupFlags.NO_SVG)
+                                          Gtk.IconLookupFlags.NO_SVG)
 
     pixbuf = icon_theme.load_icon(ICON_NAME, size,
-                Gtk.IconLookupFlags.NO_SVG)
+                                  Gtk.IconLookupFlags.NO_SVG)
 
     return pixbuf
 
-### Setup translations
-###
+# Setup translations
+
 GETTEXT_DOMAIN = "caffeine"
 LOCALE_PATH = os.path.join(BASE_PATH, "share", "locale")
 
@@ -119,8 +123,10 @@ for module in locale, gettext:
     module.textdomain(GETTEXT_DOMAIN)
 
 # register the gettext function for the whole interpreter as "_"
-import __builtin__
-__builtin__._ = gettext.gettext
+import builtins
+builtins._ = gettext.gettext
 
 
 from caffeine.main import main
+
+__all__ = ['main']

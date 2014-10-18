@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
+# Copyright (c) 2014 Hugo Osvaldo Barrera
 # Copyright © 2009 The Caffeine Developers
 #
 # This program is free software: you can redistribute it and/or modify
@@ -19,6 +20,7 @@
 
 import os
 
+
 def getProcessName(pid):
     """Gets process name from process id"""
 
@@ -34,6 +36,7 @@ def getProcessName(pid):
             processName = cmdName
 
     return processName
+
 
 def getProcesses():
 
@@ -56,6 +59,7 @@ def getProcesses():
 
     return processList
 
+
 def isProcessRunning(name):
 
     for proc_name, pid in getProcesses():
@@ -63,4 +67,3 @@ def isProcessRunning(name):
             return True
 
     return False
-
