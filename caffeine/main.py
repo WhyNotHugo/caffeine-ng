@@ -36,10 +36,7 @@ import signal
 import logging
 import gettext.gettext as _
 
-try:
-    from gi.repository.Notify import Notification
-except:
-    print(_("Please install")+" pynotify")
+from gi.repository.Notify import Notification
 
 # local modules
 import caffeine
