@@ -11,11 +11,11 @@ versions dropped support for the systray icon in favour of only automatic
 detection of fullscreen apps only, which resulted rather
 [controversial](https://bugs.launchpad.net/caffeine/+bug/1321750).
 
-The intention of this fork is to also evolve on it's own, not only fixing
+The intention of this fork is to also evolve on its own, not only fixing
 issues, but also implemented missing features, when relevant.
 
 Taurine is a stimulant, commonly found in energy drinks. This app's name is a
-play on it's successor's name: caffeine.
+play on its successor's name: caffeine.
 
 System requirements
 -------------------
