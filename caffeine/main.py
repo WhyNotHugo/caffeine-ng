@@ -224,7 +224,6 @@ class GUI(object):
                                            caffeine.get_icon_pixbuf(32),
                                            caffeine.get_icon_pixbuf(48)])
 
-        self.ql_cb = get("ql_cbutton")
         self.flash_cb = get("flash_cbutton")
         self.trayicon_cb = get("trayicon_cbutton")
         self.notification_cb = get("notification_cbutton")
