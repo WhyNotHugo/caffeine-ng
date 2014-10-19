@@ -121,11 +121,6 @@ for module in locale, gettext:
     module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
     module.textdomain(GETTEXT_DOMAIN)
 
-# register the gettext function for the whole interpreter as "_"
-import builtins
-builtins._ = gettext.gettext
-
-
 from caffeine.main import main
 
 __all__ = ['main']

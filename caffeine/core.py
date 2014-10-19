@@ -33,7 +33,7 @@ import caffeine
 from . import utils
 import logging
 
-import gettext.gettext as _
+from gettext import gettext as _
 
 logging.basicConfig(level=logging.INFO)
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
@@ -250,49 +250,6 @@ class Caffeine(GObject.GObject):
         if self.dbusDetectionTimer:
             self.dbusDetectionTimer.cancel()
 
-    # The following four methods deal with adding the correct syntax
-    # for plural forms of time units. For example, 1 minute and 2
-    # minutes. Will be obsolete once the application is
-    # internationalized, as not all languages use "s" for plural form.
-    def _mconcat(self, base, sep, app):
-        return (base + sep + app if base else app) if app else base
-
-    def _spokenConcat(self, ls):
-        and_str = _(" and ")
-        txt, n = '', len(ls)
-        for w in ls[0:n-1]:
-            txt = self._mconcat(txt, ', ', w)
-        return self._mconcat(txt, and_str, ls[n-1])
-
-    def _pluralize(self, name, time):
-        if time < 1:
-            return ""
-
-        if name == "hour":
-            if time < 2:
-                return "%d %s" % (time, _("hour"))
-            if time >= 2:
-                return "%d %s" % (time, _("hours"))
-
-        elif name == "minute":
-            if time < 2:
-                return "%d %s" % (time, _("minute"))
-            if time >= 2:
-                return "%d %s" % (time, _("minutes"))
-
-    def _timeDisplay(self, sec):
-
-        hours = sec/3600
-        minutes = sec/60 % 60
-        ls = []
-        ls.append(self._pluralize("hour", hours))
-        ls.append(self._pluralize("minute", minutes))
-
-        string = self._spokenConcat(ls)
-        if not string:
-            string = "0 minutes"
-        return string
-
     def _notify(self, message, icon, title="Caffeine"):
         """Easy way to use pynotify"""
         try:
@@ -331,12 +288,12 @@ class Caffeine(GObject.GObject):
         """
         message = (_("Timed activation set; ") +
                    _("Caffeine will prevent powersaving for the next ") +
-                   self._timeDisplay(time))
+                   str(time))
 
-        logging.info("Timed activation set for " + self._timeDisplay(time))
+        logging.info("Timed activation set for " + str(time))
 
         if self.status_string == "":
-            self.status_string = _("Activated for ")+self._timeDisplay(time)
+            self.status_string = _("Activated for ")+str(time)
             self.emit("activation-toggled", self.getActivated(),
                       self.status_string)
 
@@ -350,7 +307,7 @@ class Caffeine(GObject.GObject):
         if self.timer:
             logging.info("Previous timed activation cancelled due to a " +
                          "second timed activation request (was set for " +
-                         self._timeDisplay(self.timer.interval) + " or " +
+                         str(self.timer.interval) + " or " +
                          str(time)+" seconds )")
             self.timer.cancel()
 
@@ -390,10 +347,10 @@ class Caffeine(GObject.GObject):
 
             if self.timer is not None and self.timer.name != "Expired":
                 message = (_("Timed activation cancelled (was set for ") +
-                           self._timeDisplay(self.timer.interval) + ")")
+                           str(self.timer.interval) + ")")
 
                 logging.info("Timed activation cancelled (was set for " +
-                             self._timeDisplay(self.timer.interval) + ")")
+                             str(self.timer.interval) + ")")
 
                 if note:
                     self._notify(message, caffeine.EMPTY_ICON_PATH)
@@ -402,11 +359,11 @@ class Caffeine(GObject.GObject):
                 self.timer = None
 
             elif self.timer is not None and self.timer.name == "Expired":
-                message = (self._timeDisplay(self.timer.interval) +
+                message = (str(self.timer.interval) +
                            _(" have elapsed; powersaving is re-enabled"))
 
                 logging.info("Timed activation period (" +
-                             self._timeDisplay(self.timer.interval) +
+                             str(self.timer.interval) +
                              ") has elapsed")
 
                 if note:

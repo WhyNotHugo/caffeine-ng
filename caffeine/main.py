@@ -34,7 +34,7 @@ import optparse
 import signal
 
 import logging
-import gettext.gettext as _
+from gettext import gettext as _
 
 from gi.repository.Notify import Notification
 
