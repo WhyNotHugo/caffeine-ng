@@ -22,7 +22,6 @@ import gettext
 import locale
 import os
 from . import procmanager
-from .main import main
 from os.path import join, abspath, dirname, pardir
 from gi.repository import Gtk
 
@@ -116,5 +115,6 @@ def __init_translations():
 
 __init_translations()
 
+from .main import main
 __all__ = ['main', 'WHITELIST', 'FULL_ICON_PATH', 'EMPTY_ICON_PATH',
            'GENERIC_PROCESS_ICON_PATH', 'GLADE_PATH', 'get_icon_pixbuf']
