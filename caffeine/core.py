@@ -22,7 +22,6 @@ from gi.repository import GObject, Gio, Notify
 import os
 import os.path
 import subprocess
-import time
 
 import dbus
 import threading
@@ -92,8 +91,6 @@ class Caffeine(GObject.GObject):
 
         # check for processes to activate for.
         GObject.timeout_add(10000, self._check_for_process)
-
-        settings = Gio.Settings.new(caffeine.BASE_KEY)
 
         print(self.status_string)
 
