@@ -224,19 +224,15 @@ class GUI(object):
                                            caffeine.get_icon_pixbuf(32),
                                            caffeine.get_icon_pixbuf(48)])
 
-        self.flash_cb = get("flash_cbutton")
         self.trayicon_cb = get("trayicon_cbutton")
         self.notification_cb = get("notification_cbutton")
 
         self.notification_cb.set_sensitive(not show_tray_icon)
 
-        settings.connect("changed::act-for-flash", self.on_flash_changed)
         settings.connect("changed::show-tray-icon", self.on_trayicon_changed)
         settings.connect("changed::show-notification",
                          self.on_notification_changed)
 
-        settings.bind("act-for-flash", self.flash_cb, "active",
-                      Gio.SettingsBindFlags.DEFAULT)
         settings.bind("show-tray-icon", self.trayicon_cb, "active",
                       Gio.SettingsBindFlags.DEFAULT)
         settings.bind("show-notification", self.notification_cb, "active",
@@ -324,15 +320,6 @@ class GUI(object):
 
     def on_close_button_clicked(self, button, data=None):
         self.window.hide()
-
-    # Flash
-    def on_flash_changed(self, settings, key, data=None):
-        act_for_flash = settings.get_boolean(key)
-        self.Core.setActivateForFlash(act_for_flash)
-        # self.flash_cb.set_active(act_for_flash)
-
-    # def on_flash_cbutton_toggled(self, cbutton, data=None):
-    #    self.Conf.set("act_for_flash", cbutton.get_active())
 
     # Tray icon
     def on_trayicon_changed(self, settings, key, data=None):
