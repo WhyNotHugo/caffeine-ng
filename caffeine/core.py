@@ -18,7 +18,7 @@
 #
 
 
-from gi.repository import GObject, Gio, Notify
+from gi.repository import GObject, Notify
 import os
 import os.path
 import subprocess
@@ -89,7 +89,7 @@ class Caffeine(GObject.GObject):
 
         self.note = None
 
-        # check for processes to activate for.
+        # FIXME: add capability to xdg-screensaver to report timeout.
         GObject.timeout_add(10000, self._check_for_process)
 
         print(self.status_string)
