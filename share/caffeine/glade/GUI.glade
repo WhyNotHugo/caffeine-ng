@@ -7,7 +7,7 @@
     <property name="default_height">200</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
-    <property name="program_name">Caffeine</property>
+    <property name="program_name">Caffeine-ng</property>
     <property name="version">Development</property>
     <property name="copyright">Copyright &#169; 2014 Hugo Osvaldo Barrera
 Copyright &#169; 2009-2014 The Caffeine Developers</property>
