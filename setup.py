@@ -12,14 +12,10 @@ def main():
 
     data_files = []
 
-    # don't trash the system icons!
-    black_list = ['index.theme', 'index.theme~']
-
     for path, dirs, files in os.walk(SHARE_PATH):
         data_files.append(tuple((path.replace(SHARE_PATH, "share", 1),
                                  [os.path.join(path, file)
-                                     for file in files if file not in
-                                 black_list])))
+                                     for file in files])))
 
     desktop_name = "taurine.desktop"
     desktop_file = os.path.join("share", "applications", desktop_name)
