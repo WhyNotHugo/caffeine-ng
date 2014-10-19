@@ -16,11 +16,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
+"""Caffeine-ng
+Usage:
+  caffeine [options]
 
+Options:
+  -a --activate             Disables power management and screen saving.
+  -d --deactivate           Re-enables power management and screen saving.
+  -t --time <HH>:<MM>       Use with -a. Activate caffeine for HH:MM.
+  -p --preferences          Start with the Preferences dialog open.
+"""
 
 import ctypes
 import logging
-import optparse
 import os
 import signal
 import sys
@@ -29,6 +37,7 @@ from . import core
 from . import applicationinstance
 from . import GENERIC_PROCESS_ICON_PATH, BASE_KEY, GLADE_PATH, \
     WHITELIST, get_ProcManager, get_icon_pixbuf
+from docopt import docopt
 from gettext import gettext as _
 from gi.repository import Gtk, GObject, Gio, GdkPixbuf
 from gi.repository.Notify import Notification
@@ -126,7 +135,7 @@ class ProcAdd(object):
 
 class GUI(object):
 
-    def __init__(self):
+    def __init__(self, show_preferences=False):
         self.Core = core.Caffeine()
 
         self.Core.connect("activation-toggled",
@@ -167,7 +176,7 @@ class GUI(object):
             self.status_icon.set_visible(show_tray_icon)
 
         if show_tray_icon is False and show_notification is True and \
-           options.preferences is not True:
+           show_preferences is False:
             note = \
                 Notification(_("Caffeine is running"),
                              _("To show the tray icon, \nrun ") +
@@ -381,8 +390,6 @@ class GUI(object):
         self.Core.quit()
         Gtk.main_quit()
 
-options = None
-
 
 def main():
     signal.signal(signal.SIGINT, signal.SIG_DFL)
@@ -393,41 +400,23 @@ def main():
     libc = ctypes.cdll.LoadLibrary('libc.so.6')
     libc.prctl(15, 'caffeine', 0, 0, 0)
 
-    # handle command line arguments
-    parser = optparse.OptionParser()
-    parser.add_option("-a", "--activate", action="store_true",
-                      dest="activated", default=False,
-                      help="Disables power management and screen saving.")
-
-    parser.add_option("-d", "--deactivate", action="store_false",
-                      dest="activated", default=False,
-                      help="Re-enables power management and screen saving.")
-
-    parser.add_option("-t", "--time", metavar="HOURS:MINUTES", dest="timed",
-                      help=("If the -a option is given, " +
-                            "activates caffeine for HOURS:MINUTES."))
-
-    parser.add_option("-p", "--preferences", action="store_true",
-                      dest="preferences", default=False,
-                      help="Starts Caffeine with the Preferences dialog open.")
-
-    global options
-    options, args = parser.parse_args()
+    arguments = docopt(__doc__, version='TODO VERSION!')
 
     # Makes sure that only one instance of the Caffeine is run for
     # each user on the system.
     pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
     appInstance = applicationinstance.ApplicationInstance(pid_name)
+
     if appInstance.isAnother():
         appInstance.killOther()
 
-    main = GUI()
-    if options.activated:
-        main.setActive(options.activated)
+    main = GUI(arguments["--preferences"])
+    if arguments["--activate"]:
+        main.setActive(True)
 
-    if options.activated and options.timed:
-        parts = options.timed.split(":")
-        if len(parts) < 2:
+    if arguments["--activate"] and arguments["--time"]:
+        parts = arguments["time"].split(":")
+        if len(parts) != 2:
             print("-t argument must be in the hour:minute format.")
             sys.exit(2)
 
@@ -440,7 +429,7 @@ def main():
 
         main.timedActivation((hours * 3600.0)+(minutes * 60.0))
 
-    if options.preferences:
+    if arguments["--preferences"]:
         main.window.show_all()
 
     appInstance.startApplication()
