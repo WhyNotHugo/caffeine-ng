@@ -18,9 +18,20 @@
 #
 
 
+import ctypes
+import logging
+import optparse
 import os
+import signal
 import sys
+
+from . import core
+from . import applicationinstance
+from . import GENERIC_PROCESS_ICON_PATH, BASE_KEY, GLADE_PATH, \
+    WHITELIST, get_ProcManager, get_icon_pixbuf
+from gettext import gettext as _
 from gi.repository import Gtk, GObject, Gio, GdkPixbuf
+from gi.repository.Notify import Notification
 
 appindicator_avail = True
 try:
@@ -29,27 +40,13 @@ except:
     appindicator_avail = False
 
 
-import ctypes
-import optparse
-import signal
-
-import logging
-from gettext import gettext as _
-
-from gi.repository.Notify import Notification
-
-# local modules
-import caffeine
-from . import core
-from . import applicationinstance
-
 icon_theme = Gtk.IconTheme.get_default()
 try:
     generic = icon_theme.load_icon("application-x-executable", 16,
                                    Gtk.IconLookupFlags.NO_SVG)
-except GObject.GError as e:
+except GObject.GError:
     generic = \
-        GdkPixbuf.Pixbuf.new_from_file(caffeine.GENERIC_PROCESS_ICON_PATH)
+        GdkPixbuf.Pixbuf.new_from_file(GENERIC_PROCESS_ICON_PATH)
 
 cached_icons = {"generic": generic}
 
@@ -91,8 +88,7 @@ class ProcAdd(object):
         self.user_set = True
 
         builder = Gtk.Builder()
-        builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
-                              "proc.glade"))
+        builder.add_from_file(os.path.join(GLADE_PATH, "proc.glade"))
 
         get = builder.get_object
 
@@ -138,13 +134,12 @@ class GUI(object):
         self.ProcAdd = ProcAdd()
 
         # object to manage processes to activate for.
-        self.ProcMan = caffeine.get_ProcManager()
+        self.ProcMan = get_ProcManager()
 
-        settings = Gio.Settings.new(caffeine.BASE_KEY)
+        settings = Gio.Settings.new(BASE_KEY)
 
         builder = Gtk.Builder()
-        builder.add_from_file(os.path.join(caffeine.GLADE_PATH,
-                              "GUI.glade"))
+        builder.add_from_file(os.path.join(GLADE_PATH, "GUI.glade"))
 
         # It can be tiresome to have to type builder.get_object
         # again and again
@@ -207,7 +202,7 @@ class GUI(object):
         self.selection.set_mode(Gtk.SelectionMode.MULTIPLE)
 
         self.proc_liststore = get("proc_liststore")
-        for line in open(caffeine.WHITELIST):
+        for line in open(WHITELIST):
             name = line.strip()
             self.proc_liststore.append([get_icon_for_process(name), name])
 
@@ -219,10 +214,10 @@ class GUI(object):
         self.window = get("window")
 
         # set the icons for the window border.
-        self.window.set_default_icon_list([caffeine.get_icon_pixbuf(16),
-                                           caffeine.get_icon_pixbuf(24),
-                                           caffeine.get_icon_pixbuf(32),
-                                           caffeine.get_icon_pixbuf(48)])
+        self.window.set_default_icon_list([get_icon_pixbuf(16),
+                                           get_icon_pixbuf(24),
+                                           get_icon_pixbuf(32),
+                                           get_icon_pixbuf(48)])
 
         self.trayicon_cb = get("trayicon_cbutton")
         self.notification_cb = get("notification_cbutton")
@@ -336,15 +331,9 @@ class GUI(object):
         self.trayicon_cb.set_active(show_tray_icon)
         self.notification_cb.set_sensitive(not show_tray_icon)
 
-    # def on_trayicon_cbutton_toggled(self, cbutton, data=None):
-    #     self.Conf.set("show_tray_icon", cbutton.get_active())
-
     # Startup Notifications
     def on_notification_changed(self, settings, key, data=None):
         pass
-
-    # def on_notification_cbutton_toggled(self, cbutton, data=None):
-    #    self.Conf.set("show_notification", cbutton.get_active())
 
     # Menu callbacks
     def on_activate_menuitem_activate(self, menuitem, data=None):

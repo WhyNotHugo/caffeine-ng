@@ -18,16 +18,18 @@
 #
 
 
+import gettext
+import locale
 import os
+from . import procmanager
+from .main import main
 from os.path import join, abspath, dirname, pardir
 from gi.repository import Gtk
 
 from xdg.BaseDirectory import xdg_config_home
 
-VERSION = "2.4.1"
 
-
-def getBasePath():
+def get_base_path():
     c = abspath(dirname(__file__))
     while True:
         if os.path.exists(os.path.join(c, "bin")) and \
@@ -38,28 +40,23 @@ def getBasePath():
         if not os.path.exists(c):
             raise Exception("Can't determine BASE_PATH")
 
-BASE_PATH = getBasePath()
+BASE_PATH = get_base_path()
 BASE_KEY = "net.launchpad.caffeine"
 
-_config_dir = os.path.join(xdg_config_home, "caffeine")
+config_dir = os.path.join(xdg_config_home, "caffeine")
 
-if not os.path.exists(_config_dir):
-    os.makedirs(_config_dir)
-
-CONFIG_DIR = _config_dir
-# file with a list of programs that caffeine should
-# activate when they are running
+if not os.path.exists(config_dir):
+    os.makedirs(config_dir)
 
 # Log file.
-LOG = os.path.join(CONFIG_DIR, "log")
-WHITELIST = os.path.join(CONFIG_DIR, "whitelist.txt")
+LOG = os.path.join(config_dir, "log")
+WHITELIST = os.path.join(config_dir, "whitelist.txt")
 # create file if it doesn't exist
 if not os.path.isfile(WHITELIST):
     file = open(WHITELIST, "w")
     file.close()
 
 
-from caffeine import procmanager
 _ProcMan = procmanager.ProcManager()
 
 
@@ -71,8 +68,7 @@ IMAGE_PATH = join(BASE_PATH, 'share', 'caffeine', 'images')
 GLADE_PATH = join(BASE_PATH, 'share', 'caffeine', 'glade')
 ICON_PATH = join(BASE_PATH, 'share', 'icons')
 
-_desktop_file = join(BASE_PATH, 'share', 'applications',
-                     'caffeine.desktop')
+_desktop_file = join(BASE_PATH, 'share', 'applications', 'caffeine.desktop')
 
 FULL_ICON_PATH = join(IMAGE_PATH, "Full_Cup.svg")
 EMPTY_ICON_PATH = join(IMAGE_PATH, "Empty_Cup.svg")
@@ -107,20 +103,18 @@ def get_icon_pixbuf(size):
 
     return pixbuf
 
-# Setup translations
 
-GETTEXT_DOMAIN = "caffeine"
-LOCALE_PATH = os.path.join(BASE_PATH, "share", "locale")
+def __init_translations():
+    GETTEXT_DOMAIN = "caffeine"
+    LOCALE_PATH = os.path.join(BASE_PATH, "share", "locale")
 
-import gettext
-import locale
+    locale.setlocale(locale.LC_ALL, '')
 
-locale.setlocale(locale.LC_ALL, '')
+    for module in locale, gettext:
+        module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
+        module.textdomain(GETTEXT_DOMAIN)
 
-for module in locale, gettext:
-    module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
-    module.textdomain(GETTEXT_DOMAIN)
+__init_translations()
 
-from caffeine.main import main
-
-__all__ = ['main']
+__all__ = ['main', 'WHITELIST', 'FULL_ICON_PATH', 'EMPTY_ICON_PATH',
+           'GENERIC_PROCESS_ICON_PATH', 'GLADE_PATH', 'get_icon_pixbuf']
