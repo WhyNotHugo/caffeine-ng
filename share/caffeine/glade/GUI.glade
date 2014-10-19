@@ -610,7 +610,7 @@ prevent the screensaver and powersaving modes on their own.</property>
                                         <property name="position">4</property>
                                       </packing>
                                     </child>
-                                    <child>
+                                    <!--child>
                                       <object class="GtkCheckButton" id="flash_cbutton">
                                         <property name="label" translatable="yes">Activate for Flash video</property>
                                         <property name="visible">True</property>
@@ -640,7 +640,7 @@ embedded in the web page that you are currently browsing.</property>
                                         <property name="fill">True</property>
                                         <property name="position">6</property>
                                       </packing>
-                                    </child>
+                                    </child-->
                                   </object>
                                 </child>
                               </object>
