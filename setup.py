@@ -21,7 +21,7 @@ def main():
                                      for file in files if file not in
                                  black_list])))
 
-    desktop_name = "caffeine.desktop"
+    desktop_name = "taurine.desktop"
     desktop_file = os.path.join("share", "applications", desktop_name)
     autostart_dir = os.path.join("etc", "xdg", "autostart")
     if not os.path.exists(autostart_dir):
@@ -30,7 +30,7 @@ def main():
     data_files.append(tuple(("/" + autostart_dir,
                              [os.path.join(autostart_dir, desktop_name)])))
 
-    setup(name="caffeine",
+    setup(name="taurine",
           version="2.6",
           description="""A status bar application able to temporarily prevent
           the activation of both the screensaver and the "sleep" powersaving
