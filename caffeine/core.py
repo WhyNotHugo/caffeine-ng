@@ -81,7 +81,6 @@ class Caffeine(GObject.GObject):
         self.sleepIsPrevented = False
 
         self.preventedForProcess = False
-        self.preventedForQL = False
         self.preventedForFlash = False
 
         self.screenSaverCookie = None
@@ -200,19 +199,6 @@ class Caffeine(GObject.GObject):
 
         return True
 
-    def setActivateForQL(self, do_activate):
-
-        # In case caffeine is currently activated for QL
-        self._check_for_QL()
-
-        if self.ql_id is not None:
-            GObject.source_remove(self.ql_id)
-
-        self.ql_id = None
-
-        if do_activate:
-            self.ql_id = GObject.timeout_add(15000, self._check_for_QL)
-
     def _check_for_process(self):
         activate = False
         for proc in self.ProcMan.get_process_list():
@@ -330,7 +316,6 @@ class Caffeine(GObject.GObject):
         already."""
 
         self.preventedForProcess = False
-        self.preventedForQL = False
         self.preventedForFlash = False
 
         if self.sleepAppearsPrevented:
