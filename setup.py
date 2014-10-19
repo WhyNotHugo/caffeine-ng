@@ -3,9 +3,39 @@
 from distutils.core import setup
 import os
 import shutil
+import subprocess
+import xml.etree.ElementTree as xml
+
+
+def get_version():
+    """Returns the current version. If this is a git checkout, add HEAD to
+    it."""
+    version = open("VERSION").readline().strip()
+    if os.path.exists(".git"):
+        git_rev = subprocess.getoutput("git rev-parse --short HEAD")
+        version += "-r" + git_rev
+
+    return version
+
+
+def update_gui_version():
+    """Updates the application version in the GUI to the current version."""
+    glade_file = "share/caffeine/glade/GUI.glade"
+    tree = xml.parse(glade_file)
+
+    # TODO: Use lxml properly to get the right child.
+    rootElement = tree.getroot()
+    for elem in rootElement:
+        if elem.get("id") == "aboutdialog":
+            for child in elem:
+                if child.get("name") == "version":
+                    child.text = get_version()
+
+    tree.write(glade_file)
 
 
 if __name__ == "__main__":
+    update_gui_version()
 
     script_path = os.path.abspath(__file__)
     share_path = os.path.join(os.path.dirname(script_path), "share")
@@ -17,7 +47,7 @@ if __name__ == "__main__":
         data_files.append(tuple((clean_path, [os.path.join(path, file)
                                               for file in files])))
 
-    desktop_name = "taurine.desktop"
+    desktop_name = "caffeine.desktop"
     desktop_file = os.path.join("share", "applications", desktop_name)
 
     autostart_dir = os.path.join("etc", "xdg", "autostart")
@@ -29,8 +59,8 @@ if __name__ == "__main__":
     data_files.append(tuple(("/" + autostart_dir,
                              [os.path.join(autostart_dir, desktop_name)])))
 
-    setup(name="taurine",
-          version="2.6",
+    setup(name="caffeine-ng",
+          version=get_version(),
           description="""A status bar application able to temporarily prevent
           the activation of both the screensaver and the "sleep" powersaving
           mode.""",
@@ -38,10 +68,10 @@ if __name__ == "__main__":
           author_email="hugo@barrera.io",
           maintainer="Hugo Osvaldo Barrera",
           maintainer_email="hugo@barrera.io",
-          url="https://github.com/hobarrera/taurine",
+          url="https://github.com/hobarrera/caffeine-ng",
           packages=["caffeine"],
           data_files=data_files,
-          scripts=["bin/caffeine", "bin/taurine"],
+          scripts=["bin/caffeine"],
           classifiers=[
               'Development Status :: 5 - Production/Stable',
               'Environment :: X11 Applications',

@@ -8,17 +8,19 @@
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">normal</property>
     <property name="program_name">Caffeine</property>
-    <property name="version">2.4.1 (bzr 498)</property>
-    <property name="copyright">Copyright &#169; 2011 Brad Smith, Tommy Brunn &amp; Isaiah Heyer</property>
+    <property name="version">Development</property>
+    <property name="copyright">Copyright &#169; 2014 Hugo Osvaldo Barrera
+Copyright &#169; 2009-2014 The Caffeine Developers</property>
     <property name="comments" translatable="yes">An application to temporarily prevent the activation of both
  the screen saver and the "sleep" powersaving mode.</property>
-    <property name="website">http://launchpad.net/caffeine</property>
+    <property name="website">https://github.com/hobarrera/caffeine-ng</property>
     <property name="license">This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</property>
-    <property name="authors">Brad Smith http://launchpad.net/~bnsmith
+    <property name="authors">Hugo Osvaldo Barrera https://hugo.barrera.io
+Brad Smith http://launchpad.net/~bnsmith
 Tommy Brunn http://launchpad.net/~reklamnevon
 Isaiah Heyer http://launchpad.net/~freshapplepy</property>
     <property name="translator_credits">Joan Rodr&#237;guez

@@ -1,7 +1,7 @@
-Taurine
-=======
+Caffeine-ng
+===========
 
-Taurine is a little daemon that sits in you systray, and prevents the
+Caffeine is a little daemon that sits in you systray, and prevents the
 screensaver from showing up, or the systems from going to sleep.
 It does so when an application is fullscreened (eg: youtube), or when you click
 on the systray icon (which you can do, when, eg: reading).
@@ -14,8 +14,10 @@ detection of fullscreen apps only, which resulted rather
 The intention of this fork is to also evolve on its own, not only fixing
 issues, but also implemented missing features, when relevant.
 
-Taurine is a stimulant, commonly found in energy drinks. This app's name is a
-play on its successor's name: caffeine.
+Caffeine-ng was shortly know as Taurine, a play on its successor's name, since
+taurine is a known stimulant, commonly found in energy drinks.  However, this
+name did not last, since the artwork would not match adequately, and changing
+it was undesirable.
 
 System requirements
 -------------------
@@ -33,7 +35,7 @@ Installation
 
 * ```python setup.py install```
 
-* To have Caffeine Plus run on startup, add it to your System Settings =>
+* To have Caffeine-ng run on startup, add it to your System Settings =>
   Startup Programs list.
 
 License
@@ -42,15 +44,15 @@ License
 Copyright (C) 2009 The Caffeine Developers
 Copyright (C) 2014 Hugo Osvaldo Barrera <hugo@barrera.io>
 
-Taurine is distributed under the GNU General Public License, either version
+Caffeine-ng is distributed under the GNU General Public License, either version
 3, or (at your option) any later version. See GPL for details.
 
-The Taurine status icons are Copyright (C) 2014 mildmojo
+The Caffeine-ng status icons are Copyright (C) 2014 mildmojo
 (http://github.com/mildmojo), and distributed under the terms of the GNU Lesser
 General Public License, either version 3, or (at your option) any later
 version.  See LGPL.
 
-The Taurine SVG shortcut icons are Copyright (C) 2009 Tommy Brunn
+The Caffeien-ng SVG shortcut icons are Copyright (C) 2009 Tommy Brunn
 (http://www.blastfromthepast.se/blabbermouth), and distributed under the
 terms of the GNU Lesser General Public License, either version 3, or (at
 your option) any later version. See LGPL.
