@@ -26,9 +26,9 @@ System requirements
   API.  This includes, but is not limited to, Linux Mint 16 and Ubuntu 14.04.
   Probably works on lots of older distributions, too.
 
-* Python 2 and Python 3
+* Python 3
 
-* kaa-metadata, python-xlib, gir1.2-appindicator3-0.1
+* pygobject, pyxdg, dbus-python, docopt.
 
 Installation
 ------------
