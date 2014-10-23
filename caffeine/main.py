@@ -87,7 +87,7 @@ def get_icon_for_process(proc_name):
     return cached_icons["generic"]
 
 
-class ProcAdd(object):
+class ProcAdd:
 
     def __init__(self):
         self.running_id = None
@@ -131,7 +131,7 @@ class ProcAdd(object):
         return True
 
 
-class GUI(object):
+class GUI:
 
     def __init__(self, show_preferences=False):
         self.Core = core.Caffeine()

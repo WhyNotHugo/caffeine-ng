@@ -19,7 +19,7 @@ import caffeine
 import os
 
 
-class ProcManager(object):
+class ProcManager:
 
     def __init__(self):
         self.whitelist_file = caffeine.WHITELIST
