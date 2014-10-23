@@ -45,11 +45,9 @@ class ProcManager:
             line = line.strip()
             if line not in self.proc_list:
                 self.proc_list.append(line)
-
         self.save()
 
     def save(self):
         self.proc_list.sort()
-        file = open(self.whitelist_file, "w")
-        file.write("\n".join(self.proc_list))
-        file.close()
+        with open(self.whitelist_file, "w") as f:
+            f.write("\n".join(self.proc_list))
