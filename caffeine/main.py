@@ -30,20 +30,21 @@ import logging
 import os
 import signal
 import sys
+from gettext import gettext as _
+from docopt import docopt
+from gi.repository import Gtk, GObject, Gio, GdkPixbuf
+from gi.repository.Notify import Notification
 
 from . import core
 from . import applicationinstance
-from . import GENERIC_PROCESS_ICON_PATH, BASE_KEY, GLADE_PATH, \
-    WHITELIST, get_ProcManager, get_icon_pixbuf
-from docopt import docopt
-from gettext import gettext as _
-from gi.repository import Gtk, GObject, Gio, GdkPixbuf
-from gi.repository.Notify import Notification
+from . import (GENERIC_PROCESS_ICON_PATH, BASE_KEY, GLADE_PATH,
+    WHITELIST, get_ProcManager, get_icon_pixbuf)
+
 
 appindicator_avail = True
 try:
     from gi.repository import AppIndicator3
-except:
+except ImportError:
     appindicator_avail = False
 
 
