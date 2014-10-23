@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 # Copyright (c) 2014 Hugo Osvaldo Barrera
 # Copyright © 2009 The Caffeine Developers
 #
