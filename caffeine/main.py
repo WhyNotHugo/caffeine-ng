@@ -36,9 +36,9 @@ from gi.repository import Gtk, GObject, Gio, GdkPixbuf
 from gi.repository.Notify import Notification
 
 from . import core
-from . import applicationinstance
 from . import (GENERIC_PROCESS_ICON_PATH, BASE_KEY, GLADE_PATH,
     WHITELIST, get_ProcManager, get_icon_pixbuf)
+from .applicationinstance import ApplicationInstance
 
 
 appindicator_avail = True
@@ -404,10 +404,10 @@ def main():
     # Makes sure that only one instance of the Caffeine is run for
     # each user on the system.
     pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
-    appInstance = applicationinstance.ApplicationInstance(pid_name)
+    app = ApplicationInstance(pid_name)
 
-    if appInstance.isAnother():
-        appInstance.killOther()
+    if app.is_running():
+        app.kill()
 
     main = GUI(arguments["--preferences"])
     if arguments["--activate"]:
@@ -431,6 +431,6 @@ def main():
     if arguments["--preferences"]:
         main.window.show_all()
 
-    appInstance.startApplication()
+    app.write_pid_file()
     Gtk.main()
-    appInstance.exitApplication()
+    app.remove_pid_file()

@@ -19,54 +19,43 @@ import os
 import os.path
 
 
-# class used to handle one application instance mechanism
 class ApplicationInstance:
+    """Class used to handle one application instance mechanism."""
 
-    # specify the file used to save the application instance pid
     def __init__(self, pid_file):
         self.pid_file = pid_file
 
-    # check if the current application is already running
-    def isAnother(self):
-        # check if the pidfile exists
-        if not os.path.isfile(self.pid_file):
+    @property
+    def pid(self):
+        if os.path.isfile(self.pid_file):
+            with open(self.pid_file) as f:
+                try:
+                    pid = int(f.read())
+                except ValueError:
+                    pid = None
+            return pid
+        else:
+            return None
+
+    def is_running(self):
+        if self.pid:
+            try:
+                os.kill(self.pid, 0)
+                return True
+            except OSError:
+                return False
+        else:
             return False
 
-        # read the pid from the file
-        pid = 0
-        try:
-            file = open(self.pid_file, 'rt')
-            data = file.read()
-            file.close()
-            pid = int(data)
-            self.pid = pid
-        except:
-            pass
-
-        # check if the process with specified by pid exists
-        if 0 == pid:
-            return False
-
-        # this will raise an exception if the pid is not valid
-        try:
-            os.kill(pid, 0)
-        except:
-            return False
-
-        return True
-
-    def killOther(self):
+    def kill(self):
         os.kill(self.pid, 9)
 
-    # called when the single instance starts to save it's pid
-    def startApplication(self):
-        file = open(self.pid_file, 'wt')
-        file.write(str(os.getpid()))
-        file.close()
+    def write_pid_file(self):
+        with open(self.pid_file, 'w') as f:
+            f.write(str(os.getpid()))
 
-    # called when the single instance exit ( remove pid file )
-    def exitApplication(self):
+    def remove_pid_file(self):
         try:
             os.remove(self.pid_file)
-        except:
+        except FileNotFoundError:
             pass
