@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 # Copyright (c) 2014 Hugo Osvaldo Barrera
 # Copyright © 2009 The Caffeine Developers
 #
@@ -18,21 +16,19 @@
 #
 
 
-from gi.repository import GObject, Notify
 import os
 import os.path
 import subprocess
-
 import dbus
 import threading
-
-from . import applicationinstance
+import logging
+from gettext import gettext as _
+from gi.repository import GObject, Notify
 
 import caffeine
 from . import utils
-import logging
+from .applicationinstance import ApplicationInstance
 
-from gettext import gettext as _
 
 logging.basicConfig(level=logging.INFO)
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
@@ -53,8 +49,7 @@ class Caffeine(GObject.GObject):
         # Makes sure that only one instance of Caffeine is run for
         # each user on the system.
         self.pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
-        self.appInstance = \
-            applicationinstance.ApplicationInstance(self.pid_name)
+        self.appInstance = ApplicationInstance(self.pid_name)
 
         # This variable is set to a string describing the type of screensaver
         # and powersaving systems used on this computer. It is detected when

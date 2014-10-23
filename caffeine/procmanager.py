@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 # Copyright (c) 2014 Hugo Osvaldo Barrera
 # Copyright © 2009 The Caffeine Developers
 #
@@ -17,11 +15,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-import caffeine
 import os
+import caffeine
 
 
-class ProcManager(object):
+class ProcManager:
 
     def __init__(self):
         self.whitelist_file = caffeine.WHITELIST
@@ -47,11 +45,9 @@ class ProcManager(object):
             line = line.strip()
             if line not in self.proc_list:
                 self.proc_list.append(line)
-
         self.save()
 
     def save(self):
         self.proc_list.sort()
-        file = open(self.whitelist_file, "w")
-        file.write("\n".join(self.proc_list))
-        file.close()
+        with open(self.whitelist_file, "w") as f:
+            f.write("\n".join(self.proc_list))

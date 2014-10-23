@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 # Copyright (c) 2014 Hugo Osvaldo Barrera
 # Copyright © 2009 The Caffeine Developers
 #
@@ -32,20 +30,21 @@ import logging
 import os
 import signal
 import sys
-
-from . import core
-from . import applicationinstance
-from . import GENERIC_PROCESS_ICON_PATH, BASE_KEY, GLADE_PATH, \
-    WHITELIST, get_ProcManager, get_icon_pixbuf
-from docopt import docopt
 from gettext import gettext as _
+from docopt import docopt
 from gi.repository import Gtk, GObject, Gio, GdkPixbuf
 from gi.repository.Notify import Notification
+
+from . import core
+from . import (GENERIC_PROCESS_ICON_PATH, BASE_KEY, GLADE_PATH,
+    WHITELIST, get_ProcManager, get_icon_pixbuf)
+from .applicationinstance import ApplicationInstance
+
 
 appindicator_avail = True
 try:
     from gi.repository import AppIndicator3
-except:
+except ImportError:
     appindicator_avail = False
 
 
@@ -89,7 +88,7 @@ def get_icon_for_process(proc_name):
     return cached_icons["generic"]
 
 
-class ProcAdd(object):
+class ProcAdd:
 
     def __init__(self):
         self.running_id = None
@@ -133,7 +132,7 @@ class ProcAdd(object):
         return True
 
 
-class GUI(object):
+class GUI:
 
     def __init__(self, show_preferences=False):
         self.Core = core.Caffeine()
@@ -405,10 +404,10 @@ def main():
     # Makes sure that only one instance of the Caffeine is run for
     # each user on the system.
     pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
-    appInstance = applicationinstance.ApplicationInstance(pid_name)
+    app = ApplicationInstance(pid_name)
 
-    if appInstance.isAnother():
-        appInstance.killOther()
+    if app.is_running():
+        app.kill()
 
     main = GUI(arguments["--preferences"])
     if arguments["--activate"]:
@@ -432,6 +431,6 @@ def main():
     if arguments["--preferences"]:
         main.window.show_all()
 
-    appInstance.startApplication()
+    app.write_pid_file()
     Gtk.main()
-    appInstance.exitApplication()
+    app.remove_pid_file()

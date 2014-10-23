@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 # Copyright (c) 2014 Hugo Osvaldo Barrera
 # Copyright © 2009 The Caffeine Developers
 #
@@ -21,11 +19,10 @@
 import gettext
 import locale
 import os
-from . import procmanager
 from os.path import join, abspath, dirname, pardir
 from gi.repository import Gtk
-
 from xdg.BaseDirectory import xdg_config_home
+from . import procmanager
 
 
 def get_base_path():
@@ -52,8 +49,7 @@ LOG = os.path.join(config_dir, "log")
 WHITELIST = os.path.join(config_dir, "whitelist.txt")
 # create file if it doesn't exist
 if not os.path.isfile(WHITELIST):
-    file = open(WHITELIST, "w")
-    file.close()
+    open(WHITELIST, "w").close()
 
 
 _ProcMan = procmanager.ProcManager()
