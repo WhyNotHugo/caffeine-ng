@@ -50,8 +50,7 @@ LOG = os.path.join(config_dir, "log")
 WHITELIST = os.path.join(config_dir, "whitelist.txt")
 # create file if it doesn't exist
 if not os.path.isfile(WHITELIST):
-    file = open(WHITELIST, "w")
-    file.close()
+    open(WHITELIST, "w").close()
 
 
 _ProcMan = procmanager.ProcManager()
