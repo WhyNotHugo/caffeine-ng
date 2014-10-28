@@ -1,7 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Copyright (c) 2014 Hugo Osvaldo Barrera
-# Copyright © 2009 The Caffeine Developers
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# TODO: have distutils create a bin file itself.
-import caffeine
+from caffeine.main import main
 
-caffeine.main()
+if __name__ == "__main__":
+    main()
