@@ -35,6 +35,7 @@ from docopt import docopt
 from gi.repository import Gtk, GObject, Gio, GdkPixbuf
 from gi.repository.Notify import Notification
 
+from . import __version__
 from .applicationinstance import ApplicationInstance
 from .core import Caffeine
 from .icons import generic_icon, get_icon_pixbuf
@@ -154,6 +155,9 @@ class GUI:
         # It can be tiresome to have to type builder.get_object
         # again and again
         get = builder.get_object
+
+        about = get("aboutdialog")
+        about.set_version(__version__)
 
         show_tray_icon = settings.get_boolean("show-tray-icon")
         show_notification = settings.get_boolean("show-notification")
@@ -400,7 +404,7 @@ def main():
     libc = ctypes.cdll.LoadLibrary('libc.so.6')
     libc.prctl(15, 'caffeine', 0, 0, 0)
 
-    arguments = docopt(__doc__, version='TODO VERSION!')
+    arguments = docopt(__doc__, version=__version__)
 
     # Makes sure that only one instance of the Caffeine is run for
     # each user on the system.

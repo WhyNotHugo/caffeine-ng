@@ -20,7 +20,10 @@ import gettext
 import locale
 import os
 
-from .paths import get_base_path
+from .paths import get_base_path, get_version_file
+
+
+__version__ = open(get_version_file()).read()
 
 
 def __init_translations():

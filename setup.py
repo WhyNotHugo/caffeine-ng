@@ -4,7 +4,6 @@ from distutils.core import setup
 import os
 import shutil
 import subprocess
-import xml.etree.ElementTree as xml
 
 
 def get_version():
@@ -18,27 +17,14 @@ def get_version():
     return version
 
 
-def update_gui_version():
-    """Updates the application version in the GUI to the current version."""
-    glade_file = "share/caffeine/glade/GUI.glade"
-    tree = xml.parse(glade_file)
-
-    # TODO: Use lxml properly to get the right child.
-    rootElement = tree.getroot()
-    for elem in rootElement:
-        if elem.get("id") == "aboutdialog":
-            for child in elem:
-                if child.get("name") == "version":
-                    child.text = get_version()
-
-    tree.write(glade_file, encoding="UTF-8")
-
-
 if __name__ == "__main__":
-    update_gui_version()
-
     script_path = os.path.abspath(__file__)
     share_path = os.path.join(os.path.dirname(script_path), "share")
+
+    # Write the current version into share/caffeine/VERSION
+    open(os.path.join(share_path, "caffeine", "VERSION"), "w") \
+        .write(get_version())
+    version_file = os.path.join("share", "caffeine")
 
     data_files = []
 
