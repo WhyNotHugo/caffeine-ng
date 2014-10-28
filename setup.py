@@ -31,7 +31,7 @@ def update_gui_version():
                 if child.get("name") == "version":
                     child.text = get_version()
 
-    tree.write(glade_file)
+    tree.write(glade_file, encoding="UTF-8")
 
 
 if __name__ == "__main__":
