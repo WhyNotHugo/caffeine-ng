@@ -22,7 +22,6 @@ import os
 from os.path import join, abspath, dirname, pardir
 from gi.repository import Gtk
 from xdg.BaseDirectory import xdg_config_home
-from . import procmanager
 
 
 def get_base_path():
@@ -50,13 +49,6 @@ WHITELIST = os.path.join(config_dir, "whitelist.txt")
 # create file if it doesn't exist
 if not os.path.isfile(WHITELIST):
     open(WHITELIST, "w").close()
-
-
-_ProcMan = procmanager.ProcManager()
-
-
-def get_ProcManager():
-    return _ProcMan
 
 
 IMAGE_PATH = join(BASE_PATH, 'share', 'caffeine', 'images')

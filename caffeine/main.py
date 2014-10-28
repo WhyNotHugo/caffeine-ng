@@ -36,9 +36,10 @@ from gi.repository import Gtk, GObject, Gio, GdkPixbuf
 from gi.repository.Notify import Notification
 
 from . import core
-from . import (GENERIC_PROCESS_ICON_PATH, BASE_KEY, GLADE_PATH,
-    WHITELIST, get_ProcManager, get_icon_pixbuf)
+from . import GENERIC_PROCESS_ICON_PATH, BASE_KEY, GLADE_PATH, \
+    WHITELIST, get_icon_pixbuf
 from .applicationinstance import ApplicationInstance
+from .procmanager import ProcManager
 
 
 appindicator_avail = True
@@ -135,14 +136,14 @@ class ProcAdd:
 class GUI:
 
     def __init__(self, show_preferences=False):
-        self.Core = core.Caffeine()
+        # object to manage processes to activate for.
+        self.ProcMan = ProcManager()
+
+        self.Core = core.Caffeine(self.ProcMan)
 
         self.Core.connect("activation-toggled",
                           self.on_activation_toggled)
         self.ProcAdd = ProcAdd()
-
-        # object to manage processes to activate for.
-        self.ProcMan = get_ProcManager()
 
         settings = Gio.Settings.new(BASE_KEY)
 

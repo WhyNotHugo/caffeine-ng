@@ -36,12 +36,12 @@ os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
 class Caffeine(GObject.GObject):
 
-    def __init__(self):
+    def __init__(self, process_manager):
 
         GObject.GObject.__init__(self)
 
         # object to manage processes to activate for.
-        self.ProcMan = caffeine.get_ProcManager()
+        self.ProcMan = process_manager
 
         # Status string.
         self.status_string = ""
