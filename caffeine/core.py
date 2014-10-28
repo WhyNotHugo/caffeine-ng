@@ -22,6 +22,7 @@ import subprocess
 import dbus
 import threading
 import logging
+from ewmh import EWMH
 from gettext import gettext as _
 from gi.repository import GObject, Notify
 
@@ -76,8 +77,7 @@ class Caffeine(GObject.GObject):
         # time.
         self.sleepIsPrevented = False
 
-        self.preventedForProcess = False
-        self.preventedForFlash = False
+        self.__auto_activated = False
 
         self.screenSaverCookie = None
         self.powerManagementCookie = None
@@ -87,34 +87,62 @@ class Caffeine(GObject.GObject):
         self.note = None
 
         # FIXME: add capability to xdg-screensaver to report timeout.
-        GObject.timeout_add(10000, self._check_for_process)
+        GObject.timeout_add(10000, self.__attempt_autoactivation)
 
         print(self.status_string)
 
-    def _check_for_process(self):
-        activate = False
+    def __attempt_autoactivation(self):
+        """Attempts to auto-activate inhibition by verifying if any of the
+        whitelisted processes is running OR if there's a fullscreen app.
+        """
+
+        if self.getActivated() and not self.__auto_activated:
+            logging.info("Inhibition manually activated. Won't attempt to " +
+                         "auto-activate")
+            return True
+
+        process_running = False
+
+        # Determine if one of the whitelisted processes is running.
         for proc in self.ProcMan.get_process_list():
             if utils.isProcessRunning(proc):
+                process_running = True
 
-                activate = True
+                if self.__auto_activated:
+                    logging.info("Process {} detected but was already "
+                                 .format(proc) + "auto-activated")
+                elif not self.getActivated():
+                    logging.info("Process {} detected. Inhibiting."
+                                 .format(proc))
 
-                if self.preventedForProcess or not self.getActivated():
-                    logging.info("Caffeine has detected that the process '" +
-                                 proc + "' is running, and will auto-activate")
-                    self.setActivated(True)
-                    self.preventedForProcess = True
-                else:
-                    logging.info("Caffeine has detected that the process '" +
-                                 proc + "' is running, but will NOT auto-" +
-                                 "-activate as Caffeine has already been " +
-                                 "activated for a different reason.")
+        # Determine if a fullscreen application is running
+        ewmh = EWMH()
+        window = ewmh.getActiveWindow()
+        if window:
+            # ewmh.getWmState(window) returns None is scenarios where
+            # ewmh.getWmState(window, str=True) throws an exception
+            # (it's a bug in pyewmh):
+            fullscreen = ewmh.getWmState(window) and \
+                "_NET_WM_STATE_FULLSCREEN" in ewmh.getWmState(window, str=True)
+        else:
+            fullscreen = False
 
-        # No process in the list is running, deactivate.
-        if not activate and self.preventedForProcess:
-            logging.info("Caffeine had previously auto-activated for a " +
-                         "process, but that process is no longer running; " +
-                         "deactivating...")
+        if fullscreen:
+            if self.__auto_activated:
+                logging.info("Fullscreen app detected, but was already " +
+                             "auto-activated")
+            elif not self.getActivated():
+                logging.info("Fullscreen app detected. Inhibiting.")
+
+        # Disable auto-activation?
+        if not process_running and not fullscreen and self.__auto_activated:
+            logging.info("Was auto-inhibited, but there's no fullscreen or " +
+                         "whitelisted process now. De-activating.")
+            self.__auto_activated = False
             self.setActivated(False)
+        elif process_running or fullscreen and not self.__auto_activated:
+            self.__auto_activated = True
+            self.setActivated(True)
 
         return True
 
@@ -207,8 +235,7 @@ class Caffeine(GObject.GObject):
         screensaver and powersaving in use, if it has not been detected
         already."""
 
-        self.preventedForProcess = False
-        self.preventedForFlash = False
+        self.__auto_activated = False
 
         if self.sleepAppearsPrevented:
             # sleep prevention was on now turn it off
