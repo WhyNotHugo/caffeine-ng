@@ -22,9 +22,8 @@ it was undesirable.
 System requirements
 -------------------
 
-* Any Linux desktop system that offers the `org.freedesktop.ScreenSaver` DBus
-  API.  This includes, but is not limited to, Linux Mint 16 and Ubuntu 14.04.
-  Probably works on lots of older distributions, too.
+* Either a screensaver that implements the org.freedesktop.ScreenSaver API
+  (this includes KDE, amongst others) API, gnome-screensaver, XSS and/or DPMS.
 
 * Python 3
 
