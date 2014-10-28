@@ -19,81 +19,13 @@
 import gettext
 import locale
 import os
-from os.path import join, abspath, dirname, pardir
-from gi.repository import Gtk
-from xdg.BaseDirectory import xdg_config_home
 
-
-def get_base_path():
-    c = abspath(dirname(__file__))
-    while True:
-        if os.path.exists(os.path.join(c, "bin")) and \
-           os.path.exists(os.path.join(c, "share/caffeine")):
-            return c
-
-        c = join(c, pardir)
-        if not os.path.exists(c):
-            raise Exception("Can't determine BASE_PATH")
-
-BASE_PATH = get_base_path()
-BASE_KEY = "net.launchpad.caffeine"
-
-config_dir = os.path.join(xdg_config_home, "caffeine")
-
-if not os.path.exists(config_dir):
-    os.makedirs(config_dir)
-
-# Log file.
-LOG = os.path.join(config_dir, "log")
-WHITELIST = os.path.join(config_dir, "whitelist.txt")
-# create file if it doesn't exist
-if not os.path.isfile(WHITELIST):
-    open(WHITELIST, "w").close()
-
-
-IMAGE_PATH = join(BASE_PATH, 'share', 'caffeine', 'images')
-GLADE_PATH = join(BASE_PATH, 'share', 'caffeine', 'glade')
-ICON_PATH = join(BASE_PATH, 'share', 'icons')
-
-_desktop_file = join(BASE_PATH, 'share', 'applications', 'caffeine.desktop')
-
-FULL_ICON_PATH = join(IMAGE_PATH, "Full_Cup.svg")
-EMPTY_ICON_PATH = join(IMAGE_PATH, "Empty_Cup.svg")
-
-GENERIC_PROCESS_ICON_PATH = join(IMAGE_PATH, "application-x-executable.png")
-
-ICON_NAME = 'caffeine'
-icon_theme = Gtk.IconTheme.get_default()
-
-
-def get_icon_pixbuf(size):
-    global icon_theme
-    global ICON_NAME
-
-    iconInfo = icon_theme.lookup_icon(ICON_NAME, size,
-                                      Gtk.IconLookupFlags.NO_SVG)
-
-    if iconInfo:
-        # icon is found
-        base_size = iconInfo.get_base_size()
-        if base_size != size:
-            # No sizexsize icon in the users theme so use the default
-            icon_theme = Gtk.IconTheme()
-            icon_theme.set_search_path((ICON_PATH,))
-    else:
-        icon_theme.append_search_path(ICON_PATH)
-        iconInfo = icon_theme.lookup_icon(ICON_NAME, size,
-                                          Gtk.IconLookupFlags.NO_SVG)
-
-    pixbuf = icon_theme.load_icon(ICON_NAME, size,
-                                  Gtk.IconLookupFlags.NO_SVG)
-
-    return pixbuf
+from .paths import get_base_path
 
 
 def __init_translations():
     GETTEXT_DOMAIN = "caffeine"
-    LOCALE_PATH = os.path.join(BASE_PATH, "share", "locale")
+    LOCALE_PATH = os.path.join(get_base_path(), "share", "locale")
 
     locale.setlocale(locale.LC_ALL, '')
 
@@ -102,7 +34,3 @@ def __init_translations():
         module.textdomain(GETTEXT_DOMAIN)
 
 __init_translations()
-
-from .main import main
-__all__ = ['main', 'WHITELIST', 'FULL_ICON_PATH', 'EMPTY_ICON_PATH',
-           'GENERIC_PROCESS_ICON_PATH', 'GLADE_PATH', 'get_icon_pixbuf']

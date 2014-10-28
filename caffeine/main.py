@@ -36,9 +36,10 @@ from gi.repository import Gtk, GObject, Gio, GdkPixbuf
 from gi.repository.Notify import Notification
 
 from . import core
-from . import GENERIC_PROCESS_ICON_PATH, BASE_KEY, GLADE_PATH, \
-    WHITELIST, get_icon_pixbuf
+from . import get_icon_pixbuf
 from .applicationinstance import ApplicationInstance
+from .icons import generic_icon
+from .paths import get_glade_file
 from .procmanager import ProcManager
 
 
@@ -54,12 +55,12 @@ try:
     generic = icon_theme.load_icon("application-x-executable", 16,
                                    Gtk.IconLookupFlags.NO_SVG)
 except GObject.GError:
-    generic = \
-        GdkPixbuf.Pixbuf.new_from_file(GENERIC_PROCESS_ICON_PATH)
+    generic = GdkPixbuf.Pixbuf.new_from_file(generic_icon)
 
 cached_icons = {"generic": generic}
 
 
+# FIXME: this does not work for any of the cases I tried.
 def get_icon_for_process(proc_name):
 
     global cached_icons
@@ -97,7 +98,7 @@ class ProcAdd:
         self.user_set = True
 
         builder = Gtk.Builder()
-        builder.add_from_file(os.path.join(GLADE_PATH, "proc.glade"))
+        builder.add_from_file(get_glade_file("proc.glade"))
 
         get = builder.get_object
 
@@ -145,10 +146,11 @@ class GUI:
                           self.on_activation_toggled)
         self.ProcAdd = ProcAdd()
 
-        settings = Gio.Settings.new(BASE_KEY)
+        # XXX: Do we want to change this to caffeine-ng?
+        settings = Gio.Settings.new("net.launchpad.caffeine")
 
         builder = Gtk.Builder()
-        builder.add_from_file(os.path.join(GLADE_PATH, "GUI.glade"))
+        builder.add_from_file(get_glade_file("GUI.glade"))
 
         # It can be tiresome to have to type builder.get_object
         # again and again
@@ -211,9 +213,8 @@ class GUI:
         self.selection.set_mode(Gtk.SelectionMode.MULTIPLE)
 
         self.proc_liststore = get("proc_liststore")
-        for line in open(WHITELIST):
-            name = line.strip()
-            self.proc_liststore.append([get_icon_for_process(name), name])
+        self.proc_liststore.append([[get_icon_for_process(name), name] for
+                                    name in self.ProcMan .get_process_list()])
 
         # time_menuitem = get("time_menuitem")
 

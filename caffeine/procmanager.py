@@ -16,13 +16,14 @@
 #
 
 import os
-import caffeine
+
+from .paths import get_whitelist_file
 
 
 class ProcManager:
 
     def __init__(self):
-        self.whitelist_file = caffeine.WHITELIST
+        self.whitelist_file = get_whitelist_file()
         self.proc_list = []
 
         if os.path.exists(self.whitelist_file):

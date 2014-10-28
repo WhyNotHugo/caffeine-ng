@@ -25,9 +25,9 @@ import logging
 from gettext import gettext as _
 from gi.repository import GObject, Notify
 
-import caffeine
 from . import utils
 from .applicationinstance import ApplicationInstance
+from .icons import empty_cup_icon, full_cup_icon
 
 
 logging.basicConfig(level=logging.INFO)
@@ -56,6 +56,8 @@ class Caffeine(GObject.GObject):
         # the user first attempts to inhibit the screensaver and powersaving,
         # and can be set to one of the following values: "Gnome", "KDE",
         # "XSS+DPMS" or "DPMS".
+        # TODO: replace this with several Inhibitor classes, instead of so many
+        # ifs
         self.screensaverAndPowersavingType = None
 
         # Set to True when the detection routine is in progress
@@ -176,7 +178,7 @@ class Caffeine(GObject.GObject):
         self.setActivated(True, note)
 
         if note:
-            self._notify(message, caffeine.FULL_ICON_PATH)
+            self._notify(message, full_cup_icon)
 
         # and deactivate after time has passed.
         # Stop already running timer
@@ -228,7 +230,7 @@ class Caffeine(GObject.GObject):
                              str(self.timer.interval) + ")")
 
                 if note:
-                    self._notify(message, caffeine.EMPTY_ICON_PATH)
+                    self._notify(message, empty_cup_icon)
 
                 self.timer.cancel()
                 self.timer = None
@@ -242,7 +244,7 @@ class Caffeine(GObject.GObject):
                              ") has elapsed")
 
                 if note:
-                    self._notify(message, caffeine.EMPTY_ICON_PATH)
+                    self._notify(message, empty_cup_icon)
 
                 self.timer = None
 
