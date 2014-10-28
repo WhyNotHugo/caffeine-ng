@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 from distutils.core import setup
-import os
+from os import makedirs, walk
+from os.path import exists, abspath, join, dirname
 import subprocess
 
 
@@ -9,7 +10,7 @@ def get_version():
     """Returns the current version. If this is a git checkout, add HEAD to
     it."""
     version = open("VERSION").readline().strip()
-    if os.path.exists(".git"):
+    if exists(".git"):
         git_rev = subprocess.getoutput("git rev-parse --short HEAD")
         version += "-r" + git_rev
 
@@ -17,27 +18,23 @@ def get_version():
 
 
 if __name__ == "__main__":
-    script_path = os.path.abspath(__file__)
-    share_path = os.path.join(os.path.dirname(script_path), "share")
+    script_path = abspath(__file__)
+    share_path = join(dirname(script_path), "share")
 
     # Write the current version into share/caffeine/VERSION
-    open(os.path.join(share_path, "caffeine", "VERSION"), "w") \
-        .write(get_version())
-    version_file = os.path.join("share", "caffeine")
+    open(join(share_path, "caffeine", "VERSION"), "w").write(get_version())
+    version_file = join("share", "caffeine")
 
     data_files = []
-
-    for path, dirs, files in os.walk(share_path):
+    for path, dirs, files in walk(share_path):
         clean_path = path.replace(share_path, "share", 1)
-        data_files.append(tuple((clean_path, [os.path.join(path, file)
-                                              for file in files])))
+        data_files.append((clean_path, [join(path, file) for file in files]))
 
-    desktop_file = os.path.join("share", "applications", "caffeine.desktop")
+    desktop_file = join("share", "applications", "caffeine.desktop")
+    autostart_dir = join("etc", "xdg", "autostart")
 
-    autostart_dir = os.path.join("etc", "xdg", "autostart")
-
-    if not os.path.exists(autostart_dir):
-        os.makedirs(autostart_dir)
+    if not exists(autostart_dir):
+        makedirs(autostart_dir)
 
     data_files.append(("/" + autostart_dir, [desktop_file]))
 
