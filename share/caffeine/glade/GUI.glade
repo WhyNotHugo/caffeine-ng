@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.18.3 -->
 <interface>
-  <requires lib="gtk+" version="2.16" />
+  <requires lib="gtk+" version="3.0"/>
   <object class="GtkAboutDialog" id="aboutdialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -9,8 +11,8 @@
     <property name="type_hint">normal</property>
     <property name="program_name">Caffeine-ng</property>
     <property name="version">Development</property>
-    <property name="copyright">Copyright &#169; 2014 Hugo Osvaldo Barrera
-Copyright &#169; 2009-2014 The Caffeine Developers</property>
+    <property name="copyright">Copyright © 2014 Hugo Osvaldo Barrera
+Copyright © 2009-2014 The Caffeine Developers</property>
     <property name="comments" translatable="yes">An application to temporarily prevent the activation of both
  the screen saver and the "sleep" powersaving mode.</property>
     <property name="website">https://github.com/hobarrera/caffeine-ng</property>
@@ -23,21 +25,21 @@ You should have received a copy of the GNU General Public License along with thi
 Brad Smith http://launchpad.net/~bnsmith
 Tommy Brunn http://launchpad.net/~reklamnevon
 Isaiah Heyer http://launchpad.net/~freshapplepy</property>
-    <property name="translator_credits">Joan Rodr&#237;guez
+    <property name="translator_credits">Joan Rodríguez
 Ahmed Mohammed
 thunk
 Adnane Belmadiaf
 Marcos Lans
 Ursache Dogariu Daniel
-Richard Soml&#243;i
+Richard Somlói
 Magnun Leno
 Pekka Niemi
 Bruce Doan
 Woland
 Tommy Brunn
-Jiri Gr&#246;nroos
+Jiri Grönroos
 Dragula 
-Claudia Cotun&#259;
+Claudia Cotună
 Adam M.
 zeugma
 Claudio Gontijo
@@ -64,7 +66,7 @@ Vagner K. Dos Santos
           </packing>
         </child>
         <child>
-          <placeholder />
+          <placeholder/>
         </child>
       </object>
     </child>
@@ -76,13 +78,13 @@ Vagner K. Dos Santos
   </object>
   <object class="GtkListStore" id="liststore1">
     <columns>
-      
-      <column type="GdkPixbuf" />
-      
-      <column type="gchararray" />
+      <!-- column-name gdkpixbuf -->
+      <column type="GdkPixbuf"/>
+      <!-- column-name gchararray -->
+      <column type="gchararray"/>
     </columns>
   </object>
-  <object class="GtkListStore" id="liststore2" />
+  <object class="GtkListStore" id="liststore2"/>
   <object class="GtkAdjustment" id="minutes_adj">
     <property name="upper">59</property>
     <property name="step_increment">1</property>
@@ -93,7 +95,7 @@ Vagner K. Dos Santos
     <property name="border_width">5</property>
     <property name="window_position">mouse</property>
     <property name="default_width">350</property>
-    <signal handler="on_othertime_delete_event" name="delete-event" swapped="no" />
+    <signal name="delete-event" handler="on_othertime_delete_event" swapped="no"/>
     <child>
       <object class="GtkVBox" id="duration_box">
         <property name="visible">True</property>
@@ -105,7 +107,7 @@ Vagner K. Dos Santos
             <property name="xalign">0</property>
             <property name="label" translatable="yes">Duration</property>
             <attributes>
-              <attribute name="weight" value="bold" />
+              <attribute name="weight" value="bold"/>
             </attributes>
           </object>
           <packing>
@@ -148,7 +150,7 @@ Vagner K. Dos Santos
                       <object class="GtkSpinButton" id="hours_spin">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="invisible_char">&#9679;</property>
+                        <property name="invisible_char">●</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
                         <property name="adjustment">hours_adj</property>
@@ -189,7 +191,7 @@ Vagner K. Dos Santos
                       <object class="GtkSpinButton" id="minutes_spin">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="invisible_char">&#9679;</property>
+                        <property name="invisible_char">●</property>
                         <property name="primary_icon_activatable">False</property>
                         <property name="secondary_icon_activatable">False</property>
                         <property name="adjustment">minutes_adj</property>
@@ -227,12 +229,12 @@ Vagner K. Dos Santos
             <child>
               <object class="GtkButton" id="cancel_button">
                 <property name="label">gtk-cancel</property>
+                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
-                <signal handler="on_othertime_cancel" name="clicked" swapped="no" />
+                <signal name="clicked" handler="on_othertime_cancel" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -243,12 +245,12 @@ Vagner K. Dos Santos
             <child>
               <object class="GtkButton" id="othertime_ok_button">
                 <property name="label">gtk-ok</property>
+                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
-                <signal handler="on_othertime_ok" name="clicked" swapped="no" />
+                <signal name="clicked" handler="on_othertime_ok" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -271,12 +273,12 @@ Vagner K. Dos Santos
     <property name="can_focus">False</property>
     <child>
       <object class="GtkMenuItem" id="activate_menuitem">
+        <property name="use_action_appearance">False</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">Disable Screensaver</property>
         <property name="use_underline">True</property>
-        <signal handler="on_activate_menuitem_activate" name="activate" swapped="no" />
+        <signal name="activate" handler="on_activate_menuitem_activate" swapped="no"/>
       </object>
     </child>
     <child>
@@ -287,44 +289,44 @@ Vagner K. Dos Santos
     </child>
     <child>
       <object class="GtkMenuItem" id="time_menuitem">
-        <property name="can_focus">False</property>
         <property name="use_action_appearance">False</property>
+        <property name="can_focus">False</property>
         <property name="label" translatable="yes">Disable Screensaver for...</property>
         <property name="use_underline">True</property>
-        <signal handler="on_time_menuitem_activate" name="activate" swapped="no" />
+        <signal name="activate" handler="on_time_menuitem_activate" swapped="no"/>
       </object>
     </child>
     <child>
       <object class="GtkImageMenuItem" id="prefs_menuitem">
         <property name="label">gtk-preferences</property>
+        <property name="use_action_appearance">False</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
-        <signal handler="on_prefs_menuitem_activate" name="activate" swapped="no" />
+        <signal name="activate" handler="on_prefs_menuitem_activate" swapped="no"/>
       </object>
     </child>
     <child>
       <object class="GtkImageMenuItem" id="about_menuitem">
         <property name="label">gtk-about</property>
+        <property name="use_action_appearance">False</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
-        <signal handler="on_about_menuitem_activate" name="activate" swapped="no" />
+        <signal name="activate" handler="on_about_menuitem_activate" swapped="no"/>
       </object>
     </child>
     <child>
       <object class="GtkImageMenuItem" id="quit_menuitem">
         <property name="label">gtk-quit</property>
+        <property name="use_action_appearance">False</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="use_action_appearance">False</property>
         <property name="use_underline">True</property>
         <property name="use_stock">True</property>
-        <signal handler="on_quit_menuitem_activate" name="activate" swapped="no" />
+        <signal name="activate" handler="on_quit_menuitem_activate" swapped="no"/>
       </object>
     </child>
   </object>
@@ -345,10 +347,10 @@ Vagner K. Dos Santos
             <child>
               <object class="GtkButton" id="button2">
                 <property name="label">gtk-cancel</property>
+                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -360,10 +362,10 @@ Vagner K. Dos Santos
             <child>
               <object class="GtkButton" id="button1">
                 <property name="label">gtk-ok</property>
+                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -381,13 +383,13 @@ Vagner K. Dos Santos
           </packing>
         </child>
         <child>
-          <placeholder />
+          <placeholder/>
         </child>
         <child>
-          <placeholder />
+          <placeholder/>
         </child>
         <child>
-          <placeholder />
+          <placeholder/>
         </child>
       </object>
     </child>
@@ -398,20 +400,19 @@ Vagner K. Dos Santos
   </object>
   <object class="GtkListStore" id="proc_liststore">
     <columns>
-      
-      <column type="GdkPixbuf" />
-      
-      <column type="gchararray" />
+      <!-- column-name gdkpixbuf -->
+      <column type="GdkPixbuf"/>
+      <!-- column-name gchararray -->
+      <column type="gchararray"/>
     </columns>
   </object>
-  <object class="GtkStatusIcon" id="statusicon" />
   <object class="GtkWindow" id="window">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Preferences</property>
     <property name="window_position">center</property>
     <property name="default_width">400</property>
     <property name="default_height">500</property>
-    <signal handler="on_window_delete_event" name="delete-event" swapped="no" />
+    <signal name="delete-event" handler="on_window_delete_event" swapped="no"/>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>
@@ -452,7 +453,7 @@ Vagner K. Dos Santos
                                 <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Automatic activation</property>
                                 <attributes>
-                                  <attribute name="weight" value="bold" />
+                                  <attribute name="weight" value="bold"/>
                                 </attributes>
                               </object>
                               <packing>
@@ -526,19 +527,19 @@ prevent the screensaver and powersaving modes on their own.</property>
                                             <property name="model">proc_liststore</property>
                                             <property name="rules_hint">True</property>
                                             <child internal-child="selection">
-                                              <object class="GtkTreeSelection" id="treeview-selection1" />
+                                              <object class="GtkTreeSelection" id="treeview-selection1"/>
                                             </child>
                                             <child>
                                               <object class="GtkTreeViewColumn" id="treeviewcolumn1">
                                                 <property name="title">Process Name</property>
                                                 <child>
-                                                  <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1" />
+                                                  <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1"/>
                                                   <attributes>
                                                     <attribute name="pixbuf">0</attribute>
                                                   </attributes>
                                                 </child>
                                                 <child>
-                                                  <object class="GtkCellRendererText" id="cellrenderertext1" />
+                                                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
                                                   <attributes>
                                                     <attribute name="text">1</attribute>
                                                   </attributes>
@@ -563,12 +564,12 @@ prevent the screensaver and powersaving modes on their own.</property>
                                         <child>
                                           <object class="GtkButton" id="remove_button">
                                             <property name="label">gtk-remove</property>
+                                            <property name="use_action_appearance">False</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="use_stock">True</property>
-                                            <signal handler="on_remove_button_clicked" name="clicked" swapped="no" />
+                                            <signal name="clicked" handler="on_remove_button_clicked" swapped="no"/>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -579,12 +580,12 @@ prevent the screensaver and powersaving modes on their own.</property>
                                         <child>
                                           <object class="GtkButton" id="add_button">
                                             <property name="label">gtk-add</property>
+                                            <property name="use_action_appearance">False</property>
                                             <property name="visible">True</property>
                                             <property name="can_focus">True</property>
                                             <property name="receives_default">True</property>
-                                            <property name="use_action_appearance">False</property>
                                             <property name="use_stock">True</property>
-                                            <signal handler="on_add_button_clicked" name="clicked" swapped="no" />
+                                            <signal name="clicked" handler="on_add_button_clicked" swapped="no"/>
                                           </object>
                                           <packing>
                                             <property name="expand">False</property>
@@ -657,7 +658,7 @@ embedded in the web page that you are currently browsing.</property>
                                 <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Tray icon</property>
                                 <attributes>
-                                  <attribute name="weight" value="bold" />
+                                  <attribute name="weight" value="bold"/>
                                 </attributes>
                               </object>
                               <packing>
@@ -674,10 +675,11 @@ embedded in the web page that you are currently browsing.</property>
                                 <child>
                                   <object class="GtkCheckButton" id="trayicon_cbutton">
                                     <property name="label" translatable="yes">Show tray icon</property>
+                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
-                                    <property name="use_action_appearance">False</property>
+                                    <property name="xalign">0.5</property>
                                     <property name="draw_indicator">True</property>
                                   </object>
                                 </child>
@@ -696,11 +698,12 @@ embedded in the web page that you are currently browsing.</property>
                                 <child>
                                   <object class="GtkCheckButton" id="notification_cbutton">
                                     <property name="label" translatable="yes">Show notification on startup</property>
+                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="sensitive">False</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
-                                    <property name="use_action_appearance">False</property>
+                                    <property name="xalign">0.5</property>
                                     <property name="draw_indicator">True</property>
                                   </object>
                                 </child>
@@ -730,7 +733,7 @@ embedded in the web page that you are currently browsing.</property>
               </object>
             </child>
             <child type="label_item">
-              <placeholder />
+              <placeholder/>
             </child>
           </object>
           <packing>
@@ -765,12 +768,12 @@ embedded in the web page that you are currently browsing.</property>
                 <child>
                   <object class="GtkButton" id="close_button">
                     <property name="label">gtk-close</property>
+                    <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="use_stock">True</property>
-                    <signal handler="on_close_button_clicked" name="clicked" swapped="no" />
+                    <signal name="clicked" handler="on_close_button_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -790,4 +793,5 @@ embedded in the web page that you are currently browsing.</property>
       </object>
     </child>
   </object>
+  <object class="GtkStatusIcon" id="statusicon"/>
 </interface>
