@@ -17,25 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-import sys
-from os.path import join, dirname, pardir
-
-# if running locally
-sys.path.insert(0, join(dirname(__file__), pardir))
-
-# if installed
-x, y = sys.version_info[0:2]
-x = str(x)
-y = str(y)
-
-sys.path.insert(1, join(dirname(__file__), pardir, 'lib',
-                'python'+x+'.'+y, 'dist-packages'))
-
-sys.path.insert(1, join(dirname(__file__), pardir, 'lib',
-                'python'))
-
-sys.path.append(join(dirname(__file__), pardir, 'share', 'pyshared'))
-
+# TODO: have distutils create a bin file itself.
 import caffeine
 
 caffeine.main()
