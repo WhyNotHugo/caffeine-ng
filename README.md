@@ -32,10 +32,19 @@ System requirements
 Installation
 ------------
 
-* ```python setup.py install```
+To manually install caffeine-ng, run:
 
-* To have Caffeine-ng run on startup, add it to your System Settings =>
-  Startup Programs list.
+1. ```python setup.py build```
+2. ```sudo python setup.py install```
+3. ```sudo glib-compile-schemas /usr/share/glib-2.0/schemas```
+
+Or pre-packaged:
+
+* On ArchLinux, caffeine-ng is available at the
+  [AUR](https://aur.archlinux.org/packages/caffeine-ng/)
+
+To have Caffeine-ng run on startup, add it to your System Settings => Startup
+Programs list.
 
 License
 -------
