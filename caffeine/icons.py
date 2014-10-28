@@ -19,8 +19,7 @@ from os.path import join
 
 from gi.repository import Gtk
 
-from .icons import get_image_path
-from .paths import get_icon_path
+from .paths import get_image_path, get_icon_path
 
 
 def get_icon_pixbuf(size):

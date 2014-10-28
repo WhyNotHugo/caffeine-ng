@@ -35,10 +35,9 @@ from docopt import docopt
 from gi.repository import Gtk, GObject, Gio, GdkPixbuf
 from gi.repository.Notify import Notification
 
-from . import core
-from . import get_icon_pixbuf
 from .applicationinstance import ApplicationInstance
-from .icons import generic_icon
+from .core import Caffeine
+from .icons import generic_icon, get_icon_pixbuf
 from .paths import get_glade_file
 from .procmanager import ProcManager
 
@@ -140,7 +139,7 @@ class GUI:
         # object to manage processes to activate for.
         self.ProcMan = ProcManager()
 
-        self.Core = core.Caffeine(self.ProcMan)
+        self.Core = Caffeine(self.ProcMan)
 
         self.Core.connect("activation-toggled",
                           self.on_activation_toggled)
