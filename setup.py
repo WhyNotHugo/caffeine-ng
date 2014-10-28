@@ -2,7 +2,6 @@
 
 from distutils.core import setup
 import os
-import shutil
 import subprocess
 
 
@@ -33,17 +32,14 @@ if __name__ == "__main__":
         data_files.append(tuple((clean_path, [os.path.join(path, file)
                                               for file in files])))
 
-    desktop_name = "caffeine.desktop"
-    desktop_file = os.path.join("share", "applications", desktop_name)
+    desktop_file = os.path.join("share", "applications", "caffeine.desktop")
 
     autostart_dir = os.path.join("etc", "xdg", "autostart")
 
     if not os.path.exists(autostart_dir):
         os.makedirs(autostart_dir)
 
-    shutil.copy(desktop_file, autostart_dir)
-    data_files.append(tuple(("/" + autostart_dir,
-                             [os.path.join(autostart_dir, desktop_name)])))
+    data_files.append(("/" + autostart_dir, [desktop_file]))
 
     setup(name="caffeine-ng",
           version=get_version(),
