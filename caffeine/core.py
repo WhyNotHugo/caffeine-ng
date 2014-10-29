@@ -61,12 +61,6 @@ class Caffeine(GObject.GObject):
         # ifs
         self.screensaverAndPowersavingType = None
 
-        # Set to True when the detection routine is in progress
-        self.attemptingToDetect = False
-
-        self.dbusDetectionTimer = None
-        self.dbusDetectionFailures = 0
-
         # True if inhibition has been requested (though it may not yet be
         # active).
         self.sleepAppearsPrevented = False
@@ -149,9 +143,6 @@ class Caffeine(GObject.GObject):
         """
         if self.timer:
             self.timer.cancel()
-
-        if self.dbusDetectionTimer:
-            self.dbusDetectionTimer.cancel()
 
     def _notify(self, message, icon, title="Caffeine"):
         """Easy way to use pynotify"""
@@ -301,53 +292,27 @@ class Caffeine(GObject.GObject):
         screensaver/powersaving software is running.  After detection is
         complete, it will finish the inhibiting process."""
 
-        logging.info("Attempting to detect screensaver/powersaving type... ("
-                     + str(self.dbusDetectionFailures) +
-                     " dbus failures so far)")
+        logging.info("Attempting to detect screensaver/powersaving type...")
         bus = dbus.SessionBus()
 
         if 'org.gnome.SessionManager' in bus.list_names() and \
            utils.isProcessRunning("gnome-screensaver"):
             self.screensaverAndPowersavingType = "Gnome3"
-
         elif 'org.freedesktop.ScreenSaver' in bus.list_names() and \
              'org.freedesktop.PowerManagement.Inhibit' in bus.list_names():
             self.screensaverAndPowersavingType = "KDE"
+        elif utils.isProcessRunning("xscreensaver"):
+            self.screensaverAndPowersavingType = "XSS+DPMS"
         else:
-            self.dbusDetectionFailures += 1
-            if self.dbusDetectionFailures <= 3:
-                self.dbusDetectionTimer = \
-                    threading.Timer(10,
-                                    self._detectScreensaverAndPowersavingType)
-                self.dbusDetectionTimer.start()
-                return
-            else:
-                # At this point, all attempts to connect to the relevant dbus
-                # interfaces have failed.  This user must be using something
-                # other than the Gnome or KDE screensaver programs.
-                if utils.isProcessRunning("xscreensaver"):
-                    self.screensaverAndPowersavingType = "XSS+DPMS"
-                else:
-                    self.screensaverAndPowersavingType = "DPMS"
-
-        self.attemptingToDetect = False
-        self.dbusDetectionFailures = 0
-        self.dbusDetectionTimer = None
+            self.screensaverAndPowersavingType = "DPMS"
 
         logging.info("Successfully detected screensaver and powersaving type: "
                      + str(self.screensaverAndPowersavingType))
 
-        if self.sleepAppearsPrevented != self.sleepIsPrevented:
-            self._performTogglingActions()
-
     def _performTogglingActions(self):
         """This method performs the actions that affect the screensaver and
         powersaving."""
-        if self.screensaverAndPowersavingType is None:
-            if self.attemptingToDetect is False:
-                self.attemptingToDetect = True
-                self._detectScreensaverAndPowersavingType()
-            return
+        self._detectScreensaverAndPowersavingType()
 
         if self.screensaverAndPowersavingType == "Gnome":
             self._toggleGnome()
