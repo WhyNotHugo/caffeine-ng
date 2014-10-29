@@ -67,14 +67,11 @@ class Caffeine(GObject.GObject):
         self.dbusDetectionTimer = None
         self.dbusDetectionFailures = 0
 
-        # Set to True when sleep seems to be prevented from the perspective of
-        # the user.  This does not necessarily mean that sleep really is
-        # prevented, because the detection routine could be in progress.
+        # True if inhibition has been requested (though it may not yet be
+        # active).
         self.sleepAppearsPrevented = False
 
-        # Set to True when sleep mode has been successfully inhibited somehow.
-        # This should match up with "self.sleepAppearsPrevented" most of the
-        # time.
+        # True if inhibition has successfully been activated
         self.sleepIsPrevented = False
 
         self.__auto_activated = False
@@ -139,10 +136,10 @@ class Caffeine(GObject.GObject):
             logging.info("Was auto-inhibited, but there's no fullscreen or " +
                          "whitelisted process now. De-activating.")
             self.__auto_activated = False
-            self.setActivated(False)
+            self.__set_activated(False)
         elif process_running or fullscreen and not self.__auto_activated:
             self.__auto_activated = True
-            self.setActivated(True)
+            self.__set_activated(True)
 
         return True
 
@@ -225,17 +222,24 @@ class Caffeine(GObject.GObject):
         self.timer.name = "Expired"
         self.toggleActivated(note=note)
 
+    def __set_activated(self, activate):
+        if self.getActivated() != activate:
+            self.__toggle_activated(activate)
+
     def setActivated(self, activate, note=True):
         if self.getActivated() != activate:
             self.toggleActivated(note)
 
-    def toggleActivated(self, note=True):
+    def toggleActivated(self, show_notification=True):
         """This function toggles the inhibition of the screensaver and
         powersaving features of the current computer, detecting the the type of
         screensaver and powersaving in use, if it has not been detected
         already."""
 
         self.__auto_activated = False
+        self.__toggle_activated(note=show_notification)
+
+    def __toggle_activated(self, note):
 
         if self.sleepAppearsPrevented:
             # sleep prevention was on now turn it off
