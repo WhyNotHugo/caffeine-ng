@@ -34,9 +34,9 @@ Installation
 
 To manually install caffeine-ng, run:
 
-1. ```python setup.py build```
-2. ```sudo python setup.py install```
-3. ```sudo glib-compile-schemas /usr/share/glib-2.0/schemas```
+      python setup.py build
+      sudo python setup.py install
+      sudo glib-compile-schemas /usr/share/glib-2.0/schemas
 
 Or pre-packaged:
 
