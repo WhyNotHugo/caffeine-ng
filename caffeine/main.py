@@ -138,12 +138,12 @@ class GUI:
 
     def __init__(self, show_preferences=False):
         # object to manage processes to activate for.
-        self.ProcMan = ProcManager()
+        self.__process_manager = ProcManager()
 
-        self.Core = Caffeine(self.ProcMan)
+        self.__core = Caffeine(self.__process_manager)
 
-        self.Core.connect("activation-toggled",
-                          self.on_activation_toggled)
+        self.__core.connect("activation-toggled",
+                            self.on_activation_toggled)
         self.ProcAdd = ProcAdd()
 
         # XXX: Do we want to change this to caffeine-ng?
@@ -193,9 +193,9 @@ class GUI:
 
         self.activate_menuitem = get("activate_menuitem")
 
-        self.set_icon_is_activated(self.Core.getActivated())
+        self.set_icon_is_activated(self.__core.get_activated())
 
-        tooltip = self.Core.status_string
+        tooltip = self.__core.status_string
         if not tooltip:
             tooltip = _("Caffeine is dormant; powersaving is enabled")
         # self.status_icon.set_tooltip(tooltip)
@@ -216,8 +216,9 @@ class GUI:
         self.selection.set_mode(Gtk.SelectionMode.MULTIPLE)
 
         self.proc_liststore = get("proc_liststore")
-        self.proc_liststore.append([[get_icon_for_process(name), name] for
-                                    name in self.ProcMan .get_process_list()])
+        self.proc_liststore \
+            .append([[get_icon_for_process(name), name] for
+                     name in self.__process_manager.get_process_list()])
 
         # time_menuitem = get("time_menuitem")
 
@@ -265,14 +266,14 @@ class GUI:
         builder.connect_signals(self)
 
     def setActive(self, active):
-        self.Core.setActivated(active)
+        self.__core.set_activated(active)
 
-    def timedActivation(self, time):
-        self.Core.timedActivation(time)
+    def timed_activation(self, time):
+        self.__core.timed_activation(time)
 
-    def toggleActivated(self):
+    def toggle_activated(self):
         """Toggles whether screen saver prevention is active."""
-        self.Core.toggleActivated()
+        self.__core.toggle_activated()
 
     def on_activation_toggled(self, source, active, tooltip):
         self.set_icon_is_activated(active)
@@ -288,12 +289,12 @@ class GUI:
             self.status_icon.set_from_icon_name(icon_name)
 
         label = [_("Disable Screensaver"), _("Enable Screensaver")]
-        self.activate_menuitem.set_label(label[self.Core.getActivated()])
+        self.activate_menuitem.set_label(label[self.__core.get_activated()])
 
     # Callbacks
     def on_L_click(self, status_icon, data=None):
         logging.info("User has clicked the Caffeine icon")
-        self.toggleActivated()
+        self.toggle_activated()
 
     def on_R_click(self, status_icon, mbutton, time, data=None):
         # popdown menu
@@ -312,13 +313,13 @@ class GUI:
                 self.proc_liststore.append([get_icon_for_process(proc_name),
                                            proc_name])
 
-                self.ProcMan.add_proc(proc_name)
+                self.__process_manager.add_proc(proc_name)
 
     def on_remove_button_clicked(self, button, data=None):
         model, paths = self.selection.get_selected_rows()
         paths.reverse()
         for path in paths:
-            self.ProcMan.remove_proc(model[path][1])
+            self.__process_manager.remove_proc(model[path][1])
             model.remove(model.get_iter(path))
 
     def on_window_delete_event(self, window, data=None):
@@ -350,10 +351,10 @@ class GUI:
 
     # Menu callbacks
     def on_activate_menuitem_activate(self, menuitem, data=None):
-        self.toggleActivated()
+        self.toggle_activated()
 
         label = [_("Disable Screensaver"), _("Enable Screensaver")]
-        menuitem.set_label(label[self.Core.getActivated()])
+        menuitem.set_label(label[self.__core.get_activated()])
 
     def on_time_menuitem_activate(self, menuitem, data=None):
         self.othertime_dialog.show_all()
@@ -380,7 +381,7 @@ class GUI:
         self.othertime_dialog.hide()
         time = hours*60*60 + minutes*60
         if time > 0:
-            self.Core.timedActivation(time)
+            self.__core.timed_activation(time)
 
     def on_quit_menuitem_activate(self, menuitem, data=None):
         self.quit()
@@ -390,8 +391,8 @@ class GUI:
         logging.info("Caffeine is preparing to quit")
 
         # Make sure PM and SV is uninhibited
-        self.Core.setActivated(False)
-        self.Core.quit()
+        self.__core.set_activated(False)
+        self.__core.quit()
         Gtk.main_quit()
 
 
@@ -431,7 +432,7 @@ def main():
             print("Invalid time argument.")
             sys.exit(2)
 
-        main.timedActivation((hours * 3600.0)+(minutes * 60.0))
+        main.timed_activation((hours * 3600.0)+(minutes * 60.0))
 
     if arguments["--preferences"]:
         main.window.show_all()

@@ -27,7 +27,6 @@ from gettext import gettext as _
 from gi.repository import GObject, Notify
 
 from . import utils
-from .applicationinstance import ApplicationInstance
 from .icons import empty_cup_icon, full_cup_icon
 
 
@@ -42,15 +41,10 @@ class Caffeine(GObject.GObject):
         GObject.GObject.__init__(self)
 
         # object to manage processes to activate for.
-        self.ProcMan = process_manager
+        self.__process_manager = process_manager
 
         # Status string.
         self.status_string = ""
-
-        # Makes sure that only one instance of Caffeine is run for
-        # each user on the system.
-        self.pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
-        self.appInstance = ApplicationInstance(self.pid_name)
 
         # This variable is set to a string describing the type of screensaver
         # and powersaving systems used on this computer. It is detected when
@@ -63,10 +57,10 @@ class Caffeine(GObject.GObject):
 
         # True if inhibition has been requested (though it may not yet be
         # active).
-        self.sleepAppearsPrevented = False
+        self.__inhibition_activated = False
 
         # True if inhibition has successfully been activated
-        self.sleepIsPrevented = False
+        self.__inhibition_successful = False
 
         self.__auto_activated = False
 
@@ -87,7 +81,7 @@ class Caffeine(GObject.GObject):
         whitelisted processes is running OR if there's a fullscreen app.
         """
 
-        if self.getActivated() and not self.__auto_activated:
+        if self.get_activated() and not self.__auto_activated:
             logging.info("Inhibition manually activated. Won't attempt to " +
                          "auto-activate")
             return True
@@ -95,14 +89,14 @@ class Caffeine(GObject.GObject):
         process_running = False
 
         # Determine if one of the whitelisted processes is running.
-        for proc in self.ProcMan.get_process_list():
+        for proc in self.__process_manager.get_process_list():
             if utils.isProcessRunning(proc):
                 process_running = True
 
                 if self.__auto_activated:
                     logging.info("Process {} detected but was already "
                                  .format(proc) + "auto-activated")
-                elif not self.getActivated():
+                elif not self.get_activated():
                     logging.info("Process {} detected. Inhibiting."
                                  .format(proc))
 
@@ -122,7 +116,7 @@ class Caffeine(GObject.GObject):
             if self.__auto_activated:
                 logging.info("Fullscreen app detected, but was already " +
                              "auto-activated")
-            elif not self.getActivated():
+            elif not self.get_activated():
                 logging.info("Fullscreen app detected. Inhibiting.")
 
         # Disable auto-activation?
@@ -155,12 +149,14 @@ class Caffeine(GObject.GObject):
                 self.note = Notify.Notification(title, message, icon)
 
             # Notify OSD doesn't seem to work when sleep is prevented
-            if self.screenSaverCookie is not None and self.sleepIsPrevented:
+            if self.screenSaverCookie is not None and \
+               self.__inhibition_successful:
                 self.ssProxy.UnInhibit(self.screenSaverCookie)
 
             self.note.show()
 
-            if self.screenSaverCookie is not None and self.sleepIsPrevented:
+            if self.screenSaverCookie is not None and \
+               self.__inhibition_successful:
                 self.screenSaverCookie = \
                     self.ssProxy.Inhibit("Caffeine",
                                          "User has requested that Caffeine " +
@@ -173,11 +169,8 @@ class Caffeine(GObject.GObject):
         finally:
             return False
 
-    def getActivated(self):
-        return self.sleepAppearsPrevented
-
-    def timedActivation(self, time, note=True):
-        """Calls toggleActivated after the number of seconds
+    def timed_activation(self, time, note=True):
+        """Calls toggle_activated after the number of seconds
         specified by time has passed.
         """
         message = (_("Timed activation set; ") +
@@ -187,11 +180,11 @@ class Caffeine(GObject.GObject):
         logging.info("Timed activation set for " + str(time))
 
         if self.status_string == "":
-            self.status_string = _("Activated for ")+str(time)
-            self.emit("activation-toggled", self.getActivated(),
+            self.status_string = _("Activated for ") + str(time)
+            self.emit("activation-toggled", self.get_activated(),
                       self.status_string)
 
-        self.setActivated(True, note)
+        self.set_activated(True, note)
 
         if note:
             self._notify(message, full_cup_icon)
@@ -211,17 +204,26 @@ class Caffeine(GObject.GObject):
 
     def _deactivate(self, note):
         self.timer.name = "Expired"
-        self.toggleActivated(note=note)
+        self.toggle_activated(note=note)
 
     def __set_activated(self, activate):
-        if self.getActivated() != activate:
+        """Enables inhibition, but does not mark is as manually enabled.
+        """
+        if self.get_activated() != activate:
             self.__toggle_activated(activate)
 
-    def setActivated(self, activate, note=True):
-        if self.getActivated() != activate:
-            self.toggleActivated(note)
+    def get_activated(self):
+        """Returns True if inhibition was manually activated.
+        """
+        return self.__inhibition_activated
 
-    def toggleActivated(self, show_notification=True):
+    def set_activated(self, activate, show_notification=True):
+        """Sets inhibition as manually activated.
+        """
+        if self.get_activated() != activate:
+            self.toggle_activated(show_notification)
+
+    def toggle_activated(self, show_notification=True):
         """This function toggles the inhibition of the screensaver and
         powersaving features of the current computer, detecting the the type of
         screensaver and powersaving in use, if it has not been detected
@@ -232,10 +234,10 @@ class Caffeine(GObject.GObject):
 
     def __toggle_activated(self, note):
 
-        if self.sleepAppearsPrevented:
+        if self.__inhibition_activated:
             # sleep prevention was on now turn it off
 
-            self.sleepAppearsPrevented = False
+            self.__inhibition_activated = False
             logging.info("Caffeine is now dormant; powersaving is re-enabled")
             self.status_string = \
                 _("Caffeine is dormant; powersaving is enabled")
@@ -271,7 +273,7 @@ class Caffeine(GObject.GObject):
                 self.timer = None
 
         else:
-            self.sleepAppearsPrevented = True
+            self.__inhibition_activated = True
 
         self._performTogglingActions()
 
@@ -282,7 +284,7 @@ class Caffeine(GObject.GObject):
                                       "(" + self.screensaverAndPowersavingType
                                       + ")")
 
-        self.emit("activation-toggled", self.getActivated(),
+        self.emit("activation-toggled", self.get_activated(),
                   self.status_string)
         self.status_string = ""
 
@@ -325,12 +327,12 @@ class Caffeine(GObject.GObject):
         elif self.screensaverAndPowersavingType == "DPMS":
             self._toggleDPMS()
 
-        if self.sleepIsPrevented is False:
+        if self.__inhibition_successful is False:
             logging.info("Caffeine is now preventing powersaving modes" +
                          " and screensaver activation (" +
                          self.screensaverAndPowersavingType + ")")
 
-        self.sleepIsPrevented = not self.sleepIsPrevented
+        self.__inhibition_successful = not self.__inhibition_successful
 
     def _toggleGnome3(self):
         """Toggle the screensaver and powersaving with the interfaces used by
@@ -340,7 +342,7 @@ class Caffeine(GObject.GObject):
         bus = dbus.SessionBus()
         self.susuProxy = bus.get_object('org.gnome.SessionManager',
                                         '/org/gnome/SessionManager')
-        if self.sleepIsPrevented:
+        if self.__inhibition_successful:
             if self.screenSaverCookie is not None:
                 self.susuProxy.Uninhibit(self.screenSaverCookie)
         else:
@@ -360,7 +362,7 @@ class Caffeine(GObject.GObject):
                                       '/ScreenSaver')
         pmProxy = bus.get_object('org.freedesktop.PowerManagement.Inhibit',
                                  '/org/freedesktop/PowerManagement/Inhibit')
-        if self.sleepIsPrevented:
+        if self.__inhibition_successful:
             if self.screenSaverCookie is not None:
                 self.ssProxy.UnInhibit(self.screenSaverCookie)
             if self.powerManagementCookie is not None:
@@ -379,7 +381,7 @@ class Caffeine(GObject.GObject):
 
     def _toggleDPMS(self):
         """Toggle the DPMS powersaving subsystem."""
-        if self.sleepIsPrevented:
+        if self.__inhibition_successful:
             subprocess.getoutput("xset +dpms")
             subprocess.getoutput("xset s on")
         else:
@@ -390,9 +392,7 @@ class Caffeine(GObject.GObject):
         """Toggle whether XScreensaver is activated (powersaving is
         unaffected)"""
 
-        if self.sleepIsPrevented:
-            # sleep prevention was on now turn it off
-
+        if self.__inhibition_successful:
             # If the user clicks on the full coffee-cup to disable
             # sleep prevention, it should also
             # cancel the timer for timed activation.
