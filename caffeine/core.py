@@ -82,8 +82,8 @@ class Caffeine(GObject.GObject):
         """
 
         if self.get_activated() and not self.__auto_activated:
-            logging.info("Inhibition manually activated. Won't attempt to " +
-                         "auto-activate")
+            logging.debug("Inhibition manually activated. Won't attempt to " +
+                          "auto-activate")
             return True
 
         process_running = False
@@ -114,8 +114,8 @@ class Caffeine(GObject.GObject):
 
         if fullscreen:
             if self.__auto_activated:
-                logging.info("Fullscreen app detected, but was already " +
-                             "auto-activated")
+                logging.debug("Fullscreen app detected, but was already " +
+                              "auto-activated")
             elif not self.get_activated():
                 logging.info("Fullscreen app detected. Inhibiting.")
 
@@ -294,7 +294,7 @@ class Caffeine(GObject.GObject):
         screensaver/powersaving software is running.  After detection is
         complete, it will finish the inhibiting process."""
 
-        logging.info("Attempting to detect screensaver/powersaving type...")
+        logging.debug("Attempting to detect screensaver/powersaving type...")
         bus = dbus.SessionBus()
 
         if 'org.gnome.SessionManager' in bus.list_names() and \

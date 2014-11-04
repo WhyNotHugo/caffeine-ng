@@ -24,6 +24,7 @@ Options:
   -t --time <HH>:<MM>       Use with -a. Activate caffeine for HH:MM.
   -p --preferences          Start with the Preferences dialog open.
 """
+# TODO: add a -v --verbosity flag.
 
 import ctypes
 import logging
