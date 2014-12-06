@@ -218,8 +218,8 @@ class GUI:
 
         self.proc_liststore = get("proc_liststore")
         self.proc_liststore \
-            .append([[get_icon_for_process(name), name] for
-                     name in self.__process_manager.get_process_list()])
+            .append(*[[get_icon_for_process(name), name] for
+                      name in self.__process_manager.get_process_list()])
 
         # time_menuitem = get("time_menuitem")
 
