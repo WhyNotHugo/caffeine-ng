@@ -217,9 +217,8 @@ class GUI:
         self.selection.set_mode(Gtk.SelectionMode.MULTIPLE)
 
         self.proc_liststore = get("proc_liststore")
-        self.proc_liststore \
-            .append(*[[get_icon_for_process(name), name] for
-                      name in self.__process_manager.get_process_list()])
+        for name in self.__process_manager.get_process_list():
+            self.proc_liststore.append([get_icon_for_process(name), name])
 
         # time_menuitem = get("time_menuitem")
 
