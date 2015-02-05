@@ -165,8 +165,8 @@ class GUI:
 
         if appindicator_avail:
             self.AppInd = \
-                AppIndicator3.Indicator.new("caffeine-cup-empty",
-                                            "caffeine",
+                AppIndicator3.Indicator.new("caffeine",
+                                            "caffeine-cup-empty",
                                             AppIndicator3.IndicatorCategory.
                                             APPLICATION_STATUS)
 
