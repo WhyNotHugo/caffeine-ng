@@ -53,6 +53,9 @@ class GnomeInhibitor(BaseInhibitor):
         BaseInhibitor.__init__(self)
         self.bus = dbus.SessionBus()
 
+        self.__proxy = None
+        self.__cookie = None
+
     def inhibit(self):
         if not self.__proxy:
             self.__proxy = self.bus.get_object('org.gnome.SessionManager',
@@ -79,17 +82,19 @@ class XdgScreenSaverInhibitor(BaseInhibitor):
         BaseInhibitor.__init__(self)
         self.bus = dbus.SessionBus()
 
+        self.__cookie = None
+
     def inhibit(self):
-        self.__proxy_ss = \
+        self.__proxy = \
             self.bus.get_object('org.freedesktop.ScreenSaver', '/ScreenSaver')
-        self.__cookie_ss = \
-            self.__proxy_ss.Inhibit("Caffeine", INHIBITION_REASON)
+        self.__cookie = \
+            self.__proxy.Inhibit("Caffeine", INHIBITION_REASON)
 
         self.running = True
 
     def uninhibit(self):
-        if self.__cookie_ss is not None:
-            self.__proxy_ss.UnInhibit(self.__cookie_ss)
+        if self.__cookie:
+            self.__proxy.UnInhibit(self.__cookie)
         self.running = False
 
     @property
@@ -103,17 +108,19 @@ class XdgPowerManagmentInhibitor(BaseInhibitor):
         BaseInhibitor.__init__(self)
         self.bus = dbus.SessionBus()
 
+        self.__cookie = None
+
     def inhibit(self):
-        self.__proxy_pm = \
+        self.__proxy = \
             self.bus.get_object('org.freedesktop.PowerManagement.Inhibit',
                                 '/org/freedesktop/PowerManagement/Inhibit')
-        self.__cookie_pm = \
-            self.__proxy_pm.Inhibit("Caffeine", INHIBITION_REASON)
+        self.__cookie = \
+            self.__proxy.Inhibit("Caffeine", INHIBITION_REASON)
         self.running = True
 
     def uninhibit(self):
-        if self.__cookie_pm is not None:
-            self.__proxy_pm.UnInhibit(self.__cookie_pm)
+        if self.__cookie:
+            self.__proxy.UnInhibit(self.__cookie)
         self.running = False
 
     @property
