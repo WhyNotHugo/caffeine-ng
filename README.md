@@ -27,7 +27,7 @@ System requirements
 
 * Python 3
 
-* pygobject, pyxdg, dbus-python, docopt, pyewmh.
+* pygobject, pyxdg, dbus-python, docopt, pyewmh, setproctitle.
 
 Installation
 ------------

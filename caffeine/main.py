@@ -32,9 +32,11 @@ import os
 import signal
 import sys
 from gettext import gettext as _
+
 from docopt import docopt
 from gi.repository import Gtk, GObject, Gio, GdkPixbuf
 from gi.repository.Notify import Notification
+from setproctitle import setproctitle
 
 from . import __version__
 from .applicationinstance import ApplicationInstance
@@ -398,6 +400,7 @@ class GUI:
 
 
 def main():
+    setproctitle("caffeine-ng")
     signal.signal(signal.SIGINT, signal.SIG_DFL)
 
     GObject.threads_init()
