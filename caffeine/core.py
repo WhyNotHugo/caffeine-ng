@@ -22,13 +22,17 @@ from threading import Timer, Thread
 
 from ewmh import EWMH
 from gettext import gettext as _
-from gi.repository import GObject, Notify
+from gi.repository import GObject, Notify, GLib
 
 from . import utils
 from .icons import empty_cup_icon, full_cup_icon
 from .inhibitors import DpmsInhibitor, GnomeInhibitor, \
     XdgPowerManagmentInhibitor, XdgScreenSaverInhibitor, XssInhibitor, \
     XorgInhibitor
+
+# from pympler import tracker
+# tr = tracker.SummaryTracker()
+
 
 logging.basicConfig(level=logging.INFO)
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
@@ -65,8 +69,10 @@ class Caffeine(GObject.GObject):
         self.timer = None
         self.notification = None
 
+        self._ewmh = EWMH()
+
         # FIXME: add capability to xdg-screensaver to report timeout.
-        GObject.timeout_add(10000, self.__attempt_autoactivation)
+        GLib.timeout_add(10000, self.__attempt_autoactivation)
 
         logger.info(self.status_string)
 
@@ -75,6 +81,7 @@ class Caffeine(GObject.GObject):
         Determines if we want to auto-activate inhibition by verifying if any
         of the whitelisted processes is running OR if there's a fullscreen app.
         """
+        # tr.print_diff()
 
         if self.get_activated() and not self.__auto_activated:
             logger.debug("Inhibition manually activated. Won't attempt to " +
@@ -96,14 +103,13 @@ class Caffeine(GObject.GObject):
         # If none where running, let's look for fullscreen:
         if not process_running:
             # Determine if a fullscreen application is running
-            ewmh = EWMH()
-            window = ewmh.getActiveWindow()
-            if window:
-                # ewmh.getWmState(window) returns None is scenarios where
-                # ewmh.getWmState(window, str=True) throws an exception
-                # (it's a bug in pyewmh):
-                fullscreen = ewmh.getWmState(window) and \
-                    "_NET_WM_STATE_FULLSCREEN" in ewmh.getWmState(window, True)
+            window = self._ewmh.getActiveWindow()
+            # ewmh.getWmState(window) returns None is scenarios where
+            # ewmh.getWmState(window, str=True) throws an exception
+            # (it's a bug in pyewmh):
+            if window and self._ewmh.getWmState(window):
+                fullscreen = "_NET_WM_STATE_FULLSCREEN" in \
+                    self._ewmh.getWmState(window, True)
             else:
                 fullscreen = False
 
