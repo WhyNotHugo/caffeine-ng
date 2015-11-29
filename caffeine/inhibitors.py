@@ -197,3 +197,23 @@ class XorgInhibitor(BaseInhibitor):
     def applicable(self):
         # TODO!
         return True
+
+
+class XautolockInhibitor(BaseInhibitor):
+
+    def __init__(self):
+        BaseInhibitor.__init__(self)
+
+    def inhibit(self):
+        self.running = True
+
+        os.system("xautolock -disable")
+
+    def uninhibit(self):
+        self.running = False
+
+        os.system("xautolock -enable")
+
+    @property
+    def applicable(self):
+        return os.system("pgrep xautolock") is 0
