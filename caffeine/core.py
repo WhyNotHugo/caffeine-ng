@@ -28,7 +28,7 @@ from . import utils
 from .icons import empty_cup_icon, full_cup_icon
 from .inhibitors import DpmsInhibitor, GnomeInhibitor, \
     XdgPowerManagmentInhibitor, XdgScreenSaverInhibitor, XssInhibitor, \
-    XorgInhibitor
+    XorgInhibitor, XautolockInhibitor
 
 # from pympler import tracker
 # tr = tracker.SummaryTracker()
@@ -51,7 +51,8 @@ class Caffeine(GObject.GObject):
             XdgPowerManagmentInhibitor(),
             XssInhibitor(),
             DpmsInhibitor(),
-            XorgInhibitor()
+            XorgInhibitor(),
+            XautolockInhibitor()
         ]
 
         self.__process_manager = process_manager
