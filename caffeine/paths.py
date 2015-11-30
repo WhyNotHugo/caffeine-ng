@@ -54,17 +54,11 @@ def get_icon_path():
     return __icon_path
 
 
-def get_version_file():
-    return __version_path
-
-
 __config_dir = join(xdg_config_home, "caffeine")
 __glade_path = join(get_base_path(), 'share', 'caffeine', 'glade')
 
 __image_path = join(get_base_path(), 'share', 'caffeine', 'images')
 __icon_path = join(get_base_path(), 'share', 'icons')
-
-__version_path = join(get_base_path(), 'share', 'caffeine', 'VERSION')
 
 
 if not exists(__config_dir):

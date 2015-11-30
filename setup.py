@@ -1,33 +1,17 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from setuptools import setup, find_packages
 from os import makedirs, walk
 from os.path import exists, abspath, join, dirname
-import subprocess
-
-
-def get_version():
-    """Returns the current version. If this is a git checkout, add HEAD to
-    it."""
-    version = open("VERSION").readline().strip()
-    if exists(".git"):
-        git_rev = subprocess.getoutput("git rev-parse --short HEAD")
-        version += "-r" + git_rev
-
-    return version
 
 
 if __name__ == "__main__":
     script_path = abspath(__file__)
     share_path = join(dirname(script_path), "share")
 
-    # Write the current version into share/caffeine/VERSION
-    open(join(share_path, "caffeine", "VERSION"), "w").write(get_version())
-    version_file = join("share", "caffeine")
-
     data_files = []
     for path, dirs, files in walk(share_path):
-        clean_path = path.replace(share_path, "share", 1)
+        clean_path = path.replace(share_path, "/usr/share", 1)
         data_files.append((clean_path, [join(path, file) for file in files]))
 
     desktop_file = join("share", "applications", "caffeine.desktop")
@@ -39,7 +23,10 @@ if __name__ == "__main__":
     data_files.append(("/" + autostart_dir, [desktop_file]))
 
     setup(name="caffeine-ng",
-          version=get_version(),
+          use_scm_version={
+              'version_scheme': 'post-release',
+              'write_to': 'caffeine/version.py',
+          },
           description="""A status bar application able to temporarily prevent
           the activation of both the screensaver and the "sleep" powersaving
           mode.""",
@@ -48,7 +35,7 @@ if __name__ == "__main__":
           maintainer="Hugo Osvaldo Barrera",
           maintainer_email="hugo@barrera.io",
           url="https://github.com/hobarrera/caffeine-ng",
-          packages=["caffeine"],
+          packages=find_packages(),
           data_files=data_files,
           scripts=["bin/caffeine"],
           classifiers=[
@@ -61,6 +48,6 @@ if __name__ == "__main__":
               'Operating System :: POSIX :: BSD',
               'Operating System :: POSIX :: Linux',
               'Programming Language :: Python :: 3',
-              ]
-
+              ],
+          setup_requires=['setuptools_scm'],
           )

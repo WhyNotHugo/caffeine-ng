@@ -1,5 +1,6 @@
 *.pyc
 build
+dist
+caffeine_ng.egg-info
 etc
 *.swp
-share/caffeine/VERSION
