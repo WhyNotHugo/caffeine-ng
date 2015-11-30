@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 from setuptools import setup, find_packages
-from os import makedirs, walk
-from os.path import exists, abspath, join, dirname
+from os import walk
+from os.path import abspath, join, dirname
 
 
-if __name__ == "__main__":
+def get_data_files():
     script_path = abspath(__file__)
     share_path = join(dirname(script_path), "share")
 
@@ -14,14 +14,14 @@ if __name__ == "__main__":
         clean_path = path.replace(share_path, "/usr/share", 1)
         data_files.append((clean_path, [join(path, file) for file in files]))
 
-    desktop_file = join("share", "applications", "caffeine.desktop")
-    autostart_dir = join("etc", "xdg", "autostart")
+    data_files.append(
+        ("/etc/xdg/autostart", ["share/applications/caffeine.desktop"])
+    )
 
-    if not exists(autostart_dir):
-        makedirs(autostart_dir)
+    return data_files
 
-    data_files.append(("/" + autostart_dir, [desktop_file]))
 
+if __name__ == "__main__":
     setup(name="caffeine-ng",
           use_scm_version={
               'version_scheme': 'post-release',
@@ -36,7 +36,7 @@ if __name__ == "__main__":
           maintainer_email="hugo@barrera.io",
           url="https://github.com/hobarrera/caffeine-ng",
           packages=find_packages(),
-          data_files=data_files,
+          data_files=get_data_files(),
           scripts=["bin/caffeine"],
           classifiers=[
               'Development Status :: 5 - Production/Stable',
