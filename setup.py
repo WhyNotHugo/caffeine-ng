@@ -41,6 +41,7 @@ if __name__ == "__main__":
         url="https://github.com/hobarrera/caffeine-ng",
         packages=find_packages(),
         data_files=get_data_files(),
+        install_requires=open('requirements.txt').read().splitlines(),
         entry_points={
             'gui_scripts': [
                 'caffeine = caffeine.main:main'
