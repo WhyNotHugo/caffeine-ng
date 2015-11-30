@@ -34,9 +34,12 @@ import sys
 from gettext import gettext as _
 
 from docopt import docopt
+from setproctitle import setproctitle
+import gi
+gi.require_version('Gtk', '3.0')  # noqa
+gi.require_version('Notify', '0.7')  # noqa
 from gi.repository import Gtk, GObject, Gio, GdkPixbuf
 from gi.repository.Notify import Notification
-from setproctitle import setproctitle
 
 from . import __version__
 from .applicationinstance import ApplicationInstance
