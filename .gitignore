@@ -2,5 +2,7 @@
 build
 dist
 caffeine_ng.egg-info
+.eggs
 etc
-*.swp
+*.sw?
+caffeine/version.py
