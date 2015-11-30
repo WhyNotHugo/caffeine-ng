@@ -37,7 +37,11 @@ if __name__ == "__main__":
           url="https://github.com/hobarrera/caffeine-ng",
           packages=find_packages(),
           data_files=get_data_files(),
-          scripts=["bin/caffeine"],
+          entry_points={
+              'gui_scripts': [
+                  'caffeine = caffeine.main:main'
+              ]
+          },
           classifiers=[
               'Development Status :: 5 - Production/Stable',
               'Environment :: X11 Applications',
