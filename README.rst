@@ -6,10 +6,10 @@ screensaver from showing up, or the systems from going to sleep.
 It does so when an application is fullscreened (eg: youtube), or when you click
 on the systray icon (which you can do, when, eg: reading).
 
-This is a fork of [Caffeine 2.4](http://launchpad.net/caffeine/), since later
+This is a fork of `Caffeine 2.4 <http://launchpad.net/caffeine/>`_, since later
 versions dropped support for the systray icon in favour of only automatic
 detection of fullscreen apps only, which resulted rather
-[controversial](https://bugs.launchpad.net/caffeine/+bug/1321750).
+`controversial <https://bugs.launchpad.net/caffeine/+bug/1321750>`_.
 
 The intention of this fork is to also evolve on its own, not only fixing
 issues, but also implemented missing features, when relevant.
@@ -26,12 +26,12 @@ System requirements
   (this includes KDE, amongst others) API, gnome-screensaver, XSS and/or DPMS, xautolock.
 * Python 3
 
-See `requirements.txt` for required python packages
+See ``requirements.txt`` for required python packages
 
 Installation
 ------------
 
-To manually install caffeine-ng, run:
+To manually install caffeine-ng, run::
 
       python setup.py build
       sudo python setup.py install
@@ -40,7 +40,7 @@ To manually install caffeine-ng, run:
 Or pre-packaged:
 
 * On ArchLinux, caffeine-ng is available at the
-  [AUR](https://aur.archlinux.org/packages/caffeine-ng/)
+  `AUR <https://aur.archlinux.org/packages/caffeine-ng/>`_.
 
 To have Caffeine-ng run on startup, add it to your System Settings => Startup
 Programs list.
@@ -67,8 +67,8 @@ your option) any later version. See LGPL.
 Hacking
 -------
 
-To run: ```./bin/caffeine```
-To compile translations: ```./update_translations```
+To run: ``./bin/caffeine``
+To compile translations: ``./update_translations``
 
 If you want to test out a translation without changing the language for the
 whole session: "LANG=ru_RU.UTF-8 ./bin/caffeine" (Replace ru_RU.UTF-8
