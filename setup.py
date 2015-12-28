@@ -52,7 +52,7 @@ if __name__ == "__main__":
           'Environment :: X11 Applications',
           'Environment :: X11 Applications :: GTK',
           'Intended Audience :: End Users/Desktop',
-          'License :: OSI Approved :: GNU General Public License v3',
+          'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
           'Operating System :: POSIX',
           'Operating System :: POSIX :: BSD',
           'Operating System :: POSIX :: Linux',
