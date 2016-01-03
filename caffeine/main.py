@@ -124,7 +124,7 @@ class ProcAdd:
         return response
 
     def get_process_name(self):
-        return self.entry.get_text().strip()
+        return self.entry.get_text().lower().strip()
 
     def on_add_button_clicked(self, button, data=None):
         self.dialog.hide()
