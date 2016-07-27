@@ -4,3 +4,4 @@ dist
 caffeine_ng.egg-info
 etc
 *.swp
+caffeine/version.py
