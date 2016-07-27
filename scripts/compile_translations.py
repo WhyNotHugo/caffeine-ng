@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 import os
-import sys
 import subprocess
+import sys
 
 if len(sys.argv) < 3:
     print("usage: ./compile_translations <program-name> <po directory>")

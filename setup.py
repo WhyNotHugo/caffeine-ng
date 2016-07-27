@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
-from setuptools import setup, find_packages
 from os import walk
-from os.path import abspath, join, dirname
+from os.path import abspath, dirname, join
+
+from setuptools import find_packages, setup
 
 
 def get_data_files():

@@ -15,7 +15,7 @@
 #
 
 from os import makedirs
-from os.path import exists, join, abspath, dirname, pardir
+from os.path import abspath, dirname, exists, join, pardir
 
 from xdg.BaseDirectory import xdg_config_home
 

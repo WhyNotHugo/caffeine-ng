@@ -16,10 +16,11 @@
 # than handled as a proper dependency) because libcaffeine isn't really stable
 # enough for public release.
 
-import dbus
 import logging
 import os
 import time
+
+import dbus
 
 logger = logging.getLogger(__name__)
 

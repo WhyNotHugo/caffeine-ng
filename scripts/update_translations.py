@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import subprocess
+
 version = open("VERSION").read()
 version = version.strip()
 print(version)

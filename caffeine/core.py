@@ -18,17 +18,17 @@
 import logging
 import os
 import os.path
-from threading import Timer, Thread
+from gettext import gettext as _
+from threading import Thread, Timer
 
 from ewmh import EWMH
-from gettext import gettext as _
-from gi.repository import GObject, Notify, GLib
+from gi.repository import GLib, GObject, Notify
 
 from . import utils
 from .icons import empty_cup_icon, full_cup_icon
-from .inhibitors import DpmsInhibitor, GnomeInhibitor, \
-    XdgPowerManagmentInhibitor, XdgScreenSaverInhibitor, XssInhibitor, \
-    XorgInhibitor, XautolockInhibitor
+from .inhibitors import DpmsInhibitor, GnomeInhibitor, XautolockInhibitor, \
+    XdgPowerManagmentInhibitor, XdgScreenSaverInhibitor, XorgInhibitor, \
+    XssInhibitor
 
 # from pympler import tracker
 # tr = tracker.SummaryTracker()

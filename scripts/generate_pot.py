@@ -13,9 +13,10 @@
 """
 import os
 import sys
-from xml.dom import minidom
-from compiler import parse, ast
 from datetime import datetime
+from xml.dom import minidom
+
+from compiler import ast, parse
 
 PO_HEADER = """#
 # %(name)s Language File
