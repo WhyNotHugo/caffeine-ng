@@ -37,4 +37,5 @@ def __init_translations():
         module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
         module.textdomain(GETTEXT_DOMAIN)
 
+
 __init_translations()

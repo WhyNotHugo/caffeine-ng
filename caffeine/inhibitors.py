@@ -127,9 +127,10 @@ class XdgPowerManagmentInhibitor(BaseInhibitor):
         self.__proxy = \
             self.bus.get_object('org.freedesktop.PowerManagement.Inhibit',
                                 '/org/freedesktop/PowerManagement/Inhibit')
-        self.__proxy = \
-            dbus.Interface(self.__proxy,
-                           dbus_interface='org.freedesktop.PowerManagement.Inhibit')
+        self.__proxy = dbus.Interface(
+            self.__proxy,
+            dbus_interface='org.freedesktop.PowerManagement.Inhibit'
+        )
         self.__cookie = \
             self.__proxy.Inhibit("Caffeine", INHIBITION_REASON)
         self.running = True
