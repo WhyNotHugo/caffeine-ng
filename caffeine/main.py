@@ -425,7 +425,7 @@ def main():
         main.setActive(True)
 
     if arguments["--activate"] and arguments["--time"]:
-        parts = arguments["time"].split(":")
+        parts = arguments["--time"].split(":")
         if len(parts) != 2:
             print("-t argument must be in the hour:minute format.")
             sys.exit(2)
