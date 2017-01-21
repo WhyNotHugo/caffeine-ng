@@ -1,8 +1,8 @@
 Caffeine-ng
 ===========
 
-Caffeine is a little daemon that sits in you systray, and prevents the
-screensaver from showing up, or the systems from going to sleep.
+Caffeine is a little daemon that sits in your systray, and prevents the
+screensaver from showing up, or the system from going to sleep.
 It does so when an application is fullscreened (eg: youtube), or when you click
 on the systray icon (which you can do, when, eg: reading).
 
