@@ -57,7 +57,7 @@ Copyright (C) 2009 The Caffeine Developers
 Copyright (C) 2014-2017 Hugo Osvaldo Barrera <hugo@barrera.io>
 
 Caffeine-ng is distributed under the GNU General Public License, either version
-3, or (at your option) any later version. See GPL for details.
+3, or (at your option) any later version. See LICENCE for details.
 
 The Caffeine-ng status icons are Copyright (C) 2014 mildmojo
 (http://github.com/mildmojo), and distributed under the terms of the GNU Lesser
