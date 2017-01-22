@@ -18,7 +18,7 @@ imports:
 pypi:
   stage: deploy
   script:
-    - pip install -r requirements.txt twine
+    - pip install twine
     - python setup.py sdist bdist_wheel
     - twine upload --config-file .pypirc -u $PYPI_USER -p $PYPI_PASSWORD dist/*
   only:
