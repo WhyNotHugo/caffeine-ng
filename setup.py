@@ -22,11 +22,6 @@ def get_data_files():
     return data_files
 
 
-def get_description():
-    return """A status bar application able to temporarily prevent the
-activation of both the screensaver and the "sleep" powersaving mode."""
-
-
 if __name__ == "__main__":
     setup(
         name="caffeine-ng",
@@ -34,7 +29,9 @@ if __name__ == "__main__":
             'version_scheme': 'post-release',
             'write_to': 'caffeine/version.py',
         },
-        description=get_description(),
+        description=(
+            "Tray bar app to temporarily inhibit screensaver and sleep mode."
+        ),
         long_description=open('README.rst').read(),
         author="The Caffeine Developers",
         author_email="hugo@barrera.io",
