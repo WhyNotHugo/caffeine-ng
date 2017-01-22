@@ -20,8 +20,8 @@ import gettext
 import locale
 import os
 
-from .version import version
 from .paths import get_base_path
+from .version import version
 
 
 __version__ = version
