@@ -35,6 +35,7 @@ if __name__ == "__main__":
             'write_to': 'caffeine/version.py',
         },
         description=get_description(),
+        long_description=open('README.rst').read(),
         author="The Caffeine Developers",
         author_email="hugo@barrera.io",
         maintainer="Hugo Osvaldo Barrera",
