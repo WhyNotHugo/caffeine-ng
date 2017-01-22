@@ -39,7 +39,7 @@ if __name__ == "__main__":
         author_email="hugo@barrera.io",
         maintainer="Hugo Osvaldo Barrera",
         maintainer_email="hugo@barrera.io",
-        url="https://github.com/hobarrera/caffeine-ng",
+        url="https://gitlab.com/hobarrera/caffeine-ng",
         packages=find_packages(),
         data_files=get_data_files(),
         install_requires=open('requirements.txt').read().splitlines(),

@@ -109,9 +109,6 @@ class XdgScreenSaverInhibitor(BaseInhibitor):
 
     @property
     def applicable(self):
-        # See below for a specific scenario where this returns True, but the
-        # expected interface is not present:
-        # https://github.com/hobarrera/caffeine-ng/issues/5#issuecomment-81325935
         return 'org.freedesktop.ScreenSaver' in self.bus.list_names()
 
 
