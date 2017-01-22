@@ -10,11 +10,6 @@ flake8:
   script:
     - tox -e flake8
 
-imports:
-  stage: style
-  script:
-    - tox -e isort
-
 pypi:
   stage: deploy
   script:
