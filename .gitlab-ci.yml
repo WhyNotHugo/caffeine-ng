@@ -13,7 +13,7 @@ flake8:
 pypi:
   stage: deploy
   script:
-    - pip install twine
+    - pip install twine wheel
     - python setup.py sdist bdist_wheel
     - twine upload --config-file .pypirc -u $PYPI_USER -p $PYPI_PASSWORD dist/*
   only:
