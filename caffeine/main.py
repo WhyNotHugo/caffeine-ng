@@ -17,10 +17,15 @@
 """Caffeine-ng
 Usage:
   caffeine [options]
+  caffeine kill
+
+Commands:
+  kill                      Kill any running instances of caffeine and exit.
 
 Options:
   -a --activate             Disables power management and screen saving.
   -d --deactivate           Re-enables power management and screen saving.
+  -k --kill                 Kill any running instance of caffeine.
   -t --time <HH>:<MM>       Use with -a. Activate caffeine for HH:MM.
   -p --preferences          Start with the Preferences dialog open.
 """
@@ -417,8 +422,17 @@ def main():
     pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
     app = ApplicationInstance(pid_name)
 
-    if app.is_running():
-        app.kill()
+    if arguments["kill"] or arguments["--kill"]:
+        if app.is_running():
+            app.kill()
+        else:
+            logger.error('Caffeine is not running')
+    elif app.is_running():
+        logger.fatal('Caffeine is already running')
+        sys.exit(-3)
+
+    if arguments["kill"]:
+        return
 
     main = GUI(arguments["--preferences"])
     if arguments["--activate"]:
