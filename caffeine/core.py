@@ -289,8 +289,7 @@ class Caffeine(GObject.GObject):
 
         for inhibitor in self.__inhibitors:
             if inhibitor.applicable:
-                logger.info("Inhibitor %s is applicable, running it.",
-                            inhibitor.__class__)
+                logger.info("%s is applicable, running it.", inhibitor)
                 Thread(target=inhibitor.toggle).start()
 
         self.__inhibition_successful = not self.__inhibition_successful
