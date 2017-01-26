@@ -25,8 +25,7 @@ def get_base_path():
     # FIXME: This may recurse all the way up to "/" and end up in an infinite
     # loop
     while True:
-        if exists(join(c, "bin")) and \
-           exists(join(c, "share/caffeine")):
+        if exists(join(c, "share/caffeine")):
             return c
 
         c = join(c, pardir)
