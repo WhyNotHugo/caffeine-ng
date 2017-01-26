@@ -34,6 +34,9 @@ import sys
 from gettext import gettext as _
 
 import gi
+gi.require_version('GdkPixbuf', '2.0')  # noqa
+gi.require_version('Gtk', '3.0')  # noqa
+gi.require_version('Notify', '0.7')  # noqa
 from docopt import docopt
 from gi.repository import GdkPixbuf, Gio, GObject, Gtk
 from gi.repository.Notify import Notification
@@ -45,9 +48,6 @@ from .core import Caffeine
 from .icons import generic_icon, get_icon_pixbuf
 from .paths import get_glade_file
 from .procmanager import ProcManager
-
-gi.require_version('Gtk', '3.0')  # noqa
-gi.require_version('Notify', '0.7')  # noqa
 
 appindicator_avail = True
 try:
