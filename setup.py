@@ -1,19 +1,20 @@
 #!/usr/bin/env python
 
+import os
 from os import walk
-from os.path import abspath, dirname, join
 
 from setuptools import find_packages, setup
 
 
 def get_data_files():
-    script_path = abspath(__file__)
-    share_path = join(dirname(script_path), "share")
-
     data_files = []
-    for path, dirs, files in walk(share_path):
-        clean_path = path.replace(share_path, "/usr/share", 1)
-        data_files.append((clean_path, [join(path, file) for file in files]))
+
+    for path, dirs, files in walk('share'):
+        target_path = os.path.join('/usr', path)
+
+        data_files.append((
+            target_path, [os.path.join(path, f) for f in files]
+        ))
 
     data_files.append(
         ("/etc/xdg/autostart", ["share/applications/caffeine.desktop"])
