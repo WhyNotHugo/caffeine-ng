@@ -299,7 +299,7 @@ class GUI:
         else:
             self.status_icon.set_from_icon_name(icon_name)
 
-        label = [_("Disable Screensaver"), _("Enable Screensaver")]
+        label = [_("Enable Caffeine"), _("Disable Caffeine")]
         self.activate_menuitem.set_label(label[self.__core.get_activated()])
 
     # Callbacks
@@ -362,7 +362,7 @@ class GUI:
     def on_activate_menuitem_activate(self, menuitem, data=None):
         self.toggle_activated()
 
-        label = [_("Disable Screensaver"), _("Enable Screensaver")]
+        label = [_("Enable Caffeine"), _("Disable Caffeine")]
         menuitem.set_label(label[self.__core.get_activated()])
 
     def on_time_menuitem_activate(self, menuitem, data=None):

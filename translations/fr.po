@@ -111,12 +111,12 @@ msgstr ""
 #. file 'caffeine/main.py', line 316
 #. file 'caffeine/main.py', line 429
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver"
+msgid "Enable Caffeine"
 msgstr "Désactiver l'écran de veille"
 
 #. file 'caffeine/main.py', line 316
 #. file 'caffeine/main.py', line 429
-msgid "Enable Screensaver"
+msgid "Disable Caffeine"
 msgstr "Autoriser l'écran de veille"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?

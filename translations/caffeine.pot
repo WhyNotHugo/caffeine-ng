@@ -124,7 +124,7 @@ msgid "translator-credits"
 #. file 'debian/caffeine/usr/lib/python2.7/dist-packages/caffeine/main.py', line 260
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 260
 msgstr ""
-msgid "Disable Screensaver"
+msgid "Enable Caffeine"
 #. file 'caffeine/main.py', line 311
 #. file 'caffeine/main.py', line 406
 #. file 'share/caffeine/glade/GUI.glade', line ?
@@ -136,7 +136,7 @@ msgid "Disable Screensaver"
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 311
 #. file '.pybuild/pythonX.Y_2.7/build/caffeine/main.py', line 406
 msgstr ""
-msgid "Enable Screensaver"
+msgid "Disable Caffeine"
 #. file 'caffeine/main.py', line 311
 #. file 'caffeine/main.py', line 406
 #. file 'debian/caffeine/usr/share/pyshared/caffeine/main.py', line 311

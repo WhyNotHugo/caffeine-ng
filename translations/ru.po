@@ -103,13 +103,13 @@ msgstr ""
 #. file 'caffeine/main.py', line 316
 #. file 'caffeine/main.py', line 429
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver"
-msgstr "Отключить хранитель экрана"
+msgid "Enable Caffeine"
+msgstr "Включить Caffeine"
 
 #. file 'caffeine/main.py', line 316
 #. file 'caffeine/main.py', line 429
-msgid "Enable Screensaver"
-msgstr "Включить хранитель экрана"
+msgid "Disable Caffeine"
+msgstr "Выключить Caffeine"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
 msgid ""

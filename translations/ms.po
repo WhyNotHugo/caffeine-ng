@@ -98,12 +98,12 @@ msgstr ""
 #. file 'caffeine/main.py', line 316
 #. file 'caffeine/main.py', line 429
 #. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver"
+msgid "Enable Caffeine"
 msgstr "Lummpuhkan Penyelamat Skrin"
 
 #. file 'caffeine/main.py', line 316
 #. file 'caffeine/main.py', line 429
-msgid "Enable Screensaver"
+msgid "Disable Caffeine"
 msgstr "Benarkan Penyelamat Skrin"
 
 #. file 'share/caffeine/glade/GUI.glade', line ?
