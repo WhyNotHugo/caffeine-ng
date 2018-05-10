@@ -122,7 +122,7 @@ class XdgPowerManagmentInhibitor(BaseInhibitor):
 
     def inhibit(self):
         self.__proxy = \
-            self.bus.get_object('org.freedesktop.PowerManagement.Inhibit',
+            self.bus.get_object('org.freedesktop.PowerManagement',
                                 '/org/freedesktop/PowerManagement/Inhibit')
         self.__proxy = dbus.Interface(
             self.__proxy,
@@ -139,7 +139,7 @@ class XdgPowerManagmentInhibitor(BaseInhibitor):
 
     @property
     def applicable(self):
-        return 'org.freedesktop.PowerManagement.Inhibit' in \
+        return 'org.freedesktop.PowerManagement' in \
             self.bus.list_names()
 
 
