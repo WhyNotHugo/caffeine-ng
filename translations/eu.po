@@ -6,90 +6,61 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-18 20:12+0000\n"
-"PO-Revision-Date: 2012-07-08 07:06+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-11 23:00+0300\n"
+"PO-Revision-Date: 2018-05-11 23:12+0300\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2012-07-09 04:52+0000\n"
-"X-Generator: Launchpad (build 15558)\n"
+"X-Generator: Poedit 2.0.7\n"
 
-#. file 'caffeine/core.py', line 191
-#. file 'caffeine/core.py', line 193
-msgid "Activated for Flash video"
-msgstr "Aktibatu flash bideoentzat"
-
-#. file 'caffeine/core.py', line 252
-msgid "Activated for Quake Live"
-msgstr "Aktibatu Quake Liverentzat"
-
-#. file 'caffeine/core.py', line 319
-msgid " and "
-msgstr " eta "
-
-#. file 'caffeine/core.py', line 326
-#. file 'caffeine/core.py', line 332
-msgid "hour"
-msgstr "ordu"
-
-#. file 'caffeine/core.py', line 326
-#. file 'caffeine/core.py', line 338
-msgid "minute"
-msgstr "minutu"
-
-#. file 'caffeine/core.py', line 334
-msgid "hours"
-msgstr "ordu"
-
-#. file 'caffeine/core.py', line 340
-msgid "minutes"
-msgstr "minutu"
-
-#. file 'caffeine/core.py', line 391
+#: caffeine/core.py:176
 msgid "Timed activation set; "
 msgstr "Denboraren araberako aktibazioa indarrean; "
 
-#. file 'caffeine/core.py', line 392
+#: caffeine/core.py:177
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine-k energia aurreztea indargabetuko du hurrengo denboran: "
 
-#. file 'caffeine/core.py', line 399
+#: caffeine/core.py:183
 msgid "Activated for "
 msgstr "Aktibatuta honentzat: "
 
-#. file 'caffeine/core.py', line 445
-#. file 'caffeine/main.py', line 200
+#: caffeine/core.py:243 caffeine/main.py:212
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine lo dago; energia aurreztea gaituta dago"
 
-#. file 'caffeine/core.py', line 453
+#: caffeine/core.py:250
 msgid "Timed activation cancelled (was set for "
 msgstr ""
 "Denboraren araberako aktibazioa ezeztatua (hurrengo denborarako "
 "konfiguratua: "
 
-#. file 'caffeine/core.py', line 470
+#: caffeine/core.py:264
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " pasa dira; energia aurreztea berriro aktibatu da"
 
-#. file 'caffeine/core.py', line 489
-msgid "Caffeine is preventing powersaving modes and screensaver activation "
-msgstr ""
-"Caffeine energia-aurrezpen moduak eta pantaila-babeslea aktibatzea eragozten "
-"ari da "
-
-#. file 'caffeine/main.py', line 43
-msgid "Please install"
-msgstr "Mesedez instalatu"
-
-#. file 'caffeine/main.py', line 188
+#: caffeine/main.py:198
 msgid "Caffeine is running"
 msgstr "Caffeine martxan dago"
 
-#. file 'caffeine/main.py', line 265
+#: caffeine/main.py:199
+#, fuzzy
+#| msgid "Show tray icon"
+msgid ""
+"To show the tray icon, \n"
+"run "
+msgstr "Erakutsi erretiluko ikonoa"
+
+#: caffeine/main.py:201
+msgid "or open Caffeine Preferences from your system menu."
+msgstr ""
+
+#: caffeine/main.py:263
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -98,18 +69,15 @@ msgstr ""
 "  Mikel Alzibar https://launchpad.net/~mikelalzibar\n"
 "  Nineu https://launchpad.net/~nineu28"
 
-#. file 'caffeine/main.py', line 316
-#. file 'caffeine/main.py', line 429
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: caffeine/main.py:302 caffeine/main.py:365 share/caffeine/glade/GUI.glade:286
 msgid "Enable Caffeine"
 msgstr "Desgaitu pantaila-babeslea"
 
-#. file 'caffeine/main.py', line 316
-#. file 'caffeine/main.py', line 429
+#: caffeine/main.py:302 caffeine/main.py:365
 msgid "Disable Caffeine"
 msgstr "Gaitu pantaila-babeslea"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:16
 msgid ""
 "An application to temporarily prevent the activation of both\n"
 " the screen saver and the \"sleep\" powersaving mode."
@@ -117,58 +85,43 @@ msgstr ""
 "Denbora tarte batean pantaila-babeslea eta energia aurrezteko\n"
 "\"lokartu\" modua eragozten duen aplikazioa."
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:114
 msgid "Duration"
 msgstr "Iraupena"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:147
 msgid "Hours:"
 msgstr "Orduak:"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:188
 msgid "Minutes:"
 msgstr "Minutuak:"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver for..."
-msgstr "Desgaitu pantaila-babeslea honentzat..."
+#: share/caffeine/glade/GUI.glade:301
+#, fuzzy
+#| msgid "Enable Caffeine"
+msgid "Enable Caffeine for..."
+msgstr "Desgaitu pantaila-babeslea"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:421
 msgid "Preferences"
 msgstr "Hobespenak"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Autostart"
-msgstr "Hasiera automatikoa"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Start Caffeine on login"
-msgstr "Abiarazi Caffeine saioa hastean"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Enable this option to automatically run Caffeine as soon as\n"
-"your computer has finished starting up and you have\n"
-"successfully entered your username and password."
-msgstr ""
-"Gaitu aukera hau ordenagailua piztu eta saioa hasi bezain\n"
-"laster Caffeine automatikoki abiaraz dadin nahi baduzu."
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:466
 msgid "Automatic activation"
 msgstr "Aktibazio automatikoa"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:492
 msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
 msgstr "Caffeine automatikoki aktibatu daiteke"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:510
 msgid "List of programs that Caffeine activates for:"
 msgstr "Caffeine aktibatzen duten programen zerrenda:"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:535
 msgid ""
 "When Caffeine detects that one of the processes in this\n"
 "list is running, it will prevent the activation of the screensaver\n"
@@ -183,59 +136,101 @@ msgstr ""
 "moduak behar bezala eragozten ez dituzten aplikazioentzat\n"
 "(batez ere pantaila osokoak)."
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for Flash video"
-msgstr "Aktibatu Flash bideoekin"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Some websites, such as www.youtube.com, show videos using\n"
-"a technology known as \"Flash\". Enable this option to cause\n"
-"Caffeine to automatically prevent the activation of the\n"
-"screensaver and powersaving modes when a Flash video is\n"
-"embedded in the web page that you are currently browsing."
-msgstr ""
-"Zenbait webgunek, hala nola www.youtube.com, \"Flash\"\n"
-"teknologia darabilten bideoak erreproduzitzeko. Gaitu\n"
-"aukera hau Flash bideo bat nabigatzen ari zaren web orrian\n"
-"txertaturik dagoenean pantaila-babeslea eta energia\n"
-"aurrezteko moduak aktibatzea eragozteko."
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for Quake Live"
-msgstr "Aktibatu Quake Liverekin"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Enable this option to cause Caffeine to automatically prevent\n"
-"the activation of the screensaver and powersaving modes\n"
-"when it detects that you are playing the Quake Live video\n"
-"game. Visit www.quakelive.com to play the game for free."
-msgstr ""
-"Gaitu aukera hau Caffeinek automatikoki eragotz dezan\n"
-"pantaila-babeslea eta energia aurrezteko moduak aktibatzea\n"
-"Quake Live bideo-jokoan jolasten ari zarenean. Bisitatu\n"
-"www.quakelive.com jokoan dohainik jolasteko."
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:640
 msgid "Tray icon"
 msgstr "Erretiluko ikonoa"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:659
 msgid "Show tray icon"
 msgstr "Erakutsi erretiluko ikonoa"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:682
 msgid "Show notification on startup"
 msgstr "Erakutsi jakinarazpena abioan"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:742
 msgid "    "
 msgstr "    "
 
-#. file 'share/caffeine/glade/proc.glade', line ?
+#: share/caffeine/glade/proc.glade:8
 msgid "Select a process name..."
 msgstr "Prozesu izen bat aukera ezazu..."
+
+#~ msgid "Activated for Flash video"
+#~ msgstr "Aktibatu flash bideoentzat"
+
+#~ msgid "Activated for Quake Live"
+#~ msgstr "Aktibatu Quake Liverentzat"
+
+#~ msgid " and "
+#~ msgstr " eta "
+
+#~ msgid "hour"
+#~ msgstr "ordu"
+
+#~ msgid "minute"
+#~ msgstr "minutu"
+
+#~ msgid "hours"
+#~ msgstr "ordu"
+
+#~ msgid "minutes"
+#~ msgstr "minutu"
+
+#~ msgid "Caffeine is preventing powersaving modes and screensaver activation "
+#~ msgstr ""
+#~ "Caffeine energia-aurrezpen moduak eta pantaila-babeslea aktibatzea "
+#~ "eragozten ari da "
+
+#~ msgid "Please install"
+#~ msgstr "Mesedez instalatu"
+
+#~ msgid "Disable Screensaver for..."
+#~ msgstr "Desgaitu pantaila-babeslea honentzat..."
+
+#~ msgid "Autostart"
+#~ msgstr "Hasiera automatikoa"
+
+#~ msgid "Start Caffeine on login"
+#~ msgstr "Abiarazi Caffeine saioa hastean"
+
+#~ msgid ""
+#~ "Enable this option to automatically run Caffeine as soon as\n"
+#~ "your computer has finished starting up and you have\n"
+#~ "successfully entered your username and password."
+#~ msgstr ""
+#~ "Gaitu aukera hau ordenagailua piztu eta saioa hasi bezain\n"
+#~ "laster Caffeine automatikoki abiaraz dadin nahi baduzu."
+
+#~ msgid "Activate for Flash video"
+#~ msgstr "Aktibatu Flash bideoekin"
+
+#~ msgid ""
+#~ "Some websites, such as www.youtube.com, show videos using\n"
+#~ "a technology known as \"Flash\". Enable this option to cause\n"
+#~ "Caffeine to automatically prevent the activation of the\n"
+#~ "screensaver and powersaving modes when a Flash video is\n"
+#~ "embedded in the web page that you are currently browsing."
+#~ msgstr ""
+#~ "Zenbait webgunek, hala nola www.youtube.com, \"Flash\"\n"
+#~ "teknologia darabilten bideoak erreproduzitzeko. Gaitu\n"
+#~ "aukera hau Flash bideo bat nabigatzen ari zaren web orrian\n"
+#~ "txertaturik dagoenean pantaila-babeslea eta energia\n"
+#~ "aurrezteko moduak aktibatzea eragozteko."
+
+#~ msgid "Activate for Quake Live"
+#~ msgstr "Aktibatu Quake Liverekin"
+
+#~ msgid ""
+#~ "Enable this option to cause Caffeine to automatically prevent\n"
+#~ "the activation of the screensaver and powersaving modes\n"
+#~ "when it detects that you are playing the Quake Live video\n"
+#~ "game. Visit www.quakelive.com to play the game for free."
+#~ msgstr ""
+#~ "Gaitu aukera hau Caffeinek automatikoki eragotz dezan\n"
+#~ "pantaila-babeslea eta energia aurrezteko moduak aktibatzea\n"
+#~ "Quake Live bideo-jokoan jolasten ari zarenean. Bisitatu\n"
+#~ "www.quakelive.com jokoan dohainik jolasteko."
 
 #~ msgid "3 hours"
 #~ msgstr "3 ordu"
@@ -271,8 +266,8 @@ msgstr "Prozesu izen bat aukera ezazu..."
 #~ "An application to temporarily prevent the activation of both the screen "
 #~ "saver and the \"sleep\" powersaving mode."
 #~ msgstr ""
-#~ "Denbora jakin batean pantaila-babeslea eta energia aurreztea indargabetzen "
-#~ "dituen aplikazioa"
+#~ "Denbora jakin batean pantaila-babeslea eta energia aurreztea "
+#~ "indargabetzen dituen aplikazioa"
 
 #~ msgid "Activate for"
 #~ msgstr "Aktibatu"

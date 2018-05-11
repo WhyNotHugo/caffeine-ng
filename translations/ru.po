@@ -6,87 +6,59 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-18 20:12+0000\n"
-"PO-Revision-Date: 2012-11-14 08:46+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-11 22:46+0300\n"
+"PO-Revision-Date: 2018-05-11 22:51+0300\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2012-11-15 04:46+0000\n"
-"X-Generator: Launchpad (build 16265)\n"
+"X-Generator: Poedit 2.0.7\n"
 
-#. file 'caffeine/core.py', line 191
-#. file 'caffeine/core.py', line 193
-msgid "Activated for Flash video"
-msgstr "Активирован для Flash видео"
-
-#. file 'caffeine/core.py', line 252
-msgid "Activated for Quake Live"
-msgstr "Активирован для Quake Live"
-
-#. file 'caffeine/core.py', line 319
-msgid " and "
-msgstr " и "
-
-#. file 'caffeine/core.py', line 326
-#. file 'caffeine/core.py', line 332
-msgid "hour"
-msgstr "ч."
-
-#. file 'caffeine/core.py', line 326
-#. file 'caffeine/core.py', line 338
-msgid "minute"
-msgstr "мин."
-
-#. file 'caffeine/core.py', line 334
-msgid "hours"
-msgstr "ч."
-
-#. file 'caffeine/core.py', line 340
-msgid "minutes"
-msgstr "мин."
-
-#. file 'caffeine/core.py', line 391
+#: caffeine/core.py:176
 msgid "Timed activation set; "
 msgstr "Установлена активация по времени; "
 
-#. file 'caffeine/core.py', line 392
+#: caffeine/core.py:177
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine будет отключать энергосбережение в течении "
 
-#. file 'caffeine/core.py', line 399
+#: caffeine/core.py:183
 msgid "Activated for "
 msgstr "Активирован для "
 
-#. file 'caffeine/core.py', line 445
-#. file 'caffeine/main.py', line 200
+#: caffeine/core.py:243 caffeine/main.py:212
 msgid "Caffeine is dormant; powersaving is enabled"
 msgstr "Caffeine приостановлен; энергосбережение включено"
 
-#. file 'caffeine/core.py', line 453
+#: caffeine/core.py:250
 msgid "Timed activation cancelled (was set for "
 msgstr "Активация по времени отключена (была назначена на "
 
-#. file 'caffeine/core.py', line 470
+#: caffeine/core.py:264
 msgid " have elapsed; powersaving is re-enabled"
 msgstr " закончился; энергосбережение запущено"
 
-#. file 'caffeine/core.py', line 489
-msgid "Caffeine is preventing powersaving modes and screensaver activation "
-msgstr ""
-"Caffeine предотвращает энергосбережение и активацию хранителя экрана "
-
-#. file 'caffeine/main.py', line 43
-msgid "Please install"
-msgstr "Установите"
-
-#. file 'caffeine/main.py', line 188
+#: caffeine/main.py:198
 msgid "Caffeine is running"
 msgstr "Caffeine уже запущен"
 
-#. file 'caffeine/main.py', line 265
+#: caffeine/main.py:199
+msgid ""
+"To show the tray icon, \n"
+"run "
+msgstr ""
+"Чтобы показать иконку в области уведомлений, \n"
+"запустите "
+
+#: caffeine/main.py:201
+msgid "or open Caffeine Preferences from your system menu."
+msgstr "или откройте Параметры Caffeine из системного меню."
+
+#: caffeine/main.py:263
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -100,18 +72,15 @@ msgstr ""
 "  Андрей Калинин https://launchpad.net/~prize2step\n"
 "  Коренберг Марк https://launchpad.net/~socketpair"
 
-#. file 'caffeine/main.py', line 316
-#. file 'caffeine/main.py', line 429
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: caffeine/main.py:302 caffeine/main.py:365 share/caffeine/glade/GUI.glade:286
 msgid "Enable Caffeine"
 msgstr "Включить Caffeine"
 
-#. file 'caffeine/main.py', line 316
-#. file 'caffeine/main.py', line 429
+#: caffeine/main.py:302 caffeine/main.py:365
 msgid "Disable Caffeine"
 msgstr "Выключить Caffeine"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:16
 msgid ""
 "An application to temporarily prevent the activation of both\n"
 " the screen saver and the \"sleep\" powersaving mode."
@@ -119,49 +88,31 @@ msgstr ""
 "Приложение для временного предотвращения активации экранной заставки\n"
 " и режима пониженного энергопотребления."
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:114
 msgid "Duration"
 msgstr "Продолжительность"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:147
 msgid "Hours:"
 msgstr "Часы:"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:188
 msgid "Minutes:"
 msgstr "Минуты:"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Disable Screensaver for..."
-msgstr "Отключить хранитель экрана для..."
+#: share/caffeine/glade/GUI.glade:301
+msgid "Enable Caffeine for..."
+msgstr "Включить Caffeine на..."
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:421
 msgid "Preferences"
 msgstr "Параметры"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Autostart"
-msgstr "Автозапуск"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Start Caffeine on login"
-msgstr "Запускать Caffeine при входе в систему"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Enable this option to automatically run Caffeine as soon as\n"
-"your computer has finished starting up and you have\n"
-"successfully entered your username and password."
-msgstr ""
-"Включение этого параметра означает автоматический\n"
-"запуск Caffeine как только компьютер загрузится и будет\n"
-"введён логин и пароль."
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:466
 msgid "Automatic activation"
 msgstr "Автоматический запуск"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:492
 msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
@@ -169,11 +120,11 @@ msgstr ""
 "Caffeine может активироваться автоматически\n"
 "когда некоторые программы запущены."
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:510
 msgid "List of programs that Caffeine activates for:"
 msgstr "Список программ, для которых будет активирован Caffeine:"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:535
 msgid ""
 "When Caffeine detects that one of the processes in this\n"
 "list is running, it will prevent the activation of the screensaver\n"
@@ -188,60 +139,106 @@ msgstr ""
 "предотвращают запуск хранителя экрана и переход в режим \n"
 "энергосбережения."
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for Flash video"
-msgstr "Запуск при Flash видео"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Some websites, such as www.youtube.com, show videos using\n"
-"a technology known as \"Flash\". Enable this option to cause\n"
-"Caffeine to automatically prevent the activation of the\n"
-"screensaver and powersaving modes when a Flash video is\n"
-"embedded in the web page that you are currently browsing."
-msgstr ""
-"Некоторые сайты, типа www.youtube.com, показывают видео,\n"
-"используя технологию \"Flash\". Включение этого параметра \n"
-"позволяет Caffeine автоматически предотвращать запуск хранителя\n"
-"экрана и переход в режим энергосбережения пока на странице, \n"
-"которая просматривается есть встроенное Flash видео."
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid "Activate for Quake Live"
-msgstr "Запуск при Quake Live"
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
-msgid ""
-"Enable this option to cause Caffeine to automatically prevent\n"
-"the activation of the screensaver and powersaving modes\n"
-"when it detects that you are playing the Quake Live video\n"
-"game. Visit www.quakelive.com to play the game for free."
-msgstr ""
-"Включение этого параметра позволит Caffeine автоматически \n"
-"предотвращать активацию хранителя экрана и переход в режим \n"
-"энергосбережения, когда обнаруживает, что пользователь играет\n"
-"в видео игру Quake Live. На сайте www.quakelive.com можно\n"
-"поиграть бесплатно."
-
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:640
 msgid "Tray icon"
 msgstr "Значок в области уведомлений"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:659
 msgid "Show tray icon"
 msgstr "Показывать иконку в области уведомлений"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:682
 msgid "Show notification on startup"
 msgstr "Показывать уведомление при запуске"
 
-#. file 'share/caffeine/glade/GUI.glade', line ?
+#: share/caffeine/glade/GUI.glade:742
 msgid "    "
 msgstr "    "
 
-#. file 'share/caffeine/glade/proc.glade', line ?
+#: share/caffeine/glade/proc.glade:8
 msgid "Select a process name..."
 msgstr "Выбрать название процесса..."
+
+#, fuzzy
+#~| msgid "Disable Screensaver for..."
+#~ msgid "Disable Screensaver"
+#~ msgstr "Отключить хранитель экрана для..."
+
+#~ msgid "Disable Screensaver for..."
+#~ msgstr "Отключить хранитель экрана на..."
+
+#~ msgid "Activated for Flash video"
+#~ msgstr "Активирован для Flash видео"
+
+#~ msgid "Activated for Quake Live"
+#~ msgstr "Активирован для Quake Live"
+
+#~ msgid " and "
+#~ msgstr " и "
+
+#~ msgid "hour"
+#~ msgstr "ч."
+
+#~ msgid "minute"
+#~ msgstr "мин."
+
+#~ msgid "hours"
+#~ msgstr "ч."
+
+#~ msgid "minutes"
+#~ msgstr "мин."
+
+#~ msgid "Caffeine is preventing powersaving modes and screensaver activation "
+#~ msgstr "Caffeine предотвращает энергосбережение и активацию хранителя экрана "
+
+#~ msgid "Please install"
+#~ msgstr "Установите"
+
+#~ msgid "Autostart"
+#~ msgstr "Автозапуск"
+
+#~ msgid "Start Caffeine on login"
+#~ msgstr "Запускать Caffeine при входе в систему"
+
+#~ msgid ""
+#~ "Enable this option to automatically run Caffeine as soon as\n"
+#~ "your computer has finished starting up and you have\n"
+#~ "successfully entered your username and password."
+#~ msgstr ""
+#~ "Включение этого параметра означает автоматический\n"
+#~ "запуск Caffeine как только компьютер загрузится и будет\n"
+#~ "введён логин и пароль."
+
+#~ msgid "Activate for Flash video"
+#~ msgstr "Запуск при Flash видео"
+
+#~ msgid ""
+#~ "Some websites, such as www.youtube.com, show videos using\n"
+#~ "a technology known as \"Flash\". Enable this option to cause\n"
+#~ "Caffeine to automatically prevent the activation of the\n"
+#~ "screensaver and powersaving modes when a Flash video is\n"
+#~ "embedded in the web page that you are currently browsing."
+#~ msgstr ""
+#~ "Некоторые сайты, типа www.youtube.com, показывают видео,\n"
+#~ "используя технологию \"Flash\". Включение этого параметра \n"
+#~ "позволяет Caffeine автоматически предотвращать запуск хранителя\n"
+#~ "экрана и переход в режим энергосбережения пока на странице, \n"
+#~ "которая просматривается есть встроенное Flash видео."
+
+#~ msgid "Activate for Quake Live"
+#~ msgstr "Запуск при Quake Live"
+
+#~ msgid ""
+#~ "Enable this option to cause Caffeine to automatically prevent\n"
+#~ "the activation of the screensaver and powersaving modes\n"
+#~ "when it detects that you are playing the Quake Live video\n"
+#~ "game. Visit www.quakelive.com to play the game for free."
+#~ msgstr ""
+#~ "Включение этого параметра позволит Caffeine автоматически \n"
+#~ "предотвращать активацию хранителя экрана и переход в режим \n"
+#~ "энергосбережения, когда обнаруживает, что пользователь играет\n"
+#~ "в видео игру Quake Live. На сайте www.quakelive.com можно\n"
+#~ "поиграть бесплатно."
 
 #~ msgid "5 minutes"
 #~ msgstr "5 минут"
@@ -273,12 +270,8 @@ msgstr "Выбрать название процесса..."
 #~ msgid "Activate for"
 #~ msgstr "Активация для"
 
-#~ msgid ""
-#~ "An application to temporarily prevent the activation of both the screen "
-#~ "saver and the \"sleep\" powersaving mode."
-#~ msgstr ""
-#~ "Приложение для временного предотвращения запуска хранителя экрана или "
-#~ "перехода в режим сна для экономии энергии."
+#~ msgid "An application to temporarily prevent the activation of both the screen saver and the \"sleep\" powersaving mode."
+#~ msgstr "Приложение для временного предотвращения запуска хранителя экрана или перехода в режим сна для экономии энергии."
 
 #~ msgid "Configure Caffeine"
 #~ msgstr "Настроить Caffeine"
