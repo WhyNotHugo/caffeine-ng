@@ -105,7 +105,7 @@ def scan_python_file(filename, calls):
     try:
         try:
             return scan(parse(fp.read()))
-        except:
+        except Exception:
             print('Syntax Error in file %r' % filename, file=sys.stderr)
     finally:
         fp.close()
@@ -115,7 +115,7 @@ def scan_glade_file(filename):
     """Scan a glade file for translatable strings."""
     try:
         doc = minidom.parse(filename)
-    except:
+    except Exception:
         print('Syntax Error in file %r' % filename, file=sys.stderr)
     for element in doc.getElementsByTagName('property'):
         if element.getAttribute('translatable') == 'yes':

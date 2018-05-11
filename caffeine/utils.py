@@ -42,12 +42,12 @@ def getProcesses():
     for pid in os.listdir("/proc/"):
         try:
             pid = int(pid)
-        except:
+        except ValueError:
             continue
 
         try:
             processName = getProcessName(pid).lower()
-        except:
+        except Exception:
             continue
 
         processList.append((processName, pid))

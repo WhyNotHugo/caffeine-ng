@@ -447,7 +447,7 @@ def main():
         try:
             hours = int(parts[0])
             minutes = int(parts[1])
-        except:
+        except ValueError:
             print("Invalid time argument.")
             sys.exit(2)
 
