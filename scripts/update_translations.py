@@ -2,12 +2,6 @@
 
 import subprocess
 
-version = open("VERSION").read()
-version = version.strip()
-print(version)
+print(subprocess.check_output("python scripts/generate_pot.py", shell=True))
 
-print(subprocess.getoutput("python ./generate_pot.py . caffeine " + version +
-      " translations/caffeine.pot"))
-
-print(subprocess.getoutput("python ./compile_translations.py caffeine" +
-      "translations"))
+print(subprocess.check_output("python scripts/compile_translations.py caffeine translations", shell=True))
