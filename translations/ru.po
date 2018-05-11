@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-11 22:46+0300\n"
-"PO-Revision-Date: 2018-05-11 22:51+0300\n"
+"PO-Revision-Date: 2018-05-11 23:25+0300\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
@@ -24,11 +24,11 @@ msgstr "Установлена активация по времени; "
 
 #: caffeine/core.py:177
 msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine будет отключать энергосбережение в течении "
+msgstr "Caffeine будет отключать энергосбережение в течение "
 
 #: caffeine/core.py:183
 msgid "Activated for "
-msgstr "Активирован для "
+msgstr "Активирован на "
 
 #: caffeine/core.py:243 caffeine/main.py:212
 msgid "Caffeine is dormant; powersaving is enabled"
@@ -40,7 +40,7 @@ msgstr "Активация по времени отключена (была на
 
 #: caffeine/core.py:264
 msgid " have elapsed; powersaving is re-enabled"
-msgstr " закончился; энергосбережение запущено"
+msgstr " прошло; энергосбережение запущено"
 
 #: caffeine/main.py:198
 msgid "Caffeine is running"
@@ -117,7 +117,7 @@ msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
 msgstr ""
-"Caffeine может активироваться автоматически\n"
+"Caffeine может активироваться автоматически,\n"
 "когда некоторые программы запущены."
 
 #: share/caffeine/glade/GUI.glade:510

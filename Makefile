@@ -2,7 +2,7 @@ build:
 	python setup.py build
 install:
 	python setup.py install
-genenerate_pot:
+generate_pot:
 	python scripts/generate_pot.py
 compile_translations:
 	python scripts/compile_translations.py
