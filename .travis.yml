@@ -1,0 +1,35 @@
+language: python
+cache: pip
+
+python:
+  # If there's just one, travis fails :(
+  - 3.6
+  - 3.5
+
+env:
+  - TOXENV=flake8
+
+stages:
+  - test
+  - name: deploy
+    if: tag IS present
+
+install:
+  - pip install tox
+
+script:
+  - tox -e flake8
+
+jobs:
+  include:
+    - stage: deploy
+      script:
+        - pip install wheel twine
+        - python setup.py sdist bdist_wheel
+        - twine upload -u $PYPI_USERNAME -p $PYPI_PASSWORD dist/*
+    - stage: deploy
+      script:
+        - pip install wheel
+        - python setup.py sdist bdist_wheel
+        - gem install dpl
+        - dpl --api-key=$RELEASES_TOKEN --provider=releases --file=dist/* --file_glob=true --skip_cleanup=true

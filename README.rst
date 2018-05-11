@@ -1,8 +1,8 @@
 Caffeine-ng
 ===========
 
-.. image:: https://github.com/caffeine-ng/caffeine-ng/badges/master/build.svg
-  :target: https://github.com/caffeine-ng/caffeine-ng/commits/master
+.. image:: https://travis-ci.com/caffeine-ng/caffeine-ng.svg?branch=master
+  :target: https://travis-ci.com/caffeine-ng/caffeine-ng
   :alt: build status
 
 .. image:: https://img.shields.io/pypi/v/caffeine-ng.svg
