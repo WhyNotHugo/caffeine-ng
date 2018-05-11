@@ -1,8 +1,8 @@
 Caffeine-ng
 ===========
 
-.. image:: https://gitlab.com/hobarrera/caffeine-ng/badges/master/build.svg
-  :target: https://gitlab.com/hobarrera/caffeine-ng/commits/master
+.. image:: https://github.com/caffeine-ng/caffeine-ng/badges/master/build.svg
+  :target: https://github.com/caffeine-ng/caffeine-ng/commits/master
   :alt: build status
 
 .. image:: https://img.shields.io/pypi/v/caffeine-ng.svg
@@ -65,7 +65,7 @@ License
 -------
 
 Copyright (C) 2009 The Caffeine Developers
-Copyright (C) 2014-2017 Hugo Osvaldo Barrera <hugo@barrera.io>
+Copyright (C) 2014-2018 Hugo Osvaldo Barrera <hugo@barrera.io>
 
 Caffeine-ng is distributed under the GNU General Public License, either version
 3, or (at your option) any later version. See LICENCE for details.
