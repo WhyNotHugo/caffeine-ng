@@ -76,7 +76,7 @@ Then you need to build sources with::
 
 Create a package for your distribution::
 
-      checkinstall --pkgname=caffeine-ng --pkgversion=3.4 --requires="python-docopt \(\>=0.6.2\),python-ewmh \(\>=0.1.4\),python-setproctitle \(\>=1.1.10\),python-wheel \(\>=0.29.0\),python-xdg \(\>=0.25\)" --conflicts="caffeine"
+      checkinstall --pkgname=caffeine-ng --pkgversion=3.4 --requires="python-docopt \(\>=0.6.2\),python-ewmh \(\>=0.1.4\),python-setproctitle \(\>=1.1.10\),python-wheel \(\>=0.29.0\),python-xdg \(\>=0.25\)" --conflicts="caffeine" --nodoc
 
 Replace version string with correct version and append this command with ``--install=no`` 
 should you wish to inspect created package before installing it
