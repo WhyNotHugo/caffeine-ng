@@ -36,6 +36,6 @@ for po in po_files:
     if not os.path.isdir(lang_lc_dir):
         os.mkdir(lang_lc_dir)
 
-    cmd = ["msgfmt",po,"-o",os.path.join(lang_lc_dir, "caffeine.mo")]
+    cmd = ["msgfmt", po, "-o", os.path.join(lang_lc_dir,  "caffeine.mo")]
 
     output = subprocess.check_output(cmd)
