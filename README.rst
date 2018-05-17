@@ -80,6 +80,9 @@ Create a package for your distribution::
 
 Replace version string with correct version and append this command with ``--install=no`` 
 should you wish to inspect created package before installing it
+Replace ``python`` with ``python3`` in package names above if you wish to build caffeine-ng with python 3
+
+Replace ``python`` with ``python3`` or ``python27`` in ``checkinstall`` invocation to use specific python version to build caffeine-ng with
 
 ``checkinstall`` is available for various distributions, so you may follow these steps adapting them to your distribution
 
