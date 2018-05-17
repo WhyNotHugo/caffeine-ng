@@ -47,15 +47,46 @@ See ``requirements.txt`` for required python packages
 Installation
 ------------
 
+To install Caffeine-ng please follow steps from appropriate chapter below
+
+Generic installation
+--------------------
+
 To manually install caffeine-ng, run::
 
       python setup.py build
       sudo python setup.py install
       sudo glib-compile-schemas /usr/share/glib-2.0/schemas
 
-Or pre-packaged:
+Debian and derivatives
+----------------------
 
-* On ArchLinux, caffeine-ng is available at the `AUR`_.
+First install all the required packages::
+
+      apt install python-docopt python-ewmh python-setproctitle python-wheel python-xdg
+
+And mark them auto if you wish::
+
+      apt-mark auto python-docopt python-ewmh python-setproctitle python-wheel python-xdg
+
+Then you need to build sources with::
+
+      make clean
+      make build
+
+Create a package for your distribution::
+
+      checkinstall --pkgname=caffeine-ng --pkgversion=3.4 --requires="python-docopt \(\>=0.6.2\),python-ewmh \(\>=0.1.4\),python-setproctitle \(\>=1.1.10\),python-wheel \(\>=0.29.0\),python-xdg \(\>=0.25\)" --conflicts="caffeine"
+
+Replace version string with correct version and append this command with ``--install=no`` 
+should you wish to inspect created package before installing it
+
+``checkinstall`` is available for various distributions, so you may follow these steps adapting them to your distribution
+
+ArchLinux
+------------
+
+On ArchLinux, caffeine-ng is available at the `AUR`_.
 
 To have Caffeine-ng run on startup, add it to your System Settings => Startup
 Programs list.
