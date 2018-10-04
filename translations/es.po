@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-11 23:00+0300\n"
-"PO-Revision-Date: 2018-05-11 23:12+0300\n"
-"Last-Translator: Iddar Olivares <Unknown>\n"
+"PO-Revision-Date: 2018-10-04 00:36-0300\n"
+"Last-Translator: Eric Brandwein <brandweineric@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2012-07-04 04:41+0000\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: caffeine/core.py:176
 msgid "Timed activation set; "
@@ -47,12 +47,12 @@ msgid "Caffeine is running"
 msgstr "Caffeine se está ejecutando"
 
 #: caffeine/main.py:199
-#, fuzzy
-#| msgid "Show tray icon"
 msgid ""
 "To show the tray icon, \n"
 "run "
-msgstr "Mostrar icono en el área de notificación"
+msgstr ""
+"Para mostrar icono en el área de notificación, \n"
+"ejecute "
 
 #: caffeine/main.py:201
 msgid "or open Caffeine Preferences from your system menu."
