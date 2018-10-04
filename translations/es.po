@@ -56,7 +56,7 @@ msgstr "Mostrar icono en el área de notificación"
 
 #: caffeine/main.py:201
 msgid "or open Caffeine Preferences from your system menu."
-msgstr ""
+msgstr "o abra Preferencias de Caffeine desde su menú de sistema."
 
 #: caffeine/main.py:263
 msgid "translator-credits"
