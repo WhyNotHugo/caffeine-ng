@@ -104,10 +104,8 @@ msgid "Minutes:"
 msgstr "Minutos:"
 
 #: share/caffeine/glade/GUI.glade:301
-#, fuzzy
-#| msgid "Enable Caffeine"
 msgid "Enable Caffeine for..."
-msgstr "Desactivar salvapantallas"
+msgstr "Desactivar salvapantallas por..."
 
 #: share/caffeine/glade/GUI.glade:421
 msgid "Preferences"
