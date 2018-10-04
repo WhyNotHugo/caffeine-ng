@@ -47,12 +47,12 @@ msgid "Caffeine is running"
 msgstr "Caffeine se está ejecutando"
 
 #: caffeine/main.py:199
-#, fuzzy
-#| msgid "Show tray icon"
 msgid ""
 "To show the tray icon, \n"
 "run "
-msgstr "Mostrar icono en el área de notificación"
+msgstr ""
+"Para mostrar icono en el área de notificación, \n"
+"ejecute "
 
 #: caffeine/main.py:201
 msgid "or open Caffeine Preferences from your system menu."
