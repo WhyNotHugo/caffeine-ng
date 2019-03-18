@@ -18,6 +18,7 @@
 
 import logging
 import os
+import threading
 import time
 
 import dbus
@@ -144,19 +145,28 @@ class XdgPowerManagmentInhibitor(BaseInhibitor):
 
 
 class XssInhibitor(BaseInhibitor):
+    class XssInhibitorThread(threading.Thread):
+        keep_running = True
+        daemon = True
+
+        def run(self):
+            logging.info('Running XSS inhibitor thread.')
+            while self.keep_running:
+                os.system("xscreensaver-command -deactivate")
+                time.sleep(50)
+            logging.info('XSS inhibitor thread finishing.')
 
     def __init__(self):
         BaseInhibitor.__init__(self)
 
     def inhibit(self):
         self.running = True
-
-        while self.running:
-            os.system("xscreensaver-command -deactivate")
-            time.sleep(50)
+        self.thread = XssInhibitor.XssInhibitorThread()
+        self.thread.start()
 
     def uninhibit(self):
         self.running = False
+        self.thread.keep_running = False
 
     @property
     def applicable(self):
