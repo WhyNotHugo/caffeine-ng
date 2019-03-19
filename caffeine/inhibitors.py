@@ -228,7 +228,8 @@ class XautolockInhibitor(BaseInhibitor):
     @property
     def applicable(self):
         return os.system("pgrep xautolock") is 0
-    
+
+
 class xfceInhibitor(BaseInhibitor):
 
     def __init__(self):
@@ -237,13 +238,14 @@ class xfceInhibitor(BaseInhibitor):
     def inhibit(self):
         self.running = True
 
-        os.system("xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode -s true")
+        os.system("xfconf-query -c xfce4-power-manager \
+        -p /xfce4-power-manager/presentation-mode -s true")
 
     def uninhibit(self):
         self.running = False
 
-        
-        os.system("xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode -s false")
+        os.system("xfconf-query -c xfce4-power-manager \
+        -p /xfce4-power-manager/presentation-mode -s false")
 
     @property
     def applicable(self):
