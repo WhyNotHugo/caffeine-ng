@@ -161,7 +161,7 @@ class XssInhibitor(BaseInhibitor):
     @property
     def applicable(self):
         # TODO!
-        return os.system("pgrep xscreensaver") is 0
+        return os.system("pgrep xscreensaver") == 0
 
 
 class DpmsInhibitor(BaseInhibitor):
@@ -227,7 +227,7 @@ class XautolockInhibitor(BaseInhibitor):
 
     @property
     def applicable(self):
-        return os.system("pgrep xautolock") is 0
+        return os.system("pgrep xautolock") == 0
 
 
 class xfceInhibitor(BaseInhibitor):
