@@ -173,6 +173,7 @@ class GUI:
 
         show_tray_icon = settings.get_boolean("show-tray-icon")
         show_notification = settings.get_boolean("show-notification")
+        activate_on_startup = settings.get_boolean("activate-on-startup")
 
         if appindicator_avail:
             self.AppInd = \
@@ -246,16 +247,21 @@ class GUI:
 
         self.trayicon_cb = get("trayicon_cbutton")
         self.notification_cb = get("notification_cbutton")
+        self.autoactivation_cb = get("autoactivation_cbutton")
 
         self.notification_cb.set_sensitive(not show_tray_icon)
 
         settings.connect("changed::show-tray-icon", self.on_trayicon_changed)
         settings.connect("changed::show-notification",
                          self.on_notification_changed)
+        settings.connect("changed::activate-on-startup",
+                         self.on_autoactivation_changed)
 
         settings.bind("show-tray-icon", self.trayicon_cb, "active",
                       Gio.SettingsBindFlags.DEFAULT)
         settings.bind("show-notification", self.notification_cb, "active",
+                      Gio.SettingsBindFlags.DEFAULT)
+        settings.bind("activate-on-startup", self.autoactivation_cb, "active",
                       Gio.SettingsBindFlags.DEFAULT)
 
         # about dialog
@@ -275,6 +281,10 @@ class GUI:
             self.status_icon.connect("popup-menu", self.on_R_click)
 
         builder.connect_signals(self)
+
+        if activate_on_startup:
+            logger.info("Activate on startup enabled. Inhibiting.")
+            self.setActive(True)
 
     def setActive(self, active):
         self.__core.set_activated(active)
@@ -356,6 +366,9 @@ class GUI:
 
     # Startup Notifications
     def on_notification_changed(self, settings, key, data=None):
+        pass
+
+    def on_autoactivation_changed(self, settings, key, data=None):
         pass
 
     # Menu callbacks

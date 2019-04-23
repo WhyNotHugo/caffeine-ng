@@ -15,6 +15,11 @@
             <summary></summary>
             <description></description>
         </key>
+        <key type="b" name="activate-on-startup">
+            <default>false</default>
+            <summary></summary>
+            <description></description>
+        </key>
 
     </schema>
 </schemalist>
