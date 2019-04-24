@@ -198,10 +198,10 @@ class GUI:
             notify_init("caffeine-ng")
             note = \
                 Notification.new(_("Caffeine is running"),
-                             _("To show the tray icon, \nrun ") +
-                             "'caffeine -p' " +
-                             _("or open Caffeine Preferences from " +
-                               "your system menu."), "caffeine")
+                                 _("To show the tray icon, \nrun ") +
+                                 "'caffeine -p' " +
+                                 _("or open Caffeine Preferences from " +
+                                   "your system menu."), "caffeine")
 
             note.show()
 
