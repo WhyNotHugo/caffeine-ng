@@ -16,7 +16,7 @@
 
 import os
 from os import makedirs
-from os.path import abspath, dirname, exists, join, pardir
+from os.path import exists, join
 
 from xdg.BaseDirectory import xdg_config_home
 
@@ -24,19 +24,7 @@ PACKAGE_PATH = os.path.dirname(os.path.abspath(__file__))
 LOCALE_PATH = join(PACKAGE_PATH, 'locale')
 GLADE_PATH = join(PACKAGE_PATH, 'assets/glade')
 IMAGE_PATH = join(PACKAGE_PATH, 'assets/images')
-
-
-def get_base_path():
-    c = abspath(dirname(__file__))
-    # FIXME: This may recurse all the way up to "/" and end up in an infinite
-    # loop
-    while True:
-        if exists(join(c, "share/caffeine")):
-            return c
-
-        c = join(c, pardir)
-        if not exists(c):
-            raise Exception("Can't determine get_base_path()")
+ICON_PATH = join(PACKAGE_PATH, 'assets/icons')
 
 
 def get_glade_file(filename):
@@ -51,12 +39,7 @@ def get_whitelist_file():
     return join(__config_dir, "whitelist.txt")
 
 
-def get_icon_path():
-    return __icon_path
-
-
 __config_dir = join(xdg_config_home, "caffeine")
-__icon_path = join(get_base_path(), 'share', 'icons')
 
 
 if not exists(__config_dir):

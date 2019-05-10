@@ -9,12 +9,23 @@ from setuptools import find_packages, setup
 def get_data_files():
     data_files = []
 
-    for path, dirs, files in walk('share'):
+    for path, _dirs, files in walk('share'):
         target_path = os.path.join('/usr', path)
 
-        data_files.append((
-            target_path, [os.path.join(path, f) for f in files]
-        ))
+        if files:
+            data_files.append((
+                target_path, [os.path.join(path, f) for f in files]
+            ))
+
+    # Install all icons for the package into /usr/share as well.
+    # This is because the .desktop file actually uses them too.
+    for path, _dirs, files in walk('caffeine/assets/icons'):
+        target_path = os.path.join('/usr/share', path[16:])
+
+        if files:
+            data_files.append((
+                target_path, [os.path.join(path, f) for f in files]
+            ))
 
     data_files.append(
         ("/etc/xdg/autostart", ["share/applications/caffeine.desktop"])
