@@ -18,8 +18,8 @@
 
 import gettext
 import locale
-import os
 
+from .paths import LOCALE_PATH
 from .version import version
 
 
@@ -28,7 +28,6 @@ __version__ = version
 
 def __init_translations():
     GETTEXT_DOMAIN = "caffeine"
-    LOCALE_PATH = os.path.join(os.path.abspath(__file__), 'locale')
 
     locale.setlocale(locale.LC_ALL, '')
 

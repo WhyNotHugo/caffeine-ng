@@ -19,7 +19,7 @@ from os.path import join
 
 from gi.repository import Gtk
 
-from .paths import get_icon_path, get_image_path
+from .paths import get_icon_path, IMAGE_PATH
 
 
 def get_icon_pixbuf(size):
@@ -47,7 +47,7 @@ def get_icon_pixbuf(size):
     return pixbuf
 
 
-generic_icon = join(get_image_path(), "application-x-executable.png")
+generic_icon = join(IMAGE_PATH, "application-x-executable.png")
 
-full_cup_icon = join(get_image_path(), "Full_Cup.svg")
-empty_cup_icon = join(get_image_path(), "Empty_Cup.svg")
+full_cup_icon = join(IMAGE_PATH, "Full_Cup.svg")
+empty_cup_icon = join(IMAGE_PATH, "Empty_Cup.svg")
