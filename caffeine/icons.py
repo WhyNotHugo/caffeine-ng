@@ -19,10 +19,16 @@ from os.path import join
 
 from gi.repository import Gtk
 
-from .paths import get_icon_path, get_image_path
+from .paths import ICON_PATH, IMAGE_PATH
 
 
 def get_icon_pixbuf(size):
+    """
+    Returns the icon as a pixbuf.
+
+    Returns caffeine's icon as a pixbuf. We wrap around GTK here, so the
+    default theme's icon will be used, if any, or caffeine's own as a fallback.
+    """
     icon_name = 'caffeine'
     icon_theme = Gtk.IconTheme.get_default()
 
@@ -35,9 +41,9 @@ def get_icon_pixbuf(size):
         if base_size != size:
             # No size x size icon in the users theme so use the default
             icon_theme = Gtk.IconTheme()
-            icon_theme.set_search_path((get_icon_path(),))
+            icon_theme.set_search_path((ICON_PATH,))
     else:
-        icon_theme.append_search_path(get_icon_path())
+        icon_theme.append_search_path(ICON_PATH)
         icon_info = icon_theme.lookup_icon(icon_name, size,
                                            Gtk.IconLookupFlags.NO_SVG)
 
@@ -47,7 +53,7 @@ def get_icon_pixbuf(size):
     return pixbuf
 
 
-generic_icon = join(get_image_path(), "application-x-executable.png")
+generic_icon = join(IMAGE_PATH, "application-x-executable.png")
 
-full_cup_icon = join(get_image_path(), "Full_Cup.svg")
-empty_cup_icon = join(get_image_path(), "Empty_Cup.svg")
+full_cup_icon = join(IMAGE_PATH, "Full_Cup.svg")
+empty_cup_icon = join(IMAGE_PATH, "Empty_Cup.svg")
