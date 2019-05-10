@@ -51,6 +51,7 @@ if __name__ == "__main__":
         maintainer_email="hugo@barrera.io",
         url="https://github.com/caffeine-ng/caffeine-ng",
         packages=find_packages(),
+        include_package_data=True,
         data_files=get_data_files(),
         install_requires=open('requirements.txt').read().splitlines(),
         entry_points={
