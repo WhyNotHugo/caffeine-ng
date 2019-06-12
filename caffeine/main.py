@@ -196,12 +196,12 @@ class GUI:
         if show_tray_icon is False and show_notification is True and \
            show_preferences is False:
             notify_init("caffeine-ng")
-            note = \
-                Notification.new(_("Caffeine is running"),
-                                 _("To show the tray icon, \nrun ") +
-                                 "'caffeine -p' " +
-                                 _("or open Caffeine Preferences from " +
-                                   "your system menu."), "caffeine")
+            note = Notification.new(
+                _("Caffeine is running"),
+                _("To show the tray icon, \nrun ") + "'caffeine -p' " +
+                _("or open Caffeine Preferences from your system menu."),
+                "caffeine",
+            )
 
             note.show()
 
