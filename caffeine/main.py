@@ -44,6 +44,7 @@ gi.require_version('Gtk', '3.0')  # noqa
 gi.require_version('Notify', '0.7')  # noqa
 from docopt import docopt
 from gi.repository import GdkPixbuf, Gio, GObject, Gtk
+from gi.repository.Notify import init as notify_init
 from gi.repository.Notify import Notification
 from setproctitle import setproctitle
 
@@ -194,12 +195,13 @@ class GUI:
 
         if show_tray_icon is False and show_notification is True and \
            show_preferences is False:
-            note = \
-                Notification(_("Caffeine is running"),
-                             _("To show the tray icon, \nrun ") +
-                             "'caffeine -p' " +
-                             _("or open Caffeine Preferences from " +
-                               "your system menu."), "caffeine")
+            notify_init("caffeine-ng")
+            note = Notification.new(
+                _("Caffeine is running"),
+                _("To show the tray icon, \nrun ") + "'caffeine -p' " +
+                _("or open Caffeine Preferences from your system menu."),
+                "caffeine",
+            )
 
             note.show()
 
