@@ -71,7 +71,7 @@ class GnomeInhibitor(BaseInhibitor):
 
         self.__cookie = self.__proxy.Inhibit("Caffeine", dbus.UInt32(0),
                                              INHIBITION_REASON,
-                                             dbus.UInt32(12))
+                                             dbus.UInt32(4))
         self.running = True
 
     def uninhibit(self):
