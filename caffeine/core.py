@@ -20,11 +20,12 @@ import os
 import os.path
 from gettext import gettext as _
 from threading import Thread, Timer
-from pulsectl import Pulse
-from pulsectl import PulseStateEnum
 
 from ewmh import EWMH
 from gi.repository import GLib, GObject, Notify
+
+from pulsectl import Pulse
+from pulsectl import PulseStateEnum
 
 from . import utils
 from .icons import empty_cup_icon, full_cup_icon
@@ -128,10 +129,10 @@ class Caffeine(GObject.GObject):
                     logger.info("Fullscreen app detected. Inhibiting.")
 
         # Let's look for playing audio:
-        self.music_procs = 0  # Number of supposed audio only streams.
-                              # We can turn the screen off for those
-        screen_relevant_procs = 0  # Number of all audio streams including
-                                   # videos. We keep the screen on here
+        self.music_procs = 0    # Number of supposed audio only streams.
+                                # We can turn the screen off for those
+        screen_relevant_procs = 0   # Number of all audio streams including
+                                    # videos. We keep the screen on here
 
         if not process_running and not fullscreen:
             # Get all audio playback streams
@@ -139,10 +140,10 @@ class Caffeine(GObject.GObject):
             # off there. Keep the screen on for audio without music role,
             # as they might be videos
             with Pulse() as pulseaudio:
-                for sink_input in pulseaudio.sink_input_list():
-                    sink_state = pulseaudio.sink_info(sink_input.sink).state
+                for sink in pulseaudio.sink_input_list():
+                    sink_state = pulseaudio.sink_info(sink.sink).state
                     if sink_state is PulseStateEnum.running and \
-                       sink_input.proplist.get('media.role') == "music":
+                       sink.proplist.get('media.role') == "music":
                         # seems to be audio only
                         self.music_procs += 1
                     elif sink_state is PulseStateEnum.running:
@@ -150,8 +151,8 @@ class Caffeine(GObject.GObject):
                         screen_relevant_procs += 1
 
                 # Get all audio recording streams
-                for source_output in pulseaudio.source_output_list():
-                    source_state = pulseaudio.source_info(source_output.source).state
+                for source in pulseaudio.source_output_list():
+                    source_state = pulseaudio.source_info(source.source).state
 
                     if source_state is PulseStateEnum.running:
                         # Treat recordings as video because likely you don't
@@ -166,9 +167,9 @@ class Caffeine(GObject.GObject):
 
         if (process_running or fullscreen or self.music_procs > 0 or
             screen_relevant_procs > 0) and not self.__auto_activated:
-            self.__auto_activated = True
-            # TODO: Check __set_activated
-            self.__set_activated(True)
+                self.__auto_activated = True
+                # TODO: Check __set_activated
+                self.__set_activated(True)
         elif not (process_running or fullscreen or self.music_procs > 0 or
                   screen_relevant_procs > 0) and self.__auto_activated:
             logger.info("Was auto-inhibited, but there's no fullscreen, " +
@@ -324,8 +325,8 @@ class Caffeine(GObject.GObject):
 
         # decide, if we allow the screen to sleep
         inhibit_screen = False if (self.music_procs > 0 or
-                                   not self.__inhibition_manually_requested) \
-                         else True
+                         not self.__inhibition_manually_requested) \
+                            else True
         self._performTogglingActions(self.__inhibition_manually_requested,
                                      inhibit_screen)
         logger.info("\n\n")
@@ -344,7 +345,7 @@ class Caffeine(GObject.GObject):
                 inhibitor.set(susp_screen) if inhibitor.is_screen_inhibitor() \
                                               else inhibitor.set(suspend)
                 logger.info("%s is applicable, state: %s"
-                            %(inhibitor, inhibitor.running))
+                            % (inhibitor, inhibitor.running))
         self.__inhibition_successful = not self.__inhibition_successful
 
 
