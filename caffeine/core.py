@@ -20,6 +20,8 @@ import os
 import os.path
 from gettext import gettext as _
 from threading import Thread, Timer
+from pulsectl import Pulse
+from pulsectl import PulseStateEnum
 
 from ewmh import EWMH
 from gi.repository import GLib, GObject, Notify
@@ -51,9 +53,6 @@ class Caffeine(GObject.GObject):
             XssInhibitor(),
             XorgInhibitor(),
             XautolockInhibitor(),
-        ]
-
-        self.__screen_only_inhibitors = [
             XdgScreenSaverInhibitor(),
             DpmsInhibitor()
         ]
@@ -66,8 +65,9 @@ class Caffeine(GObject.GObject):
         # Inhibition has been requested (though it may not yet be active).
         self.__inhibition_manually_requested = False
 
-        # Number of procs playing audio but nothing visual. This is a special case
-        # where we want the screen to turn off while still preventing the computer from suspending
+        # Number of procs playing audio but nothing visual. This is a special
+        # case where we want the screen to turn off while still preventing
+        # the computer from suspending
         self.music_procs = 0
 
         # Inhibition has successfully been activated.
@@ -128,34 +128,35 @@ class Caffeine(GObject.GObject):
                     logger.info("Fullscreen app detected. Inhibiting.")
 
         # Let's look for playing audio:
-        self.music_procs = 0  # Number of supposed audio only streams. We can turn the screen off for those
-        screen_relevant_procs = 0  # Number of all audio streams including videos. We want to keep the screen on here
+        self.music_procs = 0  # Number of supposed audio only streams.
+                              # We can turn the screen off for those
+        screen_relevant_procs = 0  # Number of all audio streams including
+                                   # videos. We keep the screen on here
 
         if not process_running and not fullscreen:
             # Get all audio playback streams
-            audio_sinks = os.popen("pacmd list-sink-inputs").read()
-            for sink in audio_sinks.split("index:"):
-                is_running = False
-                role_music = False
-                for line in sink.split("\n"):
-                    if "state: RUNNING" in line:
-                        is_running = True
-                    if 'media.role = "music"' in line: # checked Spotify and Gnome Music. They use this attribute.
-                        role_music = True
-                        break
+            # Music players seem to use the music role. We can turn the screen
+            # off there. Keep the screen on for audio without music role,
+            # as they might be videos
+            with Pulse() as pulseaudio:
+                for sink_input in pulseaudio.sink_input_list():
+                    sink_state = pulseaudio.sink_info(sink_input.sink).state
+                    if sink_state is PulseStateEnum.running and \
+                       sink_input.proplist.get('media.role') == "music":
+                        # seems to be audio only
+                        self.music_procs += 1
+                    elif sink_state is PulseStateEnum.running:
+                        # Video or other audio source
+                        screen_relevant_procs += 1
 
-                if role_music and is_running:  # seems to be audio only
-                    self.music_procs += 1
-                elif is_running:  # Video or other audio source
-                    screen_relevant_procs += 1
+                # Get all audio recording streams
+                for source_output in pulseaudio.source_output_list():
+                    source_state = pulseaudio.source_info(source_output.source).state
 
-            # Get all audio recording streams
-            audio_sources = os.popen("pacmd list-source-outputs").read()
-            for source in audio_sources.split("index:"):
-                for line in source.split("\n"):
-                    if "state: RUNNING" in line:
-                        screen_relevant_procs += 1  # Treat recordings as video because likely you don't want to turn the screen of while recording
-                        break
+                    if source_state is PulseStateEnum.running:
+                        # Treat recordings as video because likely you don't
+                        # want to turn the screen of while recording
+                        screen_relevant_procs += 1
 
             if self.music_procs > 0 or screen_relevant_procs > 0:
                 if self.__auto_activated:
@@ -163,13 +164,16 @@ class Caffeine(GObject.GObject):
                 elif not self.get_activated():
                     logger.info("Audio playback detected. Inhibiting.")
 
-        if (process_running or fullscreen or self.music_procs > 0 or screen_relevant_procs > 0) and not self.__auto_activated:
+        if (process_running or fullscreen or self.music_procs > 0 or
+            screen_relevant_procs > 0) and not self.__auto_activated:
             self.__auto_activated = True
             # TODO: Check __set_activated
             self.__set_activated(True)
-        elif not (process_running or fullscreen or self.music_procs > 0 or screen_relevant_procs > 0) and self.__auto_activated:
+        elif not (process_running or fullscreen or self.music_procs > 0 or
+                  screen_relevant_procs > 0) and self.__auto_activated:
             logger.info("Was auto-inhibited, but there's no fullscreen, " +
-                        "whitelisted process or audio playback now. De-activating.")
+                        "whitelisted process or audio playback now. " +
+                        "De-activating.")
             # TODO: Check __set_activated
             self.__set_activated(False)
             self.__auto_activated = False
@@ -319,8 +323,11 @@ class Caffeine(GObject.GObject):
             self.__inhibition_manually_requested = True
 
         # decide, if we allow the screen to sleep
-        inhibit_screen = False if (self.music_procs > 0 or not self.__inhibition_manually_requested) else True
-        self._performTogglingActions(self.__inhibition_manually_requested, inhibit_screen)
+        inhibit_screen = False if (self.music_procs > 0 or
+                                   not self.__inhibition_manually_requested) \
+                         else True
+        self._performTogglingActions(self.__inhibition_manually_requested,
+                                     inhibit_screen)
         logger.info("\n\n")
         self.status_string = "Caffeine is preventing powersaving."
 
@@ -328,30 +335,16 @@ class Caffeine(GObject.GObject):
                   self.status_string)
         self.status_string = ""
 
-    def _performTogglingActions(self, inhibit_suspend, inhibit_screen):
+    def _performTogglingActions(self, suspend, susp_screen):
         """This method performs the actions that affect the screensaver and
         powersaving."""
 
         for inhibitor in self.__inhibitors:
             if inhibitor.applicable:
-                logger.info("%s is applicable, setting it to %s." %(inhibitor, inhibit_suspend))
-
-                if (inhibit_suspend and not inhibitor.running):
-                    Thread(target=inhibitor.inhibit()).start()
-                elif(not inhibit_suspend and inhibitor.running):
-                    Thread(target=inhibitor.uninhibit()).start()
-
-
-        for inhibitor in self.__screen_only_inhibitors:
-            if inhibitor.applicable:
-                logger.info("%s is applicable, setting it to %s." %(inhibitor, inhibit_screen))
-
-                if (inhibit_screen and not inhibitor.running):
-                    Thread(target=inhibitor.inhibit()).start()
-                elif(not inhibit_screen and inhibitor.running):
-                    Thread(target=inhibitor.uninhibit()).start()
-
-
+                inhibitor.set(susp_screen) if inhibitor.is_screen_inhibitor() \
+                                              else inhibitor.set(suspend)
+                logger.info("%s is applicable, state: %s"
+                            %(inhibitor, inhibitor.running))
         self.__inhibition_successful = not self.__inhibition_successful
 
 
