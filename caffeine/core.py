@@ -19,11 +19,10 @@ import logging
 import os
 import os.path
 from gettext import gettext as _
-from threading import Thread, Timer
+from threading import Timer
 
 from ewmh import EWMH
 from gi.repository import GLib, GObject, Notify
-
 from pulsectl import Pulse
 from pulsectl import PulseStateEnum
 
@@ -129,10 +128,12 @@ class Caffeine(GObject.GObject):
                     logger.info("Fullscreen app detected. Inhibiting.")
 
         # Let's look for playing audio:
-        self.music_procs = 0    # Number of supposed audio only streams.
-                                # We can turn the screen off for those
-        screen_relevant_procs = 0   # Number of all audio streams including
-                                    # videos. We keep the screen on here
+        # Number of supposed audio only streams.  We can turn the screen off
+        # for those:
+        self.music_procs = 0
+        # Number of all audio streams including videos. We keep the screen on
+        # here:
+        screen_relevant_procs = 0
 
         if not process_running and not fullscreen:
             # Get all audio playback streams
@@ -165,16 +166,25 @@ class Caffeine(GObject.GObject):
                 elif not self.get_activated():
                     logger.info("Audio playback detected. Inhibiting.")
 
-        if (process_running or fullscreen or self.music_procs > 0 or
-            screen_relevant_procs > 0) and not self.__auto_activated:
-                self.__auto_activated = True
-                # TODO: Check __set_activated
-                self.__set_activated(True)
-        elif not (process_running or fullscreen or self.music_procs > 0 or
-                  screen_relevant_procs > 0) and self.__auto_activated:
-            logger.info("Was auto-inhibited, but there's no fullscreen, " +
-                        "whitelisted process or audio playback now. " +
-                        "De-activating.")
+        if (
+            process_running
+            or fullscreen
+            or self.music_procs > 0
+            or screen_relevant_procs > 0
+        ) and not self.__auto_activated:
+            self.__auto_activated = True
+            # TODO: Check __set_activated
+            self.__set_activated(True)
+        elif not (
+            process_running or
+            fullscreen
+            or self.music_procs > 0
+            or screen_relevant_procs > 0
+        ) and self.__auto_activated:
+            logger.info(
+                "Was auto-inhibited, but there's no fullscreen, whitelisted "
+                "process or audio playback now. De-activating."
+            )
             # TODO: Check __set_activated
             self.__set_activated(False)
             self.__auto_activated = False
@@ -324,9 +334,11 @@ class Caffeine(GObject.GObject):
             self.__inhibition_manually_requested = True
 
         # decide, if we allow the screen to sleep
-        inhibit_screen = False if (self.music_procs > 0 or
-                         not self.__inhibition_manually_requested) \
-                            else True
+        if (self.music_procs > 0 or not self.__inhibition_manually_requested):
+            inhibit_screen = False
+        else:
+            inhibit_screen = True
+
         self._performTogglingActions(self.__inhibition_manually_requested,
                                      inhibit_screen)
         logger.info("\n\n")
