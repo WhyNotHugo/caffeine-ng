@@ -19,10 +19,12 @@ import logging
 import os
 import os.path
 from gettext import gettext as _
-from threading import Thread, Timer
+from threading import Timer
 
 from ewmh import EWMH
 from gi.repository import GLib, GObject, Notify
+from pulsectl import Pulse
+from pulsectl import PulseStateEnum
 
 from . import utils
 from .icons import empty_cup_icon, full_cup_icon
@@ -47,12 +49,12 @@ class Caffeine(GObject.GObject):
 
         self.__inhibitors = [
             GnomeInhibitor(),
-            XdgScreenSaverInhibitor(),
             XdgPowerManagmentInhibitor(),
             XssInhibitor(),
-            DpmsInhibitor(),
             XorgInhibitor(),
-            XautolockInhibitor()
+            XautolockInhibitor(),
+            XdgScreenSaverInhibitor(),
+            DpmsInhibitor()
         ]
 
         self.__process_manager = process_manager
@@ -62,6 +64,11 @@ class Caffeine(GObject.GObject):
 
         # Inhibition has been requested (though it may not yet be active).
         self.__inhibition_manually_requested = False
+
+        # Number of procs playing audio but nothing visual. This is a special
+        # case where we want the screen to turn off while still preventing
+        # the computer from suspending
+        self.music_procs = 0
 
         # Inhibition has successfully been activated.
         self.__inhibition_successful = False
@@ -120,16 +127,67 @@ class Caffeine(GObject.GObject):
                 elif not self.get_activated():
                     logger.info("Fullscreen app detected. Inhibiting.")
 
-        if (process_running or fullscreen) and not self.__auto_activated:
+        # Let's look for playing audio:
+        # Number of supposed audio only streams.  We can turn the screen off
+        # for those:
+        self.music_procs = 0
+        # Number of all audio streams including videos. We keep the screen on
+        # here:
+        screen_relevant_procs = 0
+
+        if not process_running and not fullscreen:
+            # Get all audio playback streams
+            # Music players seem to use the music role. We can turn the screen
+            # off there. Keep the screen on for audio without music role,
+            # as they might be videos
+            with Pulse() as pulseaudio:
+                for sink in pulseaudio.sink_input_list():
+                    sink_state = pulseaudio.sink_info(sink.sink).state
+                    if sink_state is PulseStateEnum.running and \
+                       sink.proplist.get('media.role') == "music":
+                        # seems to be audio only
+                        self.music_procs += 1
+                    elif sink_state is PulseStateEnum.running:
+                        # Video or other audio source
+                        screen_relevant_procs += 1
+
+                # Get all audio recording streams
+                for source in pulseaudio.source_output_list():
+                    source_state = pulseaudio.source_info(source.source).state
+
+                    if source_state is PulseStateEnum.running:
+                        # Treat recordings as video because likely you don't
+                        # want to turn the screen of while recording
+                        screen_relevant_procs += 1
+
+            if self.music_procs > 0 or screen_relevant_procs > 0:
+                if self.__auto_activated:
+                    logger.debug("Audio playback detected. No change.")
+                elif not self.get_activated():
+                    logger.info("Audio playback detected. Inhibiting.")
+
+        if (
+            process_running
+            or fullscreen
+            or self.music_procs > 0
+            or screen_relevant_procs > 0
+        ) and not self.__auto_activated:
             self.__auto_activated = True
             # TODO: Check __set_activated
             self.__set_activated(True)
-        elif not (process_running or fullscreen) and self.__auto_activated:
-            logger.info("Was auto-inhibited, but there's no fullscreen or " +
-                        "whitelisted process now. De-activating.")
-            self.__auto_activated = False
+        elif not (
+            process_running or
+            fullscreen
+            or self.music_procs > 0
+            or screen_relevant_procs > 0
+        ) and self.__auto_activated:
+            logger.info(
+                "Was auto-inhibited, but there's no fullscreen, whitelisted "
+                "process or audio playback now. De-activating."
+            )
             # TODO: Check __set_activated
             self.__set_activated(False)
+            self.__auto_activated = False
 
         return True
 
@@ -275,23 +333,31 @@ class Caffeine(GObject.GObject):
         else:
             self.__inhibition_manually_requested = True
 
-        self._performTogglingActions()
+        # decide, if we allow the screen to sleep
+        if (self.music_procs > 0 or not self.__inhibition_manually_requested):
+            inhibit_screen = False
+        else:
+            inhibit_screen = True
 
-        self.status_string == "Caffeine is preventing powersaving."
+        self._performTogglingActions(self.__inhibition_manually_requested,
+                                     inhibit_screen)
+        logger.info("\n\n")
+        self.status_string = "Caffeine is preventing powersaving."
 
         self.emit("activation-toggled", self.get_activated(),
                   self.status_string)
         self.status_string = ""
 
-    def _performTogglingActions(self):
+    def _performTogglingActions(self, suspend, susp_screen):
         """This method performs the actions that affect the screensaver and
         powersaving."""
 
         for inhibitor in self.__inhibitors:
             if inhibitor.applicable:
-                logger.info("%s is applicable, running it.", inhibitor)
-                Thread(target=inhibitor.toggle).start()
-
+                inhibitor.set(susp_screen) if inhibitor.is_screen_inhibitor() \
+                                              else inhibitor.set(suspend)
+                logger.info("%s is applicable, state: %s"
+                            % (inhibitor, inhibitor.running))
         self.__inhibition_successful = not self.__inhibition_successful
 
 

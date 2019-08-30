@@ -3,3 +3,4 @@ ewmh>=0.1.4
 pyxdg>=0.25
 setproctitle>=1.1.10
 wheel>=0.29.0
+pulsectl

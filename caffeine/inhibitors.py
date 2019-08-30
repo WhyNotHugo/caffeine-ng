@@ -42,11 +42,14 @@ class BaseInhibitor:
 
     running = property(get_running, set_running)
 
-    def toggle(self):
-        if not self.running:
+    def set(self, state):
+        if state:
             self.inhibit()
         else:
             self.uninhibit()
+
+    def is_screen_inhibitor(self):
+        return False
 
     def __str__(self):
         return self.__class__.__name__
@@ -71,7 +74,7 @@ class GnomeInhibitor(BaseInhibitor):
 
         self.__cookie = self.__proxy.Inhibit("Caffeine", dbus.UInt32(0),
                                              INHIBITION_REASON,
-                                             dbus.UInt32(12))
+                                             dbus.UInt32(4))
         self.running = True
 
     def uninhibit(self):
@@ -107,6 +110,9 @@ class XdgScreenSaverInhibitor(BaseInhibitor):
         if self.__cookie:
             self.__proxy.UnInhibit(self.__cookie)
         self.running = False
+
+    def is_screen_inhibitor(self):
+        return True
 
     @property
     def applicable(self):
@@ -190,6 +196,9 @@ class DpmsInhibitor(BaseInhibitor):
         # FIXME: Aren't we enabling it if it was never online?
         # Grep `xset q` for "DPMS is Enabled"
         os.system("xset +dpms")
+
+    def is_screen_inhibitor(self):
+        return True
 
     @property
     def applicable(self):
