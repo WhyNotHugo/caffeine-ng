@@ -39,7 +39,7 @@ System requirements
 
 * Either a screensaver that implements the ``org.freedesktop.ScreenSaver``
   API (this includes KDE, amongst others) API, gnome-screensaver, XSS and/or
-  DPMS, xautolock.
+  DPMS, xautolock, xidlehook.
 * Python 3 (apparently works with Python 2, but not officially supported).
 
 See ``requirements.txt`` for required python packages
