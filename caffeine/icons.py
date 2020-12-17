@@ -14,12 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
 from os.path import join
 
 from gi.repository import Gtk
 
-from .paths import ICON_PATH, IMAGE_PATH
+from .paths import ICON_PATH
+from .paths import IMAGE_PATH
 
 
 def get_icon_pixbuf(size):
@@ -29,11 +29,10 @@ def get_icon_pixbuf(size):
     Returns caffeine's icon as a pixbuf. We wrap around GTK here, so the
     default theme's icon will be used, if any, or caffeine's own as a fallback.
     """
-    icon_name = 'caffeine'
+    icon_name = "caffeine"
     icon_theme = Gtk.IconTheme.get_default()
 
-    icon_info = \
-        icon_theme.lookup_icon(icon_name, size, Gtk.IconLookupFlags.NO_SVG)
+    icon_info = icon_theme.lookup_icon(icon_name, size, Gtk.IconLookupFlags.NO_SVG)
 
     if icon_info:
         # icon is found
@@ -44,11 +43,9 @@ def get_icon_pixbuf(size):
             icon_theme.set_search_path((ICON_PATH,))
     else:
         icon_theme.append_search_path(ICON_PATH)
-        icon_info = icon_theme.lookup_icon(icon_name, size,
-                                           Gtk.IconLookupFlags.NO_SVG)
+        icon_info = icon_theme.lookup_icon(icon_name, size, Gtk.IconLookupFlags.NO_SVG)
 
-    pixbuf = \
-        icon_theme.load_icon(icon_name, size, Gtk.IconLookupFlags.NO_SVG)
+    pixbuf = icon_theme.load_icon(icon_name, size, Gtk.IconLookupFlags.NO_SVG)
 
     return pixbuf
 

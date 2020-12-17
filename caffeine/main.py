@@ -30,7 +30,6 @@ Options:
   -p --preferences          Start with the Preferences dialog open.
 """
 # TODO: add a -v --verbosity flag.
-
 import ctypes
 import logging
 import os
@@ -39,21 +38,23 @@ import sys
 from gettext import gettext as _
 
 import gi
-gi.require_version('GdkPixbuf', '2.0')  # noqa
-gi.require_version('Gtk', '3.0')  # noqa
-gi.require_version('Notify', '0.7')  # noqa
-from docopt import docopt
-from gi.repository import GdkPixbuf, Gio, GObject, Gtk
-from gi.repository.Notify import init as notify_init
-from gi.repository.Notify import Notification
-from setproctitle import setproctitle
 
-from . import __version__
-from .applicationinstance import ApplicationInstance
-from .core import Caffeine
-from .icons import generic_icon, get_icon_pixbuf
-from .paths import get_glade_file
-from .procmanager import ProcManager
+gi.require_version("GdkPixbuf", "2.0")  # noqa
+gi.require_version("Gtk", "3.0")  # noqa
+gi.require_version("Notify", "0.7")  # noqa
+
+from docopt import docopt  # noqa: E402
+from gi.repository import GdkPixbuf, Gio, GObject, Gtk  # noqa: E402
+from gi.repository.Notify import init as notify_init  # noqa: E402
+from gi.repository.Notify import Notification  # noqa: E402
+from setproctitle import setproctitle  # noqa: E402
+
+from . import __version__  # noqa: E402
+from .applicationinstance import ApplicationInstance  # noqa: E402
+from .core import Caffeine  # noqa: E402
+from .icons import generic_icon, get_icon_pixbuf  # noqa: E402
+from .paths import get_glade_file  # noqa: E402
+from .procmanager import ProcManager  # noqa: E402
 
 appindicator_avail = True
 try:
@@ -65,8 +66,9 @@ logger = logging.getLogger(__name__)
 
 icon_theme = Gtk.IconTheme.get_default()
 try:
-    generic = icon_theme.load_icon("application-x-executable", 16,
-                                   Gtk.IconLookupFlags.NO_SVG)
+    generic = icon_theme.load_icon(
+        "application-x-executable", 16, Gtk.IconLookupFlags.NO_SVG
+    )
 except GObject.GError:
     generic = GdkPixbuf.Pixbuf.new_from_file(generic_icon)
 
@@ -92,8 +94,7 @@ def get_icon_for_process(proc_name):
         except KeyError:
             pass
         try:
-            icon = icon_theme.load_icon(proc_name, 16,
-                                        Gtk.IconLookupFlags.NO_SVG)
+            icon = icon_theme.load_icon(proc_name, 16, Gtk.IconLookupFlags.NO_SVG)
             cached_icons[icon_name] = icon
             return icon
 
@@ -104,7 +105,6 @@ def get_icon_for_process(proc_name):
 
 
 class ProcAdd:
-
     def __init__(self):
         self.running_id = None
 
@@ -148,15 +148,13 @@ class ProcAdd:
 
 
 class GUI:
-
     def __init__(self, show_preferences=False):
         # object to manage processes to activate for.
         self.__process_manager = ProcManager()
 
         self.__core = Caffeine(self.__process_manager)
 
-        self.__core.connect("activation-toggled",
-                            self.on_activation_toggled)
+        self.__core.connect("activation-toggled", self.on_activation_toggled)
         self.ProcAdd = ProcAdd()
 
         # XXX: Do we want to change this to caffeine-ng?
@@ -176,15 +174,18 @@ class GUI:
         show_notification = settings.get_boolean("show-notification")
 
         if appindicator_avail:
-            self.AppInd = \
-                AppIndicator3.Indicator.new("caffeine",
-                                            "caffeine-cup-empty",
-                                            AppIndicator3.IndicatorCategory.
-                                            APPLICATION_STATUS)
+            self.AppInd = AppIndicator3.Indicator.new(
+                "caffeine",
+                "caffeine-cup-empty",
+                AppIndicator3.IndicatorCategory.APPLICATION_STATUS,
+            )
 
-            self.AppInd.set_status([AppIndicator3.IndicatorStatus.PASSIVE,
-                                   AppIndicator3.IndicatorStatus.ACTIVE]
-                                   [show_tray_icon])
+            self.AppInd.set_status(
+                [
+                    AppIndicator3.IndicatorStatus.PASSIVE,
+                    AppIndicator3.IndicatorStatus.ACTIVE,
+                ][show_tray_icon]
+            )
         else:
             # IMPORTANT:
             # status icon must be a instance variable  (ie self.)or else it
@@ -193,13 +194,17 @@ class GUI:
             self.status_icon = get("statusicon")
             self.status_icon.set_visible(show_tray_icon)
 
-        if show_tray_icon is False and show_notification is True and \
-           show_preferences is False:
+        if (
+            show_tray_icon is False
+            and show_notification is True
+            and show_preferences is False
+        ):
             notify_init("caffeine-ng")
             note = Notification.new(
                 _("Caffeine is running"),
-                _("To show the tray icon, \nrun ") + "'caffeine -p' " +
-                _("or open Caffeine Preferences from your system menu."),
+                _("To show the tray icon, \nrun ")
+                + "'caffeine -p' "
+                + _("or open Caffeine Preferences from your system menu."),
                 "caffeine",
             )
 
@@ -241,10 +246,14 @@ class GUI:
         self.window = get("window")
 
         # set the icons for the window border.
-        self.window.set_default_icon_list([get_icon_pixbuf(16),
-                                           get_icon_pixbuf(24),
-                                           get_icon_pixbuf(32),
-                                           get_icon_pixbuf(48)])
+        self.window.set_default_icon_list(
+            [
+                get_icon_pixbuf(16),
+                get_icon_pixbuf(24),
+                get_icon_pixbuf(32),
+                get_icon_pixbuf(48),
+            ]
+        )
 
         self.trayicon_cb = get("trayicon_cbutton")
         self.notification_cb = get("notification_cbutton")
@@ -252,13 +261,17 @@ class GUI:
         self.notification_cb.set_sensitive(not show_tray_icon)
 
         settings.connect("changed::show-tray-icon", self.on_trayicon_changed)
-        settings.connect("changed::show-notification",
-                         self.on_notification_changed)
+        settings.connect("changed::show-notification", self.on_notification_changed)
 
-        settings.bind("show-tray-icon", self.trayicon_cb, "active",
-                      Gio.SettingsBindFlags.DEFAULT)
-        settings.bind("show-notification", self.notification_cb, "active",
-                      Gio.SettingsBindFlags.DEFAULT)
+        settings.bind(
+            "show-tray-icon", self.trayicon_cb, "active", Gio.SettingsBindFlags.DEFAULT
+        )
+        settings.bind(
+            "show-notification",
+            self.notification_cb,
+            "active",
+            Gio.SettingsBindFlags.DEFAULT,
+        )
 
         # about dialog
         self.about_dialog = get("aboutdialog")
@@ -321,8 +334,7 @@ class GUI:
         if response == 1:
             proc_name = self.ProcAdd.get_process_name()
             if proc_name:
-                self.proc_liststore.append([get_icon_for_process(proc_name),
-                                           proc_name])
+                self.proc_liststore.append([get_icon_for_process(proc_name), proc_name])
 
                 self.__process_manager.add_proc(proc_name)
 
@@ -346,9 +358,12 @@ class GUI:
         show_tray_icon = settings.get_boolean(key)
 
         if appindicator_avail:
-            self.AppInd.set_status([AppIndicator3.IndicatorStatus.PASSIVE,
-                                    AppIndicator3.IndicatorStatus.ACTIVE]
-                                   [show_tray_icon])
+            self.AppInd.set_status(
+                [
+                    AppIndicator3.IndicatorStatus.PASSIVE,
+                    AppIndicator3.IndicatorStatus.ACTIVE,
+                ][show_tray_icon]
+            )
 
         else:
             self.status_icon.set_visible(show_tray_icon)
@@ -390,7 +405,7 @@ class GUI:
         hours = int(self.othertime_hours.get_value())
         minutes = int(self.othertime_minutes.get_value())
         self.othertime_dialog.hide()
-        time = hours*60*60 + minutes*60
+        time = hours * 60 * 60 + minutes * 60
         if time > 0:
             self.__core.timed_activation(time)
 
@@ -414,23 +429,23 @@ def main():
     GObject.threads_init()
 
     # register the process id as 'caffeine'
-    libc = ctypes.cdll.LoadLibrary('libc.so.6')
-    libc.prctl(15, 'caffeine', 0, 0, 0)
+    libc = ctypes.cdll.LoadLibrary("libc.so.6")
+    libc.prctl(15, "caffeine", 0, 0, 0)
 
     arguments = docopt(__doc__, version=__version__)
 
     # Makes sure that only one instance of the Caffeine is run for
     # each user on the system.
-    pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
+    pid_name = "/tmp/caffeine" + str(os.getuid()) + ".pid"
     app = ApplicationInstance(pid_name)
 
     if arguments["kill"] or arguments["--kill"]:
         if app.is_running():
             app.kill()
         else:
-            logger.error('Caffeine is not running')
+            logger.error("Caffeine is not running")
     elif app.is_running():
-        logger.fatal('Caffeine is already running')
+        logger.fatal("Caffeine is already running")
         sys.exit(-3)
 
     if arguments["kill"]:
@@ -453,7 +468,7 @@ def main():
             print("Invalid time argument.")
             sys.exit(2)
 
-        main.timed_activation((hours * 3600.0)+(minutes * 60.0))
+        main.timed_activation((hours * 3600.0) + (minutes * 60.0))
 
     if arguments["--preferences"]:
         main.window.show_all()

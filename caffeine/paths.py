@@ -13,18 +13,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
 import os
 from os import makedirs
-from os.path import exists, join
+from os.path import exists
+from os.path import join
 
 from xdg.BaseDirectory import xdg_config_home
 
 PACKAGE_PATH = os.path.dirname(os.path.abspath(__file__))
-LOCALE_PATH = join(PACKAGE_PATH, 'locale')
-GLADE_PATH = join(PACKAGE_PATH, 'assets/glade')
-IMAGE_PATH = join(PACKAGE_PATH, 'assets/images')
-ICON_PATH = join(PACKAGE_PATH, 'assets/icons')
+LOCALE_PATH = join(PACKAGE_PATH, "locale")
+GLADE_PATH = join(PACKAGE_PATH, "assets/glade")
+IMAGE_PATH = join(PACKAGE_PATH, "assets/images")
+ICON_PATH = join(PACKAGE_PATH, "assets/icons")
 
 
 def get_glade_file(filename):

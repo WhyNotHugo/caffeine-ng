@@ -14,8 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
-
 import gettext
 import locale
 
@@ -29,7 +27,7 @@ __version__ = version
 def __init_translations():
     GETTEXT_DOMAIN = "caffeine"
 
-    locale.setlocale(locale.LC_ALL, '')
+    locale.setlocale(locale.LC_ALL, "")
 
     for module in locale, gettext:
         module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)

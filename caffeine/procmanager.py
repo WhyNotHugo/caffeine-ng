@@ -14,14 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
 import os
 
 from .paths import get_whitelist_file
 
 
 class ProcManager:
-
     def __init__(self):
         self.whitelist_file = get_whitelist_file()
         self.proc_list = []

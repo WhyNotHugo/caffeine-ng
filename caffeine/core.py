@@ -14,23 +14,28 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
 import logging
-import os
 import os.path
 from gettext import gettext as _
 from threading import Timer
 
 from ewmh import EWMH
-from gi.repository import GLib, GObject, Notify
+from gi.repository import GLib
+from gi.repository import GObject
+from gi.repository import Notify
 from pulsectl import Pulse
 from pulsectl import PulseStateEnum
 
 from . import utils
-from .icons import empty_cup_icon, full_cup_icon
-from .inhibitors import DpmsInhibitor, GnomeInhibitor, XautolockInhibitor, \
-    XdgPowerManagmentInhibitor, XdgScreenSaverInhibitor, XorgInhibitor, \
-    XssInhibitor
+from .icons import empty_cup_icon
+from .icons import full_cup_icon
+from .inhibitors import DpmsInhibitor
+from .inhibitors import GnomeInhibitor
+from .inhibitors import XautolockInhibitor
+from .inhibitors import XdgPowerManagmentInhibitor
+from .inhibitors import XdgScreenSaverInhibitor
+from .inhibitors import XorgInhibitor
+from .inhibitors import XssInhibitor
 
 # from pympler import tracker
 # tr = tracker.SummaryTracker()
@@ -43,7 +48,6 @@ logger = logging.getLogger(__name__)
 
 
 class Caffeine(GObject.GObject):
-
     def __init__(self, process_manager):
         GObject.GObject.__init__(self)
 
@@ -54,7 +58,7 @@ class Caffeine(GObject.GObject):
             XorgInhibitor(),
             XautolockInhibitor(),
             XdgScreenSaverInhibitor(),
-            DpmsInhibitor()
+            DpmsInhibitor(),
         ]
 
         self.__process_manager = process_manager
@@ -92,8 +96,9 @@ class Caffeine(GObject.GObject):
         # tr.print_diff()
 
         if self.get_activated() and not self.__auto_activated:
-            logger.debug("Inhibition manually activated. Won't attempt to " +
-                         "auto-activate")
+            logger.debug(
+                "Inhibition manually activated. Won't attempt to " + "auto-activate"
+            )
             return True
 
         process_running = False
@@ -116,8 +121,9 @@ class Caffeine(GObject.GObject):
             # ewmh.getWmState(window, str=True) throws an exception
             # (it's a bug in pyewmh):
             if window and self._ewmh.getWmState(window):
-                fullscreen = "_NET_WM_STATE_FULLSCREEN" in \
-                    self._ewmh.getWmState(window, True)
+                fullscreen = "_NET_WM_STATE_FULLSCREEN" in self._ewmh.getWmState(
+                    window, True
+                )
             else:
                 fullscreen = False
 
@@ -143,8 +149,10 @@ class Caffeine(GObject.GObject):
             with Pulse() as pulseaudio:
                 for sink in pulseaudio.sink_input_list():
                     sink_state = pulseaudio.sink_info(sink.sink).state
-                    if sink_state is PulseStateEnum.running and \
-                       sink.proplist.get('media.role') == "music":
+                    if (
+                        sink_state is PulseStateEnum.running
+                        and sink.proplist.get("media.role") == "music"
+                    ):
                         # seems to be audio only
                         self.music_procs += 1
                     elif sink_state is PulseStateEnum.running:
@@ -175,12 +183,15 @@ class Caffeine(GObject.GObject):
             self.__auto_activated = True
             # TODO: Check __set_activated
             self.__set_activated(True)
-        elif not (
-            process_running or
-            fullscreen
-            or self.music_procs > 0
-            or screen_relevant_procs > 0
-        ) and self.__auto_activated:
+        elif (
+            not (
+                process_running
+                or fullscreen
+                or self.music_procs > 0
+                or screen_relevant_procs > 0
+            )
+            and self.__auto_activated
+        ):
             logger.info(
                 "Was auto-inhibited, but there's no fullscreen, whitelisted "
                 "process or audio playback now. De-activating."
@@ -231,16 +242,17 @@ class Caffeine(GObject.GObject):
         """Calls toggle_activated after the number of seconds
         specified by time has passed.
         """
-        message = (_("Timed activation set; ") +
-                   _("Caffeine will prevent powersaving for the next ") +
-                   str(time))
+        message = (
+            _("Timed activation set; ")
+            + _("Caffeine will prevent powersaving for the next ")
+            + str(time)
+        )
 
         logger.info("Timed activation set for " + str(time))
 
         if self.status_string == "":
             self.status_string = _("Activated for ") + str(time)
-            self.emit("activation-toggled", self.get_activated(),
-                      self.status_string)
+            self.emit("activation-toggled", self.get_activated(), self.status_string)
 
         self.set_activated(True, show_notification)
 
@@ -250,10 +262,14 @@ class Caffeine(GObject.GObject):
         # and deactivate after time has passed.
         # Stop already running timer
         if self.timer:
-            logger.info("Previous timed activation cancelled due to a " +
-                        "second timed activation request (was set for " +
-                        str(self.timer.interval) + " or " +
-                        str(time)+" seconds )")
+            logger.info(
+                "Previous timed activation cancelled due to a "
+                + "second timed activation request (was set for "
+                + str(self.timer.interval)
+                + " or "
+                + str(time)
+                + " seconds )"
+            )
             self.timer.cancel()
 
         self.timer = Timer(time, self._deactivate, args=[show_notification])
@@ -265,19 +281,16 @@ class Caffeine(GObject.GObject):
         self.toggle_activated(show_notification)
 
     def __set_activated(self, activate):
-        """Enables inhibition, but does not mark is as manually enabled.
-        """
+        """Enables inhibition, but does not mark is as manually enabled."""
         if self.get_activated() != activate:
             self.__toggle_activated(activate)
 
     def get_activated(self):
-        """Returns True if inhibition was manually activated.
-        """
+        """Returns True if inhibition was manually activated."""
         return self.__inhibition_manually_requested
 
     def set_activated(self, activate, show_notification=True):
-        """Sets inhibition as manually activated.
-        """
+        """Sets inhibition as manually activated."""
         if self.get_activated() != activate:
             self.toggle_activated(show_notification)
 
@@ -297,19 +310,24 @@ class Caffeine(GObject.GObject):
 
             self.__inhibition_manually_requested = False
             logger.info("Caffeine is now dormant; powersaving is re-enabled.")
-            self.status_string = \
-                _("Caffeine is dormant; powersaving is enabled")
+            self.status_string = _("Caffeine is dormant; powersaving is enabled")
 
             # If the user clicks on the full coffee-cup to disable
             # sleep prevention, it should also
             # cancel the timer for timed activation.
 
             if self.timer is not None and self.timer.name != "Expired":
-                message = (_("Timed activation cancelled (was set for ") +
-                           str(self.timer.interval) + ")")
+                message = (
+                    _("Timed activation cancelled (was set for ")
+                    + str(self.timer.interval)
+                    + ")"
+                )
 
-                logger.info("Timed activation cancelled (was set for " +
-                            str(self.timer.interval) + ")")
+                logger.info(
+                    "Timed activation cancelled (was set for "
+                    + str(self.timer.interval)
+                    + ")"
+                )
 
                 if note:
                     self._notify(message, empty_cup_icon)
@@ -318,12 +336,15 @@ class Caffeine(GObject.GObject):
                 self.timer = None
 
             elif self.timer is not None and self.timer.name == "Expired":
-                message = (str(self.timer.interval) +
-                           _(" have elapsed; powersaving is re-enabled"))
+                message = str(self.timer.interval) + _(
+                    " have elapsed; powersaving is re-enabled"
+                )
 
-                logger.info("Timed activation period (" +
-                            str(self.timer.interval) +
-                            ") has elapsed")
+                logger.info(
+                    "Timed activation period ("
+                    + str(self.timer.interval)
+                    + ") has elapsed"
+                )
 
                 if note:
                     self._notify(message, empty_cup_icon)
@@ -334,18 +355,18 @@ class Caffeine(GObject.GObject):
             self.__inhibition_manually_requested = True
 
         # decide, if we allow the screen to sleep
-        if (self.music_procs > 0 or not self.__inhibition_manually_requested):
+        if self.music_procs > 0 or not self.__inhibition_manually_requested:
             inhibit_screen = False
         else:
             inhibit_screen = True
 
-        self._performTogglingActions(self.__inhibition_manually_requested,
-                                     inhibit_screen)
+        self._performTogglingActions(
+            self.__inhibition_manually_requested, inhibit_screen
+        )
         logger.info("\n\n")
         self.status_string = "Caffeine is preventing powersaving."
 
-        self.emit("activation-toggled", self.get_activated(),
-                  self.status_string)
+        self.emit("activation-toggled", self.get_activated(), self.status_string)
         self.status_string = ""
 
     def _performTogglingActions(self, suspend, susp_screen):
@@ -354,13 +375,16 @@ class Caffeine(GObject.GObject):
 
         for inhibitor in self.__inhibitors:
             if inhibitor.applicable:
-                inhibitor.set(susp_screen) if inhibitor.is_screen_inhibitor() \
-                                              else inhibitor.set(suspend)
-                logger.info("%s is applicable, state: %s"
-                            % (inhibitor, inhibitor.running))
+                inhibitor.set(
+                    susp_screen
+                ) if inhibitor.is_screen_inhibitor() else inhibitor.set(suspend)
+                logger.info(
+                    "%s is applicable, state: %s" % (inhibitor, inhibitor.running)
+                )
         self.__inhibition_successful = not self.__inhibition_successful
 
 
 # register a signal
-GObject.signal_new("activation-toggled", Caffeine,
-                   GObject.SignalFlags.RUN_FIRST, None, [bool, str])
+GObject.signal_new(
+    "activation-toggled", Caffeine, GObject.SignalFlags.RUN_FIRST, None, [bool, str]
+)

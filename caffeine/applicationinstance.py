@@ -14,8 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
-import os
 import os.path
 
 
@@ -51,7 +49,7 @@ class ApplicationInstance:
         os.kill(self.pid, 9)
 
     def write_pid_file(self):
-        with open(self.pid_file, 'w') as f:
+        with open(self.pid_file, "w") as f:
             f.write(str(os.getpid()))
 
     def remove_pid_file(self):

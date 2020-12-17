@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
 import os
 
 
@@ -57,7 +56,7 @@ def getProcesses():
 
 def isProcessRunning(name):
 
-    for proc_name, pid in getProcesses():
+    for proc_name, _pid in getProcesses():
         if name == proc_name:
             return True
 
