@@ -378,9 +378,7 @@ class Caffeine(GObject.GObject):
                 inhibitor.set(
                     susp_screen
                 ) if inhibitor.is_screen_inhibitor() else inhibitor.set(suspend)
-                logger.info(
-                    "%s is applicable, state: %s" % (inhibitor, inhibitor.running)
-                )
+                logger.info(f"{inhibitor} is applicable, state: {inhibitor.running}")
         self.__inhibition_successful = not self.__inhibition_successful
 
 
