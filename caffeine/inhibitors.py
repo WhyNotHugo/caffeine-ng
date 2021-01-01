@@ -54,7 +54,7 @@ class BaseInhibitor:
 
 class GnomeInhibitor(BaseInhibitor):
     def __init__(self):
-        super().__init__(self)
+        super().__init__()
         self.bus = dbus.SessionBus()
 
         self.__proxy = None
@@ -86,7 +86,7 @@ class GnomeInhibitor(BaseInhibitor):
 
 class XdgScreenSaverInhibitor(BaseInhibitor):
     def __init__(self):
-        super().__init__(self)
+        super().__init__()
         self.bus = dbus.SessionBus()
 
         self.__cookie = None
@@ -117,7 +117,7 @@ class XdgScreenSaverInhibitor(BaseInhibitor):
 
 class XdgPowerManagmentInhibitor(BaseInhibitor):
     def __init__(self):
-        super().__init__(self)
+        super().__init__()
         self.bus = dbus.SessionBus()
 
         self.__cookie = None
