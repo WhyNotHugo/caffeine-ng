@@ -24,7 +24,6 @@ from gi.repository import GLib
 from gi.repository import GObject
 from gi.repository import Notify
 from pulsectl import Pulse
-from pulsectl import PulseStateEnum
 
 from . import utils
 from .icons import empty_cup_icon
@@ -146,23 +145,23 @@ class Caffeine(GObject.GObject):
             # off there. Keep the screen on for audio without music role,
             # as they might be videos
             with Pulse() as pulseaudio:
-                for sink in pulseaudio.sink_input_list():
-                    sink_state = pulseaudio.sink_info(sink.sink).state
-                    if (
-                        sink_state is PulseStateEnum.running
-                        and sink.proplist.get("media.role") == "music"
+                for application_output in pulseaudio.sink_input_list():
+                    if (not application_output.mute                                   # application audio is not muted
+                        and not application_output.corked                             # application audio is not paused
+                        and not pulseaudio.sink_info(application_output.sink).mute    # system audio is not muted
                     ):
-                        # seems to be audio only
-                        self.music_procs += 1
-                    elif sink_state is PulseStateEnum.running:
-                        # Video or other audio source
-                        screen_relevant_procs += 1
+                        if application_output.proplist.get("media.role") == "music":
+                            # seems to be audio only
+                            self.music_procs += 1
+                        else:
+                            # Video or other audio source
+                            screen_relevant_procs += 1
 
                 # Get all audio recording streams
-                for source in pulseaudio.source_output_list():
-                    source_state = pulseaudio.source_info(source.source).state
-
-                    if source_state is PulseStateEnum.running:
+                for application_input in pulseaudio.source_output_list():
+                    if (not application_input.mute                                     # application input is not muted
+                        and not pulseaudio.source_info(application_input.source).mute  # system input is not muted
+                    ):
                         # Treat recordings as video because likely you don't
                         # want to turn the screen of while recording
                         screen_relevant_procs += 1
