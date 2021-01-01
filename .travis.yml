@@ -26,11 +26,13 @@ script:
 jobs:
   include:
     - stage: deploy
+      python: 3.9
       script:
         - pip install wheel twine
         - python setup.py sdist bdist_wheel
         - twine upload -u $PYPI_USERNAME -p $PYPI_PASSWORD dist/*
     - stage: deploy
+      python: 3.9
       script:
         - pip install wheel
         - python setup.py sdist bdist_wheel
