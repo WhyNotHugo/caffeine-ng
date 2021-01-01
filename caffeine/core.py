@@ -138,6 +138,8 @@ class Caffeine(GObject.GObject):
         # Number of all audio streams including videos. We keep the screen on
         # here:
         screen_relevant_procs = 0
+        # Applications currently playing audio.
+        active_applications = []
 
         if not process_running and not fullscreen:
             # Get all audio playback streams
@@ -157,6 +159,9 @@ class Caffeine(GObject.GObject):
                         else:
                             # Video or other audio source
                             screen_relevant_procs += 1
+                        # Save the application names
+                        application_name = application_output.proplist["application.process.binary"]
+                        active_applications.append(application_name)
 
                 # Get all audio recording streams
                 for application_input in pulseaudio.source_output_list():
@@ -167,12 +172,15 @@ class Caffeine(GObject.GObject):
                         # Treat recordings as video because likely you don't
                         # want to turn the screen of while recording
                         screen_relevant_procs += 1
+                        # Save the application names
+                        application_name  = application_input.proplist["application.process.binary"]
+                        active_applications.append(application_name)
 
             if self.music_procs > 0 or screen_relevant_procs > 0:
                 if self.__auto_activated:
-                    logger.debug("Audio playback detected. No change.")
+                    logger.debug(f"Audio playback detected ({', '.join(active_applications)}). No change.")
                 elif not self.get_activated():
-                    logger.info("Audio playback detected. Inhibiting.")
+                    logger.info(f"Audio playback detected ({', '.join(active_applications)}). Inhibiting.")
 
         if (
             process_running
