@@ -37,12 +37,19 @@ it was undesirable.
 System requirements
 -------------------
 
-* Either a screensaver that implements the ``org.freedesktop.ScreenSaver``
-  API (this includes KDE, amongst others) API, gnome-screensaver, XSS and/or
-  DPMS, xautolock, xidlehook.
-* Python 3 (apparently works with Python 2, but not officially supported).
+* Python 3.6 to 3.9 is required.
 
-See ``requirements.txt`` for required python packages
+* ``caffeine-ng`` works with the following screensavers / screenlockers:
+
+  * Anything that implements the ``org.freedesktop.ScreenSaver`` API (this
+    includes KDE, amongst others)
+  * gnome-screensaver
+  * XSS
+  * Xorg + DPMS
+  * xautolock
+  * xidlehook.
+
+See ``setup.py`` for required python packages
 
 Installation
 ------------
