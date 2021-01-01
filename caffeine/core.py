@@ -146,7 +146,8 @@ class Caffeine(GObject.GObject):
             # as they might be videos
             with Pulse() as pulseaudio:
                 for application_output in pulseaudio.sink_input_list():
-                    if (not application_output.mute                                   # application audio is not muted
+                    if (
+                        not application_output.mute                                   # application audio is not muted
                         and not application_output.corked                             # application audio is not paused
                         and not pulseaudio.sink_info(application_output.sink).mute    # system audio is not muted
                     ):
@@ -159,7 +160,8 @@ class Caffeine(GObject.GObject):
 
                 # Get all audio recording streams
                 for application_input in pulseaudio.source_output_list():
-                    if (not application_input.mute                                     # application input is not muted
+                    if (
+                        not application_input.mute                                     # application input is not muted
                         and not pulseaudio.source_info(application_input.source).mute  # system input is not muted
                     ):
                         # Treat recordings as video because likely you don't
