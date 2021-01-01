@@ -54,7 +54,7 @@ class BaseInhibitor:
 
 class GnomeInhibitor(BaseInhibitor):
     def __init__(self):
-        BaseInhibitor.__init__(self)
+        super().__init__(self)
         self.bus = dbus.SessionBus()
 
         self.__proxy = None
@@ -86,7 +86,7 @@ class GnomeInhibitor(BaseInhibitor):
 
 class XdgScreenSaverInhibitor(BaseInhibitor):
     def __init__(self):
-        BaseInhibitor.__init__(self)
+        super().__init__(self)
         self.bus = dbus.SessionBus()
 
         self.__cookie = None
@@ -117,7 +117,7 @@ class XdgScreenSaverInhibitor(BaseInhibitor):
 
 class XdgPowerManagmentInhibitor(BaseInhibitor):
     def __init__(self):
-        BaseInhibitor.__init__(self)
+        super().__init__(self)
         self.bus = dbus.SessionBus()
 
         self.__cookie = None
@@ -155,9 +155,6 @@ class XssInhibitor(BaseInhibitor):
                 time.sleep(50)
             logging.info("XSS inhibitor thread finishing.")
 
-    def __init__(self):
-        BaseInhibitor.__init__(self)
-
     def inhibit(self):
         self.running = True
         self.thread = XssInhibitor.XssInhibitorThread()
@@ -174,9 +171,6 @@ class XssInhibitor(BaseInhibitor):
 
 
 class DpmsInhibitor(BaseInhibitor):
-    def __init__(self):
-        BaseInhibitor.__init__(self)
-
     def inhibit(self):
         self.running = True
 
@@ -199,9 +193,6 @@ class DpmsInhibitor(BaseInhibitor):
 
 
 class XorgInhibitor(BaseInhibitor):
-    def __init__(self):
-        BaseInhibitor.__init__(self)
-
     def inhibit(self):
         self.running = True
 
@@ -221,9 +212,6 @@ class XorgInhibitor(BaseInhibitor):
 
 
 class XautolockInhibitor(BaseInhibitor):
-    def __init__(self):
-        BaseInhibitor.__init__(self)
-
     def inhibit(self):
         self.running = True
 
@@ -240,9 +228,6 @@ class XautolockInhibitor(BaseInhibitor):
 
 
 class XidlehookInhibitor(BaseInhibitor):
-    def __init__(self):
-        BaseInhibitor.__init__(self)
-
     def inhibit(self):
         self.running = True
 
