@@ -237,3 +237,22 @@ class XautolockInhibitor(BaseInhibitor):
     @property
     def applicable(self):
         return os.system("pgrep xautolock") == 0
+
+
+class XidlehookInhibitor(BaseInhibitor):
+    def __init__(self):
+        BaseInhibitor.__init__(self)
+
+    def inhibit(self):
+        self.running = True
+
+        os.system("pkill -SIGSTOP xidlehook")
+
+    def uninhibit(self):
+        self.running = False
+
+        os.system("pkill -SIGCONT xidlehook")
+
+    @property
+    def applicable(self):
+        return os.system("pgrep xidlehook") == 0

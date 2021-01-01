@@ -34,11 +34,9 @@ from .inhibitors import GnomeInhibitor
 from .inhibitors import XautolockInhibitor
 from .inhibitors import XdgPowerManagmentInhibitor
 from .inhibitors import XdgScreenSaverInhibitor
+from .inhibitors import XidlehookInhibitor
 from .inhibitors import XorgInhibitor
 from .inhibitors import XssInhibitor
-
-# from pympler import tracker
-# tr = tracker.SummaryTracker()
 
 
 logging.basicConfig(level=logging.INFO)
@@ -57,6 +55,7 @@ class Caffeine(GObject.GObject):
             XssInhibitor(),
             XorgInhibitor(),
             XautolockInhibitor(),
+            XidlehookInhibitor(),
             XdgScreenSaverInhibitor(),
             DpmsInhibitor(),
         ]
