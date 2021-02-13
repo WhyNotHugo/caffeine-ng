@@ -103,6 +103,11 @@ Programs list.
 
 .. _AUR: https://aur.archlinux.org/packages/caffeine-ng/
 
+Gentoo
+------------
+
+Gentoo users may find `caffeine-ng <https://github.com/PF4Public/gentoo-overlay/tree/master/x11-misc/caffeine-ng>`_ in `::pf4public <https://github.com/PF4Public/gentoo-overlay>`_ Gentoo overlay
+
 License
 -------
 
