@@ -293,11 +293,11 @@ class Caffeine(GObject.GObject):
         if self.get_activated() != activate:
             self.__toggle_activated(activate)
 
-    def get_activated(self):
+    def get_activated(self) -> bool:
         """Returns True if inhibition was manually activated."""
         return self.__inhibition_manually_requested
 
-    def set_activated(self, activate, show_notification=True):
+    def set_activated(self, activate: bool, show_notification=True):
         """Sets inhibition as manually activated."""
         if self.get_activated() != activate:
             self.toggle_activated(show_notification)

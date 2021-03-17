@@ -14,27 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-"""Caffeine-ng
-Usage:
-  caffeine [options]
-  caffeine kill
-
-Commands:
-  kill                      Kill any running instances of caffeine and exit.
-
-Options:
-  -a --activate             Disables power management and screen saving.
-  -d --deactivate           Re-enables power management and screen saving.
-  -k --kill                 Kill any running instance of caffeine.
-  -t --time <HH>:<MM>       Use with -a. Activate caffeine for HH:MM.
-  -p --preferences          Start with the Preferences dialog open.
-"""
 # TODO: add a -v --verbosity flag.
-import ctypes
 import logging
-import os
-import signal
-import sys
 from gettext import gettext as _
 
 import gi
@@ -42,15 +23,13 @@ import gi
 gi.require_version("GdkPixbuf", "2.0")  # noqa
 gi.require_version("Gtk", "3.0")  # noqa
 gi.require_version("Notify", "0.7")  # noqa
+gi.require_version("AppIndicator3", "0.1")
 
-from docopt import docopt  # noqa: E402
 from gi.repository import GdkPixbuf, Gio, GObject, Gtk  # noqa: E402
 from gi.repository.Notify import init as notify_init  # noqa: E402
 from gi.repository.Notify import Notification  # noqa: E402
-from setproctitle import setproctitle  # noqa: E402
 
 from . import __version__  # noqa: E402
-from .applicationinstance import ApplicationInstance  # noqa: E402
 from .core import Caffeine  # noqa: E402
 from .icons import generic_icon, get_icon_pixbuf  # noqa: E402
 from .paths import get_glade_file  # noqa: E402
@@ -291,7 +270,7 @@ class GUI:
 
         builder.connect_signals(self)
 
-    def setActive(self, active):
+    def setActive(self, active: bool):
         self.__core.set_activated(active)
 
     def timed_activation(self, time):
@@ -421,58 +400,5 @@ class GUI:
         self.__core.quit()
         Gtk.main_quit()
 
-
-def main():
-    setproctitle("caffeine-ng")
-    signal.signal(signal.SIGINT, signal.SIG_DFL)
-
-    GObject.threads_init()
-
-    # register the process id as 'caffeine'
-    libc = ctypes.cdll.LoadLibrary("libc.so.6")
-    libc.prctl(15, "caffeine", 0, 0, 0)
-
-    arguments = docopt(__doc__, version=__version__)
-
-    # Makes sure that only one instance of the Caffeine is run for
-    # each user on the system.
-    pid_name = "/tmp/caffeine" + str(os.getuid()) + ".pid"
-    app = ApplicationInstance(pid_name)
-
-    if arguments["kill"] or arguments["--kill"]:
-        if app.is_running():
-            app.kill()
-        else:
-            logger.error("Caffeine is not running")
-    elif app.is_running():
-        logger.fatal("Caffeine is already running")
-        sys.exit(-3)
-
-    if arguments["kill"]:
-        return
-
-    main = GUI(arguments["--preferences"])
-    if arguments["--activate"]:
-        main.setActive(True)
-
-    if arguments["--activate"] and arguments["--time"]:
-        parts = arguments["--time"].split(":")
-        if len(parts) != 2:
-            print("-t argument must be in the hour:minute format.")
-            sys.exit(2)
-
-        try:
-            hours = int(parts[0])
-            minutes = int(parts[1])
-        except ValueError:
-            print("Invalid time argument.")
-            sys.exit(2)
-
-        main.timed_activation((hours * 3600.0) + (minutes * 60.0))
-
-    if arguments["--preferences"]:
-        main.window.show_all()
-
-    app.write_pid_file()
-    Gtk.main()
-    app.remove_pid_file()
+    def run(self):
+        Gtk.main()

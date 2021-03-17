@@ -14,28 +14,34 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-import os.path
+import os
+from contextlib import contextmanager
+from typing import Optional
+
+from xdg.BaseDirectory import get_runtime_dir
 
 
 class ApplicationInstance:
-    """Class used to handle one application instance mechanism."""
+    """Class used to handle one application instance mechanism.
 
-    def __init__(self, pid_file):
-        self.pid_file = pid_file
+    Note that this is not race-condition free; if you run multiple instances at
+    the same instant, it's possible that they'll screw up.
+    """
+
+    def __init__(self, name: str):
+        self.name = name
+        self.pid_path = os.path.join(get_runtime_dir(), name, "pid")
 
     @property
-    def pid(self):
-        if os.path.isfile(self.pid_file):
-            with open(self.pid_file) as f:
-                try:
-                    pid = int(f.read())
-                except ValueError:
-                    pid = None
-            return pid
-        else:
+    def pid(self) -> Optional[int]:
+        try:
+            with open(self.pid_path) as f:
+                return int(f.read())
+        except (ValueError, FileNotFoundError):
             return None
 
-    def is_running(self):
+    def is_running(self) -> bool:
+        """Return true if an instance is already running."""
         if self.pid:
             try:
                 os.kill(self.pid, 0)
@@ -45,15 +51,29 @@ class ApplicationInstance:
         else:
             return False
 
-    def kill(self):
-        os.kill(self.pid, 9)
+    def kill(self) -> None:
+        """Kill the currently running instance, if any."""
+        if self.pid:
+            os.kill(self.pid, 9)
 
-    def write_pid_file(self):
-        with open(self.pid_file, "w") as f:
+    def _write_pid_path(self):
+        pid_dir = os.path.dirname("/run/user/1000/caffeine-ng/pid")
+        os.makedirs(pid_dir, exist_ok=True)
+
+        with open(self.pid_path, "w") as f:
             f.write(str(os.getpid()))
 
-    def remove_pid_file(self):
+    def _remove_pid_path(self):
         try:
-            os.remove(self.pid_file)
+            os.remove(self.pid_path)
         except FileNotFoundError:
             pass
+
+    @contextmanager
+    def pid_file(self):
+        """Context manager to run code keeping a PID file alive."""
+        self._write_pid_path()
+        try:
+            yield
+        finally:
+            self._remove_pid_path()

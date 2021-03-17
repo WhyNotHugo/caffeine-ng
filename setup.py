@@ -46,14 +46,15 @@ if __name__ == "__main__":
         include_package_data=True,
         data_files=get_data_files(),
         install_requires=[
-            "docopt>=0.6.2",
+            "click>=7.1,<8.0",
             "ewmh>=0.1.4",
             "pyxdg>=0.25",
             "setproctitle>=1.1.10",
             "wheel>=0.29.0",
             "pulsectl",
         ],
-        entry_points={"gui_scripts": ["caffeine = caffeine.main:main"]},
+        # `console_scripts` is the same as `gui_scripts`.
+        entry_points={"gui_scripts": ["caffeine = caffeine.cli:cli"]},
         classifiers=[
             "Development Status :: 5 - Production/Stable",
             "Environment :: X11 Applications",
