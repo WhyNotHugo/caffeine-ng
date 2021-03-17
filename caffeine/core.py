@@ -45,7 +45,11 @@ logger = logging.getLogger(__name__)
 
 
 class Caffeine(GObject.GObject):
-    def __init__(self, process_manager):
+    def __init__(self, process_manager, pulseaudio: bool):
+        """Main caffeine worker.
+
+        :param pulseaudio: Whether pulseaudio support should be enabled.
+        """
         GObject.GObject.__init__(self)
 
         self.__inhibitors = [
@@ -58,6 +62,7 @@ class Caffeine(GObject.GObject):
             XdgScreenSaverInhibitor(),
             DpmsInhibitor(),
         ]
+        self.pulseaudio = pulseaudio
 
         self.__process_manager = process_manager
 
@@ -141,7 +146,7 @@ class Caffeine(GObject.GObject):
         # Applications currently playing audio.
         active_applications = []
 
-        if not process_running and not fullscreen:
+        if self.pulseaudio and not process_running and not fullscreen:
             # Get all audio playback streams
             # Music players seem to use the music role. We can turn the screen
             # off there. Keep the screen on for audio without music role,

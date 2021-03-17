@@ -59,6 +59,14 @@ def cli(ctx):
     is_flag=True,
     help="Start with the Preferences dialog open.",
 )
+@click.option(
+    "--pulseaudio/--no-pulseaudio",
+    default=True,
+    help=(
+        "Inhibit when pulseaudio is in use. "
+        "Only the screensaver (i.e.: not suspension) is inhibited when audio is playing."
+    ),
+)
 @click.pass_obj
 def start(
     app: ApplicationInstance,
@@ -67,6 +75,7 @@ def start(
     kill: bool,
     time: str,
     preferences: bool,
+    pulseaudio: bool,
 ):
     """Start caffeine."""
     if app.is_running():
@@ -77,7 +86,7 @@ def start(
     elif kill:
         raise click.ClickException("Caffine is not running.")
 
-    main = GUI(preferences)
+    main = GUI(show_preferences=preferences, pulseaudio=pulseaudio)
     if activate:
         main.setActive(True)
 
