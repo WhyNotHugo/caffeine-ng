@@ -153,6 +153,11 @@ class Caffeine(GObject.GObject):
                         and not application_output.corked                             # application audio is not paused
                         and not pulseaudio.sink_info(application_output.sink).mute    # system audio is not muted
                     ):
+                        # ignore silent sinks
+                        sink_source = pulseaudio.sink_info(application_output.sink).monitor_source
+                        sink_peak = pulseaudio.get_peak_sample(sink_source, 0.1)
+                        if not (sink_peak > 0):
+                            continue
                         if application_output.proplist.get("media.role") == "music":
                             # seems to be audio only
                             self.music_procs += 1
@@ -169,6 +174,10 @@ class Caffeine(GObject.GObject):
                         not application_input.mute                                     # application input is not muted
                         and not pulseaudio.source_info(application_input.source).mute  # system input is not muted
                     ):
+                        # ignore silent sources
+                        source_peak = pulseaudio.get_peak_sample(application_input.source, 0.1)
+                        if not (source_peak > 0):
+                            continue
                         # Treat recordings as video because likely you don't
                         # want to turn the screen of while recording
                         screen_relevant_procs += 1
