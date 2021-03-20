@@ -165,7 +165,7 @@ class Caffeine(GObject.GObject):
                             # Video or other audio source
                             screen_relevant_procs += 1
                         # Save the application's process name
-                        application_name = application_output.proplist["application.process.binary"]
+                        application_name = application_output.proplist.get("application.process.binary", "no name")
                         active_applications.append(application_name)
 
                 # Get all audio recording streams
@@ -182,7 +182,7 @@ class Caffeine(GObject.GObject):
                         # want to turn the screen of while recording
                         screen_relevant_procs += 1
                         # Save the application's process name
-                        application_name = application_input.proplist["application.process.binary"]
+                        application_name = application_input.proplist.get("application.process.binary", "no name")
                         active_applications.append(application_name)
 
             if self.music_procs > 0 or screen_relevant_procs > 0:
