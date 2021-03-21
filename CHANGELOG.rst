@@ -15,3 +15,7 @@ Also, this rewrite allows for cleaning up some skeletons in the closet.
 - ``caffeine-ng`` now depend on ``click``, and no longer depends on ``docopt``.
 - The CLI interface has changed slightly. When passing extra arguments use
   ``caffeine start``. For example ``caffeine start --activate``.
+
+The way the PID file is handled has hardened and simplified, but this will
+result in caffeine 4.0 not killing older versions. Exit any older versions that
+,may be running before upgrading (or simply restart after doing so).

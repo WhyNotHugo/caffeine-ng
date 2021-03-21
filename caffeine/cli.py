@@ -78,13 +78,10 @@ def start(
     pulseaudio: bool,
 ):
     """Start caffeine."""
-    if app.is_running():
-        if kill:
-            app.kill()
-        else:
-            raise click.ClickException("Caffine is already running.")
-    elif kill:
-        raise click.ClickException("Caffine is not running.")
+    if kill:
+        app.kill()
+    elif app.is_running():
+        raise click.ClickException("Caffine is already running.")
 
     main = GUI(show_preferences=preferences, pulseaudio=pulseaudio)
     if activate:
