@@ -38,7 +38,6 @@ from .inhibitors import XorgInhibitor
 from .inhibitors import XssInhibitor
 
 
-logging.basicConfig(level=logging.INFO)
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
 logger = logging.getLogger(__name__)

@@ -12,14 +12,18 @@ logger = logging.getLogger(__name__)
 
 @click.group(invoke_without_command=True)
 @click.version_option(prog_name="caffeine")
+@click.option('--verbose', '-v', is_flag=True)
 @click.pass_context
-def cli(ctx):
+def cli(ctx, verbose):
     setproctitle("caffeine-ng")
     signal.signal(signal.SIGINT, signal.SIG_DFL)
 
     # register the process id as 'caffeine'
     libc = ctypes.cdll.LoadLibrary("libc.so.6")
     libc.prctl(15, "caffeine", 0, 0, 0)
+
+    if verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
 
     ctx.obj = ApplicationInstance("caffeine-ng")
 
