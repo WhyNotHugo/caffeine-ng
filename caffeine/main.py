@@ -20,9 +20,9 @@ from gettext import gettext as _
 
 import gi
 
-gi.require_version("GdkPixbuf", "2.0")  # noqa
-gi.require_version("Gtk", "3.0")  # noqa
-gi.require_version("Notify", "0.7")  # noqa
+gi.require_version("GdkPixbuf", "2.0")
+gi.require_version("Gtk", "3.0")
+gi.require_version("Notify", "0.7")
 gi.require_version("AppIndicator3", "0.1")
 
 from gi.repository import GdkPixbuf, Gio, GObject, Gtk  # noqa: E402
