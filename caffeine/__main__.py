@@ -1,4 +1,4 @@
-from caffeine.main import main
+from caffeine.cli import cli
 
 if __name__ == "__main__":
-    main()
+    cli()

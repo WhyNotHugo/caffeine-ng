@@ -48,6 +48,10 @@ class BaseInhibitor:
     def is_screen_inhibitor(self):
         return False
 
+    @property
+    def applicable(self):
+        raise NotImplementedError()
+
     def __str__(self):
         return self.__class__.__name__
 
