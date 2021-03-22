@@ -49,7 +49,13 @@ logger = logging.getLogger(__name__)
 class Caffeine(GObject.GObject):
     timer: Optional[Timer]
 
-    def __init__(self, process_manager, pulseaudio: bool):
+    def __init__(
+        self,
+        process_manager,
+        pulseaudio: bool,
+        whitelist: bool,
+        fullscreen: bool,
+    ):
         """Main caffeine worker.
 
         :param pulseaudio: Whether pulseaudio support should be enabled.
@@ -70,13 +76,15 @@ class Caffeine(GObject.GObject):
         self.__process_manager = process_manager
 
         self._manual_trigger = ManualTrigger()
-        self.triggers = [
-            self._manual_trigger,
-            WhiteListTrigger(self.__process_manager),
-            FullscreenTrigger(),
-        ]
+        self.triggers: list = [self._manual_trigger]
+        if whitelist:
+            self.triggers.append(WhiteListTrigger(self.__process_manager))
+        if fullscreen:
+            self.triggers.append(FullscreenTrigger())
         if pulseaudio:
             self.triggers.append(PulseAudioTrigger())
+
+        logger.info("Running with triggers: %r.", self.triggers)
 
         # The initial state is uninhibited.
         self.desired_state = DesiredState.UNINHIBITED

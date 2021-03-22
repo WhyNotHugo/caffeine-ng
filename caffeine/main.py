@@ -127,11 +127,11 @@ class ProcAdd:
 
 
 class GUI:
-    def __init__(self, show_preferences=False, pulseaudio=True):
+    def __init__(self, show_preferences=False, **kwargs):
         # object to manage processes to activate for.
         self.__process_manager = ProcManager()
 
-        self.__core = Caffeine(self.__process_manager, pulseaudio=pulseaudio)
+        self.__core = Caffeine(self.__process_manager, **kwargs)
 
         self.__core.connect("activation-toggled", self.on_activation_toggled)
         self.ProcAdd = ProcAdd()

@@ -73,6 +73,16 @@ def cli(ctx, verbose):
         "Only the screensaver (i.e.: not suspension) is inhibited when audio is playing."
     ),
 )
+@click.option(
+    "--whitelist/--no-whitelist",
+    default=True,
+    help="Inhibit based on whitelisted applications.",
+)
+@click.option(
+    "--fullscreen/--no-fullscreen",
+    default=True,
+    help="Inhibit when a fullscreen application is detected.",
+)
 @click.pass_obj
 def start(
     app: ApplicationInstance,
@@ -82,6 +92,8 @@ def start(
     time: str,
     preferences: bool,
     pulseaudio: bool,
+    whitelist: bool,
+    fullscreen: bool,
 ):
     """Start caffeine."""
     if kill:
@@ -89,7 +101,12 @@ def start(
     elif app.is_running():
         raise click.ClickException("Caffine is already running.")
 
-    main = GUI(show_preferences=preferences, pulseaudio=pulseaudio)
+    main = GUI(
+        show_preferences=preferences,
+        pulseaudio=pulseaudio,
+        whitelist=whitelist,
+        fullscreen=fullscreen,
+    )
     if activate:
         main.setActive(True)
 
