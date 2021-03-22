@@ -45,7 +45,7 @@ logger = logging.getLogger(__name__)
 
 
 class Caffeine(GObject.GObject):
-    def __init__(self, process_manager):
+    def __init__(self, process_manager, process_manager_audio):
         GObject.GObject.__init__(self)
 
         self.__inhibitors = [
@@ -60,6 +60,9 @@ class Caffeine(GObject.GObject):
         ]
 
         self.__process_manager = process_manager
+        self.__process_manager_audio = process_manager_audio
+
+        self.__audio_peak_filtering_active = True
 
         # Status string (XXX: Let's double check how well this is working).
         self.status_string = "Caffeine is starting up..."
@@ -140,6 +143,8 @@ class Caffeine(GObject.GObject):
         screen_relevant_procs = 0
         # Applications currently playing audio.
         active_applications = []
+        # Applications ignored for audio handling
+        ignored_applications = self.__process_manager_audio.get_process_list()
 
         if not process_running and not fullscreen:
             # Get all audio playback streams
@@ -153,11 +158,15 @@ class Caffeine(GObject.GObject):
                         and not application_output.corked                             # application audio is not paused
                         and not pulseaudio.sink_info(application_output.sink).mute    # system audio is not muted
                     ):
-                        # ignore silent sinks
-                        sink_source = pulseaudio.sink_info(application_output.sink).monitor_source
-                        sink_peak = pulseaudio.get_peak_sample(sink_source, 0.1)
-                        if not (sink_peak > 0):
+                        application_name = application_output.proplist.get("application.process.binary", "no name")
+                        if application_name in ignored_applications:
                             continue
+                        if self.__audio_peak_filtering_active:
+                            # ignore silent sinks
+                            sink_source = pulseaudio.sink_info(application_output.sink).monitor_source
+                            sink_peak = pulseaudio.get_peak_sample(sink_source, 0.1)
+                            if not sink_peak > 0:
+                                continue
                         if application_output.proplist.get("media.role") == "music":
                             # seems to be audio only
                             self.music_procs += 1
@@ -165,7 +174,6 @@ class Caffeine(GObject.GObject):
                             # Video or other audio source
                             screen_relevant_procs += 1
                         # Save the application's process name
-                        application_name = application_output.proplist.get("application.process.binary", "no name")
                         active_applications.append(application_name)
 
                 # Get all audio recording streams
@@ -174,15 +182,18 @@ class Caffeine(GObject.GObject):
                         not application_input.mute                                     # application input is not muted
                         and not pulseaudio.source_info(application_input.source).mute  # system input is not muted
                     ):
-                        # ignore silent sources
-                        source_peak = pulseaudio.get_peak_sample(application_input.source, 0.1)
-                        if not (source_peak > 0):
+                        application_name = application_input.proplist.get("application.process.binary", "no name")
+                        if application_name in ignored_applications:
                             continue
+                        if self.__audio_peak_filtering_active:
+                            # ignore silent sources
+                            source_peak = pulseaudio.get_peak_sample(application_input.source, 0.1)
+                            if not (source_peak > 0):
+                                continue
                         # Treat recordings as video because likely you don't
                         # want to turn the screen of while recording
                         screen_relevant_procs += 1
                         # Save the application's process name
-                        application_name = application_input.proplist.get("application.process.binary", "no name")
                         active_applications.append(application_name)
 
             if self.music_procs > 0 or screen_relevant_procs > 0:
@@ -397,6 +408,9 @@ class Caffeine(GObject.GObject):
                 ) if inhibitor.is_screen_inhibitor() else inhibitor.set(suspend)
                 logger.info(f"{inhibitor} is applicable, state: {inhibitor.running}")
         self.__inhibition_successful = not self.__inhibition_successful
+
+    def set_audio_peak_filtering_active(self, active):
+        self.__audio_peak_filtering_active = active
 
 
 # register a signal

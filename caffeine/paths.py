@@ -39,6 +39,10 @@ def get_whitelist_file():
     return join(__config_dir, "whitelist.txt")
 
 
+def get_whitelist_file_audio():
+    return join(__config_dir, "audio_whitelist.txt")
+
+
 __config_dir = join(xdg_config_home, "caffeine")
 
 
@@ -47,3 +51,6 @@ if not exists(__config_dir):
 
 if not exists(get_whitelist_file()):
     open(get_whitelist_file(), "a").close()
+
+if not exists(get_whitelist_file_audio()):
+    open(get_whitelist_file_audio(), "a").close()
