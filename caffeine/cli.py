@@ -3,16 +3,17 @@ import logging
 import signal
 
 import click
+from setproctitle import setproctitle
+
 from caffeine.applicationinstance import ApplicationInstance
 from caffeine.main import GUI
-from setproctitle import setproctitle
 
 logger = logging.getLogger(__name__)
 
 
 @click.group(invoke_without_command=True)
 @click.version_option(prog_name="caffeine")
-@click.option('--verbose', '-v', is_flag=True)
+@click.option("--verbose", "-v", is_flag=True)
 @click.pass_context
 def cli(ctx, verbose):
     setproctitle("caffeine-ng")
@@ -23,7 +24,8 @@ def cli(ctx, verbose):
     libc.prctl(15, "caffeine", 0, 0, 0)
 
     if verbose:
-        logging.getLogger().setLevel(logging.DEBUG)
+        logging.basicConfig(level=logging.DEBUG)
+        logger.debug("Running with --verbose.")
 
     ctx.obj = ApplicationInstance("caffeine-ng")
 

@@ -62,8 +62,8 @@ class ApplicationInstance:
 
     def kill(self) -> None:
         """Kill the currently running instance, if any."""
-        if self.pid:
-            os.kill(self.pid, 9)
+        if self.is_running():
+            os.kill(self.pid, 9)  # type: ignore
 
     @contextmanager
     def pid_file(self):

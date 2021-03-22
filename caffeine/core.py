@@ -18,14 +18,12 @@ import logging
 import os.path
 from gettext import gettext as _
 from threading import Timer
+from typing import Optional
 
-from ewmh import EWMH
 from gi.repository import GLib
 from gi.repository import GObject
 from gi.repository import Notify
-from pulsectl import Pulse
 
-from . import utils
 from .icons import empty_cup_icon
 from .icons import full_cup_icon
 from .inhibitors import DpmsInhibitor
@@ -36,6 +34,11 @@ from .inhibitors import XdgScreenSaverInhibitor
 from .inhibitors import XidlehookInhibitor
 from .inhibitors import XorgInhibitor
 from .inhibitors import XssInhibitor
+from .triggers import DesiredState
+from .triggers import FullscreenTrigger
+from .triggers import ManualTrigger
+from .triggers import PulseAudioTrigger
+from .triggers import WhiteListTrigger
 
 
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
@@ -44,6 +47,8 @@ logger = logging.getLogger(__name__)
 
 
 class Caffeine(GObject.GObject):
+    timer: Optional[Timer]
+
     def __init__(self, process_manager, pulseaudio: bool):
         """Main caffeine worker.
 
@@ -61,156 +66,50 @@ class Caffeine(GObject.GObject):
             XdgScreenSaverInhibitor(),
             DpmsInhibitor(),
         ]
-        self.pulseaudio = pulseaudio
 
         self.__process_manager = process_manager
 
+        self._manual_trigger = ManualTrigger()
+        self.triggers = [
+            self._manual_trigger,
+            WhiteListTrigger(self.__process_manager),
+            FullscreenTrigger(),
+        ]
+        if pulseaudio:
+            self.triggers.append(PulseAudioTrigger())
+
+        # The initial state is uninhibited.
+        self.desired_state = DesiredState.UNINHIBITED
+
         # Status string (XXX: Let's double check how well this is working).
         self.status_string = "Caffeine is starting up..."
-
-        # Inhibition has been requested (though it may not yet be active).
-        self.__inhibition_manually_requested = False
 
         # Number of procs playing audio but nothing visual. This is a special
         # case where we want the screen to turn off while still preventing
         # the computer from suspending
         self.music_procs = 0
 
-        # Inhibition has successfully been activated.
-        self.__inhibition_successful = False
-
-        self.__auto_activated = False
         self.timer = None
         self.notification = None
 
-        self._ewmh = EWMH()
-
         # FIXME: add capability to xdg-screensaver to report timeout.
-        GLib.timeout_add(10000, self.__attempt_autoactivation)
+        GLib.timeout_add(10000, self.run_all_triggers)
 
         logger.info(self.status_string)
 
-    def __attempt_autoactivation(self):
-        """
-        Determines if we want to auto-activate inhibition by verifying if any
-        of the whitelisted processes is running OR if there's a fullscreen app.
-        """
-        # tr.print_diff()
+    def run_all_triggers(self, show_notification=False):
+        """Runs all triggers to determine the currently desired status."""
+        inhibit = DesiredState.UNINHIBITED
 
-        if self.get_activated() and not self.__auto_activated:
-            logger.debug(
-                "Inhibition manually activated. Won't attempt to " + "auto-activate"
-            )
-            return True
+        for trigger in self.triggers:
+            inhibit = max(inhibit, trigger.run())
 
-        process_running = False
+            if inhibit == DesiredState.INHIBIT_ALL:
+                logger.debug("%s requested %s.", trigger, inhibit)
+                break
 
-        # Determine if one of the whitelisted processes is running.
-        for proc in self.__process_manager.get_process_list():
-            if utils.isProcessRunning(proc):
-                process_running = True
-
-                if self.__auto_activated:
-                    logger.info("Process %s detected. No change.", proc)
-                elif not self.get_activated():
-                    logger.info("Process %s detected. Inhibiting.", proc)
-
-        # If none where running, let's look for fullscreen:
-        if not process_running:
-            # Determine if a fullscreen application is running
-            window = self._ewmh.getActiveWindow()
-            # ewmh.getWmState(window) returns None is scenarios where
-            # ewmh.getWmState(window, str=True) throws an exception
-            # (it's a bug in pyewmh):
-            if window and self._ewmh.getWmState(window):
-                fullscreen = "_NET_WM_STATE_FULLSCREEN" in self._ewmh.getWmState(
-                    window, True
-                )
-            else:
-                fullscreen = False
-
-            if fullscreen:
-                if self.__auto_activated:
-                    logger.debug("Fullscreen app detected. No change.")
-                elif not self.get_activated():
-                    logger.info("Fullscreen app detected. Inhibiting.")
-
-        # Let's look for playing audio:
-        # Number of supposed audio only streams.  We can turn the screen off
-        # for those:
-        self.music_procs = 0
-        # Number of all audio streams including videos. We keep the screen on
-        # here:
-        screen_relevant_procs = 0
-        # Applications currently playing audio.
-        active_applications = []
-
-        if self.pulseaudio and not process_running and not fullscreen:
-            # Get all audio playback streams
-            # Music players seem to use the music role. We can turn the screen
-            # off there. Keep the screen on for audio without music role,
-            # as they might be videos
-            with Pulse() as pulseaudio:
-                for application_output in pulseaudio.sink_input_list():
-                    if (
-                        not application_output.mute                                   # application audio is not muted
-                        and not application_output.corked                             # application audio is not paused
-                        and not pulseaudio.sink_info(application_output.sink).mute    # system audio is not muted
-                    ):
-                        if application_output.proplist.get("media.role") == "music":
-                            # seems to be audio only
-                            self.music_procs += 1
-                        else:
-                            # Video or other audio source
-                            screen_relevant_procs += 1
-                        # Save the application's process name
-                        application_name = application_output.proplist["application.process.binary"]
-                        active_applications.append(application_name)
-
-                # Get all audio recording streams
-                for application_input in pulseaudio.source_output_list():
-                    if (
-                        not application_input.mute                                     # application input is not muted
-                        and not pulseaudio.source_info(application_input.source).mute  # system input is not muted
-                    ):
-                        # Treat recordings as video because likely you don't
-                        # want to turn the screen of while recording
-                        screen_relevant_procs += 1
-                        # Save the application's process name
-                        application_name = application_input.proplist["application.process.binary"]
-                        active_applications.append(application_name)
-
-            if self.music_procs > 0 or screen_relevant_procs > 0:
-                if self.__auto_activated:
-                    logger.debug(f"Audio playback detected ({', '.join(active_applications)}). No change.")
-                elif not self.get_activated():
-                    logger.info(f"Audio playback detected ({', '.join(active_applications)}). Inhibiting.")
-
-        if (
-            process_running
-            or fullscreen
-            or self.music_procs > 0
-            or screen_relevant_procs > 0
-        ) and not self.__auto_activated:
-            self.__auto_activated = True
-            # TODO: Check __set_activated
-            self.__set_activated(True)
-        elif (
-            not (
-                process_running
-                or fullscreen
-                or self.music_procs > 0
-                or screen_relevant_procs > 0
-            )
-            and self.__auto_activated
-        ):
-            logger.info(
-                "Was auto-inhibited, but there's no fullscreen, whitelisted "
-                "process or audio playback now. De-activating."
-            )
-            # TODO: Check __set_activated
-            self.__set_activated(False)
-            self.__auto_activated = False
+        logger.info(f"Desired state is: {inhibit}")
+        self.apply_desired_status(show_notification)
 
         return True
 
@@ -224,36 +123,16 @@ class Caffeine(GObject.GObject):
     def _notify(self, message, icon, title="Caffeine"):
         """Easy way to use pynotify."""
 
-        # try:
         Notify.init("Caffeine")
         if self.notification:
             self.notification.update(title, message, icon)
         else:
             self.notification = Notify.Notification.new(title, message, icon)
 
-        # XXX: Notify OSD doesn't seem to work when sleep is prevented
-        # if self.screenSaverCookie is not None and \
-        #    self.__inhibition_successful:
-        #     self.ssProxy.UnInhibit(self.screenSaverCookie)
-
         self.notification.show()
 
-        # if self.screenSaverCookie is not None and \
-        #    self.__inhibition_successful:
-        #     self.screenSaverCookie = \
-        #         self.ssProxy.Inhibit("Caffeine",
-        #                              "User has requested that Caffeine "+
-        #                              "disable the screen saver")
-
-        # except Exception as e:
-        #     logger.error("Exception occurred:\n%s", e)
-        # finally:
-        #     return False
-
-    def timed_activation(self, time, show_notification=True):
-        """Calls toggle_activated after the number of seconds
-        specified by time has passed.
-        """
+    def timed_activation(self, time: int, show_notification=True):
+        """Toggle inhibition after a given amount of seconds."""
         message = (
             _("Timed activation set; ")
             + _("Caffeine will prevent powersaving for the next ")
@@ -264,9 +143,9 @@ class Caffeine(GObject.GObject):
 
         if self.status_string == "":
             self.status_string = _("Activated for ") + str(time)
-            self.emit("activation-toggled", self.get_activated(), self.status_string)
 
-        self.set_activated(True, show_notification)
+        self.set_activated(True)
+        self.run_all_triggers()
 
         if show_notification:
             self._notify(message, full_cup_icon)
@@ -274,13 +153,11 @@ class Caffeine(GObject.GObject):
         # and deactivate after time has passed.
         # Stop already running timer
         if self.timer:
+            interval = self.timer.interval  # type: ignore
             logger.info(
                 "Previous timed activation cancelled due to a "
-                + "second timed activation request (was set for "
-                + str(self.timer.interval)
-                + " or "
-                + str(time)
-                + " seconds )"
+                "second timed activation request "
+                f"(was set for {interval} or {time} seconds )"
             )
             self.timer.cancel()
 
@@ -288,110 +165,102 @@ class Caffeine(GObject.GObject):
         self.timer.name = "Active"
         self.timer.start()
 
-    def _deactivate(self, show_notification):
-        self.timer.name = "Expired"
-        self.toggle_activated(show_notification)
+    def _deactivate(self, show_notification: bool) -> None:
+        """Called when the timer finished running."""
+        self._manual_trigger.active = False
+        interval = self.timer.interval  # type: ignore
+        message = str(interval) + _(" have elapsed; powersaving is re-enabled")
 
-    def __set_activated(self, activate):
-        """Enables inhibition, but does not mark is as manually enabled."""
-        if self.get_activated() != activate:
-            self.__toggle_activated(activate)
+        logger.info(
+            "Timed activation period ("
+            + str(self.timer.interval)  # type: ignore
+            + ") has elapsed"
+        )
+
+        if show_notification:
+            self._notify(message, empty_cup_icon)
+
+        self.timer = None
+        self.run_all_triggers()
+
+    def set_activated(self, activated: bool) -> None:
+        """Set manual activation to the provided value."""
+
+        if not activated and self.timer:
+            # If manually deactivating, cancel timers.
+            self.cancel_timer()
+
+        # Update actual status:
+        self._manual_trigger.active = activated
+
+        # Emit signal so the UI updates.
+        self.emit(
+            "activation-toggled",
+            self.desired_state != DesiredState.UNINHIBITED,
+            self.status_string,
+        )
 
     def get_activated(self) -> bool:
         """Returns True if inhibition was manually activated."""
-        return self.__inhibition_manually_requested
-
-    def set_activated(self, activate: bool, show_notification=True):
-        """Sets inhibition as manually activated."""
-        if self.get_activated() != activate:
-            self.toggle_activated(show_notification)
+        return self._manual_trigger.active
 
     def toggle_activated(self, show_notification=True):
-        """ *Manually* toggles inhibition.  """
+        """Toggle manual inhibition."""
 
-        self.__auto_activated = False
-        self.__toggle_activated(note=show_notification)
+        self.set_activated(not self.get_activated())
+        self.run_all_triggers(show_notification)
 
-    def __toggle_activated(self, note):
+    def cancel_timer(self, note=True):
+        """Cancel a running timer.
+
+        This cancellation is due to user interaction, generally, toggling a
+        timed activation.
+
+        :param note: Whether a notification should be shown.
         """
-        Toggle inhibition.
-        """
 
-        if self.__inhibition_manually_requested:
-            # sleep prevention was on now turn it off
+        # If the user manually disables caffeine, we should also
+        # cancel the timer for timed activation.
 
-            self.__inhibition_manually_requested = False
-            logger.info("Caffeine is now dormant; powersaving is re-enabled.")
-            self.status_string = _("Caffeine is dormant; powersaving is enabled")
+        if self.timer is not None:
+            interval: int = self.timer.interval  # type: ignore
+            message = _("Timed activation cancelled (was set for ") + f"{interval})"
 
-            # If the user clicks on the full coffee-cup to disable
-            # sleep prevention, it should also
-            # cancel the timer for timed activation.
+            logger.info("Timed cancelled (was set for %d).", interval)
 
-            if self.timer is not None and self.timer.name != "Expired":
-                message = (
-                    _("Timed activation cancelled (was set for ")
-                    + str(self.timer.interval)
-                    + ")"
-                )
+            if note:
+                self._notify(message, empty_cup_icon)
 
-                logger.info(
-                    "Timed activation cancelled (was set for "
-                    + str(self.timer.interval)
-                    + ")"
-                )
+            self.timer.cancel()
+            self.timer = None
 
-                if note:
-                    self._notify(message, empty_cup_icon)
+        # Re run all triggers...
+        self.run_all_triggers()
 
-                self.timer.cancel()
-                self.timer = None
+    def apply_desired_status(self, show_notification=False) -> None:
+        """Applies the currently desired status."""
 
-            elif self.timer is not None and self.timer.name == "Expired":
-                message = str(self.timer.interval) + _(
-                    " have elapsed; powersaving is re-enabled"
-                )
-
-                logger.info(
-                    "Timed activation period ("
-                    + str(self.timer.interval)
-                    + ") has elapsed"
-                )
-
-                if note:
-                    self._notify(message, empty_cup_icon)
-
-                self.timer = None
-
-        else:
-            self.__inhibition_manually_requested = True
-
-        # decide, if we allow the screen to sleep
-        if self.music_procs > 0 or not self.__inhibition_manually_requested:
-            inhibit_screen = False
-        else:
-            inhibit_screen = True
-
-        self._performTogglingActions(
-            self.__inhibition_manually_requested, inhibit_screen
+        inhibit_sleep = self.desired_state in (
+            DesiredState.INHIBIT_SLEEP,
+            DesiredState.INHIBIT_ALL,
         )
-        logger.info("\n\n")
-        self.status_string = "Caffeine is preventing powersaving."
-
-        self.emit("activation-toggled", self.get_activated(), self.status_string)
-        self.status_string = ""
-
-    def _performTogglingActions(self, suspend, susp_screen):
-        """This method performs the actions that affect the screensaver and
-        powersaving."""
+        inhibit_screen = self.desired_state == DesiredState.INHIBIT_ALL
 
         for inhibitor in self.__inhibitors:
             if inhibitor.applicable:
-                inhibitor.set(
-                    susp_screen
-                ) if inhibitor.is_screen_inhibitor() else inhibitor.set(suspend)
+                if inhibitor.is_screen_inhibitor:
+                    inhibitor.set(inhibit_screen)
+                else:
+                    inhibitor.set(inhibit_sleep)
+
                 logger.info(f"{inhibitor} is applicable, state: {inhibitor.running}")
-        self.__inhibition_successful = not self.__inhibition_successful
+
+        if self.desired_state != DesiredState.UNINHIBITED:
+            self.status_string = _("Caffeine is dormant; powersaving is enabled.")
+        if self.desired_state != DesiredState.INHIBIT_SLEEP:
+            self.status_string = _("Caffeine is preventing sleep only.")
+        else:
+            self.status_string = _("Caffeine is preventing all powersaving.")
 
 
 # register a signal
