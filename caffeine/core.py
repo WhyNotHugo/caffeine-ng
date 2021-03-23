@@ -117,6 +117,7 @@ class Caffeine(GObject.GObject):
                 break
 
         logger.info(f"Desired state is: {inhibit}")
+        self.desired_state = inhibit
         self.apply_desired_status(show_notification)
 
         return True
