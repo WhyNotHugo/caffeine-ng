@@ -70,11 +70,11 @@ Debian and derivatives
 
 First install all the required packages::
 
-      apt install python-docopt python-ewmh python-setproctitle python-wheel python-xdg
+      apt install python-click python-ewmh python-setproctitle python-wheel python-xdg
 
 And mark them auto if you wish::
 
-      apt-mark auto python-docopt python-ewmh python-setproctitle python-wheel python-xdg
+      apt-mark auto python-click python-ewmh python-setproctitle python-wheel python-xdg
 
 Then you need to build sources with::
 
@@ -83,7 +83,7 @@ Then you need to build sources with::
 
 Create a package for your distribution::
 
-      checkinstall --pkgname=caffeine-ng --pkgversion=3.4 --requires="python-docopt \(\>=0.6.2\),python-ewmh \(\>=0.1.4\),python-setproctitle \(\>=1.1.10\),python-wheel \(\>=0.29.0\),python-xdg \(\>=0.25\)" --conflicts="caffeine" --nodoc python ./setup.py install --install-layout=deb
+      checkinstall --pkgname=caffeine-ng --pkgversion=3.4 --requires="python-click \(\>=0.6.2\),python-ewmh \(\>=0.1.4\),python-setproctitle \(\>=1.1.10\),python-wheel \(\>=0.29.0\),python-xdg \(\>=0.25\)" --conflicts="caffeine" --nodoc python ./setup.py install --install-layout=deb
 
 Replace version string with correct version and append this command with ``--install=no``
 should you wish to inspect created package before installing it
