@@ -76,7 +76,11 @@ class FullscreenTrigger:
 class PulseAudioTrigger:
     def __init__(self, process_manager: ProcManager, audio_peak_filtering_active_getter: Callable[[], bool]) -> None:
         self.__process_manager = process_manager
-        self.__audio_peak_filtering_active: bool = property(fget=audio_peak_filtering_active_getter)
+        self.__audio_peak_filtering_active_getter = audio_peak_filtering_active_getter
+
+    @property
+    def __audio_peak_filtering_active(self) -> bool:
+        return self.__audio_peak_filtering_active_getter()
 
     def run(self) -> DesiredState:
         # Let's look for playing audio:
