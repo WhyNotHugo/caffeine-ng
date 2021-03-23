@@ -281,6 +281,13 @@ class Caffeine(GObject.GObject):
         else:
             self.status_string = _("Caffeine is preventing all powersaving.")
 
+        # Emit signal so the UI updates.
+        self.emit(
+            "activation-toggled",
+            self.desired_state != DesiredState.UNINHIBITED,
+            self.status_string,
+        )
+
     def set_audio_peak_filtering_active(self, active: bool):
         self.__audio_peak_filtering_active = active
 
