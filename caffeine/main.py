@@ -32,7 +32,7 @@ from gi.repository.Notify import Notification  # noqa: E402
 from . import __version__  # noqa: E402
 from .core import Caffeine  # noqa: E402
 from .icons import generic_icon, get_icon_pixbuf  # noqa: E402
-from .paths import get_glade_file, get_whitelist_file, get_whitelist_file_audio  # noqa: E402
+from .paths import get_glade_file, get_whitelist_file, get_blacklist_file_audio  # noqa: E402
 from .procmanager import ProcManager  # noqa: E402
 
 appindicator_avail = True
@@ -130,7 +130,7 @@ class GUI:
     def __init__(self, show_preferences=False, **kwargs):
         # object to manage processes to activate for.
         self.__process_manager = ProcManager(persistence_file=get_whitelist_file())
-        self.__process_manager_audio = ProcManager(persistence_file=get_whitelist_file_audio())
+        self.__process_manager_audio = ProcManager(persistence_file=get_blacklist_file_audio())
 
         self.__core = Caffeine(
             process_manager=self.__process_manager,
