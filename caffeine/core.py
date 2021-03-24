@@ -117,6 +117,7 @@ class Caffeine(GObject.GObject):
                 break
 
         logger.info(f"Desired state is: {inhibit}")
+        self.desired_state = inhibit
         self.apply_desired_status(show_notification)
 
         return True
@@ -269,6 +270,13 @@ class Caffeine(GObject.GObject):
             self.status_string = _("Caffeine is preventing sleep only.")
         else:
             self.status_string = _("Caffeine is preventing all powersaving.")
+
+        # Emit signal so the UI updates.
+        self.emit(
+            "activation-toggled",
+            self.desired_state != DesiredState.UNINHIBITED,
+            self.status_string,
+        )
 
 
 # register a signal
