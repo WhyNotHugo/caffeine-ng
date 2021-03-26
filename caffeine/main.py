@@ -32,7 +32,7 @@ from gi.repository.Notify import Notification  # noqa: E402
 from . import __version__  # noqa: E402
 from .core import Caffeine  # noqa: E402
 from .icons import generic_icon, get_icon_pixbuf  # noqa: E402
-from .paths import get_glade_file  # noqa: E402
+from .paths import get_glade_file, get_whitelist_file, get_blacklist_file_audio  # noqa: E402
 from .procmanager import ProcManager  # noqa: E402
 
 appindicator_avail = True
@@ -129,9 +129,14 @@ class ProcAdd:
 class GUI:
     def __init__(self, show_preferences=False, **kwargs):
         # object to manage processes to activate for.
-        self.__process_manager = ProcManager()
+        self.__process_manager = ProcManager(persistence_file=get_whitelist_file())
+        self.__process_manager_audio = ProcManager(persistence_file=get_blacklist_file_audio())
 
-        self.__core = Caffeine(self.__process_manager, **kwargs)
+        self.__core = Caffeine(
+            process_manager=self.__process_manager,
+            process_manager_audio=self.__process_manager_audio,
+            **kwargs
+        )
 
         self.__core.connect("activation-toggled", self.on_activation_toggled)
         self.ProcAdd = ProcAdd()
@@ -151,6 +156,8 @@ class GUI:
 
         show_tray_icon = settings.get_boolean("show-tray-icon")
         show_notification = settings.get_boolean("show-notification")
+        audio_peak_filtering_active = settings.get_boolean("audio-peak-filtering")
+        self.__core.set_audio_peak_filtering_active(audio_peak_filtering_active)
 
         if appindicator_avail:
             self.AppInd = AppIndicator3.Indicator.new(
@@ -212,10 +219,16 @@ class GUI:
         proc_treeview = get("treeview")
         self.selection = proc_treeview.get_selection()
         self.selection.set_mode(Gtk.SelectionMode.MULTIPLE)
+        proc_treeview_audio = get("treeview_audio")
+        self.selection_audio = proc_treeview_audio.get_selection()
+        self.selection_audio.set_mode(Gtk.SelectionMode.MULTIPLE)
 
         self.proc_liststore = get("proc_liststore")
         for name in self.__process_manager.get_process_list():
             self.proc_liststore.append([get_icon_for_process(name), name])
+        self.proc_liststore_audio = get("proc_liststore_audio")
+        for name in self.__process_manager_audio.get_process_list():
+            self.proc_liststore_audio.append([get_icon_for_process(name), name])
 
         # time_menuitem = get("time_menuitem")
 
@@ -236,11 +249,13 @@ class GUI:
 
         self.trayicon_cb = get("trayicon_cbutton")
         self.notification_cb = get("notification_cbutton")
+        self.audio_peak_filtering_cb = get("audio_peak_filtering_cbutton")
 
         self.notification_cb.set_sensitive(not show_tray_icon)
 
         settings.connect("changed::show-tray-icon", self.on_trayicon_changed)
         settings.connect("changed::show-notification", self.on_notification_changed)
+        settings.connect("changed::audio-peak-filtering", self.on_audio_peak_filtering_changed)
 
         settings.bind(
             "show-tray-icon", self.trayicon_cb, "active", Gio.SettingsBindFlags.DEFAULT
@@ -250,6 +265,9 @@ class GUI:
             self.notification_cb,
             "active",
             Gio.SettingsBindFlags.DEFAULT,
+        )
+        settings.bind(
+            "audio-peak-filtering", self.audio_peak_filtering_cb, "active", Gio.SettingsBindFlags.DEFAULT
         )
 
         # about dialog
@@ -324,6 +342,22 @@ class GUI:
             self.__process_manager.remove_proc(model[path][1])
             model.remove(model.get_iter(path))
 
+    def on_add_button_audio_clicked(self, button, data=None):
+        response = self.ProcAdd.run()
+        if response == 1:
+            proc_name = self.ProcAdd.get_process_name()
+            if proc_name:
+                self.proc_liststore_audio.append([get_icon_for_process(proc_name), proc_name])
+
+                self.__process_manager_audio.add_proc(proc_name)
+
+    def on_remove_button_audio_clicked(self, button, data=None):
+        model, paths = self.selection_audio.get_selected_rows()
+        paths.reverse()
+        for path in paths:
+            self.__process_manager_audio.remove_proc(model[path][1])
+            model.remove(model.get_iter(path))
+
     def on_window_delete_event(self, window, data=None):
         window.hide_on_delete()
         # Returning True stops the window from being destroyed.
@@ -353,6 +387,11 @@ class GUI:
     # Startup Notifications
     def on_notification_changed(self, settings, key, data=None):
         pass
+
+    def on_audio_peak_filtering_changed(self, settings, key, data=None):
+        audio_filtering_active = settings.get_boolean(key)
+        self.audio_peak_filtering_cb.set_active(audio_filtering_active)
+        self.__core.set_audio_peak_filtering_active(audio_filtering_active)
 
     # Menu callbacks
     def on_activate_menuitem_activate(self, menuitem, data=None):

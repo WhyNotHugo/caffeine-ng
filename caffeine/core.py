@@ -34,6 +34,7 @@ from .inhibitors import XdgScreenSaverInhibitor
 from .inhibitors import XidlehookInhibitor
 from .inhibitors import XorgInhibitor
 from .inhibitors import XssInhibitor
+from .procmanager import ProcManager
 from .triggers import DesiredState
 from .triggers import FullscreenTrigger
 from .triggers import ManualTrigger
@@ -51,7 +52,8 @@ class Caffeine(GObject.GObject):
 
     def __init__(
         self,
-        process_manager,
+        process_manager: ProcManager,
+        process_manager_audio: ProcManager,
         pulseaudio: bool,
         whitelist: bool,
         fullscreen: bool,
@@ -74,6 +76,9 @@ class Caffeine(GObject.GObject):
         ]
 
         self.__process_manager = process_manager
+        self.__process_manager_audio = process_manager_audio
+
+        self.__audio_peak_filtering_active = True
 
         self._manual_trigger = ManualTrigger()
         self.triggers: list = [self._manual_trigger]
@@ -82,7 +87,12 @@ class Caffeine(GObject.GObject):
         if fullscreen:
             self.triggers.append(FullscreenTrigger())
         if pulseaudio:
-            self.triggers.append(PulseAudioTrigger())
+            self.triggers.append(
+                PulseAudioTrigger(
+                    process_manager=self.__process_manager_audio,
+                    audio_peak_filtering_active_getter=lambda: self.__audio_peak_filtering_active
+                )
+            )
 
         logger.info("Running with triggers: %r.", self.triggers)
 
@@ -277,6 +287,9 @@ class Caffeine(GObject.GObject):
             self.desired_state != DesiredState.UNINHIBITED,
             self.status_string,
         )
+
+    def set_audio_peak_filtering_active(self, active: bool):
+        self.__audio_peak_filtering_active = active
 
 
 # register a signal
