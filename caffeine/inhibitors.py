@@ -41,9 +41,11 @@ class BaseInhibitor:
 
     def set(self, state):
         if state:
-            self.inhibit()
+            if not self.running:
+                self.inhibit()
         else:
-            self.uninhibit()
+            if self.running:
+                self.uninhibit()
 
     def is_screen_inhibitor(self):
         return False
