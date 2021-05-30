@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-30 15:44+0300\n"
-"PO-Revision-Date: 2021-05-30 16:21+0300\n"
+"PO-Revision-Date: 2021-05-30 17:28+0300\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
@@ -88,31 +88,23 @@ msgstr ""
 
 #: caffeine/assets/glade/GUI.glade:648
 msgid "Audio detection"
-msgstr ""
+msgstr "Детектирование аудио"
 
 #: caffeine/assets/glade/GUI.glade:674
-#, fuzzy
-#| msgid ""
-#| "Caffeine can activate automatically\n"
-#| "whenever certain programs are runnning."
 msgid "Caffeine activates automatically when audio playback/recording is detected."
-msgstr ""
-"Caffeine может активироваться автоматически,\n"
-"когда некоторые программы запущены."
+msgstr "Caffeine активируется автоматически, когда обнаруживается воспроизведение либо запись аудио."
 
 #: caffeine/assets/glade/GUI.glade:691
-#, fuzzy
-#| msgid "List of programs that Caffeine activates for:"
 msgid "List of programs that Caffeine ignores when detecting audio activity:"
-msgstr "Список программ, для которых будет активирован Caffeine:"
+msgstr "Список программ, которые Caffeine будет игнорировать при определении звуковой активности:"
 
 #: caffeine/assets/glade/GUI.glade:716
 msgid "Audio activity from these processes will not cause Caffeine to activate."
-msgstr ""
+msgstr "Аудио от этих процессов не будет активировать Caffeine."
 
 #: caffeine/assets/glade/GUI.glade:800
 msgid "Enable audio peak filtering"
-msgstr ""
+msgstr "Фильтровать пиковые значения"
 
 #: caffeine/assets/glade/GUI.glade:840
 msgid "Tray icon"
@@ -153,6 +145,8 @@ msgstr "Caffeine приостановлен; энергосбережение в
 #: caffeine/main.py:275
 msgid "translator-credits"
 msgstr ""
+"Contributions outside Launchpad:\n"
+"  PF4Public https://github.com/PF4Public\n"
 "Launchpad Contributions:\n"
 "  Alexey Ivanov https://launchpad.net/~alexey-ivanov\n"
 "  Andrei B. Borisov https://launchpad.net/~clinri\n"
@@ -189,22 +183,16 @@ msgid "Timed activation cancelled (was set for "
 msgstr "Активация по времени отключена (была назначена на "
 
 #: caffeine/core.py:278
-#, fuzzy
-#| msgid "Caffeine is dormant; powersaving is enabled"
 msgid "Caffeine is dormant; powersaving is enabled."
-msgstr "Caffeine приостановлен; энергосбережение включено"
+msgstr "Caffeine приостановлен; энергосбережение включено."
 
 #: caffeine/core.py:280
-#, fuzzy
-#| msgid "Caffeine is running"
 msgid "Caffeine is preventing sleep only."
-msgstr "Caffeine уже запущен"
+msgstr "Caffeine предотвращает только сон."
 
 #: caffeine/core.py:282
-#, fuzzy
-#| msgid "Caffeine will prevent powersaving for the next "
 msgid "Caffeine is preventing all powersaving."
-msgstr "Caffeine будет отключать энергосбережение в течение "
+msgstr "Caffeine предотвращает энергосбережение."
 
 #, fuzzy
 #~| msgid "Disable Screensaver for..."
