@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-30 15:44+0300\n"
-"PO-Revision-Date: 2021-05-30 16:15+0300\n"
+"PO-Revision-Date: 2021-05-30 17:30+0300\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "Language: de\n"
@@ -45,13 +45,11 @@ msgstr "Minuten:"
 #: caffeine/assets/glade/GUI.glade:286 caffeine/main.py:314
 #: caffeine/main.py:400
 msgid "Enable Caffeine"
-msgstr "Bildschirmschoner deaktivieren"
+msgstr "Aktiviere Caffeine"
 
 #: caffeine/assets/glade/GUI.glade:301
-#, fuzzy
-#| msgid "Enable Caffeine"
 msgid "Enable Caffeine for..."
-msgstr "Bildschirmschoner deaktivieren"
+msgstr "Aktiviere Caffeine für..."
 
 #: caffeine/assets/glade/GUI.glade:429
 msgid "Preferences"
@@ -89,33 +87,28 @@ msgstr ""
 
 #: caffeine/assets/glade/GUI.glade:648
 msgid "Audio detection"
-msgstr ""
+msgstr "Tonentdeckung"
 
 #: caffeine/assets/glade/GUI.glade:674
-#, fuzzy
-#| msgid ""
-#| "Caffeine can activate automatically\n"
-#| "whenever certain programs are runnning."
 msgid ""
 "Caffeine activates automatically when audio playback/recording is detected."
 msgstr ""
-"Caffeine kann sich automatisch aktivieren\n"
-"sobald bestimmte Programme laufen."
+"Caffeine kann sich automatisch aktivieren, wenn Tonwiedergabe/-aufnahme "
+"entdeckt ist."
 
 #: caffeine/assets/glade/GUI.glade:691
-#, fuzzy
-#| msgid "List of programs that Caffeine activates for:"
 msgid "List of programs that Caffeine ignores when detecting audio activity:"
-msgstr "Liste von Programmen, für die Caffeine aktiviert ist:"
+msgstr ""
+"Liste von Programmen, die Caffeine während der Tonentdeckung ignoriert:"
 
 #: caffeine/assets/glade/GUI.glade:716
 msgid ""
 "Audio activity from these processes will not cause Caffeine to activate."
-msgstr ""
+msgstr "Caffeine wird bei den Tonaktivitäten dieser Prozesse nicht aktiviert."
 
 #: caffeine/assets/glade/GUI.glade:800
 msgid "Enable audio peak filtering"
-msgstr ""
+msgstr "Höhepunkte filtern"
 
 #: caffeine/assets/glade/GUI.glade:840
 msgid "Tray icon"
@@ -138,16 +131,16 @@ msgid "Caffeine is running"
 msgstr "Caffeine läuft"
 
 #: caffeine/main.py:191
-#, fuzzy
-#| msgid "Show tray icon"
 msgid ""
 "To show the tray icon, \n"
 "run "
-msgstr "Symbolleisten Icon anzeigen"
+msgstr ""
+"Um Symbolleisten Icon anzuzeigen,\n"
+"starte "
 
 #: caffeine/main.py:193
 msgid "or open Caffeine Preferences from your system menu."
-msgstr ""
+msgstr "oder öffne Caffeine Einstellungen in der Hauptmenü."
 
 #: caffeine/main.py:205
 msgid "Caffeine is dormant; powersaving is enabled"
@@ -156,6 +149,8 @@ msgstr "Caffeine ist im Ruhezustand; Energiesparmaßnahmen sind aktiv"
 #: caffeine/main.py:275
 msgid "translator-credits"
 msgstr ""
+"Contributions outside Launchpad:\n"
+"  PF4Public https://github.com/PF4Public\n"
 "Launchpad Contributions:\n"
 "  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
 "  Dennis Baudys https://launchpad.net/~thecondordb\n"
@@ -172,7 +167,7 @@ msgstr ""
 
 #: caffeine/main.py:314 caffeine/main.py:400
 msgid "Disable Caffeine"
-msgstr "Bildschirmschoner aktivieren"
+msgstr "Deaktiviere Caffeine"
 
 #: caffeine/core.py:156
 msgid "Timed activation set; "
@@ -195,22 +190,16 @@ msgid "Timed activation cancelled (was set for "
 msgstr "Zeitgesteuerte Aktivierung abgebrochen (war eingestellt auf "
 
 #: caffeine/core.py:278
-#, fuzzy
-#| msgid "Caffeine is dormant; powersaving is enabled"
 msgid "Caffeine is dormant; powersaving is enabled."
-msgstr "Caffeine ist im Ruhezustand; Energiesparmaßnahmen sind aktiv"
+msgstr "Caffeine ist im Ruhezustand; Energiesparmaßnahmen sind aktiv."
 
 #: caffeine/core.py:280
-#, fuzzy
-#| msgid "Caffeine is running"
 msgid "Caffeine is preventing sleep only."
-msgstr "Caffeine läuft"
+msgstr "Caffeine verhindert nur den Schlafmodus."
 
 #: caffeine/core.py:282
-#, fuzzy
-#| msgid "Caffeine will prevent powersaving for the next "
 msgid "Caffeine is preventing all powersaving."
-msgstr "Caffeine wird Energiesparmaßnahmen verhindern für die nächste(n) "
+msgstr "Caffeine verhindert alle Energiesparmaßnahmen."
 
 #~ msgid "Activated for Flash video"
 #~ msgstr "Aktiviert für Flash Video"
