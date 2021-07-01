@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-11 23:00+0300\n"
-"PO-Revision-Date: 2018-05-11 23:12+0300\n"
+"POT-Creation-Date: 2021-05-30 15:44+0300\n"
+"PO-Revision-Date: 2021-05-30 16:19+0300\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "Language: eu\n"
@@ -16,68 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2012-07-09 04:52+0000\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.2.4\n"
 
-#: caffeine/core.py:176
-msgid "Timed activation set; "
-msgstr "Denboraren araberako aktibazioa indarrean; "
+#: caffeine/assets/glade/proc.glade:8
+msgid "Select a process name..."
+msgstr "Prozesu izen bat aukera ezazu..."
 
-#: caffeine/core.py:177
-msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine-k energia aurreztea indargabetuko du hurrengo denboran: "
-
-#: caffeine/core.py:183
-msgid "Activated for "
-msgstr "Aktibatuta honentzat: "
-
-#: caffeine/core.py:243 caffeine/main.py:212
-msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "Caffeine lo dago; energia aurreztea gaituta dago"
-
-#: caffeine/core.py:250
-msgid "Timed activation cancelled (was set for "
-msgstr ""
-"Denboraren araberako aktibazioa ezeztatua (hurrengo denborarako "
-"konfiguratua: "
-
-#: caffeine/core.py:264
-msgid " have elapsed; powersaving is re-enabled"
-msgstr " pasa dira; energia aurreztea berriro aktibatu da"
-
-#: caffeine/main.py:198
-msgid "Caffeine is running"
-msgstr "Caffeine martxan dago"
-
-#: caffeine/main.py:199
-#, fuzzy
-#| msgid "Show tray icon"
-msgid ""
-"To show the tray icon, \n"
-"run "
-msgstr "Erakutsi erretiluko ikonoa"
-
-#: caffeine/main.py:201
-msgid "or open Caffeine Preferences from your system menu."
-msgstr ""
-
-#: caffeine/main.py:263
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
-"  Ibai Oihanguren https://launchpad.net/~ibai-oihanguren\n"
-"  Mikel Alzibar https://launchpad.net/~mikelalzibar\n"
-"  Nineu https://launchpad.net/~nineu28"
-
-#: caffeine/main.py:302 caffeine/main.py:365 share/caffeine/glade/GUI.glade:286
-msgid "Enable Caffeine"
-msgstr "Desgaitu pantaila-babeslea"
-
-#: caffeine/main.py:302 caffeine/main.py:365
-msgid "Disable Caffeine"
-msgstr "Gaitu pantaila-babeslea"
-
-#: share/caffeine/glade/GUI.glade:16
+#: caffeine/assets/glade/GUI.glade:16
 msgid ""
 "An application to temporarily prevent the activation of both\n"
 " the screen saver and the \"sleep\" powersaving mode."
@@ -85,43 +30,48 @@ msgstr ""
 "Denbora tarte batean pantaila-babeslea eta energia aurrezteko\n"
 "\"lokartu\" modua eragozten duen aplikazioa."
 
-#: share/caffeine/glade/GUI.glade:114
+#: caffeine/assets/glade/GUI.glade:114
 msgid "Duration"
 msgstr "Iraupena"
 
-#: share/caffeine/glade/GUI.glade:147
+#: caffeine/assets/glade/GUI.glade:147
 msgid "Hours:"
 msgstr "Orduak:"
 
-#: share/caffeine/glade/GUI.glade:188
+#: caffeine/assets/glade/GUI.glade:188
 msgid "Minutes:"
 msgstr "Minutuak:"
 
-#: share/caffeine/glade/GUI.glade:301
+#: caffeine/assets/glade/GUI.glade:286 caffeine/main.py:314
+#: caffeine/main.py:400
+msgid "Enable Caffeine"
+msgstr "Desgaitu pantaila-babeslea"
+
+#: caffeine/assets/glade/GUI.glade:301
 #, fuzzy
 #| msgid "Enable Caffeine"
 msgid "Enable Caffeine for..."
 msgstr "Desgaitu pantaila-babeslea"
 
-#: share/caffeine/glade/GUI.glade:421
+#: caffeine/assets/glade/GUI.glade:429
 msgid "Preferences"
 msgstr "Hobespenak"
 
-#: share/caffeine/glade/GUI.glade:466
+#: caffeine/assets/glade/GUI.glade:474
 msgid "Automatic activation"
 msgstr "Aktibazio automatikoa"
 
-#: share/caffeine/glade/GUI.glade:492
+#: caffeine/assets/glade/GUI.glade:500
 msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
 msgstr "Caffeine automatikoki aktibatu daiteke"
 
-#: share/caffeine/glade/GUI.glade:510
+#: caffeine/assets/glade/GUI.glade:518
 msgid "List of programs that Caffeine activates for:"
 msgstr "Caffeine aktibatzen duten programen zerrenda:"
 
-#: share/caffeine/glade/GUI.glade:535
+#: caffeine/assets/glade/GUI.glade:543
 msgid ""
 "When Caffeine detects that one of the processes in this\n"
 "list is running, it will prevent the activation of the screensaver\n"
@@ -136,25 +86,122 @@ msgstr ""
 "moduak behar bezala eragozten ez dituzten aplikazioentzat\n"
 "(batez ere pantaila osokoak)."
 
-#: share/caffeine/glade/GUI.glade:640
+#: caffeine/assets/glade/GUI.glade:648
+msgid "Audio detection"
+msgstr ""
+
+#: caffeine/assets/glade/GUI.glade:674
+#, fuzzy
+#| msgid ""
+#| "Caffeine can activate automatically\n"
+#| "whenever certain programs are runnning."
+msgid ""
+"Caffeine activates automatically when audio playback/recording is detected."
+msgstr "Caffeine automatikoki aktibatu daiteke"
+
+#: caffeine/assets/glade/GUI.glade:691
+#, fuzzy
+#| msgid "List of programs that Caffeine activates for:"
+msgid "List of programs that Caffeine ignores when detecting audio activity:"
+msgstr "Caffeine aktibatzen duten programen zerrenda:"
+
+#: caffeine/assets/glade/GUI.glade:716
+msgid ""
+"Audio activity from these processes will not cause Caffeine to activate."
+msgstr ""
+
+#: caffeine/assets/glade/GUI.glade:800
+msgid "Enable audio peak filtering"
+msgstr ""
+
+#: caffeine/assets/glade/GUI.glade:840
 msgid "Tray icon"
 msgstr "Erretiluko ikonoa"
 
-#: share/caffeine/glade/GUI.glade:659
+#: caffeine/assets/glade/GUI.glade:859
 msgid "Show tray icon"
 msgstr "Erakutsi erretiluko ikonoa"
 
-#: share/caffeine/glade/GUI.glade:682
+#: caffeine/assets/glade/GUI.glade:882
 msgid "Show notification on startup"
 msgstr "Erakutsi jakinarazpena abioan"
 
-#: share/caffeine/glade/GUI.glade:742
+#: caffeine/assets/glade/GUI.glade:942
 msgid "    "
 msgstr "    "
 
-#: share/caffeine/glade/proc.glade:8
-msgid "Select a process name..."
-msgstr "Prozesu izen bat aukera ezazu..."
+#: caffeine/main.py:190
+msgid "Caffeine is running"
+msgstr "Caffeine martxan dago"
+
+#: caffeine/main.py:191
+#, fuzzy
+#| msgid "Show tray icon"
+msgid ""
+"To show the tray icon, \n"
+"run "
+msgstr "Erakutsi erretiluko ikonoa"
+
+#: caffeine/main.py:193
+msgid "or open Caffeine Preferences from your system menu."
+msgstr ""
+
+#: caffeine/main.py:205
+msgid "Caffeine is dormant; powersaving is enabled"
+msgstr "Caffeine lo dago; energia aurreztea gaituta dago"
+
+#: caffeine/main.py:275
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
+"  Ibai Oihanguren https://launchpad.net/~ibai-oihanguren\n"
+"  Mikel Alzibar https://launchpad.net/~mikelalzibar\n"
+"  Nineu https://launchpad.net/~nineu28"
+
+#: caffeine/main.py:314 caffeine/main.py:400
+msgid "Disable Caffeine"
+msgstr "Gaitu pantaila-babeslea"
+
+#: caffeine/core.py:156
+msgid "Timed activation set; "
+msgstr "Denboraren araberako aktibazioa indarrean; "
+
+#: caffeine/core.py:157
+msgid "Caffeine will prevent powersaving for the next "
+msgstr "Caffeine-k energia aurreztea indargabetuko du hurrengo denboran: "
+
+#: caffeine/core.py:164
+msgid "Activated for "
+msgstr "Aktibatuta honentzat: "
+
+#: caffeine/core.py:191
+msgid " have elapsed; powersaving is re-enabled"
+msgstr " pasa dira; energia aurreztea berriro aktibatu da"
+
+#: caffeine/core.py:246
+msgid "Timed activation cancelled (was set for "
+msgstr ""
+"Denboraren araberako aktibazioa ezeztatua (hurrengo denborarako "
+"konfiguratua: "
+
+#: caffeine/core.py:278
+#, fuzzy
+#| msgid "Caffeine is dormant; powersaving is enabled"
+msgid "Caffeine is dormant; powersaving is enabled."
+msgstr "Caffeine lo dago; energia aurreztea gaituta dago"
+
+#: caffeine/core.py:280
+#, fuzzy
+#| msgid "Caffeine is running"
+msgid "Caffeine is preventing sleep only."
+msgstr "Caffeine martxan dago"
+
+#: caffeine/core.py:282
+#, fuzzy
+#| msgid "Caffeine will prevent powersaving for the next "
+msgid "Caffeine is preventing all powersaving."
+msgstr "Caffeine-k energia aurreztea indargabetuko du hurrengo denboran: "
 
 #~ msgid "Activated for Flash video"
 #~ msgstr "Aktibatu flash bideoentzat"
