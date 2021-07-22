@@ -75,6 +75,10 @@ msgid ""
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
 
+#: caffeine/assets/glade/GUI.glade.h:18
+msgid "Process Name"
+msgstr ""
+
 #: caffeine/assets/glade/GUI.glade:648
 msgid "Audio detection"
 msgstr ""
