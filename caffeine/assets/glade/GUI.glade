@@ -552,7 +552,7 @@ prevent the screensaver and powersaving modes on their own.</property>
                                             </child>
                                             <child>
                                               <object class="GtkTreeViewColumn" id="treeviewcolumn1">
-                                                <property name="title">Process Name</property>
+                                                <property name="title" translatable="yes">Process Name</property>
                                                 <child>
                                                   <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1"/>
                                                   <attributes>
@@ -721,7 +721,7 @@ prevent the screensaver and powersaving modes on their own.</property>
                                             </child>
                                             <child>
                                               <object class="GtkTreeViewColumn" id="treeviewcolumn1_audio">
-                                                <property name="title">Process Name</property>
+                                                <property name="title" translatable="yes">Process Name</property>
                                                 <child>
                                                   <object class="GtkCellRendererPixbuf" id="cellrendererpixbuf1_audio"/>
                                                   <attributes>
