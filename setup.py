@@ -53,6 +53,7 @@ if __name__ == "__main__":
             "wheel>=0.29.0",
             "pulsectl",
             "pygobject>=3.1.1,<4.0",
+            "libayatana-appindicator>=0.1"
         ],
         # `console_scripts` is the same as `gui_scripts`.
         entry_points={"gui_scripts": ["caffeine = caffeine.cli:cli"]},
