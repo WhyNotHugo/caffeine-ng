@@ -99,7 +99,7 @@ def start(
     if kill:
         app.kill()
     elif app.is_running():
-        raise click.ClickException("Caffine is already running.")
+        raise click.ClickException("Caffeine is already running.")
 
     main = GUI(
         show_preferences=preferences,
