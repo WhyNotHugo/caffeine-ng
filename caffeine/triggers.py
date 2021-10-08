@@ -116,7 +116,7 @@ class PulseAudioTrigger:
                     if self.__audio_peak_filtering_active:
                         # ignore silent sinks
                         sink_source = pulseaudio.sink_info(application_output.sink).monitor_source
-                        sink_peak = pulseaudio.get_peak_sample(sink_source, 0.1)
+                        sink_peak = pulseaudio.get_peak_sample(sink_source, 0.4)
                         if not sink_peak > 0:
                             continue
                     if application_output.proplist.get("media.role") == "music":
@@ -132,6 +132,7 @@ class PulseAudioTrigger:
             for application_input in pulseaudio.source_output_list():
                 if (
                     not application_input.mute  # application input is not muted
+                    and application_input.name != "peak detect" # source_output_list() returns the object used to peak for audio playback streams
                     and not pulseaudio.source_info(
                         application_input.source
                     ).mute  # system input is not muted
