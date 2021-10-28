@@ -20,7 +20,10 @@ import os
 from contextlib import contextmanager
 from typing import Optional
 
-from xdg.BaseDirectory import get_runtime_dir
+try:
+    from xdg.BaseDirectory import get_runtime_dir
+except ModuleNotFoundError:
+    from xdg import xdg_runtime_dir as get_runtime_dir
 
 logger = logging.getLogger(__name__)
 
