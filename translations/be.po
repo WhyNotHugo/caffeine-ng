@@ -256,4 +256,3 @@ msgstr "Абярыце назву працэсу..."
 
 #~ msgid "Recent Processes"
 #~ msgstr "Recent Processes"
-

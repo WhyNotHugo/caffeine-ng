@@ -25,14 +25,20 @@ gi.require_version("Gtk", "3.0")
 gi.require_version("Notify", "0.7")
 gi.require_version("AppIndicator3", "0.1")
 
-from gi.repository import GdkPixbuf, Gio, GObject, Gtk  # noqa: E402
-from gi.repository.Notify import init as notify_init  # noqa: E402
+from gi.repository import GdkPixbuf  # noqa: E402
+from gi.repository import Gio  # noqa: E402
+from gi.repository import GObject  # noqa: E402
+from gi.repository import Gtk  # noqa: E402
 from gi.repository.Notify import Notification  # noqa: E402
+from gi.repository.Notify import init as notify_init  # noqa: E402
 
 from . import __version__  # noqa: E402
 from .core import Caffeine  # noqa: E402
-from .icons import generic_icon, get_icon_pixbuf  # noqa: E402
-from .paths import get_glade_file, get_whitelist_file, get_blacklist_file_audio  # noqa: E402
+from .icons import generic_icon  # noqa: E402
+from .icons import get_icon_pixbuf  # noqa: E402
+from .paths import get_blacklist_file_audio  # noqa: E402
+from .paths import get_glade_file  # noqa: E402
+from .paths import get_whitelist_file  # noqa: E402
 from .procmanager import ProcManager  # noqa: E402
 
 appindicator_avail = True
@@ -130,7 +136,9 @@ class GUI:
     def __init__(self, show_preferences=False, **kwargs):
         # object to manage processes to activate for.
         self.__process_manager = ProcManager(persistence_file=get_whitelist_file())
-        self.__process_manager_audio = ProcManager(persistence_file=get_blacklist_file_audio())
+        self.__process_manager_audio = ProcManager(
+            persistence_file=get_blacklist_file_audio()
+        )
 
         self.__core = Caffeine(
             process_manager=self.__process_manager,
@@ -255,7 +263,9 @@ class GUI:
 
         settings.connect("changed::show-tray-icon", self.on_trayicon_changed)
         settings.connect("changed::show-notification", self.on_notification_changed)
-        settings.connect("changed::audio-peak-filtering", self.on_audio_peak_filtering_changed)
+        settings.connect(
+            "changed::audio-peak-filtering", self.on_audio_peak_filtering_changed
+        )
 
         settings.bind(
             "show-tray-icon", self.trayicon_cb, "active", Gio.SettingsBindFlags.DEFAULT
@@ -267,7 +277,10 @@ class GUI:
             Gio.SettingsBindFlags.DEFAULT,
         )
         settings.bind(
-            "audio-peak-filtering", self.audio_peak_filtering_cb, "active", Gio.SettingsBindFlags.DEFAULT
+            "audio-peak-filtering",
+            self.audio_peak_filtering_cb,
+            "active",
+            Gio.SettingsBindFlags.DEFAULT,
         )
 
         # about dialog
@@ -347,7 +360,9 @@ class GUI:
         if response == 1:
             proc_name = self.ProcAdd.get_process_name()
             if proc_name:
-                self.proc_liststore_audio.append([get_icon_for_process(proc_name), proc_name])
+                self.proc_liststore_audio.append(
+                    [get_icon_for_process(proc_name), proc_name]
+                )
 
                 self.__process_manager_audio.add_proc(proc_name)
 

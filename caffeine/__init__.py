@@ -20,7 +20,6 @@ import locale
 from .paths import LOCALE_PATH
 from .version import version
 
-
 __version__ = version
 
 

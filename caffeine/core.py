@@ -41,7 +41,6 @@ from .triggers import ManualTrigger
 from .triggers import PulseAudioTrigger
 from .triggers import WhiteListTrigger
 
-
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
 
 logger = logging.getLogger(__name__)
@@ -90,7 +89,7 @@ class Caffeine(GObject.GObject):
             self.triggers.append(
                 PulseAudioTrigger(
                     process_manager=self.__process_manager_audio,
-                    audio_peak_filtering_active_getter=lambda: self.__audio_peak_filtering_active
+                    audio_peak_filtering_active_getter=lambda: self.__audio_peak_filtering_active,
                 )
             )
 

@@ -22,6 +22,7 @@ try:
     from xdg.BaseDirectory import xdg_config_home
 except ModuleNotFoundError:
     from xdg import xdg_config_home
+
     xdg_config_home = str(xdg_config_home())
 
 PACKAGE_PATH = os.path.dirname(os.path.abspath(__file__))
