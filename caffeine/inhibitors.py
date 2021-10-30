@@ -27,17 +27,10 @@ INHIBITION_REASON = "Inhibited via libcaffeine"
 
 
 class BaseInhibitor:
+    running: bool
+
     def __init__(self):
-        self.__running = False
-
-    # XXX: Do we need `running` to be a property, rather than an attribute?
-    def get_running(self):
-        return self.__running
-
-    def set_running(self, running):
-        self.__running = running
-
-    running = property(get_running, set_running)
+        self.running = False
 
     def set(self, state):
         if state:
