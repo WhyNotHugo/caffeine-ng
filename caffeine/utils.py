@@ -14,50 +14,49 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
+import logging
 import os
+from typing import Generator
+
+logger = logging.getLogger(__name__)
 
 
-def getProcessName(pid):
-    """Gets process name from process id"""
+def get_process_name(pid: int) -> str:
+    """Gets process name from process id."""
 
-    truncProcessName = open("/proc/%s/status" % pid).readline()[6:-1]
-    processName = truncProcessName
+    truncated_process_name = open("/proc/%s/status" % pid).readline()[6:-1]
+    process_name = truncated_process_name
 
     line = open("/proc/%s/cmdline" % pid).readline()
     parts = line.split("\x00")
     for part in parts:
-        cmdName = part.split("/")[-1]
+        cmd_name = part.split("/")[-1]
 
-        if cmdName.startswith(truncProcessName):
-            processName = cmdName
+        if cmd_name.startswith(truncated_process_name):
+            process_name = cmd_name
 
-    return processName
+    return process_name
 
 
-def getProcesses():
-
-    processList = []
+def get_processes() -> Generator[str, None, None]:
+    """Return a generator of names of running processes."""
 
     for pid in os.listdir("/proc/"):
         try:
-            pid = int(pid)
+            num_pid = int(pid)
         except ValueError:
             continue
 
         try:
-            processName = getProcessName(pid).lower()
+            process_name = get_process_name(num_pid).lower()
         except Exception:
+            logger.exception(f"Failed to get name for process {num_pid}")
             continue
 
-        processList.append((processName, pid))
-
-    return processList
+        yield process_name
 
 
-def isProcessRunning(name):
+def is_process_running(name: str) -> bool:
+    """Return True is a process with the given name is running."""
 
-    for proc_name, _pid in getProcesses():
-        if name == proc_name:
-            return True
-
-    return False
+    return name in get_processes()

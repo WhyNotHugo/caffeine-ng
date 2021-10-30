@@ -42,7 +42,7 @@ class WhiteListTrigger:
         """Determine if one of the whitelisted processes is running."""
 
         for proc in self.process_manager.get_process_list():
-            if utils.isProcessRunning(proc):
+            if utils.is_process_running(proc):
                 logger.info("Process %s detected. Inhibiting.")
                 return DesiredState.INHIBIT_ALL
 
