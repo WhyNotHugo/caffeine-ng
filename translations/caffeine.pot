@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 15:44+0300\n"
+"POT-Creation-Date: 2021-10-30 13:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,69 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: caffeine/core.py:155
+msgid "Timed activation set; "
+msgstr ""
+
+#: caffeine/core.py:156
+msgid "Caffeine will prevent powersaving for the next "
+msgstr ""
+
+#: caffeine/core.py:163
+msgid "Activated for "
+msgstr ""
+
+#: caffeine/core.py:190
+msgid " have elapsed; powersaving is re-enabled"
+msgstr ""
+
+#: caffeine/core.py:245
+msgid "Timed activation cancelled (was set for "
+msgstr ""
+
+#: caffeine/core.py:277
+msgid "Caffeine is dormant; powersaving is enabled."
+msgstr ""
+
+#: caffeine/core.py:279
+msgid "Caffeine is preventing sleep only."
+msgstr ""
+
+#: caffeine/core.py:281
+msgid "Caffeine is preventing all powersaving."
+msgstr ""
+
+#: caffeine/main.py:198
+msgid "Caffeine is running"
+msgstr ""
+
+#: caffeine/main.py:199
+msgid ""
+"To show the tray icon, \n"
+"run "
+msgstr ""
+
+#: caffeine/main.py:201
+msgid "or open Caffeine Preferences from your system menu."
+msgstr ""
+
+#: caffeine/main.py:213
+msgid "Caffeine is dormant; powersaving is enabled"
+msgstr ""
+
+#: caffeine/main.py:288
+msgid "translator-credits"
+msgstr ""
+
+#: caffeine/main.py:327 caffeine/main.py:415
+#: caffeine/assets/glade/GUI.glade:286
+msgid "Enable Caffeine"
+msgstr ""
+
+#: caffeine/main.py:327 caffeine/main.py:415
+msgid "Disable Caffeine"
+msgstr ""
 
 #: caffeine/assets/glade/proc.glade:8
 msgid "Select a process name..."
@@ -37,11 +100,6 @@ msgstr ""
 
 #: caffeine/assets/glade/GUI.glade:188
 msgid "Minutes:"
-msgstr ""
-
-#: caffeine/assets/glade/GUI.glade:286 caffeine/main.py:314
-#: caffeine/main.py:400
-msgid "Enable Caffeine"
 msgstr ""
 
 #: caffeine/assets/glade/GUI.glade:301
@@ -75,7 +133,7 @@ msgid ""
 "prevent the screensaver and powersaving modes on their own."
 msgstr ""
 
-#: caffeine/assets/glade/GUI.glade.h:18
+#: caffeine/assets/glade/GUI.glade:555 caffeine/assets/glade/GUI.glade:724
 msgid "Process Name"
 msgstr ""
 
@@ -115,62 +173,4 @@ msgstr ""
 
 #: caffeine/assets/glade/GUI.glade:942
 msgid "    "
-msgstr ""
-
-#: caffeine/main.py:190
-msgid "Caffeine is running"
-msgstr ""
-
-#: caffeine/main.py:191
-msgid ""
-"To show the tray icon, \n"
-"run "
-msgstr ""
-
-#: caffeine/main.py:193
-msgid "or open Caffeine Preferences from your system menu."
-msgstr ""
-
-#: caffeine/main.py:205
-msgid "Caffeine is dormant; powersaving is enabled"
-msgstr ""
-
-#: caffeine/main.py:275
-msgid "translator-credits"
-msgstr ""
-
-#: caffeine/main.py:314 caffeine/main.py:400
-msgid "Disable Caffeine"
-msgstr ""
-
-#: caffeine/core.py:156
-msgid "Timed activation set; "
-msgstr ""
-
-#: caffeine/core.py:157
-msgid "Caffeine will prevent powersaving for the next "
-msgstr ""
-
-#: caffeine/core.py:164
-msgid "Activated for "
-msgstr ""
-
-#: caffeine/core.py:191
-msgid " have elapsed; powersaving is re-enabled"
-msgstr ""
-
-#: caffeine/core.py:246
-msgid "Timed activation cancelled (was set for "
-msgstr ""
-
-#: caffeine/core.py:278
-msgid "Caffeine is dormant; powersaving is enabled."
-msgstr ""
-
-#: caffeine/core.py:280
-msgid "Caffeine is preventing sleep only."
-msgstr ""
-
-#: caffeine/core.py:282
-msgid "Caffeine is preventing all powersaving."
 msgstr ""
