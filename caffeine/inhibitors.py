@@ -55,7 +55,7 @@ class BaseInhibitor(ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def inhibit(self) -> None:
+    def inhibit(self, reason=INHIBITION_REASON) -> None:
         raise NotImplementedError()
 
     @abstractmethod
@@ -74,7 +74,7 @@ class GnomeInhibitor(BaseInhibitor):
         self.__proxy = None
         self.__cookie = None
 
-    def inhibit(self) -> None:
+    def inhibit(self, reason=INHIBITION_REASON) -> None:
         if not self.__proxy:
             self.__proxy = self.bus.get_object(
                 "org.gnome.SessionManager",
@@ -110,7 +110,7 @@ class XdgScreenSaverInhibitor(BaseInhibitor):
 
         self.__cookie = None
 
-    def inhibit(self) -> None:
+    def inhibit(self, reason=INHIBITION_REASON) -> None:
         self.__proxy = self.bus.get_object(
             "org.freedesktop.ScreenSaver",
             "/ScreenSaver",
@@ -143,7 +143,7 @@ class XdgPowerManagmentInhibitor(BaseInhibitor):
 
         self.__cookie = None
 
-    def inhibit(self) -> None:
+    def inhibit(self, reason=INHIBITION_REASON) -> None:
         self.__proxy = self.bus.get_object(
             "org.freedesktop.PowerManagement",
             "/org/freedesktop/PowerManagement/Inhibit",
@@ -177,7 +177,7 @@ class XssInhibitor(BaseInhibitor):
                 time.sleep(50)
             logging.info("XSS inhibitor thread finishing.")
 
-    def inhibit(self) -> None:
+    def inhibit(self, reason=INHIBITION_REASON) -> None:
         self.running = True
         self.thread = XssInhibitor.XssInhibitorThread()
         self.thread.start()
@@ -193,7 +193,7 @@ class XssInhibitor(BaseInhibitor):
 
 
 class DpmsInhibitor(BaseInhibitor):
-    def inhibit(self) -> None:
+    def inhibit(self, reason=INHIBITION_REASON) -> None:
         self.running = True
 
         os.system("xset -dpms")
@@ -215,7 +215,7 @@ class DpmsInhibitor(BaseInhibitor):
 
 
 class XorgInhibitor(BaseInhibitor):
-    def inhibit(self) -> None:
+    def inhibit(self, reason=INHIBITION_REASON) -> None:
         self.running = True
 
         os.system("xset s off")
@@ -234,7 +234,7 @@ class XorgInhibitor(BaseInhibitor):
 
 
 class XautolockInhibitor(BaseInhibitor):
-    def inhibit(self) -> None:
+    def inhibit(self, reason=INHIBITION_REASON) -> None:
         self.running = True
         os.system("xautolock -disable")
 
@@ -248,7 +248,7 @@ class XautolockInhibitor(BaseInhibitor):
 
 
 class XidlehookInhibitor(BaseInhibitor):
-    def inhibit(self) -> None:
+    def inhibit(self, reason=INHIBITION_REASON) -> None:
         self.running = True
         os.system("pkill -SIGSTOP xidlehook")
 
