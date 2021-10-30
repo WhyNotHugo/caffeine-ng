@@ -16,6 +16,7 @@
 #
 # TODO: add a -v --verbosity flag.
 import logging
+import os
 from gettext import gettext as _
 
 import gi
@@ -25,6 +26,7 @@ gi.require_version("Gtk", "3.0")
 gi.require_version("Notify", "0.7")
 gi.require_version("AppIndicator3", "0.1")
 
+from gi.repository import AppIndicator3  # noqa: E402
 from gi.repository import GdkPixbuf  # noqa: E402
 from gi.repository import Gio  # noqa: E402
 from gi.repository import GObject  # noqa: E402
@@ -41,12 +43,6 @@ from .paths import get_glade_file  # noqa: E402
 from .paths import get_whitelist_file  # noqa: E402
 from .procmanager import ProcManager  # noqa: E402
 
-appindicator_avail = True
-try:
-    from gi.repository import AppIndicator3
-except ImportError:
-    appindicator_avail = False
-
 logger = logging.getLogger(__name__)
 
 icon_theme = Gtk.IconTheme.get_default()
@@ -58,6 +54,10 @@ except GObject.GError:
     generic = GdkPixbuf.Pixbuf.new_from_file(generic_icon)
 
 cached_icons = {"generic": generic}
+
+
+# Set this environment variable to any value to use the legacy indicator.
+use_legacy_indicator = os.environ.get("CAFFEINE_LEGACY_TRAY") is not None
 
 
 # FIXME: this does not work for any of the cases I tried.
@@ -167,7 +167,7 @@ class GUI:
         audio_peak_filtering_active = settings.get_boolean("audio-peak-filtering")
         self.__core.set_audio_peak_filtering_active(audio_peak_filtering_active)
 
-        if appindicator_avail:
+        if not use_legacy_indicator:
             self.AppInd = AppIndicator3.Indicator.new(
                 "caffeine",
                 "caffeine-cup-empty",
@@ -217,7 +217,7 @@ class GUI:
         self.menu = get("popup_menu")
         self.menu.show()
 
-        if appindicator_avail:
+        if not use_legacy_indicator:
 
             self.AppInd.set_menu(self.menu)
 
@@ -292,7 +292,7 @@ class GUI:
         self.othertime_hours = get("hours_spin")
         self.othertime_minutes = get("minutes_spin")
 
-        if appindicator_avail is False:
+        if use_legacy_indicator:
             # Handle mouse clicks on status_icon
             # left click
             self.status_icon.connect("activate", self.on_L_click)
@@ -319,7 +319,7 @@ class GUI:
         # toggle the icon, indexing with a bool.
         icon_name = ["caffeine-cup-empty", "caffeine-cup-full"][activated]
 
-        if appindicator_avail:
+        if not use_legacy_indicator:
             self.AppInd.set_icon(icon_name)
         else:
             self.status_icon.set_from_icon_name(icon_name)
@@ -385,7 +385,7 @@ class GUI:
     def on_trayicon_changed(self, settings, key, data=None):
         show_tray_icon = settings.get_boolean(key)
 
-        if appindicator_avail:
+        if not use_legacy_indicator:
             self.AppInd.set_status(
                 [
                     AppIndicator3.IndicatorStatus.PASSIVE,

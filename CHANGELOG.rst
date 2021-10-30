@@ -5,6 +5,9 @@ Changelog
 v4.0.0
 ------
 
+Command line usage changes
+..........................
+
 This release rewrites the CLI portion of caffeine-ng into ``click``. ``click``
 is the standard library in python for writing CLI apps, and is better
 maintained. This is part of an initiative to bring caffeine to a more modern
@@ -19,3 +22,21 @@ Also, this rewrite allows for cleaning up some skeletons in the closet.
 The way the PID file is handled has hardened and simplified, but this will
 result in caffeine 4.0 not killing older versions. Exit any older versions that
 ,may be running before upgrading (or simply restart after doing so).
+
+Status icon changes
+...................
+
+The `libappindicator` dependency is not mandatory.
+
+Previously, we'd determine whether to use StatusIcon vs AppIndicator based on
+the presence of this dependency. This was problematic for users who had the
+library installed as a dependency for another tool, but wanted StatusIcons. If
+you want a StatusIcon, please set the `CAFFEINE_LEGACY_TRAY` to any value.
+
+This also reduces confusion for users of desktops that _only_ support
+AppIndicator, but users were unaware of the difference or of the optional
+dependency.
+
+If your desktop *does not* support AppIndicator, fallback to using a StatusIcon
+should be automatic. If you get *no* icon out-of-the-box, please report the
+issue.
