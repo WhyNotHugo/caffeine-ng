@@ -7,8 +7,8 @@ from typing import Callable
 from ewmh import EWMH
 from pulsectl import Pulse
 
-from . import utils
-from .procmanager import ProcManager  # noqa: E402
+from caffeine import utils
+from caffeine.procmanager import ProcManager  # noqa: E402
 
 logger = logging.getLogger(__name__)
 

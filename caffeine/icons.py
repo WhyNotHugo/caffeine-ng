@@ -18,8 +18,8 @@ from os.path import join
 
 from gi.repository import Gtk
 
-from .paths import ICON_PATH
-from .paths import IMAGE_PATH
+from caffeine.paths import ICON_PATH
+from caffeine.paths import IMAGE_PATH
 
 
 def get_icon_pixbuf(size):

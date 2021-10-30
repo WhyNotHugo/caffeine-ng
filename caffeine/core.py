@@ -24,22 +24,22 @@ from gi.repository import GLib
 from gi.repository import GObject
 from gi.repository import Notify
 
-from .icons import empty_cup_icon
-from .icons import full_cup_icon
-from .inhibitors import DpmsInhibitor
-from .inhibitors import GnomeInhibitor
-from .inhibitors import XautolockInhibitor
-from .inhibitors import XdgPowerManagmentInhibitor
-from .inhibitors import XdgScreenSaverInhibitor
-from .inhibitors import XidlehookInhibitor
-from .inhibitors import XorgInhibitor
-from .inhibitors import XssInhibitor
-from .procmanager import ProcManager
-from .triggers import DesiredState
-from .triggers import FullscreenTrigger
-from .triggers import ManualTrigger
-from .triggers import PulseAudioTrigger
-from .triggers import WhiteListTrigger
+from caffeine.icons import empty_cup_icon
+from caffeine.icons import full_cup_icon
+from caffeine.inhibitors import DpmsInhibitor
+from caffeine.inhibitors import GnomeInhibitor
+from caffeine.inhibitors import XautolockInhibitor
+from caffeine.inhibitors import XdgPowerManagmentInhibitor
+from caffeine.inhibitors import XdgScreenSaverInhibitor
+from caffeine.inhibitors import XidlehookInhibitor
+from caffeine.inhibitors import XorgInhibitor
+from caffeine.inhibitors import XssInhibitor
+from caffeine.procmanager import ProcManager
+from caffeine.triggers import DesiredState
+from caffeine.triggers import FullscreenTrigger
+from caffeine.triggers import ManualTrigger
+from caffeine.triggers import PulseAudioTrigger
+from caffeine.triggers import WhiteListTrigger
 
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
 

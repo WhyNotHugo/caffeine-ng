@@ -20,6 +20,8 @@ import os
 from gettext import gettext as _
 
 import gi
+from gi.repository import Gio
+from gi.repository import GObject
 
 gi.require_version("GdkPixbuf", "2.0")
 gi.require_version("Gtk", "3.0")
@@ -28,27 +30,27 @@ gi.require_version("AppIndicator3", "0.1")
 
 from gi.repository import AppIndicator3  # noqa: E402
 from gi.repository import GdkPixbuf  # noqa: E402
-from gi.repository import Gio  # noqa: E402
-from gi.repository import GObject  # noqa: E402
 from gi.repository import Gtk  # noqa: E402
 from gi.repository.Notify import Notification  # noqa: E402
 from gi.repository.Notify import init as notify_init  # noqa: E402
 
-from . import __version__  # noqa: E402
-from .core import Caffeine  # noqa: E402
-from .icons import generic_icon  # noqa: E402
-from .icons import get_icon_pixbuf  # noqa: E402
-from .paths import get_blacklist_file_audio  # noqa: E402
-from .paths import get_glade_file  # noqa: E402
-from .paths import get_whitelist_file  # noqa: E402
-from .procmanager import ProcManager  # noqa: E402
+from caffeine import __version__  # noqa: E402
+from caffeine.core import Caffeine  # noqa: E402
+from caffeine.icons import generic_icon  # noqa: E402
+from caffeine.icons import get_icon_pixbuf  # noqa: E402
+from caffeine.paths import get_blacklist_file_audio  # noqa: E402
+from caffeine.paths import get_glade_file  # noqa: E402
+from caffeine.paths import get_whitelist_file  # noqa: E402
+from caffeine.procmanager import ProcManager  # noqa: E402
 
 logger = logging.getLogger(__name__)
 
 icon_theme = Gtk.IconTheme.get_default()
 try:
     generic = icon_theme.load_icon(
-        "application-x-executable", 16, Gtk.IconLookupFlags.NO_SVG
+        "application-x-executable",
+        16,
+        Gtk.IconLookupFlags.NO_SVG,
     )
 except GObject.GError:
     generic = GdkPixbuf.Pixbuf.new_from_file(generic_icon)
@@ -253,7 +255,9 @@ class GUI:
 
         self.trayicon_cb = builder.get_object("trayicon_cbutton")
         self.notification_cb = builder.get_object("notification_cbutton")
-        self.audio_peak_filtering_cb = builder.get_object("audio_peak_filtering_cbutton")
+        self.audio_peak_filtering_cb = builder.get_object(
+            "audio_peak_filtering_cbutton"
+        )
 
         self.notification_cb.set_sensitive(not show_tray_icon)
 

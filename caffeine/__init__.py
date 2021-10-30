@@ -17,15 +17,16 @@
 import gettext
 import locale
 
-from .paths import LOCALE_PATH
-from .version import version
+from caffeine.paths import LOCALE_PATH
+from caffeine.version import version
 
 __version__ = version
 
 
-def __init_translations():
-    GETTEXT_DOMAIN = "caffeine"
+def init_translations():
+    """Initialise translations. Should be called just once at startup."""
 
+    GETTEXT_DOMAIN = "caffeine"
     locale.setlocale(locale.LC_ALL, "")
 
     for module in locale, gettext:
@@ -33,4 +34,4 @@ def __init_translations():
         module.textdomain(GETTEXT_DOMAIN)
 
 
-__init_translations()
+init_translations()
