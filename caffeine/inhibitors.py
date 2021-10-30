@@ -18,6 +18,8 @@ import logging
 import os
 import threading
 import time
+from abc import ABC
+from abc import abstractmethod
 
 import dbus
 
@@ -26,13 +28,13 @@ logger = logging.getLogger(__name__)
 INHIBITION_REASON = "Inhibited via libcaffeine"
 
 
-class BaseInhibitor:
+class BaseInhibitor(ABC):
     running: bool
 
     def __init__(self):
         self.running = False
 
-    def set(self, state):
+    def set(self, state: bool) -> None:
         if state:
             if not self.running:
                 self.inhibit()
@@ -41,10 +43,23 @@ class BaseInhibitor:
                 self.uninhibit()
 
     def is_screen_inhibitor(self):
+        """Return True if this instance is a screen saver inhibitor.
+
+        Inhibitor which are sleep inhibitors should return False.
+        """
         return False
 
     @property
-    def applicable(self):
+    @abstractmethod
+    def applicable(self) -> bool:
+        raise NotImplementedError()
+
+    @abstractmethod
+    def inhibit(self) -> None:
+        raise NotImplementedError()
+
+    @abstractmethod
+    def uninhibit(self) -> None:
         raise NotImplementedError()
 
     def __str__(self):
@@ -59,27 +74,32 @@ class GnomeInhibitor(BaseInhibitor):
         self.__proxy = None
         self.__cookie = None
 
-    def inhibit(self):
+    def inhibit(self) -> None:
         if not self.__proxy:
             self.__proxy = self.bus.get_object(
-                "org.gnome.SessionManager", "/org/gnome/SessionManager"
+                "org.gnome.SessionManager",
+                "/org/gnome/SessionManager",
             )
             self.__proxy = dbus.Interface(
-                self.__proxy, dbus_interface="org.gnome.SessionManager"
+                self.__proxy,
+                dbus_interface="org.gnome.SessionManager",
             )
 
         self.__cookie = self.__proxy.Inhibit(
-            "Caffeine", dbus.UInt32(0), INHIBITION_REASON, dbus.UInt32(4)
+            "Caffeine",
+            dbus.UInt32(0),
+            INHIBITION_REASON,
+            dbus.UInt32(4),
         )
         self.running = True
 
-    def uninhibit(self):
+    def uninhibit(self) -> None:
         if self.__cookie is not None:
             self.__proxy.Uninhibit(self.__cookie)
         self.running = False
 
     @property
-    def applicable(self):
+    def applicable(self) -> bool:
         return "org.gnome.SessionManager" in self.bus.list_names()
 
 
@@ -90,18 +110,20 @@ class XdgScreenSaverInhibitor(BaseInhibitor):
 
         self.__cookie = None
 
-    def inhibit(self):
+    def inhibit(self) -> None:
         self.__proxy = self.bus.get_object(
-            "org.freedesktop.ScreenSaver", "/ScreenSaver"
+            "org.freedesktop.ScreenSaver",
+            "/ScreenSaver",
         )
         self.__proxy = dbus.Interface(
-            self.__proxy, dbus_interface="org.freedesktop.ScreenSaver"
+            self.__proxy,
+            dbus_interface="org.freedesktop.ScreenSaver",
         )
         self.__cookie = self.__proxy.Inhibit("Caffeine", INHIBITION_REASON)
 
         self.running = True
 
-    def uninhibit(self):
+    def uninhibit(self) -> None:
         if self.__cookie:
             self.__proxy.UnInhibit(self.__cookie)
         self.running = False
@@ -110,7 +132,7 @@ class XdgScreenSaverInhibitor(BaseInhibitor):
         return True
 
     @property
-    def applicable(self):
+    def applicable(self) -> bool:
         return "org.freedesktop.ScreenSaver" in self.bus.list_names()
 
 
@@ -121,24 +143,25 @@ class XdgPowerManagmentInhibitor(BaseInhibitor):
 
         self.__cookie = None
 
-    def inhibit(self):
+    def inhibit(self) -> None:
         self.__proxy = self.bus.get_object(
             "org.freedesktop.PowerManagement",
             "/org/freedesktop/PowerManagement/Inhibit",
         )
         self.__proxy = dbus.Interface(
-            self.__proxy, dbus_interface="org.freedesktop.PowerManagement.Inhibit"
+            self.__proxy,
+            dbus_interface="org.freedesktop.PowerManagement.Inhibit",
         )
         self.__cookie = self.__proxy.Inhibit("Caffeine", INHIBITION_REASON)
         self.running = True
 
-    def uninhibit(self):
+    def uninhibit(self) -> None:
         if self.__cookie:
             self.__proxy.UnInhibit(self.__cookie)
         self.running = False
 
     @property
-    def applicable(self):
+    def applicable(self) -> bool:
         return "org.freedesktop.PowerManagement" in self.bus.list_names()
 
 
@@ -154,28 +177,28 @@ class XssInhibitor(BaseInhibitor):
                 time.sleep(50)
             logging.info("XSS inhibitor thread finishing.")
 
-    def inhibit(self):
+    def inhibit(self) -> None:
         self.running = True
         self.thread = XssInhibitor.XssInhibitorThread()
         self.thread.start()
 
-    def uninhibit(self):
+    def uninhibit(self) -> None:
         self.running = False
         self.thread.keep_running = False
 
     @property
-    def applicable(self):
+    def applicable(self) -> bool:
         # TODO!
         return os.system("pgrep xscreensaver") == 0
 
 
 class DpmsInhibitor(BaseInhibitor):
-    def inhibit(self):
+    def inhibit(self) -> None:
         self.running = True
 
         os.system("xset -dpms")
 
-    def uninhibit(self):
+    def uninhibit(self) -> None:
         self.running = False
 
         # FIXME: Aren't we enabling it if it was never online?
@@ -186,18 +209,18 @@ class DpmsInhibitor(BaseInhibitor):
         return True
 
     @property
-    def applicable(self):
+    def applicable(self) -> bool:
         # TODO!
         return True
 
 
 class XorgInhibitor(BaseInhibitor):
-    def inhibit(self):
+    def inhibit(self) -> None:
         self.running = True
 
         os.system("xset s off")
 
-    def uninhibit(self):
+    def uninhibit(self) -> None:
         self.running = False
 
         # FIXME: Aren't we enabling it if it was never online?
@@ -205,38 +228,34 @@ class XorgInhibitor(BaseInhibitor):
         os.system("xset s on")
 
     @property
-    def applicable(self):
+    def applicable(self) -> bool:
         # TODO!
         return True
 
 
 class XautolockInhibitor(BaseInhibitor):
-    def inhibit(self):
+    def inhibit(self) -> None:
         self.running = True
-
         os.system("xautolock -disable")
 
-    def uninhibit(self):
+    def uninhibit(self) -> None:
         self.running = False
-
         os.system("xautolock -enable")
 
     @property
-    def applicable(self):
+    def applicable(self) -> bool:
         return os.system("pgrep xautolock") == 0
 
 
 class XidlehookInhibitor(BaseInhibitor):
-    def inhibit(self):
+    def inhibit(self) -> None:
         self.running = True
-
         os.system("pkill -SIGSTOP xidlehook")
 
-    def uninhibit(self):
+    def uninhibit(self) -> None:
         self.running = False
-
         os.system("pkill -SIGCONT xidlehook")
 
     @property
-    def applicable(self):
+    def applicable(self) -> bool:
         return os.system("pgrep xidlehook") == 0
