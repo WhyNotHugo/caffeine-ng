@@ -155,11 +155,7 @@ class GUI:
         builder = Gtk.Builder()
         builder.add_from_file(get_glade_file("GUI.glade"))
 
-        # It can be tiresome to have to type builder.get_object
-        # again and again
-        get = builder.get_object
-
-        about = get("aboutdialog")
+        about = builder.get_object("aboutdialog")
         about.set_version(__version__)
 
         show_tray_icon = settings.get_boolean("show-tray-icon")
@@ -185,7 +181,7 @@ class GUI:
             # status icon must be a instance variable  (ie self.)or else it
             # gets thrown out with the garbage, and won't be seen.
 
-            self.status_icon = get("statusicon")
+            self.status_icon = builder.get_object("statusicon")
             self.status_icon.set_visible(show_tray_icon)
 
         if (
@@ -204,7 +200,7 @@ class GUI:
 
             note.show()
 
-        self.activate_menuitem = get("activate_menuitem")
+        self.activate_menuitem = builder.get_object("activate_menuitem")
 
         self.set_icon_is_activated(self.__core.get_activated())
 
@@ -214,7 +210,7 @@ class GUI:
         # self.status_icon.set_tooltip(tooltip)
 
         # popup menu
-        self.menu = get("popup_menu")
+        self.menu = builder.get_object("popup_menu")
         self.menu.show()
 
         if not use_legacy_indicator:
@@ -224,26 +220,26 @@ class GUI:
         #
         # configuration window widgets
         #
-        proc_treeview = get("treeview")
+        proc_treeview = builder.get_object("treeview")
         self.selection = proc_treeview.get_selection()
         self.selection.set_mode(Gtk.SelectionMode.MULTIPLE)
-        proc_treeview_audio = get("treeview_audio")
+        proc_treeview_audio = builder.get_object("treeview_audio")
         self.selection_audio = proc_treeview_audio.get_selection()
         self.selection_audio.set_mode(Gtk.SelectionMode.MULTIPLE)
 
-        self.proc_liststore = get("proc_liststore")
+        self.proc_liststore = builder.get_object("proc_liststore")
         for name in self.__process_manager.get_process_list():
             self.proc_liststore.append([get_icon_for_process(name), name])
-        self.proc_liststore_audio = get("proc_liststore_audio")
+        self.proc_liststore_audio = builder.get_object("proc_liststore_audio")
         for name in self.__process_manager_audio.get_process_list():
             self.proc_liststore_audio.append([get_icon_for_process(name), name])
 
-        # time_menuitem = get("time_menuitem")
+        # time_menuitem = builder.get_object("time_menuitem")
 
         # time_menuitem.set_submenu(submenu)
 
         # Preferences editor.
-        self.window = get("window")
+        self.window = builder.get_object("window")
 
         # set the icons for the window border.
         self.window.set_default_icon_list(
@@ -255,9 +251,9 @@ class GUI:
             ]
         )
 
-        self.trayicon_cb = get("trayicon_cbutton")
-        self.notification_cb = get("notification_cbutton")
-        self.audio_peak_filtering_cb = get("audio_peak_filtering_cbutton")
+        self.trayicon_cb = builder.get_object("trayicon_cbutton")
+        self.notification_cb = builder.get_object("notification_cbutton")
+        self.audio_peak_filtering_cb = builder.get_object("audio_peak_filtering_cbutton")
 
         self.notification_cb.set_sensitive(not show_tray_icon)
 
@@ -284,13 +280,13 @@ class GUI:
         )
 
         # about dialog
-        self.about_dialog = get("aboutdialog")
+        self.about_dialog = builder.get_object("aboutdialog")
         self.about_dialog.set_translator_credits(_("translator-credits"))
 
         # other time selector
-        self.othertime_dialog = get("othertime_dialog")
-        self.othertime_hours = get("hours_spin")
-        self.othertime_minutes = get("minutes_spin")
+        self.othertime_dialog = builder.get_object("othertime_dialog")
+        self.othertime_hours = builder.get_object("hours_spin")
+        self.othertime_minutes = builder.get_object("minutes_spin")
 
         if use_legacy_indicator:
             # Handle mouse clicks on status_icon
