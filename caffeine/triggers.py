@@ -6,6 +6,7 @@ from typing import Callable
 
 from ewmh import EWMH
 from pulsectl import Pulse
+from pulsectl.pulsectl import PulseIndexError
 
 from caffeine import utils
 from caffeine.procmanager import ProcManager  # noqa: E402
@@ -136,13 +137,15 @@ class PulseAudioTrigger:
 
             # Get all audio recording streams
             for application_input in pulseaudio.source_output_list():
+                try:
+                    system_input_muted = pulseaudio.source_info(
+                        application_input.source
+                    ).mute
+                except PulseIndexError:
+                    system_input_muted = False
                 if (
                     not application_input.mute  # application input is not muted
-                    and application_input.name
-                    != "peak detect"  # source_output_list() returns the object used to peak for audio playback streams
-                    and not pulseaudio.source_info(
-                        application_input.source
-                    ).mute  # system input is not muted
+                    and not system_input_muted
                 ):
                     application_name = application_input.proplist.get(
                         "application.process.binary", "no name"
