@@ -25,7 +25,7 @@ except ModuleNotFoundError:
 
     xdg_config_home = str(xdg_config_home())
 
-PACKAGE_PATH = os.path.dirname(os.path.abspath(__file__))
+PACKAGE_PATH = os.path.dirname(__file__)
 LOCALE_PATH = join(PACKAGE_PATH, "locale")
 GLADE_PATH = join(PACKAGE_PATH, "assets/glade")
 IMAGE_PATH = join(PACKAGE_PATH, "assets/images")
