@@ -160,7 +160,7 @@ msgstr ""
 
 #: caffeine/main.py:314 caffeine/main.py:400
 msgid "Disable Caffeine"
-msgstr "Povolit šetřič obrazovky"
+msgstr "Povolit spořič obrazovky"
 
 #: caffeine/core.py:156
 msgid "Timed activation set; "
@@ -228,7 +228,7 @@ msgstr "Caffeine bude zabraňovat šetření energií pro příští "
 #~ msgstr "Prosím instalujte"
 
 #~ msgid "Disable Screensaver for..."
-#~ msgstr "Vypnout šetřič obrazovky na ..."
+#~ msgstr "Vypnout spořič obrazovky na ..."
 
 #~ msgid "Autostart"
 #~ msgstr "Automatické spuštění"
