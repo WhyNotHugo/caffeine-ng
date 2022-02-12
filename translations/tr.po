@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-30 15:44+0300\n"
-"PO-Revision-Date: 2021-07-22 14:36+0300\n"
+"POT-Creation-Date: 2021-10-30 13:48+0200\n"
+"PO-Revision-Date: 2022-02-12 17:31+0300\n"
 "Last-Translator: Gökhan Gökkaya <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "Language: tr\n"
@@ -16,7 +16,80 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2013-03-10 04:48+0000\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: caffeine/core.py:155
+msgid "Timed activation set; "
+msgstr "Zamanlanmış etkinleştirme düzeni; "
+
+#: caffeine/core.py:156
+msgid "Caffeine will prevent powersaving for the next "
+msgstr "Caffeine'in güç korumasını önleyeceği zaman dilimi : "
+
+#: caffeine/core.py:163
+msgid "Activated for "
+msgstr "Etkinleştirildiği içerik "
+
+#: caffeine/core.py:190
+msgid " have elapsed; powersaving is re-enabled"
+msgstr " geçti; güç tasarrufu yeniden etkinleştirildi"
+
+#: caffeine/core.py:245
+msgid "Timed activation cancelled (was set for "
+msgstr "Zamanlanmış etkinleştirme iptal edildi (  için belirlendi "
+
+#: caffeine/core.py:277
+msgid "Caffeine is dormant; powersaving is enabled."
+msgstr "Caffeine devre dışı; güç koruması etkin."
+
+#: caffeine/core.py:279
+msgid "Caffeine is preventing sleep only."
+msgstr "Caffeine uygulaması sadece uyku kipini engelliyor."
+
+#: caffeine/core.py:281
+msgid "Caffeine is preventing all powersaving."
+msgstr "Caffeine uygulaması tüm güç korumasını önlüyor."
+
+#: caffeine/main.py:198
+msgid "Caffeine is running"
+msgstr "Caffeine çalışıyor"
+
+#: caffeine/main.py:199
+msgid ""
+"To show the tray icon, \n"
+"run "
+msgstr "Sistem tepsisi simgesini göster "
+
+#: caffeine/main.py:201
+msgid "or open Caffeine Preferences from your system menu."
+msgstr "ya da sistem menüsündeki Caffeine Tercihlerini açın."
+
+#: caffeine/main.py:213
+msgid "Caffeine is dormant; powersaving is enabled"
+msgstr "Caffeine devre dışı; güç koruması aktif edildi"
+
+#: caffeine/main.py:288
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
+"  Fatih Bostancı https://launchpad.net/~fbostanci\n"
+"  Gökhan KILINÇ https://launchpad.net/~kilincgokhan\n"
+"  GüneyTekfidan https://launchpad.net/~ubuntuturk-hotmail\n"
+"  Oğuzhan Gökay ARI https://launchpad.net/~drakeos\n"
+"  Volkan Gezer https://launchpad.net/~volkangezer\n"
+"  Yusuf Kayan https://launchpad.net/~c08b\n"
+"  zeugma https://launchpad.net/~sunder67\n"
+"  Gökhan Gökkaya https://launchpad.net/~kelebek333"
+
+#: caffeine/main.py:327 caffeine/main.py:415
+#: caffeine/assets/glade/GUI.glade:286
+msgid "Enable Caffeine"
+msgstr "Caffeine'yi etkinleştir"
+
+#: caffeine/main.py:327 caffeine/main.py:415
+msgid "Disable Caffeine"
+msgstr "Caffeine'yi pasifleştir"
 
 #: caffeine/assets/glade/proc.glade:8
 msgid "Select a process name..."
@@ -41,11 +114,6 @@ msgstr "Saat:"
 #: caffeine/assets/glade/GUI.glade:188
 msgid "Minutes:"
 msgstr "Dakika:"
-
-#: caffeine/assets/glade/GUI.glade:286 caffeine/main.py:314
-#: caffeine/main.py:400
-msgid "Enable Caffeine"
-msgstr "Ekran koruyucuyu devre dışı bırak"
 
 #: caffeine/assets/glade/GUI.glade:301
 msgid "Enable Caffeine for..."
@@ -87,7 +155,7 @@ msgstr ""
 "modunu otomatik olarak engelleyemeyen uygulamalar\n"
 "(özellikle tam ekran uygulamalar) için kullanışlı olabilir."
 
-#: caffeine/assets/glade/GUI.glade.h:18
+#: caffeine/assets/glade/GUI.glade:555 caffeine/assets/glade/GUI.glade:724
 msgid "Process Name"
 msgstr "Süreç Adı"
 
@@ -134,74 +202,6 @@ msgstr "Bildirimi başlangıçta göster"
 #: caffeine/assets/glade/GUI.glade:942
 msgid "    "
 msgstr "    "
-
-#: caffeine/main.py:190
-msgid "Caffeine is running"
-msgstr "Caffeine çalışıyor"
-
-#: caffeine/main.py:191
-msgid ""
-"To show the tray icon, \n"
-"run "
-msgstr "Sistem tepsisi simgesini göster "
-
-#: caffeine/main.py:193
-msgid "or open Caffeine Preferences from your system menu."
-msgstr "ya da sistem menüsündeki Caffeine Tercihlerini açın."
-
-#: caffeine/main.py:205
-msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "Caffeine devre dışı; güç koruması aktif edildi"
-
-#: caffeine/main.py:275
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
-"  Fatih Bostancı https://launchpad.net/~fbostanci\n"
-"  Gökhan KILINÇ https://launchpad.net/~kilincgokhan\n"
-"  GüneyTekfidan https://launchpad.net/~ubuntuturk-hotmail\n"
-"  Oğuzhan Gökay ARI https://launchpad.net/~drakeos\n"
-"  Volkan Gezer https://launchpad.net/~volkangezer\n"
-"  Yusuf Kayan https://launchpad.net/~c08b\n"
-"  zeugma https://launchpad.net/~sunder67\n"
-"  Gökhan Gökkaya https://launchpad.net/~kelebek333"
-
-#: caffeine/main.py:314 caffeine/main.py:400
-msgid "Disable Caffeine"
-msgstr "Ekran koruyucuyu etkinleştir"
-
-#: caffeine/core.py:156
-msgid "Timed activation set; "
-msgstr "Zamanlanmış etkinleştirme düzeni; "
-
-#: caffeine/core.py:157
-msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine'in güç korumasını önleyeceği zaman dilimi : "
-
-#: caffeine/core.py:164
-msgid "Activated for "
-msgstr "Etkinleştirildiği içerik "
-
-#: caffeine/core.py:191
-msgid " have elapsed; powersaving is re-enabled"
-msgstr " geçti; güç tasarrufu yeniden etkinleştirildi"
-
-#: caffeine/core.py:246
-msgid "Timed activation cancelled (was set for "
-msgstr "Zamanlanmış etkinleştirme iptal edildi (  için belirlendi "
-
-#: caffeine/core.py:278
-msgid "Caffeine is dormant; powersaving is enabled."
-msgstr "Caffeine devre dışı; güç koruması etkin."
-
-#: caffeine/core.py:280
-msgid "Caffeine is preventing sleep only."
-msgstr "Caffeine uygulaması sadece uyku kipini engelliyor."
-
-#: caffeine/core.py:282
-msgid "Caffeine is preventing all powersaving."
-msgstr "Caffeine uygulaması tüm güç korumasını önlüyor."
 
 #~ msgid "Activated for Flash video"
 #~ msgstr "Flash görüntü için etkinleştirildi"
