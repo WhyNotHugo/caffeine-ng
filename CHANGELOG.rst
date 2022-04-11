@@ -21,20 +21,20 @@ Also, this rewrite allows for cleaning up some skeletons in the closet.
 
 The way the PID file is handled has hardened and simplified, but this will
 result in caffeine 4.0 not killing older versions. Exit any older versions that
-,may be running before upgrading (or simply restart after doing so).
+may be running before upgrading (or simply restart after doing so).
 
 Status icon changes
 ...................
 
-The `libappindicator` dependency is not mandatory.
+The `libappindicator` dependency is now mandatory.
 
 Previously, we'd determine whether to use StatusIcon vs AppIndicator based on
 the presence of this dependency. This was problematic for users who had the
-library installed as a dependency for another tool, but wanted StatusIcons. If
-you want a StatusIcon, please set the `CAFFEINE_LEGACY_TRAY` to any value.
+library installed as a dependency for another program, but wanted StatusIcons.
+If you want a StatusIcon, please set the `CAFFEINE_LEGACY_TRAY` to any value.
 
 This also reduces confusion for users of desktops that _only_ support
-AppIndicator, but users were unaware of the difference or of the optional
+AppIndicator, but were unaware of the difference or unaware of the optional
 dependency.
 
 If your desktop *does not* support AppIndicator, fallback to using a StatusIcon
