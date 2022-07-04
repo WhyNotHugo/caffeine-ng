@@ -63,7 +63,7 @@ use_legacy_indicator = os.environ.get("CAFFEINE_LEGACY_TRAY") is not None
 
 
 # FIXME: this does not work for any of the cases I tried.
-def get_icon_for_process(proc_name):
+def get_icon_for_process(proc_name: str):
 
     global cached_icons
     global generic

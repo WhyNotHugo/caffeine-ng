@@ -23,7 +23,7 @@ from caffeine.version import version
 __version__ = version
 
 
-def init_translations():
+def init_translations() -> None:
     """Initialise translations. Should be called just once at startup."""
 
     GETTEXT_DOMAIN = "caffeine"

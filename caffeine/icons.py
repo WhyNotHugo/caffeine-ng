@@ -22,7 +22,7 @@ from caffeine.paths import ICON_PATH
 from caffeine.paths import IMAGE_PATH
 
 
-def get_icon_pixbuf(size):
+def get_icon_pixbuf(size: int):
     """
     Returns the icon as a pixbuf.
 

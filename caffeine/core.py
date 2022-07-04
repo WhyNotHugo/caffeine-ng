@@ -114,7 +114,7 @@ class Caffeine(GObject.GObject):
 
         logger.info(self.status_string)
 
-    def run_all_triggers(self, show_notification=False):
+    def run_all_triggers(self, show_notification=False) -> None:
         """Runs all triggers to determine the currently desired status."""
         inhibit = DesiredState.UNINHIBITED
 
@@ -129,16 +129,14 @@ class Caffeine(GObject.GObject):
         self.desired_state = inhibit
         self.apply_desired_status(show_notification)
 
-        return True
-
-    def quit(self):
+    def quit(self) -> None:
         """
         Cancels any timer thread running so the program can quit right away.
         """
         if self.timer:
             self.timer.cancel()
 
-    def _notify(self, message, icon, title="Caffeine"):
+    def _notify(self, message: str, icon: str, title: str = "Caffeine") -> None:
         """Easy way to use pynotify."""
 
         Notify.init("Caffeine")
@@ -147,9 +145,10 @@ class Caffeine(GObject.GObject):
         else:
             self.notification = Notify.Notification.new(title, message, icon)
 
-        self.notification.show()
+        if self.notification:
+            self.notification.show()
 
-    def timed_activation(self, time: int, show_notification=True):
+    def timed_activation(self, time: int, show_notification=True) -> None:
         """Toggle inhibition after a given amount of seconds."""
         message = (
             _("Timed activation set; ")
@@ -185,6 +184,7 @@ class Caffeine(GObject.GObject):
 
     def _deactivate(self, show_notification: bool) -> None:
         """Called when the timer finished running."""
+
         self._manual_trigger.active = False
         interval = self.timer.interval  # type: ignore
         message = str(interval) + _(" have elapsed; powersaving is re-enabled")
