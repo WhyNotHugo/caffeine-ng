@@ -18,6 +18,7 @@ import logging
 import os.path
 from gettext import gettext as _
 from threading import Timer
+from typing import List
 from typing import Optional
 
 from gi.repository import GLib
@@ -39,6 +40,7 @@ from caffeine.triggers import DesiredState
 from caffeine.triggers import FullscreenTrigger
 from caffeine.triggers import ManualTrigger
 from caffeine.triggers import PulseAudioTrigger
+from caffeine.triggers import Trigger
 from caffeine.triggers import WhiteListTrigger
 
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
@@ -80,7 +82,7 @@ class Caffeine(GObject.GObject):
         self.__audio_peak_filtering_active = True
 
         self._manual_trigger = ManualTrigger()
-        self.triggers: list = [self._manual_trigger]
+        self.triggers: List[Trigger] = [self._manual_trigger]
         if whitelist:
             self.triggers.append(WhiteListTrigger(self.__process_manager))
         if fullscreen:

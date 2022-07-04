@@ -1,5 +1,7 @@
 """Triggers are different events or states that auto-activate caffeine."""
 import logging
+from abc import ABC
+from abc import abstractmethod
 from dataclasses import dataclass
 from enum import Enum
 from typing import Callable
@@ -25,7 +27,19 @@ class DesiredState(Enum):
         return NotImplemented
 
 
-class ManualTrigger:
+class Trigger(ABC):
+    """Triggers are "sources" that indicate that inhibition is desireable."""
+
+    @abstractmethod
+    def run(self) -> DesiredState:
+        """Return the desired state right now.
+
+        This method will be called periodically, and the trigger should return the
+        desired state at the time of the call.
+        """
+
+
+class ManualTrigger(Trigger):
     active = False
 
     def run(self) -> DesiredState:
@@ -36,7 +50,7 @@ class ManualTrigger:
 
 
 @dataclass
-class WhiteListTrigger:
+class WhiteListTrigger(Trigger):
     process_manager: ProcManager
 
     def run(self) -> DesiredState:
@@ -50,7 +64,7 @@ class WhiteListTrigger:
         return DesiredState.UNINHIBITED
 
 
-class FullscreenTrigger:
+class FullscreenTrigger(Trigger):
     def __init__(self):
         self._ewmh = EWMH()
 
@@ -74,7 +88,7 @@ class FullscreenTrigger:
         return DesiredState.UNINHIBITED
 
 
-class PulseAudioTrigger:
+class PulseAudioTrigger(Trigger):
     def __init__(
         self,
         process_manager: ProcManager,
