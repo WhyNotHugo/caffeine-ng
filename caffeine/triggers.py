@@ -1,5 +1,6 @@
 """Triggers are different events or states that auto-activate caffeine."""
 import logging
+import os
 from abc import ABC
 from abc import abstractmethod
 from dataclasses import dataclass
@@ -66,26 +67,31 @@ class WhiteListTrigger(Trigger):
 
 class FullscreenTrigger(Trigger):
     def __init__(self):
-        self._ewmh = EWMH()
+        if os.environ.get("WAYLAND_DISPLAY") is None:
+            self._ewmh = EWMH()
+        else:
+            logger.info("Running on Wayland; fullscreen trigger won't work.")
+            self._ewmh = None
 
     def run(self) -> DesiredState:
         """Determine if a fullscreen application is running."""
         inhibit = False
 
-        window = self._ewmh.getActiveWindow()
+        if self._ewmh:
+            window = self._ewmh.getActiveWindow()
 
-        # ewmh.getWmState(window) returns None is scenarios where
-        # ewmh.getWmState(window, str=True) throws an exception
-        # (it's a bug in pyewmh):
-        if window and self._ewmh.getWmState(window):
-            wm_state = self._ewmh.getWmState(window, True)
-            inhibit = "_NET_WM_STATE_FULLSCREEN" in wm_state
+            # ewmh.getWmState(window) returns None is scenarios where
+            # ewmh.getWmState(window, str=True) throws an exception
+            # (it's a bug in pyewmh):
+            if window and self._ewmh.getWmState(window):
+                wm_state = self._ewmh.getWmState(window, True)
+                inhibit = "_NET_WM_STATE_FULLSCREEN" in wm_state
 
         if inhibit:
-            logger.info("Fullscreen app detected.")
+            logger.info("Fullscreen window detected.")
             return DesiredState.INHIBIT_ALL
-
-        return DesiredState.UNINHIBITED
+        else:
+            return DesiredState.UNINHIBITED
 
 
 class PulseAudioTrigger(Trigger):
