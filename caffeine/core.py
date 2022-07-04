@@ -49,6 +49,8 @@ logger = logging.getLogger(__name__)
 
 
 class Caffeine(GObject.GObject):
+    """Implements the main caffeine service itself."""
+
     timer: Optional[Timer]
 
     def __init__(
@@ -62,6 +64,7 @@ class Caffeine(GObject.GObject):
         """Main caffeine worker.
 
         :param pulseaudio: Whether pulseaudio support should be enabled.
+        :param whitelist: Whether whitelist support should be enabled.
         """
         GObject.GObject.__init__(self)
 
