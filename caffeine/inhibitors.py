@@ -210,14 +210,13 @@ class DpmsInhibitor(BaseInhibitor):
 
     @property
     def applicable(self) -> bool:
-        # TODO!
-        return True
+        # TODO: Condition is incomplete
+        return os.environ.get("WAYLAND_DISPLAY") is None
 
 
 class XorgInhibitor(BaseInhibitor):
     def inhibit(self, reason=INHIBITION_REASON) -> None:
         self.running = True
-
         os.system("xset s off")
 
     def uninhibit(self) -> None:
@@ -229,8 +228,8 @@ class XorgInhibitor(BaseInhibitor):
 
     @property
     def applicable(self) -> bool:
-        # TODO!
-        return True
+        # TODO: Condition is incomplete
+        return os.environ.get("WAYLAND_DISPLAY") is None
 
 
 class XautolockInhibitor(BaseInhibitor):
