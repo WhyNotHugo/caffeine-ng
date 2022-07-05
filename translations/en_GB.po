@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-11 22:46+0300\n"
-"PO-Revision-Date: 2018-05-11 22:49+0300\n"
+"POT-Creation-Date: 2021-05-30 15:44+0300\n"
+"PO-Revision-Date: 2021-05-30 16:50+0300\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "Language: en_GB\n"
@@ -16,37 +16,116 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2012-01-23 05:23+0000\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.2.4\n"
 
-#: caffeine/core.py:176
-msgid "Timed activation set; "
-msgstr "Timed activation set; "
+#: caffeine/assets/glade/proc.glade:8
+msgid "Select a process name..."
+msgstr "Select a process name..."
 
-#: caffeine/core.py:177
-msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine will prevent powersaving for the next "
+#: caffeine/assets/glade/GUI.glade:16
+msgid ""
+"An application to temporarily prevent the activation of both\n"
+" the screen saver and the \"sleep\" powersaving mode."
+msgstr ""
+"An application to temporarily prevent the activation of both\n"
+" the screen saver and the \"sleep\" powersaving mode."
 
-#: caffeine/core.py:183
-msgid "Activated for "
-msgstr "Activated for "
+#: caffeine/assets/glade/GUI.glade:114
+msgid "Duration"
+msgstr "Duration"
 
-#: caffeine/core.py:243 caffeine/main.py:212
-msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "Caffeine is dormant; powersaving is enabled"
+#: caffeine/assets/glade/GUI.glade:147
+msgid "Hours:"
+msgstr "Hours:"
 
-#: caffeine/core.py:250
-msgid "Timed activation cancelled (was set for "
-msgstr "Timed activation cancelled (was set for "
+#: caffeine/assets/glade/GUI.glade:188
+msgid "Minutes:"
+msgstr "Minutes:"
 
-#: caffeine/core.py:264
-msgid " have elapsed; powersaving is re-enabled"
-msgstr " have elapsed; powersaving is re-enabled"
+#: caffeine/assets/glade/GUI.glade:286 caffeine/main.py:314
+#: caffeine/main.py:400
+msgid "Enable Caffeine"
+msgstr "Enable Caffeine"
 
-#: caffeine/main.py:198
+#: caffeine/assets/glade/GUI.glade:301
+msgid "Enable Caffeine for..."
+msgstr "Enable Caffeine for..."
+
+#: caffeine/assets/glade/GUI.glade:429
+msgid "Preferences"
+msgstr "Preferences"
+
+#: caffeine/assets/glade/GUI.glade:474
+msgid "Automatic activation"
+msgstr "Automatic activation"
+
+#: caffeine/assets/glade/GUI.glade:500
+msgid ""
+"Caffeine can activate automatically\n"
+"whenever certain programs are runnning."
+msgstr ""
+"Caffeine can be activated automatically\n"
+"whenever certain applications are running."
+
+#: caffeine/assets/glade/GUI.glade:518
+msgid "List of programs that Caffeine activates for:"
+msgstr "List of applications that Caffeine is activated for:"
+
+#: caffeine/assets/glade/GUI.glade:543
+msgid ""
+"When Caffeine detects that one of the processes in this\n"
+"list is running, it will prevent the activation of the screensaver\n"
+"and powersaving modes. This can be useful for applications\n"
+"(particularly full-screen applications) that do not properly\n"
+"prevent the screensaver and powersaving modes on their own."
+msgstr ""
+"When Caffeine detects that one of the processes in this\n"
+"list is running, it will prevent the activation of the screensaver\n"
+"and powersaving modes. This can be useful for applications\n"
+"(particularly full-screen applications) that do not properly\n"
+"prevent the screensaver and powersaving modes on their own."
+
+#: caffeine/assets/glade/GUI.glade:648
+msgid "Audio detection"
+msgstr "Audio detection"
+
+#: caffeine/assets/glade/GUI.glade:674
+msgid "Caffeine activates automatically when audio playback/recording is detected."
+msgstr "Caffeine activates automatically when audio playback/recording is detected."
+
+#: caffeine/assets/glade/GUI.glade:691
+msgid "List of programs that Caffeine ignores when detecting audio activity:"
+msgstr "List of programs that Caffeine ignores when detecting audio activity:"
+
+#: caffeine/assets/glade/GUI.glade:716
+msgid "Audio activity from these processes will not cause Caffeine to activate."
+msgstr "Audio activity from these processes will not cause Caffeine to activate."
+
+#: caffeine/assets/glade/GUI.glade:800
+msgid "Enable audio peak filtering"
+msgstr "Enable audio peak filtering"
+
+#: caffeine/assets/glade/GUI.glade:840
+msgid "Tray icon"
+msgstr "Tray icon"
+
+#: caffeine/assets/glade/GUI.glade:859
+msgid "Show tray icon"
+msgstr "Show tray icon"
+
+#: caffeine/assets/glade/GUI.glade:882
+msgid "Show notification on startup"
+msgstr "Show notification on startup"
+
+#: caffeine/assets/glade/GUI.glade:942
+msgid "    "
+msgstr "    "
+
+#: caffeine/main.py:190
 msgid "Caffeine is running"
 msgstr "Caffeine is running"
 
-#: caffeine/main.py:199
+#: caffeine/main.py:191
 msgid ""
 "To show the tray icon, \n"
 "run "
@@ -54,13 +133,19 @@ msgstr ""
 "To show the tray icon, \n"
 "run "
 
-#: caffeine/main.py:201
+#: caffeine/main.py:193
 msgid "or open Caffeine Preferences from your system menu."
 msgstr "or open Caffeine Preferences from your system menu."
 
-#: caffeine/main.py:263
+#: caffeine/main.py:205
+msgid "Caffeine is dormant; powersaving is enabled"
+msgstr "Caffeine is dormant; powersaving is enabled"
+
+#: caffeine/main.py:275
 msgid "translator-credits"
 msgstr ""
+"Contributions outside Launchpad:\n"
+"  PF4Public https://github.com/PF4Public\n"
 "Launchpad Contributions:\n"
 "  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
 "  Chris Woollard https://launchpad.net/~cwoollard\n"
@@ -72,91 +157,41 @@ msgstr ""
 "  bouchard renaud https://launchpad.net/~renaud-bouchard\n"
 "  mrx5682 https://launchpad.net/~mrx5682"
 
-#: caffeine/main.py:302 caffeine/main.py:365 share/caffeine/glade/GUI.glade:286
-msgid "Enable Caffeine"
-msgstr "Enable Caffeine"
-
-#: caffeine/main.py:302 caffeine/main.py:365
+#: caffeine/main.py:314 caffeine/main.py:400
 msgid "Disable Caffeine"
 msgstr "Disable Caffeine"
 
-#: share/caffeine/glade/GUI.glade:16
-msgid ""
-"An application to temporarily prevent the activation of both\n"
-" the screen saver and the \"sleep\" powersaving mode."
-msgstr ""
-"An application to temporarily prevent the activation of both\n"
-" the screen saver and the \"sleep\" powersaving mode."
+#: caffeine/core.py:156
+msgid "Timed activation set; "
+msgstr "Timed activation set; "
 
-#: share/caffeine/glade/GUI.glade:114
-msgid "Duration"
-msgstr "Duration"
+#: caffeine/core.py:157
+msgid "Caffeine will prevent powersaving for the next "
+msgstr "Caffeine will prevent powersaving for the next "
 
-#: share/caffeine/glade/GUI.glade:147
-msgid "Hours:"
-msgstr "Hours:"
+#: caffeine/core.py:164
+msgid "Activated for "
+msgstr "Activated for "
 
-#: share/caffeine/glade/GUI.glade:188
-msgid "Minutes:"
-msgstr "Minutes:"
+#: caffeine/core.py:191
+msgid " have elapsed; powersaving is re-enabled"
+msgstr " have elapsed; powersaving is re-enabled"
 
-#: share/caffeine/glade/GUI.glade:301
-msgid "Enable Caffeine for..."
-msgstr "Enable Caffeine for..."
+#: caffeine/core.py:246
+msgid "Timed activation cancelled (was set for "
+msgstr "Timed activation cancelled (was set for "
 
-#: share/caffeine/glade/GUI.glade:421
-msgid "Preferences"
-msgstr "Preferences"
+#: caffeine/core.py:278
+msgid "Caffeine is dormant; powersaving is enabled."
+msgstr "Caffeine is dormant; powersaving is enabled."
 
-#: share/caffeine/glade/GUI.glade:466
-msgid "Automatic activation"
-msgstr "Automatic activation"
+#: caffeine/core.py:280
+msgid "Caffeine is preventing sleep only."
+msgstr "Caffeine is preventing sleep only."
 
-#: share/caffeine/glade/GUI.glade:492
-msgid ""
-"Caffeine can activate automatically\n"
-"whenever certain programs are runnning."
-msgstr ""
-"Caffeine can be activated automatically\n"
-"whenever certain applications are running."
-
-#: share/caffeine/glade/GUI.glade:510
-msgid "List of programs that Caffeine activates for:"
-msgstr "List of applications that Caffeine is activated for:"
-
-#: share/caffeine/glade/GUI.glade:535
-msgid ""
-"When Caffeine detects that one of the processes in this\n"
-"list is running, it will prevent the activation of the screensaver\n"
-"and powersaving modes. This can be useful for applications\n"
-"(particularly full-screen applications) that do not properly\n"
-"prevent the screensaver and powersaving modes on their own."
-msgstr ""
-"When Caffeine detects that one of the processes in this\n"
-"list is running, it will prevent the activation of the screensaver\n"
-"and powersaving modes. This can be useful for applications\n"
-"(particularly full-screen applications) that do not properly\n"
-"prevent the screensaver and powersaving modes on their own."
-
-#: share/caffeine/glade/GUI.glade:640
-msgid "Tray icon"
-msgstr "Tray icon"
-
-#: share/caffeine/glade/GUI.glade:659
-msgid "Show tray icon"
-msgstr "Show tray icon"
-
-#: share/caffeine/glade/GUI.glade:682
-msgid "Show notification on startup"
-msgstr "Show notification on startup"
-
-#: share/caffeine/glade/GUI.glade:742
-msgid "    "
-msgstr "    "
-
-#: share/caffeine/glade/proc.glade:8
-msgid "Select a process name..."
-msgstr "Select a process name..."
+#: caffeine/core.py:282
+msgid "Caffeine is preventing all powersaving."
+msgstr "Caffeine is preventing all powersaving."
 
 #~ msgid "Activated for Flash video"
 #~ msgstr "Activated for Flash video"

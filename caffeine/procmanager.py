@@ -14,20 +14,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
 import os
-
-from .paths import get_whitelist_file
 
 
 class ProcManager:
-
-    def __init__(self):
-        self.whitelist_file = get_whitelist_file()
+    def __init__(self, persistence_file):
+        self.persistence_file = persistence_file
         self.proc_list = []
 
-        if os.path.exists(self.whitelist_file):
-            self.import_proc(self.whitelist_file)
+        if os.path.exists(self.persistence_file):
+            self.import_proc(self.persistence_file)
 
     def get_process_list(self):
         return self.proc_list[:]
@@ -50,5 +46,5 @@ class ProcManager:
 
     def save(self):
         self.proc_list.sort()
-        with open(self.whitelist_file, "w") as f:
+        with open(self.persistence_file, "w") as f:
             f.write("\n".join(self.proc_list))

@@ -7,58 +7,68 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-11 23:00+0300\n"
-"PO-Revision-Date: 2018-05-11 23:17+0300\n"
-"Last-Translator: Caffeine Developers <Unknown>\n"
+"POT-Creation-Date: 2021-10-30 13:48+0200\n"
+"PO-Revision-Date: 2022-02-12 17:31+0300\n"
+"Last-Translator: Gökhan Gökkaya <gokhanlnx@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2013-03-10 04:48+0000\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 3.0.1\n"
 
-#: caffeine/core.py:176
+#: caffeine/core.py:155
 msgid "Timed activation set; "
 msgstr "Zamanlanmış etkinleştirme düzeni; "
 
-#: caffeine/core.py:177
+#: caffeine/core.py:156
 msgid "Caffeine will prevent powersaving for the next "
 msgstr "Caffeine'in güç korumasını önleyeceği zaman dilimi : "
 
-#: caffeine/core.py:183
+#: caffeine/core.py:163
 msgid "Activated for "
 msgstr "Etkinleştirildiği içerik "
 
-#: caffeine/core.py:243 caffeine/main.py:212
-msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "Caffeine devre dışı: güç koruması aktif edildi."
+#: caffeine/core.py:190
+msgid " have elapsed; powersaving is re-enabled"
+msgstr " geçti; güç tasarrufu yeniden etkinleştirildi"
 
-#: caffeine/core.py:250
+#: caffeine/core.py:245
 msgid "Timed activation cancelled (was set for "
 msgstr "Zamanlanmış etkinleştirme iptal edildi (  için belirlendi "
 
-#: caffeine/core.py:264
-msgid " have elapsed; powersaving is re-enabled"
-msgstr " geçti; güç tasarrufu yeniden etkinleştirildi"
+#: caffeine/core.py:277
+msgid "Caffeine is dormant; powersaving is enabled."
+msgstr "Caffeine devre dışı; güç koruması etkin."
+
+#: caffeine/core.py:279
+msgid "Caffeine is preventing sleep only."
+msgstr "Caffeine uygulaması sadece uyku kipini engelliyor."
+
+#: caffeine/core.py:281
+msgid "Caffeine is preventing all powersaving."
+msgstr "Caffeine uygulaması tüm güç korumasını önlüyor."
 
 #: caffeine/main.py:198
 msgid "Caffeine is running"
 msgstr "Caffeine çalışıyor"
 
 #: caffeine/main.py:199
-#, fuzzy
-#| msgid "Show tray icon"
 msgid ""
 "To show the tray icon, \n"
 "run "
-msgstr "Sistem tepsisi simgesini göster"
+msgstr "Sistem tepsisi simgesini göster "
 
 #: caffeine/main.py:201
 msgid "or open Caffeine Preferences from your system menu."
-msgstr ""
+msgstr "ya da sistem menüsündeki Caffeine Tercihlerini açın."
 
-#: caffeine/main.py:263
+#: caffeine/main.py:213
+msgid "Caffeine is dormant; powersaving is enabled"
+msgstr "Caffeine devre dışı; güç koruması aktif edildi"
+
+#: caffeine/main.py:288
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -69,17 +79,23 @@ msgstr ""
 "  Oğuzhan Gökay ARI https://launchpad.net/~drakeos\n"
 "  Volkan Gezer https://launchpad.net/~volkangezer\n"
 "  Yusuf Kayan https://launchpad.net/~c08b\n"
-"  zeugma https://launchpad.net/~sunder67"
+"  zeugma https://launchpad.net/~sunder67\n"
+"  Gökhan Gökkaya https://launchpad.net/~kelebek333"
 
-#: caffeine/main.py:302 caffeine/main.py:365 share/caffeine/glade/GUI.glade:286
+#: caffeine/main.py:327 caffeine/main.py:415
+#: caffeine/assets/glade/GUI.glade:286
 msgid "Enable Caffeine"
-msgstr "Ekran koruyucuyu devre dışı bırak"
+msgstr "Caffeine'yi etkinleştir"
 
-#: caffeine/main.py:302 caffeine/main.py:365
+#: caffeine/main.py:327 caffeine/main.py:415
 msgid "Disable Caffeine"
-msgstr "Ekran koruyucuyu etkinleştir"
+msgstr "Caffeine'yi pasifleştir"
 
-#: share/caffeine/glade/GUI.glade:16
+#: caffeine/assets/glade/proc.glade:8
+msgid "Select a process name..."
+msgstr "Bir işlem adı seçiniz..."
+
+#: caffeine/assets/glade/GUI.glade:16
 msgid ""
 "An application to temporarily prevent the activation of both\n"
 " the screen saver and the \"sleep\" powersaving mode."
@@ -87,33 +103,31 @@ msgstr ""
 "Bir uygulama geçici olarak ekran koruyucusunun ve \"uyku\"\n"
 " güç tasarrufu modunun etkinleştirilmesini önlüyor."
 
-#: share/caffeine/glade/GUI.glade:114
+#: caffeine/assets/glade/GUI.glade:114
 msgid "Duration"
 msgstr "Süre"
 
-#: share/caffeine/glade/GUI.glade:147
+#: caffeine/assets/glade/GUI.glade:147
 msgid "Hours:"
 msgstr "Saat:"
 
-#: share/caffeine/glade/GUI.glade:188
+#: caffeine/assets/glade/GUI.glade:188
 msgid "Minutes:"
 msgstr "Dakika:"
 
-#: share/caffeine/glade/GUI.glade:301
-#, fuzzy
-#| msgid "Enable Caffeine"
+#: caffeine/assets/glade/GUI.glade:301
 msgid "Enable Caffeine for..."
-msgstr "Ekran koruyucuyu devre dışı bırak"
+msgstr "Caffeine uygulamasını şunun için etkinleştir..."
 
-#: share/caffeine/glade/GUI.glade:421
+#: caffeine/assets/glade/GUI.glade:429
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: share/caffeine/glade/GUI.glade:466
+#: caffeine/assets/glade/GUI.glade:474
 msgid "Automatic activation"
 msgstr "Otomatik etkinleştirme"
 
-#: share/caffeine/glade/GUI.glade:492
+#: caffeine/assets/glade/GUI.glade:500
 msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
@@ -121,13 +135,13 @@ msgstr ""
 "Belirli programlar çalıştığında,\n"
 "Caffeine otomatik olarak aktifleşebilir."
 
-#: share/caffeine/glade/GUI.glade:510
+#: caffeine/assets/glade/GUI.glade:518
 msgid "List of programs that Caffeine activates for:"
 msgstr ""
 "Çalıştığı taktirde Caffeine'in otomatik olarak aktifleştiği uygulamaların "
 "listesi:"
 
-#: share/caffeine/glade/GUI.glade:535
+#: caffeine/assets/glade/GUI.glade:543
 msgid ""
 "When Caffeine detects that one of the processes in this\n"
 "list is running, it will prevent the activation of the screensaver\n"
@@ -141,25 +155,53 @@ msgstr ""
 "modunu otomatik olarak engelleyemeyen uygulamalar\n"
 "(özellikle tam ekran uygulamalar) için kullanışlı olabilir."
 
-#: share/caffeine/glade/GUI.glade:640
+#: caffeine/assets/glade/GUI.glade:555 caffeine/assets/glade/GUI.glade:724
+msgid "Process Name"
+msgstr "Süreç Adı"
+
+#: caffeine/assets/glade/GUI.glade:648
+msgid "Audio detection"
+msgstr "Ses algılama"
+
+#: caffeine/assets/glade/GUI.glade:674
+msgid ""
+"Caffeine activates automatically when audio playback/recording is detected."
+msgstr ""
+"Ses çalma/kaydı algılandığında Caffeine uygulaması otomatik olarak "
+"etkinleştirilir."
+
+#: caffeine/assets/glade/GUI.glade:691
+msgid "List of programs that Caffeine ignores when detecting audio activity:"
+msgstr ""
+"Ses aktivitesini tespit edildiğinde, Caffeine uygulamasının gözardı edeceği "
+"uygulamaların listesi:"
+
+#: caffeine/assets/glade/GUI.glade:716
+msgid ""
+"Audio activity from these processes will not cause Caffeine to activate."
+msgstr ""
+"Bu süreçlerden gelen ses aktivitesi, Caffeine uygulamasının "
+"etkinleştirilmesine neden olmaz."
+
+#: caffeine/assets/glade/GUI.glade:800
+msgid "Enable audio peak filtering"
+msgstr "Ses yoğunluğu filtrelemesi etkin"
+
+#: caffeine/assets/glade/GUI.glade:840
 msgid "Tray icon"
 msgstr "Sistem tepsisi simgesi"
 
-#: share/caffeine/glade/GUI.glade:659
+#: caffeine/assets/glade/GUI.glade:859
 msgid "Show tray icon"
 msgstr "Sistem tepsisi simgesini göster"
 
-#: share/caffeine/glade/GUI.glade:682
+#: caffeine/assets/glade/GUI.glade:882
 msgid "Show notification on startup"
 msgstr "Bildirimi başlangıçta göster"
 
-#: share/caffeine/glade/GUI.glade:742
+#: caffeine/assets/glade/GUI.glade:942
 msgid "    "
 msgstr "    "
-
-#: share/caffeine/glade/proc.glade:8
-msgid "Select a process name..."
-msgstr "Bir işlem adı seçiniz..."
 
 #~ msgid "Activated for Flash video"
 #~ msgstr "Flash görüntü için etkinleştirildi"

@@ -14,28 +14,24 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-
-
 import gettext
 import locale
-import os
 
-from .paths import get_base_path
-from .version import version
-
+from caffeine.paths import LOCALE_PATH
+from caffeine.version import version
 
 __version__ = version
 
 
-def __init_translations():
-    GETTEXT_DOMAIN = "caffeine"
-    LOCALE_PATH = os.path.join(get_base_path(), "share", "locale")
+def init_translations() -> None:
+    """Initialise translations. Should be called just once at startup."""
 
-    locale.setlocale(locale.LC_ALL, '')
+    GETTEXT_DOMAIN = "caffeine"
+    locale.setlocale(locale.LC_ALL, "")
 
     for module in locale, gettext:
         module.bindtextdomain(GETTEXT_DOMAIN, LOCALE_PATH)
         module.textdomain(GETTEXT_DOMAIN)
 
 
-__init_translations()
+init_translations()

@@ -14,66 +14,56 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-"""Caffeine-ng
-Usage:
-  caffeine [options]
-  caffeine kill
-
-Commands:
-  kill                      Kill any running instances of caffeine and exit.
-
-Options:
-  -a --activate             Disables power management and screen saving.
-  -d --deactivate           Re-enables power management and screen saving.
-  -k --kill                 Kill any running instance of caffeine.
-  -t --time <HH>:<MM>       Use with -a. Activate caffeine for HH:MM.
-  -p --preferences          Start with the Preferences dialog open.
-"""
 # TODO: add a -v --verbosity flag.
-
-import ctypes
 import logging
 import os
-import signal
-import sys
 from gettext import gettext as _
 
 import gi
-gi.require_version('GdkPixbuf', '2.0')  # noqa
-gi.require_version('Gtk', '3.0')  # noqa
-gi.require_version('Notify', '0.7')  # noqa
-from docopt import docopt
-from gi.repository import GdkPixbuf, Gio, GObject, Gtk
-from gi.repository.Notify import Notification
-from setproctitle import setproctitle
+from gi.repository import Gio
+from gi.repository import GObject
 
-from . import __version__
-from .applicationinstance import ApplicationInstance
-from .core import Caffeine
-from .icons import generic_icon, get_icon_pixbuf
-from .paths import get_glade_file
-from .procmanager import ProcManager
+gi.require_version("GdkPixbuf", "2.0")
+gi.require_version("Gtk", "3.0")
+gi.require_version("Notify", "0.7")
+gi.require_version("AppIndicator3", "0.1")
 
-appindicator_avail = True
-try:
-    from gi.repository import AppIndicator3
-except ImportError:
-    appindicator_avail = False
+from gi.repository import AppIndicator3  # noqa: E402
+from gi.repository import GdkPixbuf  # noqa: E402
+from gi.repository import Gtk  # noqa: E402
+from gi.repository.Notify import Notification  # noqa: E402
+from gi.repository.Notify import init as notify_init  # noqa: E402
+
+from caffeine import __version__  # noqa: E402
+from caffeine.core import Caffeine  # noqa: E402
+from caffeine.icons import generic_icon  # noqa: E402
+from caffeine.icons import get_icon_pixbuf  # noqa: E402
+from caffeine.paths import get_blacklist_file_audio  # noqa: E402
+from caffeine.paths import get_glade_file  # noqa: E402
+from caffeine.paths import get_whitelist_file  # noqa: E402
+from caffeine.procmanager import ProcManager  # noqa: E402
 
 logger = logging.getLogger(__name__)
 
 icon_theme = Gtk.IconTheme.get_default()
 try:
-    generic = icon_theme.load_icon("application-x-executable", 16,
-                                   Gtk.IconLookupFlags.NO_SVG)
+    generic = icon_theme.load_icon(
+        "application-x-executable",
+        16,
+        Gtk.IconLookupFlags.NO_SVG,
+    )
 except GObject.GError:
     generic = GdkPixbuf.Pixbuf.new_from_file(generic_icon)
 
 cached_icons = {"generic": generic}
 
 
+# Set this environment variable to any value to use the legacy indicator.
+use_legacy_indicator = os.environ.get("CAFFEINE_LEGACY_TRAY") is not None
+
+
 # FIXME: this does not work for any of the cases I tried.
-def get_icon_for_process(proc_name):
+def get_icon_for_process(proc_name: str):
 
     global cached_icons
     global generic
@@ -91,8 +81,7 @@ def get_icon_for_process(proc_name):
         except KeyError:
             pass
         try:
-            icon = icon_theme.load_icon(proc_name, 16,
-                                        Gtk.IconLookupFlags.NO_SVG)
+            icon = icon_theme.load_icon(proc_name, 16, Gtk.IconLookupFlags.NO_SVG)
             cached_icons[icon_name] = icon
             return icon
 
@@ -103,7 +92,6 @@ def get_icon_for_process(proc_name):
 
 
 class ProcAdd:
-
     def __init__(self):
         self.running_id = None
 
@@ -147,15 +135,20 @@ class ProcAdd:
 
 
 class GUI:
-
-    def __init__(self, show_preferences=False):
+    def __init__(self, show_preferences=False, **kwargs):
         # object to manage processes to activate for.
-        self.__process_manager = ProcManager()
+        self.__process_manager = ProcManager(persistence_file=get_whitelist_file())
+        self.__process_manager_audio = ProcManager(
+            persistence_file=get_blacklist_file_audio()
+        )
 
-        self.__core = Caffeine(self.__process_manager)
+        self.__core = Caffeine(
+            process_manager=self.__process_manager,
+            process_manager_audio=self.__process_manager_audio,
+            **kwargs
+        )
 
-        self.__core.connect("activation-toggled",
-                            self.on_activation_toggled)
+        self.__core.connect("activation-toggled", self.on_activation_toggled)
         self.ProcAdd = ProcAdd()
 
         # XXX: Do we want to change this to caffeine-ng?
@@ -164,46 +157,52 @@ class GUI:
         builder = Gtk.Builder()
         builder.add_from_file(get_glade_file("GUI.glade"))
 
-        # It can be tiresome to have to type builder.get_object
-        # again and again
-        get = builder.get_object
-
-        about = get("aboutdialog")
+        about = builder.get_object("aboutdialog")
         about.set_version(__version__)
 
         show_tray_icon = settings.get_boolean("show-tray-icon")
         show_notification = settings.get_boolean("show-notification")
+        audio_peak_filtering_active = settings.get_boolean("audio-peak-filtering")
+        self.__core.set_audio_peak_filtering_active(audio_peak_filtering_active)
 
-        if appindicator_avail:
-            self.AppInd = \
-                AppIndicator3.Indicator.new("caffeine",
-                                            "caffeine-cup-empty",
-                                            AppIndicator3.IndicatorCategory.
-                                            APPLICATION_STATUS)
+        if not use_legacy_indicator:
+            self.AppInd = AppIndicator3.Indicator.new(
+                "caffeine",
+                "caffeine-cup-empty",
+                AppIndicator3.IndicatorCategory.APPLICATION_STATUS,
+            )
 
-            self.AppInd.set_status([AppIndicator3.IndicatorStatus.PASSIVE,
-                                   AppIndicator3.IndicatorStatus.ACTIVE]
-                                   [show_tray_icon])
+            self.AppInd.set_status(
+                [
+                    AppIndicator3.IndicatorStatus.PASSIVE,
+                    AppIndicator3.IndicatorStatus.ACTIVE,
+                ][show_tray_icon]
+            )
         else:
             # IMPORTANT:
             # status icon must be a instance variable  (ie self.)or else it
             # gets thrown out with the garbage, and won't be seen.
 
-            self.status_icon = get("statusicon")
+            self.status_icon = builder.get_object("statusicon")
             self.status_icon.set_visible(show_tray_icon)
 
-        if show_tray_icon is False and show_notification is True and \
-           show_preferences is False:
-            note = \
-                Notification(_("Caffeine is running"),
-                             _("To show the tray icon, \nrun ") +
-                             "'caffeine -p' " +
-                             _("or open Caffeine Preferences from " +
-                               "your system menu."), "caffeine")
+        if (
+            show_tray_icon is False
+            and show_notification is True
+            and show_preferences is False
+        ):
+            notify_init("caffeine-ng")
+            note = Notification.new(
+                _("Caffeine is running"),
+                _("To show the tray icon, \nrun ")
+                + "'caffeine -p' "
+                + _("or open Caffeine Preferences from your system menu."),
+                "caffeine",
+            )
 
             note.show()
 
-        self.activate_menuitem = get("activate_menuitem")
+        self.activate_menuitem = builder.get_object("activate_menuitem")
 
         self.set_icon_is_activated(self.__core.get_activated())
 
@@ -213,61 +212,87 @@ class GUI:
         # self.status_icon.set_tooltip(tooltip)
 
         # popup menu
-        self.menu = get("popup_menu")
+        self.menu = builder.get_object("popup_menu")
         self.menu.show()
 
-        if appindicator_avail:
+        if not use_legacy_indicator:
 
             self.AppInd.set_menu(self.menu)
 
         #
         # configuration window widgets
         #
-        proc_treeview = get("treeview")
+        proc_treeview = builder.get_object("treeview")
         self.selection = proc_treeview.get_selection()
         self.selection.set_mode(Gtk.SelectionMode.MULTIPLE)
+        proc_treeview_audio = builder.get_object("treeview_audio")
+        self.selection_audio = proc_treeview_audio.get_selection()
+        self.selection_audio.set_mode(Gtk.SelectionMode.MULTIPLE)
 
-        self.proc_liststore = get("proc_liststore")
+        self.proc_liststore = builder.get_object("proc_liststore")
         for name in self.__process_manager.get_process_list():
             self.proc_liststore.append([get_icon_for_process(name), name])
+        self.proc_liststore_audio = builder.get_object("proc_liststore_audio")
+        for name in self.__process_manager_audio.get_process_list():
+            self.proc_liststore_audio.append([get_icon_for_process(name), name])
 
-        # time_menuitem = get("time_menuitem")
+        # time_menuitem = builder.get_object("time_menuitem")
 
         # time_menuitem.set_submenu(submenu)
 
         # Preferences editor.
-        self.window = get("window")
+        self.window = builder.get_object("window")
 
         # set the icons for the window border.
-        self.window.set_default_icon_list([get_icon_pixbuf(16),
-                                           get_icon_pixbuf(24),
-                                           get_icon_pixbuf(32),
-                                           get_icon_pixbuf(48)])
+        self.window.set_default_icon_list(
+            [
+                get_icon_pixbuf(16),
+                get_icon_pixbuf(24),
+                get_icon_pixbuf(32),
+                get_icon_pixbuf(48),
+            ]
+        )
 
-        self.trayicon_cb = get("trayicon_cbutton")
-        self.notification_cb = get("notification_cbutton")
+        self.trayicon_cb = builder.get_object("trayicon_cbutton")
+        self.notification_cb = builder.get_object("notification_cbutton")
+        self.audio_peak_filtering_cb = builder.get_object(
+            "audio_peak_filtering_cbutton"
+        )
 
         self.notification_cb.set_sensitive(not show_tray_icon)
 
         settings.connect("changed::show-tray-icon", self.on_trayicon_changed)
-        settings.connect("changed::show-notification",
-                         self.on_notification_changed)
+        settings.connect("changed::show-notification", self.on_notification_changed)
+        settings.connect(
+            "changed::audio-peak-filtering", self.on_audio_peak_filtering_changed
+        )
 
-        settings.bind("show-tray-icon", self.trayicon_cb, "active",
-                      Gio.SettingsBindFlags.DEFAULT)
-        settings.bind("show-notification", self.notification_cb, "active",
-                      Gio.SettingsBindFlags.DEFAULT)
+        settings.bind(
+            "show-tray-icon", self.trayicon_cb, "active", Gio.SettingsBindFlags.DEFAULT
+        )
+        settings.bind(
+            "show-notification",
+            self.notification_cb,
+            "active",
+            Gio.SettingsBindFlags.DEFAULT,
+        )
+        settings.bind(
+            "audio-peak-filtering",
+            self.audio_peak_filtering_cb,
+            "active",
+            Gio.SettingsBindFlags.DEFAULT,
+        )
 
         # about dialog
-        self.about_dialog = get("aboutdialog")
+        self.about_dialog = builder.get_object("aboutdialog")
         self.about_dialog.set_translator_credits(_("translator-credits"))
 
         # other time selector
-        self.othertime_dialog = get("othertime_dialog")
-        self.othertime_hours = get("hours_spin")
-        self.othertime_minutes = get("minutes_spin")
+        self.othertime_dialog = builder.get_object("othertime_dialog")
+        self.othertime_hours = builder.get_object("hours_spin")
+        self.othertime_minutes = builder.get_object("minutes_spin")
 
-        if appindicator_avail is False:
+        if use_legacy_indicator:
             # Handle mouse clicks on status_icon
             # left click
             self.status_icon.connect("activate", self.on_L_click)
@@ -276,7 +301,7 @@ class GUI:
 
         builder.connect_signals(self)
 
-    def setActive(self, active):
+    def setActive(self, active: bool):
         self.__core.set_activated(active)
 
     def timed_activation(self, time):
@@ -294,7 +319,7 @@ class GUI:
         # toggle the icon, indexing with a bool.
         icon_name = ["caffeine-cup-empty", "caffeine-cup-full"][activated]
 
-        if appindicator_avail:
+        if not use_legacy_indicator:
             self.AppInd.set_icon(icon_name)
         else:
             self.status_icon.set_from_icon_name(icon_name)
@@ -319,8 +344,7 @@ class GUI:
         if response == 1:
             proc_name = self.ProcAdd.get_process_name()
             if proc_name:
-                self.proc_liststore.append([get_icon_for_process(proc_name),
-                                           proc_name])
+                self.proc_liststore.append([get_icon_for_process(proc_name), proc_name])
 
                 self.__process_manager.add_proc(proc_name)
 
@@ -329,6 +353,24 @@ class GUI:
         paths.reverse()
         for path in paths:
             self.__process_manager.remove_proc(model[path][1])
+            model.remove(model.get_iter(path))
+
+    def on_add_button_audio_clicked(self, button, data=None):
+        response = self.ProcAdd.run()
+        if response == 1:
+            proc_name = self.ProcAdd.get_process_name()
+            if proc_name:
+                self.proc_liststore_audio.append(
+                    [get_icon_for_process(proc_name), proc_name]
+                )
+
+                self.__process_manager_audio.add_proc(proc_name)
+
+    def on_remove_button_audio_clicked(self, button, data=None):
+        model, paths = self.selection_audio.get_selected_rows()
+        paths.reverse()
+        for path in paths:
+            self.__process_manager_audio.remove_proc(model[path][1])
             model.remove(model.get_iter(path))
 
     def on_window_delete_event(self, window, data=None):
@@ -343,10 +385,13 @@ class GUI:
     def on_trayicon_changed(self, settings, key, data=None):
         show_tray_icon = settings.get_boolean(key)
 
-        if appindicator_avail:
-            self.AppInd.set_status([AppIndicator3.IndicatorStatus.PASSIVE,
-                                    AppIndicator3.IndicatorStatus.ACTIVE]
-                                   [show_tray_icon])
+        if not use_legacy_indicator:
+            self.AppInd.set_status(
+                [
+                    AppIndicator3.IndicatorStatus.PASSIVE,
+                    AppIndicator3.IndicatorStatus.ACTIVE,
+                ][show_tray_icon]
+            )
 
         else:
             self.status_icon.set_visible(show_tray_icon)
@@ -357,6 +402,11 @@ class GUI:
     # Startup Notifications
     def on_notification_changed(self, settings, key, data=None):
         pass
+
+    def on_audio_peak_filtering_changed(self, settings, key, data=None):
+        audio_filtering_active = settings.get_boolean(key)
+        self.audio_peak_filtering_cb.set_active(audio_filtering_active)
+        self.__core.set_audio_peak_filtering_active(audio_filtering_active)
 
     # Menu callbacks
     def on_activate_menuitem_activate(self, menuitem, data=None):
@@ -388,7 +438,7 @@ class GUI:
         hours = int(self.othertime_hours.get_value())
         minutes = int(self.othertime_minutes.get_value())
         self.othertime_dialog.hide()
-        time = hours*60*60 + minutes*60
+        time = hours * 60 * 60 + minutes * 60
         if time > 0:
             self.__core.timed_activation(time)
 
@@ -404,58 +454,5 @@ class GUI:
         self.__core.quit()
         Gtk.main_quit()
 
-
-def main():
-    setproctitle("caffeine-ng")
-    signal.signal(signal.SIGINT, signal.SIG_DFL)
-
-    GObject.threads_init()
-
-    # register the process id as 'caffeine'
-    libc = ctypes.cdll.LoadLibrary('libc.so.6')
-    libc.prctl(15, 'caffeine', 0, 0, 0)
-
-    arguments = docopt(__doc__, version=__version__)
-
-    # Makes sure that only one instance of the Caffeine is run for
-    # each user on the system.
-    pid_name = '/tmp/caffeine' + str(os.getuid()) + '.pid'
-    app = ApplicationInstance(pid_name)
-
-    if arguments["kill"] or arguments["--kill"]:
-        if app.is_running():
-            app.kill()
-        else:
-            logger.error('Caffeine is not running')
-    elif app.is_running():
-        logger.fatal('Caffeine is already running')
-        sys.exit(-3)
-
-    if arguments["kill"]:
-        return
-
-    main = GUI(arguments["--preferences"])
-    if arguments["--activate"]:
-        main.setActive(True)
-
-    if arguments["--activate"] and arguments["--time"]:
-        parts = arguments["--time"].split(":")
-        if len(parts) != 2:
-            print("-t argument must be in the hour:minute format.")
-            sys.exit(2)
-
-        try:
-            hours = int(parts[0])
-            minutes = int(parts[1])
-        except ValueError:
-            print("Invalid time argument.")
-            sys.exit(2)
-
-        main.timed_activation((hours * 3600.0)+(minutes * 60.0))
-
-    if arguments["--preferences"]:
-        main.window.show_all()
-
-    app.write_pid_file()
-    Gtk.main()
-    app.remove_pid_file()
+    def run(self):
+        Gtk.main()

@@ -14,14 +14,17 @@ Caffeine-ng
   :alt: licence
 
 Caffeine is a little daemon that sits in your systray, and prevents the
-screensaver from showing up, or the system from going to sleep.
-It does so when an application is fullscreened (eg: youtube), or when you click
-on the systray icon (which you can do, when, eg: reading).
+screensaver from showing up, or the system from going to sleep. It does so when
+an application is fullscreened (eg: youtube), or when you click on the systray
+icon (which you can do, when, eg: reading).
 
-This is a fork of `Caffeine 2.4`_, since later
-versions dropped support for the systray icon in favour of only automatic
-detection of fullscreen apps only, which resulted rather
-`controversial`_.
+History
+-------
+
+Caffeing-ng (since 2014) started as a fork of `Caffeine 2.4`_, since the
+original version dropped support for the systray icon in favour of only
+automatic detection of fullscreen apps only, which turned to be a rather
+`controversial`_ decision.
 
 The intention of this fork is to also evolve on its own, not only fixing
 issues, but also implemented missing features, when relevant.
@@ -37,20 +40,25 @@ it was undesirable.
 System requirements
 -------------------
 
-* Either a screensaver that implements the ``org.freedesktop.ScreenSaver``
-  API (this includes KDE, amongst others) API, gnome-screensaver, XSS and/or
-  DPMS, xautolock.
-* Python 3 (apparently works with Python 2, but not officially supported).
+* Python 3.6 to 3.9 is required.
 
-See ``requirements.txt`` for required python packages
+* ``caffeine-ng`` works with the following screensavers / screenlockers:
+
+  * Anything that implements the ``org.freedesktop.ScreenSaver`` API (this
+    includes KDE, amongst others)
+  * gnome-screensaver
+  * XSS
+  * Xorg + DPMS
+  * xautolock
+  * xidlehook.
+
+See ``setup.py`` for required python packages
 
 Installation
 ------------
 
-To install Caffeine-ng please follow steps from appropriate chapter below
-
 Generic installation
---------------------
+....................
 
 To manually install caffeine-ng, run::
 
@@ -59,15 +67,15 @@ To manually install caffeine-ng, run::
       sudo glib-compile-schemas /usr/share/glib-2.0/schemas
 
 Debian and derivatives
-----------------------
+......................
 
 First install all the required packages::
 
-      apt install python-docopt python-ewmh python-setproctitle python-wheel python-xdg
+      apt install python-click python-ewmh python-setproctitle python-wheel python-xdg
 
 And mark them auto if you wish::
 
-      apt-mark auto python-docopt python-ewmh python-setproctitle python-wheel python-xdg
+      apt-mark auto python-click python-ewmh python-setproctitle python-wheel python-xdg
 
 Then you need to build sources with::
 
@@ -76,31 +84,42 @@ Then you need to build sources with::
 
 Create a package for your distribution::
 
-      checkinstall --pkgname=caffeine-ng --pkgversion=3.4 --requires="python-docopt \(\>=0.6.2\),python-ewmh \(\>=0.1.4\),python-setproctitle \(\>=1.1.10\),python-wheel \(\>=0.29.0\),python-xdg \(\>=0.25\)" --conflicts="caffeine" --nodoc python ./setup.py install --install-layout=deb
+      checkinstall --pkgname=caffeine-ng --pkgversion=3.4 --requires="python-click \(\>=0.6.2\),python-ewmh \(\>=0.1.4\),python-setproctitle \(\>=1.1.10\),python-wheel \(\>=0.29.0\),python-xdg \(\>=0.25\)" --conflicts="caffeine" --nodoc python ./setup.py install --install-layout=deb
 
-Replace version string with correct version and append this command with ``--install=no`` 
-should you wish to inspect created package before installing it
-Replace ``python`` with ``python3`` in package names above if you wish to build caffeine-ng with python 3
+Replace version string with correct version and append this command with
+``--install=no`` should you wish to inspect created package before installing
+it Replace ``python`` with ``python3`` in package names above if you wish to
+build caffeine-ng with python 3
 
-Replace ``python`` with ``python3`` or ``python27`` in ``checkinstall`` invocation to use specific python version to build caffeine-ng with
+Replace ``python`` with ``python3`` in ``checkinstall`` invocation to use
+specific python version to build caffeine-ng.
 
-``checkinstall`` is available for various distributions, so you may follow these steps adapting them to your distribution
+``checkinstall`` is available for various distributions, so you may follow
+these steps adapting them to your distribution
 
 ArchLinux
-------------
+.........
 
 On ArchLinux, caffeine-ng is available at the `AUR`_.
 
+.. _AUR: https://aur.archlinux.org/packages/caffeine-ng/
+
+Gentoo
+......
+
+Gentoo users may find `caffeine-ng <https://github.com/PF4Public/gentoo-overlay/tree/master/x11-misc/caffeine-ng>`_ in `::pf4public <https://github.com/PF4Public/gentoo-overlay>`_ Gentoo overlay
+
+Auto-start
+----------
+
 To have Caffeine-ng run on startup, add it to your System Settings => Startup
 Programs list.
-
-.. _AUR: https://aur.archlinux.org/packages/caffeine-ng/
 
 License
 -------
 
 Copyright (C) 2009 The Caffeine Developers
-Copyright (C) 2014-2018 Hugo Osvaldo Barrera <hugo@barrera.io>
+Copyright (C) 2014-2022 Hugo Osvaldo Barrera <hugo@barrera.io>
 
 Caffeine-ng is distributed under the GNU General Public License, either version
 3, or (at your option) any later version. See LICENCE for details.

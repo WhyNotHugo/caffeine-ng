@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caffeine\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-11 23:00+0300\n"
-"PO-Revision-Date: 2018-05-11 23:12+0300\n"
+"POT-Creation-Date: 2021-05-30 15:44+0300\n"
+"PO-Revision-Date: 2021-05-30 16:19+0300\n"
 "Last-Translator: Caffeine Developers <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "Language: fi\n"
@@ -16,67 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2012-06-07 04:45+0000\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.2.4\n"
 
-#: caffeine/core.py:176
-msgid "Timed activation set; "
-msgstr "Ajastettu aktivointi asetettu; "
+#: caffeine/assets/glade/proc.glade:8
+msgid "Select a process name..."
+msgstr "Valitse prosessin nimi..."
 
-#: caffeine/core.py:177
-msgid "Caffeine will prevent powersaving for the next "
-msgstr "Caffeine estää virransäästötoimet seuraavan "
-
-#: caffeine/core.py:183
-msgid "Activated for "
-msgstr "Aktivoitu "
-
-#: caffeine/core.py:243 caffeine/main.py:212
-msgid "Caffeine is dormant; powersaving is enabled"
-msgstr "Caffeine ei ole aktiivinen; virransäästöominaisuudet ovat käytössä"
-
-#: caffeine/core.py:250
-msgid "Timed activation cancelled (was set for "
-msgstr "Ajastettu aktivointi peruttu (oli asetettu "
-
-#: caffeine/core.py:264
-msgid " have elapsed; powersaving is re-enabled"
-msgstr " on kulunut loppuun; virransäästöominaisuudet on otettu käyttöön"
-
-#: caffeine/main.py:198
-msgid "Caffeine is running"
-msgstr "Caffeine on käynnissä"
-
-#: caffeine/main.py:199
-#, fuzzy
-#| msgid "Show tray icon"
-msgid ""
-"To show the tray icon, \n"
-"run "
-msgstr "Näytä ilmoitusalueen kuvake"
-
-#: caffeine/main.py:201
-msgid "or open Caffeine Preferences from your system menu."
-msgstr ""
-
-#: caffeine/main.py:263
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
-"  Dragula https://launchpad.net/~emil-lanner\n"
-"  Jiri Grönroos https://launchpad.net/~jiri-gronroos\n"
-"  Pekka Niemi https://launchpad.net/~pekka-niemi\n"
-"  Tommi Saira https://launchpad.net/~tommisaira"
-
-#: caffeine/main.py:302 caffeine/main.py:365 share/caffeine/glade/GUI.glade:286
-msgid "Enable Caffeine"
-msgstr "Estä näytönsäästäjän toiminta"
-
-#: caffeine/main.py:302 caffeine/main.py:365
-msgid "Disable Caffeine"
-msgstr "Käytä näytönsäästäjää"
-
-#: share/caffeine/glade/GUI.glade:16
+#: caffeine/assets/glade/GUI.glade:16
 msgid ""
 "An application to temporarily prevent the activation of both\n"
 " the screen saver and the \"sleep\" powersaving mode."
@@ -84,33 +30,38 @@ msgstr ""
 "Sovellus, joka estää väliaikaisesti näytönsäästäjän ja \n"
 "valmiustilan aktivoitumisen."
 
-#: share/caffeine/glade/GUI.glade:114
+#: caffeine/assets/glade/GUI.glade:114
 msgid "Duration"
 msgstr "Kesto"
 
-#: share/caffeine/glade/GUI.glade:147
+#: caffeine/assets/glade/GUI.glade:147
 msgid "Hours:"
 msgstr "Tuntia:"
 
-#: share/caffeine/glade/GUI.glade:188
+#: caffeine/assets/glade/GUI.glade:188
 msgid "Minutes:"
 msgstr "Minuutteja:"
 
-#: share/caffeine/glade/GUI.glade:301
+#: caffeine/assets/glade/GUI.glade:286 caffeine/main.py:314
+#: caffeine/main.py:400
+msgid "Enable Caffeine"
+msgstr "Estä näytönsäästäjän toiminta"
+
+#: caffeine/assets/glade/GUI.glade:301
 #, fuzzy
 #| msgid "Enable Caffeine"
 msgid "Enable Caffeine for..."
 msgstr "Estä näytönsäästäjän toiminta"
 
-#: share/caffeine/glade/GUI.glade:421
+#: caffeine/assets/glade/GUI.glade:429
 msgid "Preferences"
 msgstr "Asetukset"
 
-#: share/caffeine/glade/GUI.glade:466
+#: caffeine/assets/glade/GUI.glade:474
 msgid "Automatic activation"
 msgstr "Automaattinen aktivointi"
 
-#: share/caffeine/glade/GUI.glade:492
+#: caffeine/assets/glade/GUI.glade:500
 msgid ""
 "Caffeine can activate automatically\n"
 "whenever certain programs are runnning."
@@ -118,11 +69,11 @@ msgstr ""
 "Caffeine voi aktivoitua automaattisesti,\n"
 "kun määrätyt ohjelmat ovat käynnissä."
 
-#: share/caffeine/glade/GUI.glade:510
+#: caffeine/assets/glade/GUI.glade:518
 msgid "List of programs that Caffeine activates for:"
 msgstr "Lista ohjelmista, joille Caffeine aktivoituu:"
 
-#: share/caffeine/glade/GUI.glade:535
+#: caffeine/assets/glade/GUI.glade:543
 msgid ""
 "When Caffeine detects that one of the processes in this\n"
 "list is running, it will prevent the activation of the screensaver\n"
@@ -136,25 +87,121 @@ msgstr ""
 "kokonäytön) sovelluksille, jotka eivät itse osaa kunnolla ehkäistä\n"
 "näytönsäästäjän ja virransäästötilan käyttöönottoa."
 
-#: share/caffeine/glade/GUI.glade:640
+#: caffeine/assets/glade/GUI.glade:648
+msgid "Audio detection"
+msgstr ""
+
+#: caffeine/assets/glade/GUI.glade:674
+#, fuzzy
+#| msgid ""
+#| "Caffeine can activate automatically\n"
+#| "whenever certain programs are runnning."
+msgid "Caffeine activates automatically when audio playback/recording is detected."
+msgstr ""
+"Caffeine voi aktivoitua automaattisesti,\n"
+"kun määrätyt ohjelmat ovat käynnissä."
+
+#: caffeine/assets/glade/GUI.glade:691
+#, fuzzy
+#| msgid "List of programs that Caffeine activates for:"
+msgid "List of programs that Caffeine ignores when detecting audio activity:"
+msgstr "Lista ohjelmista, joille Caffeine aktivoituu:"
+
+#: caffeine/assets/glade/GUI.glade:716
+msgid "Audio activity from these processes will not cause Caffeine to activate."
+msgstr ""
+
+#: caffeine/assets/glade/GUI.glade:800
+msgid "Enable audio peak filtering"
+msgstr ""
+
+#: caffeine/assets/glade/GUI.glade:840
 msgid "Tray icon"
 msgstr "Ilmoitusalueen kuvake"
 
-#: share/caffeine/glade/GUI.glade:659
+#: caffeine/assets/glade/GUI.glade:859
 msgid "Show tray icon"
 msgstr "Näytä ilmoitusalueen kuvake"
 
-#: share/caffeine/glade/GUI.glade:682
+#: caffeine/assets/glade/GUI.glade:882
 msgid "Show notification on startup"
 msgstr "Näytä ilmoitukset käynnistyksen yhteydessä"
 
-#: share/caffeine/glade/GUI.glade:742
+#: caffeine/assets/glade/GUI.glade:942
 msgid "    "
 msgstr "    "
 
-#: share/caffeine/glade/proc.glade:8
-msgid "Select a process name..."
-msgstr "Valitse prosessin nimi..."
+#: caffeine/main.py:190
+msgid "Caffeine is running"
+msgstr "Caffeine on käynnissä"
+
+#: caffeine/main.py:191
+#, fuzzy
+#| msgid "Show tray icon"
+msgid ""
+"To show the tray icon, \n"
+"run "
+msgstr "Näytä ilmoitusalueen kuvake"
+
+#: caffeine/main.py:193
+msgid "or open Caffeine Preferences from your system menu."
+msgstr ""
+
+#: caffeine/main.py:205
+msgid "Caffeine is dormant; powersaving is enabled"
+msgstr "Caffeine ei ole aktiivinen; virransäästöominaisuudet ovat käytössä"
+
+#: caffeine/main.py:275
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Caffeine Developers https://launchpad.net/~caffeine-developers\n"
+"  Dragula https://launchpad.net/~emil-lanner\n"
+"  Jiri Grönroos https://launchpad.net/~jiri-gronroos\n"
+"  Pekka Niemi https://launchpad.net/~pekka-niemi\n"
+"  Tommi Saira https://launchpad.net/~tommisaira"
+
+#: caffeine/main.py:314 caffeine/main.py:400
+msgid "Disable Caffeine"
+msgstr "Käytä näytönsäästäjää"
+
+#: caffeine/core.py:156
+msgid "Timed activation set; "
+msgstr "Ajastettu aktivointi asetettu; "
+
+#: caffeine/core.py:157
+msgid "Caffeine will prevent powersaving for the next "
+msgstr "Caffeine estää virransäästötoimet seuraavan "
+
+#: caffeine/core.py:164
+msgid "Activated for "
+msgstr "Aktivoitu "
+
+#: caffeine/core.py:191
+msgid " have elapsed; powersaving is re-enabled"
+msgstr " on kulunut loppuun; virransäästöominaisuudet on otettu käyttöön"
+
+#: caffeine/core.py:246
+msgid "Timed activation cancelled (was set for "
+msgstr "Ajastettu aktivointi peruttu (oli asetettu "
+
+#: caffeine/core.py:278
+#, fuzzy
+#| msgid "Caffeine is dormant; powersaving is enabled"
+msgid "Caffeine is dormant; powersaving is enabled."
+msgstr "Caffeine ei ole aktiivinen; virransäästöominaisuudet ovat käytössä"
+
+#: caffeine/core.py:280
+#, fuzzy
+#| msgid "Caffeine is running"
+msgid "Caffeine is preventing sleep only."
+msgstr "Caffeine on käynnissä"
+
+#: caffeine/core.py:282
+#, fuzzy
+#| msgid "Caffeine will prevent powersaving for the next "
+msgid "Caffeine is preventing all powersaving."
+msgstr "Caffeine estää virransäästötoimet seuraavan "
 
 #~ msgid "Activated for Flash video"
 #~ msgstr "Aktivoitu flash-videota varten"
