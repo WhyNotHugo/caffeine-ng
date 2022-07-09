@@ -1,6 +1,13 @@
 Caffeine-ng
 ===========
 
+⚠️ Migrated to codeberg.org
+--------------------------
+This project has `migrated to codeberg.org`_
+--------------------------------------------
+
+.. _migrated to codeberg.org: https://codeberg.org/WhyNotHugo/caffeine-ng
+
 .. image:: https://travis-ci.com/caffeine-ng/caffeine-ng.svg?branch=master
   :target: https://travis-ci.com/caffeine-ng/caffeine-ng
   :alt: build status
